@@ -1,0 +1,32 @@
+@import "../../Assets/Scss/variables.scss";
+
+.navbar {
+  font-weight: 400 !important;
+
+  .nav {
+    gap: 8px !important;
+  }
+
+  .navLink {
+    opacity: 1;
+    color: $text-muted;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    &:hover {
+      color: $yellow;
+      opacity: 1;
+      font-weight: 400;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    .navbarCollapse {
+      background-color: black;
+    }
+  }
+}

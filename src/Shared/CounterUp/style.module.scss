@@ -1,0 +1,12 @@
+.CountUp {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media  screen and (max-width: 576px) {
+    .CountUp {
+        font-size: 24px;
+    }
+}

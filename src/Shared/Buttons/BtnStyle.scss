@@ -1,0 +1,26 @@
+@import '../../Assets/Scss/globalStyleSheet.scss';
+
+.fillBtn{
+    background-color: $yellow !important;
+    border:2px solid $yellow !important;
+    font-weight: 500 !important;
+    color:black  !important;
+    &:hover{
+        border:2px solid $hoverYellow !important;
+        background-color: $hoverYellow !important;
+        font-weight: 500 !important; 
+        color:white  !important;
+    }
+}
+
+.OutlineBtn{
+    background-color: transparent !important;
+    border:2px solid $yellow !important;
+    font-weight: 500 !important;
+    &:hover{
+        background-color: transparent !important;
+        border:2px solid $hoverYellow!important;
+        font-weight: 500 !important; 
+        color:$yellow  !important;
+    }
+}

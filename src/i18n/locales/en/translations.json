@@ -1,0 +1,19 @@
+{
+  "landing": {
+    "homeText": "Home",
+    "servicesText": "Services",
+    "fitneeCommunityText": "FitNee Community",
+    "contactUsText": "Contact Us",
+    "trainersText": "Trainers",
+    "traineesText": "Trainees",
+    "nutritionistsText": "Nutritionists",
+    "embraceAText": "Embrace a",
+    "healthierYouText": "healthier you",
+    "FirstHeroSectionText": "Provide a comprehensive platform to be a one-stop destination for individuals seeking fitness guidance and resources.",
+    "Features": "Features",
+    "FirstFeaturesText": "Connect Users with Qualified Trainers: FitNee will maintain a directory of certified and experienced fitness trainers. You will be. connecting with trainers who can provide personalized workout plans, tailored to their specific needs and goals. We strive to ensure that each trainer listed on our platform meets high standards of expertise and professionalism.",
+    "SecondFeaturesText": "Facilitate Nutritional Guidance: we recognizes the importance of nutrition in achieving fitness goals. We aim to provide a comprehensive list of nutrition specialists who can offer personalized meal plans, dietary advice, and guidance on healthy eating habits.",
+    "ThirdFeaturesText": "Comprehensive Exercise Library: we will feature an extensive collection of exercises, including detailed instructions, videos, and variations to provide you with a diverse range of exercises that target different muscle groups and fitness levels. We aim to cater to both beginners and advanced fitness enthusiasts, ensuring that our exercise library offers something for everyone.",
+    "FourthFeaturesText": "FitNee's Community: FitNee strives to create a vibrant and supportive community where users can connect with like-minded individuals, share their fitness journeys, and seek motivation and encouragement."
+  }
+}

@@ -1,0 +1,35 @@
+@import "./variables.scss";
+
+@mixin bgProperties {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.textYellow {
+  color: $yellow !important;
+}
+
+.BorderRadius {
+  border-radius: 15px !important;
+  border: 1px solid $yellow !important;
+}
+
+.ImgBorder {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.BorderYellow {
+  border: 1px solid $yellow;
+}
+
+Input,
+a,
+.a {
+  text-decoration: none !important;
+  &:focus {
+    border: none !important;
+    outline: none !important;
+  }
+}

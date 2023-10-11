@@ -3,7 +3,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -17,11 +16,11 @@ import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
-import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Logo from "../../Assets/Images/homeScreen/Logo.svg";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import { ENGLISH_LANGUAGE, ARABIC_LANGUAGE } from "../../utils/constants";
 

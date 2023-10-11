@@ -6,6 +6,27 @@
   background-size: cover;
 }
 
+.bgBlur {
+  background-color: $blur-color !important;
+}
+
+.middle-subscription-card {
+  transition: transform 0.3s ease;
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.custom-badge {
+  font-size: 15px !important;
+  background-color: $yellow !important;
+}
+
+.bgProperties {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .textYellow {
   color: $yellow !important;
 }

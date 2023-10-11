@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-// import InfoCard from "../../Components/InfoCard";
-// import HourCard from "../../Components/HourCard/";
+import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
-// import CommentCard from "../../Components/CommentsCard";
-// import DocumentCard from "../../Components/DocumentCard";
-import { Row, Col, Container, Card, CardBody } from "reactstrap";
+import CommentCard from "../../../Shared/CommentCard";
+import DocumentCard from "../../../Shared/DocumentCard";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
+import AvailableHourList from "../../../Shared/AvailableHourListing";
+import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
+import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 
 const availableHoursData = [
   {
@@ -81,52 +81,48 @@ const documentsData = [
   },
 ];
 
-const personalData = [
-  {
-    infoImg: Images.PROFILE_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "25",
-  },
-];
+const personalData = {
+  infoImg: Images.PROFILE_IMG,
+  infoLogo: Images.SHORTLOGO_IMG,
+  infoTitle: "Shane",
+  infoRating: 4,
+  infoDes: "2 Years",
+  Height: "25",
+};
+
+const categories = ["Body Building", "Power Lifting", "Healthy Lifestyle"];
 
 const ServiceProviderProfile = () => {
+  const navigate = useNavigate();
+
+  const handleSubscribeClick = useCallback(() => {
+    navigate("/guest/serviceProvider/subscription");
+  }, [navigate]);
+
   return (
     <Container fluid>
       <Row className="py-2">
-        {/* <Col lg={3} md={4} className="bg-F6F6F6">
+        <Col lg={3} md={4} className="bg-F6F6F6">
           <div className="mb-2">
-            {personalData.map((item) => {
-              return (
-                <InfoCard
-                  infoLogo={item.infoLogo}
-                  infoTitle={item.infoTitle}
-                  infoRating={item.infoRating}
-                  infoImg={item.infoImg}
-                  infoDes={item.infoDes}
-                  CardHeight={item.Height}
-                />
-              );
-            })}
+            <ProfileInformationCard
+              infoLogo={personalData.infoLogo}
+              infoTitle={personalData.infoTitle}
+              infoRating={personalData.infoRating}
+              infoImg={personalData.infoImg}
+              infoDes={personalData.infoDes}
+              CardHeight={personalData.Height}
+            />
           </div>
           <div className="mb-3">
-            <Link to="pricing">
-              <FillBtn className="w-100 text-dark" text={"Subscribe"} />
-            </Link>
+            <FillBtn
+              className="w-100 text-dark py-2"
+              text={"Subscribe"}
+              handleOnClick={handleSubscribeClick}
+            />
           </div>
-          <div className="px-3">
-            <h6 className="fw-bold px-2">Available Hours</h6>
-            {availableHoursData.map((item) => {
-              return (
-                <HourCard
-                  className="rounded-3"
-                  day={item.day}
-                  time={item.time}
-                />
-              );
-            })}
+          <div>
+            <h6 className="fw-bold">Available Hours</h6>
+            <AvailableHourList data={availableHoursData} />
           </div>
         </Col>
         <Col lg={9} md={8}>
@@ -170,26 +166,17 @@ const ServiceProviderProfile = () => {
               <Row>
                 <Col md={12}>
                   <h5 className="fw-bold my-2">Area of Specialty</h5>
-                  <Row>
-                    <Col xxl={1} xl={3} lg={4} md={6} sm={6} className="mb-2">
-                      <FillBtn
-                        className="w-100 text-dark"
-                        text={"Body Building"}
-                      />
-                    </Col>
-                    <Col xxl={1} xl={3} lg={4} md={6} sm={6} className="mb-2">
-                      <FillBtn
-                        className="w-100 text-dark"
-                        text={"Power Lifting"}
-                      />
-                    </Col>
-                    <Col xxl={1} xl={3} lg={4} md={6} sm={6} className="mb-2">
-                      <FillBtn
-                        className="w-100 text-dark"
-                        text={"Healthy Lifestyle"}
-                      />
-                    </Col>
-                  </Row>
+                  {categories?.map((item, index) => {
+                    return (
+                      <Badge
+                        key={index}
+                        color="custom"
+                        className="me-2 mb-2 text-dark custom-badge"
+                      >
+                        {item}
+                      </Badge>
+                    );
+                  })}
                 </Col>
               </Row>
               <Row>
@@ -206,7 +193,7 @@ const ServiceProviderProfile = () => {
               </Row>
             </CardBody>
           </Card>
-        </Col> */}
+        </Col>
       </Row>
     </Container>
   );

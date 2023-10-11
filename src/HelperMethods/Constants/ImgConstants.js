@@ -30,6 +30,10 @@ let Images = {
   //==============================GuestServiceProviderProviderImgs=============
   COMMENT_IMG: require("../../Assets/Images/serviceProviderListScreen/TrainerImg.svg").default,
   DOCUMENT_IMG: require("../../Assets/Images/serviceProviderListScreen/DocumentImg.svg").default,
+  //==============================SubscriptionImgs=============================
+  ONE_MONTH_IMG: require("../../Assets/Images/subscription/oneMonthSubscription.svg").default,
+  TWO_MONTH_IMG: require("../../Assets/Images/subscription/twoMonthSubscription.svg").default,
+  THREE_MONTH_IMG: require("../../Assets/Images/subscription/threeMonthSubscription.svg").default,
 };
 
 export default Images;

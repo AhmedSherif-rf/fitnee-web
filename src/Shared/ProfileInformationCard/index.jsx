@@ -1,24 +1,22 @@
 import React, { memo } from "react";
-import MyRatingComponent from "../Rating";
+import StarRating from "../Rating";
 import { Card, CardBody, CardFooter } from "reactstrap";
 
-const TrainerListCard = (props) => {
+const ProfileInformationCard = (props) => {
   const {
+    index,
+    infoTitle,
     infoImg,
     infoDes,
-    infoLogo,
-    className,
-    infoTitle,
     infoRating,
+    infoLogo,
     CardHeight,
-    handleOnClick,
+    className,
+    TraineeEmail,
   } = props;
 
   return (
-    <Card
-      className={`shadow BorderRadius ${className}`}
-      onClick={handleOnClick}
-    >
+    <Card className={`shadow BorderRadius border-0 ${className}`} key={index}>
       <CardBody className="p-0">
         <div
           className="p-0 bgProperties ImgBorder"
@@ -32,7 +30,7 @@ const TrainerListCard = (props) => {
           </div>
         </div>
       </CardBody>
-      <CardFooter className="BorderRadius border-0">
+      <CardFooter className="border-0">
         <div className="d-flex h-100 text-white align-items-end justify-content-between">
           <div className="d-flex align-items-center">
             <img className="img-fluid" src={infoLogo} alt="info logo" />
@@ -41,13 +39,14 @@ const TrainerListCard = (props) => {
             </p>
           </div>
           <div className="d-flex align-items-center justify-content-center">
-            <MyRatingComponent />
+            <StarRating />
             <p className="mb-0 pt-1">{infoRating}</p>
           </div>
         </div>
+        <div className="my-2">{TraineeEmail}</div>
       </CardFooter>
     </Card>
   );
 };
 
-export default memo(TrainerListCard);
+export default memo(ProfileInformationCard);

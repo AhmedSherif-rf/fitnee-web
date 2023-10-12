@@ -26,7 +26,7 @@ const Footer = () => {
         <Col md={4}>
           <div className="">
             <div className="d-flex gap-3 mx-4 align-items-center justify-content-center p-3">
-              <Link to="PrivacyPolicy">
+              <Link to="/termAndCondition">
                 <h6 className="text-white mb-0">Terms and Conditions</h6>
               </Link>
               <img src={Image.TWITTER_IMG} alt="logo" />

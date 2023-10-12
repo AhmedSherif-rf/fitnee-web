@@ -1,13 +1,8 @@
 @import './Assets/Scss/variables.scss';
-
-@font-face {
-  font-family: "RobotoLight";
-  src: local("RobotoLight"), url("./Assets/Fonts/Roboto/Roboto-Light.ttf") format("truetype");
-  font-weight: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 *{
-  font-family: 'RobotoLight';
+  font-family: "Roboto";
 }
 
 /*navbar styling*/

@@ -1,28 +1,22 @@
-@import '../../Assets/Scss/globalStyleSheet.scss';
+@import "../../Assets/Scss/globalStyleSheet.scss";
 
-.fillBtn{
-    background-color: $yellow !important;
-    border:2px solid $yellow !important;
-    font-weight: 500 !important;
-    color:black  !important;
-    &:hover{
-        border:2px solid $hoverYellow !important;
-        background-color: $hoverYellow !important;
-        font-weight: 500 !important; 
-        color:white  !important;
-    }
+.fillBtn {
+  background-color: $yellow !important;
+  border: 2px solid $yellow !important;
+  font-weight: bold !important;
+  color: black !important;
+  border-radius: $border-radius-15 !important;
 }
 
-.OutlineBtn{
-    background-color: transparent !important;
-    border:2px solid $yellow !important;
-    font-weight: 500 !important;
-    color:rgb(119, 107, 107) !important;
-    font-weight: 700 !important;
-    &:hover{
-        background-color: transparent !important;
-        border:2px solid $hoverYellow!important;
-        font-weight: 700 !important; 
-        color:$yellow  !important;
-    }
+.OutlineBtn {
+  background-color: transparent !important;
+  border: 2px solid $yellow !important;
+  font-weight: bold !important;
+  color: $yellow;
+  border-radius: $border-radius-15 !important;
+  &:hover {
+    background-color: $yellow !important;
+    border: 2px solid $hoverYellow !important;
+    color: $black !important;
+  }
 }

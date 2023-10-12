@@ -11,7 +11,8 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { FaBars } from "react-icons/fa";
+import { FaAddressCard, FaBars, FaHome, FaServicestack } from "react-icons/fa";
+import { FaPeopleGroup } from "react-icons/fa6";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { useTranslation } from "react-i18next";
@@ -28,6 +29,10 @@ const TopBar = (props) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+  const [isSliding, setIsSliding] = useState(false); // State for tracking slide
+  const Slide = () => {
+    setIsSliding(!isSliding); // Toggle the slide state
+  };
 
   const { t, i18n } = useTranslation("");
   const { lang: currentLanguage } = useSelector((state) => state?.language);
@@ -56,7 +61,8 @@ const TopBar = (props) => {
     if (
       props.isPublic &&
       (location.pathname === "/termAndCondition" ||
-        location.pathname === "/signIn" || location.pathname === "/contactUs")
+        location.pathname === "/signIn" ||
+        location.pathname === "/contactUs")
     ) {
       setShowTopBar(false);
     } else {
@@ -64,11 +70,8 @@ const TopBar = (props) => {
     }
   }, [location.pathname, props.isPublic]);
 
-  const [isOpen, setIsOpen] = useState(false);
   const [showNavItems, setShowNavItems] = useState(true);
   const [showTopBar, setShowTopBar] = useState(true);
-
-  const toggle = () => setIsOpen(!isOpen);
 
   const [backgroundClass, setBackgroundClass] = useState(
     props.isPublic
@@ -103,27 +106,23 @@ const TopBar = (props) => {
   }, [navigate]);
 
   return (
-    <div>
+    <>
       {showTopBar && (
-        <Navbar
-          className={`${styles.navbar} ${backgroundClass} p-2`}
-          expand="lg"
-          fixed="top"
-        >
-          <Link to={"/"}>
-            <img src={Logo} alt={"website-logo"} />
-          </Link>
-          {showNavItems && (
-            <>
-              <NavbarToggler className={"text-white"} onClick={toggle}>
-                <FaBars />
-              </NavbarToggler>
-              <Collapse
-                className={`p-3 ${styles.navbarCollapse}`}
-                isOpen={isOpen}
-                navbar
-              >
-                <Nav className={"mx-auto gap-2"} navbar>
+        <div>
+          <Navbar
+            className={`${styles.navbar} ${backgroundClass} p-2`}
+            expand="lg"
+            fixed="top"
+          >
+            <Link to={"/"}>
+              <img src={Logo} alt={"website-logo"} />
+            </Link>
+            {showNavItems && (
+              <>
+                <NavbarToggler className={"text-white"} onClick={Slide}>
+                  <FaBars />
+                </NavbarToggler>
+                <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
                   <NavItem className={`${styles.navItem}`}>
                     <NavLink
                       className={`${styles.navLink}`}
@@ -149,17 +148,17 @@ const TopBar = (props) => {
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <Link
-                      className={`nav-link ${styles.navLink}`}
-                      to="/contactUs"
+                    <NavLink
+                      className={`${styles.navLink}`}
+                      href="https://github.com/reactstrap/reactstrap"
                     >
                       {t("landing.contactUsText")}
-                    </Link>
+                    </NavLink>
                   </NavItem>
                 </Nav>
 
                 {!props?.isGuest && (
-                  <Nav className={`ml-auto ${styles.nav}`}>
+                  <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>
                         <img
@@ -199,21 +198,63 @@ const TopBar = (props) => {
                     <FillBtn
                       className="px-3"
                       text={"Sign Up"}
-                      handleOnClick={handleSignUpClick}
+                      handleOnClick={() => navigate("/registerAs")}
                     />
-                    <OutlineBtn
-                      className="px-3"
-                      text={"Sign In"}
-                      handleOnClick={handleSignInClick}
-                    />
+                    <OutlineBtn className="px-3" text={"Sign In"} />
                   </Nav>
                 )}
-              </Collapse>
-            </>
-          )}
-        </Navbar>
+              </>
+            )}
+          </Navbar>
+          <div
+            onClick={Slide}
+            className={`d-lg-none d-block pt-5 ${styles.mobileView} h-100 ${
+              isSliding ? styles["slide-right"] : styles["slide-left"]
+            }`}
+          >
+            <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
+              <NavItem className={`${styles.NavItem}`}>
+                <NavLink className={`${styles.NavLink}`} href="/components/">
+                  <FaHome className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                  {t("landing.homeText")}
+                </NavLink>
+              </NavItem>
+
+              <NavItem className={`${styles.NavItem}`}>
+                <NavLink className={`${styles.NavLink}`} href="/components/">
+                  <FaServicestack className={`fs-2 me-2 ${styles.PGreen}`} />
+                  {t("landing.servicesText")}
+                </NavLink>
+              </NavItem>
+
+              <NavItem className={`${styles.NavItem}`}>
+                <NavLink className={`${styles.NavLink}`} href="/components/">
+                  <FaPeopleGroup className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                  {t("landing.fitneeCommunityText")}
+                </NavLink>
+              </NavItem>
+
+              <NavItem className={`${styles.NavItem}`}>
+                <NavLink className={`${styles.NavLink}`} href="/components/">
+                  <FaAddressCard className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                  {t("landing.contactUsText")}
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </div>
+          <div
+            onClick={Slide}
+            className={`d-lg-none d-block ${styles.bgInverse} h-100 ${
+              isSliding
+                ? styles["slide-left-blank"]
+                : styles["slide-right-blank"]
+            }`}
+          >
+            {/* Content */}
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

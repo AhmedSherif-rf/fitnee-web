@@ -56,7 +56,8 @@ const TopBar = (props) => {
     if (
       props.isPublic &&
       (location.pathname === "/termAndCondition" ||
-        location.pathname === "/signIn" || location.pathname === "/contactUs")
+        location.pathname === "/signIn" ||
+        location.pathname === "/contactUs")
     ) {
       setShowTopBar(false);
     } else {
@@ -103,7 +104,7 @@ const TopBar = (props) => {
   }, [navigate]);
 
   return (
-    <div>
+    <>
       {showTopBar && (
         <Navbar
           className={`${styles.navbar} ${backgroundClass} p-2`}
@@ -198,12 +199,12 @@ const TopBar = (props) => {
                     </UncontrolledDropdown>
                     <FillBtn
                       className="px-3"
-                      text={"Sign Up"}
+                      text={t("landing.signUpText")}
                       handleOnClick={handleSignUpClick}
                     />
                     <OutlineBtn
                       className="px-3"
-                      text={"Sign In"}
+                      text={t("landing.signInText")}
                       handleOnClick={handleSignInClick}
                     />
                   </Nav>
@@ -213,7 +214,7 @@ const TopBar = (props) => {
           )}
         </Navbar>
       )}
-    </div>
+    </>
   );
 };
 

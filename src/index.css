@@ -1,8 +1,8 @@
-@import './Assets/Scss/variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import "./Assets/Scss/variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@200&family=Roboto:wght@100&display=swap');
 
-*{
-  font-family: "Roboto";
+* {
+  font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 /*navbar styling*/
@@ -43,4 +43,3 @@
   gap: 15px;
   align-items: center;
 }
-

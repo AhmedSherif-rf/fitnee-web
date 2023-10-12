@@ -62,7 +62,7 @@ const TermAndCondition = () => {
           <Row className="justify-content-center mb-3">
             <Col md={4}>
               <Link to="/">
-                <OutlineBtn className="w-100 px-5" text={"Done"} />
+                <OutlineBtn className="w-100 py-3" text={"Done"} />
               </Link>
             </Col>
           </Row>

@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
-import SignInWrapper from "../../../Shared/SignIn/SignInWrapper";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
+import ContactUsWrapper from "../../../Shared/ContactUs/ContactUsWrapper";
 
-const SingInData = [
+const ContactUsData = [
   {
     CompStyle: { backgroundImage: `url(${Images.LOGIN_BG_IMG})` },
     text1: (
@@ -26,12 +26,11 @@ const SingInData = [
   },
 ];
 
-const SignIn = () => {
-  
+const ContactUs = () => {
   return (
     <Container fluid className="vh-100">
-      {SingInData?.map((item) => (
-        <SignInWrapper
+      {ContactUsData?.map((item) => (
+        <ContactUsWrapper
           CompStyle={item.CompStyle}
           text1={item.text1}
           text2={item.text2}
@@ -42,4 +41,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default ContactUs;

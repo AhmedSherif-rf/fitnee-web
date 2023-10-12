@@ -6,6 +6,27 @@
   background-size: cover;
 }
 
+.bgBlur {
+  background-color: $blur-color !important;
+}
+
+.middle-subscription-card {
+  transition: transform 0.3s ease;
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.custom-badge {
+  font-size: 15px !important;
+  background-color: $yellow !important;
+}
+
+.bgProperties {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .textYellow {
   color: $yellow !important;
 }
@@ -21,15 +42,58 @@
 }
 
 .BorderYellow {
-  border: 1px solid $yellow;
+  border: 1px solid $placeholder-color;
 }
 
-Input,
 a,
 .a {
   text-decoration: none !important;
+  outline: none !important;
+}
+
+Input {
   &:focus {
-    border: none !important;
+    border: 1px solid $yellow !important;
+    outline: 1px solid $yellow !important;
+  }
+}
+
+Input::-webkit-input-placeholder {
+  color: $placeholder-color;
+}
+
+.react-tel-input,
+.genderBtn,
+select,
+.form-control,
+.form-control-lg {
+  &:focus,
+  &:focus-visible {
+    background-color: $yellow-blur !important;
+    border: 1px solid $parrot-green !important;
+    box-shadow: none !important;
     outline: none !important;
   }
+}
+
+.form-check-input:checked::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: "\2713 ";
+  color: $parrot-green !important;
+  font-weight: bold;
+  margin-top: -13px;
+  margin-left: 1px;
+}
+
+.form-check-input:checked {
+  &focus {
+    box-shadow: none !important;
+    background-color: $yellow-blur !important;
+    color: $parrot-green !important;
+  }
+  background-color: $yellow-blur !important;
+  border: 1px solid $parrot-green !important;
+  color: $parrot-green !important;
 }

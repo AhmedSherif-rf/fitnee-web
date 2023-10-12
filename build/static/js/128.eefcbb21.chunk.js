@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[128],{6128:function(e,n,i){i.r(n);var r=i(2791),s=i(184);n.default=function(e){return(0,s.jsx)(r.Fragment,{children:(0,s.jsx)("h4",{children:"This is Trainee Dashboard"})})}}}]);
+//# sourceMappingURL=128.eefcbb21.chunk.js.map

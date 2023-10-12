@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[622],{8622:function(e,n,i){i.r(n);var s=i(2791),t=i(184);n.default=function(e){return(0,t.jsx)(s.Fragment,{children:(0,t.jsx)("h4",{children:"This is Register Page"})})}}}]);
+//# sourceMappingURL=622.7d3c2e49.chunk.js.map

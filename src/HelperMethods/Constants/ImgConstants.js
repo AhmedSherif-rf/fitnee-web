@@ -22,6 +22,10 @@ let Images = {
   SLIDER3_IMG: require("../../Assets/Images/homeScreen/sliderImgs/slider3.svg").default,
   SLIDER2_IMG: require("../../Assets/Images/homeScreen/sliderImgs/slider2.svg").default,
   SLIDER1_IMG: require("../../Assets/Images/homeScreen/sliderImgs/slider1.svg").default,
+  //================================loginImgs==================================
+  LOGIN_BG_IMG: require("../../Assets/Images/login/loginBgImg.svg").default,
+  EMAIL_ICON: require("../../Assets/Images/InputField/emailLogo.svg").default,
+  PERSON_ICON: require("../../Assets/Images/InputField/personLogo.svg").default,
   //==============================registerAsImgs===============================
   REGISTER_AS_BG: require("../../Assets/Images/registerAsScreen/RegisterAsBackground.svg").default,
   //==============================GuestServiceProviderListImgs=================
@@ -30,6 +34,10 @@ let Images = {
   //==============================GuestServiceProviderProviderImgs=============
   COMMENT_IMG: require("../../Assets/Images/serviceProviderListScreen/TrainerImg.svg").default,
   DOCUMENT_IMG: require("../../Assets/Images/serviceProviderListScreen/DocumentImg.svg").default,
+  //==============================SubscriptionImgs=============================
+  ONE_MONTH_IMG: require("../../Assets/Images/subscription/oneMonthSubscription.svg").default,
+  TWO_MONTH_IMG: require("../../Assets/Images/subscription/twoMonthSubscription.svg").default,
+  THREE_MONTH_IMG: require("../../Assets/Images/subscription/threeMonthSubscription.svg").default,
 };
 
 export default Images;

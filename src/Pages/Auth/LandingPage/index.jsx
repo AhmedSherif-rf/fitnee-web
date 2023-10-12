@@ -16,12 +16,13 @@ const LandingPage = (props) => {
     {
       heading: (
         <h2 className={`fw-bold text-white fs-1`}>
-          {t("landing.whatIsText")}  <span className="textYellow"> {t("landing.fitneeText")} </span>
+          {t("landing.whatIsText")}{" "}
+          <span className="textYellow"> {t("landing.fitneeText")} </span>
         </h2>
       ),
       text: (
         <p className={"fs-5 text-white lh-1"}>
-          {t("landing.FirstHeroSectionText")}
+          {t("landing.firstHeroSectionText")}
         </p>
       ),
       type: "textLeft",
@@ -35,19 +36,19 @@ const LandingPage = (props) => {
   const FeaturesData = useCallback(() => {
     return [
       {
-        text: t("landing.FirstFeaturesText"),
+        text: t("landing.firstFeaturesText"),
         image: Images.FEATURE_ONE,
       },
       {
-        text: t("landing.SecondFeaturesText"),
+        text: t("landing.secondFeaturesText"),
         image: Images.FEATURE_ONE,
       },
       {
-        text: t("landing.ThirdFeaturesText"),
+        text: t("landing.thirdFeaturesText"),
         image: Images.FEATURE_TWO,
       },
       {
-        text: t("landing.FourthFeaturesText"),
+        text: t("landing.fourthFeaturesText"),
         image: Images.FEATURE_THREE,
       },
     ];
@@ -57,17 +58,18 @@ const LandingPage = (props) => {
     {
       heading: (
         <h2 className="fw-bold text-white fs-1">
-          {t("landing.ourText")} <span className="textYellow"> {t("landing.goalText")}</span>
+          {t("landing.ourText")}{" "}
+          <span className="textYellow"> {t("landing.goalText")}</span>
         </h2>
       ),
       text: (
         <>
           <p className={"fs-5 lh-1 text-white"}>
-          {t("landing.secondHeroSectionTextOne")}
+            {t("landing.secondHeroSectionTextOne")}
           </p>
 
           <p className={"fs-5 lh-1 text-white"}>
-          {t("landing.secondHeroSectionTextTwo")}
+            {t("landing.secondHeroSectionTextTwo")}
           </p>
         </>
       ),
@@ -81,12 +83,13 @@ const LandingPage = (props) => {
       heading: (
         <h2 className="fw-bold text-white fs-1">
           {" "}
-          {t("landing.ourText")}  <span className="textYellow">{t("landing.visionText")}  </span>
+          {t("landing.ourText")}{" "}
+          <span className="textYellow">{t("landing.visionText")} </span>
         </h2>
       ),
       text: (
         <p className="text-white fs-5 lh-1">
-       {t("landing.thirdHeroSectionTextOne")} 
+          {t("landing.thirdHeroSectionTextOne")}
         </p>
       ),
       type: "textRight",
@@ -98,8 +101,6 @@ const LandingPage = (props) => {
   ];
 
   const SwiperCardsData = useCallback(() => {
-
-    
     return [
       {
         sliderImg: Images.SLIDER1_IMG,
@@ -232,7 +233,10 @@ const LandingPage = (props) => {
           />
         ))}
       </Container>
-      <h2 className="text-center fw-bold fs-1 pb-3">  {t("landing.feedbackText")}</h2>
+      <h2 className="text-center fw-bold fs-1 pb-3">
+        {" "}
+        {t("landing.feedbackText")}
+      </h2>
       <CardSwiper data={SwiperCardsData()} />
       <Footer />
     </React.Fragment>

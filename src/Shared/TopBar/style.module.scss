@@ -35,13 +35,13 @@
 .bgInverse,
 .mobileView {
   content: "";
-  position: absolute;
+  position: fixed;
   transform: translateX(0);
   transition: transform 0.8s ease-in-out;
   width: 60%;
   overflow: hidden;
   z-index: 999;
-  background-color: rgba(3, 3, 3, 0.979);
+  background-color: $black;
   padding: 15px;
 
   .nav {
@@ -50,10 +50,10 @@
         padding-left: 10px;
         padding-right: 10px;
         border-radius: 15px;
-        border: 1px solid rgb(119, 119, 119) !important;
+        border: 1px solid $light-gray !important;
         color: $yellow !important;
         &:hover {
-          background-color: #f5e74c3a !important;
+          background-color: $yellow-blur !important;
           border: 1px solid $yellow !important;
           color: white !important;
         }
@@ -62,19 +62,19 @@
   }
 
   &.slide-right {
-    transform: translateX(0px); 
+    transform: translateX(0px);
   }
   &.slide-left {
-    transform: translateX(-100%); 
+    transform: translateX(-100%);
   }
 }
 .bgInverse {
   width: 40%;
   background-color: #91f53396 !important;
   &.slide-left-blank {
-    transform: translateX(150%); 
+    transform: translateX(150%);
   }
   &.slide-right-blank {
-    transform: translateX(-100%); 
+    transform: translateX(-100%);
   }
 }

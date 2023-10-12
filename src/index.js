@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import store from "./Redux/configureStore";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Assets/Fonts/Roboto/Roboto-Light.ttf";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

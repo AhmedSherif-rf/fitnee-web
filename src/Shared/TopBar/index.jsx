@@ -29,13 +29,19 @@ const TopBar = (props) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const [isSliding, setIsSliding] = useState(false); // State for tracking slide
-  const Slide = () => {
-    setIsSliding(!isSliding); // Toggle the slide state
-  };
-
   const { t, i18n } = useTranslation("");
   const { lang: currentLanguage } = useSelector((state) => state?.language);
+
+  const [isSliding, setIsSliding] = useState(false);
+  const [showTopBar, setShowTopBar] = useState(true);
+  const [showNavItems, setShowNavItems] = useState(true);
+  const [backgroundClass, setBackgroundClass] = useState(
+    props.isPublic
+      ? props?.isGuest
+        ? "bg-white-custom"
+        : "bg-transparent"
+      : "bg-white-custom"
+  );
 
   useEffect(() => {
     if (props.isPublic) {
@@ -70,17 +76,6 @@ const TopBar = (props) => {
     }
   }, [location.pathname, props.isPublic]);
 
-  const [showNavItems, setShowNavItems] = useState(true);
-  const [showTopBar, setShowTopBar] = useState(true);
-
-  const [backgroundClass, setBackgroundClass] = useState(
-    props.isPublic
-      ? props?.isGuest
-        ? "bg-white-custom"
-        : "bg-transparent"
-      : "bg-white-custom"
-  );
-
   const listenScrollEvent = () => {
     if (!props?.isGuest && props?.isPublic) {
       if (window.scrollY > 200) {
@@ -89,6 +84,10 @@ const TopBar = (props) => {
         setBackgroundClass("bg-transparent");
       }
     }
+  };
+
+  const slide = () => {
+    setIsSliding(!isSliding);
   };
 
   const selectLanguage = (language) => {
@@ -119,7 +118,7 @@ const TopBar = (props) => {
             </Link>
             {showNavItems && (
               <>
-                <NavbarToggler className={"text-white"} onClick={Slide}>
+                <NavbarToggler className={"text-white"} onClick={slide}>
                   <FaBars />
                 </NavbarToggler>
                 <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
@@ -211,7 +210,7 @@ const TopBar = (props) => {
             )}
           </Navbar>
           <div
-            onClick={Slide}
+            onClick={slide}
             className={`d-lg-none d-block pt-5 ${styles.mobileView} h-100 ${
               isSliding ? styles["slide-right"] : styles["slide-left"]
             }`}
@@ -247,7 +246,7 @@ const TopBar = (props) => {
             </Nav>
           </div>
           <div
-            onClick={Slide}
+            onClick={slide}
             className={`d-lg-none d-block ${styles.bgInverse} h-100 ${
               isSliding
                 ? styles["slide-left-blank"]

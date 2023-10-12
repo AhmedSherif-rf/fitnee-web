@@ -11,12 +11,11 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { FaAddressCard, FaBars, FaHome, FaServicestack } from "react-icons/fa";
-import { FaPeopleGroup } from "react-icons/fa6";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
+import { FaPeopleGroup } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import Logo from "../../Assets/Images/homeScreen/Logo.svg";
 import { setLanguageInStorage } from "../../utils/functions";
@@ -24,6 +23,7 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import { ENGLISH_LANGUAGE, ARABIC_LANGUAGE } from "../../utils/constants";
+import { FaAddressCard, FaBars, FaHome, FaServicestack } from "react-icons/fa";
 
 const TopBar = (props) => {
   const dispatch = useDispatch();
@@ -91,7 +91,7 @@ const TopBar = (props) => {
     }
   };
 
-  const selecteLanguage = (language) => {
+  const selectLanguage = (language) => {
     dispatch(setLanguage(language));
     i18n.changeLanguage(language);
     setLanguageInStorage(language);
@@ -148,12 +148,12 @@ const TopBar = (props) => {
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink
-                      className={`${styles.navLink}`}
-                      href="https://github.com/reactstrap/reactstrap"
+                    <Link
+                      className={`nav-link ${styles.navLink}`}
+                      to="/contactUs"
                     >
                       {t("landing.contactUsText")}
-                    </NavLink>
+                    </Link>
                   </NavItem>
                 </Nav>
 
@@ -172,7 +172,7 @@ const TopBar = (props) => {
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem
-                          onClick={() => selecteLanguage(ARABIC_LANGUAGE)}
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
                         >
                           <span>
                             <img
@@ -183,7 +183,7 @@ const TopBar = (props) => {
                           <span>{"العربية"}</span>
                         </DropdownItem>
                         <DropdownItem
-                          onClick={() => selecteLanguage(ENGLISH_LANGUAGE)}
+                          onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
                         >
                           <span>
                             <img
@@ -198,9 +198,13 @@ const TopBar = (props) => {
                     <FillBtn
                       className="px-3"
                       text={"Sign Up"}
-                      handleOnClick={() => navigate("/registerAs")}
+                      handleOnClick={handleSignUpClick}
                     />
-                    <OutlineBtn className="px-3" text={"Sign In"} />
+                    <OutlineBtn
+                      className="px-3"
+                      text={"Sign In"}
+                      handleOnClick={handleSignInClick}
+                    />
                   </Nav>
                 )}
               </>

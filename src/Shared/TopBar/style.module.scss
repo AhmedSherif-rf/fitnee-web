@@ -1,81 +1,80 @@
- @import "../../Assets/Scss/globalStyleSheet.scss";
- 
- .navbar {
-   font-weight: 400 !important;
- 
-   .nav {
-     gap: 8px !important;
-   }
- 
-   .navLink {
-     opacity: 1;
-     color: $text-muted;
-     font-size: 20px;
-     font-style: normal;
-     font-weight: 400;
-     line-height: normal;
- 
-     &:hover {
-       color: $yellow;
-       opacity: 1;
-       font-weight: 400;
-     }
-   }
- 
-   @media (max-width: 991px) {
-     &.navbarCollapse {
-       background-color: black;
-     }
-   }
- }
- 
- .PGreen {
-   color: $parrot-green !important;
- }
- .bgInverse,
- .mobileView {
-   content: "";
-   position: absolute;
-   transform: translateX(0);
-   transition: transform 0.8s ease-in-out;
-   width: 60%;
-   overflow: hidden;
-   z-index: 999;
-   background-color: rgba(3, 3, 3, 0.979);
-   padding: 15px;
- 
-   .nav {
-     .NavItem {
-       .NavLink {
-         padding-left: 10px;
-         padding-right: 10px;
-         border-radius: 15px;
-         border: 1px solid rgb(119, 119, 119) !important;
-         color: $yellow !important;
-         &:hover{
-           background-color: #f5e74c3a !important;
-           border: 1px solid $yellow !important;
-           color:white !important;
-         }
-       }
-     }
-   }
- 
-   &.slide-right {
-     transform: translateX(0px); /* Slide to the right */
-   }
-   &.slide-left {
-     transform: translateX(-100%); /* Slide to the left */
-   }
-  
- }
- .bgInverse{
-  background-color: #91f53396 !important;
-   &.slide-left-blank {
-     transform: translateX(100%); /* Slide to the left */
-   }
-   &.slide-right-blank {
-     transform: translateX(300%); /* Slide to the right */
-   }
+@import "../../Assets/Scss/globalStyleSheet.scss";
+
+.navbar {
+  font-weight: 400 !important;
+
+  .nav {
+    gap: 8px !important;
+  }
+
+  .navLink {
+    opacity: 1;
+    color: $text-muted;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    &:hover {
+      color: $yellow;
+      opacity: 1;
+      font-weight: 400;
+    }
+  }
+
+  @media (max-width: 991px) {
+    &.navbarCollapse {
+      background-color: black;
+    }
+  }
 }
- 
+
+.PGreen {
+  color: $parrot-green !important;
+}
+.bgInverse,
+.mobileView {
+  content: "";
+  position: absolute;
+  transform: translateX(0);
+  transition: transform 0.8s ease-in-out;
+  width: 60%;
+  overflow: hidden;
+  z-index: 999;
+  background-color: rgba(3, 3, 3, 0.979);
+  padding: 15px;
+
+  .nav {
+    .NavItem {
+      .NavLink {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 15px;
+        border: 1px solid rgb(119, 119, 119) !important;
+        color: $yellow !important;
+        &:hover {
+          background-color: #f5e74c3a !important;
+          border: 1px solid $yellow !important;
+          color: white !important;
+        }
+      }
+    }
+  }
+
+  &.slide-right {
+    transform: translateX(0px); 
+  }
+  &.slide-left {
+    transform: translateX(-100%); 
+  }
+}
+.bgInverse {
+  width: 40%;
+  background-color: #91f53396 !important;
+  &.slide-left-blank {
+    transform: translateX(150%); 
+  }
+  &.slide-right-blank {
+    transform: translateX(-100%); 
+  }
+}

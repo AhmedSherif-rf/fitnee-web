@@ -17,10 +17,12 @@
     background-color: transparent !important;
     border:2px solid $yellow !important;
     font-weight: 500 !important;
+    color:rgb(119, 107, 107) !important;
+    font-weight: 700 !important;
     &:hover{
         background-color: transparent !important;
         border:2px solid $hoverYellow!important;
-        font-weight: 500 !important; 
+        font-weight: 700 !important; 
         color:$yellow  !important;
     }
 }

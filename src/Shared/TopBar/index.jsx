@@ -198,12 +198,12 @@ const TopBar = (props) => {
                     </UncontrolledDropdown>
                     <FillBtn
                       className="px-3"
-                      text={"Sign Up"}
+                      text={t("landing.signUpText")}
                       handleOnClick={handleSignUpClick}
                     />
                     <OutlineBtn
                       className="px-3"
-                      text={"Sign In"}
+                      text={t("landing.signInText")}
                       handleOnClick={handleSignInClick}
                     />
                   </Nav>

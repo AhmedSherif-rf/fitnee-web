@@ -1,13 +1,15 @@
 import { Col, Row } from "reactstrap";
 import styles from "./style.module.scss";
 import React, { memo, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination, Autoplay } from "swiper/modules";
 
 const Feature = (props) => {
+  const { t } = useTranslation("");
   const { data, type } = props;
   const cardSwiperRef = useRef(null);
-    
+
   const handletextSlideChange = (swiper) => {
     cardSwiperRef.current.slideTo(swiper.activeIndex);
   };
@@ -20,13 +22,11 @@ const Feature = (props) => {
     >
       <Col xs={12} md={6} className={`p-0 ${styles.featureSectionLeftContent}`}>
         <div className={`px-md-2 px-3 h-100 d-flex  align-items-center`}>
-          <div
-            initial="hidden"
-            className="my-3"
-          >
+          <div initial="hidden" className="my-3">
             <h2 className={`fw-bold textYellow fs-1 ${styles.featureHeading}`}>
-              Features
+              {t("landing.featuresText")}
             </h2>
+
             <Swiper
               speed={1000}
               spaceBetween={100}
@@ -70,7 +70,13 @@ const Feature = (props) => {
           onSwiper={(swiper) => (cardSwiperRef.current = swiper)}
         >
           {data?.map((item, index) => {
-            return <SwiperSlide key={index} className={`${styles.cardSwiperSlider}`} style={{backgroundImage: `url(${item.image})`}}></SwiperSlide>
+            return (
+              <SwiperSlide
+                key={index}
+                className={`${styles.cardSwiperSlider}`}
+                style={{ backgroundImage: `url(${item.image})` }}
+              ></SwiperSlide>
+            );
           })}
         </Swiper>
       </Col>

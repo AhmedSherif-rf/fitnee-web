@@ -16,7 +16,7 @@ const LandingPage = (props) => {
     {
       heading: (
         <h2 className={`fw-bold text-white fs-1`}>
-          What Is <span className="textYellow">FitNee</span>
+          {t("landing.whatIsText")}  <span className="textYellow"> {t("landing.fitneeText")} </span>
         </h2>
       ),
       text: (
@@ -57,20 +57,17 @@ const LandingPage = (props) => {
     {
       heading: (
         <h2 className="fw-bold text-white fs-1">
-          Our <span className="textYellow">Goal</span>
+          {t("landing.ourText")} <span className="textYellow"> {t("landing.goalText")}</span>
         </h2>
       ),
       text: (
         <>
           <p className={"fs-5 lh-1 text-white"}>
-            FitNee's primary goal is to inspire and motivate individuals to
-            adopt and maintain a healthy lifestyle.
+          {t("landing.secondHeroSectionTextOne")}
           </p>
 
           <p className={"fs-5 lh-1 text-white"}>
-            Here in FitNee we are creating a vibrant and supportive community
-            where individuals can share their fitness experiences, seek advice,
-            and find motivation.
+          {t("landing.secondHeroSectionTextTwo")}
           </p>
         </>
       ),
@@ -84,14 +81,12 @@ const LandingPage = (props) => {
       heading: (
         <h2 className="fw-bold text-white fs-1">
           {" "}
-          Our <span className="textYellow">Vision </span>
+          {t("landing.ourText")}  <span className="textYellow">{t("landing.visionText")}  </span>
         </h2>
       ),
       text: (
         <p className="text-white fs-5 lh-1">
-          Empowering individuals to achieve their optimal health and fitness
-          through personalized guidance, comprehensive resources, and a
-          supportive community.
+       {t("landing.thirdHeroSectionTextOne")} 
         </p>
       ),
       type: "textRight",
@@ -103,6 +98,8 @@ const LandingPage = (props) => {
   ];
 
   const SwiperCardsData = useCallback(() => {
+
+    
     return [
       {
         sliderImg: Images.SLIDER1_IMG,
@@ -235,7 +232,7 @@ const LandingPage = (props) => {
           />
         ))}
       </Container>
-      <h2 className="text-center fw-bold fs-1 pb-3">Feedbacks</h2>
+      <h2 className="text-center fw-bold fs-1 pb-3">  {t("landing.feedbackText")}</h2>
       <CardSwiper data={SwiperCardsData()} />
       <Footer />
     </React.Fragment>

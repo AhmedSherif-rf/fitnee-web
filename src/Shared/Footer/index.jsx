@@ -2,8 +2,10 @@ import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import Image from "../../HelperMethods/Constants/ImgConstants";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation("");
   const currentYear = new Date().getFullYear();
 
   return (
@@ -19,7 +21,7 @@ const Footer = () => {
         <Col md={4}>
           <div className="d-flex h-100  align-items-center  justify-content-center p-3">
             <p className="text-white mb-0 small">
-              © Copyright {currentYear} Fitnee
+            {t("landing.copyrightText")} {currentYear} {t("landing.fitneeText")}
             </p>
           </div>
         </Col>
@@ -27,7 +29,7 @@ const Footer = () => {
           <div className="">
             <div className="d-flex gap-3 mx-4 align-items-center justify-content-center p-3">
               <Link to="PrivacyPolicy">
-                <h6 className="text-white mb-0">Terms and Conditions</h6>
+                <h6 className="text-white mb-0">{t("landing.TermsAndConditionsText")}</h6>
               </Link>
               <img src={Image.TWITTER_IMG} alt="logo" />
               <img src={Image.YOUTUBE_IMG} alt="logo" />

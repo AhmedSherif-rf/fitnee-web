@@ -3,8 +3,11 @@ import styles from "./style.module.scss";
 import React, { memo, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination, Autoplay } from "swiper/modules";
+import { useTranslation } from "react-i18next";
 
 const Feature = (props) => {
+
+  const { t } = useTranslation("");
   const { data, type } = props;
   const cardSwiperRef = useRef(null);
     
@@ -25,8 +28,9 @@ const Feature = (props) => {
             className="my-3"
           >
             <h2 className={`fw-bold textYellow fs-1 ${styles.featureHeading}`}>
-              Features
+            {t("landing.FeaturesText")} 
             </h2>
+
             <Swiper
               speed={1000}
               spaceBetween={100}

@@ -25,7 +25,10 @@
     "secondHeroSectionTextTwo": "Here in FitNee we are creating a vibrant and supportive community where individuals can share their fitness experiences, seek advice, and find motivation.",
     "thirdHeroSectionTextOne" :"Empowering individuals to achieve their optimal health and fitness through personalized guidance, comprehensive resources, and a supportive community.",
     "TermsAndConditionsText":"Terms and Conditions",
-    "copyrightText":"© Copyright"
+    "copyrightText":"© Copyright",
+    "getStartedText":" Get Started",
+    "signUpText":"Sign Up",
+    "signInText":"Sign In"
 
   }
 }

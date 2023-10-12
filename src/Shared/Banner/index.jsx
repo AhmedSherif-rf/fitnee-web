@@ -53,7 +53,7 @@ const HomeBanner = () => {
           >
             <FillBtn
               className="ms-3 px-4"
-              text="Get Started"
+              text=  {t("landing.getStartedText")}
               handleOnClick={handleGetStartedClick}
             />
           </motion.div>

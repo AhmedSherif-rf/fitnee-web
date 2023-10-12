@@ -19,12 +19,15 @@
     "feedbackText":"التقيمات",
      "ourText":"ملكنا",
      "goalText":"هدف",
-     "visionText":"رؤية",
+     "visionText":"رؤية", 
      "whatIsText":"ما هو",
      "secondHeroSectionTextOne":"الهدف الأساسي لـ FitNee هو إلهام وتحفيز الأفراد على تبني نمط حياة صحي والحفاظ عليه.",
      "secondHeroSectionTextTwo" :"هنا في FitNee نقوم بإنشاء مجتمع حيوي وداعم حيث يمكن للأفراد مشاركة تجارب اللياقة البدنية الخاصة بهم وطلب المشورة والعثور على التحفيز",
      "thirdHeroSectionTextOne" :"تمكين الأفراد من تحقيق الصحة واللياقة البدنية المثالية من خلال التوجيه الشخصي والموارد الشاملة والمجتمع الداعم.",
      "TermsAndConditionsText":"الأحكام والشروط",
-     "copyrightText":"© حقوق الطبع والنشر"
+     "copyrightText":"© حقوق الطبع والنشر",
+     "getStartedText":"البدء",
+     "signUpText":"اشتراك",
+     "signInText":"تسجيل الدخول"
   }
 }

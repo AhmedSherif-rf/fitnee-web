@@ -33,22 +33,32 @@ const LandingPage = (props) => {
     },
   ];
 
-  const FeaturesData = useCallback(() => {
+  const FeaturesTextData = useCallback(() => {
     return [
       {
         text: t("landing.firstFeaturesText"),
-        image: Images.FEATURE_ONE,
       },
       {
         text: t("landing.secondFeaturesText"),
-        image: Images.FEATURE_ONE,
       },
       {
         text: t("landing.thirdFeaturesText"),
-        image: Images.FEATURE_TWO,
       },
       {
         text: t("landing.fourthFeaturesText"),
+      },
+    ];
+  }, [t]);
+
+  const FeaturesImageData = useCallback(() => {
+    return [
+      {
+        image: Images.FEATURE_ONE,
+      },
+      {
+        image: Images.FEATURE_TWO,
+      },
+      {
         image: Images.FEATURE_THREE,
       },
     ];
@@ -218,7 +228,11 @@ const LandingPage = (props) => {
       </Container>
 
       <Container fluid>
-        <Feature data={FeaturesData()} type={"textRight"} />
+        <Feature
+          textData={FeaturesTextData()}
+          imageData={FeaturesImageData()}
+          type={"textRight"}
+        />
       </Container>
 
       <Container fluid>

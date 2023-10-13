@@ -25,6 +25,7 @@ let Images = {
   //================================loginImgs==================================
   LOGIN_BG_IMG: require("../../Assets/Images/login/loginBgImg.svg").default,
   EMAIL_ICON: require("../../Assets/Images/InputField/emailLogo.svg").default,
+  PHONE_ICON: require("../../Assets/Images/InputField/phoneLogo.svg").default,
   PERSON_ICON: require("../../Assets/Images/InputField/personLogo.svg").default,
   //==============================registerAsImgs===============================
   REGISTER_AS_BG: require("../../Assets/Images/registerAsScreen/RegisterAsBackground.svg").default,

@@ -24,14 +24,12 @@
   }
   .featureSectionRightContent {
     .cardSwiper {
-      padding: 60px;
       width: 100%;
       .cardSwiperSlider {
         display: flex;
         height: 80vh;
         align-items: center;
         justify-content: center;
-        border-radius: 18px;
         @include bgProperties;
         background-size: contain !important;
       }
@@ -47,7 +45,6 @@
     }
     .featureSectionRightContent {
       .cardSwiper {
-        padding: 50px;
         .cardSwiperSlider {
           height: 50vh;
         }
@@ -63,7 +60,6 @@
     }
     .featureSectionRightContent {
       .cardSwiper {
-        padding: 40px;
         .cardSwiperSlider {
           height: 35vh;
         }

@@ -26,4 +26,12 @@ export const guestRoutes = [
     role: guestRole,
     isGuest: true,
   },
+  {
+    path: "/guest/services",
+    component: lazy(() => import("../Pages/GuestPages/Services")),
+    exact: true,
+    ispublic: true,
+    role: guestRole,
+    isGuest: true,
+  },
 ];

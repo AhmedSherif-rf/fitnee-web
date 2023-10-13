@@ -42,13 +42,13 @@
   overflow: hidden;
   z-index: 999;
   background-color: $black;
-  padding: 15px;
+  padding: 8px;
 
   .nav {
     .NavItem {
       .NavLink {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 8px;
+        padding-right: 8px;
         border-radius: 15px;
         border: 1px solid $light-gray !important;
         color: $yellow !important;

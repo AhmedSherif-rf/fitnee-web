@@ -10,6 +10,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Card,
+  CardBody,
+  CardFooter,
 } from "reactstrap";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
@@ -120,7 +123,7 @@ const TopBar = (props) => {
             </Link>
             {showNavItems && (
               <>
-                <NavbarToggler className={"text-white"} onClick={slide}>
+                <NavbarToggler className={"text-white BorderYellow pb-2"} onClick={slide}>
                   <FaBars />
                 </NavbarToggler>
                 <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
@@ -212,44 +215,114 @@ const TopBar = (props) => {
             )}
           </Navbar>
           <div
-            onClick={slide}
-            className={`d-lg-none d-block pt-5 ${styles.mobileView} h-100 ${
+            className={`d-lg-none d-block ${styles.mobileView} h-100 ${
               isSliding ? styles["slide-right"] : styles["slide-left"]
             }`}
           >
-            <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
-              <NavItem className={`${styles.NavItem}`}>
-                <NavLink className={`${styles.NavLink}`} href="/components/">
-                  <FaHome className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
-                  {t("landing.homeText")}
-                </NavLink>
-              </NavItem>
+            <Card className="bg-transparent h-100">
+              <CardBody className="px-2">
+                <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
+                  <NavItem className={`${styles.NavItem}`}>
+                    <NavLink
+                      className={`${styles.NavLink}`}
+                      href="/components/"
+                    >
+                      <FaHome className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      {t("landing.homeText")}
+                    </NavLink>
+                  </NavItem>
 
-              <NavItem className={`${styles.NavItem}`}>
-                <NavLink className={`${styles.NavLink}`} href="/components/">
-                  <FaServicestack className={`fs-2 me-2 ${styles.PGreen}`} />
-                  {t("landing.servicesText")}
-                </NavLink>
-              </NavItem>
+                  <NavItem className={`${styles.NavItem}`}>
+                    <NavLink
+                      className={`${styles.NavLink}`}
+                      href="/components/"
+                    >
+                      <FaServicestack
+                        className={`fs-2 me-2 ${styles.PGreen}`}
+                      />
+                      {t("landing.servicesText")}
+                    </NavLink>
+                  </NavItem>
 
-              <NavItem className={`${styles.NavItem}`}>
-                <NavLink className={`${styles.NavLink}`} href="/components/">
-                  <FaPeopleGroup className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
-                  {t("landing.fitneeCommunityText")}
-                </NavLink>
-              </NavItem>
+                  <NavItem className={`${styles.NavItem}`}>
+                    <NavLink
+                      className={`${styles.NavLink}`}
+                      href="/components/"
+                    >
+                      <FaPeopleGroup className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      {t("landing.fitneeCommunityText")}
+                    </NavLink>
+                  </NavItem>
 
-              <NavItem className={`${styles.NavItem}`}>
-                <NavLink className={`${styles.NavLink}`} href="/components/">
-                  <FaAddressCard className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
-                  {t("landing.contactUsText")}
-                </NavLink>
-              </NavItem>
-            </Nav>
+                  <NavItem className={`${styles.NavItem}`}>
+                    <NavLink
+                      className={`${styles.NavLink}`}
+                      href="/components/"
+                    >
+                      <FaAddressCard className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      {t("landing.contactUsText")}
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+              </CardBody>
+              <CardFooter>
+                {!props?.isGuest && (
+                  <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav caret>
+                        <img
+                        className="me-2"
+                          src={
+                            currentLanguage === ENGLISH_LANGUAGE
+                              ? Images.AMERICAN_FLAG_IMG
+                              : Images.ARABIA_FLAG_IMG
+                          }
+                          alt="Flag_Image"
+                        />
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        >
+                          <span>
+                            <img
+                              src={Images.ARABIA_FLAG_IMG}
+                              alt="Arabia_Flag_Image"
+                            />
+                          </span>{" "}
+                          <span>{"العربية"}</span>
+                        </DropdownItem>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
+                        >
+                          <span>
+                            <img
+                              src={Images.AMERICAN_FLAG_IMG}
+                              alt="America_Flag_Image"
+                            />
+                          </span>{" "}
+                          <span>{"English (US)"}</span>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                    <FillBtn
+                      className="px-3 w-100 mb-2"
+                      text={t("landing.signUpText")}
+                      handleOnClick={handleSignUpClick}
+                    />
+                    <OutlineBtn
+                      className="px-3 w-100"
+                      text={t("landing.signInText")}
+                      handleOnClick={handleSignInClick}
+                    />
+                  </Nav>
+                )}
+              </CardFooter>
+            </Card>
           </div>
           <div
             onClick={slide}
-            className={`d-lg-none d-block ${styles.bgInverse} h-100 ${
+            className={`d-lg-none d-block overflow-hidden ${styles.bgInverse} h-100 ${
               isSliding
                 ? styles["slide-left-blank"]
                 : styles["slide-right-blank"]

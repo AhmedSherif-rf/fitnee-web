@@ -67,9 +67,7 @@ const Feature = (props) => {
       >
         <Swiper
           speed={1000}
-          effect={"cards"}
           grabCursor={true}
-          modules={[EffectCards]}
           className={`${styles.cardSwiper}`}
           onSwiper={(swiper) => (cardSwiperRef.current = swiper)}
         >

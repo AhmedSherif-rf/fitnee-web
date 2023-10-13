@@ -25,38 +25,44 @@ const Feature = (props) => {
       }`}
     >
       <Col xs={12} md={6} className={`p-0 ${styles.featureSectionLeftContent}`}>
-        <div className={`px-md-2 px-3 h-100 d-flex  align-items-center`}>
-          <div initial="hidden" className="my-3">
-            <h2 className={`fw-bold textYellow fs-1 ${styles.featureHeading}`}>
-              {t("landing.featuresText")}
-            </h2>
-
-            <Swiper
-              speed={1000}
-              spaceBetween={100}
-              grabCursor={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              onSlideChange={handletextSlideChange}
-              className={`${styles.featureTextSlider}`}
-              modules={[Pagination, Autoplay, Pagination]}
-            >
-              {textData?.map((item, index) => {
-                return (
-                  <SwiperSlide
-                    key={index}
-                    className="d-flex align-items-center text-center justify-content-center text-white fs-6"
-                  >
-                    {item.text}
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
+        <div className={`h-100 d-flex align-items-center`}>
+          <div className="">
+            <div className="pt-3">
+              <span
+                className={`fw-bold textYellow fs-1 ms-4 ${styles.featureHeading}`}
+              >
+                {t("landing.featuresText")}
+              </span>
+            </div>
+            <br />
+            <div className=" mb-5">
+              <Swiper
+                speed={1000}
+                spaceBetween={100}
+                grabCursor={true}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+                onSlideChange={handletextSlideChange}
+                className={`h-100 ${styles.featureTextSlider}`}
+                modules={[Pagination, Autoplay, Pagination]}
+              >
+                {textData?.map((item, index) => {
+                  return (
+                    <SwiperSlide
+                      key={index}
+                      className="d-flex align-items-center text-center text-white fs-6 h-100"
+                    >
+                      {item.text}
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
           </div>
         </div>
       </Col>
@@ -67,9 +73,7 @@ const Feature = (props) => {
       >
         <Swiper
           speed={1000}
-          // effect={"cards"}
           grabCursor={true}
-          // modules={[EffectCards]}
           className={`${styles.cardSwiper}`}
           onSwiper={(swiper) => (cardSwiperRef.current = swiper)}
         >

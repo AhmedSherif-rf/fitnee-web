@@ -32,8 +32,8 @@
         align-items: center;
         justify-content: center;
         border-radius: 18px;
-        border: 2px solid $yellow;
         @include bgProperties;
+        background-size: contain !important;
       }
     }
   }

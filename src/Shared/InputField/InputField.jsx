@@ -1,3 +1,4 @@
+import { Input } from "reactstrap";
 import React, { memo } from "react";
 import styles from "./style.module.scss";
 
@@ -16,7 +17,7 @@ const InputField = (props) => {
   return (
     <div className={`${styles.inputWrapper}`}>
       {icon && <div className={styles.iconWrapper}>{icon}</div>}
-      <input
+      <Input
         type={type}
         placeholder={placeholder}
         name={name}

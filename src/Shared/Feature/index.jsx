@@ -7,11 +7,15 @@ import { EffectCards, Pagination, Autoplay } from "swiper/modules";
 
 const Feature = (props) => {
   const { t } = useTranslation("");
-  const { data, type } = props;
+  const { textData, imageData, type } = props;
   const cardSwiperRef = useRef(null);
 
   const handletextSlideChange = (swiper) => {
-    cardSwiperRef.current.slideTo(swiper.activeIndex);
+    const index =
+      swiper.activeIndex === 0 || swiper.activeIndex === 1
+        ? 0
+        : swiper.activeIndex - 1;
+    cardSwiperRef.current.slideTo(index);
   };
 
   return (
@@ -42,7 +46,7 @@ const Feature = (props) => {
               className={`${styles.featureTextSlider}`}
               modules={[Pagination, Autoplay, Pagination]}
             >
-              {data?.map((item, index) => {
+              {textData?.map((item, index) => {
                 return (
                   <SwiperSlide
                     key={index}
@@ -69,7 +73,7 @@ const Feature = (props) => {
           className={`${styles.cardSwiper}`}
           onSwiper={(swiper) => (cardSwiperRef.current = swiper)}
         >
-          {data?.map((item, index) => {
+          {imageData?.map((item, index) => {
             return (
               <SwiperSlide
                 key={index}

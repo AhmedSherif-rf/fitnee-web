@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
 import { getGuestDataLimit } from "../../utils/functions";
 import React, { useState, useCallback, memo } from "react";
@@ -23,7 +24,6 @@ import {
   TRAINER_NUTRITIONIST,
 } from "../../utils/constants";
 import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
-import SubscriptionInformationModal from "../../Shared/Modal/SubscriptionInformationModal";
 
 const TrainerData = [
   {
@@ -264,7 +264,9 @@ const ServiceProviderListWrapper = (props) => {
                 <DropdownItem onClick={() => handleDropdownItemClick(TRAINER)}>
                   Trainers
                 </DropdownItem>
-                <DropdownItem onClick={() => handleDropdownItemClick(NUTRITIONIST)}>
+                <DropdownItem
+                  onClick={() => handleDropdownItemClick(NUTRITIONIST)}
+                >
                   Nutritionists
                 </DropdownItem>
                 <DropdownItem
@@ -277,63 +279,66 @@ const ServiceProviderListWrapper = (props) => {
           </Col>
         </Row>
         <Row>
-          {listingRole === TRAINER && TrainerData.map((item, index) => {
-            const isDisable = isGuest && index >= getGuestDataLimit();
-            return (
-              <Col lg={3} md={4} col={6} className="mb-3" key={index}>
-                <ServiceProviderListCard
-                  className={`${
-                    isDisable ? styles.blurCard : styles.activeTrainerCard
-                  }`}
-                  infoLogo={item.infoLogo}
-                  infoTitle={item.infoTitle}
-                  infoRating={item.infoRating}
-                  infoImg={item.infoImg}
-                  infoDes={item.infoDes}
-                  CardHeight={item.Height}
-                  handleOnClick={() => handleCardOnClick(isDisable)}
-                />
-              </Col>
-            );
-          })}
-          {listingRole === NUTRITIONIST && NutritionistData.map((item, index) => {
-            const isDisable = isGuest && index >= getGuestDataLimit();
-            return (
-              <Col lg={3} md={4} col={6} className="mb-3" key={index}>
-                <ServiceProviderListCard
-                  className={`${
-                    isDisable ? styles.blurCard : styles.activeTrainerCard
-                  }`}
-                  infoLogo={item.infoLogo}
-                  infoTitle={item.infoTitle}
-                  infoRating={item.infoRating}
-                  infoImg={item.infoImg}
-                  infoDes={item.infoDes}
-                  CardHeight={item.Height}
-                  handleOnClick={() => handleCardOnClick(isDisable)}
-                />
-              </Col>
-            );
-          })}
-          {listingRole === TRAINER_NUTRITIONIST && TrainerAndNutritionistData.map((item, index) => {
-            const isDisable = isGuest && index >= getGuestDataLimit();
-            return (
-              <Col lg={3} md={4} col={6} className="mb-3" key={index}>
-                <ServiceProviderListCard
-                  className={`${
-                    isDisable ? styles.blurCard : styles.activeTrainerCard
-                  }`}
-                  infoLogo={item.infoLogo}
-                  infoTitle={item.infoTitle}
-                  infoRating={item.infoRating}
-                  infoImg={item.infoImg}
-                  infoDes={item.infoDes}
-                  CardHeight={item.Height}
-                  handleOnClick={() => handleCardOnClick(isDisable)}
-                />
-              </Col>
-            );
-          })}
+          {listingRole === TRAINER &&
+            TrainerData.map((item, index) => {
+              const isDisable = isGuest && index >= getGuestDataLimit();
+              return (
+                <Col lg={3} md={4} col={6} className="mb-3" key={index}>
+                  <ServiceProviderListCard
+                    className={`${
+                      isDisable ? styles.blurCard : styles.activeTrainerCard
+                    }`}
+                    infoLogo={item.infoLogo}
+                    infoTitle={item.infoTitle}
+                    infoRating={item.infoRating}
+                    infoImg={item.infoImg}
+                    infoDes={item.infoDes}
+                    CardHeight={item.Height}
+                    handleOnClick={() => handleCardOnClick(isDisable)}
+                  />
+                </Col>
+              );
+            })}
+          {listingRole === NUTRITIONIST &&
+            NutritionistData.map((item, index) => {
+              const isDisable = isGuest && index >= getGuestDataLimit();
+              return (
+                <Col lg={3} md={4} col={6} className="mb-3" key={index}>
+                  <ServiceProviderListCard
+                    className={`${
+                      isDisable ? styles.blurCard : styles.activeTrainerCard
+                    }`}
+                    infoLogo={item.infoLogo}
+                    infoTitle={item.infoTitle}
+                    infoRating={item.infoRating}
+                    infoImg={item.infoImg}
+                    infoDes={item.infoDes}
+                    CardHeight={item.Height}
+                    handleOnClick={() => handleCardOnClick(isDisable)}
+                  />
+                </Col>
+              );
+            })}
+          {listingRole === TRAINER_NUTRITIONIST &&
+            TrainerAndNutritionistData.map((item, index) => {
+              const isDisable = isGuest && index >= getGuestDataLimit();
+              return (
+                <Col lg={3} md={4} col={6} className="mb-3" key={index}>
+                  <ServiceProviderListCard
+                    className={`${
+                      isDisable ? styles.blurCard : styles.activeTrainerCard
+                    }`}
+                    infoLogo={item.infoLogo}
+                    infoTitle={item.infoTitle}
+                    infoRating={item.infoRating}
+                    infoImg={item.infoImg}
+                    infoDes={item.infoDes}
+                    CardHeight={item.Height}
+                    handleOnClick={() => handleCardOnClick(isDisable)}
+                  />
+                </Col>
+              );
+            })}
           <Col md={12}>
             <div className="my-3 text-center">
               <FillBtn
@@ -343,13 +348,13 @@ const ServiceProviderListWrapper = (props) => {
               />
             </div>
           </Col>
-          <SubscriptionInformationModal
+          <InformationModal
             size={"md"}
             TOneClassName={"fw-bold mb-4 fs-5 text-center"}
             className={"p-4"}
             isOpen={showSubscriptionInformatoinModal}
             onClose={handleSubscriptionInformationModalClose}
-            ModalText1="Subscribe to  see  more  trainers  and  nutritionists"
+            ModalTextOne="Subscribe to  see  more  trainers  and  nutritionists"
             ButtonOne={
               <FillBtn
                 text={"Register"}

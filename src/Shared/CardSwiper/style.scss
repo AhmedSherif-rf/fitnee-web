@@ -8,21 +8,26 @@
 }
 
 .swiper-3d .swiper-slide-shadow {
-  background: none; 
+  background: none;
 }
 
 .swiper-slide {
   @include bgProperties;
-  
+
   width: 300px;
   height: 400px;
 }
-
+.swiper-wrapper {
+  margin-bottom: 10px;
+}
 .swiper-slide img {
   display: block;
   width: 100%;
 }
-
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+}
 .swiper-pagination-bullet-active {
   background-color: $yellow;
 }

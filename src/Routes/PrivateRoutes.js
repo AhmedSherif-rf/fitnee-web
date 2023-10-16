@@ -9,7 +9,7 @@ export function PrivateRoute({ Component, role, props }) {
     if (!token) {
       navigate("/signIn");
     }
-  }, []);
+  }, [navigate]);
 
   if (token) {
     // const roleId = userDetail.user.roleId;

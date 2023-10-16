@@ -7,7 +7,7 @@ const TermAndCondition = () => {
   return (
     <Container>
       <Row className="justify-content-center vh-100">
-        <Col md={8}>
+        <Col md={10}>
           <h1 className="text-center my-4 f-w-bold ">Terms and Conditions</h1>
           <p align="justify">
             Welcome to FitNee These terms and conditions outline the rules and
@@ -18,7 +18,7 @@ const TermAndCondition = () => {
             page. The following terminology applies to these Terms and
             Conditions, Privacy Statement and Disclaimer Notice and all
             Agreements: “Client”, “You” and “Your” refers to you, the person log
-            on this website and compliant to the Company's terms and conditions.
+            on this website and compliant to the Company's terms and conditions.<br/><br/>
             “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our
             Company. “Party”, “Parties”, or “Us”, refers to both the Client and
             ourselves. All terms refer to the offer, acceptance and
@@ -31,7 +31,7 @@ const TermAndCondition = () => {
             and/or he/she or they, are taken as interchangeable and therefore as
             referring to same. Cookies We employ the use of cookies. By
             accessing Website Name, you agreed to use cookies in agreement with
-            the Company Name's Privacy Policy. Most interactive websites use
+            the Company Name's Privacy Policy.<br/><br/> Most interactive websites use
             cookies to let us retrieve the user's details for each visit.
             Cookies are used by our website to enable the functionality of
             certain areas to make it easier for people visiting our website.
@@ -46,7 +46,7 @@ const TermAndCondition = () => {
             from Website Name Redistribute content from Website Name This
             Agreement shall begin on the date hereof. Parts of this website
             offer an opportunity for users to post and exchange opinions and
-            information in certain areas of the website. Company Name does not
+            information in certain areas of the website.<br/><br/> Company Name does not
             filter, edit, publish or review Comments prior to their presence on
             the website. Comments do not reflect the views and opinions of
             Company Name,its agents and/or affiliates. Comments reflect the

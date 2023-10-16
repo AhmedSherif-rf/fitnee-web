@@ -1,6 +1,5 @@
 import React, { useState, useEffect, memo, useCallback } from "react";
 import {
-  Collapse,
   Navbar,
   NavbarToggler,
   Nav,
@@ -48,6 +47,7 @@ const TopBar = (props) => {
     return () => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isPublic, location.pathname]);
 
   useEffect(() => {
@@ -123,7 +123,10 @@ const TopBar = (props) => {
             </Link>
             {showNavItems && (
               <>
-                <NavbarToggler className={"text-white BorderYellow pb-2"} onClick={slide}>
+                <NavbarToggler
+                  className={"text-white BorderYellow pb-2"}
+                  onClick={slide}
+                >
                   <FaBars />
                 </NavbarToggler>
                 <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
@@ -136,12 +139,20 @@ const TopBar = (props) => {
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink
-                      className={`${styles.navLink}`}
-                      href="/components/"
+                    <Link
+                      className={`nav-link ${styles.navLink}`}
+                      to="/contactUs"
+                    >
+                      {t("landing.contactUsText")}
+                    </Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link
+                      className={`nav-link ${styles.navLink}`}
+                      to="/guest/services"
                     >
                       {t("landing.servicesText")}
-                    </NavLink>
+                    </Link>
                   </NavItem>
                   <NavItem>
                     <NavLink
@@ -271,7 +282,7 @@ const TopBar = (props) => {
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>
                         <img
-                        className="me-2"
+                          className="me-2"
                           src={
                             currentLanguage === ENGLISH_LANGUAGE
                               ? Images.AMERICAN_FLAG_IMG
@@ -322,7 +333,9 @@ const TopBar = (props) => {
           </div>
           <div
             onClick={slide}
-            className={`d-lg-none d-block overflow-hidden ${styles.bgInverse} h-100 ${
+            className={`d-lg-none d-block overflow-hidden ${
+              styles.bgInverse
+            } h-100 ${
               isSliding
                 ? styles["slide-left-blank"]
                 : styles["slide-right-blank"]

@@ -131,19 +131,8 @@ const TopBar = (props) => {
                 </NavbarToggler>
                 <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
                   <NavItem className={`${styles.navItem}`}>
-                    <NavLink
-                      className={`${styles.navLink}`}
-                      href="/components/"
-                    >
+                    <Link className={`nav-link ${styles.navLink}`} to="/">
                       {t("landing.homeText")}
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <Link
-                      className={`nav-link ${styles.navLink}`}
-                      to="/contactUs"
-                    >
-                      {t("landing.contactUsText")}
                     </Link>
                   </NavItem>
                   <NavItem>

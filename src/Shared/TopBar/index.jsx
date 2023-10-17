@@ -1,6 +1,5 @@
 import React, { useState, useEffect, memo, useCallback } from "react";
 import {
-  Collapse,
   Navbar,
   NavbarToggler,
   Nav,
@@ -10,10 +9,13 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Card,
+  CardBody,
+  CardFooter,
 } from "reactstrap";
-import { FaBars } from "react-icons/fa";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
+import { FaPeopleGroup } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { useSelector, useDispatch } from "react-redux";
@@ -23,6 +25,7 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import { ENGLISH_LANGUAGE, ARABIC_LANGUAGE } from "../../utils/constants";
+import { FaBars, FaHome, FaServicestack, FaAddressCard } from "react-icons/fa";
 
 const TopBar = (props) => {
   const dispatch = useDispatch();
@@ -44,6 +47,7 @@ const TopBar = (props) => {
     return () => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isPublic, location.pathname]);
 
   useEffect(() => {
@@ -56,7 +60,8 @@ const TopBar = (props) => {
     if (
       props.isPublic &&
       (location.pathname === "/termAndCondition" ||
-        location.pathname === "/signIn" || location.pathname === "/contactUs")
+        location.pathname === "/signIn" ||
+        location.pathname === "/contactUs")
     ) {
       setShowTopBar(false);
     } else {
@@ -64,11 +69,9 @@ const TopBar = (props) => {
     }
   }, [location.pathname, props.isPublic]);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [showNavItems, setShowNavItems] = useState(true);
   const [showTopBar, setShowTopBar] = useState(true);
-
-  const toggle = () => setIsOpen(!isOpen);
+  const [isSliding, setIsSliding] = useState(false);
+  const [showNavItems, setShowNavItems] = useState(true);
 
   const [backgroundClass, setBackgroundClass] = useState(
     props.isPublic
@@ -88,7 +91,7 @@ const TopBar = (props) => {
     }
   };
 
-  const selecteLanguage = (language) => {
+  const selectLanguage = (language) => {
     dispatch(setLanguage(language));
     i18n.changeLanguage(language);
     setLanguageInStorage(language);
@@ -98,32 +101,35 @@ const TopBar = (props) => {
     navigate("/registerAs");
   }, [navigate]);
 
+  const slide = () => {
+    setIsSliding(!isSliding);
+  };
+
   const handleSignInClick = useCallback(() => {
     navigate("/signIn");
   }, [navigate]);
 
   return (
-    <div>
+    <>
       {showTopBar && (
-        <Navbar
-          className={`${styles.navbar} ${backgroundClass} p-2`}
-          expand="lg"
-          fixed="top"
-        >
-          <Link to={"/"}>
-            <img src={Logo} alt={"website-logo"} />
-          </Link>
-          {showNavItems && (
-            <>
-              <NavbarToggler className={"text-white"} onClick={toggle}>
-                <FaBars />
-              </NavbarToggler>
-              <Collapse
-                className={`p-3 ${styles.navbarCollapse}`}
-                isOpen={isOpen}
-                navbar
-              >
-                <Nav className={"mx-auto gap-2"} navbar>
+        <div>
+          <Navbar
+            className={`${styles.navbar} ${backgroundClass} p-2`}
+            expand="lg"
+            fixed="top"
+          >
+            <Link to={"/"}>
+              <img src={Logo} alt={"website-logo"} />
+            </Link>
+            {showNavItems && (
+              <>
+                <NavbarToggler
+                  className={"text-white BorderYellow pb-2"}
+                  onClick={slide}
+                >
+                  <FaBars />
+                </NavbarToggler>
+                <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
                   <NavItem className={`${styles.navItem}`}>
                     <NavLink
                       className={`${styles.navLink}`}
@@ -133,12 +139,20 @@ const TopBar = (props) => {
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink
-                      className={`${styles.navLink}`}
-                      href="/components/"
+                    <Link
+                      className={`nav-link ${styles.navLink}`}
+                      to="/contactUs"
+                    >
+                      {t("landing.contactUsText")}
+                    </Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link
+                      className={`nav-link ${styles.navLink}`}
+                      to="/guest/services"
                     >
                       {t("landing.servicesText")}
-                    </NavLink>
+                    </Link>
                   </NavItem>
                   <NavItem>
                     <NavLink
@@ -159,7 +173,7 @@ const TopBar = (props) => {
                 </Nav>
 
                 {!props?.isGuest && (
-                  <Nav className={`ml-auto ${styles.nav}`}>
+                  <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>
                         <img
@@ -173,7 +187,7 @@ const TopBar = (props) => {
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem
-                          onClick={() => selecteLanguage(ARABIC_LANGUAGE)}
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
                         >
                           <span>
                             <img
@@ -184,7 +198,7 @@ const TopBar = (props) => {
                           <span>{"العربية"}</span>
                         </DropdownItem>
                         <DropdownItem
-                          onClick={() => selecteLanguage(ENGLISH_LANGUAGE)}
+                          onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
                         >
                           <span>
                             <img
@@ -198,22 +212,138 @@ const TopBar = (props) => {
                     </UncontrolledDropdown>
                     <FillBtn
                       className="px-3"
-                      text={"Sign Up"}
+                      text={t("landing.signUpText")}
                       handleOnClick={handleSignUpClick}
                     />
                     <OutlineBtn
                       className="px-3"
-                      text={"Sign In"}
+                      text={t("landing.signInText")}
                       handleOnClick={handleSignInClick}
                     />
                   </Nav>
                 )}
-              </Collapse>
-            </>
-          )}
-        </Navbar>
+              </>
+            )}
+          </Navbar>
+          <div
+            className={`d-lg-none d-block ${styles.mobileView} h-100 ${
+              isSliding ? styles["slide-right"] : styles["slide-left"]
+            }`}
+          >
+            <Card className="bg-transparent h-100">
+              <CardBody className="px-2">
+                <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
+                  <NavItem className={`${styles.NavItem}`}>
+                    <NavLink
+                      className={`${styles.NavLink}`}
+                      href="/components/"
+                    >
+                      <FaHome className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      {t("landing.homeText")}
+                    </NavLink>
+                  </NavItem>
+
+                  <NavItem className={`${styles.NavItem}`}>
+                    <NavLink
+                      className={`${styles.NavLink}`}
+                      href="/components/"
+                    >
+                      <FaServicestack
+                        className={`fs-2 me-2 ${styles.PGreen}`}
+                      />
+                      {t("landing.servicesText")}
+                    </NavLink>
+                  </NavItem>
+
+                  <NavItem className={`${styles.NavItem}`}>
+                    <NavLink
+                      className={`${styles.NavLink}`}
+                      href="/components/"
+                    >
+                      <FaPeopleGroup className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      {t("landing.fitneeCommunityText")}
+                    </NavLink>
+                  </NavItem>
+
+                  <NavItem className={`${styles.NavItem}`}>
+                    <NavLink
+                      className={`${styles.NavLink}`}
+                      href="/components/"
+                    >
+                      <FaAddressCard className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      {t("landing.contactUsText")}
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+              </CardBody>
+              <CardFooter>
+                {!props?.isGuest && (
+                  <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav caret>
+                        <img
+                          className="me-2"
+                          src={
+                            currentLanguage === ENGLISH_LANGUAGE
+                              ? Images.AMERICAN_FLAG_IMG
+                              : Images.ARABIA_FLAG_IMG
+                          }
+                          alt="Flag_Image"
+                        />
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        >
+                          <span>
+                            <img
+                              src={Images.ARABIA_FLAG_IMG}
+                              alt="Arabia_Flag_Image"
+                            />
+                          </span>{" "}
+                          <span>{"العربية"}</span>
+                        </DropdownItem>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
+                        >
+                          <span>
+                            <img
+                              src={Images.AMERICAN_FLAG_IMG}
+                              alt="America_Flag_Image"
+                            />
+                          </span>{" "}
+                          <span>{"English (US)"}</span>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                    <FillBtn
+                      className="px-3 w-100 mb-2"
+                      text={t("landing.signUpText")}
+                      handleOnClick={handleSignUpClick}
+                    />
+                    <OutlineBtn
+                      className="px-3 w-100"
+                      text={t("landing.signInText")}
+                      handleOnClick={handleSignInClick}
+                    />
+                  </Nav>
+                )}
+              </CardFooter>
+            </Card>
+          </div>
+          <div
+            onClick={slide}
+            className={`d-lg-none d-block overflow-hidden ${
+              styles.bgInverse
+            } h-100 ${
+              isSliding
+                ? styles["slide-left-blank"]
+                : styles["slide-right-blank"]
+            }`}
+          ></div>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

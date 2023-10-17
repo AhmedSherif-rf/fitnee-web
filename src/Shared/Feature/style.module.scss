@@ -6,14 +6,11 @@
   @include bgProperties;
   align-items: center;
   .featureSectionLeftContent {
-    span h2 {
+    span {
       display: block;
       width: fit-content;
-      border-bottom: 3px solid $yellow;
     }
     .featureHeading {
-      position: absolute;
-      margin-top: 5%;
       border-bottom: 3px solid $yellow;
     }
   }
@@ -24,16 +21,10 @@
   }
   .featureSectionRightContent {
     .cardSwiper {
-      padding: 60px;
       width: 100%;
       .cardSwiperSlider {
-        display: flex;
-        height: 80vh;
-        align-items: center;
-        justify-content: center;
-        border-radius: 18px;
-        border: 2px solid $yellow;
         @include bgProperties;
+        background-size: contain !important;
       }
     }
   }
@@ -45,29 +36,13 @@
       width: 92vw;
       align-items: center;
     }
-    .featureSectionRightContent {
-      .cardSwiper {
-        padding: 50px;
-        .cardSwiperSlider {
-          height: 50vh;
-        }
-      }
-    }
   }
 }
 
 @media (min-width: 481px) and (max-width: 820px) {
   .featureSectionWrapper {
     .featureTextSlider {
-      width: 44vw;
-    }
-    .featureSectionRightContent {
-      .cardSwiper {
-        padding: 40px;
-        .cardSwiperSlider {
-          height: 35vh;
-        }
-      }
+      width: 98vw;
     }
   }
 }

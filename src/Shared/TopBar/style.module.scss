@@ -1,4 +1,4 @@
-@import "../../Assets/Scss/variables.scss";
+@import "../../Assets/Scss/globalStyleSheet.scss";
 
 .navbar {
   font-weight: 400 !important;
@@ -21,12 +21,60 @@
       font-weight: 400;
     }
   }
-}
 
-@media (max-width: 991px) {
-  .navbar {
-    .navbarCollapse {
+  @media (max-width: 991px) {
+    &.navbarCollapse {
       background-color: black;
     }
+  }
+}
+
+.PGreen {
+  color: $parrot-green !important;
+}
+.bgInverse,
+.mobileView {
+  content: "";
+  position: fixed;
+  transform: translateX(0);
+  transition: transform 0.8s ease-in-out;
+  width: 60%;
+  overflow: hidden;
+  z-index: 999;
+  background-color: $black;
+  padding: 8px;
+
+  .nav {
+    .NavItem {
+      .NavLink {
+        padding-left: 8px;
+        padding-right: 8px;
+        border-radius: 15px;
+        border: 1px solid $light-gray !important;
+        color: $yellow !important;
+        &:hover {
+          background-color: $yellow-blur !important;
+          border: 1px solid $yellow !important;
+          color: white !important;
+        }
+      }
+    }
+  }
+
+  &.slide-right {
+    transform: translateX(0px);
+  }
+  &.slide-left {
+    transform: translateX(-100%);
+  }
+}
+.bgInverse {
+  width: 40%;
+  background-color: #91f53396 !important;
+  &.slide-left-blank {
+    transform: translateX(150%);
+  }
+  &.slide-right-blank {
+    transform: translateX(-100%);
   }
 }

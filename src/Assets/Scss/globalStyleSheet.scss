@@ -42,7 +42,7 @@
 }
 
 .BorderYellow {
-  border: 1px solid $yellow;
+  border: 1px solid $yellow !important;
 }
 
 a,
@@ -61,6 +61,29 @@ Input {
 Input::-webkit-input-placeholder {
   color: $placeholder-color;
 }
+.dropdown-item {
+  &:active {
+    background-color: $yellow;
+    color: $black; 
+  }
+  
+  &:hover {
+    background-color: $yellow;
+    color: $black; 
+  }
+  
+  &:focus {
+    background-color: $yellow;
+    outline: none; 
+  }
+  
+  &::selection {
+    background-color: $yellow;
+    color: $black; 
+  }
+}
+
+
 
 .react-tel-input,
 .genderBtn,
@@ -73,6 +96,31 @@ select,
     border: 1px solid $parrot-green !important;
     box-shadow: none !important;
     outline: none !important;
+  }
+}
+
+.react-tel-input {
+  border-radius: 15px;
+  .form-control-lg {
+    border-radius: 15px !important;
+    border: 1px solid $white;
+    padding-left: 50px !important;
+    &:focus {
+      outline: none !important;
+    }
+  }
+  .flag-dropdown {
+    border: $yellow 1px solid !important;
+    border-top-left-radius: 15px !important;
+    border-bottom-left-radius: 15px !important;
+    .selected-flag {
+      border-top-left-radius: 15px !important;
+      border-bottom-left-radius: 15px !important;
+      &:hover {
+        border-top-left-radius: 15px !important;
+        border-bottom-left-radius: 15px !important;
+      }
+    }
   }
 }
 

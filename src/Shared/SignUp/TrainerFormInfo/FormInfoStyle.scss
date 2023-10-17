@@ -1,0 +1,26 @@
+@import '../../../Assets/Scss/globalStyleSheet.scss';
+.trainerInfo{
+    .form-check-input:checked::before{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    content: '\2713 '; 
+    color:$parrot-green;
+    font-weight: bold; 
+    margin-top: -13px;
+    margin-left: 1px;
+}
+
+.form-check-input:checked{
+    
+    &focus{
+        box-shadow:none !important; 
+        background-color: $white;
+        border: 2px solid $parrot-green;
+        color:$parrot-green !important;
+    }
+        background-color: $white;
+        border: 2px solid  $parrot-green;
+        color:$parrot-green !important;
+}
+}

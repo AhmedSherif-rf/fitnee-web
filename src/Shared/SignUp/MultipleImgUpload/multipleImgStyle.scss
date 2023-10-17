@@ -1,0 +1,22 @@
+@import '../../../Assets/Scss/globalStyleSheet.scss';
+.imgTitle{
+    content:'';
+    position:absolute;
+    background-color:$blur-color;
+    z-index: 99;
+    bottom: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color:$white;
+    .TitleInput{
+
+        background-color: transparent !important;
+        border:  none!important;
+        color:$white;
+        text-align: center;
+        &:focus-visible{
+            border:none !important;
+            outline:none !important;
+        }
+    }
+}

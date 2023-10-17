@@ -104,96 +104,6 @@ const TopBar = (props) => {
 
   return (
     <div>
-<<<<<<< HEAD
-      <Navbar
-        className={`${styles.navbar} ${backgroundClass} p-2`}
-        expand="lg"
-        fixed="top"
-      >
-        <Link to={"/"}>
-          <img src={Logo} alt={"website-logo"} />
-        </Link>
-        {showNavItems && (
-          <>
-            <NavbarToggler className={"text-white"} onClick={toggle}>
-              <FaBars />
-            </NavbarToggler>
-            <Collapse
-              className={`p-3 ${styles.navbarCollapse}`}
-              isOpen={isOpen}
-              navbar
-            >
-              <Nav className={"mx-auto gap-2"} navbar>
-                <NavItem className={`${styles.navItem}`}>
-                  <NavLink className={`${styles.navLink}`} href="/components/">
-                    {t("landing.homeText")}
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className={`${styles.navLink}`} href="/components/">
-                    {t("landing.servicesText")}
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className={`${styles.navLink}`} href="/components/">
-                    {t("landing.fitneeCommunityText")}
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className={`${styles.navLink}`}
-                    href="https://github.com/reactstrap/reactstrap"
-                  >
-                    {t("landing.contactUsText")}
-                  </NavLink>
-                </NavItem>
-              </Nav>
-
-              {!props?.isGuest && (
-                <Nav className={`ml-auto ${styles.nav}`}>
-                  <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                      <img
-                        src={
-                          currentLanguage === ENGLISH_LANGUAGE
-                            ? Images.AMERICAN_FLAG_IMG
-                            : Images.ARABIA_FLAG_IMG
-                        }
-                        alt="Flag_Image"
-                      />
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem
-                        onClick={() => selecteLanguage(ARABIC_LANGUAGE)}
-                      >
-                        <span>
-                          <img
-                            src={Images.ARABIA_FLAG_IMG}
-                            alt="Arabia_Flag_Image"
-                          />
-                        </span>{" "}
-                        <span>{"العربية"}</span>
-                      </DropdownItem>
-                      <DropdownItem
-                        onClick={() => selecteLanguage(ENGLISH_LANGUAGE)}
-                      >
-                        <span>
-                          <img
-                            src={Images.AMERICAN_FLAG_IMG}
-                            alt="America_Flag_Image"
-                          />
-                        </span>{" "}
-                        <span>{"English (US)"}</span>
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                  <FillBtn
-                    className="px-3"
-                    text={t("landing.signUpText")}
-                    handleOnClick={() => navigate("/registerAs")}
-                  />
-                  <OutlineBtn className="px-3" text=  {t("landing.signInText")} />
-=======
       {showTopBar && (
         <Navbar
           className={`${styles.navbar} ${backgroundClass} p-2`}
@@ -246,7 +156,6 @@ const TopBar = (props) => {
                       {t("landing.contactUsText")}
                     </Link>
                   </NavItem>
->>>>>>> ac2b366fca25a80ec882eb61dbe555741e8836ed
                 </Nav>
 
                 {!props?.isGuest && (

@@ -47,6 +47,7 @@ const routes = [
     ispublic: true,
     exact: true,
   },
+  
 ]
   .concat(guestRoutes)
   .concat(adminRoutes)

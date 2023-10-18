@@ -218,7 +218,7 @@ const TopBar = (props) => {
                       handleOnClick={handleSignInClick}
                     /> */}
 
-                    <UncontrolledDropdown nav inNavbar>
+                    <UncontrolledDropdown>
                       <DropdownToggle className="p-0" nav>
                         <div
                           className="bgProperties rounded-circle"
@@ -233,42 +233,44 @@ const TopBar = (props) => {
                         <DropdownItem
                         // onClick={() => selectLanguage(ARABIC_LANGUAGE)}
                         >
-                          <span className="textYellow">
-                            <RiDashboardFill />
-                          </span>
-                          <span>Dashboard</span>
+                          <Link className=" d-flex align-items-center" to="/trainee/dashboard">
+                            <span className="textParrotGreen me-2">
+                              <RiDashboardFill className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Dashboard</p>
+                          </Link>
                         </DropdownItem>
-                        <DropdownItem
-                        // onClick={() => selectLanguage(ARABIC_LANGUAGE)}
-                        >
-                          <span className="textYellow">
-                            <FaUserEdit />
+                        <DropdownItem>
+                          <Link to=""className=" d-flex align-items-center">
+                            <span className="textParrotGreen me-2">
+                            <FaUserEdit className="mb-1" />
                           </span>
-                          <span>Edit Profile</span>
+                          <p className="text-dark mb-0">Edit Profile</p></Link>
+                          
                         </DropdownItem>
-                        <DropdownItem
-                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
-                        >
-                          <span className="textYellow">
-                            <GiWallet />
+                        <DropdownItem>
+                        <Link to=""className=" d-flex align-items-center">
+                          <span className="textParrotGreen me-2">
+                            <GiWallet className="mb-1" />
                           </span>
-                          <span>Wallet</span>
+                          <p className="text-dark mb-0">Wallet</p>
+                          </Link>
                         </DropdownItem>
-                        <DropdownItem
-                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
-                        >
-                          <span className="textYellow">
-                            <FaKey />
+                        <DropdownItem>
+                        <Link to=""className=" d-flex align-items-center">
+                          <span className="textParrotGreen me-2">
+                            <FaKey className="mb-1" />
                           </span>
-                          <span>Change Password</span>
+                          <p className="text-dark mb-0">Change Password</p>
+                          </Link>
                         </DropdownItem>
-                        <DropdownItem
-                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
-                        >
-                          <span className="textYellow">
-                            <FaTrashCan />
+                        <DropdownItem>
+                        <Link to=""className=" d-flex align-items-center">
+                          <span className="textParrotGreen me-2">
+                            <FaTrashCan className="mb-1"/>
                           </span>
-                          <span>Delete Account</span>
+                          <p className="text-dark mb-0">Delete Account</p>
+                          </Link>
                         </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>

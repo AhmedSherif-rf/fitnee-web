@@ -24,65 +24,9 @@ import {
   TRAINER_NUTRITIONIST,
 } from "../../utils/constants";
 import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
+import { useTranslation } from "react-i18next";
 
-const TrainerData = [
-  {
-    infoImg: Images.PROFILE_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "20",
-  },
-  {
-    infoImg: Images.PROFILE_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "20",
-  },
-  {
-    infoImg: Images.PROFILE_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "20",
-  },
-  {
-    infoImg: Images.PROFILE_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "20",
-  },
-  {
-    infoImg: Images.PROFILE_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "20",
-  },
-  {
-    infoImg: Images.PROFILE_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "20",
-  },
-  {
-    infoImg: Images.PROFILE_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "20",
-  },
-];
+
 
 const NutritionistData = [
   {
@@ -142,6 +86,7 @@ const NutritionistData = [
     Height: "20",
   },
 ];
+
 
 const TrainerAndNutritionistData = [
   {
@@ -212,6 +157,65 @@ const ServiceProviderListWrapper = (props) => {
 
   const { isGuest } = useSelector((state) => state?.user);
   const navigate = useNavigate();
+  const { t } = useTranslation("");
+  const TrainerData = [
+    {
+      infoImg: Images.PROFILE_IMG,
+      infoLogo: Images.SHORTLOGO_IMG,
+      infoTitle: "Shane",
+      infoRating: 4,
+      infoDes: `2  ${t("guest.yearsText")}`,
+      Height: "20",
+    },
+    {
+      infoImg: Images.PROFILE_IMG,
+      infoLogo: Images.SHORTLOGO_IMG,
+      infoTitle: "Shane",
+      infoRating: 4,
+      infoDes: `2  ${t("guest.yearsText")}`,
+      Height: "20",
+    },
+    {
+      infoImg: Images.PROFILE_IMG,
+      infoLogo: Images.SHORTLOGO_IMG,
+      infoTitle: "Shane",
+      infoRating: 4,
+      infoDes: `2  ${t("guest.yearsText")}`,
+      Height: "20",
+    },
+    {
+      infoImg: Images.PROFILE_IMG,
+      infoLogo: Images.SHORTLOGO_IMG,
+      infoTitle: "Shane",
+      infoRating: 4,
+      infoDes: `2  ${t("guest.yearsText")}`,
+      Height: "20",
+    },
+    {
+      infoImg: Images.PROFILE_IMG,
+      infoLogo: Images.SHORTLOGO_IMG,
+      infoTitle: "Shane",
+      infoRating: 4,
+      infoDes: `2  ${t("guest.yearsText")}`,
+      Height: "20",
+    },
+    {
+      infoImg: Images.PROFILE_IMG,
+      infoLogo: Images.SHORTLOGO_IMG,
+      infoTitle: "Shane",
+      infoRating: 4,
+      infoDes: `2  ${t("guest.yearsText")}`,
+      Height: "20",
+    },
+    {
+      infoImg: Images.PROFILE_IMG,
+      infoLogo: Images.SHORTLOGO_IMG,
+      infoTitle: "Shane",
+      infoRating: 4,
+      infoDes: `2  ${t("guest.yearsText")}`,
+      Height: "20",
+    },
+  ];
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
@@ -253,7 +257,7 @@ const ServiceProviderListWrapper = (props) => {
       <CardBody>
         <Row className="align-items-center mb-5">
           <Col className="text-left">
-            <h4 className="fw-bold fs-3 p-3">List of {listingRole}</h4>
+            <h4 className="fw-bold fs-3 p-3"> {t("guest.listOfText")} {listingRole}</h4>
           </Col>
           <Col className="text-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
@@ -344,7 +348,7 @@ const ServiceProviderListWrapper = (props) => {
               <FillBtn
                 className="w-25 text-dark fw-bold py-2"
                 handleOnClick={handleSeeMoreClick}
-                text={"See More"}
+                text= {t("guest.seeMoreText")}
               />
             </div>
           </Col>
@@ -354,17 +358,17 @@ const ServiceProviderListWrapper = (props) => {
             className={"p-4"}
             isOpen={showSubscriptionInformatoinModal}
             onClose={handleSubscriptionInformationModalClose}
-            ModalTextOne="Subscribe to  see  more  trainers  and  nutritionists"
+            ModalTextOne= {t("guest.subscribeToSeeText")}
             ButtonOne={
               <FillBtn
-                text={"Register"}
+                text= {t("guest.registerText")}
                 className="py-2 p-3"
                 handleOnClick={handleRegisterClick}
               />
             }
             ButtonTwo={
               <OutlineBtn
-                text={"Not now"}
+                text= {t("guest.notNowText")}
                 className="py-2 p-3"
                 handleOnClick={handleNotNowClick}
               />

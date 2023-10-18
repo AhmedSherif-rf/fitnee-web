@@ -229,9 +229,9 @@ const TopBar = (props) => {
                           }}
                         ></div>
                       </DropdownToggle>
-                      <DropdownMenu className="border border-danger dropdown-menu-left">
+                      <DropdownMenu style={{ right: 0, left: "auto" }}>
                         <DropdownItem
-                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        // onClick={() => selectLanguage(ARABIC_LANGUAGE)}
                         >
                           <span className="textYellow">
                             <RiDashboardFill />
@@ -239,7 +239,7 @@ const TopBar = (props) => {
                           <span>Dashboard</span>
                         </DropdownItem>
                         <DropdownItem
-                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        // onClick={() => selectLanguage(ARABIC_LANGUAGE)}
                         >
                           <span className="textYellow">
                             <FaUserEdit />

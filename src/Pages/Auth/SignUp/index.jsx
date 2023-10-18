@@ -12,7 +12,7 @@ const SignUp = () => {
       <BasicFormInfo />
       <BodyInformation />
       <MultipleImgUpload />
-       <TraineeInfo />
+      <TraineeInfo />
       <TrainerFormInfo />
     </Container>
   );

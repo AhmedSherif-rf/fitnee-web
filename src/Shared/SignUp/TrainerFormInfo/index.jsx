@@ -36,9 +36,9 @@ const TrainerInfo = () => {
           </Label>
           <PhoneInput
             inputProps={{
-            name: "phone",
-            required: true,
-            className: "form-control-lg w-100 BorderYellow",
+              name: "phone",
+              required: true,
+              className: "form-control-lg w-100 BorderYellow",
             }}
             country={"us"}
             value={state.phone}

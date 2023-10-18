@@ -15,17 +15,25 @@ import {
 } from "reactstrap";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
-import { FaPeopleGroup } from "react-icons/fa6";
+import { GiWallet } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
+import { RiDashboardFill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import Logo from "../../Assets/Images/homeScreen/Logo.svg";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
+import { FaPeopleGroup, FaKey, FaTrashCan } from "react-icons/fa6";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import { ENGLISH_LANGUAGE, ARABIC_LANGUAGE } from "../../utils/constants";
-import { FaBars, FaHome, FaServicestack, FaAddressCard } from "react-icons/fa";
+import {
+  FaBars,
+  FaHome,
+  FaServicestack,
+  FaAddressCard,
+  FaUserEdit,
+} from "react-icons/fa";
 
 const TopBar = (props) => {
   const dispatch = useDispatch();
@@ -174,7 +182,7 @@ const TopBar = (props) => {
 
                 {!props?.isGuest && (
                   <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
-                    <UncontrolledDropdown nav inNavbar>
+                    {/* <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>
                         <img
                           src={
@@ -219,7 +227,62 @@ const TopBar = (props) => {
                       className="px-3"
                       text={t("landing.signInText")}
                       handleOnClick={handleSignInClick}
-                    />
+                    /> */}
+
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle className="p-0" nav>
+                        <div
+                          className="bgProperties rounded-circle"
+                          style={{
+                            backgroundImage: `url(${Images.PROFILE_IMG})`,
+                            width: "40px",
+                            height: "40px",
+                          }}
+                        ></div>
+                      </DropdownToggle>
+                      <DropdownMenu className="border border-danger dropdown-menu-left">
+                        <DropdownItem
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        >
+                          <span className="textYellow">
+                            <RiDashboardFill />
+                          </span>
+                          <span>Dashboard</span>
+                        </DropdownItem>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        >
+                          <span className="textYellow">
+                            <FaUserEdit />
+                          </span>
+                          <span>Edit Profile</span>
+                        </DropdownItem>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        >
+                          <span className="textYellow">
+                            <GiWallet />
+                          </span>
+                          <span>Wallet</span>
+                        </DropdownItem>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        >
+                          <span className="textYellow">
+                            <FaKey />
+                          </span>
+                          <span>Change Password</span>
+                        </DropdownItem>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        >
+                          <span className="textYellow">
+                            <FaTrashCan />
+                          </span>
+                          <span>Delete Account</span>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
                   </Nav>
                 )}
               </>

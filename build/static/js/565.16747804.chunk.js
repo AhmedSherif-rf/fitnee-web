@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[565],{3565:function(e,n,i){i.r(n);var r=i(2791),s=i(184);n.default=function(e){return(0,s.jsx)(r.Fragment,{children:(0,s.jsx)("h4",{children:"This is Exercise Screen"})})}}}]);
+//# sourceMappingURL=565.16747804.chunk.js.map

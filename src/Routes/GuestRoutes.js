@@ -20,7 +20,9 @@ export const guestRoutes = [
   },
   {
     path: "/guest/serviceProvider/subscription",
-    component: lazy(() => import("../Pages/GuestPages/ServiceProviderSubscription")),
+    component: lazy(() =>
+      import("../Pages/GuestPages/ServiceProviderSubscription")
+    ),
     exact: true,
     ispublic: true,
     role: guestRole,
@@ -28,7 +30,15 @@ export const guestRoutes = [
   },
   {
     path: "/guest/services",
-    component: lazy(() => import("../Pages/GuestPages/Services")),
+    component: lazy(() => import("../Pages/GuestPages/Service")),
+    exact: true,
+    ispublic: true,
+    role: guestRole,
+    isGuest: true,
+  },
+  {
+    path: "/guest/exercises",
+    component: lazy(() => import("../Pages/GuestPages/Exercise")),
     exact: true,
     ispublic: true,
     role: guestRole,

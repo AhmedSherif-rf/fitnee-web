@@ -1,6 +1,6 @@
 import Checkbox from "../Checkbox";
-import React, { memo } from "react";
-import { Link } from "react-router-dom";
+import React, { memo, useCallback } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import InputField from "../InputField/InputField";
@@ -8,6 +8,12 @@ import { Col, Container, Form, Row } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const SignInForm = () => {
+  const navigate = useNavigate();
+
+  const handleCancelClick = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
   return (
     <Container>
       <Row className="justify-content-center align-items-center vh-100">
@@ -41,7 +47,11 @@ const SignInForm = () => {
               />
             </div>
             <FillBtn className="w-100 py-3 mb-3" text={"Sign In"} />
-            <OutlineBtn className="w-100 py-3 text-dark" text={"Cancel"} />
+            <OutlineBtn
+              className="w-100 py-3 text-dark"
+              text={"Cancel"}
+              handleOnClick={handleCancelClick}
+            />
             <p className="pt-3 text-center">
               New Here?{" "}
               <Link to="/registerAs" className="textYellow">

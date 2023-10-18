@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-
+import { useTranslation } from "react-i18next";
 const RegisterAs = (props) => {
   const navigate = useNavigate();
+  const { t } = useTranslation("");
 
   const handleAsGuestClick = useCallback(() => {
     navigate("/guest/serviceProviderList");
@@ -21,14 +22,14 @@ const RegisterAs = (props) => {
         }}
       >
         <Col md={4} className={`${styles.registerAsContent}`}>
-          <h2 className=" mb-5 text-center text-white">Register As</h2>
+          <h2 className=" mb-5 text-center text-white">{t("registerAs.registerAsText")}</h2>
           <div className="">
-            <FillBtn className="w-100 mb-3 py-2" text="Trainee" />
-            <FillBtn className="w-100 mb-3 py-2" text="Trainer" />
-            <FillBtn className="w-100 mb-3 py-2" text="Nutritionist" />
+            <FillBtn className="w-100 mb-3 py-2" text= {t("registerAs.traineeText")}/>
+            <FillBtn className="w-100 mb-3 py-2" text={t("registerAs.trainerText")} />
+            <FillBtn className="w-100 mb-3 py-2" text={t("registerAs.nutritionistText")} />
             <FillBtn
               className="w-100 mb-3 py-2"
-              text="Guest"
+              text={t("registerAs.guestText")}
               handleOnClick={handleAsGuestClick}
             />
           </div>

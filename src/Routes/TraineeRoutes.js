@@ -8,4 +8,16 @@ export const traineeRoutes = [
     exact: true,
     role: traineeRole,
   },
+  {
+    path: "/trainee/serviceProviderList",
+    component: lazy(() => import("../Pages/TraineePages/ServiceProviderList")),
+    exact: true,
+    role: traineeRole,
+  },
+  {
+    path: "/trainee/subscriptionDetail",
+    component: lazy(() => import("../Pages/TraineePages/SubscriptionDetail")),
+    exact: true,
+    role: traineeRole,
+  },
 ];

@@ -14,10 +14,8 @@ export function PublicRoute({ Component, props }) {
   useEffect(() => {
     if (!isGuest && props.role === guestRole) {
       dispatch(setGuest(true));
-    console.log('here', isGuest, props)
-
     }
-  }, [props]);
+  }, [dispatch, isGuest, props]);
 
   const token = null;
   if (token) {

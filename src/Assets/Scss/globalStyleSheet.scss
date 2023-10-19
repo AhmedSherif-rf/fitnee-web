@@ -108,3 +108,9 @@ select,
 .buttonBoxShadow {
   box-shadow: 0px 2px 15px 0px $button-box-shadow;
 }
+
+.error-field {
+  margin-bottom: 0 !important;
+  color: $orange;
+  font-size: 14px;
+}

@@ -26,8 +26,6 @@ import {
 import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
 import { useTranslation } from "react-i18next";
 
-
-
 const NutritionistData = [
   {
     infoImg: Images.PROFILE_IMG,
@@ -86,7 +84,6 @@ const NutritionistData = [
     Height: "20",
   },
 ];
-
 
 const TrainerAndNutritionistData = [
   {
@@ -257,7 +254,10 @@ const ServiceProviderListWrapper = (props) => {
       <CardBody>
         <Row className="align-items-center mb-5">
           <Col className="text-left">
-            <h4 className="fw-bold fs-3 p-3"> {t("guest.listOfText")} {listingRole}</h4>
+            <h4 className="fw-bold fs-3 p-3">
+              {" "}
+              {t("guest.listOfText")} {listingRole}
+            </h4>
           </Col>
           <Col className="text-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
@@ -343,37 +343,39 @@ const ServiceProviderListWrapper = (props) => {
                 </Col>
               );
             })}
-          <Col md={12}>
-            <div className="my-3 text-center">
-              <FillBtn
-                className="w-25 text-dark fw-bold py-2"
-                handleOnClick={handleSeeMoreClick}
-                text= {t("guest.seeMoreText")}
-              />
-            </div>
-          </Col>
           <InformationModal
             size={"md"}
             TOneClassName={"fw-bold mb-4 fs-5 text-center"}
             className={"p-4"}
             isOpen={showSubscriptionInformatoinModal}
             onClose={handleSubscriptionInformationModalClose}
-            ModalTextOne= {t("guest.subscribeToSeeText")}
+            ModalTextOne={t("guest.subscribeToSeeText")}
             ButtonOne={
               <FillBtn
-                text= {t("guest.registerText")}
+                text={t("guest.registerText")}
                 className="py-2 p-3"
                 handleOnClick={handleRegisterClick}
               />
             }
             ButtonTwo={
               <OutlineBtn
-                text= {t("guest.notNowText")}
+                text={t("guest.notNowText")}
                 className="py-2 p-3"
                 handleOnClick={handleNotNowClick}
               />
             }
           />
+        </Row>
+        <Row className="justify-content-center">
+          <Col md={4} sm={10}>
+            <div className="my-3 text-center">
+              <FillBtn
+                className="w-100 text-dark fw-bold py-2 px-5"
+                handleOnClick={handleSeeMoreClick}
+                text={t("guest.seeMoreText")}
+              />
+            </div>
+          </Col>
         </Row>
       </CardBody>
     </Card>

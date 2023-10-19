@@ -13,6 +13,10 @@ const RegisterAs = (props) => {
     navigate("/guest/serviceProviderList");
   }, [navigate]);
 
+  const handleAsTrainerClick = useCallback(() => {
+    navigate("/serviceProvider/dashboard");
+  }, [navigate]);
+
   return (
     <Container fluid className={`vh-100 ${styles.registerAsContainer}`}>
       <Row
@@ -22,11 +26,23 @@ const RegisterAs = (props) => {
         }}
       >
         <Col md={4} className={`${styles.registerAsContent}`}>
-          <h2 className=" mb-5 text-center text-white">{t("registerAs.registerAsText")}</h2>
+          <h2 className=" mb-5 text-center text-white">
+            {t("registerAs.registerAsText")}
+          </h2>
           <div className="">
-            <FillBtn className="w-100 mb-3 py-2" text= {t("registerAs.traineeText")}/>
-            <FillBtn className="w-100 mb-3 py-2" text={t("registerAs.trainerText")} />
-            <FillBtn className="w-100 mb-3 py-2" text={t("registerAs.nutritionistText")} />
+            <FillBtn
+              className="w-100 mb-3 py-2"
+              text={t("registerAs.traineeText")}
+            />
+            <FillBtn
+              className="w-100 mb-3 py-2"
+              text={t("registerAs.trainerText")}
+              handleOnClick={handleAsTrainerClick}
+            />
+            <FillBtn
+              className="w-100 mb-3 py-2"
+              text={t("registerAs.nutritionistText")}
+            />
             <FillBtn
               className="w-100 mb-3 py-2"
               text={t("registerAs.guestText")}

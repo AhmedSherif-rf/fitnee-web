@@ -30,28 +30,33 @@
     "signUpText": "Sign Up",
     "signInText": "Sign In"
   },
-  "registerAs":{
-    
+  "registerAs": {
     "registerAsText": "Register As",
-    "traineeText":"Trainee",
-    "trainerText":"Trainer",
-    "nutritionistText":"Nutritionist",
-    "guestText":"Guest"
-
+    "traineeText": "Trainee",
+    "trainerText": "Trainer",
+    "nutritionistText": "Nutritionist",
+    "guestText": "Guest"
   },
-  "guest":{
-   "listOfText":"List of",
-  "yearsText" : "Years",
-  "seeMoreText":"See More",
-   "subscribeToSeeText":"Subscribe to  see  more  trainers  and  nutritionists",
-   "registerText":"Register",
-   "notNowText" : "Not now",
-   "subscribeText":"Subscribe",
-   "meetText":"Meet",
-   "qualificationExperienceText": "Qualification and Experience",
-   "areaSpecialtyText" :"Area of Specialty",
-   "bodyBuildingText":"Body Building ",
-   "powerLiftingText":"Power Lifting",
-   "healthyLifeStyleText":"Healthy Lifestyle"
+  "guest": {
+    "listOfText": "List of",
+    "yearsText": "Years",
+    "seeMoreText": "See More",
+    "subscribeToSeeText": "Subscribe to  see  more  trainers  and  nutritionists",
+    "registerText": "Register",
+    "notNowText": "Not now",
+    "subscribeText": "Subscribe",
+    "meetText": "Meet",
+    "qualificationExperienceText": "Qualification and Experience",
+    "areaSpecialtyText": "Area of Specialty",
+    "bodyBuildingText": "Body Building ",
+    "powerLiftingText": "Power Lifting",
+    "healthyLifeStyleText": "Healthy Lifestyle"
+  },
+  "contactUs": {
+    "unlockYourPotentialText": "Unlock your potential",
+    "transformYourBodyText": "transform your body",
+    "contactUsText": " Contact Us",
+    "sendText": "Send",
+    "cancelText": "Cancel"
   }
 }

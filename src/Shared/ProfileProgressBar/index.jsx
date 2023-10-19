@@ -1,9 +1,10 @@
-import React from "react";
-import "./ProgressBarStyle.scss";
+import "./style.scss";
+import React, { memo } from "react";
 import { Progress } from "reactstrap";
 import { FaCheck } from "react-icons/fa";
 
-function CustomProgressBar({ value }) {
+const ProfileProgressBar = ({ value = 100 }) => {
+  
   const percentageCircleStyle = {
     position: "absolute",
     fontSize: "8px",
@@ -21,6 +22,7 @@ function CustomProgressBar({ value }) {
     fontWeight: "bold",
     border: "1px solid #91F533",
   };
+
   return (
     <div style={{ position: "relative" }}>
       <div className="startingPointStyle">
@@ -38,16 +40,6 @@ function CustomProgressBar({ value }) {
       </Progress>
     </div>
   );
-}
+};
 
-function index() {
-  const progressValue = 100;
-
-  return (
-    <div>
-      <CustomProgressBar value={progressValue} />
-    </div>
-  );
-}
-
-export default index;
+export default memo(ProfileProgressBar);

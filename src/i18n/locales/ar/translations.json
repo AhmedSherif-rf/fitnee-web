@@ -30,29 +30,33 @@
     "signUpText": "اشتراك",
     "signInText": "تسجيل الدخول"
   },
-  "registerAs":{
-
+  "registerAs": {
     "registerAsText": "سجل باسم",
-    "traineeText":"المتدرب",
-    "trainerText":"مدرب",
-    "nutritionistText":"اخصائي تغذيه",
-    "guestText":"ضيف"
-
+    "traineeText": "المتدرب",
+    "trainerText": "مدرب",
+    "nutritionistText": "اخصائي تغذيه",
+    "guestText": "ضيف"
   },
-  "guest":{
-    "listOfText":"قائمة من",
-     "yearsText" : "سنين",
-     "seeMoreText":"شاهد المزيد",
-     "subscribeToSeeText":"اشترك لرؤية المزيد من المدربين وخبراء التغذية",
-     "registerText":"يسجل",
-     "notNowText":"ليس الآن",
-     "subscribeText":"يشترك",
-      "meetText":"يقابل",
-      "qualificationExperienceText":"المؤهلات والخبرة",
-      "areaSpecialtyText" :"مجال التخصص",
-      "bodyBuildingText":"بناء الجسم",
-      "powerLiftingText":"رفع الاثقال",
-      "healthyLifeStyleText":"نمط حياة صحي"
-   }
-
+  "guest": {
+    "listOfText": "قائمة من",
+    "yearsText": "سنين",
+    "seeMoreText": "شاهد المزيد",
+    "subscribeToSeeText": "اشترك لرؤية المزيد من المدربين وخبراء التغذية",
+    "registerText": "يسجل",
+    "notNowText": "ليس الآن",
+    "subscribeText": "يشترك",
+    "meetText": "يقابل",
+    "qualificationExperienceText": "المؤهلات والخبرة",
+    "areaSpecialtyText": "مجال التخصص",
+    "bodyBuildingText": "بناء الجسم",
+    "powerLiftingText": "رفع الاثقال",
+    "healthyLifeStyleText": "نمط حياة صحي"
+  },
+  "contactUs": {
+    "unlockYourPotentialText": "أطلق العنان لإمكاناتك",
+    "transformYourBodyText": "تحويل جسمك",
+    "contactUsText": "اتصل بنا",
+    "sendText": "يرسل",
+    "cancelText": "يلغي"
+  }
 }

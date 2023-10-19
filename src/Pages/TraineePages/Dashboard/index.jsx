@@ -1,11 +1,11 @@
-import React, { memo } from "react";
-import InfoCard from "../../../Shared/InfoCard";
+import React from "react";
+import FillBtn from "../../../Shared/Buttons/FillBtn";
 import ProgressBar from "../../../Shared/ProfileProgressBar";
 import { Row, Col, Container, Card, CardBody } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import TraineeProfileButtonList from "../../../Shared/TraineeProfileButtonList";
+import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 
-const infoData = [
+const InfoData = [
   {
     infoImg: Images.PROFILE_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
@@ -13,20 +13,20 @@ const infoData = [
     infoRating: 4,
     infoDes: "2 Years",
     Height: "25",
-    TraineeEmail: "shane@gmail.com",
+    TraineeEmail: "Shane@gmail.com",
   },
 ];
 
-const ProfileProgress = () => {
+const Dashboard = () => {
   return (
-    <Container fluid className="pt-2 bg-light">
+    <Container fluid className="pt-2">
       <Row className="py-2">
         <Col lg={3} md={4} className="mb-2">
           <Card className="shadow p-3 BorderRadius border-0">
             <div className="mb-2">
-              {infoData.map((item) => {
+              {InfoData.map((item) => {
                 return (
-                  <InfoCard
+                  <ProfileInformationCard
                     infoLogo={item.infoLogo}
                     infoTitle={item.infoTitle}
                     infoRating={item.infoRating}
@@ -38,7 +38,23 @@ const ProfileProgress = () => {
                 );
               })}
             </div>
-            <TraineeProfileButtonList />
+            <Row className="my-3">
+              <Col md={12}>
+                <FillBtn
+                  className="w-100 mb-2 py-3"
+                  text="My Current Trainer"
+                />
+                <FillBtn
+                  className="w-100 mb-2 py-3"
+                  text="My Current Nutritionist"
+                />
+                <FillBtn
+                  className="w-100 mb-2 py-3"
+                  text="My Subscription History"
+                />
+                <FillBtn className="w-100 mb-2 py-3" text="My Progress" />
+              </Col>
+            </Row>
           </Card>
         </Col>
         <Col lg={9} md={8}>
@@ -62,4 +78,4 @@ const ProfileProgress = () => {
   );
 };
 
-export default memo(ProfileProgress);
+export default Dashboard;

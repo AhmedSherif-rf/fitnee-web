@@ -43,7 +43,7 @@ const ProfileInformationCard = (props) => {
             <p className="mb-0 pt-1">{infoRating}</p>
           </div>
         </div>
-        <div className="my-2">{TraineeEmail}</div>
+        <div className="my-2 text-center fs-5">{TraineeEmail}</div>
       </CardFooter>
     </Card>
   );

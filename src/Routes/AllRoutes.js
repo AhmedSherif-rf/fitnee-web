@@ -18,8 +18,8 @@ const routes = [
         exact: true,
     },
     {
-        path: "/register/:roleType",
-        component: lazy(() => import("../Pages/Auth/Register")),
+        path: "/signUp/:roleType",
+        component: lazy(() => import("../Pages/Auth/SignUp")),
         ispublic: true,
         exact: true,
     },

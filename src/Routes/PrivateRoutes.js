@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import getIntialURL from "../Shared/HelperMethods/getInitialURL";
 export function PrivateRoute({ Component, role, props }) {
-  const token = null;
+  const token = 'fcgfcgfcfgcf';
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -6,7 +6,8 @@ const InputField = (props) => {
   const {
     placeholder,
     type,
-    onHandleChange,
+    onChangeHandle,
+    onBlurHandle,
     value,
     name,
     className,
@@ -23,7 +24,8 @@ const InputField = (props) => {
         name={name}
         className={`form-control w-100 BorderYellow ${styles.inputDesign} ${className}`}
         disabled={disabled}
-        onChange={onHandleChange}
+        onChange={onChangeHandle}
+        onBlur={onBlurHandle}
         value={value}
       />
     </div>

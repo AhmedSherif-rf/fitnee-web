@@ -12,6 +12,10 @@ const RegisterAs = (props) => {
     navigate("/guest/serviceProviderList");
   }, [navigate]);
 
+  const handleAsTraineeClick = useCallback(() => {
+    navigate("/signUp/trainee");
+  }, [navigate]);
+
   return (
     <Container fluid className={`vh-100 ${styles.registerAsContainer}`}>
       <Row
@@ -23,7 +27,11 @@ const RegisterAs = (props) => {
         <Col md={4} className={`${styles.registerAsContent}`}>
           <h2 className=" mb-5 text-center text-white">Register As</h2>
           <div className="">
-            <FillBtn className="w-100 mb-3 py-2" text="Trainee" />
+            <FillBtn
+              className="w-100 mb-3 py-2"
+              text="Trainee"
+              handleOnClick={handleAsTraineeClick}
+            />
             <FillBtn className="w-100 mb-3 py-2" text="Trainer" />
             <FillBtn className="w-100 mb-3 py-2" text="Nutritionist" />
             <FillBtn

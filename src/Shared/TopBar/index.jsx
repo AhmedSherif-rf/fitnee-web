@@ -13,19 +13,27 @@ import {
   CardBody,
   CardFooter,
 } from "reactstrap";
+import {
+  FaBars,
+  FaHome,
+  FaServicestack,
+  FaAddressCard,
+  FaUserEdit,
+} from "react-icons/fa";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
-import { FaPeopleGroup } from "react-icons/fa6";
+import { GiWallet } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
+import { RiDashboardFill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import Logo from "../../Assets/Images/homeScreen/Logo.svg";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
+import { FaPeopleGroup, FaKey, FaTrashCan } from "react-icons/fa6";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import { ENGLISH_LANGUAGE, ARABIC_LANGUAGE } from "../../utils/constants";
-import { FaBars, FaHome, FaServicestack, FaAddressCard } from "react-icons/fa";
 
 const TopBar = (props) => {
   const dispatch = useDispatch();
@@ -209,6 +217,68 @@ const TopBar = (props) => {
                       text={t("landing.signInText")}
                       handleOnClick={handleSignInClick}
                     />
+                  </Nav>
+                )}
+
+                {!props?.isGuest && !props?.isPublic && (
+                  <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
+                    <UncontrolledDropdown>
+                      <DropdownToggle className="p-0" nav>
+                        <div
+                          className="bgProperties rounded-circle"
+                          style={{
+                            backgroundImage: `url(${Images.PROFILE_IMG})`,
+                            width: "40px",
+                            height: "40px",
+                          }}
+                        ></div>
+                      </DropdownToggle>
+                      <DropdownMenu style={{ right: 0, left: "auto" }}>
+                        <DropdownItem>
+                          <Link
+                            className=" d-flex align-items-center"
+                            to="/trainee/dashboard"
+                          >
+                            <span className="textParrotGreen me-2">
+                              <RiDashboardFill className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Dashboard</p>
+                          </Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to="" className=" d-flex align-items-center">
+                            <span className="textParrotGreen me-2">
+                              <FaUserEdit className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Edit Profile</p>
+                          </Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to="" className=" d-flex align-items-center">
+                            <span className="textParrotGreen me-2">
+                              <GiWallet className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Wallet</p>
+                          </Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to="" className=" d-flex align-items-center">
+                            <span className="textParrotGreen me-2">
+                              <FaKey className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Change Password</p>
+                          </Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link to="" className=" d-flex align-items-center">
+                            <span className="textParrotGreen me-2">
+                              <FaTrashCan className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Delete Account</p>
+                          </Link>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
                   </Nav>
                 )}
               </>

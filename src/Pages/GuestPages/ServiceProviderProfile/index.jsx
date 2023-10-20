@@ -7,7 +7,7 @@ import Images from "../../../HelperMethods/Constants/ImgConstants";
 import AvailableHourList from "../../../Shared/AvailableHourListing";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
-
+import { useTranslation } from "react-i18next";
 const availableHoursData = [
   {
     day: "Monday",
@@ -90,10 +90,10 @@ const personalData = {
   Height: "25",
 };
 
-const categories = ["Body Building", "Power Lifting", "Healthy Lifestyle"];
-
 const ServiceProviderProfile = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation("");
+  const categories = [t("guest.bodyBuildingText"), t("guest.powerLiftingText"),t("guest.healthyLifeStyleText")];
 
   const handleSubscribeClick = useCallback(() => {
     navigate("/guest/serviceProvider/subscription");
@@ -116,7 +116,7 @@ const ServiceProviderProfile = () => {
           <div className="mb-3">
             <FillBtn
               className="w-100 text-dark py-2"
-              text={"Subscribe"}
+              text={t("guest.subscribeText")}
               handleOnClick={handleSubscribeClick}
             />
           </div>
@@ -128,7 +128,7 @@ const ServiceProviderProfile = () => {
         <Col lg={9} md={8}>
           <Card className="BorderRadius border-0 shadow">
             <CardBody>
-              <h5 className="fw-bold my-2">Meet Shane</h5>
+              <h5 className="fw-bold my-2">{t("guest.meetText")} Shane</h5>
               <p className="small">
                 {" "}
                 Experienced fitness pro. With a degree in Exercise Science and
@@ -151,7 +151,9 @@ const ServiceProviderProfile = () => {
 
               <Row>
                 <Col md={12}>
-                  <h5 className="fw-bold my-2">Qualification and Experience</h5>
+                  <h5 className="fw-bold my-2">
+                    {t("guest.qualificationExperienceText")}
+                  </h5>
                 </Col>
                 {documentsData.map((item) => {
                   return (
@@ -165,7 +167,9 @@ const ServiceProviderProfile = () => {
               </Row>
               <Row>
                 <Col md={12}>
-                  <h5 className="fw-bold my-2">Area of Specialty</h5>
+                  <h5 className="fw-bold my-2">
+                    {t("guest.areaSpecialtyText")}
+                  </h5>
                   {categories?.map((item, index) => {
                     return (
                       <Badge

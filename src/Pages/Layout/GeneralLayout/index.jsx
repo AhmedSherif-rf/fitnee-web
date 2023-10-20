@@ -6,7 +6,11 @@ import TopBar from "../../../Shared/TopBar";
 const GeneralLayout = (props) => {
   return (
     <React.Fragment>
-      <TopBar isPublic={props?.isPublic} isGuest={props?.isGuest} />
+      <TopBar
+        isPublic={props?.isPublic}
+        isGuest={props?.isGuest}
+        isPrivate={props?.isPrivate}
+      />
       <Container
         fluid
         className={`p-0 ${

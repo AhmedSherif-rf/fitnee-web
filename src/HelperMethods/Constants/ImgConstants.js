@@ -39,6 +39,15 @@ let Images = {
   ONE_MONTH_IMG: require("../../Assets/Images/subscription/oneMonthSubscription.svg").default,
   TWO_MONTH_IMG: require("../../Assets/Images/subscription/twoMonthSubscription.svg").default,
   THREE_MONTH_IMG: require("../../Assets/Images/subscription/threeMonthSubscription.svg").default,
+  //==============================ConstImgs====================================
+  ARROW_DOWN_IMG: require("../../Assets/Images/ConstImgs/ArrowDown.svg").default,
+  ARROW_UP_IMG: require("../../Assets/Images/ConstImgs/ArrowUp.svg").default,
+  CARD_ICON_IMG: require("../../Assets/Images/ConstImgs/CardIcon.svg").default,
+  CREDIT_CARD_IMG: require("../../Assets/Images/ConstImgs/CreditCardImg.svg").default,
+  CAMERA_IMG: require("../../Assets/Images/ConstImgs/Frame.svg").default,
+  GREEN_CIRCLE_IMG: require("../../Assets/Images/ConstImgs/greenCircle.png").default,
+  YELLOW_CIRCLE_IMG: require("../../Assets/Images/ConstImgs/yellowCircle.png").default,
+  UPLOAD_BG_IMG: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
 };
 
 export default Images;

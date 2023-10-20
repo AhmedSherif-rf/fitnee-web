@@ -1,11 +1,10 @@
-import Checkbox from "../Checkbox";
+import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import { useNavigate } from "react-router-dom";
 import OutlineBtn from "../Buttons/OutlineBtn";
-import InputField from "../InputField/InputField";
+import { Col, Container, Form, Row } from "reactstrap";
 import InformationModal from "../Modal/InformationModal";
 import React, { memo, useCallback, useState } from "react";
-import { Col, Container, Form, Row, Input } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const ContactUsForm = () => {

@@ -132,7 +132,7 @@ const TopBar = (props) => {
             {showNavItems && (
               <>
                 <NavbarToggler
-                  className={"text-white BorderYellow pb-2"}
+                  className={"textGrey BorderYellow pb-2"}
                   onClick={slide}
                 >
                   <FaBars />

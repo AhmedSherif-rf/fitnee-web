@@ -1,9 +1,9 @@
 import Checkbox from "../Checkbox";
-import React, { memo, useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import OutlineBtn from "../Buttons/OutlineBtn";
-import InputField from "../InputField/InputField";
+import React, { memo, useCallback } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Form, Row } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 

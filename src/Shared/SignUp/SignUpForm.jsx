@@ -1,10 +1,15 @@
 import * as Yup from "yup";
+import { Formik } from "formik";
 import React, { memo } from "react";
-import { Formik, Field } from "formik";
-import { Container, Row, Col } from "reactstrap";
-import InputField from "../InputField/InputField";
+import InputField from "../InputField";
+import { useNavigate } from "react-router";
+import PhoneInputField from "../PhoneInputField";
+import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
+import { Container, Row, Col, InputGroup, InputGroupText } from "reactstrap";
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -12,6 +17,8 @@ const SignUpForm = () => {
     password: "",
     confirmPassword: "",
     bio: "",
+    phoneNumber: "",
+    gender: "",
   };
 
   const SignupSchema = Yup.object().shape({
@@ -39,10 +46,11 @@ const SignUpForm = () => {
       )
       .required("Password is required"),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match') // Ensure confirm password matches password
-      .required('Confirm Password is required'),
-    bio: Yup.string()
-      .required('Bio is required'),
+      .oneOf([Yup.ref("password"), null], "Passwords must match") // Ensure confirm password matches password
+      .required("Confirm Password is required"),
+    bio: Yup.string().required("Bio is required"),
+    phoneNumber: Yup.string().required("Phone Number is required"),
+    gender: Yup.string().required("Gender is required"),
   });
 
   return (
@@ -62,10 +70,11 @@ const SignUpForm = () => {
         //   return errors;
         // }}
         onSubmit={(values, { setSubmitting }) => {
-            console.log(values)
+          console.log(values);
           setTimeout(() => {
             alert(JSON.stringify(values));
             setSubmitting(false);
+            navigate("/trainee/dashboard");
           }, 400);
         }}
       >
@@ -74,6 +83,7 @@ const SignUpForm = () => {
           errors,
           touched,
           handleChange,
+          setFieldValue,
           handleBlur,
           handleSubmit,
           isSubmitting,
@@ -107,7 +117,9 @@ const SignUpForm = () => {
                   onBlurHandle={handleBlur}
                   value={values.firstName}
                 />
-                <p className="error-field">{errors.firstName && touched.firstName && errors.firstName}</p>
+                <p className="error-field">
+                  {errors.firstName && touched.firstName && errors.firstName}
+                </p>
               </Col>
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
@@ -122,7 +134,9 @@ const SignUpForm = () => {
                   onBlurHandle={handleBlur}
                   value={values.lastName}
                 />
-                <p className="error-field">{errors.lastName && touched.lastName && errors.lastName}</p>
+                <p className="error-field">
+                  {errors.lastName && touched.lastName && errors.lastName}
+                </p>
               </Col>
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
@@ -137,7 +151,9 @@ const SignUpForm = () => {
                   onBlurHandle={handleBlur}
                   value={values.email}
                 />
-                <p className="error-field">{errors.email && touched.email && errors.email}</p>
+                <p className="error-field">
+                  {errors.email && touched.email && errors.email}
+                </p>
               </Col>
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
@@ -152,7 +168,9 @@ const SignUpForm = () => {
                   onBlurHandle={handleBlur}
                   value={values.password}
                 />
-                <p className="error-field">{errors.password && touched.password && errors.password}</p>
+                <p className="error-field">
+                  {errors.password && touched.password && errors.password}
+                </p>
               </Col>
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
@@ -167,10 +185,36 @@ const SignUpForm = () => {
                   onBlurHandle={handleBlur}
                   value={values.confirmPassword}
                 />
-                <p className="error-field">{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</p>
+                <p className="error-field">
+                  {errors.confirmPassword &&
+                    touched.confirmPassword &&
+                    errors.confirmPassword}
+                </p>
               </Col>
 
-              {/* <Col lg={6} md={6} className="mb-2">
+              <Col lg={6} md={6} className="mb-2">
+                <div className="text-end" style={{ marginBottom: "-15px" }}>
+                  *
+                </div>{" "}
+                <PhoneInputField
+                  inputProps={{
+                    name: "phoneNumber",
+                    required: true,
+                    autoFocus: true,
+                    className: "form-control-lg w-100 BorderYellow py-2 px-4",
+                  }}
+                  defaultCountry={"ae"}
+                  value={values.phoneNumber}
+                  setFieldValue={setFieldValue}
+                />
+                <p className="error-field">
+                  {errors.phoneNumber &&
+                    touched.phoneNumber &&
+                    errors.phoneNumber}
+                </p>
+              </Col>
+
+              <Col lg={6} md={6} className="mb-2">
                 <Row className="p-0">
                   <Col md={12} className="mb-2">
                     <div className="text-end" style={{ marginBottom: "-15px" }}>
@@ -179,40 +223,26 @@ const SignUpForm = () => {
                     <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                       <div
                         className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadius ${
-                          selectedGender === "male" ? "selected" : ""
+                          values.gender === "male" ? "selected" : ""
                         }`}
-                        onClick={() => handleGenderClick("male")}
+                        onClick={() => setFieldValue("gender", "male")}
                       >
                         <h6 className="mb-0">Male</h6>
                         <FaMars />
                       </div>
                       <div
                         className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadius ${
-                          selectedGender === "female" ? "selected" : ""
+                          values.gender === "female" ? "selected" : ""
                         }`}
-                        onClick={() => handleGenderClick("female")}
+                        onClick={() => setFieldValue("gender", "female")}
                       >
                         <h6 className="mb-0">Female</h6>
                         <FaVenus />
                       </div>
                     </div>
-                  </Col>
-                  <Col md={12} className="mb-2">
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                    <PhoneInput
-                      inputProps={{
-                        name: "phone",
-                        required: true,
-                        autoFocus: true,
-                        className: "form-control-lg w-100 BorderYellow",
-                        disableDropdown: "true",
-                      }}
-                      country={"us"}
-                      value={state.phone}
-                      onChange={(phone) => setState({ phone })}
-                    />
+                    <p className="error-field">
+                      {errors.gender && touched.gender && errors.gender}
+                    </p>
                   </Col>
                   <Col md={12} className="mb-2">
                     <div className="text-end" style={{ marginBottom: "-15px" }}>
@@ -237,13 +267,12 @@ const SignUpForm = () => {
                           borderBottomRightRadius: "15px",
                         }}
                         placeholder="Date of Birthday"
-                        className="form-control-lg BorderYellow"
-                        required
+                        className="form-control-lg py-3 px-4"
                       />
                     </InputGroup>
                   </Col>
                 </Row>
-              </Col> */}
+              </Col>
               <Col lg={6} md={6} className="mb-2">
                 <Row className="p-0">
                   <Col md={12} className="mb-2">
@@ -257,10 +286,12 @@ const SignUpForm = () => {
                       placeholder="Add your bio here.."
                       name="bio"
                       onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.bio}
+                      onBlurHandle={handleBlur}
+                      value={values.bio}
                     />
-                    <p className="error-field">{errors.bio && touched.bio && errors.bio}</p>
+                    <p className="error-field">
+                      {errors.bio && touched.bio && errors.bio}
+                    </p>
                   </Col>
                 </Row>
               </Col>

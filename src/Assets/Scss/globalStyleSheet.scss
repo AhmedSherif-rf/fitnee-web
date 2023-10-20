@@ -30,8 +30,12 @@
 .textYellow {
   color: $yellow !important;
 }
-.textParrotGreen{
-  color:$parrot-green;
+.textGrey {
+  color: $text-muted !important;
+}
+
+.textParrotGreen {
+  color: $parrot-green;
 }
 
 .BorderRadius {
@@ -67,26 +71,24 @@ Input::-webkit-input-placeholder {
 .dropdown-item {
   &:active {
     background-color: $yellow;
-    color: $black; 
+    color: $black;
   }
-  
+
   &:hover {
     background-color: $yellow;
-    color: $black; 
+    color: $black;
   }
-  
+
   &:focus {
     background-color: $yellow;
-    outline: none; 
+    outline: none;
   }
-  
+
   &::selection {
     background-color: $yellow;
-    color: $black; 
+    color: $black;
   }
 }
-
-
 
 .react-tel-input,
 .genderBtn,

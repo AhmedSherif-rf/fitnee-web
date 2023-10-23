@@ -70,11 +70,15 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleCurrentSubscribersClick = useCallback(() => {
-    navigate("/serviceProvider/currentSubscribers");
+    navigate("/serviceProvider/subscriber");
   }, [navigate]);
 
   const handleSubscriptionsClick = useCallback(() => {
     navigate("/serviceProvider/subscription");
+  }, [navigate]);
+
+  const handlePaymentClick = useCallback(() => {
+    navigate("/serviceProvider/payment");
   }, [navigate]);
 
   return (
@@ -106,7 +110,11 @@ const Dashboard = () => {
                   className="w-100 mb-2 py-2"
                   text="My Current Subscribers"
                 />
-                <FillBtn className="w-100 mb-2 py-2" text="Payment History" />
+                <FillBtn
+                  handleOnClick={handlePaymentClick}
+                  className="w-100 mb-2 py-2"
+                  text="Payment History"
+                />
                 <FillBtn
                   handleOnClick={handleSubscriptionsClick}
                   className="w-100 mb-2 py-2"

@@ -10,6 +10,10 @@
   background-color: $blur-color !important;
 }
 
+.font14 {
+  font-size: $font-14 !important;
+}
+
 .middle-subscription-card {
   transition: transform 0.3s ease;
   transform: scale(1.1);
@@ -160,4 +164,64 @@ select,
 
 .buttonBoxShadow {
   box-shadow: 0px 2px 15px 0px $button-box-shadow;
+}
+
+.errorField {
+  margin-bottom: 0 !important;
+  color: $orange;
+  font-size: $font-14;
+}
+
+.customPhoneInput {
+  font-size: $font-14 !important;
+}
+
+.customDropDown {
+  font-size: $font-14 !important;
+}
+
+.customDropDownOption {
+  font-size: $font-14 !important;
+  &:checked {
+    background-color: $yellow !important;
+  }
+}
+
+.customDropDown .customDropDownOption:active {
+  background-color: $yellow !important;
+}
+
+.CameraImg {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  z-index: 99;
+  border-radius: 100%;
+  right: 0;
+  bottom: 6px;
+  border: 2px solid white;
+  background-color: rgba(24, 24, 24, 0.99);
+}
+
+.genderBtn {
+  .selected {
+    color: $parrot-green !important;
+    border: 2px solid $parrot-green !important ;
+  }
+}
+
+.currentlyWorkingBtn {
+  .selected {
+    color: $parrot-green !important;
+    border: 2px solid $parrot-green !important ;
+  }
+}
+
+.selectField {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.cursorPointer {
+  cursor: pointer;
 }

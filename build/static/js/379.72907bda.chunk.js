@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[379],{379:function(e,n,s){s.r(n);s(2791);var t=s(7823),i=s(184);n.default=function(){return(0,i.jsx)(t.Z,{className:"mt-5",children:"this is signup page"})}}}]);
-//# sourceMappingURL=379.72907bda.chunk.js.map

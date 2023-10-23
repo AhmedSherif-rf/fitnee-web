@@ -1,8 +1,13 @@
 import React from "react";
 import { Container } from "reactstrap";
+import SignUpForm from "../../../Shared/SignUp/SignUpForm";
 
-const SignUp = () => {
-  return <Container className="mt-5">this is signup page</Container>;
+const SignUp = (props) => {
+  return (
+    <Container fluid className="vh-100">
+      <SignUpForm />
+    </Container>
+  );
 };
 
 export default SignUp;

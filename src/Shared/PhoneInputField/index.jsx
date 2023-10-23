@@ -2,13 +2,7 @@ import { memo } from "react";
 import PhoneInput from "react-phone-input-2";
 
 const PhoneInputField = (props) => {
-  const {
-    value,
-    setFieldValue,
-    defaultCountry,
-    inputProps,
-    className
-  } = props;
+  const { value, setFieldValue, defaultCountry, inputProps, className } = props;
 
   return (
     <PhoneInput
@@ -18,7 +12,7 @@ const PhoneInputField = (props) => {
       country={defaultCountry}
       value={value}
       className={className}
-      onChange={value => setFieldValue('phoneNumber', value)}
+      onChange={(value) => setFieldValue("phoneNumber", value)}
     />
   );
 };

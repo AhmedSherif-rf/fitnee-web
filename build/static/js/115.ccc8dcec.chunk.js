@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[115],{3115:function(e,n,r){r.r(n);var i=r(2791),s=r(184);n.default=function(e){return(0,s.jsx)(i.Fragment,{children:(0,s.jsx)("h4",{children:"This is Service Provider Dashboard"})})}}}]);
-//# sourceMappingURL=115.ccc8dcec.chunk.js.map

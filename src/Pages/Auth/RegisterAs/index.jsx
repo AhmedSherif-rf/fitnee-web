@@ -13,6 +13,10 @@ const RegisterAs = (props) => {
     navigate("/guest/serviceProviderList");
   }, [navigate]);
 
+  const handleAsTraineeClick = useCallback(() => {
+    navigate("/signUp/trainee");
+  }, [navigate])
+
   const handleAsTrainerClick = useCallback(() => {
     navigate("/serviceProvider/dashboard");
   }, [navigate]);
@@ -33,6 +37,7 @@ const RegisterAs = (props) => {
             <FillBtn
               className="w-100 mb-3 py-2"
               text={t("registerAs.traineeText")}
+              handleOnClick={handleAsTraineeClick}
             />
             <FillBtn
               className="w-100 mb-3 py-2"

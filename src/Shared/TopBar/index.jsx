@@ -69,7 +69,8 @@ const TopBar = (props) => {
       props.isPublic &&
       (location.pathname === "/termAndCondition" ||
         location.pathname === "/signIn" ||
-        location.pathname === "/contactUs")
+        location.pathname === "/contactUs" ||
+        location.pathname.includes("/signUp/"))
     ) {
       setShowTopBar(false);
     } else {
@@ -169,7 +170,7 @@ const TopBar = (props) => {
                   </NavItem>
                 </Nav>
 
-                {!props?.isGuest && (
+                {!props?.isGuest && !props?.isPrivate && (
                   <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>

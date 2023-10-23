@@ -17,7 +17,7 @@ import LoadingScreen from "./HelperMethods/LoadingScreen";
 import { setLanguage } from "./Redux/features/Language/languageSlice";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function withLayout(WrappedComponent, isPublic, isGuest) {
+function withLayout(WrappedComponent, isPublic, isGuest, isPrivate) {
   const admin = false;
 
   return class extends React.Component {
@@ -29,7 +29,11 @@ function withLayout(WrappedComponent, isPublic, isGuest) {
               <WrappedComponent></WrappedComponent>
             </AdminLayout>
           ) : (
-            <GeneralLayout isPublic={isPublic} isGuest={isGuest}>
+            <GeneralLayout
+              isPublic={isPublic}
+              isGuest={isGuest}
+              isPrivate={isPrivate}
+            >
               <WrappedComponent></WrappedComponent>
             </GeneralLayout>
           )}
@@ -49,7 +53,7 @@ function App() {
     } else {
       dispatch(setLanguage(localStorage.getItem("Website_Language__fitnee")));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <React.Fragment>
@@ -64,17 +68,27 @@ function App() {
                 exact={route.exact}
                 element={
                   <Suspense fallback={<LoadingScreen />}>
-                    {!route.ispublic ? (
+                    {!route.isPublic ? (
                       <PrivateRoute
                         props={route}
                         role={route?.role}
-                        Component={withLayout(Component)}
+                        Component={withLayout(
+                          Component,
+                          route?.isPublic,
+                          route?.isGuest,
+                          route?.isPrivate
+                        )}
                       />
                     ) : (
                       <PublicRoute
                         props={route}
                         role={route?.role}
-                        Component={withLayout(Component, route?.ispublic, route?.isGuest)}
+                        Component={withLayout(
+                          Component,
+                          route?.isPublic,
+                          route?.isGuest,
+                          route?.isPrivate
+                        )}
                       />
                     )}
                   </Suspense>

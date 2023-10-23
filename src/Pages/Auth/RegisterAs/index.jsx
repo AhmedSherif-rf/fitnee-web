@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-
+import { useTranslation } from "react-i18next";
 const RegisterAs = (props) => {
   const navigate = useNavigate();
+  const { t } = useTranslation("");
 
   const handleAsGuestClick = useCallback(() => {
     navigate("/guest/serviceProviderList");
@@ -14,6 +15,10 @@ const RegisterAs = (props) => {
 
   const handleAsTraineeClick = useCallback(() => {
     navigate("/signUp/trainee");
+  }, [navigate])
+
+  const handleAsTrainerClick = useCallback(() => {
+    navigate("/serviceProvider/dashboard");
   }, [navigate]);
 
   return (
@@ -25,18 +30,27 @@ const RegisterAs = (props) => {
         }}
       >
         <Col md={4} className={`${styles.registerAsContent}`}>
-          <h2 className=" mb-5 text-center text-white">Register As</h2>
+          <h2 className=" mb-5 text-center text-white">
+            {t("registerAs.registerAsText")}
+          </h2>
           <div className="">
             <FillBtn
               className="w-100 mb-3 py-2"
-              text="Trainee"
+              text={t("registerAs.traineeText")}
               handleOnClick={handleAsTraineeClick}
             />
-            <FillBtn className="w-100 mb-3 py-2" text="Trainer" />
-            <FillBtn className="w-100 mb-3 py-2" text="Nutritionist" />
             <FillBtn
               className="w-100 mb-3 py-2"
-              text="Guest"
+              text={t("registerAs.trainerText")}
+              handleOnClick={handleAsTrainerClick}
+            />
+            <FillBtn
+              className="w-100 mb-3 py-2"
+              text={t("registerAs.nutritionistText")}
+            />
+            <FillBtn
+              className="w-100 mb-3 py-2"
+              text={t("registerAs.guestText")}
               handleOnClick={handleAsGuestClick}
             />
           </div>

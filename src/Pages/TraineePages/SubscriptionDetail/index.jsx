@@ -1,9 +1,9 @@
 import React from "react";
+import FillBtn from "../../../Shared/Buttons/FillBtn";
+import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import ServiceProvider from "../../../Shared/ServiceProviders";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import FillBtn from "../../../Shared/Buttons/FillBtn";
-import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 
 const index = () => {
   const ServiceProviders = [

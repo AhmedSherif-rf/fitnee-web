@@ -48,6 +48,9 @@ let Images = {
   GREEN_CIRCLE_IMG: require("../../Assets/Images/ConstImgs/greenCircle.png").default,
   YELLOW_CIRCLE_IMG: require("../../Assets/Images/ConstImgs/yellowCircle.png").default,
   UPLOAD_BG_IMG: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
+
+    //==============================Trainee Images==================================== 
+    TRAINEE_GRAPH_IMG: require("../../Assets/Images/TraineeGraph.svg").default,
 };
 
 export default Images;

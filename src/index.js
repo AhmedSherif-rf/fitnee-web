@@ -4,6 +4,7 @@ import React from "react";
 import "../src/i18n/config";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
+import 'react-phone-input-2/lib/style.css';
 import store from "./Redux/configureStore";
 import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";

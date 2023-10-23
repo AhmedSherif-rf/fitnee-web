@@ -1,19 +1,23 @@
 import React from "react";
+import { Container } from "reactstrap";
 import styles from "./style.module.scss";
 import TopBar from "../../../Shared/TopBar";
-import { Container } from "reactstrap";
 
 const GeneralLayout = (props) => {
   return (
     <React.Fragment>
-      <TopBar isPublic={props?.isPublic} isGuest={props?.isGuest} />
+      <TopBar
+        isPublic={props?.isPublic}
+        isGuest={props?.isGuest}
+        isPrivate={props?.isPrivate}
+      />
       <Container
         fluid
         className={`p-0 ${
           !props?.isPublic
-            ? styles?.overlapContainer
+            ? styles.overlapContainer
             : props?.isGuest
-            ? styles?.overlapContainer
+            ? styles.overlapContainer
             : ""
         }`}
       >

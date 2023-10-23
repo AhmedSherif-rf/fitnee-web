@@ -8,46 +8,45 @@ const routes = [
   {
     path: "/",
     component: lazy(() => import("../Pages/Auth/LandingPage")),
-    ispublic: true,
+    isPublic: true,
     exact: true,
   },
   {
     path: "/registerAs",
     component: lazy(() => import("../Pages/Auth/RegisterAs")),
-    ispublic: true,
+    isPublic: true,
     exact: true,
   },
   {
     path: "/signUp/:roleType",
     component: lazy(() => import("../Pages/Auth/SignUp")),
-    ispublic: true,
+    isPublic: true,
     exact: true,
   },
   {
     path: "/signIn",
     component: lazy(() => import("../Pages/Auth/SignIn")),
-    ispublic: true,
+    isPublic: true,
     exact: true,
   },
   {
     path: "/verifyOtp",
     component: lazy(() => import("../Pages/Auth/VerifyOtp")),
-    ispublic: true,
+    isPublic: true,
     exact: true,
   },
   {
     path: "/termAndCondition",
     component: lazy(() => import("../Pages/Auth/TermAndCondition")),
-    ispublic: true,
+    isPublic: true,
     exact: true,
   },
   {
     path: "/contactUs",
     component: lazy(() => import("../Pages/Auth/ContactUs")),
-    ispublic: true,
+    isPublic: true,
     exact: true,
   },
-  
 ]
   .concat(guestRoutes)
   .concat(adminRoutes)

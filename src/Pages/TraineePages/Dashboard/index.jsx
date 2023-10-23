@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import ProgressBar from "../../../Shared/ProfileProgressBar";
@@ -31,6 +31,10 @@ const Dashboard = () => {
 
   const handleSubscriptionHistoryClick = useCallback(() => {
     navigate("/trainee/subscriptionHistory");
+  }, [navigate]);
+
+  const handleMyProgressClick = useCallback(() => {
+    navigate("/trainee/myProgress");
   }, [navigate]);
 
   return (
@@ -71,7 +75,11 @@ const Dashboard = () => {
                   text="My Subscription History"
                   handleOnClick={handleSubscriptionHistoryClick}
                 />
-                <FillBtn className="w-100 mb-2 py-3" text="My Progress" />
+                <FillBtn
+                  className="w-100 mb-2 py-3"
+                  text="My Progress"
+                  handleOnClick={handleMyProgressClick}
+                />
               </Col>
             </Row>
           </Card>

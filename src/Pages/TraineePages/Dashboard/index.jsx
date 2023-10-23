@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useCallback} from "react";
+import { useNavigate } from "react-router";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import ProgressBar from "../../../Shared/ProfileProgressBar";
 import { Row, Col, Container, Card, CardBody } from "reactstrap";
@@ -18,6 +19,20 @@ const InfoData = [
 ];
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+  const handleCurrentTrainerClick = useCallback(() => {
+    navigate("/trainee/serviceProviderList");
+  }, [navigate]);
+
+  const handleCurrentNutritionistClick = useCallback(() => {
+    navigate("/trainee/serviceProviderList");
+  }, [navigate]);
+
+  const handleSubscriptionHistoryClick = useCallback(() => {
+    navigate("/trainee/subscriptionHistory");
+  }, [navigate]);
+
   return (
     <Container fluid className="pt-2">
       <Row className="py-2">
@@ -44,14 +59,17 @@ const Dashboard = () => {
                 <FillBtn
                   className="w-100 mb-2 py-3"
                   text="My Current Trainer"
+                  handleOnClick={handleCurrentTrainerClick}
                 />
                 <FillBtn
                   className="w-100 mb-2 py-3"
                   text="My Current Nutritionist"
+                  handleOnClick={handleCurrentNutritionistClick}
                 />
                 <FillBtn
                   className="w-100 mb-2 py-3"
                   text="My Subscription History"
+                  handleOnClick={handleSubscriptionHistoryClick}
                 />
                 <FillBtn className="w-100 mb-2 py-3" text="My Progress" />
               </Col>

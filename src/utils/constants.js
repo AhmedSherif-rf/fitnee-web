@@ -9,3 +9,29 @@ export const TRAINER_NUTRITIONIST = "Trainer & Nutritionist";
 //======================body=======================
 export const MALE_BODY = "Male";
 export const FEMALE_BODY = "Female";
+//=====================signUpForm==================
+export const trainingGoalOptions = [
+  "Body Building",
+  "Gain Weight",
+  "Healthy Lifestyle",
+  "Lose Weight",
+  "Power Lifting",
+];
+export const activityLevelOptions = ["Beginner", "Intermediate", "Advanced"];
+export const roleOptions = ["Trainer", "Nutrition", "Trainer & Nutrition"];
+export const specialityOptions = [
+  { value: "Body Building", label: "Body Building" },
+  { value: "Health Issue", label: "Health Issue" },
+  { value: "Power Lifting", label: "Power Lifting" },
+  { value: "Healthy Lifestyle", label: "Healthy Lifestyle" },
+];
+export const weekDaysOptions = [
+  { value: "monday", label: "Monday" },
+  { value: "tuesday", label: "Tuesday" },
+  { value: "wednesday", label: "Wednesday" },
+  { value: "thursday", label: "Thursday" },
+  { value: "friday", label: "Friday" },
+  { value: "Saturday", label: "Saturday" },
+  { value: "Sunday", label: "Sunday" },
+];
+//=====================errorMsgs=====================

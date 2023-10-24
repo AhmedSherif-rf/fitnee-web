@@ -1,14 +1,14 @@
 import { Container, Row } from "reactstrap";
-import PaymentHistory from "../../../Shared/PaymentHistory";
+import PaymentHistoryWrapper from "../../../Shared/PaymentHistoryWrapper";
 
-const TrainerPaymentHistory = () => {
+const PaymentHistory = () => {
   return (
     <Container fluid className="mt-3">
       <Row className="justify-content-center">
-        <PaymentHistory />
+        <PaymentHistoryWrapper />
       </Row>
     </Container>
   );
 };
 
-export default TrainerPaymentHistory;
+export default PaymentHistory;

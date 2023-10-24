@@ -78,7 +78,7 @@ const Dashboard = () => {
   }, [navigate]);
 
   const handlePaymentClick = useCallback(() => {
-    navigate("/serviceProvider/payment");
+    navigate("/serviceProvider/paymentHistory");
   }, [navigate]);
 
   return (

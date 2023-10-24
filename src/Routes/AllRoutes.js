@@ -21,6 +21,7 @@ const routes = [
     path: "/signUp/:roleType",
     component: lazy(() => import("../Pages/Auth/SignUp")),
     isPublic: true,
+    isAuth: true,
     exact: true,
   },
   {
@@ -33,6 +34,7 @@ const routes = [
     path: "/verifyOtp",
     component: lazy(() => import("../Pages/Auth/VerifyOtp")),
     isPublic: true,
+    isAuth: true,
     exact: true,
   },
   {

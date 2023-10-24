@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/84.502b3c03.chunk.css","mappings":"AACE,gEACE,WAEF,yEACE","sources":["Shared/ServiceProviderListWrapper/style.module.scss"],"sourcesContent":[".serviceProviderListWrapper {\r\n  .blurCard {\r\n    opacity: 0.3;\r\n  }\r\n  .activeTrainerCard {\r\n    cursor: pointer;\r\n  }\r\n}\r\n"],"names":[],"sourceRoot":""}

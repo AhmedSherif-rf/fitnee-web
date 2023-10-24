@@ -13,12 +13,14 @@ export const traineeRoutes = [
     path: "/trainee/serviceProviderList",
     component: lazy(() => import("../Pages/TraineePages/ServiceProviderList")),
     exact: true,
+    isPrivate: true,
     role: traineeRole,
   },
   {
     path: "/trainee/subscriptionHistory",
     component: lazy(() => import("../Pages/TraineePages/SubscriptionDetail")),
     exact: true,
+    isPrivate: true,
     role: traineeRole,
   },
 ];

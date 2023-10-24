@@ -1,49 +1,56 @@
 import React from "react";
-import FillBtn from "../../../Shared/Buttons/FillBtn";
-import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
+import ServiceProviderRow from "../../../Shared/ServiceProviderListRow";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import ServiceProvider from "../../../Shared/ServiceProviderListRow";
 
 const index = () => {
-  const ServiceProviders = [
+  const TraineeList = [
     {
       useImages: `${Images.PROFILE_IMG}`,
       userName: "Nayyar Mehdi",
+      serviceProvider: "Trainer",
       duration: "2 Months",
       fee: "SAR 1000",
-      CancelButton: <FillBtn className="w-50" text="Cancel" />,
+      startDate: "12/10/2023",
+      endDate: "11/12/2023",
     },
     {
       useImages: `${Images.PROFILE_IMG}`,
       userName: "Nayyar Mehdi",
+      serviceProvider: "Trainer",
       duration: "2 Months",
       fee: "SAR 1000",
-      CancelButton: <OutlineBtn className="w-50" text="Cancelled" />,
+      startDate: "12/10/2023",
+      endDate: "11/12/2023",
     },
     {
       useImages: `${Images.PROFILE_IMG}`,
       userName: "Nayyar Mehdi",
+      serviceProvider: "Trainer",
       duration: "2 Months",
       fee: "SAR 1000",
-      CancelButton: <FillBtn className="w-50" text="Cancel" />,
+      startDate: "12/10/2023",
+      endDate: "11/12/2023",
     },
     {
       useImages: `${Images.PROFILE_IMG}`,
       userName: "Nayyar Mehdi",
+      serviceProvider: "Trainer",
       duration: "2 Months",
       fee: "SAR 1000",
-      CancelButton: <OutlineBtn className="w-50" text="Cancelled" />,
+      startDate: "12/10/2023",
+      endDate: "11/12/2023",
     },
     {
       useImages: `${Images.PROFILE_IMG}`,
       userName: "Nayyar Mehdi",
-      duration: "Expiry Date:12/11/2023",
+      serviceProvider: "Trainer",
+      duration: "2 Months",
       fee: "SAR 1000",
-      CancelButton: <FillBtn className="w-50" text="Cancel" />,
+      startDate: "12/10/2023",
+      endDate: "11/12/2023",
     },
   ];
-  
   return (
     <Container fluid className="h-100 p-3">
       <Row className="h-100">
@@ -52,17 +59,19 @@ const index = () => {
             <CardBody className="p-4">
               <Row>
                 <Col md={12}>
-                  <h5 className="my-3 fw-bold">Subscription Details</h5>
+                  <h5 className="mb-2 fw-bold">My Current Trainees</h5>
                 </Col>
               </Row>
-              {ServiceProviders.map((item) => {
+              {TraineeList.map((item) => {
                 return (
-                  <ServiceProvider
+                  <ServiceProviderRow
                     useImages={item.useImages}
                     userName={item.userName}
+                    serviceProvider={item.serviceProvider}
                     duration={item.duration}
                     fee={item.fee}
-                    CancelButton={item.CancelButton}
+                    startDate={item.startDate}
+                    endDate={item.endDate}
                   />
                 );
               })}

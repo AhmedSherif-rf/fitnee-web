@@ -4,10 +4,10 @@ import InputField from "../../../Shared/InputField";
 import React, { useCallback, useState } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
-import TraineeHistory from "../../../Shared/TraineeHistory";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { Row, Col, Container, Card, CardBody, Label } from "reactstrap";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
+import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
 
 const MyProgress = () => {
   const [showAddProgressModal, setSowAddProgressModal] = useState(false);
@@ -247,7 +247,7 @@ const MyProgress = () => {
                         {HistoryData.map((item, index) => {
                           return (
                             <Col md={3} className="mb-2" key={index}>
-                              <TraineeHistory
+                              <ProgressHistoryWrapper
                                 TDate={item.TDate}
                                 Weight={item.Weight}
                                 SMM={item.SMM}

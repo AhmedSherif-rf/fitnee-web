@@ -6,24 +6,30 @@ export const serviceProviderRoutes = [
     path: "/serviceProvider/dashboard",
     component: lazy(() => import("../Pages/ServiceProviderPages/Dashboard")),
     exact: true,
+    isPrivate: true,
     role: serviceProviderRole,
   },
   {
     path: "/serviceProvider/subscriber",
     component: lazy(() => import("../Pages/ServiceProviderPages/TraineeList")),
     exact: true,
+    isPrivate: true,
     role: serviceProviderRole,
   },
   {
     path: "/serviceProvider/subscription",
     component: lazy(() => import("../Pages/ServiceProviderPages/Subscription")),
     exact: true,
+    isPrivate: true,
     role: serviceProviderRole,
   },
   {
-    path: "/serviceProvider/payment",
-    component: lazy(() => import("../Pages/ServiceProviderPages/PaymentHistory")),
+    path: "/serviceProvider/paymentHistory",
+    component: lazy(() =>
+      import("../Pages/ServiceProviderPages/PaymentHistory")
+    ),
     exact: true,
+    isPrivate: true,
     role: serviceProviderRole,
   },
 ];

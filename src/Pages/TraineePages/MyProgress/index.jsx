@@ -35,6 +35,10 @@ const MyProgress = () => {
     navigate("/trainee/myProgress");
   }, [navigate]);
 
+  const handleAllServiceProvidersClick = useCallback(() => {
+    navigate("/trainee/allServiceProviders");
+  }, [navigate]);
+
   const handleAddProgressClick = useCallback(() => {
     setSowAddProgressModal(true);
   }, []);
@@ -162,24 +166,30 @@ const MyProgress = () => {
             <Row className="my-3">
               <Col md={12}>
                 <FillBtn
-                  className="w-100 mb-2 py-3"
+                  className="w-100 mb-2 py-2"
                   text="My Current Trainer"
                   handleOnClick={handleCurrentTrainerClick}
                 />
                 <FillBtn
-                  className="w-100 mb-2 py-3"
+                  className="w-100 mb-2 py-2"
                   text="My Current Nutritionist"
                   handleOnClick={handleCurrentNutritionistClick}
                 />
                 <FillBtn
-                  className="w-100 mb-2 py-3"
+                  className="w-100 mb-2 py-2"
                   text="My Subscription History"
                   handleOnClick={handleSubscriptionHistoryClick}
                 />
                 <FillBtn
-                  className="w-100 mb-2 py-3"
+                  className="w-100 mb-2 py-2"
                   text="My Progress"
                   handleOnClick={handleMyProgressClick}
+                />
+
+                <FillBtn
+                  className="w-100 mb-2 py-2"
+                  text="All Service Providers"
+                  handleOnClick={handleAllServiceProvidersClick}
                 />
               </Col>
             </Row>

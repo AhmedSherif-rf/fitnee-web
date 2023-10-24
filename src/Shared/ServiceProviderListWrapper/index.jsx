@@ -145,9 +145,11 @@ const TrainerAndNutritionistData = [
 ];
 
 const ServiceProviderListWrapper = (props) => {
+
+   const { CardLink } = props;
   const [
-    showSubscriptionInformatoinModal,
-    setShowSubscriptionInformatoinModal,
+    showSubscriptionInformationModal,
+    setShowSubscriptionInformationModal,
   ] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [listingRole, setListingRole] = useState(TRAINER);
@@ -223,20 +225,21 @@ const ServiceProviderListWrapper = (props) => {
   const handleCardOnClick = useCallback(
     (isDisable) => {
       if (isDisable) {
-        setShowSubscriptionInformatoinModal(true);
+        setShowSubscriptionInformationModal(true);
       } else {
-        navigate("/guest/serviceProviderProfile");
+        navigate(CardLink);
       }
     },
-    [navigate]
+    [navigate, CardLink]
   );
+  
 
   const handleSeeMoreClick = useCallback(() => {
-    setShowSubscriptionInformatoinModal(true);
+    setShowSubscriptionInformationModal(true);
   }, []);
 
   const handleNotNowClick = useCallback(() => {
-    setShowSubscriptionInformatoinModal(false);
+    setShowSubscriptionInformationModal(false);
   }, []);
 
   const handleRegisterClick = useCallback(() => {
@@ -244,7 +247,7 @@ const ServiceProviderListWrapper = (props) => {
   }, [navigate]);
 
   const handleSubscriptionInformationModalClose = useCallback(() => {
-    setShowSubscriptionInformatoinModal(false);
+    setShowSubscriptionInformationModal(false);
   }, []);
 
   return (
@@ -347,7 +350,7 @@ const ServiceProviderListWrapper = (props) => {
             size={"md"}
             TOneClassName={"fw-bold mb-4 fs-5 text-center"}
             className={"p-4"}
-            isOpen={showSubscriptionInformatoinModal}
+            isOpen={showSubscriptionInformationModal}
             onClose={handleSubscriptionInformationModalClose}
             ModalTextOne={t("guest.subscribeToSeeText")}
             ButtonOne={

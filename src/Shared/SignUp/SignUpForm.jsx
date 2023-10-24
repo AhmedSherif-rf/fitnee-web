@@ -15,7 +15,6 @@ import {
   Col,
   InputGroup,
   InputGroupText,
-  Input,
 } from "reactstrap";
 
 const SignUpForm = () => {

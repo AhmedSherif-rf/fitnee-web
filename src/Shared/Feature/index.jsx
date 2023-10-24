@@ -3,7 +3,7 @@ import styles from "./style.module.scss";
 import React, { memo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCards, Pagination, Autoplay } from "swiper/modules";
+import {Pagination, Autoplay } from "swiper/modules";
 
 const Feature = (props) => {
   const { t } = useTranslation("");

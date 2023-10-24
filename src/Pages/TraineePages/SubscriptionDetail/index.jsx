@@ -43,7 +43,7 @@ const index = () => {
       CancelButton: <FillBtn className="w-50" text="Cancel" />,
     },
   ];
-
+  
   return (
     <Container fluid className="h-100 p-3">
       <Row className="h-100">

@@ -42,13 +42,16 @@ const InfoModal = (props) => {
     </Modal>
   );
 };
-
 InfoModal.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  onClose: PropTypes.func,
-  isOpen: PropTypes.bool,
-  size: PropTypes.string,
+  children: PropTypes.node,
+  heading: PropTypes.string.isRequired,
+  size: PropTypes.string.isRequired,
+  TOneClassName: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  ModalText1: PropTypes.node.isRequired,
+  ButtonOne: PropTypes.node.isRequired,
+  ButtonTwo: PropTypes.node.isRequired,
 };
 InfoModal.defaultProps = {
   className: "",

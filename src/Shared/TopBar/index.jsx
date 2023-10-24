@@ -59,7 +59,10 @@ const TopBar = (props) => {
   }, [props.isPublic, location.pathname]);
 
   useEffect(() => {
-    if (props.isPublic && location.pathname === "/registerAs") {
+    if (
+      props?.isPublic &&
+      (location.pathname === "/registerAs" || props?.isAuth)
+    ) {
       setShowNavItems(false);
     } else {
       setShowNavItems(true);
@@ -69,14 +72,13 @@ const TopBar = (props) => {
       props.isPublic &&
       (location.pathname === "/termAndCondition" ||
         location.pathname === "/signIn" ||
-        location.pathname === "/contactUs" ||
-        location.pathname.includes("/signUp/"))
+        location.pathname === "/contactUs")
     ) {
       setShowTopBar(false);
     } else {
       setShowTopBar(true);
     }
-  }, [location.pathname, props.isPublic]);
+  }, [location.pathname, props?.isAuth, props.isPublic]);
 
   const [showTopBar, setShowTopBar] = useState(true);
   const [isSliding, setIsSliding] = useState(false);

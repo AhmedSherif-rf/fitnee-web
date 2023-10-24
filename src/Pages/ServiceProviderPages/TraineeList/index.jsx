@@ -1,7 +1,7 @@
 import React from "react";
-import ServiceProviderRow from "../../../Shared/ServiceProviderListRow";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
+import ServiceProviderRow from "../../../Shared/ServiceProviderListRow";
 
 const index = () => {
   const TraineeList = [

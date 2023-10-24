@@ -1,0 +1,19 @@
+.otpContainer {
+  .otpWrapper {
+    .otpCol {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .otpInputs {
+          display: flex;
+          justify-content: center;
+          padding: 30px 5px;
+          input {
+            width: 55px !important;
+            height: 55px !important;
+          }
+        }
+    }
+  }
+}

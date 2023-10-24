@@ -1,131 +1,43 @@
-import * as Yup from "yup";
+import Checkbox from "../Checkbox";
 import React, { memo } from "react";
 import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
+import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
 import { useNavigate } from "react-router";
+import MultiSelector from "../MultiSelector";
+import { FaDeleteLeft } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
+import { SIGNUP_SCHEMA } from "./data/validation";
+import { INITIAL_VALUES } from "./data/initialValue";
+import { ConnectedFocusError } from "focus-formik-error";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
-import { FaDeleteLeft } from "react-icons/fa6";
 import { Formik, Field, FieldArray, ErrorMessage } from "formik";
+import { Container, Row, Col, InputGroup, InputGroupText } from "reactstrap";
 import {
-  Container,
-  Row,
-  Col,
-  InputGroup,
-  InputGroupText,
-  Input,
-} from "reactstrap";
+  trainingGoalOptions,
+  activityLevelOptions,
+  roleOptions,
+  specialityOptions,
+  weekDaysOptions,
+} from "../../utils/constants";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
 
-  const trainingGoalOptions = [
-    "Body Building",
-    "Gain Weight",
-    "Healthy Lifestyle",
-    "Lose Weight",
-    "Power Lifting",
-  ];
-
-  const activityLevelOptions = ["Beginner", "Intermediate", "Advanced"];
-
-  const roleOptions = ["Trainer", "Nutrition", "Trainer & Nutrition"];
-
-  const initialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    bio: "",
-    phoneNumber: "",
-    dob: "",
-    gender: "",
-    weight: "",
-    height: "",
-    smm: "",
-    bfm: "",
-    tbw: "",
-    protein: "",
-    myGoal: "",
-    trainingGoal: "",
-    activityLevel: "",
-    injury: "",
-    experience: "",
-    role: "",
-    daySchedules: [{ day: "", fromTime: "", toTime: "" }],
-    saudiReps: "",
-    stcPhoneNumber: "",
-    currentlyWorking: "",
-  };
-
-  const SignupSchema = Yup.object().shape({
-    firstName: Yup.string()
-      .matches(/^[A-Za-z]+$/, "First Name should contain only letters")
-      .min(2, "Too Short!")
-      .max(50, "Too Long!")
-      .required("First Name is Required"),
-    lastName: Yup.string()
-      .matches(/^[A-Za-z]+$/, "Last Name should contain only letters")
-      .min(2, "Too Short!")
-      .max(50, "Too Long!")
-      .required("Last Name is Required"),
-    email: Yup.string()
-      .matches(
-        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-        "Invalid email address"
-      )
-      .required("Email is required"),
-    password: Yup.string()
-      .min(8, "Password must be at least 8 characters long")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-        "Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character"
-      )
-      .required("Password is required"),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords must match") // Ensure confirm password matches password
-      .required("Confirm Password is required"),
-    bio: Yup.string().required("Bio is required"),
-    phoneNumber: Yup.string().required("Phone Number is required"),
-    dob: Yup.string().required("Date of Birth is required"),
-    gender: Yup.string().required("Gender is required"),
-    experience: Yup.string().required("Year of Experience is required"),
-    role: Yup.string().required("Role is required"),
-    currentlyWorking: Yup.string().required("Required"),
-    daySchedules: Yup.array().of(
-      Yup.object().shape({
-        day: Yup.string().required("Day is required"),
-        fromTime: Yup.string().required("From Time is required"),
-        toTime: Yup.string().required("To Time is required"),
-      })
-    ),
-  });
-
   return (
     <Container>
       <Formik
-        initialValues={{ ...initialValues }}
-        validationSchema={SignupSchema}
-        // validate={(values) => {
-        //   const errors = {};
-        //   if (!values.email) {
-        //     errors.email = "Required";
-        //   } else if (
-        //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        //   ) {
-        //     errors.email = "Invalid email address";
-        //   }
-        //   return errors;
-        // }}
+        initialValues={{ ...INITIAL_VALUES }}
+        validationSchema={SIGNUP_SCHEMA}
+        validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
           setTimeout(() => {
             alert(JSON.stringify(values));
             setSubmitting(false);
-            navigate("/trainee/dashboard");
+            navigate("/verifyOtp");
           }, 400);
         }}
       >
@@ -138,19 +50,10 @@ const SignUpForm = () => {
           handleBlur,
           handleSubmit,
           isSubmitting,
-          /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit}>
-            {/* <InputField />
-            {errors.email && touched.email && errors.email}
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-            />
-            {errors.password && touched.password && errors.password} */}
+            <ConnectedFocusError />
+
             <Row className="justify-content-center">
               <Col md={2} className="my-4">
                 <div className="d-flex justify-content-center align-items-center">
@@ -173,6 +76,7 @@ const SignUpForm = () => {
                 </div>
               </Col>
             </Row>
+
             <Row>
               <Col md={12}>
                 <h6 className="fw-bold">Your information</h6>
@@ -264,7 +168,6 @@ const SignUpForm = () => {
                     errors.confirmPassword}
                 </p>
               </Col>
-
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
                   *
@@ -287,7 +190,6 @@ const SignUpForm = () => {
                     errors.phoneNumber}
                 </p>
               </Col>
-
               <Col lg={6} md={6} className="mb-2">
                 <Row className="p-0">
                   <Col md={12} className="mb-2">
@@ -376,7 +278,6 @@ const SignUpForm = () => {
                   </Col>
                 </Row>
               </Col>
-
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
                   *
@@ -394,7 +295,6 @@ const SignUpForm = () => {
                   {errors.experience && touched.experience && errors.experience}
                 </p>
               </Col>
-
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
                   *
@@ -406,12 +306,7 @@ const SignUpForm = () => {
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.role}
-                  // SelectedOption={Goal.TriningGoal}
-                  // onChange={(value) =>
-                  //   handleTimeRowChange(Goal.id, 'TriningGoal', value)
-                  // }
                 />
-                {/* ))} */}
                 <p className="errorField">
                   {errors.role && touched.role && errors.role}
                 </p>
@@ -508,6 +403,22 @@ const SignUpForm = () => {
               </Col>
             </Row>
 
+            <Row className="mb-2">
+              <Col>
+                <div className="form-group">
+                  <h6 className="mb-2 fw-bold">
+                    Select your area of specialty
+                  </h6>
+                  <Field
+                    name="speciality"
+                    component={MultiSelector}
+                    options={specialityOptions}
+                    placeholder="Select options"
+                  />
+                </div>
+              </Col>
+            </Row>
+
             <Row className="mb-3">
               <Col md={6}>
                 <h6 className="mb-2 fw-bold">My goal</h6>
@@ -524,10 +435,8 @@ const SignUpForm = () => {
                   {errors.myGoal && touched.myGoal && errors.myGoal}
                 </p>
               </Col>
-
               <Col md={6}>
                 <h6 className="mb-2 fw-bold">Training goal</h6>
-                {/* {Goal.map((Goal) => ( */}
                 <Row className="training">
                   <Col md={12} className="mb-2">
                     <MyDropdown
@@ -537,24 +446,17 @@ const SignUpForm = () => {
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.trainingGoal}
-                      // SelectedOption={Goal.TriningGoal}
-                      // onChange={(value) =>
-                      //   handleTimeRowChange(Goal.id, 'TriningGoal', value)
-                      // }
                     />
                   </Col>
                 </Row>
-                {/* ))} */}
                 <p className="errorField">
                   {errors.trainingGoal &&
                     touched.trainingGoal &&
                     errors.trainingGoal}
                 </p>
               </Col>
-
               <Col md={6}>
                 <h6 className="mb-2 fw-bold">Activity Level</h6>
-                {/* {Goal.map((Goal) => ( */}
                 <Row className="activity">
                   <Col md={12} className="mb-2">
                     <MyDropdown
@@ -564,21 +466,15 @@ const SignUpForm = () => {
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.activityLevel}
-                      // SelectedOption={Goal.TriningGoal}
-                      // onChange={(value) =>
-                      //   handleTimeRowChange(Goal.id, 'TriningGoal', value)
-                      // }
                     />
                   </Col>
                 </Row>
-                {/* ))} */}
                 <p className="errorField">
                   {errors.activityLevel &&
                     touched.activityLevel &&
                     errors.activityLevel}
                 </p>
               </Col>
-
               <Col lg={6} md={6} className="mb-2">
                 <h6 className="mb-2 fw-bold">Any Injury</h6>
                 <Row className="p-0">
@@ -617,7 +513,6 @@ const SignUpForm = () => {
                   {errors.saudiReps && touched.saudiReps && errors.saudiReps}
                 </p>
               </Col>
-
               <Col lg={6} md={6} className="mb-2">
                 <h6 className="mb-2 fw-bold">
                   Enter the phone number that has an STC Pay Account
@@ -665,61 +560,15 @@ const SignUpForm = () => {
                                 value=""
                                 label="Select"
                               />
-                              <option
-                                className="customDropDownOption"
-                                value="monday"
-                                label="Monday"
-                              />
-                              <option
-                                className="customDropDownOption"
-                                value="tuesday"
-                                label="Tuesday"
-                              />
-                              <option
-                                className="customDropDownOption"
-                                value="wednesday"
-                                label="Wednesday"
-                              />
-                              <option
-                                className="customDropDownOption"
-                                value="thursday"
-                                label="Thursday"
-                              />
-                              <option
-                                className="customDropDownOption"
-                                value="friday"
-                                label="Friday"
-                              />
-                              <option
-                                className="customDropDownOption"
-                                value="saturday"
-                                label="Saturday"
-                              />
-                              <option
-                                className="customDropDownOption"
-                                value="sunday"
-                                label="Sunday"
-                              />
+                              {weekDaysOptions?.map((option, index) => (
+                                <option
+                                  className="customDropDownOption"
+                                  value={option.value}
+                                  key={index}
+                                  label={option.label}
+                                />
+                              ))}
                             </Field>
-                            {/* <div className="mb-0">
-                            <Input
-                              as="select"
-                              name={`daySchedules.${index}.day`}
-                              className={`customDropDown form-control-lg w-100 BorderYellow BorderRadius py-3 px-4`}
-                              type="select"
-                              // onChange={onChangeHandle}
-                              // onBlur={onBlurHandle}
-                            >
-                              <option value="" label="Select a day" />
-                              <option label="Monday">Monday</option>
-                              <option label="Tuesday" >Tuesday</option>
-                              <option label="Wednesday" >Wednesday</option>
-                              <option label="Thursday" >Thursday</option>
-                              <option label="Friday" >Friday</option>
-                              <option label="Saturday" >Saturday</option>
-                              <option label="Sunday" >Sunday</option>
-                            </Input>
-                          </div> */}
                             <ErrorMessage
                               name={`daySchedules.${index}.day`}
                               component="p"
@@ -756,12 +605,6 @@ const SignUpForm = () => {
                               size={22}
                               onClick={() => arrayHelpers.remove(index)}
                             />
-                            {/* <button
-                          type="button"
-                          onClick={() => arrayHelpers.remove(index)}
-                        >
-                          Remove
-                        </button> */}
                           </Col>
                         </Row>
                       ))}
@@ -815,16 +658,34 @@ const SignUpForm = () => {
               </Col>
             </Row>
 
-            {/* <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button> */}
-            <Row className="mb-3">
+            <Row>
+              <div className="d-flex mb-2">
+                <Checkbox
+                  label={
+                    <p className="mb-0 fs-6">
+                      The money will be transferred to your STC Pay account,
+                      please read the{" "}
+                      <Link to="/termAndCondition">
+                        <span className="textYellow">terms and conditions</span>
+                      </Link>
+                    </p>
+                  }
+                  name={"termAndConditionCheck"}
+                  onChangeHandle={handleChange}
+                  onBlurHandle={handleBlur}
+                  checked={values.termAndConditionCheck}
+                />
+              </div>
+              <p className="errorField">
+                {errors.termAndConditionCheck &&
+                  touched.termAndConditionCheck &&
+                  errors.termAndConditionCheck}
+              </p>
+            </Row>
+
+            <Row className="pb-5">
               <Col md={12}>
-                {/* <button className="w-100" type="submit" disabled={isSubmitting}>
-                  Submit
-                </button> */}
                 <FillBtn text="Next" className="w-100 py-2" />
-                {/* <Link to="OTPVerification"><FillBtn text="Next" className="w-100"/></Link> */}
               </Col>
             </Row>
           </form>

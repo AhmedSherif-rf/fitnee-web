@@ -20,5 +20,18 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/SubscriptionDetail")),
     exact: true,
     role: traineeRole,
+  },  
+  {
+    path: "/trainee/myProgress",
+    component: lazy(() => import("../Pages/TraineePages/MyProgress")),
+    exact: true,
+    role: traineeRole,
+  },
+  {
+    path: "/trainee/serviceProviders",
+    component: lazy(() => import("../Pages/TraineePages/ServiceProviders")),
+    exact: true,
+    isPrivate: true,
+    role: traineeRole,
   },
 ];

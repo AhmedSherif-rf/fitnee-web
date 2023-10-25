@@ -30,31 +30,45 @@ const PaymentHistoryWrapper = () => {
       AmountTitle: "Amount Released",
       TransactionTime: "11:40:30",
     },
+    {
+      ArrowIcon: Images.ARROW_UP_IMG,
+      Dr_or_Cr: "-",
+      Currency: "SAR",
+      Amount: "500",
+      AmountTitle: "Amount Released",
+      TransactionTime: "11:40:30",
+    },
+    {
+      ArrowIcon: Images.ARROW_UP_IMG,
+      Dr_or_Cr: "-",
+      Currency: "SAR",
+      Amount: "500",
+      AmountTitle: "Amount Released",
+      TransactionTime: "11:40:30",
+    },
   ];
 
   return (
     <Container fluid className="mt-3">
       <Row className="justify-content-center">
-        <Col md={8}>
-          <Card className="BorderRadius shadow vh-100">
-            <CardHeader className="bgTransparent border-0 p-3">
+        <Col md={12}>
+          <Card className="BorderRadius shadow vh-auto">
+            <CardHeader className="bg-transparent border-0 p-3">
               <h4>Payment History</h4>
             </CardHeader>
             <CardBody>
               <Row>
                 <Col md={12}>
-                  <Card className="BorderRadius shadow">
+                  <Card className="BorderRadius shadow py-3 px-2">
                     <CardBody className="d-flex align-items-center justify-content-center">
-                      <div className=" w-100 text-center">
-                        <h5 className="fw-bold">Available Balance</h5>
+                      <div className="w-100 text-center">
+                        <h3 className="fw-bold">Available Balance</h3>
                       </div>
-                      <div className=" w-100 text-center">
-                        <h5 className="fw-bold textYellow fs-4">
-                          --------------
-                        </h5>
+                      <div className="w-25 text-center">
+                        <hr className="fw-bold textOrange border-2" />
                       </div>
-                      <div className=" w-100 text-center">
-                        <h4 className="fw-bold fs-2 ">SAR 500</h4>
+                      <div className="w-100 text-center">
+                        <h1 className="fw-bold">SAR 500</h1>
                       </div>
                     </CardBody>
                   </Card>
@@ -63,6 +77,19 @@ const PaymentHistoryWrapper = () => {
               <Row className="my-2">
                 <Col md={12}>
                   <h5>Today</h5>
+                  {Transactions.map((item, index) => {
+                    return (
+                      <TransactionDetail
+                        key={index}
+                        ArrowIcon={item.ArrowIcon}
+                        Dr_or_Cr={item.Dr_or_Cr}
+                        Currency={item.Currency}
+                        Amount={item.Amount}
+                        AmountTitle={item.AmountTitle}
+                        TransactionTime={item.TransactionTime}
+                      />
+                    );
+                  })}
                 </Col>
               </Row>
               <Row className="my-2">

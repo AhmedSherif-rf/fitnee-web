@@ -146,7 +146,7 @@ const TrainerAndNutritionistData = [
 
 const ServiceProviderListWrapper = (props) => {
 
-   const { CardLink } = props;
+   const { cardLink } = props;
   const [
     showSubscriptionInformationModal,
     setShowSubscriptionInformationModal,
@@ -227,10 +227,10 @@ const ServiceProviderListWrapper = (props) => {
       if (isDisable) {
         setShowSubscriptionInformationModal(true);
       } else {
-        navigate(CardLink);
+        navigate(cardLink);
       }
     },
-    [navigate, CardLink]
+    [navigate, cardLink]
   );
   
 

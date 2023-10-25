@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[690],{9884:function(e,n,i){i.r(n);i(2791);var s=i(7823),u=i(3009),c=i(9773),f=i(9042),r=i(184);n.default=function(e){return(0,r.jsx)(s.Z,{fluid:!0,children:(0,r.jsx)(u.Z,{children:(0,r.jsx)(c.Z,{md:12,children:(0,r.jsx)(f.Z,{})})})})}}}]);
+//# sourceMappingURL=690.43a09830.chunk.js.map

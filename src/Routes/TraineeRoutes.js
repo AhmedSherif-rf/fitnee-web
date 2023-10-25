@@ -13,12 +13,45 @@ export const traineeRoutes = [
     path: "/trainee/serviceProviderList",
     component: lazy(() => import("../Pages/TraineePages/ServiceProviderList")),
     exact: true,
+    isPrivate: true,
     role: traineeRole,
   },
   {
     path: "/trainee/subscriptionHistory",
     component: lazy(() => import("../Pages/TraineePages/SubscriptionDetail")),
     exact: true,
+    isPrivate: true,
+    role: traineeRole,
+  },
+  {
+    path: "/trainee/myProgress",
+    component: lazy(() => import("../Pages/TraineePages/MyProgress")),
+    exact: true,
+    role: traineeRole,
+  },
+  {
+    path: "/trainee/allServiceProvider",
+    component: lazy(() => import("../Pages/TraineePages/AllServiceProvider")),
+    exact: true,
+    isPrivate: true,
+    role: traineeRole,
+  },
+  {
+    path: "/trainee/serviceProviderProfile",
+    component: lazy(() =>
+      import("../Pages/TraineePages/ServiceProviderProfile")
+    ),
+    exact: true,
+    isPrivate: true,
+    role: traineeRole,
+  },
+  {
+    path: "/trainee/traineeSubscription",
+    component: lazy(() =>
+      import("../Pages/TraineePages/TraineeSubscription")
+    ),
+    exact: true,
+    isPrivate: true,
     role: traineeRole,
   },
 ];

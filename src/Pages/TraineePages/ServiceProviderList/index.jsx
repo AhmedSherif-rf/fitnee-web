@@ -51,7 +51,7 @@ const index = () => {
       endDate: "11/12/2023",
     },
   ];
-  
+
   return (
     <Container fluid className="h-100 p-3">
       <Row className="h-100">

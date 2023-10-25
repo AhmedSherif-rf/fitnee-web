@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import ProgressBar from "../../../Shared/ProfileProgressBar";
@@ -33,6 +33,14 @@ const Dashboard = () => {
     navigate("/trainee/subscriptionHistory");
   }, [navigate]);
 
+  const handleMyProgressClick = useCallback(() => {
+    navigate("/trainee/myProgress");
+  }, [navigate]);
+
+  const handleAllServiceProvidersClick = useCallback(() => {
+    navigate("/trainee/allServiceProvider");
+  }, [navigate]);
+
   return (
     <Container fluid className="pt-2">
       <Row className="py-2">
@@ -57,21 +65,31 @@ const Dashboard = () => {
             <Row className="my-3">
               <Col md={12}>
                 <FillBtn
-                  className="w-100 mb-2 py-3"
+                  className="w-100 mb-2 py-2"
                   text="My Current Trainer"
                   handleOnClick={handleCurrentTrainerClick}
                 />
                 <FillBtn
-                  className="w-100 mb-2 py-3"
+                  className="w-100 mb-2 py-2"
                   text="My Current Nutritionist"
                   handleOnClick={handleCurrentNutritionistClick}
                 />
                 <FillBtn
-                  className="w-100 mb-2 py-3"
+                  className="w-100 mb-2 py-2"
                   text="My Subscription History"
                   handleOnClick={handleSubscriptionHistoryClick}
                 />
-                <FillBtn className="w-100 mb-2 py-3" text="My Progress" />
+                <FillBtn
+                  className="w-100 mb-2 py-2"
+                  text="My Progress"
+                  handleOnClick={handleMyProgressClick}
+                />
+
+                <FillBtn
+                  className="w-100 mb-2 py-2"
+                  text="All Service Providers"
+                  handleOnClick={handleAllServiceProvidersClick}
+                />
               </Col>
             </Row>
           </Card>

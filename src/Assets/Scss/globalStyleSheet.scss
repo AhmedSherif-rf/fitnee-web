@@ -213,6 +213,19 @@ select,
   }
 }
 
+.rmsc {
+  .dropdown-container {
+    padding: 8px 10px !important;
+    border-radius: 15px !important;
+    border: 1px solid $yellow !important;
+    font-size: 14px !important;
+    &:focus-within {
+      border: 1px solid $parrot-green !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
 .currentlyWorkingBtn {
   .selected {
     color: $parrot-green !important;
@@ -227,4 +240,17 @@ select,
 
 .cursorPointer {
   cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $yellow;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: $white;
 }

@@ -10,13 +10,14 @@ const GeneralLayout = (props) => {
         isPublic={props?.isPublic}
         isGuest={props?.isGuest}
         isPrivate={props?.isPrivate}
+        isAuth={props?.isAuth}
       />
       <Container
         fluid
         className={`p-0 ${
           !props?.isPublic
             ? styles.overlapContainer
-            : props?.isGuest
+            : props?.isGuest || props?.isAuth
             ? styles.overlapContainer
             : ""
         }`}

@@ -1,14 +1,14 @@
-import React, { memo } from "react";
+import React from "react";
 import { Col, Container, Row } from "reactstrap";
 import ServiceProviderListWrapper from "../../../Shared/ServiceProviderListWrapper";
 
-const ServiceProvider = (props) => {
+const AllServiceProvider = (props) => {
   return (
     <Container fluid>
       <Row>
         <Col md={12}>
           <ServiceProviderListWrapper
-            CardLink={"/trainee/serviceProviderProfile"}
+            cardLink={"/trainee/serviceProviderProfile"}
           />
         </Col>
       </Row>
@@ -16,4 +16,4 @@ const ServiceProvider = (props) => {
   );
 };
 
-export default memo(ServiceProvider);
+export default AllServiceProvider;

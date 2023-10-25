@@ -1,8 +1,8 @@
 import CommentCard from "../CommentCard";
 import DocumentCard from "../DocumentCard";
-import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import React, { useCallback, memo } from "react";
 import FillBtn from "../../Shared/Buttons/FillBtn";
 import AvailableHourList from "../AvailableHourListing";
 import ProfileInformationCard from "../ProfileInformationCard";
@@ -91,7 +91,8 @@ const personalData = {
   Height: "25",
 };
 
-const ServiceProviderProfile = () => {
+const ServiceProviderProfileWrapper = (props) => {
+  const { subscriptionLink } = props;
   const navigate = useNavigate();
   const { t } = useTranslation("");
   const categories = [
@@ -99,10 +100,9 @@ const ServiceProviderProfile = () => {
     t("guest.powerLiftingText"),
     t("guest.healthyLifeStyleText"),
   ];
-
   const handleSubscribeClick = useCallback(() => {
-    navigate("/guest/serviceProvider/subscription");
-  }, [navigate]);
+    navigate({ subscriptionLink });
+  }, [navigate, subscriptionLink]);
 
   return (
     <Container fluid>
@@ -208,4 +208,4 @@ const ServiceProviderProfile = () => {
   );
 };
 
-export default ServiceProviderProfile;
+export default memo(ServiceProviderProfileWrapper);

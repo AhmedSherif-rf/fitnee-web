@@ -38,7 +38,7 @@ const Dashboard = () => {
   }, [navigate]);
 
   const handleAllServiceProvidersClick = useCallback(() => {
-    navigate("/trainee/allServiceProviders");
+    navigate("/trainee/allServiceProvider");
   }, [navigate]);
 
   return (

@@ -4,7 +4,7 @@ import ServiceProviderProfileWrapper from "../../../Shared/ServiceProviderProfil
 const ServiceProviderProfile = () => {
   return (
     <div className="">
-      <ServiceProviderProfileWrapper />
+      <ServiceProviderProfileWrapper cardLink="/guest/serviceProvider/subscription" />
     </div>
   );
 };

@@ -1,0 +1,199 @@
+import "./CreditCardStyle.scss";
+import { FormGroup } from "reactstrap";
+import React, { useState } from "react";
+import InputField from "../../Shared/InputField";
+import FillBtn from "../../Shared/Buttons/FillBtn";
+import Images from "../../HelperMethods/Constants/ImgConstants";
+import { Card, Col, Container, InputGroup, Row } from "reactstrap";
+import {
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Input,
+  InputGroupText,
+  Label,
+} from "reactstrap";
+
+const CreditCard = () => {
+  const [date, setDate] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [cvcValue, setCvcValue] = useState("");
+  const [state, setState] = useState(true);
+
+  const handleCardNumberChange = (e) => {
+    const inputValue = e.target.value;
+    const numericValue = inputValue.replace(/\D/g, "").slice(0, 16);
+    setCardNumber(numericValue);
+  };
+
+  const handleCvcChange = (e) => {
+    const inputValue = e.target.value;
+    const numericValue = inputValue.replace(/\D/g, "").slice(0, 4);
+    setCvcValue(numericValue);
+  };
+  const handleDateChange = (e) => {
+    const inputDate = e.target.value;
+    let formattedDate = "";
+
+    if (inputDate) {
+      const parts = inputDate.split("-");
+      if (parts.length === 3) {
+        const year = parts[0];
+        const month = parts[1];
+        formattedDate = `${month}/${year}`;
+      }
+    }
+
+    setDate(formattedDate);
+  };
+
+  return (
+    <Container fluid className="h-100">
+      <Row className="h-100 py-3 CardDetails">
+        <Col md={12}>
+          <h4 className="mb-2 fw-bold">Card Details</h4>
+        </Col>
+        <Col md={6}>
+          <div className="w-100">
+            <Label className="small mb-0">Card number</Label>
+            <InputGroup>
+              <InputGroupText
+                className="BorderYellow"
+                style={{
+                  borderTopLeftRadius: "15px",
+                  borderBottomLeftRadius: "15px",
+                }}
+              >
+                <img src={Images.CARD_ICON_IMG} alt="" />
+              </InputGroupText>
+
+              <Input
+                type="text"
+                style={{
+                  backgroundColor: "white",
+                  color: "black",
+                  borderTopRightRadius: "15px",
+                  borderBottomRightRadius: "15px",
+                }}
+                placeholder="0000 0000 0000 0000"
+                className="form-control-lg BorderYellow"
+                value={cardNumber}
+                onChange={handleCardNumberChange}
+                required
+              />
+            </InputGroup>
+
+            <Label className="small mt-2 mb-0">Cardholder Name</Label>
+            <InputField type="text" className="" />
+
+            <div className="d-flex align-items-center justify-content-between mb-2">
+              <div className="w-100 me-3">
+                <Label className="small mt-2 mb-0">Expiry date</Label>
+                <InputField
+                  type="date"
+                  className="fs-6 py-3"
+                  placeholder="MM/YYYY"
+                  value={date}
+                  onChange={handleDateChange}
+                />
+              </div>
+              <div className="w-100">
+                <Label className="small mt-2 mb-0">CVV/CVC </Label>
+                <Input
+                  type="text"
+                  placeholder="0000"
+                  className="form-control-lg BorderRadius"
+                  value={cvcValue}
+                  onChange={handleCvcChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="d-flex align-items-center justify-content-between mb-2">
+              <div className="w-100 me-3">
+                <p className="mb-0">Promo code</p>
+              </div>
+              <div className="d-flex align-items-center justify-content-between w-100">
+                <div className="w-100 me-3">
+                  <Input
+                    type="text"
+                    placeholder="0000"
+                    className="form-control-lg BorderRadius"
+                    value={cvcValue}
+                    onChange={handleCvcChange}
+                    required
+                  />
+                </div>
+                <div className="w-100">
+                  <FillBtn text="Apply" className="w-100" />
+                </div>
+              </div>
+            </div>
+
+            <div className="CreditCard d-flex align-items-center justify-content-between mb-2">
+              <div className="">
+                <p className="mb-0">Use Fitnee wallet</p>
+              </div>
+              <div className="w-50 d-flex justify-content-end ">
+                <FormGroup switch>
+                  <Input
+                    className="form-control"
+                    type="switch"
+                    checked={state}
+                    onClick={() => {
+                      setState(!state);
+                    }}
+                  />
+                </FormGroup>
+              </div>
+            </div>
+            <div className="w-100">
+              <FillBtn text="Pay" className="w-100" />
+            </div>
+          </div>
+        </Col>
+        <Col md={6}>
+          <Card className="BorderRadius my-2">
+            <CardHeader>
+              <h5 className="mb-0">Payment Summary</h5>
+            </CardHeader>
+            <CardBody>
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="">
+                  <h6>Discount %</h6>
+                </div>
+                <div className="">
+                  <h6>SAR 0</h6>
+                </div>
+              </div>
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="">
+                  <h6>Fitnee Wallet</h6>
+                </div>
+                <div className="">
+                  <h6>SAR 500</h6>
+                </div>
+              </div>
+            </CardBody>
+            <CardFooter className="BBorderRadius">
+              <div className="d-flex align-items-center justify-content-between">
+                <div>
+                  <h6 className="mb-0">Total Pay</h6>
+                </div>
+                <div>
+                  <h6 className="mb-0">SAR 500</h6>
+                </div>
+              </div>
+            </CardFooter>
+          </Card>
+          <div className="text-center mt-4">
+            <img className="w-75" src={Images.CreditCard_Img} alt="" />
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default CreditCard;

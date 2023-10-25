@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+import React from "react";
 import ServiceProviderProfileWrapper from "../../../Shared/ServiceProviderProfileWrapper";
 
-const Profile = () => {
+const ServiceProviderProfile = () => {
   return (
     <div className="">
       <ServiceProviderProfileWrapper />
@@ -9,4 +9,4 @@ const Profile = () => {
   );
 };
 
-export default memo(Profile);
+export default ServiceProviderProfile;

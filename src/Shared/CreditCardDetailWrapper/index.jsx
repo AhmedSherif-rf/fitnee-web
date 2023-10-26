@@ -1,8 +1,8 @@
 import "./CreditCardStyle.scss";
 import { FormGroup } from "reactstrap";
-import React, { useState } from "react";
-import InputField from "../../Shared/InputField";
-import FillBtn from "../../Shared/Buttons/FillBtn";
+import InputField from "../InputField";
+import FillBtn from "../Buttons/FillBtn";
+import React, { useState, memo } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { Card, Col, Container, InputGroup, Row } from "reactstrap";
 import {
@@ -14,7 +14,7 @@ import {
   Label,
 } from "reactstrap";
 
-const CreditCard = () => {
+const CreditCardDetailWrapper = () => {
   const [date, setDate] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvcValue, setCvcValue] = useState("");
@@ -196,4 +196,4 @@ const CreditCard = () => {
   );
 };
 
-export default CreditCard;
+export default memo(CreditCardDetailWrapper);

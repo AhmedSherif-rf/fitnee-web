@@ -1,0 +1,7 @@
+@import "../../../Assets//Scss//globalStyleSheet.scss";
+.QRcodeDiv {
+  border: $yellow solid 2px;
+  border-bottom-left-radius: 80%;
+  border-bottom-right-radius: 80%;
+  border-top: none;
+}

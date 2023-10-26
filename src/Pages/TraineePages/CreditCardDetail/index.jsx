@@ -1,17 +1,17 @@
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
-import CreditCardDetails from "../../../Shared/CreditCardDetails";
+import CreditCardDetailWrapper from "../../../Shared/CreditCardDetailWrapper";
 
-const CreditCard = () => {
+const CreditCardDetail = () => {
   return (
     <Container fluid>
       <Row>
         <Col md={12}>
-          <CreditCardDetails />
+          <CreditCardDetailWrapper />
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default CreditCard;
+export default CreditCardDetail;

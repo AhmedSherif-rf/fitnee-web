@@ -232,7 +232,6 @@ const ServiceProviderListWrapper = (props) => {
     },
     [navigate, cardLink]
   );
-  
 
   const handleSeeMoreClick = useCallback(() => {
     setShowSubscriptionInformationModal(true);

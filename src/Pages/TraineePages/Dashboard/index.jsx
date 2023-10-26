@@ -37,7 +37,7 @@ const Dashboard = () => {
     navigate("/trainee/myProgress");
   }, [navigate]);
 
-  const handleAllServiceProvidersClick = useCallback(() => {
+  const handleAllServiceProviderClick = useCallback(() => {
     navigate("/trainee/allServiceProvider");
   }, [navigate]);
 
@@ -88,7 +88,7 @@ const Dashboard = () => {
                 <FillBtn
                   className="w-100 mb-2 py-2"
                   text="All Service Providers"
-                  handleOnClick={handleAllServiceProvidersClick}
+                  handleOnClick={handleAllServiceProviderClick}
                 />
               </Col>
             </Row>

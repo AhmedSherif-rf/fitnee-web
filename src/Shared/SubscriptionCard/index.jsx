@@ -2,15 +2,21 @@ import { CardHeader } from "reactstrap";
 import FillBtn from "../Buttons/FillBtn";
 import { useNavigate } from "react-router-dom";
 import React, { memo, useCallback } from "react";
+import { useSelector } from "react-redux";
 import { Card, CardBody, CardFooter } from "reactstrap";
 
 const SubscriptionCard = (props) => {
+  const { isGuest } = useSelector((state) => state.user);
   const { headerText, price, ImgSrc } = props;
   const navigate = useNavigate();
 
   const handleSubscribeClick = useCallback(() => {
-    navigate("/registerAs");
-  }, [navigate]);
+    if (!isGuest) {
+      navigate("/trainee/subscriptions/creditCardDetail");
+    } else {
+      navigate("/registerAs");
+    }
+  }, [isGuest, navigate]);
 
   return (
     <Card className="text-center BorderRadius BorderYellow shadow p-0 h-100">

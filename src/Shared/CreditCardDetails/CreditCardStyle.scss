@@ -1,0 +1,30 @@
+@import "../../Assets/Scss//globalStyleSheet.scss";
+.CreditCard {
+  .form-switch {
+    .form-check-input {
+      background-image: url("../../Assets/Images/ConstImgs/yellowCircle.png");
+      cursor: pointer;
+      &:checked {
+        background-image: url("../../Assets/Images/ConstImgs/greenCircle.png");
+        background-color: $yellow-blur !important;
+        border-color: $parrot-green !important;
+      }
+      &:before {
+        content: "";
+      }
+    }
+  }
+}
+
+.CardDetails {
+  .card {
+    .card-header {
+      border-top-right-radius: 15px;
+      border-top-left-radius: 15px;
+    }
+    .card-footer {
+      border-bottom-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+  }
+}

@@ -51,7 +51,7 @@ const CreditCard = () => {
     <Container fluid className="h-100">
       <Row className="h-100 py-3 CardDetails">
         <Col md={12}>
-          <h4 className="mb-2 fw-bold">Card Details</h4>
+          <h4 className="mb-2 fw-bold">Card Detail</h4>
         </Col>
         <Col md={6}>
           <div className="w-100">

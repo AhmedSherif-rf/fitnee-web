@@ -95,13 +95,14 @@ const ServiceProviderProfileWrapper = (props) => {
   const { subscriptionLink } = props;
   const navigate = useNavigate();
   const { t } = useTranslation("");
+
   const categories = [
     t("guest.bodyBuildingText"),
     t("guest.powerLiftingText"),
     t("guest.healthyLifeStyleText"),
   ];
   const handleSubscribeClick = useCallback(() => {
-    navigate({ subscriptionLink });
+    navigate(subscriptionLink);
   }, [navigate, subscriptionLink]);
 
   return (

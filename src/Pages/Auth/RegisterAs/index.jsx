@@ -21,6 +21,10 @@ const RegisterAs = (props) => {
     navigate("/serviceProvider/dashboard");
   }, [navigate]);
 
+  const handleAsNutritionistClick = useCallback(() => {
+    navigate("/serviceProvider/dashboard");
+  }, [navigate]);
+
   return (
     <Container fluid className={`vh-100 ${styles.registerAsContainer}`}>
       <Row
@@ -47,6 +51,7 @@ const RegisterAs = (props) => {
             <FillBtn
               className="w-100 mb-3 py-2"
               text={t("registerAs.nutritionistText")}
+              handleOnClick={handleAsNutritionistClick}
             />
             <FillBtn
               className="w-100 mb-3 py-2"

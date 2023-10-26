@@ -101,13 +101,13 @@ const ServiceProviderProfileWrapper = (props) => {
     t("guest.healthyLifeStyleText"),
   ];
   const handleSubscribeClick = useCallback(() => {
-    navigate({ subscriptionLink });
-  }, [navigate, subscriptionLink]);
+    navigate(subscriptionLink);
+  }, [navigate,subscriptionLink]);
 
   return (
     <Container fluid>
       <Row className="py-2">
-        <Col lg={3} md={4} className="bg-F6F6F6">
+        <Col lg={3} md={4}>
           <div className="mb-2">
             <ProfileInformationCard
               infoLogo={personalData.infoLogo}

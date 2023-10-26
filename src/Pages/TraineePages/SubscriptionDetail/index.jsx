@@ -5,7 +5,7 @@ import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ServiceProvider from "../../../Shared/ServiceProviderListRow";
 
-const index = () => {
+const SubscriptionDetail = () => {
   const ServiceProviders = [
     {
       useImages: `${Images.PROFILE_IMG}`,
@@ -74,4 +74,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default SubscriptionDetail;

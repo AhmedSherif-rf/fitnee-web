@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { Col, Container, Row } from "reactstrap";
 import SubscriptionCard from "../../../Shared/SubscriptionCard";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
@@ -21,7 +21,7 @@ const subscriptionData = [
   },
 ];
 
-const TraineeSubscription = () => {
+const Subscription = () => {
   return (
     <Container fluid className="py-md-5 py-2">
       <Row className="justify-content-center align-items-center mt-3">
@@ -52,4 +52,4 @@ const TraineeSubscription = () => {
   );
 };
 
-export default memo(TraineeSubscription);
+export default Subscription;

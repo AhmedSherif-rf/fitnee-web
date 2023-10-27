@@ -2,7 +2,7 @@ import "./CreditCardStyle.scss";
 import { FormGroup } from "reactstrap";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
-import React, { useState, memo } from "react";
+import React, { useState, memo, useCallback } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { Card, Col, Container, InputGroup, Row } from "reactstrap";
 import {
@@ -13,12 +13,17 @@ import {
   InputGroupText,
   Label,
 } from "reactstrap";
+import {useNavigate } from "react-router-dom";
 
 const CreditCardDetailWrapper = () => {
   const [date, setDate] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvcValue, setCvcValue] = useState("");
   const [state, setState] = useState(true);
+  const navigate = useNavigate();
+  const handlePayClick = useCallback(() => {
+    navigate("/trainee/subscriptions/appDownloadLink");
+  }, [navigate]);
 
   const handleCardNumberChange = (e) => {
     const inputValue = e.target.value;
@@ -46,6 +51,7 @@ const CreditCardDetailWrapper = () => {
 
     setDate(formattedDate);
   };
+
 
   return (
     <Container fluid className="h-100">
@@ -149,7 +155,9 @@ const CreditCardDetailWrapper = () => {
               </div>
             </div>
             <div className="w-100">
-              <FillBtn text="Pay" className="w-100" />
+              <FillBtn text="Pay" className="w-100"
+               handleOnClick={handlePayClick}
+              />
             </div>
           </div>
         </Col>
@@ -188,7 +196,7 @@ const CreditCardDetailWrapper = () => {
             </CardFooter>
           </Card>
           <div className="text-center mt-4">
-            <img className="w-75" src={Images.CreditCard_Img} alt="" />
+            <img className="w-75" src={Images.CREDIT_CARD_IMG} alt="" />
           </div>
         </Col>
       </Row>

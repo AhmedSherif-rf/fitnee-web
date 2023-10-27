@@ -242,12 +242,12 @@ select,
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $yellow;
-  border-radius: 6px;
+  background: $blur-color;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track:hover {

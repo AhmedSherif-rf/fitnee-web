@@ -37,10 +37,10 @@ const HomeBanner = () => {
             animate="visible"
             variants={fadeInVariants}
             transition={{ type: "spring", stiffness: 100, duration: 2.5 }}
-            className="mt-5 mb-3 pt-5 ms-3"
+            className={`mt-5 mb-3 pt-5 ms-3 ${styles.bannerTextWrapper}`}
           >
             {bannerText.map((item, index) => (
-              <p key={index} className="h1 text-white">
+              <p key={index} className="text-white">
                 {item.text}
               </p>
             ))}

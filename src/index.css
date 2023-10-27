@@ -28,6 +28,7 @@
 
 .nav-link {
   display: flex !important;
+  cursor: pointer;
 }
 
 .navbar-toggler:focus {

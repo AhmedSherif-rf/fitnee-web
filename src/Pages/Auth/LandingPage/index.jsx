@@ -62,7 +62,7 @@ const LandingPage = (props) => {
         image: Images.FEATURE_THREE,
       },
     ];
-  }, [t]);
+  }, []);
 
   const HeroData = [
     {

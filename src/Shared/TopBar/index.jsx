@@ -27,6 +27,7 @@ import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { RiDashboardFill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
+import InformationModal from "../Modal/InformationModal";
 import Logo from "../../Assets/Images/homeScreen/Logo.svg";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
@@ -83,6 +84,10 @@ const TopBar = (props) => {
   const [showTopBar, setShowTopBar] = useState(true);
   const [isSliding, setIsSliding] = useState(false);
   const [showNavItems, setShowNavItems] = useState(true);
+  const [
+    showSubscriptionInformationModal,
+    setShowSubscriptionInformationModal,
+  ] = useState(false);
 
   const [backgroundClass, setBackgroundClass] = useState(
     props.isPublic
@@ -94,7 +99,7 @@ const TopBar = (props) => {
 
   const listenScrollEvent = () => {
     if (!props?.isGuest && props?.isPublic) {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 180) {
         setBackgroundClass("bg-dark");
       } else {
         setBackgroundClass("bg-transparent");
@@ -119,6 +124,18 @@ const TopBar = (props) => {
   const handleSignInClick = useCallback(() => {
     navigate("/signIn");
   }, [navigate]);
+
+  const handleSubscriptionInformationModalClose = useCallback(() => {
+    setShowSubscriptionInformationModal(false);
+  }, []);
+
+  const handleSubscriptionClick = useCallback(() => {
+    navigate("/registerAs");
+  }, [navigate]);
+
+  const handleFitneeCommunityClick = useCallback(() => {
+    setShowSubscriptionInformationModal(true);
+  }, []);
 
   return (
     <>
@@ -155,12 +172,12 @@ const TopBar = (props) => {
                     </Link>
                   </NavItem>
                   <NavItem>
-                    <NavLink
-                      className={`${styles.navLink}`}
-                      href="/components/"
+                    <div
+                      onClick={handleFitneeCommunityClick}
+                      className={`nav-link ${styles.navLink}`}
                     >
                       {t("landing.fitneeCommunityText")}
-                    </NavLink>
+                    </div>
                   </NavItem>
                   <NavItem>
                     <Link
@@ -405,6 +422,29 @@ const TopBar = (props) => {
           ></div>
         </div>
       )}
+
+      <InformationModal
+        size={"md"}
+        TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+        className={"p-4"}
+        isOpen={showSubscriptionInformationModal}
+        onClose={handleSubscriptionInformationModalClose}
+        ModalTextOne="Subscribe and then download the app so you can access FitNee Community"
+        ButtonOne={
+          <FillBtn
+            text={t("guest.subscribeText")}
+            className="py-2 px-5"
+            handleOnClick={handleSubscriptionClick}
+          />
+        }
+        ButtonTwo={
+          <OutlineBtn
+            text={t("guest.notNowText")}
+            className="py-2 px-5"
+            handleOnClick={handleSubscriptionInformationModalClose}
+          />
+        }
+      />
     </>
   );
 };

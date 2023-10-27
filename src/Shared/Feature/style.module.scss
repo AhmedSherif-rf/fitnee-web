@@ -16,12 +16,13 @@
   }
   .featureTextSlider {
     width: 45vw;
-    padding: 15px;
+    padding: 40px;
     align-items: center;
   }
   .featureSectionRightContent {
     .cardSwiper {
       width: 100%;
+      
       .cardSwiperSlider {
         @include bgProperties;
         background-size: contain !important;

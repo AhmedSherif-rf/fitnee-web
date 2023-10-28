@@ -13,7 +13,7 @@ import {
   InputGroupText,
   Label,
 } from "reactstrap";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CreditCardDetailWrapper = () => {
   const [date, setDate] = useState("");
@@ -21,8 +21,9 @@ const CreditCardDetailWrapper = () => {
   const [cvcValue, setCvcValue] = useState("");
   const [state, setState] = useState(true);
   const navigate = useNavigate();
+
   const handlePayClick = useCallback(() => {
-    navigate("/trainee/subscriptions/appDownloadLink");
+    navigate("/trainee/appDownloadLink");
   }, [navigate]);
 
   const handleCardNumberChange = (e) => {
@@ -51,7 +52,6 @@ const CreditCardDetailWrapper = () => {
 
     setDate(formattedDate);
   };
-
 
   return (
     <Container fluid className="h-100">
@@ -155,8 +155,10 @@ const CreditCardDetailWrapper = () => {
               </div>
             </div>
             <div className="w-100">
-              <FillBtn text="Pay" className="w-100"
-               handleOnClick={handlePayClick}
+              <FillBtn
+                text="Pay"
+                className="w-100"
+                handleOnClick={handlePayClick}
               />
             </div>
           </div>

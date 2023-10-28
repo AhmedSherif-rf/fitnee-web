@@ -38,8 +38,8 @@ const RegisterAs = (props) => {
           backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%), url(${Images.REGISTER_AS_BG})`,
         }}
       >
-        <Col md={4} className={`${styles.registerAsContent}`}>
-          <h2 className=" mb-5 text-center text-white">
+        <Col md={4} className={`${styles.registerAsContent} px-2`}>
+          <h2 className=" mb-5 text-center text-white fw-bold">
             {t("registerAs.registerAsText")}
           </h2>
           <div className="">

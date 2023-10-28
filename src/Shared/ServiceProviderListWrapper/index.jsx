@@ -355,14 +355,14 @@ const ServiceProviderListWrapper = (props) => {
             ButtonOne={
               <FillBtn
                 text={t("guest.registerText")}
-                className="py-2 p-3"
+                className="py-2 px-5"
                 handleOnClick={handleRegisterClick}
               />
             }
             ButtonTwo={
               <OutlineBtn
                 text={t("guest.notNowText")}
-                className="py-2 p-3"
+                className="py-2 px-5"
                 handleOnClick={handleNotNowClick}
               />
             }

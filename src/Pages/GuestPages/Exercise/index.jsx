@@ -90,14 +90,14 @@ const Exercise = (props) => {
         ButtonOne={
           <FillBtn
             text={"Subscribe"}
-            className="py-2 p-3"
+            className="py-2 px-5"
             handleOnClick={handleRegisterClick}
           />
         }
         ButtonTwo={
           <OutlineBtn
             text={"Not now"}
-            className="py-2 p-3"
+            className="py-2 px-5"
             handleOnClick={handleNotNowClick}
           />
         }

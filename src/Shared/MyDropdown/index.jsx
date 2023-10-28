@@ -13,6 +13,9 @@ const MyDropdown = (props) => {
         onChange={onChangeHandle}
         onBlur={onBlurHandle}
       >
+        <option value="" className="customDropDownOption">
+          Select
+        </option>
         {Options &&
           Options?.map((item, index) => (
             <option key={index} value={item} className="customDropDownOption">

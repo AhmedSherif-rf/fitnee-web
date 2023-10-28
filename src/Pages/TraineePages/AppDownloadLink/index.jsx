@@ -1,5 +1,5 @@
+import React from "react";
 import "./DownloadLinkStyle.scss";
-import React, { memo } from "react";
 import { Col, Container, Row } from "reactstrap";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
@@ -47,4 +47,4 @@ const AppDownloadLink = () => {
   );
 };
 
-export default memo(AppDownloadLink);
+export default AppDownloadLink;

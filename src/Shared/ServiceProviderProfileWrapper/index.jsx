@@ -95,6 +95,7 @@ const ServiceProviderProfileWrapper = (props) => {
   const { subscriptionLink } = props;
   const navigate = useNavigate();
   const { t } = useTranslation("");
+
   const categories = [
     t("guest.bodyBuildingText"),
     t("guest.powerLiftingText"),
@@ -102,7 +103,7 @@ const ServiceProviderProfileWrapper = (props) => {
   ];
   const handleSubscribeClick = useCallback(() => {
     navigate(subscriptionLink);
-  }, [navigate,subscriptionLink]);
+  }, [navigate, subscriptionLink]);
 
   return (
     <Container fluid>

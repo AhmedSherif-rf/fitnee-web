@@ -34,11 +34,11 @@ const SignUpForm = () => {
         validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
-          setTimeout(() => {
-            alert(JSON.stringify(values));
+          // setTimeout(() => {
+            // alert(JSON.stringify(values));
             setSubmitting(false);
             navigate("/verifyOtp");
-          }, 400);
+          // }, 400);
         }}
       >
         {({
@@ -176,7 +176,6 @@ const SignUpForm = () => {
                   inputProps={{
                     name: "phoneNumber",
                     required: true,
-                    autoFocus: true,
                     className:
                       "form-control-lg w-100 BorderYellow py-3 px-4 customPhoneInput",
                   }}
@@ -521,7 +520,6 @@ const SignUpForm = () => {
                   inputProps={{
                     name: "stcPhoneNumber",
                     required: true,
-                    autoFocus: true,
                     className:
                       "form-control-lg w-100 BorderYellow py-3 px-4 customPhoneInput",
                   }}
@@ -540,7 +538,7 @@ const SignUpForm = () => {
             <Row>
               <Col lg={12} md={12}>
                 <h6 className="mb-2 fw-bold">
-                  You are available to respond on your trainee
+                  You are available to respond on your trainee *
                 </h6>
                 <FieldArray
                   name="daySchedules"
@@ -629,9 +627,6 @@ const SignUpForm = () => {
             <Row className="mb-3">
               <h6 className="mb-2 fw-bold">Are you currently working? *</h6>
               <Col md={6} className="mb-2">
-                <div className="text-end" style={{ marginBottom: "-15px" }}>
-                  *
-                </div>
                 <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
                   <div
                     className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadius ${

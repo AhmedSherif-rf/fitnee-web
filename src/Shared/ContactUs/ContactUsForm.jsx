@@ -63,7 +63,7 @@ const ContactUsForm = () => {
               </Col>
               <Col md={12}>
                 <InputField
-                  className="mb-3 py-3 px-5"
+                  className="mb-3"
                   type="textarea"
                   placeholder="Describe your issue"
                   name="text"

@@ -23,7 +23,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY ./build /usr/share/nginx/html
 
 # Expose port 80 to outside the container
-EXPOSE 3001
+EXPOSE 80
 
 # Command to start Nginx and serve the application
 CMD ["nginx", "-g", "daemon off;"]

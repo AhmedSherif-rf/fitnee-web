@@ -9,14 +9,14 @@
 
   .navLink {
     opacity: 1;
-    color: $text-muted;
+    color: $white;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 
     &:hover {
-      color: $yellow;
+      color: $yellow !important;
       opacity: 1;
       font-weight: 400;
     }

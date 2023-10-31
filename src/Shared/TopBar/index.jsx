@@ -97,6 +97,14 @@ const TopBar = (props) => {
       : "bg-white-custom"
   );
 
+  const [textClass, setTextClass] = useState(
+    props.isPublic
+      ? props?.isGuest
+        ? "text-black-custom"
+        : "text-white"
+      : "text-black-custom"
+  );
+
   const listenScrollEvent = () => {
     if (!props?.isGuest && props?.isPublic) {
       if (window.scrollY > 180) {
@@ -159,13 +167,13 @@ const TopBar = (props) => {
                 </NavbarToggler>
                 <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
                   <NavItem className={`${styles.navItem}`}>
-                    <Link className={`nav-link ${styles.navLink}`} to="/">
+                    <Link className={`nav-link ${styles.navLink} ${textClass}`} to="/">
                       {t("landing.homeText")}
                     </Link>
                   </NavItem>
                   <NavItem>
                     <Link
-                      className={`nav-link ${styles.navLink}`}
+                      className={`nav-link ${styles.navLink} ${textClass}`}
                       to="/guest/services"
                     >
                       {t("landing.servicesText")}
@@ -174,14 +182,14 @@ const TopBar = (props) => {
                   <NavItem>
                     <div
                       onClick={handleFitneeCommunityClick}
-                      className={`nav-link ${styles.navLink}`}
+                      className={`nav-link ${styles.navLink} ${textClass}`}
                     >
                       {t("landing.fitneeCommunityText")}
                     </div>
                   </NavItem>
                   <NavItem>
                     <Link
-                      className={`nav-link ${styles.navLink}`}
+                      className={`nav-link ${styles.navLink} ${textClass}`}
                       to="/contactUs"
                     >
                       {t("landing.contactUsText")}
@@ -228,12 +236,12 @@ const TopBar = (props) => {
                       </DropdownMenu>
                     </UncontrolledDropdown>
                     <FillBtn
-                      className="px-3"
+                      className="px-3 shadow-none"
                       text={t("landing.signUpText")}
                       handleOnClick={handleSignUpClick}
                     />
                     <OutlineBtn
-                      className="px-3"
+                      className="px-3 shadow-none"
                       text={t("landing.signInText")}
                       handleOnClick={handleSignInClick}
                     />

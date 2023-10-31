@@ -169,14 +169,20 @@ const Services = (props) => {
                         muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
                       }`}
                       onClick={() => {
-                        if (muscle.fill === "#F5E74C") {
+                        if (muscle.id === "femaleAbdominal") {
                           navigate("/guest/exercises");
                         } else {
                           setShowSubscriptionInformatoinModal(true);
                         }
                       }}
+                      onMouseEnter={handleMouseEnter}
+                      id={muscle?.id}
                       d={muscle.d}
-                      fill={muscle.fill}
+                      fill={
+                        currentActivePart === muscle?.id
+                          ? "#F5E74C"
+                          : muscle.fill
+                      }
                     />
                   );
                 })}
@@ -198,14 +204,20 @@ const Services = (props) => {
                         muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
                       }`}
                       onClick={() => {
-                        if (muscle.fill === "#F5E74C") {
+                        if (muscle.id === "femaleBackThigh") {
                           navigate("/guest/exercises");
                         } else {
                           setShowSubscriptionInformatoinModal(true);
                         }
                       }}
+                      onMouseEnter={handleMouseEnter}
+                      id={muscle?.id}
                       d={muscle.d}
-                      fill={muscle.fill}
+                      fill={
+                        currentActivePart === muscle?.id
+                          ? "#F5E74C"
+                          : muscle.fill
+                      }
                     />
                   );
                 })}

@@ -48,7 +48,7 @@ const SignInForm = () => {
             </div>
             <FillBtn className="w-100 py-3 mb-3" text={"Sign In"} />
             <OutlineBtn
-              className="w-100 py-3 text-dark"
+              className="w-100 py-3"
               text={"Cancel"}
               handleOnClick={handleCancelClick}
             />

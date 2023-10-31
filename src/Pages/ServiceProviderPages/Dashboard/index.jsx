@@ -125,7 +125,7 @@ const Dashboard = () => {
           </div>
         </Col>
         <Col lg={9} md={8}>
-          <Card className="BorderRadius border-0 shadow">
+          <Card className="BorderRadius border-0">
             <CardBody>
               <h5 className="fw-bold my-2">Bio</h5>
               <p className="small">

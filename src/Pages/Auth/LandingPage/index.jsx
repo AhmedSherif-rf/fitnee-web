@@ -1,12 +1,16 @@
 import React from "react";
 import { useCallback } from "react";
-import { Container } from "reactstrap";
 import Hero from "../../../Shared/Hero";
+import styles from "./style.module.scss";
 import Footer from "../../../Shared/Footer";
 import Feature from "../../../Shared/Feature";
 import { useTranslation } from "react-i18next";
+import { FaNutritionix } from "react-icons/fa";
 import HomeBanner from "../../../Shared/Banner";
+import { Col, Container, Row } from "reactstrap";
+import CounterUp from "../../../Shared/CounterUp/";
 import CardSwiper from "../../../Shared/CardSwiper";
+import { GiWeightLiftingUp, GiBodyBalance } from "react-icons/gi";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const LandingPage = (props) => {
@@ -14,7 +18,6 @@ const LandingPage = (props) => {
 
   const WhatIsFtineeData = [
     {
-      OverlayText: "What Is Fitnee",
       heading: (
         <h2 className={`fw-bold text-white fs-1`}>
           {t("landing.whatIsText")}{" "}
@@ -67,7 +70,6 @@ const LandingPage = (props) => {
 
   const HeroData = [
     {
-      OverlayText: "Our Goal",
       heading: (
         <h2 className="fw-bold text-white fs-1">
           {t("landing.ourText")}{" "}
@@ -92,7 +94,6 @@ const LandingPage = (props) => {
       ),
     },
     {
-      OverlayText: "Our Vision",
       heading: (
         <h2 className="fw-bold text-white fs-1">
           {" "}
@@ -215,13 +216,61 @@ const LandingPage = (props) => {
   }, []);
 
   return (
-    <React.Fragment>
+    <div className="bg-black">
       <HomeBanner />
-      <Container fluid>
+      <Container className="mb-3" fluid>
+        <Row className={`${styles.bannerImg}`}>
+          <Col md={4}>
+            <div
+              className="d-flex align-items-center justify-content-center w-100 h-100"
+              style={{ bottom: 0, right: 0 }}
+            >
+              <div className="text-center">
+                <GiWeightLiftingUp className="text-white display-2" />
+                <br />
+                <CounterUp start={0} end={500} duration={5} />
+                <p className="text-white fw-bold">
+                  {t("landing.trainersText")}
+                </p>
+              </div>
+            </div>
+          </Col>
+          <Col md={4}>
+            <div
+              className="d-flex align-items-center justify-content-center w-100 h-100"
+              style={{ bottom: 0, right: 0 }}
+            >
+              <div className="text-center">
+                <GiBodyBalance className="text-white display-2" />
+                <br />
+                <CounterUp start={0} end={1000} duration={7} />
+                <p className="text-white fw-bold">
+                  {t("landing.traineesText")}
+                </p>
+              </div>
+            </div>
+          </Col>
+          <Col md={4}>
+            <div
+              className="d-flex align-items-center justify-content-center w-100 h-100"
+              style={{ bottom: 0, right: 0 }}
+            >
+              <div className="text-center">
+                <FaNutritionix className="text-white display-2" />
+                <br />
+                <CounterUp start={0} end={2000} duration={9} />
+                <p className="text-white fw-bold">
+                  {t("landing.nutritionistsText")}
+                </p>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <Container fluid className="mb-3">
         {WhatIsFtineeData?.map((item, index) => (
           <Hero
             key={item.heading + "_" + index}
-            OverlayText={item.OverlayText}
             heading={item.heading}
             text={item.text}
             image={item.image}
@@ -229,21 +278,16 @@ const LandingPage = (props) => {
             textBackgroundImage={item.textBackgroundImage}
           />
         ))}
-      </Container>
 
-      <Container fluid>
         <Feature
           textData={FeaturesTextData()}
           imageData={FeaturesImageData()}
           type={"textRight"}
         />
-      </Container>
 
-      <Container fluid>
         {HeroData?.map((item, index) => (
           <Hero
             key={item.heading + "_" + index}
-            OverlayText={item.OverlayText}
             heading={item.heading}
             text={item.text}
             image={item.image}
@@ -258,7 +302,7 @@ const LandingPage = (props) => {
       </h2>
       <CardSwiper data={SwiperCardsData()} />
       <Footer />
-    </React.Fragment>
+    </div>
   );
 };
 

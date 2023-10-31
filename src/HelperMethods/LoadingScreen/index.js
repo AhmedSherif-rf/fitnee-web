@@ -1,13 +1,13 @@
 import React from "react";
-import { Spinner } from 'reactstrap';
+import { Spinner } from "reactstrap";
 import styles from "./style.module.scss";
 
 const LoadingScreen = () => {
   return (
     <>
-        <div className={styles.wrapper}>
-            <Spinner className={styles.spinner} color={'warning'} type="grow" />
-        </div>
+      <div className={styles.wrapper}>
+        <Spinner className={styles.spinner} color={"warning"} type="grow" />
+      </div>
     </>
   );
 };

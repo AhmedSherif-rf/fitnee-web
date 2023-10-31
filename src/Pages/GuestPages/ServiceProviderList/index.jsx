@@ -7,7 +7,7 @@ const ServiceProviderList = (props) => {
     <Container fluid>
       <Row>
         <Col md={12}>
-          <ServiceProviderListWrapper cardLink={"/guest/serviceProviderList"} />
+          <ServiceProviderListWrapper cardLink={"/guest/serviceProviderProfile"} />
         </Col>
       </Row>
     </Container>

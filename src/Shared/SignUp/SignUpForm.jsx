@@ -14,7 +14,14 @@ import { ConnectedFocusError } from "focus-formik-error";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
 import { Formik, Field, FieldArray, ErrorMessage } from "formik";
-import { Container, Row, Col, InputGroup, InputGroupText } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  InputGroup,
+  InputGroupText,
+  Input,
+} from "reactstrap";
 import {
   trainingGoalOptions,
   activityLevelOptions,
@@ -34,11 +41,11 @@ const SignUpForm = () => {
         validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
-          setTimeout(() => {
-            alert(JSON.stringify(values));
+          // setTimeout(() => {
+            // alert(JSON.stringify(values));
             setSubmitting(false);
             navigate("/verifyOtp");
-          }, 400);
+          // }, 400);
         }}
       >
         {({
@@ -65,13 +72,17 @@ const SignUpForm = () => {
                       width: "160px",
                     }}
                   >
-                    <span className="CameraImg d-flex justify-content-center align-items-center bgProperties">
+                    <input type="file" hidden id="ImgFile"></input>
+                    <label
+                      htmlFor="ImgFile"
+                      className="CameraImg d-flex justify-content-center align-items-center bgProperties cursorPointer"
+                    >
                       <img
                         src={Images.CAMERA_IMG}
                         className="img-fluid"
                         alt=""
                       />
-                    </span>
+                    </label>
                   </div>
                 </div>
               </Col>
@@ -176,7 +187,6 @@ const SignUpForm = () => {
                   inputProps={{
                     name: "phoneNumber",
                     required: true,
-                    autoFocus: true,
                     className:
                       "form-control-lg w-100 BorderYellow py-3 px-4 customPhoneInput",
                   }}
@@ -234,9 +244,12 @@ const SignUpForm = () => {
                       >
                         <FaBirthdayCake />
                       </InputGroupText>
-                      <InputField
+                      <Input
                         type="date"
                         style={{
+                          fontSize: "14px",
+                          paddingTop: "16px",
+                          paddingBottom: "16px",
                           backgroundColor: "white",
                           color: "black",
                           borderTopRightRadius: "15px",
@@ -244,7 +257,7 @@ const SignUpForm = () => {
                         }}
                         name="dob"
                         placeholder="Date of Birthday"
-                        className="form-control-lg py-3 px-4"
+                        className="form-control-lg BorderYellow px-4"
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
                         value={values.dob}
@@ -521,7 +534,6 @@ const SignUpForm = () => {
                   inputProps={{
                     name: "stcPhoneNumber",
                     required: true,
-                    autoFocus: true,
                     className:
                       "form-control-lg w-100 BorderYellow py-3 px-4 customPhoneInput",
                   }}
@@ -540,7 +552,7 @@ const SignUpForm = () => {
             <Row>
               <Col lg={12} md={12}>
                 <h6 className="mb-2 fw-bold">
-                  You are available to respond on your trainee
+                  You are available to respond on your trainee *
                 </h6>
                 <FieldArray
                   name="daySchedules"
@@ -549,7 +561,7 @@ const SignUpForm = () => {
                     <>
                       {values.daySchedules.map((daySchedule, index) => (
                         <Row key={index} className="mb-1">
-                          <Col lg={6} md={6}>
+                          <Col lg={5} md={5}>
                             <Field
                               as="select"
                               name={`daySchedules.${index}.day`}
@@ -575,7 +587,7 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={2}>
+                          <Col md={3}>
                             <Field
                               name={`daySchedules.${index}.fromTime`}
                               type="time"
@@ -587,7 +599,7 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={2}>
+                          <Col md={3}>
                             <Field
                               name={`daySchedules.${index}.toTime`}
                               type="time"
@@ -599,17 +611,19 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col>
-                            <FaDeleteLeft
-                              className="cursorPointer"
-                              size={22}
-                              onClick={() => arrayHelpers.remove(index)}
-                            />
+                          <Col md={1}>
+                            <div className="d-flex align-items-center justify-content-end h-100">
+                              <FaDeleteLeft
+                                className="cursorPointer"
+                                size={22}
+                                onClick={() => arrayHelpers.remove(index)}
+                              />
+                            </div>
                           </Col>
                         </Row>
                       ))}
                       <span
-                        className="textYellow fs-5 cursorPointer"
+                        className="textYellow fs-6 cursorPointer"
                         onClick={() =>
                           arrayHelpers.push({
                             day: "",
@@ -629,9 +643,6 @@ const SignUpForm = () => {
             <Row className="mb-3">
               <h6 className="mb-2 fw-bold">Are you currently working? *</h6>
               <Col md={6} className="mb-2">
-                <div className="text-end" style={{ marginBottom: "-15px" }}>
-                  *
-                </div>
                 <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
                   <div
                     className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadius ${

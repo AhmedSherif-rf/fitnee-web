@@ -194,7 +194,7 @@ const TopBar = (props) => {
                               src={Images.ARABIA_FLAG_IMG}
                               alt="Arabia_Flag_Image"
                             />
-                          </span>{" "}
+                          </span>
                           <span>{"العربية"}</span>
                         </DropdownItem>
                         <DropdownItem
@@ -205,7 +205,7 @@ const TopBar = (props) => {
                               src={Images.AMERICAN_FLAG_IMG}
                               alt="America_Flag_Image"
                             />
-                          </span>{" "}
+                          </span>
                           <span>{"English (US)"}</span>
                         </DropdownItem>
                       </DropdownMenu>

@@ -251,12 +251,12 @@ const ServiceProviderListWrapper = (props) => {
 
   return (
     <Card
-      className={`BorderRadius shadow my-3 ${styles.serviceProviderListWrapper}`}
+      className={`BorderRadius my-3 ${styles.serviceProviderListWrapper}`}
     >
       <CardBody>
         <Row className="align-items-center mb-5">
           <Col className="text-left">
-            <h4 className="fw-bold fs-3 p-3">
+            <h4 className="fw-bold text-black-custom fs-3 p-3 m-0">
               {" "}
               {t("guest.listOfText")} {listingRole}
             </h4>
@@ -264,7 +264,7 @@ const ServiceProviderListWrapper = (props) => {
           <Col className="text-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle data-toggle="dropdown" tag="span">
-                <img src={FilterIcon} alt="filter-icon" />
+                <img className={`${styles.filterIcon}`} src={FilterIcon} alt="filter-icon" />
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem onClick={() => handleDropdownItemClick(TRAINER)}>
@@ -372,7 +372,7 @@ const ServiceProviderListWrapper = (props) => {
           <Col md={4} sm={10}>
             <div className="my-3 text-center">
               <FillBtn
-                className="w-100 text-dark fw-bold py-2 px-5"
+                className="w-100 py-2 px-5"
                 handleOnClick={handleSeeMoreClick}
                 text={t("guest.seeMoreText")}
               />

@@ -17,6 +17,7 @@ import InformationModal from "../../../Shared/Modal/InformationModal";
 const Services = (props) => {
   const navigate = useNavigate();
   const [currentBody, setCurrentBody] = useState(MALE_BODY);
+  const [currentActivePart, setCurrentActivePart] = useState("");
   const [
     showSubscriptionInformatoinModal,
     setShowSubscriptionInformatoinModal,
@@ -42,145 +43,177 @@ const Services = (props) => {
     navigate("/registerAs");
   }, [navigate]);
 
+  const handleMouseEnter = (e) => {
+    setCurrentActivePart(e.target.id);
+  };
+
   return (
-    <Container fluid className={`py-md-2 py-2 ${styles.servicesWrapper}`}>
-      <div
-        className={`${styles.customBodySelect}`}
-        onClick={handleChangeBodyClick}
+    <Container fluid className={`py-md-2 py-3 ${styles.servicesWrapper}`}>
+      <Row className="d-flex">
+        <Col md={2} sm={6} xs={6}>
+          <div
+            className={`${styles.customBodySelect} ${
+              currentBody === MALE_BODY ? styles.activeBody : ""
+            } mx-md-3 mx-0`}
+            onClick={handleChangeBodyClick}
+          >
+            <IoMaleOutline />
+            <div className="checkbox-text">{MALE_BODY}</div>
+          </div>
+        </Col>
+        <Col md={2} sm={6} xs={6}>
+          <div
+            className={`${styles.customBodySelect} ${
+              currentBody === FEMALE_BODY ? styles.activeBody : ""
+            } mx-md-3 mx-0`}
+            onClick={handleChangeBodyClick}
+          >
+            <IoFemaleOutline />
+            <div className="checkbox-text">{FEMALE_BODY}</div>
+          </div>
+        </Col>
+      </Row>
+
+      <Row
+        className={`gap-md-0 gap-lg-0 gap-5 justify-content-center align-items-center ${styles.servicesRow}`}
       >
-        {currentBody === MALE_BODY ? <IoMaleOutline /> : <IoFemaleOutline />}
-        <div className="checkbox-text">{currentBody}</div>
-      </div>
-      {currentBody === MALE_BODY && (
-        <Row
-          className={`justify-content-center align-items-center ${styles.servicesRow}`}
-        >
-          <Col
-            md={6}
-            className={`${styles.servicesCol} d-flex justify-content-between`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="298"
-              height="592"
-              viewBox="0 0 298 592"
-              fill="none"
-              className={`${styles.humanBody}`}
-            >
-              {maleBodyFrontMuscles.map((muscle, index) => {
-                return (
-                  <path
-                    className={`${
-                      muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
-                    }`}
-                    onClick={() => {
-                      if (muscle.fill === "#F5E74C") {
-                        navigate("/guest/exercises");
-                      } else {
-                        setShowSubscriptionInformatoinModal(true);
+        {currentBody === MALE_BODY && (
+          <>
+            <Col md={4} className={`${styles.servicesCol} text-center`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="298"
+                height="592"
+                viewBox="0 0 298 592"
+                fill="none"
+                className={`${styles.humanBody}`}
+              >
+                {maleBodyFrontMuscles.map((muscle, index) => {
+                  return (
+                    <path
+                      className={`${
+                        muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
+                      }`}
+                      onClick={() => {
+                        if (muscle.id === "maleChest") {
+                          navigate("/guest/exercises");
+                        } else {
+                          setShowSubscriptionInformatoinModal(true);
+                        }
+                      }}
+                      d={muscle.d}
+                      onMouseEnter={handleMouseEnter}
+                      id={muscle?.id}
+                      fill={
+                        currentActivePart === muscle?.id
+                          ? "#F5E74C"
+                          : muscle.fill
                       }
-                    }}
-                    d={muscle.d}
-                    fill={muscle.fill}
-                  />
-                );
-              })}
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="298"
-              height="592"
-              viewBox="0 0 298 592"
-              fill="none"
-              className={`${styles.humanBody}`}
-            >
-              {maleBodyBackMuscles.map((muscle, index) => {
-                return (
-                  <path
-                    className={`${
-                      muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
-                    }`}
-                    onClick={() => {
-                      if (muscle.fill === "#F5E74C") {
-                        navigate("/guest/exercises");
-                      } else {
-                        setShowSubscriptionInformatoinModal(true);
+                    />
+                  );
+                })}
+              </svg>
+            </Col>
+            <Col md={4} className={`${styles.servicesCol} text-center`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="298"
+                height="592"
+                viewBox="0 0 298 592"
+                fill="none"
+                className={`${styles.humanBody}`}
+              >
+                {maleBodyBackMuscles.map((muscle, index) => {
+                  return (
+                    <path
+                      className={`${
+                        muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
+                      }`}
+                      onClick={() => {
+                        if (muscle.id === "maleBackArm") {
+                          navigate("/guest/exercises");
+                        } else {
+                          setShowSubscriptionInformatoinModal(true);
+                        }
+                      }}
+                      onMouseEnter={handleMouseEnter}
+                      id={muscle?.id}
+                      d={muscle.d}
+                      fill={
+                        currentActivePart === muscle?.id
+                          ? "#F5E74C"
+                          : muscle.fill
                       }
-                    }}
-                    d={muscle.d}
-                    fill={muscle.fill}
-                  />
-                );
-              })}
-            </svg>
-          </Col>
-        </Row>
-      )}
-      {currentBody === FEMALE_BODY && (
-        <Row
-          className={`justify-content-center align-items-center ${styles.servicesRow}`}
-        >
-          <Col
-            md={6}
-            className={`${styles.servicesCol} d-flex justify-content-between`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="298"
-              height="592"
-              viewBox="0 0 298 592"
-              fill="none"
-              className={`${styles.humanBody}`}
-            >
-              {femaleBodyFrontMuscles.map((muscle, index) => {
-                return (
-                  <path
-                    className={`${
-                      muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
-                    }`}
-                    onClick={() => {
-                      if (muscle.fill === "#F5E74C") {
-                        navigate("/guest/exercises");
-                      } else {
-                        setShowSubscriptionInformatoinModal(true);
-                      }
-                    }}
-                    d={muscle.d}
-                    fill={muscle.fill}
-                  />
-                );
-              })}
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="298"
-              height="592"
-              viewBox="0 0 298 592"
-              fill="none"
-              className={`${styles.humanBody}`}
-            >
-              {femaleBodyBackMuscles.map((muscle, index) => {
-                return (
-                  <path
-                    className={`${
-                      muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
-                    }`}
-                    onClick={() => {
-                      if (muscle.fill === "#F5E74C") {
-                        navigate("/guest/exercises");
-                      } else {
-                        setShowSubscriptionInformatoinModal(true);
-                      }
-                    }}
-                    d={muscle.d}
-                    fill={muscle.fill}
-                  />
-                );
-              })}
-            </svg>
-          </Col>
-        </Row>
-      )}
+                    />
+                  );
+                })}
+              </svg>
+            </Col>
+          </>
+        )}
+        {currentBody === FEMALE_BODY && (
+          <>
+            <Col md={4} className={`${styles.servicesCol} text-center`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="298"
+                height="592"
+                viewBox="0 0 298 592"
+                fill="none"
+                className={`${styles.humanBody}`}
+              >
+                {femaleBodyFrontMuscles.map((muscle, index) => {
+                  return (
+                    <path
+                      className={`${
+                        muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
+                      }`}
+                      onClick={() => {
+                        if (muscle.fill === "#F5E74C") {
+                          navigate("/guest/exercises");
+                        } else {
+                          setShowSubscriptionInformatoinModal(true);
+                        }
+                      }}
+                      d={muscle.d}
+                      fill={muscle.fill}
+                    />
+                  );
+                })}
+              </svg>
+            </Col>
+            <Col md={4} className={`${styles.servicesCol} text-center`}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="298"
+                height="592"
+                viewBox="0 0 298 592"
+                fill="none"
+                className={`${styles.humanBody}`}
+              >
+                {femaleBodyBackMuscles.map((muscle, index) => {
+                  return (
+                    <path
+                      className={`${
+                        muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
+                      }`}
+                      onClick={() => {
+                        if (muscle.fill === "#F5E74C") {
+                          navigate("/guest/exercises");
+                        } else {
+                          setShowSubscriptionInformatoinModal(true);
+                        }
+                      }}
+                      d={muscle.d}
+                      fill={muscle.fill}
+                    />
+                  );
+                })}
+              </svg>
+            </Col>
+          </>
+        )}
+      </Row>
 
       <InformationModal
         size={"md"}
@@ -192,14 +225,14 @@ const Services = (props) => {
         ButtonOne={
           <FillBtn
             text={"Subscribe"}
-            className="py-2 p-3"
+            className="py-2 px-5"
             handleOnClick={handleRegisterClick}
           />
         }
         ButtonTwo={
           <OutlineBtn
             text={"Not now"}
-            className="py-2 p-3"
+            className="py-2 px-5"
             handleOnClick={handleNotNowClick}
           />
         }

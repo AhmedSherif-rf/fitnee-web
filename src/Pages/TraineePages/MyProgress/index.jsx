@@ -35,8 +35,8 @@ const MyProgress = () => {
     navigate("/trainee/myProgress");
   }, [navigate]);
 
-  const handleAllServiceProvidersClick = useCallback(() => {
-    navigate("/trainee/allServiceProviders");
+  const handleallServiceProviderClick = useCallback(() => {
+    navigate("/trainee/allServiceProvider");
   }, [navigate]);
 
   const handleAddProgressClick = useCallback(() => {
@@ -189,7 +189,7 @@ const MyProgress = () => {
                 <FillBtn
                   className="w-100 mb-2 py-2"
                   text="All Service Providers"
-                  handleOnClick={handleAllServiceProvidersClick}
+                  handleOnClick={handleallServiceProviderClick}
                 />
               </Col>
             </Row>

@@ -1,0 +1,39 @@
+@import "../../Assets/Scss/globalStyleSheet.scss";
+.customCard {
+  position: relative;
+  border: $yellow 2px solid;
+  background-size: cover;
+  background-position: center;
+  color: $white;
+  min-height: 400px !important;
+  min-width: 100% !important;
+
+  .customCardFooter {
+    background-color: rgba(34, 29, 29, 0.8);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    overflow: hidden !important;
+
+    .descriptionDiv {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .descriptionDiv {
+      display: block;
+      margin-bottom: 70px;
+    }
+    .customCardFooter {
+      height: 396px;
+    }
+  }
+}

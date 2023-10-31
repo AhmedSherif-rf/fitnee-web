@@ -80,8 +80,9 @@ let Images = {
     .default,
   UPLOAD_BG_IMG: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
   //==============================Trainee Images====================================
-  TRAINEE_GRAPH_IMG: require("../../Assets/Images/TraineeGraph.svg").default,
   QR_CODE_IMG: require("../../Assets/Images/QRCode.svg").default,
+  TRAINEE_GRAPH_IMG: require("../../Assets/Images/TraineeGraph.svg").default,
+  COUNTER_BG_IMG: require("../../Assets/Images/homeScreen/CountBgImage.jpg").default,
 };
 
 export default Images;

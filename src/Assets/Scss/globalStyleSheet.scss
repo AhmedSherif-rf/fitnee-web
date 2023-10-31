@@ -260,3 +260,22 @@ select,
 ::-webkit-scrollbar-track:hover {
   background: $white;
 }
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-3px, 3px); }
+  20% { transform: translate(3px, -3px); }
+  30% { transform: translate(-3px, 3px); }
+  40% { transform: translate(3px, -3px); }
+  50% { transform: translate(-3px, 3px); }
+  60% { transform: translate(3px, -3px); }
+  70% { transform: translate(-3px, 3px); }
+  80% { transform: translate(3px, -3px); }
+  90% { transform: translate(-3px, 3px); }
+  100% { transform: translate(0, 0); }
+}
+
+.shake {
+  animation: shake 10s infinite;
+  transform-origin: top right;
+}

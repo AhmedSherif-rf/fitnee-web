@@ -48,7 +48,7 @@ const SubscriptionDetail = () => {
     <Container fluid className="h-100 p-3">
       <Row className="h-100">
         <Col md={12}>
-          <Card className="shadow BorderRadius border-0 h-100">
+          <Card className="BorderRadius border-0 h-100">
             <CardBody className="p-4">
               <Row>
                 <Col md={12}>

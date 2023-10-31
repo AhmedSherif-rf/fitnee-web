@@ -19,7 +19,7 @@ const SubscriptionCard = (props) => {
   }, [isGuest, navigate]);
 
   return (
-    <Card className="text-center BorderRadius BorderYellow shadow p-0 h-100">
+    <Card className="text-center BorderRadius BorderYellow p-0 h-100">
       <CardHeader className="bg-transparent border-0 h4 py-3">
         {headerText}
       </CardHeader>

@@ -16,7 +16,7 @@ const TrainerListCard = (props) => {
 
   return (
     <Card
-      className={`shadow BorderRadius ${className}`}
+      className={`BorderRadius ${className}`}
       onClick={handleOnClick}
     >
       <CardBody className="p-0">

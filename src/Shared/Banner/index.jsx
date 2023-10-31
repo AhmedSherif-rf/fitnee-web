@@ -52,7 +52,7 @@ const HomeBanner = () => {
             transition={{ type: "spring", stiffness: 100, duration: 2.5 }}
           >
             <FillBtn
-              className="ms-3 px-4"
+              className="ms-3 px-4 shadow-none"
               text={t("landing.getStartedText")}
               handleOnClick={handleGetStartedClick}
             />

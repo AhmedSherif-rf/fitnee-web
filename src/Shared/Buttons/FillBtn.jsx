@@ -6,7 +6,7 @@ const FillBtn = (props) => {
   const { className, text, handleOnClick } = props;
 
   return (
-    <Button className={`fillBtn fw-bold shadow-sm ${className}`} onClick={handleOnClick}>
+    <Button className={`fillBtn fw-bold buttonBoxShadow ${className}`} onClick={handleOnClick}>
       {text}
     </Button>
   );

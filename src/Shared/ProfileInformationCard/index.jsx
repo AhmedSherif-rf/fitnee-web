@@ -16,7 +16,7 @@ const ProfileInformationCard = (props) => {
   } = props;
 
   return (
-    <Card className={`shadow BorderRadius border-0 ${className}`} key={index}>
+    <Card className={`BorderRadius border-0 ${className}`} key={index}>
       <CardBody className="p-0">
         <div
           className="p-0 bgProperties ImgBorder"
@@ -30,7 +30,7 @@ const ProfileInformationCard = (props) => {
           </div>
         </div>
       </CardBody>
-      <CardFooter className="border-0">
+      <CardFooter className="border-0 text-black-custom">
         <div className="d-flex h-100 text-white align-items-end justify-content-between">
           <div className="d-flex align-items-center">
             <img className="img-fluid" src={infoLogo} alt="info logo" />

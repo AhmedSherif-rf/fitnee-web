@@ -1,4 +1,5 @@
 import { Col } from "reactstrap";
+import StarRating from "../Rating";
 import React, { memo } from "react";
 
 const CommentsCard = (props) => {
@@ -6,7 +7,7 @@ const CommentsCard = (props) => {
 
   return (
     <Col md={12}>
-      <div class="d-flex align-items-center p-2 bg-white mb-1 shadow-sm BorderRadius">
+      <div class="d-flex align-items-center px-2">
         <div>
           {" "}
           <div
@@ -20,10 +21,14 @@ const CommentsCard = (props) => {
           ></div>
         </div>
         <div className="ms-3">
-          <h6 className="fw-bold">{commentTitle}</h6>
+          <span className="d-flex align-items-end mb-2 gap-2">
+            <h6 className="mb-0 fw-bold">{commentTitle}</h6>
+            <StarRating/>
+          </span>
           <p className="mb-0 small lh-1"> {commentContent}</p>
         </div>
       </div>
+      <hr className="text-black-custom mx-3" />
     </Col>
   );
 };

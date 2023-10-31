@@ -15,42 +15,6 @@
     }
   }
 }
-.no-wrap {
-  white-space: nowrap;
-}
-.heroSectionRightContent {
-  .overlay {
-    position: relative;
-
-    &::before {
-      content: "";
-      position: absolute;
-      background: linear-gradient(
-        259deg,
-        rgba(245, 231, 76, 0.3) 50%,
-        rgba(0, 0, 0, 0.5) 100%
-      );
-      z-index: 99;
-      width: 0;
-      height: 100%;
-      transition: width 0.5s;
-      color: $white;
-      font-size: 45px;
-      display: flex;
-      align-items: end;
-      justify-content: baseline;
-      font-weight: 600;
-    }
-
-    &:hover::before {
-      width: 100%;
-      padding-left: 30px;
-      content: var(--content, "");
-      @extend .no-wrap;
-      transition: 100ms ease-in-out;
-    }
-  }
-}
 
 @media (max-width: 480px) {
   .heroSectionWrapper {

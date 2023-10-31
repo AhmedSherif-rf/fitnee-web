@@ -47,7 +47,6 @@
 
 .BorderRadius {
   border-radius: 15px !important;
-  border: 1px solid $yellow !important;
 }
 
 .ImgBorder {
@@ -104,7 +103,6 @@ select,
 .form-control-lg {
   &:focus,
   &:focus-visible {
-    background-color: $yellow-blur !important;
     border: 1px solid $parrot-green !important;
     box-shadow: none !important;
     outline: none !important;
@@ -243,12 +241,12 @@ select,
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $yellow;
-  border-radius: 6px;
+  background: $blur-color;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track:hover {

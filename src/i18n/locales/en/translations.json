@@ -1,7 +1,8 @@
 {
   "landing": {
     "homeText": "Home",
-    "servicesText": "Services",
+    "subscribeText": "Subscribe",
+    "servicesText": "Our Services",
     "fitneeCommunityText": "FitNee Community",
     "contactUsText": "Contact Us",
     "trainersText": "Trainers",

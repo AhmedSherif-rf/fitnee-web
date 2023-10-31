@@ -1,11 +1,15 @@
 import styles from "./style.module.scss";
+import { useDispatch } from "react-redux";
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
+import { setGuest } from "../../../Redux/features/User/userSlice";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import { useTranslation } from "react-i18next";
+
 const RegisterAs = (props) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation("");
 
@@ -14,10 +18,15 @@ const RegisterAs = (props) => {
   }, [navigate]);
 
   const handleAsTraineeClick = useCallback(() => {
+    dispatch(setGuest(false));
     navigate("/signUp/trainee");
-  }, [navigate])
+  }, [dispatch, navigate]);
 
   const handleAsTrainerClick = useCallback(() => {
+    navigate("/serviceProvider/dashboard");
+  }, [navigate]);
+
+  const handleAsNutritionistClick = useCallback(() => {
     navigate("/serviceProvider/dashboard");
   }, [navigate]);
 
@@ -29,8 +38,8 @@ const RegisterAs = (props) => {
           backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%), url(${Images.REGISTER_AS_BG})`,
         }}
       >
-        <Col md={4} className={`${styles.registerAsContent}`}>
-          <h2 className=" mb-5 text-center text-white">
+        <Col md={4} className={`${styles.registerAsContent} px-2`}>
+          <h2 className=" mb-5 text-center text-white fw-bold">
             {t("registerAs.registerAsText")}
           </h2>
           <div className="">
@@ -47,6 +56,7 @@ const RegisterAs = (props) => {
             <FillBtn
               className="w-100 mb-3 py-2"
               text={t("registerAs.nutritionistText")}
+              handleOnClick={handleAsNutritionistClick}
             />
             <FillBtn
               className="w-100 mb-3 py-2"

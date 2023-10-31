@@ -14,8 +14,8 @@ const Index = (props) => {
   } = props;
 
   return (
-    <Row className="align-items-center BorderYellow BorderRadius py-1 mb-2">
-      <Col md={3} sm={6} xs={6} className="mb-2">
+    <Row className="align-items-center border BorderRadius py-2 mb-2 shadow-sm">
+      <Col md={3} sm={6} xs={6} className="mb-md-0 mb-2">
         <div className="d-flex align-items-center">
           <div
             className="me-2 bgProperties"

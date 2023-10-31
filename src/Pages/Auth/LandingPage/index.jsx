@@ -14,6 +14,7 @@ const LandingPage = (props) => {
 
   const WhatIsFtineeData = [
     {
+      OverlayText: "What Is Fitnee",
       heading: (
         <h2 className={`fw-bold text-white fs-1`}>
           {t("landing.whatIsText")}{" "}
@@ -62,10 +63,11 @@ const LandingPage = (props) => {
         image: Images.FEATURE_THREE,
       },
     ];
-  }, [t]);
+  }, []);
 
   const HeroData = [
     {
+      OverlayText: "Our Goal",
       heading: (
         <h2 className="fw-bold text-white fs-1">
           {t("landing.ourText")}{" "}
@@ -90,6 +92,7 @@ const LandingPage = (props) => {
       ),
     },
     {
+      OverlayText: "Our Vision",
       heading: (
         <h2 className="fw-bold text-white fs-1">
           {" "}
@@ -218,6 +221,7 @@ const LandingPage = (props) => {
         {WhatIsFtineeData?.map((item, index) => (
           <Hero
             key={item.heading + "_" + index}
+            OverlayText={item.OverlayText}
             heading={item.heading}
             text={item.text}
             image={item.image}
@@ -239,6 +243,7 @@ const LandingPage = (props) => {
         {HeroData?.map((item, index) => (
           <Hero
             key={item.heading + "_" + index}
+            OverlayText={item.OverlayText}
             heading={item.heading}
             text={item.text}
             image={item.image}

@@ -6,6 +6,8 @@
     .heroTextBackground {
       background-image: url("../../Assets/Images/homeScreen/HeroTextBgImage.png");
       @include bgProperties;
+      height: 100% !important;
+      overflow: hidden;
     }
 
     span h2 {
@@ -21,8 +23,8 @@
     .heroSectionLeftContent {
       .heroTextBackground {
         background-image: url("../../Assets/Images/homeScreen/HeroTextBgImage.png");
-
         @include bgProperties;
+        height: 100% !important;
       }
 
       span h2 {

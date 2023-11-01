@@ -16,7 +16,7 @@ import Images from "../../../HelperMethods/Constants/ImgConstants";
 const LandingPage = (props) => {
   const { t } = useTranslation("");
 
-  const WhatIsFtineeData = [
+  const WhatIsFitneeData = [
     {
       heading: (
         <h2 className={`fw-bold text-white fs-1`}>
@@ -249,89 +249,109 @@ const LandingPage = (props) => {
 
   return (
     <div className="bg-black">
-      <HomeBanner />
-      <Container fluid>
-        <Row className={`${styles.bannerImg}`}>
-          <Col md={4}>
-            <div
-              className="d-flex align-items-center justify-content-center w-100 h-100"
-              style={{ bottom: 0, right: 0 }}
-            >
-              <div className="text-center">
-                <GiWeightLiftingUp className="text-white display-2" />
-                <br />
-                <CounterUp start={0} end={500} duration={5} />
-                <p className="text-white fw-bold">
-                  {t("landing.trainersText")}
-                </p>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div
-              className="d-flex align-items-center justify-content-center w-100 h-100"
-              style={{ bottom: 0, right: 0 }}
-            >
-              <div className="text-center">
-                <GiBodyBalance className="text-white display-2" />
-                <br />
-                <CounterUp start={0} end={1000} duration={7} />
-                <p className="text-white fw-bold">
-                  {t("landing.traineesText")}
-                </p>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div
-              className="d-flex align-items-center justify-content-center w-100 h-100"
-              style={{ bottom: 0, right: 0 }}
-            >
-              <div className="text-center">
-                <FaNutritionix className="text-white display-2" />
-                <br />
-                <CounterUp start={0} end={2000} duration={9} />
-                <p className="text-white fw-bold">
-                  {t("landing.nutritionistsText")}
-                </p>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-      <Container fluid className="mb-3">
-        {WhatIsFtineeData?.map((item, index) => (
-          <Hero
-            key={item.heading + "_" + index}
-            heading={item.heading}
-            text={item.text}
-            image={item.image}
-            type={item.type}
-            textBackgroundImage={item.textBackgroundImage}
-          />
-        ))}
+      <section id="bannerSection" className="">
+        <HomeBanner />
+      </section>
 
-        <Feature
-          textData={FeaturesTextData()}
-          imageData={FeaturesImageData()}
-          type={"textRight"}
+      <section id="counterSection" className="vh-100">
+        <Container fluid>
+          <Row className={`vh-100 bgProperties ${styles.bannerImg}`}>
+            <Col md={4}>
+              <div
+                className="d-flex align-items-center justify-content-center w-100 h-100"
+                style={{ bottom: 0, right: 0 }}
+              >
+                <div className="text-center">
+                  <GiWeightLiftingUp className="text-white display-2" />
+                  <br />
+                  <CounterUp start={0} end={500} duration={5} />
+                  <p className="text-white fw-bold">
+                    {t("landing.trainersText")}
+                  </p>
+                </div>
+              </div>
+            </Col>
+            <Col md={4}>
+              <div
+                className="d-flex align-items-center justify-content-center w-100 h-100"
+                style={{ bottom: 0, right: 0 }}
+              >
+                <div className="text-center">
+                  <GiBodyBalance className="text-white display-2" />
+                  <br />
+                  <CounterUp start={0} end={1000} duration={7} />
+                  <p className="text-white fw-bold">
+                    {t("landing.traineesText")}
+                  </p>
+                </div>
+              </div>
+            </Col>
+            <Col md={4}>
+              <div
+                className="d-flex align-items-center justify-content-center w-100 h-100"
+                style={{ bottom: 0, right: 0 }}
+              >
+                <div className="text-center">
+                  <FaNutritionix className="text-white display-2" />
+                  <br />
+                  <CounterUp start={0} end={2000} duration={9} />
+                  <p className="text-white fw-bold">
+                    {t("landing.nutritionistsText")}
+                  </p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <section id="fitneeSection" className="h-100">
+        <Container fluid>
+          {WhatIsFitneeData?.map((item, index) => (
+            <Hero
+              key={item.heading + "_" + index}
+              heading={item.heading}
+              text={item.text}
+              image={item.image}
+              type={item.type}
+              textBackgroundImage={item.textBackgroundImage}
+            />
+          ))}
+        </Container>
+      </section>
+
+      <section id="featureSection">
+        <Container fluid>
+          <Feature
+            textData={FeaturesTextData()}
+            imageData={FeaturesImageData()}
+            type={"textRight"}
+          />
+        </Container>
+      </section>
+
+      <section id="heroSection">
+        <Container fluid>
+          {HeroData?.map((item, index) => (
+            <Hero
+              key={item.heading + "_" + index}
+              heading={item.heading}
+              text={item.text}
+              image={item.image}
+              type={item.type}
+              textBackgroundImage={item.textBackgroundImage}
+            />
+          ))}
+        </Container>
+      </section>
+      <br />
+      <section id="swiperSection">
+        <CardSwiper
+          data={SwiperCardsData()}
+          heading={t("landing.feedbackText")}
         />
+      </section>
 
-        {HeroData?.map((item, index) => (
-          <Hero
-            key={item.heading + "_" + index}
-            heading={item.heading}
-            text={item.text}
-            image={item.image}
-            type={item.type}
-            textBackgroundImage={item.textBackgroundImage}
-          />
-        ))}
-      </Container>
-      <CardSwiper
-        data={SwiperCardsData()}
-        heading={t("landing.feedbackText")}
-      />
       <Footer />
     </div>
   );

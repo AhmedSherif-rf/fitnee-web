@@ -27,12 +27,12 @@ const InformationModal = (props) => {
       className={className}
     >
       {heading && (
-        <ModalHeader className="border-0 ">
+        <ModalHeader className="border-0">
           <b>{heading}</b>
         </ModalHeader>
       )}
 
-      <ModalBody className="py-4 px-2">
+      <ModalBody className="py-4 px-2 text-black-custom">
         <div className={`${TOneClassName}`}> {ModalTextOne}</div>
         <div className={`${TTwoClassName}`}> {ModalTextTwo}</div>
         <div className="w-100 text-center">{ButtonThree}</div>

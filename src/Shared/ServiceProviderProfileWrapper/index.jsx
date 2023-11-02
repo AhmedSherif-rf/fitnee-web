@@ -121,18 +121,18 @@ const ServiceProviderProfileWrapper = (props) => {
           </div>
           <div className="mb-3">
             <FillBtn
-              className="w-100 text-dark py-2"
+              className="w-100 py-2"
               text={t("guest.subscribeText")}
               handleOnClick={handleSubscribeClick}
             />
           </div>
           <div>
-            <h6 className="fw-bold">Available Hours</h6>
+            <h6 className="fw-bold text-black-custom">Available Hours</h6>
             <AvailableHourList data={availableHoursData} />
           </div>
         </Col>
         <Col lg={9} md={8}>
-          <Card className="BorderRadius border-0 shadow">
+          <Card className="BorderRadius border-0 text-black-custom">
             <CardBody>
               <h5 className="fw-bold my-2">{t("guest.meetText")} Shane</h5>
               <p className="small">
@@ -181,7 +181,7 @@ const ServiceProviderProfileWrapper = (props) => {
                       <Badge
                         key={index}
                         color="custom"
-                        className="me-2 mb-2 text-dark custom-badge"
+                        className="me-2 mb-2 text-black-custom custom-badge px-3 text-center"
                       >
                         {item}
                       </Badge>
@@ -190,7 +190,7 @@ const ServiceProviderProfileWrapper = (props) => {
                 </Col>
               </Row>
               <Row>
-                <h5 className="fw-bold my-2">Comments</h5>
+                <h5 className="fw-bold mt-3 text-black-custom">Comments</h5>
                 {commentsData.map((item) => {
                   return (
                     <CommentCard

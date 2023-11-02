@@ -1,36 +1,33 @@
 import React from "react";
 import StarRating from "../Rating";
-import { Card, CardBody, CardText, CardFooter } from "reactstrap";
+import styles from "./style.module.scss";
+import { Card, CardFooter } from "reactstrap";
 
 const RatingCard = (props) => {
   const { header, image, des } = props;
 
   return (
     <Card
-      className="rounded-0"
+      className={`rounded-0 ${styles.customCard}`}
       style={{
-        border: "#F5E74C 2px solid",
         backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        color: "white",
-        minHeight: "400px",
-        minWidth: "300px",
       }}
     >
-      <CardBody>{""}</CardBody>
       <CardFooter
-        className="text-center p-0 m-0"
-        style={{
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
-        }}
+        className={`text-center w-100 p-0 m-0 ${styles.customCardFooter}`}
       >
-        <CardText className="lh-1 pt-2">
-          <small>{des}</small>
-        </CardText>
-        <StarRating />
-        <CardText className="">{header}</CardText>
+        <div
+          className={`${styles.customCardFooterText} d-flex align-items-end justify-content-center`}
+        >
+          <div className="">
+            <p className="fs-3 mb-0">{header}</p>
+            <div className={`${styles.descriptionDiv} px-3 pt-4`}>
+              <StarRating />
+              <br />
+              <small>{des}</small>
+            </div>
+          </div>
+        </div>
       </CardFooter>
     </Card>
   );

@@ -5,8 +5,7 @@ import styles from "./style.module.scss";
 import { useInView } from "react-intersection-observer";
 
 const Hero = (props) => {
-  const { OverlayText, heading, text, image, type, textBackgroundImage } =
-    props;
+  const { heading, text, image, type, textBackgroundImage } = props;
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -17,12 +16,9 @@ const Hero = (props) => {
     visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
   };
 
-  const customContentStyle = {
-    "--content": `"${OverlayText}"`,
-  };
   return (
     <Row
-      className={`my-4 ${styles.heroSectionWrapper} ${
+      className={`${styles.heroSectionWrapper} ${
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
@@ -45,9 +41,7 @@ const Hero = (props) => {
         </div>
       </Col>
       <Col xs={12} md={6} className={`p-0 ${styles.heroSectionRightContent}`}>
-        <div className={`${styles.overlay}`} style={customContentStyle}>
-          {image}
-        </div>
+        {image}
       </Col>
     </Row>
   );

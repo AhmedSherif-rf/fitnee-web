@@ -179,7 +179,6 @@ const TopBar = (props) => {
                   <NavItem>
                     <UncontrolledDropdown>
                       <DropdownToggle
-                        caret
                         className={`${styles.navItem} bg-transparent border-0 p-0 mb-0 mt-3`}
                       >
                         <span className="p-1" style={{ fontSize: "20px" }}>
@@ -403,7 +402,7 @@ const TopBar = (props) => {
               <CardFooter>
                 {!props?.isGuest && (
                   <Nav
-                    className={`ml-auto d-lg-none d-block border border-danger ${styles.nav}`}
+                    className={`ml-auto d-lg-none d-block ${styles.nav}`}
                   >
                     <UncontrolledDropdown>
                       <DropdownToggle

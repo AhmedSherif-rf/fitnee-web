@@ -22,10 +22,11 @@
   .featureSectionRightContent {
     .cardSwiper {
       width: 100%;
-      
+
       .cardSwiperSlider {
         @include bgProperties;
         background-size: contain !important;
+        border-radius: 100%;
       }
     }
   }

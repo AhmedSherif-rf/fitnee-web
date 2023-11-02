@@ -146,7 +146,7 @@ const MyProgress = () => {
     <Container fluid className="bg-light">
       <Row className="py-2">
         <Col lg={3} md={4} className="mb-2">
-          <Card className="shadow p-3 BorderRadius border-0">
+          <Card className="p-3 BorderRadius border-0">
             <div className="mb-2">
               {infoData.map((item, index) => {
                 return (
@@ -196,7 +196,7 @@ const MyProgress = () => {
           </Card>
         </Col>
         <Col lg={9} md={8}>
-          <Card className="BorderRadius border-0 shadow">
+          <Card className="BorderRadius border-0">
             <CardBody>
               <Row>
                 <Col md={12} className="mb-2">

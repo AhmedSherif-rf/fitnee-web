@@ -42,31 +42,29 @@ const CardSwiper = (props) => {
   };
 
   return (
-    <>
-      <Container fluid className="mb-4">
-        <Row>
-          <Col>
-            <h1 className="text-center fw-bold pb-3 mt-4 text-white"> {heading}</h1>
-            <Swiper {...swiperConfiguration} className={"feedbackSwiper"}>
-              {slicedCardsData.map((card, index) => {
-                return (
-                  <SwiperSlide
-                    key={"_" + index}
-                    className={"feedbackSwiperSlider"}
-                  >
-                    <RatingCard
-                      header={card.title}
-                      image={card.sliderImg}
-                      des={card.description}
-                    />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Container fluid>
+      <Row>
+        <Col>
+          <h1 className="text-center fw-bold text-white mt-5"> {heading}</h1>
+          <Swiper {...swiperConfiguration} className={"feedbackSwiper"}>
+            {slicedCardsData.map((card, index) => {
+              return (
+                <SwiperSlide
+                  key={"_" + index}
+                  className={"feedbackSwiperSlider"}
+                >
+                  <RatingCard
+                    header={card.title}
+                    image={card.sliderImg}
+                    des={card.description}
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

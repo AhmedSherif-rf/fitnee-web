@@ -18,18 +18,21 @@ const Hero = (props) => {
 
   return (
     <Row
-      className={`${styles.heroSectionWrapper} ${
+      className={`vh-100 bg-back ${styles.heroSectionWrapper} ${
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
-      <Col xs={12} md={6} className={`p-0 ${styles.heroSectionLeftContent}`}>
+      <Col
+        xs={12}
+        md={6}
+        className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}
+      >
         <div
           className={`${
             textBackgroundImage ? styles.heroTextBackground : ""
-          } px-md-5 px-3 py-5 h-100 d-flex  align-items-center`}
+          } px-4 d-flex align-items-center `}
         >
           <motion.div
-            className="my-3"
             ref={ref}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -40,7 +43,11 @@ const Hero = (props) => {
           </motion.div>
         </div>
       </Col>
-      <Col xs={12} md={6} className={`p-0 ${styles.heroSectionRightContent}`}>
+      <Col
+        xs={12}
+        md={6}
+        className={`p-0 overflow-hidden ${styles.heroSectionRightContent}`}
+      >
         {image}
       </Col>
     </Row>

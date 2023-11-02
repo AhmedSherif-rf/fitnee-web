@@ -1,0 +1,16 @@
+@import "../../Assets/Scss/variables.scss";
+
+.cardHeaderDesign {
+  .headerCard {
+    margin-top: -20px;
+    padding: 10px 50px;
+    text-align: center !important;
+    background-color: $yellow !important;
+  }
+  &:hover {
+    .headerCard {
+      background-color: #fff !important;
+      border: 1px solid $yellow !important;
+    }
+  }
+}

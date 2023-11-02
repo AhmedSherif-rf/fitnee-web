@@ -145,8 +145,7 @@ const TrainerAndNutritionistData = [
 ];
 
 const ServiceProviderListWrapper = (props) => {
-
-   const { cardLink } = props;
+  const { cardLink } = props;
   const [
     showSubscriptionInformationModal,
     setShowSubscriptionInformationModal,
@@ -257,7 +256,6 @@ const ServiceProviderListWrapper = (props) => {
         <Row className="align-items-center mb-5">
           <Col className="text-left">
             <h4 className="fw-bold fs-3 p-3">
-              {" "}
               {t("guest.listOfText")} {listingRole}
             </h4>
           </Col>

@@ -3,8 +3,8 @@
 
 .feedbackSwiper {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 5rem;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
 .swiper-3d .swiper-slide-shadow {
@@ -29,13 +29,14 @@
 }
 
 .swiper-pagination-bullet-active {
-  background-color: $yellow;
+  background-color: $yellow !important;
 }
 
 .swiper-pagination-bullet {
   width: 2% !important;
   height: 5px !important;
   border-radius: 6px !important;
+  background-color: $white;
 }
 
 .swiper-slide-active {

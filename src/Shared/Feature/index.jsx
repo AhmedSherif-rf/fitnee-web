@@ -20,22 +20,19 @@ const Feature = (props) => {
 
   return (
     <Row
-      className={`p-4 h-100 ${styles.featureSectionWrapper} ${
+      className={`p-4 ${styles.featureSectionWrapper} ${
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
       <Col xs={12} md={6} className={`p-0 ${styles.featureSectionLeftContent}`}>
-        <div className={`h-100 d-flex align-items-center`}>
+        <div className={`d-flex align-items-center h-100`}>
           <div className="">
-            <div className="pt-3">
+            <div>
               <span
-                className={`fw-bold textYellow fs-1 ms-4 ${styles.featureHeading}`}
+                className={`fw-bold textYellow fs-1 ms-4 mt-5 mb-0 ${styles.featureHeading}`}
               >
                 {t("landing.featuresText")}
               </span>
-            </div>
-            <br />
-            <div className=" mb-5">
               <Swiper
                 speed={1000}
                 spaceBetween={500}
@@ -55,7 +52,7 @@ const Feature = (props) => {
                   return (
                     <SwiperSlide
                       key={index}
-                      className="d-flex align-items-center text-center text-white fs-6 h-100"
+                      className="d-flex align-items-center  justify-content-start d-block text-white fs-5 fw-bold"
                     >
                       {item.text}
                     </SwiperSlide>
@@ -66,23 +63,19 @@ const Feature = (props) => {
           </div>
         </div>
       </Col>
-      <Col
-        xs={12}
-        md={6}
-        className={`p-0 d-flex justify-content-center align-items-center ${styles.featureSectionRightContent}`}
-      >
+      <Col xs={12} md={6} className={`${styles.featureSectionRightContent}`}>
         <Swiper
           speed={1000}
           spaceBetween={100}
           grabCursor={true}
-          className={`${styles.cardSwiper}`}
+          className={`${styles.cardSwiper} h-100 position-relative`}
           onSwiper={(swiper) => (cardSwiperRef.current = swiper)}
         >
           {imageData?.map((item, index) => {
             return (
               <SwiperSlide
                 key={index}
-                className={`${styles.cardSwiperSlider} shake`}
+                className={`${styles.cardSwiperSlider}`}
                 style={{ backgroundImage: `url(${item.image})` }}
               ></SwiperSlide>
             );

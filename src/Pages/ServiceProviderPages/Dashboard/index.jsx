@@ -2,6 +2,7 @@ import React from "react";
 import { useCallback } from "react";
 import TopBar from "../../../Shared/TopBar";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import CommentCard from "../../../Shared/CommentCard";
 import DocumentCard from "../../../Shared/DocumentCard";
@@ -68,7 +69,7 @@ const infoData = [
 
 const Dashboard = () => {
   const navigate = useNavigate();
-
+  const { t } = useTranslation("");
   const handleCurrentSubscribersClick = useCallback(() => {
     navigate("/serviceProvider/subscriber");
   }, [navigate]);
@@ -108,17 +109,17 @@ const Dashboard = () => {
                 <FillBtn
                   handleOnClick={handleCurrentSubscribersClick}
                   className="w-100 mb-2 py-2"
-                  text="My Current Subscribers"
+                  text=    {t("trainer.trainerSubscriberText")}
                 />
                 <FillBtn
                   handleOnClick={handlePaymentClick}
                   className="w-100 mb-2 py-2"
-                  text="Payment History"
+                  text={t("trainer.trainerPaymentText")}
                 />
                 <FillBtn
                   handleOnClick={handleSubscriptionsClick}
                   className="w-100 mb-2 py-2"
-                  text="My Packages"
+                  text={t("trainer.trainerPackageText")}
                 />
               </Col>
             </Row>
@@ -127,30 +128,15 @@ const Dashboard = () => {
         <Col lg={9} md={8}>
           <Card className="BorderRadius border-0 shadow">
             <CardBody>
-              <h5 className="fw-bold my-2">Bio</h5>
+              <h5 className="fw-bold my-2">{t("trainer.bioText")}</h5>
               <p className="small">
-                {" "}
-                Experienced fitness pro. With a degree in Exercise Science and
-                national certifications, I craft personalized fitness plans. My
-                philosophy encompasses exercise, nutrition, and mental health
-                for a complete wellness approach. Assessing your needs
-                comprehensively, I focus on strength, cardio, and flexibility.
-                Custom workouts blend challenges with achievable goals to ensure
-                steady progress and avoid injuries. Nutrition is vital. I offer
-                diet advice to fuel workouts and recovery. As your coach, I'm
-                more than workouts – I motivate and keep you on track, adjusting
-                plans as needed. Mental well-being is a priority too; stress
-                reduction and relaxation techniques are part of my training.
-                Results speak. I've transformed lives by tailoring programs for
-                weight loss, muscle gain, or overall health. From novices to
-                experts, I've got you. Passionate, I'm committed to staying
-                current in fitness trends. Join me to celebrate milestones,
-                conquer challenges, and achieve well-being.
+              
+                {t("trainer.trainerParagraphText")}
               </p>
 
               <Row>
                 <Col md={12}>
-                  <h5 className="fw-bold my-2">Qualification and Experience</h5>
+                  <h5 className="fw-bold my-2">{t("trainer.trainerHeadingText")}</h5>
                 </Col>
                 {documentMedia.map((item) => {
                   return (
@@ -164,13 +150,13 @@ const Dashboard = () => {
               </Row>
 
               <Row>
-                <h5 className="fw-bold my-2">Comments</h5>
+                <h5 className="fw-bold my-2">{t("trainer.commentText")}</h5>
                 {commentMedia.map((item) => {
                   return (
                     <CommentCard
                       commentTitle={item.commentTitle}
                       commentImg={item.imgSrc}
-                      commentContent={item.commentContent}
+                      commentContent={t("trainer.trainerCommentContentText")}
                     />
                   );
                 })}

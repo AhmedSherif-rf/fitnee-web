@@ -19,13 +19,13 @@ const LandingPage = (props) => {
   const WhatIsFitneeData = [
     {
       heading: (
-        <h2 className={`fw-bold text-white fs-1`}>
+        <h2 className={`fw-bold text-white fs-1 mb-4`}>
           {t("landing.whatIsText")}{" "}
           <span className="textYellow"> {t("landing.fitneeText")} </span>
         </h2>
       ),
       text: (
-        <p className={"fs-5 text-white lh-1"}>
+        <p className={"fs-5 text-white customSpacing"}>
           {t("landing.firstHeroSectionText")}
         </p>
       ),
@@ -71,13 +71,13 @@ const LandingPage = (props) => {
   const HeroData = [
     {
       heading: (
-        <h2 className="fw-bold text-white fs-1">
+        <h2 className="fw-bold text-white fs-1 mb-4">
           {t("landing.ourText")}{" "}
           <span className="textYellow"> {t("landing.goalText")}</span>
         </h2>
       ),
       text: (
-        <>
+        <div className="customSpacing">
           <p className={"fs-5 lh-1 text-white"}>
             {t("landing.secondHeroSectionTextOne")}
           </p>
@@ -85,7 +85,7 @@ const LandingPage = (props) => {
           <p className={"fs-5 lh-1 text-white"}>
             {t("landing.secondHeroSectionTextTwo")}
           </p>
-        </>
+        </div>
       ),
       type: "textLeft",
       textBackgroundImage: true,
@@ -95,14 +95,14 @@ const LandingPage = (props) => {
     },
     {
       heading: (
-        <h2 className="fw-bold text-white fs-1">
+        <h2 className="fw-bold text-white fs-1 mb-4">
           {" "}
           {t("landing.ourText")}{" "}
           <span className="textYellow">{t("landing.visionText")} </span>
         </h2>
       ),
       text: (
-        <p className="text-white fs-5 lh-1">
+        <p className="text-white fs-5 customSpacing">
           {t("landing.thirdHeroSectionTextOne")}
         </p>
       ),
@@ -265,7 +265,7 @@ const LandingPage = (props) => {
                   <GiWeightLiftingUp className="text-white display-2" />
                   <br />
                   <CounterUp start={0} end={500} duration={5} />
-                  <p className="text-white fw-bold">
+                  <p className="text-white fw-bold fs-5">
                     {t("landing.trainersText")}
                   </p>
                 </div>
@@ -280,7 +280,7 @@ const LandingPage = (props) => {
                   <GiBodyBalance className="text-white display-2" />
                   <br />
                   <CounterUp start={0} end={1000} duration={7} />
-                  <p className="text-white fw-bold">
+                  <p className="text-white fw-bold fs-5">
                     {t("landing.traineesText")}
                   </p>
                 </div>
@@ -295,7 +295,7 @@ const LandingPage = (props) => {
                   <FaNutritionix className="text-white display-2" />
                   <br />
                   <CounterUp start={0} end={2000} duration={9} />
-                  <p className="text-white fw-bold">
+                  <p className="text-white fw-bold fs-5">
                     {t("landing.nutritionistsText")}
                   </p>
                 </div>

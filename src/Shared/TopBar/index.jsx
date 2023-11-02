@@ -192,9 +192,6 @@ const TopBar = (props) => {
                             className=" d-flex align-items-center"
                             to="/guest/serviceProviderList"
                           >
-                            <span className="textParrotGreen me-2">
-                              <GiWeightLiftingUp className="mb-1" />
-                            </span>
                             <p className="text-dark mb-0">Trainers</p>
                           </Link>
                         </DropdownItem>
@@ -204,9 +201,6 @@ const TopBar = (props) => {
                             className=" d-flex align-items-center"
                             to="/guest/serviceProviderList"
                           >
-                            <span className="textParrotGreen me-2">
-                              <FaNutritionix className="mb-1" />
-                            </span>
                             <p className="text-dark mb-0">Nutritionist</p>
                           </Link>
                         </DropdownItem>
@@ -216,9 +210,6 @@ const TopBar = (props) => {
                             className=" d-flex align-items-center"
                             to="/guest/services"
                           >
-                            <span className="textParrotGreen me-2">
-                              <GiBodyBalance className="mb-1" />
-                            </span>
                             <p className="text-dark mb-0">Exercises</p>
                           </Link>
                         </DropdownItem>
@@ -427,9 +418,6 @@ const TopBar = (props) => {
                             className=" d-flex align-items-center"
                             to="/guest/serviceProviderList"
                           >
-                            <span className="textParrotGreen me-2">
-                              <GiWeightLiftingUp className="mb-1" />
-                            </span>
                             <p className="text-dark mb-0">Trainers</p>
                           </Link>
                         </DropdownItem>
@@ -439,9 +427,6 @@ const TopBar = (props) => {
                             className=" d-flex align-items-center"
                             to="/guest/serviceProviderList"
                           >
-                            <span className="textParrotGreen me-2">
-                              <FaNutritionix className="mb-1" />
-                            </span>
                             <p className="text-dark mb-0">Nutritionist</p>
                           </Link>
                         </DropdownItem>
@@ -451,9 +436,6 @@ const TopBar = (props) => {
                             className=" d-flex align-items-center"
                             to="/guest/services"
                           >
-                            <span className="textParrotGreen me-2">
-                              <GiBodyBalance className="mb-1" />
-                            </span>
                             <p className="text-dark mb-0">Exercises</p>
                           </Link>
                         </DropdownItem>

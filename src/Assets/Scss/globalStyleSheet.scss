@@ -35,7 +35,7 @@
   color: $yellow !important;
 }
 .textOrange {
-  color: orange!important;
+  color: orange !important;
 }
 .textGrey {
   color: $text-muted !important;
@@ -46,6 +46,10 @@
 }
 
 .BorderRadius {
+  border-radius: 15px !important;
+}
+
+.subscriptionDiv {
   border-radius: 15px !important;
 }
 
@@ -223,6 +227,7 @@ select,
     }
   }
 }
+//
 
 .currentlyWorkingBtn {
   .selected {

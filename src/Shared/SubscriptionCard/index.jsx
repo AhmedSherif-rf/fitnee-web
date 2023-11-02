@@ -1,4 +1,5 @@
 import { CardHeader } from "reactstrap";
+import styles from "./style.module.scss";
 import FillBtn from "../Buttons/FillBtn";
 import { useNavigate } from "react-router-dom";
 import React, { memo, useCallback } from "react";
@@ -19,11 +20,14 @@ const SubscriptionCard = (props) => {
   }, [isGuest, navigate]);
 
   return (
-    <Card className="text-center BorderRadius BorderYellow shadow p-0 h-100">
-      <CardHeader className="bg-transparent border-0 h4 py-3">
-        {headerText}
-      </CardHeader>
-      <CardBody>
+    <Card
+      className={`text-center BorderRadius p-0 h-100 ${styles.cardHeaderDesign}`}
+    >
+      <div className="text-center d-flex justify-content-center">
+        <div className={`BorderRadius ${styles.headerCard}`}>{headerText}</div>
+      </div>
+
+      <CardBody className="mt-5">
         <h1 className="mb-3">{price}</h1>
         <img className="fluid w-50 my-3" src={ImgSrc} alt="" />
       </CardBody>

@@ -10,12 +10,14 @@ const ExerciseSection = (props) => {
     <>
       {exercisesData()?.map((exercise, index) => {
         return (
-          <Col md={12} className="mb-3" key={index}>
-            <div className="border-bottom ">
-              <h4>{exercise?.categoryName}</h4>
+          <Col md={12} className="mb-3 text-black-custom" key={index}>
+            <div className="border-bottom">
+              <h4 className="fw-bold">{exercise?.categoryName}</h4>
             </div>
             <div className="mt-3">
-              <h5>Difficulty: {exercise?.level}</h5>
+              <h5>
+                <span className="fw-bold">Difficulty:</span> {exercise?.level}
+              </h5>
               <Row className="text-center">
                 <Col md={6} className="mb-2">
                   <video

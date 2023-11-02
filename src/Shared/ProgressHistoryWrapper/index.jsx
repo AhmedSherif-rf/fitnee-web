@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import { Card, CardBody, CardHeader } from "reactstrap";
 
 const ProgressHistoryWrapper = (props) => {
+  
   const { TDate, Weight, SMM, BFM, Proteins } = props;
 
   return (

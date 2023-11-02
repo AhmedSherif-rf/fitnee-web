@@ -17,7 +17,7 @@ const SignInForm = () => {
   return (
     <Container>
       <Row className="justify-content-center align-items-center vh-100">
-        <Col lg={7} md={12} sm={10} className="">
+        <Col lg={7} md={12} sm={10}>
           <h1 className="text-center mb-5">SignIn</h1>
           <Form>
             <InputField

@@ -6,9 +6,9 @@ let Images = {
   ABOUT_IMG: require("../../Assets/Images/homeScreen/AboutFitnee.png"),
   DEFAULT_USER_IMG: require("../../Assets/Images/defaultImg.svg").default,
   BACKGROUND_IMG: require("../../Assets/Images/backgroundImg.svg").default,
-  FEATURE_ONE: require("../../Assets/Images/homeScreen/FeatureOneImg.svg").default,
-  FEATURE_TWO: require("../../Assets/Images/homeScreen/FeatureTwoImg.svg").default,
-  FEATURE_THREE: require("../../Assets/Images/homeScreen/FeatureThreeImg.svg").default,
+  FEATURE_ONE: require("../../Assets/Images/homeScreen/FeatureOneImg.png"),
+  FEATURE_TWO: require("../../Assets/Images/homeScreen/FeatureTwoImg.png"),
+  FEATURE_THREE: require("../../Assets/Images/homeScreen/FeatureThreeImg.png"),
   ARABIA_FLAG_IMG: require("../../Assets/Images/homeScreen/ArabiaFlag.svg")
     .default,
   INSTA_IMG: require("../../Assets/Images/homeScreen/socialMedia/Insta.svg")

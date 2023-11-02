@@ -27,6 +27,7 @@ export const traineeRoutes = [
     path: "/trainee/myProgress",
     component: lazy(() => import("../Pages/TraineePages/MyProgress")),
     exact: true,
+    isPrivate: true,
     role: traineeRole,
   },
   {

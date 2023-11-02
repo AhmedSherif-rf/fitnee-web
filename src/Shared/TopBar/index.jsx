@@ -179,7 +179,7 @@ const TopBar = (props) => {
                         className={`${styles.navLink} ${textClass} nav-link bg-transparent border-0 p-0 mb-0 mt-2`}
                       >
                         <span className="px-1">
-                          Our Services
+                          {t("landing.servicesText")}
                         </span>
                       </DropdownToggle>
                       <DropdownMenu style={{ right: 0, left: "auto" }}>
@@ -252,7 +252,7 @@ const TopBar = (props) => {
                               src={Images.ARABIA_FLAG_IMG}
                               alt="Arabia_Flag_Image"
                             />
-                          </span>{" "}
+                          </span>
                           <span>{"العربية"}</span>
                         </DropdownItem>
                         <DropdownItem
@@ -263,7 +263,7 @@ const TopBar = (props) => {
                               src={Images.AMERICAN_FLAG_IMG}
                               alt="America_Flag_Image"
                             />
-                          </span>{" "}
+                          </span>
                           <span>{"English (US)"}</span>
                         </DropdownItem>
                       </DropdownMenu>

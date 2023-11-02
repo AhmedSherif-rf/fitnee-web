@@ -19,12 +19,11 @@ import {
   FaServicestack,
   FaAddressCard,
   FaUserEdit,
-  FaNutritionix,
 } from "react-icons/fa";
 
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
-import { GiBodyBalance, GiWallet, GiWeightLiftingUp } from "react-icons/gi";
+import { GiWallet } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { RiDashboardFill } from "react-icons/ri";
@@ -99,13 +98,11 @@ const TopBar = (props) => {
       : "bg-white-custom"
   );
 
-  const [textClass, setTextClass] = useState(
-    props.isPublic
-      ? props?.isGuest
-        ? "text-black-custom"
-        : "text-white"
-      : "text-black-custom"
-  );
+  const textClass = props.isPublic
+    ? props?.isGuest
+      ? "text-black-custom"
+      : "text-white"
+    : "text-black-custom";
 
   const listenScrollEvent = () => {
     if (!props?.isGuest && props?.isPublic) {
@@ -179,9 +176,9 @@ const TopBar = (props) => {
                   <NavItem>
                     <UncontrolledDropdown>
                       <DropdownToggle
-                        className={`${styles.navItem} bg-transparent border-0 p-0 mb-0 mt-3`}
+                        className={`${styles.navLink} ${textClass} nav-link bg-transparent border-0 p-0 mb-0 mt-2`}
                       >
-                        <span className="p-1" style={{ fontSize: "20px" }}>
+                        <span className="px-1">
                           Our Services
                         </span>
                       </DropdownToggle>
@@ -401,9 +398,7 @@ const TopBar = (props) => {
               </CardBody>
               <CardFooter>
                 {!props?.isGuest && (
-                  <Nav
-                    className={`ml-auto d-lg-none d-block ${styles.nav}`}
-                  >
+                  <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
                     <UncontrolledDropdown>
                       <DropdownToggle
                         className=" BorderYellow text-center d-flex justify-content-center text-white mb-2"

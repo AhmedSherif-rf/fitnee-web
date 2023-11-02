@@ -19,10 +19,12 @@ import {
   FaServicestack,
   FaAddressCard,
   FaUserEdit,
+  FaNutritionix,
 } from "react-icons/fa";
+
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
-import { GiWallet } from "react-icons/gi";
+import { GiBodyBalance, GiWallet, GiWeightLiftingUp } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { RiDashboardFill } from "react-icons/ri";
@@ -167,17 +169,61 @@ const TopBar = (props) => {
                 </NavbarToggler>
                 <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
                   <NavItem className={`${styles.navItem}`}>
-                    <Link className={`nav-link ${styles.navLink} ${textClass}`} to="/">
+                    <Link
+                      className={`nav-link ${styles.navLink} ${textClass}`}
+                      to="/"
+                    >
                       {t("landing.homeText")}
                     </Link>
                   </NavItem>
                   <NavItem>
-                    <Link
-                      className={`nav-link ${styles.navLink} ${textClass}`}
-                      to="/guest/services"
-                    >
-                      {t("landing.servicesText")}
-                    </Link>
+                    <UncontrolledDropdown>
+                      <DropdownToggle
+                        caret
+                        className={`${styles.navItem} bg-transparent border-0 p-0 mb-0 mt-3`}
+                      >
+                        <span className="p-1" style={{ fontSize: "20px" }}>
+                          Our Services
+                        </span>
+                      </DropdownToggle>
+                      <DropdownMenu style={{ right: 0, left: "auto" }}>
+                        <DropdownItem>
+                          <Link
+                            className=" d-flex align-items-center"
+                            to="/trainee/dashboard"
+                          >
+                            <span className="textParrotGreen me-2">
+                              <GiWeightLiftingUp className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Trainers</p>
+                          </Link>
+                        </DropdownItem>
+
+                        <DropdownItem>
+                          <Link
+                            className=" d-flex align-items-center"
+                            to="/trainee/dashboard"
+                          >
+                            <span className="textParrotGreen me-2">
+                              <FaNutritionix className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Nutritionist</p>
+                          </Link>
+                        </DropdownItem>
+
+                        <DropdownItem>
+                          <Link
+                            className=" d-flex align-items-center"
+                            to="/trainee/dashboard"
+                          >
+                            <span className="textParrotGreen me-2">
+                              <GiBodyBalance className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Exercises</p>
+                          </Link>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
                   </NavItem>
                   <NavItem>
                     <div
@@ -365,41 +411,51 @@ const TopBar = (props) => {
               </CardBody>
               <CardFooter>
                 {!props?.isGuest && (
-                  <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
-                    <UncontrolledDropdown nav inNavbar>
-                      <DropdownToggle nav caret>
-                        <img
-                          className="me-2"
-                          src={
-                            currentLanguage === ENGLISH_LANGUAGE
-                              ? Images.AMERICAN_FLAG_IMG
-                              : Images.ARABIA_FLAG_IMG
-                          }
-                          alt="Flag_Image"
-                        />
+                  <Nav
+                    className={`ml-auto d-lg-none d-block border border-danger ${styles.nav}`}
+                  >
+                    <UncontrolledDropdown>
+                      <DropdownToggle
+                        className=" BorderYellow text-center d-flex justify-content-center text-white mb-2"
+                        nav
+                      >
+                        Our Services
                       </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem
-                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
-                        >
-                          <span>
-                            <img
-                              src={Images.ARABIA_FLAG_IMG}
-                              alt="Arabia_Flag_Image"
-                            />
-                          </span>{" "}
-                          <span>{"العربية"}</span>
+                      <DropdownMenu style={{ right: 0, left: "auto" }}>
+                        <DropdownItem>
+                          <Link
+                            className=" d-flex align-items-center"
+                            to="/trainee/dashboard"
+                          >
+                            <span className="textParrotGreen me-2">
+                              <GiWeightLiftingUp className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Trainers</p>
+                          </Link>
                         </DropdownItem>
-                        <DropdownItem
-                          onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
-                        >
-                          <span>
-                            <img
-                              src={Images.AMERICAN_FLAG_IMG}
-                              alt="America_Flag_Image"
-                            />
-                          </span>{" "}
-                          <span>{"English (US)"}</span>
+
+                        <DropdownItem>
+                          <Link
+                            className=" d-flex align-items-center"
+                            to="/trainee/dashboard"
+                          >
+                            <span className="textParrotGreen me-2">
+                              <FaNutritionix className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Nutritionist</p>
+                          </Link>
+                        </DropdownItem>
+
+                        <DropdownItem>
+                          <Link
+                            className=" d-flex align-items-center"
+                            to="/trainee/dashboard"
+                          >
+                            <span className="textParrotGreen me-2">
+                              <GiBodyBalance className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Exercises</p>
+                          </Link>
                         </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>

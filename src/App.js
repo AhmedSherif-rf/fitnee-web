@@ -77,7 +77,8 @@ function App() {
                           Component,
                           route?.isPublic,
                           route?.isGuest,
-                          route?.isPrivate
+                          route?.isPrivate,
+                          route?.isAuth
                         )}
                       />
                     ) : (

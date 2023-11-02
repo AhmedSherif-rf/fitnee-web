@@ -139,7 +139,7 @@ const CreditCardDetailWrapper = () => {
 
             <div className="CreditCard d-flex align-items-center justify-content-between mb-2">
               <div className="">
-                <p className="mb-0">Use Fitnee wallet</p>
+                <p className="mb-0">Use FitNee wallet</p>
               </div>
               <div className="w-50 d-flex justify-content-end ">
                 <FormGroup switch>
@@ -179,7 +179,7 @@ const CreditCardDetailWrapper = () => {
               </div>
               <div className="d-flex align-items-center justify-content-between">
                 <div className="">
-                  <h6>Fitnee Wallet</h6>
+                  <h6>FitNee Wallet</h6>
                 </div>
                 <div className="">
                   <h6>SAR 500</h6>

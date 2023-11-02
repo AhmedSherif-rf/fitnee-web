@@ -37,7 +37,7 @@ const SignInForm = () => {
               <Checkbox
                 label={
                   <p className="mb-0 fs-6">
-                    Agree on Fitnee's{" "}
+                    Agree on FitNee's{" "}
                     <Link to="/termAndCondition">
                       <span className="textYellow">terms and conditions</span>
                     </Link>

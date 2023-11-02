@@ -145,8 +145,7 @@ const TrainerAndNutritionistData = [
 ];
 
 const ServiceProviderListWrapper = (props) => {
-
-   const { cardLink } = props;
+  const { cardLink } = props;
   const [
     showSubscriptionInformationModal,
     setShowSubscriptionInformationModal,
@@ -250,9 +249,7 @@ const ServiceProviderListWrapper = (props) => {
   }, []);
 
   return (
-    <Card
-      className={`BorderRadius my-3 ${styles.serviceProviderListWrapper}`}
-    >
+    <Card className={`BorderRadius my-3 ${styles.serviceProviderListWrapper}`}>
       <CardBody>
         <Row className="align-items-center mb-5">
           <Col className="text-left">
@@ -264,7 +261,11 @@ const ServiceProviderListWrapper = (props) => {
           <Col className="text-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle data-toggle="dropdown" tag="span">
-                <img className={`${styles.filterIcon}`} src={FilterIcon} alt="filter-icon" />
+                <img
+                  className={`${styles.filterIcon}`}
+                  src={FilterIcon}
+                  alt="filter-icon"
+                />
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem onClick={() => handleDropdownItemClick(TRAINER)}>

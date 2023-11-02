@@ -31,7 +31,8 @@ const ServiceProviderSubscription = () => {
               return (
                 <Col
                   md={4}
-                  className={`mb-3 ${
+                  key={index}
+                  className={`mb-5 mb-md-3 ${
                     index === 1 && window.innerWidth >= 768
                       ? "middle-subscription-card"
                       : ""

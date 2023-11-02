@@ -30,7 +30,7 @@ const Hero = (props) => {
         <div
           className={`${
             textBackgroundImage ? styles.heroTextBackground : ""
-          } px-4 d-flex align-items-center `}
+          } px-4 pt-4 d-flex align-items-center `}
         >
           <motion.div
             ref={ref}

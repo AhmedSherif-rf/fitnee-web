@@ -13,10 +13,6 @@ const RegisterAs = (props) => {
   const navigate = useNavigate();
   const { t } = useTranslation("");
 
-  const handleAsGuestClick = useCallback(() => {
-    navigate("/guest/serviceProviderList");
-  }, [navigate]);
-
   const handleAsTraineeClick = useCallback(() => {
     dispatch(setGuest(false));
     navigate("/signUp/trainee");
@@ -39,29 +35,24 @@ const RegisterAs = (props) => {
         }}
       >
         <Col md={4} className={`${styles.registerAsContent} px-2`}>
-          <h2 className=" mb-5 text-center text-white fw-bold">
+          <h2 className="mb-5 text-center fs-1 text-white fw-bold">
             {t("registerAs.registerAsText")}
           </h2>
-          <div className="">
+          <div className="pt-3">
             <FillBtn
-              className="w-100 mb-3 py-2"
+              className="w-100 mb-4 customPaddingY"
               text={t("registerAs.traineeText")}
               handleOnClick={handleAsTraineeClick}
             />
             <FillBtn
-              className="w-100 mb-3 py-2"
+              className="w-100 mb-4 customPaddingY"
               text={t("registerAs.trainerText")}
               handleOnClick={handleAsTrainerClick}
             />
             <FillBtn
-              className="w-100 mb-3 py-2"
+              className="w-100 mb-3 customPaddingY"
               text={t("registerAs.nutritionistText")}
               handleOnClick={handleAsNutritionistClick}
-            />
-            <FillBtn
-              className="w-100 mb-3 py-2"
-              text={t("registerAs.guestText")}
-              handleOnClick={handleAsGuestClick}
             />
           </div>
         </Col>

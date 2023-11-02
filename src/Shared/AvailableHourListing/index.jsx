@@ -9,7 +9,7 @@ const AvailableHourList = (props) => {
       {hoursData.map((item, index) => {
         return (
           <AvailableHourCard
-            className="rounded-3"
+            className="rounded-3 BorderRadius"
             day={item.day}
             time={item.time}
             index={index}

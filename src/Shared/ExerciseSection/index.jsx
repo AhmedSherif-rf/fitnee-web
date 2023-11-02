@@ -40,7 +40,7 @@ const ExerciseSection = (props) => {
                   ></video>
                 </Col>
                 <Col md={12} className="mb-2">
-                  <Card className="shadow BorderRadius">
+                  <Card className="BorderRadius">
                     <CardBody className="p-3 lh-2">
                       {exercise?.description?.map((desc, index) => {
                         return (

@@ -11,19 +11,22 @@ import {
 } from "swiper/modules";
 
 const CardSwiper = (props) => {
-  const { data: cardsData } = props;
+  const { data: cardsData, heading } = props;
+
+  // Slice the first 3 elements from the cardsData array
+  const slicedCardsData = cardsData.slice(0, 20);
 
   const swiperConfiguration = {
     effect: "coverflow",
     grabCursor: true,
-    spaceBetween: 64,
+    spaceBetween: 10,
     centeredSlides: true,
     slidesPerView: "auto",
     coverflowEffect: {
-      rotate: 50,
+      rotate: 0,
       stretch: 0,
-      depth: 100,
-      modifier: 1,
+      depth: 10,
+      modifier: 25,
       slideShadows: true,
     },
     loop: true,
@@ -40,13 +43,17 @@ const CardSwiper = (props) => {
 
   return (
     <>
-      <Container fluid className="mb-3">
+      <Container fluid className="mb-4">
         <Row>
           <Col>
+            <h1 className="text-center fw-bold pb-3 mt-4 text-white"> {heading}</h1>
             <Swiper {...swiperConfiguration} className={"feedbackSwiper"}>
-              {cardsData.map((card, index) => {
+              {slicedCardsData.map((card, index) => {
                 return (
-                  <SwiperSlide key={"_" + index} className={"feedbackSwiperSlider"}>
+                  <SwiperSlide
+                    key={"_" + index}
+                    className={"feedbackSwiperSlider"}
+                  >
                     <RatingCard
                       header={card.title}
                       image={card.sliderImg}

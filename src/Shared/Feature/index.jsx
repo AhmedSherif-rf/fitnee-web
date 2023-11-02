@@ -3,7 +3,7 @@ import styles from "./style.module.scss";
 import React, { memo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 
 const Feature = (props) => {
   const { t } = useTranslation("");
@@ -20,7 +20,7 @@ const Feature = (props) => {
 
   return (
     <Row
-      className={`my-4 h-100 ${styles.featureSectionWrapper} ${
+      className={`p-4 h-100 ${styles.featureSectionWrapper} ${
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
@@ -38,7 +38,7 @@ const Feature = (props) => {
             <div className=" mb-5">
               <Swiper
                 speed={1000}
-                spaceBetween={100}
+                spaceBetween={500}
                 grabCursor={true}
                 autoplay={{
                   delay: 2500,
@@ -73,6 +73,7 @@ const Feature = (props) => {
       >
         <Swiper
           speed={1000}
+          spaceBetween={100}
           grabCursor={true}
           className={`${styles.cardSwiper}`}
           onSwiper={(swiper) => (cardSwiperRef.current = swiper)}
@@ -81,7 +82,7 @@ const Feature = (props) => {
             return (
               <SwiperSlide
                 key={index}
-                className={`${styles.cardSwiperSlider}`}
+                className={`${styles.cardSwiperSlider} shake`}
                 style={{ backgroundImage: `url(${item.image})` }}
               ></SwiperSlide>
             );

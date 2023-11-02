@@ -4,8 +4,8 @@
   background-color: $yellow !important;
   border: 2px solid $yellow !important;
   font-weight: bold !important;
-  color: black !important;
-  border-radius: $border-radius-15 !important;
+  color: $black !important;
+  border-radius: $border-radius-10 !important;
 }
 
 .OutlineBtn {
@@ -13,7 +13,7 @@
   border: 2px solid $yellow !important;
   font-weight: bold !important;
   color: $light-gray !important;
-  border-radius: $border-radius-15 !important;
+  border-radius: $border-radius-10 !important;
   &:hover {
     background-color: $yellow !important;
     border: 2px solid $hoverYellow !important;

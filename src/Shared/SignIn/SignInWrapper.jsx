@@ -9,7 +9,7 @@ const SignInWrapper = (props) => {
     <Row className="h-100">
       <Col md={6} xs={12} className="p-0 d-md-block d-none">
         <div
-          className="d-flex flex-column justify-content-between h-100 py-4"
+          className="d-flex flex-column justify-content-between bgProperties h-100 py-4"
           style={CompStyle}
         >
           <div>{text1}</div>

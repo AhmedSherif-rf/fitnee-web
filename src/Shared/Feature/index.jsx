@@ -24,7 +24,7 @@ const Feature = (props) => {
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
-      <Col xs={12} md={6} className={`p-0 ${styles.featureSectionLeftContent}`}>
+      <Col xs={12} md={6} className={`p-0 mb-md-0 mb-3 ${styles.featureSectionLeftContent}`}>
         <div className={`d-flex align-items-center h-100`}>
           <div className="">
             <div>
@@ -63,7 +63,7 @@ const Feature = (props) => {
           </div>
         </div>
       </Col>
-      <Col xs={12} md={6} className={`${styles.featureSectionRightContent}`}>
+      <Col xs={12} md={6} className={`mb-md-0 mb-3 ${styles.featureSectionRightContent}`}>
         <Swiper
           speed={1000}
           spaceBetween={100}

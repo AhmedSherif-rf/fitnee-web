@@ -26,19 +26,19 @@ const Footer = () => {
             </p>
           </div>
         </Col>
-        <Col md={4}>
-          <div className="">
-            <div className="d-flex gap-3 mx-4 align-items-center justify-content-center p-3">
-              <Link to="/termAndCondition">
-                <h6 className="text-white mb-0">
-                  {t("landing.termsAndConditionsText")}
-                </h6>
-              </Link>
-              <img src={Image.TWITTER_IMG} alt="logo" />
-              <img src={Image.YOUTUBE_IMG} alt="logo" />
-              <img src={Image.TIKTOK_IMG} alt="logo" />
-              <img src={Image.INSTA_IMG} alt="logo" />
-            </div>
+        <Col md={4} className="lh-1">
+          <div className="d-flex gap-3 mx-4 align-items-center justify-content-center p-2">
+            <img src={Image.TWITTER_IMG} alt="logo" />
+            <img src={Image.YOUTUBE_IMG} alt="logo" />
+            <img src={Image.TIKTOK_IMG} alt="logo" />
+            <img src={Image.INSTA_IMG} alt="logo" />
+          </div>
+          <div className="d-flex mx-4 align-items-start justify-content-center">
+            <Link to="/termAndCondition">
+              <h6 className="text-white mb-0">
+                {t("landing.termsAndConditionsText")}
+              </h6>
+            </Link>
           </div>
         </Col>
       </Row>

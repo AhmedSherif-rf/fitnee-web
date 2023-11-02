@@ -52,7 +52,7 @@ const Feature = (props) => {
                   return (
                     <SwiperSlide
                       key={index}
-                      className="d-flex align-items-center  justify-content-start d-block text-white fs-5 fw-bold"
+                      className="d-flex align-items-center justify-content-start justify-content-sm-center d-block text-white"
                     >
                       {item.text}
                     </SwiperSlide>

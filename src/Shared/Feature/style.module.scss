@@ -22,6 +22,11 @@
     width: 45vw;
     padding: 10px;
     align-items: center;
+
+    div {
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
   }
   .featureSectionRightContent {
     .cardSwiper {
@@ -40,6 +45,10 @@
     .featureTextSlider {
       width: 92vw;
       align-items: center;
+
+      div {
+        font-size: 16px;
+      }
     }
   }
 }

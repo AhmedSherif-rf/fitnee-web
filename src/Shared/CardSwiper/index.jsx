@@ -43,7 +43,7 @@ const CardSwiper = (props) => {
 
   return (
     <Container fluid>
-      <Row>
+      <Row className="mb-5">
         <Col>
           <h1 className="text-center fw-bold text-white mt-5"> {heading}</h1>
           <Swiper {...swiperConfiguration} className={"feedbackSwiper"}>

@@ -181,6 +181,12 @@ select,
   font-size: $font-14 !important;
 }
 
+.customSpacing {
+  letter-spacing: 1px;
+  line-height: 24px;
+  padding-right: 18%;
+}
+
 .customDropDown {
   font-size: $font-14 !important;
 }

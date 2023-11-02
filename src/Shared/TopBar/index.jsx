@@ -190,7 +190,7 @@ const TopBar = (props) => {
                         <DropdownItem>
                           <Link
                             className=" d-flex align-items-center"
-                            to="/trainee/dashboard"
+                            to="/guest/serviceProviderList"
                           >
                             <span className="textParrotGreen me-2">
                               <GiWeightLiftingUp className="mb-1" />
@@ -202,7 +202,7 @@ const TopBar = (props) => {
                         <DropdownItem>
                           <Link
                             className=" d-flex align-items-center"
-                            to="/trainee/dashboard"
+                            to="/guest/serviceProviderList"
                           >
                             <span className="textParrotGreen me-2">
                               <FaNutritionix className="mb-1" />
@@ -214,7 +214,7 @@ const TopBar = (props) => {
                         <DropdownItem>
                           <Link
                             className=" d-flex align-items-center"
-                            to="/trainee/dashboard"
+                            to="/guest/services"
                           >
                             <span className="textParrotGreen me-2">
                               <GiBodyBalance className="mb-1" />
@@ -425,7 +425,7 @@ const TopBar = (props) => {
                         <DropdownItem>
                           <Link
                             className=" d-flex align-items-center"
-                            to="/trainee/dashboard"
+                            to="/guest/serviceProviderList"
                           >
                             <span className="textParrotGreen me-2">
                               <GiWeightLiftingUp className="mb-1" />
@@ -437,7 +437,7 @@ const TopBar = (props) => {
                         <DropdownItem>
                           <Link
                             className=" d-flex align-items-center"
-                            to="/trainee/dashboard"
+                            to="/guest/serviceProviderList"
                           >
                             <span className="textParrotGreen me-2">
                               <FaNutritionix className="mb-1" />
@@ -449,7 +449,7 @@ const TopBar = (props) => {
                         <DropdownItem>
                           <Link
                             className=" d-flex align-items-center"
-                            to="/trainee/dashboard"
+                            to="/guest/services"
                           >
                             <span className="textParrotGreen me-2">
                               <GiBodyBalance className="mb-1" />

@@ -63,13 +63,7 @@ const CreditCardDetailWrapper = () => {
           <div className="w-100">
             <Label className="small mb-0">Card number</Label>
             <InputGroup>
-              <InputGroupText
-                className="BorderYellow"
-                style={{
-                  borderTopLeftRadius: "15px",
-                  borderBottomLeftRadius: "15px",
-                }}
-              >
+              <InputGroupText className="form-control-lg yellowBorder">
                 <img src={Images.CARD_ICON_IMG} alt="" />
               </InputGroupText>
 
@@ -78,11 +72,9 @@ const CreditCardDetailWrapper = () => {
                 style={{
                   backgroundColor: "white",
                   color: "black",
-                  borderTopRightRadius: "15px",
-                  borderBottomRightRadius: "15px",
                 }}
                 placeholder="0000 0000 0000 0000"
-                className="form-control-lg BorderYellow"
+                className="form-control-lg yellowBorder"
                 value={cardNumber}
                 onChange={handleCardNumberChange}
                 required
@@ -97,7 +89,8 @@ const CreditCardDetailWrapper = () => {
                 <Label className="small mt-2 mb-0">Expiry date</Label>
                 <InputField
                   type="date"
-                  className="fs-6 py-3"
+                  className="fs-6"
+                  style={{ paddingTop: "11px", paddingBottom: "11px" }}
                   placeholder="MM/YYYY"
                   value={date}
                   onChange={handleDateChange}
@@ -108,7 +101,7 @@ const CreditCardDetailWrapper = () => {
                 <Input
                   type="text"
                   placeholder="0000"
-                  className="form-control-lg BorderRadius"
+                  className="form-control-lg BorderYellow"
                   value={cvcValue}
                   onChange={handleCvcChange}
                   required
@@ -125,7 +118,7 @@ const CreditCardDetailWrapper = () => {
                   <Input
                     type="text"
                     placeholder="0000"
-                    className="form-control-lg BorderRadius"
+                    className="form-control py-2 BorderYellow"
                     value={cvcValue}
                     onChange={handleCvcChange}
                     required
@@ -165,7 +158,7 @@ const CreditCardDetailWrapper = () => {
         </Col>
         <Col md={6}>
           <Card className="BorderRadius my-2">
-            <CardHeader>
+            <CardHeader className="bg-transparent">
               <h5 className="mb-0">Payment Summary</h5>
             </CardHeader>
             <CardBody>
@@ -186,7 +179,7 @@ const CreditCardDetailWrapper = () => {
                 </div>
               </div>
             </CardBody>
-            <CardFooter className="BBorderRadius">
+            <CardFooter className="bg-transparent">
               <div className="d-flex align-items-center justify-content-between">
                 <div>
                   <h6 className="mb-0">Total Pay</h6>

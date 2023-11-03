@@ -20,7 +20,7 @@ const ResetData = [
   },
 ];
 
-const Reset = () => {
+const ResetPassword = () => {
   return (
     <Container fluid className="vh-100">
       {ResetData?.map((item) => (
@@ -34,5 +34,4 @@ const Reset = () => {
     </Container>
   );
 };
-
-export default Reset;
+export default ResetPassword;

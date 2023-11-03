@@ -52,14 +52,14 @@ const index = () => {
     },
   ];
   return (
-    <Container fluid className="h-100 p-3">
+    <Container fluid className="h-100 p-3 text-black-custom">
       <Row className="h-100">
         <Col md={12}>
           <Card className="BorderRadius border-0 h-100">
             <CardBody className="p-4">
               <Row>
                 <Col md={12}>
-                  <h5 className="mb-2 fw-bold">My Current Trainees</h5>
+                  <h4 className="fw-bold mb-5 p-3 m-0">My Current Trainees</h4>
                 </Col>
               </Row>
               {TraineeList.map((item) => {

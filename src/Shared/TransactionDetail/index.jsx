@@ -28,7 +28,6 @@ const TransactionDetail = (props) => {
                 {Dr_or_Cr} {Currency} {Amount}
               </h4>
             </div>
-            
           </div>
         </div>
       </Col>

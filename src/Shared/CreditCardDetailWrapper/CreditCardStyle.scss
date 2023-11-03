@@ -2,10 +2,10 @@
 .CreditCard {
   .form-switch {
     .form-check-input {
-      background-image: url("../../Assets/Images/ConstImgs/yellowCircle.png");
+      background-image: url("../../Assets/Images/ConstImgs/greenCircle.png");
       cursor: pointer;
       &:checked {
-        background-image: url("../../Assets/Images/ConstImgs/greenCircle.png");
+        background-image: url("../../Assets/Images/ConstImgs/yellowCircle.png");
         background-color: $yellow-blur !important;
         border-color: $parrot-green !important;
       }

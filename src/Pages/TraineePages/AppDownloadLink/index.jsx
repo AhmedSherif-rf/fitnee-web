@@ -33,14 +33,24 @@ const AppDownloadLink = () => {
         </Col>
         <Col md="6">
           <div className="d-flex justify-content-center mb-4">
-            <div className="QRcodeDiv p-5">
-              <img className="mb-5 mt-3" src={Images.QR_CODE_IMG} alt="" />
+            <div className="QRcodeDiv p-5 text-center">
+              <img
+                className="mb-3"
+                style={{ width: "85%" }}
+                src={Images.QR_CODE_IMG}
+                alt=""
+              />
+              <h6 className="text-dark fw-bold text-center">GET APP</h6>
             </div>
           </div>
-          <div className=" d-flex align-items-center justify-content-center">
-            <FillBtn className="w-100 p-3 me-3" text="Google Link" />
-            <FillBtn className="w-100 p-3" text="Apple Link" />
-          </div>
+          <Row className="justify-content-center">
+            <Col md={5}>
+              <FillBtn className="w-100 p-3 me-3" text="Google Link" />
+            </Col>
+            <Col md={5}>
+              <FillBtn className="w-100 p-3" text="Apple Link" />
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>

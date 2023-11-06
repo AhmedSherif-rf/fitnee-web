@@ -14,7 +14,7 @@ const TransactionDetail = (props) => {
   return (
     <Row className="mb-2">
       <Col md={12}>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center border-bottom py-2">
           <div className="me-2">
             <img src={ArrowIcon} alt="" />
           </div>

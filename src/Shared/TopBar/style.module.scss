@@ -29,7 +29,7 @@
 }
 
 .PGreen {
-  color: $parrot-green !important;
+  color: $white !important;
 }
 .bgInverse,
 .mobileView {
@@ -37,7 +37,7 @@
   position: fixed;
   transform: translateX(0);
   transition: transform 0.8s ease-in-out;
-  width: 60%;
+  width: 80%;
   overflow: hidden;
   z-index: 999;
   background-color: $black;
@@ -48,12 +48,12 @@
       .NavLink {
         padding-left: 8px;
         padding-right: 8px;
-        border-radius: 14px;
-        border: 1px solid $light-gray !important;
+        // border-radius: 14px;
+        border-bottom: 1px solid $light-gray !important;
         color: $yellow !important;
         &:hover {
           background-color: $yellow-blur !important;
-          border: 1px solid $yellow !important;
+          // border: 1px solid $yellow !important;
           color: white !important;
         }
       }
@@ -68,10 +68,10 @@
   }
 }
 .bgInverse {
-  width: 40%;
-  background-color: #91f53396 !important;
+  width: 20%;
+  background-color: $blur-color;
   &.slide-left-blank {
-    transform: translateX(150%);
+    transform: translateX(400%);
   }
   &.slide-right-blank {
     transform: translateX(-100%);

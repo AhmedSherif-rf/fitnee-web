@@ -21,7 +21,7 @@
 }
 
 .custom-badge {
-  font-size: 15px !important;
+  font-size: 14px !important;
   background-color: $yellow !important;
   border-radius: 30px !important;
 }
@@ -36,7 +36,7 @@
   color: $yellow !important;
 }
 .textOrange {
-  color: orange !important;
+  color: $orange !important;
 }
 .textGrey {
   color: $text-muted !important;
@@ -47,29 +47,22 @@
 }
 
 .BorderRadius {
-  border-radius: 15px !important;
   box-shadow: $card-box-shadow;
   border: none !important;
 }
-
-.BorderRadiusInput {
-  border-radius: 15px !important;
-}
-
+.BorderYellow,
+.BorderRadius,
+.BorderRadiusInput,
 .subscriptionDiv {
-  border-radius: 15px !important;
+  border-radius: 14px !important;
 }
 
 .ImgBorder {
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
+  border-top-right-radius: 14px;
+  border-top-left-radius: 14px;
 }
-
+.yellowBorder,
 .BorderYellow {
-  border: 1px solid $yellow !important;
-  border-radius: 8px !important;
-}
-.yellowBorder{
   border: 1px solid $yellow !important;
 }
 
@@ -125,9 +118,9 @@ select,
 }
 
 .react-tel-input {
-  border-radius: 15px;
+  border-radius: 14px;
   .form-control-lg {
-    border-radius: 15px !important;
+    border-radius: 14px !important;
     border: 1px solid $white;
     padding-left: 50px !important;
     &:focus {
@@ -136,14 +129,14 @@ select,
   }
   .flag-dropdown {
     border: $yellow 1px solid !important;
-    border-top-left-radius: 15px !important;
-    border-bottom-left-radius: 15px !important;
+    border-top-left-radius: 14px !important;
+    border-bottom-left-radius: 14px !important;
     .selected-flag {
-      border-top-left-radius: 15px !important;
-      border-bottom-left-radius: 15px !important;
+      border-top-left-radius: 14px !important;
+      border-bottom-left-radius: 14px !important;
       &:hover {
-        border-top-left-radius: 15px !important;
-        border-bottom-left-radius: 15px !important;
+        border-top-left-radius: 14px !important;
+        border-bottom-left-radius: 14px !important;
       }
     }
   }
@@ -175,11 +168,11 @@ select,
   height: auto;
   max-width: 100%;
   width: 100%;
-  border-radius: 15px !important;
+  border-radius: 14px !important;
 }
 
 .buttonBoxShadow {
-  box-shadow: 0px 2px 15px 0px $button-box-shadow;
+  box-shadow: 0px 2px 14px 0px $button-box-shadow;
 }
 
 .errorField {
@@ -239,7 +232,7 @@ select,
 .rmsc {
   .dropdown-container {
     padding: 8px 10px !important;
-    border-radius: 15px !important;
+    border-radius: 14px !important;
     border: 1px solid $yellow !important;
     font-size: 14px !important;
     &:focus-within {

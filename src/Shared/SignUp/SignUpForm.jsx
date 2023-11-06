@@ -239,7 +239,10 @@ const SignUpForm = () => {
                     <InputGroup>
                       <InputGroupText
                         className="yellowBorder"
-                      
+                        style={{
+                          borderTopLeftRadius: "14px",
+                          borderBottomLeftRadius: "14px",
+                        }}
                       >
                         <FaBirthdayCake />
                       </InputGroupText>
@@ -251,6 +254,8 @@ const SignUpForm = () => {
                           paddingBottom: "16px",
                           backgroundColor: "white",
                           color: "black",
+                          borderTopRightRadius: "14px",
+                          borderBottomRightRadius: "14px",
                         }}
                         name="dob"
                         placeholder="Date of Birthday"

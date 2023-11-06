@@ -49,17 +49,17 @@ const PaymentHistoryWrapper = () => {
   ];
 
   return (
-    <Container fluid className="mt-3">
+    <Container fluid className="mt-3 text-black-custom">
       <Row className="justify-content-center">
         <Col md={12}>
-          <Card className="BorderRadius vh-auto">
+          <Card className="BorderRadius vh-auto ">
             <CardHeader className="bg-transparent border-0 p-3">
-              <h4>Payment History</h4>
+              <h4 className="fw-bold  fs-3 p-3 m-0">Payment History</h4>
             </CardHeader>
             <CardBody>
               <Row>
                 <Col md={12}>
-                  <Card className="BorderRadius py-3 px-2">
+                  <Card className="BorderYellow  BorderRadius py-3 px-2">
                     <CardBody className="d-flex align-items-center justify-content-center">
                       <div className="w-100 text-center">
                         <h3 className="fw-bold">Available Balance</h3>
@@ -76,7 +76,7 @@ const PaymentHistoryWrapper = () => {
               </Row>
               <Row className="my-2">
                 <Col md={12}>
-                  <h5>Today</h5>
+                  <h5 className="my-3">Today</h5>
                   {Transactions.map((item, index) => {
                     return (
                       <TransactionDetail

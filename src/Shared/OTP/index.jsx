@@ -25,10 +25,10 @@ const OTPVerification = () => {
   }, [navigate]);
 
   return (
-    <Container className={`h-100 ${styles.otpContainer}`}>
+    <Container className={`h-100 text-black-custom ${styles.otpContainer}`}>
       <Row className={`h-100 justify-content-center ${styles.otpWrapper}`}>
         <Col md={4} className={`text-center py-3 ${styles.otpCol}`}>
-          <h1 className="my-5 fw-400">Verification</h1>
+          <h1 className="my-5 fw-400 fw-bold">Verification</h1>
           <p className="mb-5 fs-4 lh-1 px-5">
             Open your email and insert the code{" "}
           </p>
@@ -44,7 +44,7 @@ const OTPVerification = () => {
           />
 
           <p className="mb-0">I Didn't Receive a Code!</p>
-          <Link to="#0" className="textYellow">
+          <Link to="#0" className="pb-5 textYellow">
             Resend code
           </Link>
 

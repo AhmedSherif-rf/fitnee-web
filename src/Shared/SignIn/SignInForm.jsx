@@ -16,9 +16,9 @@ const SignInForm = () => {
 
   return (
     <Container>
-      <Row className="justify-content-center align-items-center vh-100">
+      <Row className="justify-content-center text-black-custom align-items-center vh-100">
         <Col lg={7} md={12} sm={10}>
-          <h1 className="text-center mb-5">SignIn</h1>
+          <h1 className="text-center mb-5 fs-1 fw-bold">Sign In</h1>
           <Form>
             <InputField
               placeholder={"Type your email"}
@@ -32,7 +32,9 @@ const SignInForm = () => {
               icon={<img src={Images.PERSON_ICON} alt="password-icon" />}
               className={"mb-1 py-3 px-5"}
             />
-            <p className="text-end textYellow">Forgot Password?</p>
+            <Link to="/forgotPassword">
+              <p className="text-end textYellow">Forgot Password?</p>
+            </Link>
             <div className="d-flex mb-2">
               <Checkbox
                 label={

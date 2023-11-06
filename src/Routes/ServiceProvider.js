@@ -10,6 +10,15 @@ export const serviceProviderRoutes = [
     role: serviceProviderRole,
   },
   {
+    path: "/serviceProvider/resetPassword",
+    component: lazy(() =>
+      import("../Pages/ServiceProviderPages/ResetPassword")
+    ),
+    exact: true,
+    isPrivate: true,
+    role: serviceProviderRole,
+  },
+  {
     path: "/serviceProvider/subscriber",
     component: lazy(() => import("../Pages/ServiceProviderPages/TraineeList")),
     exact: true,

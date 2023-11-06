@@ -238,10 +238,10 @@ const SignUpForm = () => {
                     </div>
                     <InputGroup>
                       <InputGroupText
-                        className="BorderYellow"
+                        className="yellowBorder"
                         style={{
-                          borderTopLeftRadius: "15px",
-                          borderBottomLeftRadius: "15px",
+                          borderTopLeftRadius: "14px",
+                          borderBottomLeftRadius: "14px",
                         }}
                       >
                         <FaBirthdayCake />
@@ -254,12 +254,12 @@ const SignUpForm = () => {
                           paddingBottom: "16px",
                           backgroundColor: "white",
                           color: "black",
-                          borderTopRightRadius: "15px",
-                          borderBottomRightRadius: "15px",
+                          borderTopRightRadius: "14px",
+                          borderBottomRightRadius: "14px",
                         }}
                         name="dob"
                         placeholder="Date of Birthday"
-                        className="form-control-lg BorderYellow px-4"
+                        className="form-control-lg yellowBorder px-4"
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
                         value={values.dob}

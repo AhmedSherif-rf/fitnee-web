@@ -14,7 +14,7 @@ import { GiWeightLiftingUp, GiBodyBalance } from "react-icons/gi";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const LandingPage = (props) => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   const WhatIsFitneeData = [
     {
@@ -249,11 +249,11 @@ const LandingPage = (props) => {
 
   return (
     <div className="bg-black">
-      <section id="bannerSection" className="">
+      <section id="bannerSection" style={{ direction: i18n.dir() }}>
         <HomeBanner />
       </section>
 
-      <section id="counterSection" className="vh-100">
+      <section id="counterSection" className="vh-100" style={{ direction: i18n.dir() }}>
         <Container fluid>
           <Row className={`vh-100 bgProperties ${styles.bannerImg}`}>
             <Col md={4}>
@@ -305,7 +305,7 @@ const LandingPage = (props) => {
         </Container>
       </section>
 
-      <section id="fitneeSection" className="h-100">
+      <section id="fitneeSection" className="h-100" style={{ direction: i18n.dir() }}>
         <Container fluid>
           {WhatIsFitneeData?.map((item, index) => (
             <Hero
@@ -330,7 +330,7 @@ const LandingPage = (props) => {
         </Container>
       </section>
 
-      <section id="heroSection">
+      <section id="heroSection" style={{ direction: i18n.dir() }}>
         <Container fluid>
           {HeroData?.map((item, index) => (
             <Hero

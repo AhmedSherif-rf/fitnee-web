@@ -74,7 +74,8 @@ const TopBar = (props) => {
       props.isPublic &&
       (location.pathname === "/termAndCondition" ||
         location.pathname === "/signIn" ||
-        location.pathname === "/contactUs")
+        location.pathname === "/contactUs" ||
+        location.pathname === "/forgotPassword")
     ) {
       setShowTopBar(false);
     } else {

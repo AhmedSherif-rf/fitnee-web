@@ -63,8 +63,14 @@ const CreditCardDetailWrapper = () => {
           <div className="w-100">
             <Label className="small mb-0">Card number</Label>
             <InputGroup>
-              <InputGroupText className="form-control-lg yellowBorder">
+              <InputGroupText className="form-control-lg yellowBorder"
+                style={{
+                  borderTopLeftRadius: "14px",
+                  borderBottomLeftRadius: "14px",
+                }}
+              >
                 <img src={Images.CARD_ICON_IMG} alt="" />
+                
               </InputGroupText>
 
               <Input
@@ -72,6 +78,8 @@ const CreditCardDetailWrapper = () => {
                 style={{
                   backgroundColor: "white",
                   color: "black",
+                  borderTopRightRadius: "14px",
+                  borderBottomRightRadius: "14px",
                 }}
                 placeholder="0000 0000 0000 0000"
                 className="form-control-lg yellowBorder"

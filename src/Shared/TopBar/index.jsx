@@ -347,17 +347,17 @@ const TopBar = (props) => {
             )}
           </Navbar>
           <div
-            className={`d-lg-none d-block ${styles.mobileView} h-100 ${
+            className={`d-lg-none d-block bg-dark ${styles.mobileView} h-100 ${
               isSliding ? styles["slide-right"] : styles["slide-left"]
             }`}
           >
-            <Card className="bg-transparent h-100">
-              <CardBody className="px-2">
+            <Card className="bg-transparent border-0 h-100">
+              <CardBody className="p-0 mt-4">
                 <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink
                       className={`${styles.NavLink}`}
-                      href="/components/"
+                      href="/"
                     >
                       <FaHome className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
                       {t("landing.homeText")}
@@ -367,7 +367,7 @@ const TopBar = (props) => {
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink
                       className={`${styles.NavLink}`}
-                      href="/components/"
+                      href="/guest/serviceProviderList"
                     >
                       <FaServicestack
                         className={`fs-2 me-2 ${styles.PGreen}`}
@@ -379,8 +379,10 @@ const TopBar = (props) => {
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink
                       className={`${styles.NavLink}`}
-                      href="/components/"
+                      href="#"
+                      onClick={handleFitneeCommunityClick}
                     >
+                      
                       <FaPeopleGroup className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
                       {t("landing.fitneeCommunityText")}
                     </NavLink>
@@ -389,7 +391,7 @@ const TopBar = (props) => {
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink
                       className={`${styles.NavLink}`}
-                      href="/components/"
+                      href="/contactUs"
                     >
                       <FaAddressCard className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
                       {t("landing.contactUsText")}
@@ -397,7 +399,7 @@ const TopBar = (props) => {
                   </NavItem>
                 </Nav>
               </CardBody>
-              <CardFooter>
+              <CardFooter className="border-0">
                 {!props?.isGuest && (
                   <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
                     <UncontrolledDropdown>

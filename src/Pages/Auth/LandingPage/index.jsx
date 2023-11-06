@@ -253,7 +253,11 @@ const LandingPage = (props) => {
         <HomeBanner />
       </section>
 
-      <section id="counterSection" className="vh-100" style={{ direction: i18n.dir() }}>
+      <section
+        id="counterSection"
+        className="vh-100"
+        style={{ direction: i18n.dir() }}
+      >
         <Container fluid>
           <Row className={`vh-100 bgProperties ${styles.bannerImg}`}>
             <Col md={4}>
@@ -305,7 +309,11 @@ const LandingPage = (props) => {
         </Container>
       </section>
 
-      <section id="fitneeSection" className="h-100" style={{ direction: i18n.dir() }}>
+      <section
+        id="fitneeSection"
+        className="h-100"
+        style={{ direction: i18n.dir() }}
+      >
         <Container fluid>
           {WhatIsFitneeData?.map((item, index) => (
             <Hero

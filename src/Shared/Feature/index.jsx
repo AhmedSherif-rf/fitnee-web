@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 
 const Feature = (props) => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const { textData, imageData, type } = props;
   const cardSwiperRef = useRef(null);
 
@@ -24,7 +24,11 @@ const Feature = (props) => {
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
-      <Col xs={12} md={6} className={`p-0 mb-md-0 mb-3 ${styles.featureSectionLeftContent}`}>
+      <Col
+        xs={12}
+        md={6}
+        className={`p-0 mb-md-0 mb-3 ${styles.featureSectionLeftContent}`}
+      >
         <div className={`d-flex align-items-center h-100`}>
           <div className="">
             <div>
@@ -52,6 +56,7 @@ const Feature = (props) => {
                   return (
                     <SwiperSlide
                       key={index}
+                      style={{ direction: i18n.dir() }}
                       className="d-flex align-items-center justify-content-start justify-content-sm-center d-block text-white"
                     >
                       {item.text}
@@ -63,7 +68,11 @@ const Feature = (props) => {
           </div>
         </div>
       </Col>
-      <Col xs={12} md={6} className={`mb-md-0 mb-3 ${styles.featureSectionRightContent}`}>
+      <Col
+        xs={12}
+        md={6}
+        className={`mb-md-0 mb-3 ${styles.featureSectionRightContent}`}
+      >
         <Swiper
           speed={1000}
           spaceBetween={100}

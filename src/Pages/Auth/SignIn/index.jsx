@@ -15,9 +15,9 @@ const SingInData = [
       </div>
     ),
     text2: (
-      <div className="text-center">
-        <h1 className="fw-bold text-white">Unlock your potential</h1>
-        <span className="fs-4 text-white fst-italic">
+      <div className="text-center lh-1">
+        <h1 className="fw-bold fs-1 text-white">Unlock your potential</h1>
+        <span className="fs-2 text-white fst-italic">
           & transform your body
         </span>
       </div>
@@ -27,7 +27,6 @@ const SingInData = [
 ];
 
 const SignIn = () => {
-  
   return (
     <Container fluid className="vh-100">
       {SingInData?.map((item) => (

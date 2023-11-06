@@ -1,3 +1,5 @@
+@import "../../Assets/Scss/variables.scss";
+
 .otpContainer {
   .otpWrapper {
     .otpCol {
@@ -9,9 +11,12 @@
         display: flex;
         justify-content: center;
         padding: 30px 5px;
+        border-color: $black !important;
+
         input {
-          width: 55px !important;
-          height: 55px !important;
+          width: 60px !important;
+          height: 60px !important;
+          border-radius: 10px !important;
         }
       }
     }

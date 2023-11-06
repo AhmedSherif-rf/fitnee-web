@@ -21,7 +21,20 @@ const CardSwiper = (props) => {
     grabCursor: true,
     spaceBetween: 10,
     centeredSlides: true,
-    slidesPerView: "auto",
+    breakpoints: {
+      375: {
+        slidesPerView: 1,
+      },
+      530: {
+        slidesPerView: 2,
+      },
+      992: {
+        slidesPerView: 3,
+      },
+      1360: {
+        slidesPerView: 4,
+      },
+    },
     coverflowEffect: {
       rotate: 0,
       stretch: 0,

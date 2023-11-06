@@ -49,6 +49,12 @@ const routes = [
     isPublic: true,
     exact: true,
   },
+  {
+    path: "/forgotPassword",
+    component: lazy(() => import("../Pages/Auth/ForgotPassword")),
+    isPublic: true,
+    exact: true,
+  },
 ]
   .concat(guestRoutes)
   .concat(adminRoutes)

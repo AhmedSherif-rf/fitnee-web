@@ -29,7 +29,7 @@ const HomeBanner = () => {
 
   return (
     <Container fluid className={`${styles.bannerImg}`}>
-      <Row className="h-100">
+      <Row className="vh-100">
         <Col md={12} className="d-flex align-items-center">
           <div>
             <motion.div

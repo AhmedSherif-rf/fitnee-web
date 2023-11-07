@@ -12,6 +12,7 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Dropdown,
 } from "reactstrap";
 import {
   FaBars,
@@ -44,6 +45,10 @@ const TopBar = (props) => {
 
   const { t, i18n } = useTranslation("");
   const { lang: currentLanguage } = useSelector((state) => state?.language);
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggle = () => setDropdownOpen(!dropdownOpen);
 
   useEffect(() => {
     if (props.isPublic) {
@@ -108,7 +113,7 @@ const TopBar = (props) => {
   const listenScrollEvent = () => {
     if (!props?.isGuest && props?.isPublic) {
       if (window.scrollY > 180) {
-        setBackgroundClass("bg-dark");
+        setBackgroundClass("customBgDark");
       } else {
         setBackgroundClass("bg-transparent");
       }
@@ -160,7 +165,7 @@ const TopBar = (props) => {
             {showNavItems && (
               <>
                 <NavbarToggler
-                  className={"textGrey BorderYellow pb-2"}
+                  className={"textGrey yellowBorder pb-2"}
                   onClick={slide}
                 >
                   <FaBars />
@@ -347,7 +352,7 @@ const TopBar = (props) => {
             )}
           </Navbar>
           <div
-            className={`d-lg-none d-block bg-dark ${styles.mobileView} h-100 ${
+            className={`d-lg-none d-block bg-black ${styles.mobileView} h-100 ${
               isSliding ? styles["slide-right"] : styles["slide-left"]
             }`}
           >
@@ -355,10 +360,7 @@ const TopBar = (props) => {
               <CardBody className="p-0 mt-4">
                 <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
                   <NavItem className={`${styles.NavItem}`}>
-                    <NavLink
-                      className={`${styles.NavLink}`}
-                      href="/"
-                    >
+                    <NavLink className={`${styles.NavLink}`} href="/">
                       <FaHome className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
                       {t("landing.homeText")}
                     </NavLink>
@@ -375,6 +377,60 @@ const TopBar = (props) => {
                       {t("landing.servicesText")}
                     </NavLink>
                   </NavItem>
+                  <NavItem className={`${styles.NavItem}`}>
+                    <UncontrolledDropdown
+                      nav
+                      inNavbar
+                      className={` w-100 ${styles.UncontrolledDropdown}`}
+                    >
+                      <DropdownToggle
+                        nav
+                        caret
+                        className={`w-100  px-2 ${styles.DropdownToggle}`}
+                      >
+                        <FaPeopleGroup
+                          className={`fs-2 me-2 ${styles.PGreen}`}
+                        />
+                        {t("landing.fitneeCommunityText")}
+                      </DropdownToggle>
+                      <DropdownMenu
+                        className={` bg-black w-100 ${styles.DropdownMenu}`}
+                      >
+                        <DropdownItem
+                          className={` w-100 ${styles.DropdownItem}`}
+                        >
+                          <Link
+                            className={`d-flex align-items-center ${styles.Link}`}
+                            to="/guest/serviceProviderList"
+                          >
+                            <p className=" mb-0">Trainers</p>
+                          </Link>
+                        </DropdownItem>
+
+                        <DropdownItem
+                          className={`w-100 ${styles.DropdownItem}`}
+                        >
+                          <Link
+                            className={`d-flex align-items-center ${styles.Link}`}
+                            to="/guest/serviceProviderList"
+                          >
+                            <p className="mb-0">Nutritionist</p>
+                          </Link>
+                        </DropdownItem>
+
+                        <DropdownItem
+                          className={`w-100 ${styles.DropdownItem}`}
+                        >
+                          <Link
+                            className={`d-flex align-items-center ${styles.Link}`}
+                            to="/guest/services"
+                          >
+                            <p className="mb-0">Exercises</p>
+                          </Link>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </NavItem>
 
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink
@@ -382,17 +438,13 @@ const TopBar = (props) => {
                       href="#"
                       onClick={handleFitneeCommunityClick}
                     >
-                      
                       <FaPeopleGroup className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
                       {t("landing.fitneeCommunityText")}
                     </NavLink>
                   </NavItem>
 
                   <NavItem className={`${styles.NavItem}`}>
-                    <NavLink
-                      className={`${styles.NavLink}`}
-                      href="/contactUs"
-                    >
+                    <NavLink className={`${styles.NavLink}`} href="/contactUs">
                       <FaAddressCard className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
                       {t("landing.contactUsText")}
                     </NavLink>

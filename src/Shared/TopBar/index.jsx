@@ -12,29 +12,25 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Dropdown,
 } from "reactstrap";
-import {
-  FaBars,
-  FaHome,
-  FaServicestack,
-  FaAddressCard,
-  FaUserEdit,
-} from "react-icons/fa";
 
+import { BiHome } from "react-icons/bi";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
-import { GiWallet } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
+import { PiCaretDownBold } from "react-icons/pi";
 import { RiDashboardFill } from "react-icons/ri";
+import { FaKey, FaTrashCan } from "react-icons/fa6";
+import { FaBars, FaUserEdit } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
+import { GiWallet, GiBodyBalance } from "react-icons/gi";
 import InformationModal from "../Modal/InformationModal";
 import Logo from "../../Assets/Images/homeScreen/Logo.svg";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { FaPeopleGroup, FaKey, FaTrashCan } from "react-icons/fa6";
+import { PiUsersFourThin, PiAddressBookBold } from "react-icons/pi";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import { ENGLISH_LANGUAGE, ARABIC_LANGUAGE } from "../../utils/constants";
 
@@ -361,37 +357,28 @@ const TopBar = (props) => {
                 <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink className={`${styles.NavLink}`} href="/">
-                      <FaHome className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      <BiHome className={`fs-2 me-3 text-white`} />
                       {t("landing.homeText")}
                     </NavLink>
                   </NavItem>
 
                   <NavItem className={`${styles.NavItem}`}>
-                    <NavLink
-                      className={`${styles.NavLink}`}
-                      href="/guest/serviceProviderList"
-                    >
-                      <FaServicestack
-                        className={`fs-2 me-2 ${styles.PGreen}`}
-                      />
-                      {t("landing.servicesText")}
-                    </NavLink>
-                  </NavItem>
-                  <NavItem className={`${styles.NavItem}`}>
                     <UncontrolledDropdown
                       nav
                       inNavbar
-                      className={` w-100 ${styles.UncontrolledDropdown}`}
+                      className={`w-100  ${styles.UncontrolledDropdown}`}
                     >
                       <DropdownToggle
                         nav
-                        caret
-                        className={`w-100  px-2 ${styles.DropdownToggle}`}
+                        className={`w-100 ${styles.DropdownToggle}`}
                       >
-                        <FaPeopleGroup
-                          className={`fs-2 me-2 ${styles.PGreen}`}
-                        />
-                        {t("landing.fitneeCommunityText")}
+                        <div className="d-flex align-items-center justify-content-between w-100">
+                          <div className="">
+                            <GiBodyBalance className={`fs-2 me-3 text-white`} />
+                            {t("landing.servicesText")}
+                          </div>
+                          <PiCaretDownBold />
+                        </div>
                       </DropdownToggle>
                       <DropdownMenu
                         className={` bg-black w-100 ${styles.DropdownMenu}`}
@@ -438,14 +425,14 @@ const TopBar = (props) => {
                       href="#"
                       onClick={handleFitneeCommunityClick}
                     >
-                      <FaPeopleGroup className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      <PiUsersFourThin className={`fs-2 me-3 text-white`} />
                       {t("landing.fitneeCommunityText")}
                     </NavLink>
                   </NavItem>
 
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink className={`${styles.NavLink}`} href="/contactUs">
-                      <FaAddressCard className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      <PiAddressBookBold className={`fs-2 me-3 text-white`} />
                       {t("landing.contactUsText")}
                     </NavLink>
                   </NavItem>
@@ -454,42 +441,6 @@ const TopBar = (props) => {
               <CardFooter className="border-0">
                 {!props?.isGuest && (
                   <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
-                    <UncontrolledDropdown>
-                      <DropdownToggle
-                        className=" BorderYellow text-center d-flex justify-content-center text-white mb-2"
-                        nav
-                      >
-                        Our Services
-                      </DropdownToggle>
-                      <DropdownMenu style={{ right: 0, left: "auto" }}>
-                        <DropdownItem>
-                          <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/serviceProviderList"
-                          >
-                            <p className="text-dark mb-0">Trainers</p>
-                          </Link>
-                        </DropdownItem>
-
-                        <DropdownItem>
-                          <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/serviceProviderList"
-                          >
-                            <p className="text-dark mb-0">Nutritionist</p>
-                          </Link>
-                        </DropdownItem>
-
-                        <DropdownItem>
-                          <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/services"
-                          >
-                            <p className="text-dark mb-0">Exercises</p>
-                          </Link>
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
                     <FillBtn
                       className="px-3 w-100 mb-2"
                       text={t("landing.signUpText")}

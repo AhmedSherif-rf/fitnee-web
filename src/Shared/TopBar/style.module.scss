@@ -28,9 +28,6 @@
   }
 }
 
-.PGreen {
-  color: $white !important;
-}
 .bgInverse,
 .mobileView {
   content: "";
@@ -46,27 +43,19 @@
   .nav {
     .NavItem {
       .UncontrolledDropdown {
-        .DropdownToggle {
-          &::after {
-            margin-left: 180px;
-          }
-        }
         .DropdownMenu {
           border: 0;
           margin-bottom: 30px;
-          background-color: $blur-color;
+          // background-color: $blur-color;
           .DropdownItem {
             padding: 10px;
-            border-bottom: 1px solid $light-gray !important;
+            // border-bottom: 1px solid $light-gray !important;
             .Link {
               color: $yellow;
             }
             &:hover {
-              background-color: $yellow-blur !important;
-              color: white;
-              .Link {
-                color: $white !important;
-              }
+              // background-color: $yellow-blur !important;
+              color:$white;
             }
           }
         }
@@ -74,10 +63,10 @@
       padding-left: 8px;
       padding-right: 8px;
       // border-radius: 14px;
-      border-bottom: 1px solid $light-gray !important;
+      // border-bottom: 1px solid $light-gray !important;
       color: $yellow !important;
       &:hover {
-        background-color: $yellow-blur !important;
+        // background-color: $yellow-blur !important;
         color: white !important;
         .DropdownMenu {
         }

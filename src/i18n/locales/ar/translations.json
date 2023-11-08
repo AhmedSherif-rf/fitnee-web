@@ -67,7 +67,62 @@
     "trainerSubscriberText": "مشتركيني الحاليين",
     "trainerPaymentText": "تاريخ الدفع",
     "trainerPackageText": "الحزم الخاصة بي",
-    "trainerCommentContentText": "مدرب مثالي! أدت التدريبات المصممة بمهارة والتحفيز المستمر والخبرة إلى تقدم ملحوظ. موصى به للغاية لرحلات اللياقة البدنية التحويلية."
+    "trainerCommentContentText": "مدرب مثالي! أدت التدريبات المصممة بمهارة والتحفيز المستمر والخبرة إلى تقدم ملحوظ. موصى به للغاية لرحلات اللياقة البدنية التحويلية.",
+    "myCurrentTraineeText":"My Current Trainees"
+  },
+  "paymentHistory": {
+    "paymentHistoryTitleText": "Payment History",
+    "availableBalanceText": "Available Balance",
+    "todayText": "Today",
+    "amountReleasedText": "Amount Released"
+  },
+  "trainerPackages": {
+    "monthText": "Month",
+    "subscribeText": "Subscribe",
+    "todayText": "Today",
+    "amountReleasedText": "Amount Released"
+  },
+  "traineeDashboard": {
+    "myCurrentTrainerText": "Month",
+    "myCurrentNutritionistText": "My Current Nutritionist",
+    "mySubscriptionHistoryText":"My Subscription History",
+    "myProgressText": "My Progress",
+    "allServiceProvidersText": "All Service Providers",
+    "subsriptionDetailsText": "Subscription Details",
+    "cancelText":"Cancel",
+    "cancelledText":"Cancelled",
+    "addProgressText":"Add Progress",
+    "viewHistoryText":"View History",
+    "ProteinsText":"Proteins",
+    "bfmText":"BFM",
+    "smmText":"SMM",
+    "weightText":"Weight",
+    "bodyFatMassText":"Body Fat Mass",
+    "skeletalMuscleMassText":"Skeletal Muscle Mass",
+    "addYourProgressText":"Add Your Progress",
+    "saveText":"Save",
+    "dateText":"Date",
+    "viewGraphText":"View Graph"
+  },
+  "cardDetails": {
+    "cardDetailsText": "Card Detail",
+    "cardNumberText": "Card number",
+    "cardHolderNameText": "Cardholder Name",
+    "expiryDateText": "Expiry date",
+    "CVV/CVCText":"CVV/CVC",
+    "promoCodeText":"Promo code",
+    "useFitNeeWalletText":"Use FitNee wallet",
+    "applyText":"Apply",
+    "payText":"Pay",
+    "paymentSummaryText":"Payment Summary",
+    "discountText":"Discount",
+    "fitneeWalletText":"FitNee Wallet",
+    "totalPayText":"Total Pay",
+    "congratulationsText":"Congratulations",
+    "appDownloadDescriptionOneText":"You have subscribed with XXX . XXX, he will review your profile and get back to you shortly, please download FitNee app and enable the notification.",
+     "appDownloadDescriptionTwoText":"Be informed that you have the right to cancel your Subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer or nitration specialist. You can now manage your profile and contact your Trainer/Nutrition by downloading the app",
+     "googleLinkText":"Google Link",
+     "appLinkText":"App Link"
   },
   "signup": {
      "yourInformationText":"Your information",

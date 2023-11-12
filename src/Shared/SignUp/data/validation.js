@@ -32,6 +32,36 @@ export const SIGNUP_SCHEMA = Yup.object().shape({
   dob: Yup.string().required("Date of Birth is required"),
   gender: Yup.string().required("Gender is required"),
   experience: Yup.string().required("Year of Experience is required"),
+  certificates: Yup.array()
+    .min(1, "At least one certificate is required")
+    .of(
+      Yup.object().shape({
+        file: Yup.mixed()
+          .required("Certificate is required")
+          .test(
+            "fileFormat",
+            "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
+            (value) => {
+              if (value) {
+                return ["image/png", "image/jpeg", "image/jpg"].includes(
+                  value.type
+                );
+              }
+              return true;
+            }
+          )
+          .test(
+            "fileSize",
+            "File size exceeds the maximum limit (5 MB).",
+            (value) => {
+              if (value) {
+                return value.size <= 5 * 1024 * 1024;
+              }
+              return true;
+            }
+          ),
+      })
+    ),
   role: Yup.string().required("Role is required"),
   currentlyWorking: Yup.string().required("Required"),
   daySchedules: Yup.array().of(

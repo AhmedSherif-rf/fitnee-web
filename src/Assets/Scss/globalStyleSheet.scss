@@ -9,6 +9,11 @@
 .bgBlur {
   background-color: $blur-color !important;
 }
+.customBgDark {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(20px);
+  border-color: rgba(0, 0, 0, 0.2);
+}
 
 .font14 {
   font-size: $font-14 !important;

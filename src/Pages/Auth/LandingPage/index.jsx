@@ -32,7 +32,7 @@ const LandingPage = (props) => {
       type: "textLeft",
       textBackgroundImage: true,
       image: (
-        <img className="img-fluid w-100" src={Images.ABOUT_IMG} alt="hero1" />
+        <img className="img-fluid w-100 vh-100" src={Images.ABOUT_IMG} alt="hero1" />
       ),
     },
   ];
@@ -90,7 +90,7 @@ const LandingPage = (props) => {
       type: "textLeft",
       textBackgroundImage: true,
       image: (
-        <img className="img-fluid w-100" src={Images.GOAL_IMG} alt="hero3" />
+        <img className="img-fluid w-100 vh-100" src={Images.GOAL_IMG} alt="hero3" />
       ),
     },
     {
@@ -109,7 +109,7 @@ const LandingPage = (props) => {
       type: "textRight",
       textBackgroundImage: true,
       image: (
-        <img className="img-fluid w-100" src={Images.VISION_IMG} alt="hero4" />
+        <img className="img-fluid w-100 vh-100" src={Images.VISION_IMG} alt="hero4" />
       ),
     },
   ];
@@ -253,7 +253,11 @@ const LandingPage = (props) => {
         <HomeBanner />
       </section>
 
-      <section id="counterSection" className="vh-100" style={{ direction: i18n.dir() }}>
+      <section
+        id="counterSection"
+        className="vh-100"
+        style={{ direction: i18n.dir() }}
+      >
         <Container fluid>
           <Row className={`vh-100 bgProperties ${styles.bannerImg}`}>
             <Col md={4}>
@@ -305,8 +309,12 @@ const LandingPage = (props) => {
         </Container>
       </section>
 
-      <section id="fitneeSection" className="h-100" style={{ direction: i18n.dir() }}>
-        <Container fluid>
+      <section
+        id="fitneeSection"
+        className=""
+        style={{ direction: i18n.dir() }}
+      >
+        <Container fluid className="h-100">
           {WhatIsFitneeData?.map((item, index) => (
             <Hero
               key={item.heading + "_" + index}
@@ -320,7 +328,7 @@ const LandingPage = (props) => {
         </Container>
       </section>
 
-      <section id="featureSection">
+      <section id="featureSection vh-100">
         <Container fluid>
           <Feature
             textData={FeaturesTextData()}

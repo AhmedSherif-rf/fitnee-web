@@ -12,35 +12,39 @@ const SubscriptionDetail = () => {
       userName: "Nayyar Mehdi",
       duration: "2 Months",
       fee: "SAR 1000",
-      CancelButton: <FillBtn className="w-50" text="Cancel" />,
+      CancelButton: <FillBtn className="w-50 py-2" text="Cancel Plan" />,
     },
     {
       useImages: `${Images.PROFILE_IMG}`,
       userName: "Nayyar Mehdi",
       duration: "2 Months",
       fee: "SAR 1000",
-      CancelButton: <OutlineBtn className="w-50" text="Cancelled" />,
+      CancelButton: (
+        <OutlineBtn className="w-50 disabled py-2 " text="Cancelled" />
+      ),
     },
     {
       useImages: `${Images.PROFILE_IMG}`,
       userName: "Nayyar Mehdi",
       duration: "2 Months",
       fee: "SAR 1000",
-      CancelButton: <FillBtn className="w-50" text="Cancel" />,
+      CancelButton: <FillBtn className="w-50 py-2" text="Cancel Plan" />,
     },
     {
       useImages: `${Images.PROFILE_IMG}`,
       userName: "Nayyar Mehdi",
       duration: "2 Months",
       fee: "SAR 1000",
-      CancelButton: <OutlineBtn className="w-50" text="Cancelled" />,
+      CancelButton: (
+        <OutlineBtn className="w-50 disabled py-2" text="Cancelled" />
+      ),
     },
     {
       useImages: `${Images.PROFILE_IMG}`,
       userName: "Nayyar Mehdi",
       duration: "Expiry Date:12/11/2023",
       fee: "SAR 1000",
-      CancelButton: <FillBtn className="w-50" text="Cancel" />,
+      CancelButton: <FillBtn className="w-50 py-2" text="Cancel Plan" />,
     },
   ];
 

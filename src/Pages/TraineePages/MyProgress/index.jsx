@@ -201,7 +201,9 @@ const MyProgress = () => {
               <Row>
                 <Col md={12} className="mb-2">
                   <div className="d-flex align-items-center justify-content-between mb-2">
-                    <h5 className="mb-0">My Progress</h5>
+                    <h5 className="mb-0 text-black-custom fs-3 fw-bold">
+                      My Progress
+                    </h5>
                     <div className="">
                       <FillBtn
                         text="Add Progress"
@@ -220,7 +222,7 @@ const MyProgress = () => {
                         src={Images.TRAINEE_GRAPH_IMG}
                         alt=""
                       />
-                      <div className="d-flex justify-content-between">
+                      <div className="d-flex justify-content-between text-black-custom">
                         <div className="m-2">
                           <p className="mb-0">26.7.2023</p>
                           <p className="mb-0">
@@ -251,7 +253,7 @@ const MyProgress = () => {
                   ) : (
                     <div className="">
                       <Row
-                        className="overflowScroll"
+                        className="overflowScroll p-3"
                         style={{ maxHeight: "65vh", overflowY: "auto" }}
                       >
                         {HistoryData.map((item, index) => {
@@ -268,7 +270,7 @@ const MyProgress = () => {
                           );
                         })}
                       </Row>
-                      <div className="text-center">
+                      <div className="text-center pt-3">
                         <FillBtn
                           text="View Graph"
                           handleOnClick={toggleHistory}

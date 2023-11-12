@@ -34,4 +34,9 @@ export const weekDaysOptions = [
   { value: "Saturday", label: "Saturday" },
   { value: "Sunday", label: "Sunday" },
 ];
-//=====================errorMsgs=====================
+//=====================Roles=====================
+export const TRAINEE_ROLE = "Trainee";
+//====================Routes====================
+export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
+//===================ApiEndPoints===============
+export const LOGIN_URL = "/login/";

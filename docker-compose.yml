@@ -3,4 +3,4 @@ services:
   web:
     image: my-react-app
     ports:
-      - "80:3001"
+      - "3001:80"

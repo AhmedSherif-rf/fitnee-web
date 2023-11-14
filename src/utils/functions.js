@@ -1,3 +1,5 @@
+const { TRAINEE_ROLE, TRAINEE_INITIAL_URL } = require("./constants");
+
 const setLanguageInStorage = (language) => {
   localStorage.setItem("Website_Language__fitnee", language);
 };
@@ -13,16 +15,13 @@ const getGuestDataLimit = () => {
 const getInitialUrl = (role) => {
   let initialUrl = "";
 
-  import("./constants").then((item) => {
-    switch (role) {
-      case item.TRAINEE_ROLE:
-        initialUrl = item.TRAINEE_INITIAL_URL;
-        break;
-
-      default:
-        break;
-    }
-  });
+  switch (role) {
+    case TRAINEE_ROLE:
+      initialUrl = TRAINEE_INITIAL_URL;
+      break;
+    default:
+      break;
+  }
 
   return initialUrl;
 };

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { guestRole } from "./routeConfig";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { redirect } from "react-router-dom";
-import getInitialUrl from "../utils/functions";
+import { useNavigate } from "react-router-dom";
+import { getInitialUrl } from "../utils/functions";
 import { setGuest } from "../Redux/features/User/userSlice";
 
 export function PublicRoute({ Component, props }) {
@@ -11,15 +11,16 @@ export function PublicRoute({ Component, props }) {
   const { isGuest, user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isGuest && props.role === guestRole) {
       dispatch(setGuest(true));
     }
     if (user) {
-      redirect(getInitialUrl(user?.role));
+      navigate(getInitialUrl(user?.role));
     }
-  }, [dispatch, isGuest, props, user]);
+  }, [dispatch, isGuest, navigate, props.role, user]);
 
   const token = null;
   if (token) {

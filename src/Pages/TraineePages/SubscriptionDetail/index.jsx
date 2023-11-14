@@ -53,10 +53,10 @@ const SubscriptionDetail = () => {
       <Row className="h-100">
         <Col md={12}>
           <Card className="BorderRadius border-0 h-100">
-            <CardBody className="p-4">
+            <CardBody className="px-4">
               <Row>
                 <Col md={12}>
-                  <h5 className="my-3 fw-bold">Subscription Details</h5>
+                  <h5 className="fw-bold text-black-custom fs-3 pt-3 pb-5">Subscription Details</h5>
                 </Col>
               </Row>
               {ServiceProviders.map((item) => {

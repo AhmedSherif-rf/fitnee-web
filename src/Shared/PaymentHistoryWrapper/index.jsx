@@ -54,12 +54,14 @@ const PaymentHistoryWrapper = () => {
         <Col md={12}>
           <Card className="BorderRadius vh-auto ">
             <CardHeader className="bg-transparent border-0 p-3">
-              <h4 className="fw-bold  fs-3 p-3 m-0">Payment History</h4>
+              <h4 className="fw-bold text-black-custom fs-3 p-3">
+                Payment History
+              </h4>
             </CardHeader>
             <CardBody>
               <Row>
                 <Col md={12}>
-                  <Card className="BorderYellow  BorderRadius py-3 px-2">
+                  <Card className="BorderYellow text-black-custom BorderRadius py-3 px-2">
                     <CardBody className="d-flex align-items-center justify-content-center">
                       <div className="w-100 text-center">
                         <h3 className="fw-bold">Available Balance</h3>
@@ -74,7 +76,7 @@ const PaymentHistoryWrapper = () => {
                   </Card>
                 </Col>
               </Row>
-              <Row className="my-2">
+              <Row className="my-2 text-black-custom">
                 <Col md={12}>
                   <h5 className="my-3">Today</h5>
                   {Transactions.map((item, index) => {
@@ -92,7 +94,7 @@ const PaymentHistoryWrapper = () => {
                   })}
                 </Col>
               </Row>
-              <Row className="my-2">
+              <Row className="my-2 text-black-custom">
                 <Col md={12}>
                   <h5>Aug 23</h5>
                   {Transactions.map((item, index) => {

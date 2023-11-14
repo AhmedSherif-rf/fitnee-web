@@ -1,11 +1,13 @@
 import React from "react";
 import { Container } from "reactstrap";
+import { Toaster } from "react-hot-toast";
 import styles from "./style.module.scss";
 import TopBar from "../../../Shared/TopBar";
 
 const GeneralLayout = (props) => {
   return (
     <React.Fragment>
+      <Toaster />
       <TopBar
         isPublic={props?.isPublic}
         isGuest={props?.isGuest}

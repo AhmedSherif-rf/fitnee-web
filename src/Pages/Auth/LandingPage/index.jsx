@@ -19,10 +19,10 @@ const LandingPage = (props) => {
   const WhatIsFitneeData = [
     {
       heading: (
-        <h2 className={`fw-bold text-white fs-1 mb-4`}>
-          {t("landing.whatIsText")}{" "}
+        <span className={`fw-bold h2 text-white fs-1 arabicBorderHover`}>
+          {t("landing.whatIsText")}
           <span className="textYellow"> {t("landing.fitneeText")} </span>
-        </h2>
+        </span>
       ),
       text: (
         <p className={"fs-5 text-white customSpacing"}>
@@ -32,7 +32,7 @@ const LandingPage = (props) => {
       type: "textLeft",
       textBackgroundImage: true,
       image: (
-        <img className="img-fluid w-100 vh-100" src={Images.ABOUT_IMG} alt="hero1" />
+        <img className={`img-fluid w-100 ${styles.heroImg}`} src={Images.ABOUT_IMG} alt="hero1" />
       ),
     },
   ];
@@ -71,10 +71,10 @@ const LandingPage = (props) => {
   const HeroData = [
     {
       heading: (
-        <h2 className="fw-bold text-white fs-1 mb-4">
-          {t("landing.ourText")}{" "}
+        <span className="fw-bold h-2  text-white fs-1 mb-5 arabicBorderHover">
+          {t("landing.ourText")}
           <span className="textYellow"> {t("landing.goalText")}</span>
-        </h2>
+        </span>
       ),
       text: (
         <div className="customSpacing">
@@ -90,16 +90,16 @@ const LandingPage = (props) => {
       type: "textLeft",
       textBackgroundImage: true,
       image: (
-        <img className="img-fluid w-100 vh-100" src={Images.GOAL_IMG} alt="hero3" />
+        <img className={`img-fluid w-100 ${styles.heroImg}`} src={Images.GOAL_IMG} alt="hero3" />
       ),
     },
     {
       heading: (
-        <h2 className="fw-bold text-white fs-1 mb-4">
-          {" "}
-          {t("landing.ourText")}{" "}
+        <span className="fw-bold h2 text-white fs-1 mb-4 arabicBorderHover">
+          
+          {t("landing.ourText")}
           <span className="textYellow">{t("landing.visionText")} </span>
-        </h2>
+        </span>
       ),
       text: (
         <p className="text-white fs-5 customSpacing">
@@ -109,7 +109,7 @@ const LandingPage = (props) => {
       type: "textRight",
       textBackgroundImage: true,
       image: (
-        <img className="img-fluid w-100 vh-100" src={Images.VISION_IMG} alt="hero4" />
+        <img className={`img-fluid w-100 ${styles.heroImg}`} src={Images.VISION_IMG} alt="hero4" />
       ),
     },
   ];

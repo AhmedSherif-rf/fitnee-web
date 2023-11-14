@@ -214,6 +214,7 @@ select,
   background-color: $yellow !important;
 }
 
+
 .CameraImg {
   position: absolute;
   width: 40px;
@@ -245,7 +246,29 @@ select,
     }
   }
 }
-//
+.arabicBorderHover,
+.borderHover {
+  position: relative;
+  overflow: hidden;
+}
+.arabicBorderHover::before,
+.borderHover::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: $yellow;
+  transition: width 0.3s ease; /* Add a transition effect for the width property */
+}
+.arabicBorderHover::before{
+  margin-bottom: 20px;
+}
+.arabicBorderHover:hover::before,
+.borderHover:hover::before {
+  width: 100%; /* Increase the width to 100% on hover */
+}
 
 .currentlyWorkingBtn {
   .selected {
@@ -279,3 +302,4 @@ select,
 ::-webkit-scrollbar-track:hover {
   background: $white;
 }
+

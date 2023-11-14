@@ -34,7 +34,7 @@ const Hero = (props) => {
             animate={inView ? "visible" : "hidden"}
             variants={animationVariants}
           >
-            <span className={styles.heroHeadingText}>{heading}</span>
+          {heading}
             {text}
           </motion.div>
         </div>

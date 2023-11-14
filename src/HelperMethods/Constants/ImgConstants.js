@@ -79,6 +79,7 @@ let Images = {
   YELLOW_CIRCLE_IMG: require("../../Assets/Images/ConstImgs/yellowCircle.png")
     .default,
   UPLOAD_BG_IMG: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
+  UPLOAD_ICON: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
   //==============================Trainee Images====================================
   QR_CODE_IMG: require("../../Assets/Images/QRCode.svg").default,
   TRAINEE_GRAPH_IMG: require("../../Assets/Images/TraineeGraph.svg").default,

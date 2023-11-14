@@ -6,8 +6,8 @@ const ProgressHistoryWrapper = (props) => {
   const { TDate, Weight, SMM, BFM, Proteins } = props;
 
   return (
-    <Card>
-      <CardHeader>
+    <Card className="BorderRadius">
+      <CardHeader className="border-0 BorderRadius">
         <span className="fw-bold small">Date:</span>
         <span>{TDate}</span>
       </CardHeader>

@@ -42,10 +42,6 @@ const TopBar = (props) => {
   const { t, i18n } = useTranslation("");
   const { lang: currentLanguage } = useSelector((state) => state?.language);
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggle = () => setDropdownOpen(!dropdownOpen);
-
   useEffect(() => {
     if (props.isPublic) {
       window.addEventListener("scroll", listenScrollEvent);
@@ -187,8 +183,8 @@ const TopBar = (props) => {
                       <DropdownMenu style={{ right: 0, left: "auto" }}>
                         <DropdownItem>
                           <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/serviceProviderList"
+                            className="w-100 d-flex align-items-center"
+                            to="/guest/serviceProviderList/trainer"
                           >
                             <p className="text-dark mb-0">Trainers</p>
                           </Link>
@@ -196,8 +192,8 @@ const TopBar = (props) => {
 
                         <DropdownItem>
                           <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/serviceProviderList"
+                            className="w-100 d-flex align-items-center"
+                            to="/guest/serviceProviderList/nutritionist"
                           >
                             <p className="text-dark mb-0">Nutritionist</p>
                           </Link>
@@ -387,8 +383,8 @@ const TopBar = (props) => {
                           className={` w-100 ${styles.DropdownItem}`}
                         >
                           <Link
-                            className={`d-flex align-items-center ${styles.Link}`}
-                            to="/guest/serviceProviderList"
+                            className={`w-100 d-flex align-items-center ${styles.Link}`}
+                            to="/guest/serviceProviderList/trainer"
                           >
                             <p className=" mb-0">Trainers</p>
                           </Link>
@@ -398,8 +394,8 @@ const TopBar = (props) => {
                           className={`w-100 ${styles.DropdownItem}`}
                         >
                           <Link
-                            className={`d-flex align-items-center ${styles.Link}`}
-                            to="/guest/serviceProviderList"
+                            className={`w-100 d-flex align-items-center ${styles.Link}`}
+                            to="/guest/serviceProviderList/nutritionist"
                           >
                             <p className="mb-0">Nutritionist</p>
                           </Link>

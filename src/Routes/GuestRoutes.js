@@ -3,7 +3,7 @@ import { guestRole } from "./routeConfig";
 
 export const guestRoutes = [
   {
-    path: "/guest/serviceProviderList",
+    path: "/guest/serviceProviderList/:roleType",
     component: lazy(() => import("../Pages/GuestPages/ServiceProviderList")),
     exact: true,
     isPublic: true,

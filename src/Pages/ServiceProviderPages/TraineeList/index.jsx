@@ -56,10 +56,12 @@ const index = () => {
       <Row className="h-100">
         <Col md={12}>
           <Card className="BorderRadius border-0 h-100">
-            <CardBody className="p-4">
+            <CardBody className="px-4">
               <Row>
                 <Col md={12}>
-                  <h4 className="fw-bold mb-5 p-3 m-0">My Current Trainees</h4>
+                  <h4 className="fw-bold text-black-custom fs-3 pt-3 pb-5">
+                    My Current Trainees
+                  </h4>
                 </Col>
               </Row>
               {TraineeList.map((item) => {

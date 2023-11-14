@@ -3,9 +3,9 @@ export const ARABIC_LANGUAGE = "ar";
 export const ENGLISH_LANGUAGE = "en";
 export const DEFAULT_LANGUAGE = "en";
 //======================serviceProviders===========
-export const TRAINER = "Trainers";
-export const NUTRITIONIST = "Nutritionists";
-export const TRAINER_NUTRITIONIST = "Trainer & Nutritionist";
+export const TRAINER_TYPE = "trainer";
+export const NUTRITIONIST_TYPE = "nutritionist";
+export const TRAINER_NUTRITIONIST_TYPE = "both";
 //======================body=======================
 export const MALE_BODY = "Male";
 export const FEMALE_BODY = "Female";

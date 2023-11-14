@@ -18,15 +18,11 @@ const Hero = (props) => {
 
   return (
     <Row
-      className={`vh-100 bg-back ${styles.heroSectionWrapper} ${
+      className={`bg-back ${styles.heroSectionWrapper} ${
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
-      <Col
-        xs={12}
-        md={6}
-        className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}
-      >
+      <Col xs={12} md={6} className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}>
         <div
           className={`${
             textBackgroundImage ? styles.heroTextBackground : ""
@@ -46,7 +42,7 @@ const Hero = (props) => {
       <Col
         xs={12}
         md={6}
-        className={`p-0 overflow-hidden ${styles.heroSectionRightContent}`}
+        className={`overflow-hidden p-0 ${styles.heroSectionRightContent}`}
       >
         {image}
       </Col>

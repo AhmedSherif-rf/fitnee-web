@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Form, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../Redux/features/User/userApi";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const SignInForm = () => {
@@ -36,6 +37,7 @@ const SignInForm = () => {
   return (
     <Container>
       <Row className="justify-content-center text-black-custom align-items-center vh-100">
+        {loading === "pending" && <LoadingScreen />}
         <Col lg={7} md={12} sm={10}>
           <h1 className="text-center mb-5 fs-1 fw-bold">Sign In</h1>
           <Formik

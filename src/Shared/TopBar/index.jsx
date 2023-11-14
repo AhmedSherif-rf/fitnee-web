@@ -13,27 +13,24 @@ import {
   CardBody,
   CardFooter,
 } from "reactstrap";
-import {
-  FaBars,
-  FaHome,
-  FaServicestack,
-  FaAddressCard,
-  FaUserEdit,
-} from "react-icons/fa";
 
+import { BiHome } from "react-icons/bi";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
-import { GiWallet } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
+import { PiCaretDownBold } from "react-icons/pi";
 import { RiDashboardFill } from "react-icons/ri";
+import { FaKey, FaTrashCan } from "react-icons/fa6";
+import { FaBars, FaUserEdit } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
+import { GiWallet, GiBodyBalance } from "react-icons/gi";
 import InformationModal from "../Modal/InformationModal";
 import Logo from "../../Assets/Images/homeScreen/Logo.svg";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { FaPeopleGroup, FaKey, FaTrashCan } from "react-icons/fa6";
+import { PiUsersFourThin, PiAddressBookBold } from "react-icons/pi";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import { ENGLISH_LANGUAGE, ARABIC_LANGUAGE } from "../../utils/constants";
 
@@ -108,7 +105,7 @@ const TopBar = (props) => {
   const listenScrollEvent = () => {
     if (!props?.isGuest && props?.isPublic) {
       if (window.scrollY > 180) {
-        setBackgroundClass("bg-dark");
+        setBackgroundClass("customBgDark");
       } else {
         setBackgroundClass("bg-transparent");
       }
@@ -160,7 +157,7 @@ const TopBar = (props) => {
             {showNavItems && (
               <>
                 <NavbarToggler
-                  className={"textGrey BorderYellow pb-2"}
+                  className={"textGrey yellowBorder pb-2"}
                   onClick={slide}
                 >
                   <FaBars />
@@ -186,8 +183,8 @@ const TopBar = (props) => {
                       <DropdownMenu style={{ right: 0, left: "auto" }}>
                         <DropdownItem>
                           <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/serviceProviderList"
+                            className="w-100 d-flex align-items-center"
+                            to="/guest/serviceProviderList/trainer"
                           >
                             <p className="text-dark mb-0">Trainers</p>
                           </Link>
@@ -195,8 +192,8 @@ const TopBar = (props) => {
 
                         <DropdownItem>
                           <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/serviceProviderList"
+                            className="w-100 d-flex align-items-center"
+                            to="/guest/serviceProviderList/nutritionist"
                           >
                             <p className="text-dark mb-0">Nutritionist</p>
                           </Link>
@@ -347,95 +344,99 @@ const TopBar = (props) => {
             )}
           </Navbar>
           <div
-            className={`d-lg-none d-block ${styles.mobileView} h-100 ${
+            className={`d-lg-none d-block bg-black ${styles.mobileView} h-100 ${
               isSliding ? styles["slide-right"] : styles["slide-left"]
             }`}
           >
-            <Card className="bg-transparent h-100">
-              <CardBody className="px-2">
+            <Card className="bg-transparent border-0 h-100">
+              <CardBody className="p-0 mt-4">
                 <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
                   <NavItem className={`${styles.NavItem}`}>
-                    <NavLink
-                      className={`${styles.NavLink}`}
-                      href="/components/"
-                    >
-                      <FaHome className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                    <NavLink className={`${styles.NavLink}`} href="/">
+                      <BiHome className={`fs-2 me-3 text-white`} />
                       {t("landing.homeText")}
                     </NavLink>
                   </NavItem>
 
                   <NavItem className={`${styles.NavItem}`}>
-                    <NavLink
-                      className={`${styles.NavLink}`}
-                      href="/components/"
+                    <UncontrolledDropdown
+                      nav
+                      inNavbar
+                      className={`w-100  ${styles.UncontrolledDropdown}`}
                     >
-                      <FaServicestack
-                        className={`fs-2 me-2 ${styles.PGreen}`}
-                      />
-                      {t("landing.servicesText")}
-                    </NavLink>
+                      <DropdownToggle
+                        nav
+                        className={`w-100 ${styles.DropdownToggle}`}
+                      >
+                        <div className="d-flex align-items-center justify-content-between w-100">
+                          <div className="">
+                            <GiBodyBalance className={`fs-2 me-3 text-white`} />
+                            {t("landing.servicesText")}
+                          </div>
+                          <PiCaretDownBold />
+                        </div>
+                      </DropdownToggle>
+                      <DropdownMenu
+                        className={` bg-black w-100 ${styles.DropdownMenu}`}
+                      >
+                        <DropdownItem
+                          className={` w-100 ${styles.DropdownItem}`}
+                        >
+                          <Link
+                            className={`w-100 d-flex align-items-center ${styles.Link}`}
+                            to="/guest/serviceProviderList/trainer"
+                          >
+                            <p className=" mb-0">Trainers</p>
+                          </Link>
+                        </DropdownItem>
+
+                        <DropdownItem
+                          className={`w-100 ${styles.DropdownItem}`}
+                        >
+                          <Link
+                            className={`w-100 d-flex align-items-center ${styles.Link}`}
+                            to="/guest/serviceProviderList/nutritionist"
+                          >
+                            <p className="mb-0">Nutritionist</p>
+                          </Link>
+                        </DropdownItem>
+
+                        <DropdownItem
+                          className={`w-100 ${styles.DropdownItem}`}
+                        >
+                          <Link
+                            className={`d-flex align-items-center ${styles.Link}`}
+                            to="/guest/services"
+                          >
+                            <p className="mb-0">Exercises</p>
+                          </Link>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
                   </NavItem>
 
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink
                       className={`${styles.NavLink}`}
-                      href="/components/"
+                      href="#"
+                      onClick={handleFitneeCommunityClick}
                     >
-                      <FaPeopleGroup className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                      <PiUsersFourThin className={`fs-2 me-3 text-white`} />
                       {t("landing.fitneeCommunityText")}
                     </NavLink>
                   </NavItem>
 
                   <NavItem className={`${styles.NavItem}`}>
-                    <NavLink
-                      className={`${styles.NavLink}`}
-                      href="/components/"
-                    >
-                      <FaAddressCard className={`fs-2 me-2 ${styles.PGreen}`} />{" "}
+                    <NavLink className={`${styles.NavLink}`} href="/contactUs">
+                      <PiAddressBookBold className={`fs-2 me-3 text-white`} />
                       {t("landing.contactUsText")}
                     </NavLink>
                   </NavItem>
                 </Nav>
               </CardBody>
-              <CardFooter>
+              <CardFooter className="border-0">
                 {!props?.isGuest && (
                   <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
-                    <UncontrolledDropdown>
-                      <DropdownToggle
-                        className=" BorderYellow text-center d-flex justify-content-center text-white mb-2"
-                        nav
-                      >
-                        Our Services
-                      </DropdownToggle>
-                      <DropdownMenu style={{ right: 0, left: "auto" }}>
-                        <DropdownItem>
-                          <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/serviceProviderList"
-                          >
-                            <p className="text-dark mb-0">Trainers</p>
-                          </Link>
-                        </DropdownItem>
-
-                        <DropdownItem>
-                          <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/serviceProviderList"
-                          >
-                            <p className="text-dark mb-0">Nutritionist</p>
-                          </Link>
-                        </DropdownItem>
-
-                        <DropdownItem>
-                          <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/services"
-                          >
-                            <p className="text-dark mb-0">Exercises</p>
-                          </Link>
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
                     <FillBtn
                       className="px-3 w-100 mb-2"
                       text={t("landing.signUpText")}

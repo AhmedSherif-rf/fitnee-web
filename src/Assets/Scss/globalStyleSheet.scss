@@ -257,12 +257,12 @@ select,
   bottom: 0;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 2px;
   background-color: $yellow;
   transition: width 0.3s ease; /* Add a transition effect for the width property */
 }
 .arabicBorderHover::before {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .arabicBorderHover:hover::before,
 .borderHover:hover::before {

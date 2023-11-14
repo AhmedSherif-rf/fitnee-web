@@ -32,7 +32,11 @@ const LandingPage = (props) => {
       type: "textLeft",
       textBackgroundImage: true,
       image: (
-        <img className={`img-fluid w-100 ${styles.heroImg}`} src={Images.ABOUT_IMG} alt="hero1" />
+        <img
+          className={`img-fluid w-100 ${styles.heroImg}`}
+          src={Images.ABOUT_IMG}
+          alt="hero1"
+        />
       ),
     },
   ];
@@ -90,13 +94,16 @@ const LandingPage = (props) => {
       type: "textLeft",
       textBackgroundImage: true,
       image: (
-        <img className={`img-fluid w-100 ${styles.heroImg}`} src={Images.GOAL_IMG} alt="hero3" />
+        <img
+          className={`img-fluid w-100 ${styles.heroImg}`}
+          src={Images.GOAL_IMG}
+          alt="hero3"
+        />
       ),
     },
     {
       heading: (
         <span className="fw-bold h2 text-white fs-1 mb-4 arabicBorderHover">
-          
           {t("landing.ourText")}
           <span className="textYellow">{t("landing.visionText")} </span>
         </span>
@@ -109,7 +116,11 @@ const LandingPage = (props) => {
       type: "textRight",
       textBackgroundImage: true,
       image: (
-        <img className={`img-fluid w-100 ${styles.heroImg}`} src={Images.VISION_IMG} alt="hero4" />
+        <img
+          className={`img-fluid w-100 ${styles.heroImg}`}
+          src={Images.VISION_IMG}
+          alt="hero4"
+        />
       ),
     },
   ];

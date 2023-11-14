@@ -19,9 +19,9 @@ import React, { useState, useCallback, memo } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import ServiceProviderListCard from "../../Shared/ServiceProviderListCard";
 import {
-  TRAINER,
-  NUTRITIONIST,
-  TRAINER_NUTRITIONIST,
+  TRAINER_TYPE,
+  NUTRITIONIST_TYPE,
+  TRAINER_NUTRITIONIST_TYPE,
 } from "../../utils/constants";
 import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
 import { useTranslation } from "react-i18next";
@@ -145,13 +145,13 @@ const TrainerAndNutritionistData = [
 ];
 
 const ServiceProviderListWrapper = (props) => {
-  const { cardLink } = props;
+  const { cardLink, roleType } = props;
   const [
     showSubscriptionInformationModal,
     setShowSubscriptionInformationModal,
   ] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [listingRole, setListingRole] = useState(TRAINER);
+  const [listingRole, setListingRole] = useState(roleType);
 
   const { isGuest } = useSelector((state) => state?.user);
   const navigate = useNavigate();
@@ -248,6 +248,16 @@ const ServiceProviderListWrapper = (props) => {
     setShowSubscriptionInformationModal(false);
   }, []);
 
+  const conditionalHeader = () => {
+    if (listingRole === TRAINER_TYPE) {
+      return "Trainers";
+    } else if (listingRole === NUTRITIONIST_TYPE) {
+      return "Nutritionists";
+    } else {
+      return "Trainers & Nutritionists";
+    }
+  };
+
   return (
     <Card className={`BorderRadius my-3 ${styles.serviceProviderListWrapper}`}>
       <CardBody>
@@ -255,7 +265,7 @@ const ServiceProviderListWrapper = (props) => {
           <Col className="text-left">
             <h4 className="fw-bold text-black-custom fs-3 p-3 m-0">
               {" "}
-              {t("guest.listOfText")} {listingRole}
+              {t("guest.listOfText")} {conditionalHeader()}
             </h4>
           </Col>
           <Col className="text-end">
@@ -268,16 +278,16 @@ const ServiceProviderListWrapper = (props) => {
                 />
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem onClick={() => handleDropdownItemClick(TRAINER)}>
+                <DropdownItem onClick={() => handleDropdownItemClick(TRAINER_TYPE)}>
                   Trainers
                 </DropdownItem>
                 <DropdownItem
-                  onClick={() => handleDropdownItemClick(NUTRITIONIST)}
+                  onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
                 >
                   Nutritionists
                 </DropdownItem>
                 <DropdownItem
-                  onClick={() => handleDropdownItemClick(TRAINER_NUTRITIONIST)}
+                  onClick={() => handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)}
                 >
                   Both
                 </DropdownItem>
@@ -286,7 +296,7 @@ const ServiceProviderListWrapper = (props) => {
           </Col>
         </Row>
         <Row>
-          {listingRole === TRAINER &&
+          {listingRole === TRAINER_TYPE &&
             TrainerData.map((item, index) => {
               const isDisable = isGuest && index >= getGuestDataLimit();
               return (
@@ -306,7 +316,7 @@ const ServiceProviderListWrapper = (props) => {
                 </Col>
               );
             })}
-          {listingRole === NUTRITIONIST &&
+          {listingRole === NUTRITIONIST_TYPE &&
             NutritionistData.map((item, index) => {
               const isDisable = isGuest && index >= getGuestDataLimit();
               return (
@@ -326,7 +336,7 @@ const ServiceProviderListWrapper = (props) => {
                 </Col>
               );
             })}
-          {listingRole === TRAINER_NUTRITIONIST &&
+          {listingRole === TRAINER_NUTRITIONIST_TYPE &&
             TrainerAndNutritionistData.map((item, index) => {
               const isDisable = isGuest && index >= getGuestDataLimit();
               return (

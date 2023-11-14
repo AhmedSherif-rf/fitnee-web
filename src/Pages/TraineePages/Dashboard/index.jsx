@@ -49,12 +49,12 @@ const Dashboard = () => {
             <div className="mb-2">
               <ProfileInformationCard
                 infoLogo={InfoData.infoLogo}
-                infoTitle={user?.firstname}
+                infoTitle={InfoData.infoTitle}
                 infoRating={InfoData.infoRating}
                 infoImg={InfoData.infoImg}
                 infoDes={InfoData.infoDes}
                 CardHeight={InfoData.Height}
-                TraineeEmail={user?.email}
+                TraineeEmail={InfoData.email}
               />
             </div>
             <Row className="my-3">

@@ -56,11 +56,11 @@ const index = () => {
     <Container fluid className="h-100 p-3">
       <Row className="h-100">
         <Col md={12}>
-          <Card className="BorderRadius BorderYellow h-100">
-            <CardBody className="p-4">
+          <Card className="BorderRadius h-100">
+            <CardBody className="px-4">
               <Row>
                 <Col md={12}>
-                  <h5 className="mb-2 fw-bold">My Current Trainer</h5>
+                  <h5 className="fw-bold text-black-custom fs-3 pt-3 pb-5">My Current Trainer</h5>
                 </Col>
               </Row>
               {ServiceProviders.map((item) => {

@@ -1,9 +1,5 @@
 @import "../../../Assets/Scss/globalStyleSheet.scss";
 
-$small-screen: 576px;
-$medium-screen: 768px;
-$large-screen: 992px;
-
 .bannerImg {
   background-image: linear-gradient(
       0deg,
@@ -18,7 +14,7 @@ $large-screen: 992px;
 }
 
 .heroImg {
-  height: 100vh ;
+  height: 100vh;
 }
 @media (max-width: 575px) {
   .heroImg {

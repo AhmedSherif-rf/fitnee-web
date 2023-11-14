@@ -12,3 +12,12 @@
   background-position: top center;
   background-attachment: fixed;
 }
+
+.heroImg {
+  height: 100vh;
+}
+@media (max-width: 575px) {
+  .heroImg {
+    height: 60vh;
+  }
+}

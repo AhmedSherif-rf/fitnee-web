@@ -22,7 +22,11 @@ const Hero = (props) => {
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
-      <Col xs={12} md={6} className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}>
+      <Col
+        xs={12}
+        md={6}
+        className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}
+      >
         <div
           className={`${
             textBackgroundImage ? styles.heroTextBackground : ""
@@ -34,7 +38,7 @@ const Hero = (props) => {
             animate={inView ? "visible" : "hidden"}
             variants={animationVariants}
           >
-          {heading}
+            {heading}
             {text}
           </motion.div>
         </div>

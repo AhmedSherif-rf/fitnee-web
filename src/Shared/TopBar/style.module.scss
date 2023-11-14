@@ -12,7 +12,6 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;
 
     &:hover {
       color: $yellow !important;
@@ -55,7 +54,7 @@
             }
             &:hover {
               // background-color: $yellow-blur !important;
-              color:$white;
+              color: $white;
             }
           }
         }

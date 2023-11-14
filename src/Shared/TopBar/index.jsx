@@ -172,7 +172,7 @@ const TopBar = (props) => {
                       className={`nav-link ${styles.navLink} ${textClass}`}
                       to="/"
                     >
-                      {t("landing.homeText")}
+                     <span className={`borderHover`}> {t("landing.homeText")}</span>
                     </Link>
                   </NavItem>
                   <NavItem>
@@ -180,7 +180,7 @@ const TopBar = (props) => {
                       <DropdownToggle
                         className={`${styles.navLink} ${textClass} nav-link bg-transparent border-0 p-0 mb-0 mt-2`}
                       >
-                        <span className="px-1">
+                        <span className={`px-1 borderHover`}>
                           {t("landing.servicesText")}
                         </span>
                       </DropdownToggle>
@@ -219,7 +219,7 @@ const TopBar = (props) => {
                       onClick={handleFitneeCommunityClick}
                       className={`nav-link ${styles.navLink} ${textClass}`}
                     >
-                      {t("landing.fitneeCommunityText")}
+                       <span className={`borderHover`}>{t("landing.fitneeCommunityText")}</span>
                     </div>
                   </NavItem>
                   <NavItem>
@@ -227,7 +227,7 @@ const TopBar = (props) => {
                       className={`nav-link ${styles.navLink} ${textClass}`}
                       to="/contactUs"
                     >
-                      {t("landing.contactUsText")}
+                         <span className={`borderHover`}>{t("landing.contactUsText")}</span>
                     </Link>
                   </NavItem>
                 </Nav>

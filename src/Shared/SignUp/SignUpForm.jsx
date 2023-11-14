@@ -1,3 +1,4 @@
+import "./style.scss";
 import Checkbox from "../Checkbox";
 import React, { memo } from "react";
 import MyDropdown from "../MyDropdown";
@@ -22,6 +23,7 @@ import {
   InputGroup,
   InputGroupText,
   Input,
+  Label,
 } from "reactstrap";
 import {
   trainingGoalOptions,
@@ -43,11 +45,11 @@ const SignUpForm = () => {
         validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
-          // setTimeout(() => {
-            // alert(JSON.stringify(values));
+          setTimeout(() => {
+            alert(JSON.stringify(values));
             setSubmitting(false);
-            navigate("/verifyOtp");
-          // }, 400);
+            // navigate("/verifyOtp");
+          }, 400);
         }}
       >
         {({
@@ -65,18 +67,43 @@ const SignUpForm = () => {
 
             <Row className="justify-content-center">
               <Col md={2} className="my-4">
+                {console.log(values?.profileImage)}
                 <div className="d-flex justify-content-center align-items-center">
-                  <div
-                    className="rounded-circle bgProperties position-relative"
-                    style={{
-                      backgroundImage: `url(${Images.PROFILE_IMG})`,
-                      height: "160px",
-                      width: "160px",
-                    }}
-                  >
-                    <input type="file" hidden id="ImgFile"></input>
+                  <div className="rounded-circle bgProperties position-relative">
+                    {values.profileImage ? (
+                      <img
+                        src={URL.createObjectURL(values?.profileImage)}
+                        className="rounded-circle bgProperties position-relative"
+                        alt="Profile Preview"
+                        style={{
+                          height: "160px",
+                          width: "160px",
+                          objectFit: "cover",
+                        }}
+                      />
+                    ) : (
+                      <div
+                        className="rounded-circle bgProperties position-relative"
+                        style={{
+                          backgroundImage: `url(${Images.PROFILE_IMG})`,
+                          height: "160px",
+                          width: "160px",
+                        }}
+                      />
+                    )}
+                    <input
+                      type="file"
+                      id="profileImage"
+                      style={{ display: "none" }}
+                      name="profileImage"
+                      accept=".png, .jpg, .jpeg"
+                      onChange={(event) => {
+                        const selectedFile = event.currentTarget.files[0];
+                        setFieldValue("profileImage", selectedFile);
+                      }}
+                    />
                     <label
-                      htmlFor="ImgFile"
+                      htmlFor="profileImage"
                       className="CameraImg d-flex justify-content-center align-items-center bgProperties cursorPointer"
                     >
                       <img
@@ -101,7 +128,7 @@ const SignUpForm = () => {
                 <InputField
                   className="form-control-lg BorderRadiusInput py-3 px-4"
                   type="text"
-                  placeholder= {t("signup.firstNameText")}
+                  placeholder={t("signup.firstNameText")}
                   name="firstName"
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
@@ -118,7 +145,7 @@ const SignUpForm = () => {
                 <InputField
                   className="form-control-lg BorderRadiusInput py-3 px-4"
                   type="text"
-                  placeholder= {t("signup.lastNameText")}
+                  placeholder={t("signup.lastNameText")}
                   name="lastName"
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
@@ -136,7 +163,7 @@ const SignUpForm = () => {
                   className="form-control-lg BorderRadiusInput py-3 px-4"
                   type="text"
                   name="email"
-                  placeholder= {t("signup.emailText")}
+                  placeholder={t("signup.emailText")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.email}
@@ -153,7 +180,7 @@ const SignUpForm = () => {
                   className="form-control-lg BorderRadiusInput py-3 px-4"
                   type="password"
                   name="password"
-                  placeholder= {t("signup.passwordText")}
+                  placeholder={t("signup.passwordText")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.password}
@@ -169,7 +196,7 @@ const SignUpForm = () => {
                 <InputField
                   className="form-control-lg BorderRadiusInput py-3 px-4"
                   type="password"
-                  placeholder= {t("signup.confirmPasswordText")}
+                  placeholder={t("signup.confirmPasswordText")}
                   name="confirmPassword"
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
@@ -224,7 +251,9 @@ const SignUpForm = () => {
                         }`}
                         onClick={() => setFieldValue("gender", "female")}
                       >
-                        <h6 className="mb-0 font14">{t("signup.femaleText")}</h6>
+                        <h6 className="mb-0 font14">
+                          {t("signup.femaleText")}
+                        </h6>
                         <FaVenus />
                       </div>
                     </div>
@@ -260,8 +289,8 @@ const SignUpForm = () => {
                         name="dob"
                         placeholder="Date of Birthday"
                         className="form-control-lg yellowBorder px-4"
-                        onChangeHandle={handleChange}
-                        onBlurHandle={handleBlur}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         value={values.dob}
                       />
                     </InputGroup>
@@ -281,7 +310,7 @@ const SignUpForm = () => {
                       className="form-control-lg BorderRadiusInput py-3 px-4"
                       type="textarea"
                       style={{ minHeight: "115px" }}
-                      placeholder= {t("signup.addBioText")}
+                      placeholder={t("signup.addBioText")}
                       name="bio"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -325,6 +354,76 @@ const SignUpForm = () => {
                 <p className="errorField">
                   {errors.role && touched.role && errors.role}
                 </p>
+              </Col>
+            </Row>
+
+            <Row className="mb-3">
+              <Col md={12}>
+                <h6 className="fw-bold">In Body</h6>
+              </Col>
+              {console.log(values?.certificates)}
+              <Col>
+                <div className="form-group multi-preview d-flex flex-wrap align-items-center">
+                  {values?.certificates.map((image, index) => (
+                    <div
+                      key={index}
+                      className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius BorderYellow"
+                    >
+                      <img
+                        src={URL.createObjectURL(image.file)}
+                        alt={`${index + 1}`}
+                        className="uploaded-image BorderRadius"
+                        style={{
+                          width: "100%",
+                          height: "170px",
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      />
+                      <button
+                        type="button"
+                        className="deleteButton"
+                        onClick={() => {
+                          const updatedImages = [...values.certificates];
+                          updatedImages.splice(index, 1);
+                          setFieldValue("certificates", updatedImages);
+                        }}
+                      >
+                        &#10006;
+                      </button>
+                    </div>
+                  ))}
+                  <Label
+                    id="UploadImgLabel"
+                    className="BorderRadius BorderYellow text-center mb-0"
+                    style={{
+                      minWidth: "220px",
+                      maxHeight: "170px",
+                    }}
+                  >
+                    <img src={Images.UPLOAD_ICON} alt="" />
+                    <input
+                      id="file-upload"
+                      type="file"
+                      accept=".png, .jpg, .jpeg"
+                      onChange={(event) => {
+                        const files = event.currentTarget.files;
+                        if (files.length > 0) {
+                          const uploadedImages = Array.from(
+                            files
+                          ).map((file) => ({ file }));
+                          setFieldValue("certificates", [
+                            ...values.certificates,
+                            ...uploadedImages,
+                          ]);
+                        }
+                      }}
+                      multiple
+                      style={{ display: "none" }}
+                    />
+                    <h6>Upload Image</h6>
+                  </Label>
+                </div>
               </Col>
             </Row>
 

@@ -7,12 +7,12 @@ export function PrivateRoute({ Component, role, props }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user === null) {
-      navigate("/signIn");
-    }
+    // if (user === null) {
+    //   navigate("/signIn");
+    // }
   }, [navigate, user]);
 
-  if (user) {
+  // if (user) {
     // const roleId = userDetail.user.roleId;
     // if (role?.indexOf(roleId) > -1) {
     return <Component {...props} />;
@@ -20,5 +20,5 @@ export function PrivateRoute({ Component, role, props }) {
     //   <Redirect to={getIntialURL(roleId)} />;
     // return <Redirect to={getIntialURL(roleId)} />;
     // }
-  }
+  // }
 }

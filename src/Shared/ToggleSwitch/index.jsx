@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Styles from './style.module.scss'; // Correct the import statement
-import { Input, Label } from 'reactstrap';
+import React, { useState } from "react";
+import Styles from "./style.module.scss";
+import { Input, Label } from "reactstrap";
 
 const ToggleSwitch = ({ isOn, handleToggle, colorOne, colorTwo }) => {
   return (

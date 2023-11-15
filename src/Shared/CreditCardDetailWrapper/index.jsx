@@ -20,7 +20,6 @@ const CreditCardDetailWrapper = () => {
   const [date, setDate] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvcValue, setCvcValue] = useState("");
-  // const [state, setState] = useState(true);
   const navigate = useNavigate();
   const [checked, setChecked] = useState(true);
 

@@ -2,12 +2,20 @@
 .CreditCard {
   .form-switch {
     .form-check-input {
+      width: 35px;
       background-image: url("../../Assets/Images/ConstImgs/greenCircle.png");
+      background-size: 38%;
+      &:focus {
+        box-shadow: none;
+      }
       cursor: pointer;
+
       &:checked {
         background-image: url("../../Assets/Images/ConstImgs/yellowCircle.png");
-        background-color: $yellow-blur !important;
-        border-color: $parrot-green !important;
+        background-size: 38%;
+        &:focus {
+          box-shadow: none;
+        }
       }
       &:before {
         content: "";

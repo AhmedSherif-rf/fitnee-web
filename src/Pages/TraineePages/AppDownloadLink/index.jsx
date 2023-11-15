@@ -44,11 +44,19 @@ const AppDownloadLink = () => {
             </div>
           </div>
           <Row className="justify-content-center">
-            <Col md={5}>
-              <FillBtn className="w-100 p-3 me-3" text="Google Link" />
+            <Col md={5} className="mb=3">
+              <div className="w-100">
+                <img src={Images.APP_STORE_IMG} className="img-fluid " alt="" />
+              </div>
             </Col>
-            <Col md={5}>
-              <FillBtn className="w-100 p-3" text="Apple Link" />
+            <Col md={5} className="mb-3">
+              <div className="w-100">
+                <img
+                  src={Images.GOOGLE_PLAY_IMG}
+                  className="img-fluid"
+                  alt=""
+                />
+              </div>
             </Col>
           </Row>
         </Col>

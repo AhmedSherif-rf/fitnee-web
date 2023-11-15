@@ -64,7 +64,7 @@ const CreditCardDetailWrapper = () => {
           <h4 className="mb-2 fw-bold">Card Detail</h4>
         </Col>
         <Col md={6}>
-          <div className="w-100 card h-100 border-0">
+          <div className="w-100 card border-0">
             <div className="card-body">
               <Label className="small mb-0 fw-bold">Card number</Label>
               <InputGroup>
@@ -158,12 +158,12 @@ const CreditCardDetailWrapper = () => {
                 <div className="">
                   <p className="mb-0 fw-bold">Use FitNee wallet</p>
                 </div>
-                <div className="w-50 d-flex justify-content-end ">
+                <div className="w-50 d-flex justify-content-end">
                   <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
                 </div>
               </div>
             </div>
-            <div className="w-100 bg-transparent border-0 card-footer">
+            <div className="w-100 bg-transparent border-0">
               <FillBtn
                 text="Pay"
                 className="w-100 py-3"

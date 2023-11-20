@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import React, { memo, useCallback } from "react";
 import { Col, Container, Row } from "reactstrap";
-import PushUpVideo from "../../Assets/Videos/homeBannerNew.mov";
+import PushUpVideo from "../../Assets/Videos/homeBannerNew.mov";  
 
 const HomeBanner = () => {
   const { t } = useTranslation("");

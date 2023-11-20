@@ -87,6 +87,10 @@ let Images = {
     .default,
   FEATURE_BG_IMG: require("../../Assets/Images/homeScreen/featureBg.svg")
     .default,
+  //==============================appStore and Google btn Images====================================
+  APP_STORE_IMG: require("../../Assets/Images/appStore.svg").default,
+  GOOGLE_PLAY_IMG: require("../../Assets/Images/googlePlay.svg").default,
+  CVV_IMG: require("../../Assets/Images/ConstImgs/Hint.svg").default,
 };
 
 export default Images;

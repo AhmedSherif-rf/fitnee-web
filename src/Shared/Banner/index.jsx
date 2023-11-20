@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import React, { memo, useCallback } from "react";
 import { Col, Container, Row } from "reactstrap";
-import PushUpVideo from "../../Assets/Videos/homeBannerNew.mov";  
+// import PushUpVideo from "../../Assets/Videos/homeBannerNew.mov";
 
 const HomeBanner = () => {
   const { t } = useTranslation("");
@@ -39,7 +39,7 @@ const HomeBanner = () => {
             autoPlay
             loop
             className={`rounded-0`}
-            src={PushUpVideo}
+            src="https://asset.cloudinary.com/ddbegwuqp/c2cf87dc360de1012b93b105000b1456"
           ></video>
       </div>
 

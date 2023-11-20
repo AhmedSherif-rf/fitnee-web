@@ -22,11 +22,7 @@ const Hero = (props) => {
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
-<<<<<<< HEAD
             <Col
-=======
-      <Col
->>>>>>> 95ef92f06368e8e2189922c8811b0204c26d6191
         xs={12}
         md={6}
         className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}
@@ -42,13 +38,9 @@ const Hero = (props) => {
             animate={inView ? "visible" : "hidden"}
             variants={animationVariants}
           >
-<<<<<<< HEAD
             <div className={`mb-4 ${styles.heroHeading} hoverWrapper`}>
               {heading}
             </div>
-=======
-            <div className="mb-4">{heading}</div>
->>>>>>> 95ef92f06368e8e2189922c8811b0204c26d6191
             {text}
           </motion.div>
         </div>

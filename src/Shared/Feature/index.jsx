@@ -33,7 +33,7 @@ const Feature = (props) => {
           <div className="">
             <div>
               <span
-                className={`fw-bold textYellow fs-1 ms-4 mt-5 mb-0 arabicBorderHover ${styles.featureHeading}`}
+                className={`fw-bold textYellow fs-1 ms-4 mb-0 arabicBorderHover ${styles.featureHeading}`}
               >
                 {t("landing.featuresText")}
               </span>

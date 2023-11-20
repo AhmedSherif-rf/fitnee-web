@@ -115,8 +115,8 @@ const LandingPage = (props) => {
     {
       heading: (
         <span className="fw-bold h2 text-white fs-1 mb-4 arabicBorderHover">
-          {t("landing.ourText")}
-          <span className="textYellow">{t("landing.visionText")} </span>
+          {t("landing.ourText")} 
+          <span className="textYellow"> {t("landing.visionText")} </span>
         </span>
       ),
       text: (

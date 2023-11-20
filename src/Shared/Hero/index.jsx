@@ -38,7 +38,7 @@ const Hero = (props) => {
             animate={inView ? "visible" : "hidden"}
             variants={animationVariants}
           >
-            {heading}
+            <div className="mb-4">{heading}</div>
             {text}
           </motion.div>
         </div>

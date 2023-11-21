@@ -278,7 +278,9 @@ const ServiceProviderListWrapper = (props) => {
                 />
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem onClick={() => handleDropdownItemClick(TRAINER_TYPE)}>
+                <DropdownItem
+                  onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
+                >
                   Trainers
                 </DropdownItem>
                 <DropdownItem
@@ -287,7 +289,9 @@ const ServiceProviderListWrapper = (props) => {
                   Nutritionists
                 </DropdownItem>
                 <DropdownItem
-                  onClick={() => handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)}
+                  onClick={() =>
+                    handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
+                  }
                 >
                   Both
                 </DropdownItem>

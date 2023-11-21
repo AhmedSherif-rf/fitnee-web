@@ -47,7 +47,6 @@ const InformationModal = (props) => {
 
 InformationModal.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
   onClose: PropTypes.func,
   isOpen: PropTypes.bool,
   size: PropTypes.string,

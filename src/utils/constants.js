@@ -3,6 +3,7 @@ export const ARABIC_LANGUAGE = "ar";
 export const ENGLISH_LANGUAGE = "en";
 export const DEFAULT_LANGUAGE = "en";
 //======================serviceProviders===========
+export const TRAINEE_TYPE = "trainee";
 export const TRAINER_TYPE = "trainer";
 export const NUTRITIONIST_TYPE = "nutritionist";
 export const TRAINER_NUTRITIONIST_TYPE = "both";

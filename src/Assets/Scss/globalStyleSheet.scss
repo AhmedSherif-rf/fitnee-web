@@ -88,11 +88,19 @@ Input::-webkit-input-placeholder {
   color: $placeholder-color;
 }
 .dropdown-item {
-  &:active,
-  &:hover,
-  &:focus {
+  &:active {
     background-color: $yellow;
     color: $black;
+    outline: none;
+  }
+
+  &:hover {
+    background-color: $yellow;
+    color: $black;
+  }
+
+  &:focus {
+    background-color: $yellow;
     outline: none;
   }
 

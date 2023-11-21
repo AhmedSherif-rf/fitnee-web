@@ -9,10 +9,10 @@ import { useTranslation } from "react-i18next";
 import { FaNutritionix } from "react-icons/fa";
 import HomeBanner from "../../../Shared/Banner";
 import { Col, Container, Row } from "reactstrap";
-import CounterUp from "../../../Shared/CounterUp/";
+// import CounterUp from "../../../Shared/CounterUp/";
 import CardSwiper from "../../../Shared/CardSwiper";
 import { useInView } from "react-intersection-observer";
-import { GiWeightLiftingUp, GiBodyBalance } from "react-icons/gi";
+// import { GiWeightLiftingUp, GiBodyBalance } from "react-icons/gi";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const LandingPage = (props) => {
@@ -115,7 +115,7 @@ const LandingPage = (props) => {
     {
       heading: (
         <span className="fw-bold h2 text-white fs-1 mb-4 arabicBorderHover">
-          {t("landing.ourText")} 
+          {t("landing.ourText")}
           <span className="textYellow"> {t("landing.visionText")} </span>
         </span>
       ),
@@ -275,7 +275,7 @@ const LandingPage = (props) => {
         <HomeBanner />
       </section>
 
-      <section
+      {/* <section
         id="counterSection"
         className="vh-100"
         style={{ direction: i18n.dir() }}
@@ -350,7 +350,7 @@ const LandingPage = (props) => {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
 
       <section
         id="fitneeSection"

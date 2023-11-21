@@ -88,18 +88,11 @@ Input::-webkit-input-placeholder {
   color: $placeholder-color;
 }
 .dropdown-item {
-  &:active {
-    background-color: $yellow;
-    color: $black;
-  }
-
-  &:hover {
-    background-color: $yellow;
-    color: $black;
-  }
-
+  &:active,
+  &:hover,
   &:focus {
     background-color: $yellow;
+    color: $black;
     outline: none;
   }
 
@@ -109,7 +102,7 @@ Input::-webkit-input-placeholder {
   }
 }
 
-.react-tel-input,
+react-tel-input,
 .genderBtn,
 select,
 .form-control,

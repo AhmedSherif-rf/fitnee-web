@@ -11,7 +11,7 @@ export const login = createAsyncThunk(
       return response?.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.Message);
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }
 );

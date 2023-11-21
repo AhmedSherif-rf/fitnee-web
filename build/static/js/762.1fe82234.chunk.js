@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[762],{379:function(e,n,s){s.r(n);s(2791);var u=s(7823),f=s(4738),t=s(184);n.default=function(e){return(0,t.jsx)(u.Z,{fluid:!0,className:"vh-100",children:(0,t.jsx)(f.Z,{})})}}}]);
+//# sourceMappingURL=762.1fe82234.chunk.js.map

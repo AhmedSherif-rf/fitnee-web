@@ -4,7 +4,6 @@ class Toaster {
   static success(message) {
     toast.success(message, {
         position: "top-right",
-        icon: "😃",
         style: {
           borderRadius: "10px",
           background: "#333",
@@ -16,7 +15,6 @@ class Toaster {
   static error(message) {
     toast.error(message, {
       position: "top-right",
-      icon: "😟",
       style: {
         borderRadius: "10px",
         background: "#333",

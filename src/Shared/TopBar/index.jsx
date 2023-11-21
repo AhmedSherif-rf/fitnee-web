@@ -352,7 +352,13 @@ const TopBar = (props) => {
                           </Link>
                         </DropdownItem>
                         <DropdownItem>
-                          <Link to="">
+                          <Link
+                            to={
+                              roleType === TRAINEE_TYPE
+                                ? "/trainee/editProfile"
+                                : "/serviceProvider/editProfile"
+                            }
+                          >
                             <div className="d-flex align-items-center">
                               <span className="textParrotGreen me-2">
                                 <FaUserEdit className="mb-1" />
@@ -362,16 +368,18 @@ const TopBar = (props) => {
                           </Link>
                         </DropdownItem>
                         {roleType && roleType !== TRAINEE_TYPE && (
-                          <DropdownItem>
-                            <Link to="/serviceProvider/paymentHistory">
-                              <div className="d-flex align-items-center">
-                                <span className="textParrotGreen me-2">
-                                  <GiWallet className="mb-1" />
-                                </span>
-                                <p className="text-dark mb-0">Wallet</p>
-                              </div>
-                            </Link>
-                          </DropdownItem>
+                          <>
+                            <DropdownItem>
+                              <Link to="/serviceProvider/paymentHistory">
+                                <div className="d-flex align-items-center">
+                                  <span className="textParrotGreen me-2">
+                                    <GiWallet className="mb-1" />
+                                  </span>
+                                  <p className="text-dark mb-0">Wallet</p>
+                                </div>
+                              </Link>
+                            </DropdownItem>
+                          </>
                         )}
 
                         <DropdownItem>
@@ -425,7 +433,7 @@ const TopBar = (props) => {
             }`}
           >
             <Card className="bg-transparent border-0 h-100">
-              <CardBody className="p-0 mt-4">
+              <CardBody className="p-0">
                 <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink className={`${styles.NavLink}`} href="/">

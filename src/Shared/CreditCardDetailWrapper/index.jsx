@@ -154,11 +154,11 @@ const CreditCardDetailWrapper = () => {
                 </div>
               </div>
 
-              <div className="CreditCard d-flex align-items-center justify-content-between mb-2">
-                <div className="">
+              <div className="CreditCard d-flex align-items-center">
+                <div className=" me-2">
                   <p className="mb-0 fw-bold">Use FitNee wallet</p>
                 </div>
-                <div className="w-50 d-flex justify-content-end">
+                <div className="d-flex align-items-center mt-2">
                   <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
                 </div>
               </div>

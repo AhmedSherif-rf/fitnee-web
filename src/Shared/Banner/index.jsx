@@ -3,8 +3,11 @@ import styles from "./style.module.scss";
 import FillBtn from "../Buttons/FillBtn";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import CounterUp from "../../Shared/CounterUp/";
 import React, { memo, useCallback } from "react";
-import { Col, Container, Row } from "reactstrap";
+import { Card, CardBody, Col, Container, Row } from "reactstrap";
+import { GiWeightLiftingUp, GiBodyBalance } from "react-icons/gi";
+import PushUpVideo from "../../Assets/Videos/homeBannerNew.mov";
 
 const HomeBanner = () => {
   const { t } = useTranslation("");
@@ -28,10 +31,23 @@ const HomeBanner = () => {
   };
 
   return (
-    <Container fluid className={`${styles.bannerImg}`}>
-      <Row className="vh-100">
+    <Container fluid className={styles.bannerVideo}>
+      <div className={styles.videoContainer}>
+        <div className={`${styles.overlay}`}></div>
+        <video
+          playsInline
+          preload="metadata"
+          muted
+          autoPlay
+          loop
+          className={`rounded-0`}
+          src={PushUpVideo}
+        ></video>
+      </div>
+
+      <Row className="h-100">
         <Col md={12} className="d-flex align-items-center">
-          <div>
+          <div style={{ zIndex: "1" }}>
             <motion.div
               initial="hidden"
               animate="visible"
@@ -40,7 +56,7 @@ const HomeBanner = () => {
               className={`mb-3 ms-3 ${styles.bannerTextWrapper}`}
             >
               {bannerText.map((item, index) => (
-                <p key={index} className="text-white">
+                <p key={index} className=" text-white">
                   {item.text}
                 </p>
               ))}
@@ -60,8 +76,45 @@ const HomeBanner = () => {
           </div>
         </Col>
       </Row>
+      <Row className={`justify-content-center w-100`}>
+        <Col md={3}>
+          <Card className={`${styles.figureCards}`}>
+            <CardBody className={`text-center`}>
+              <GiWeightLiftingUp className="text-white display-5" />
+              <br />
+              <CounterUp start={0} end={500} duration={5} />
+              <p className={`fs-5 text-white mb-0`}>
+                {t("landing.trainersText")}
+              </p>
+            </CardBody>
+          </Card>
+        </Col>
+        <Col md={3}>
+          <Card className={`${styles.figureCards}`}>
+            <CardBody className={`text-center`}>
+              <GiWeightLiftingUp className="text-white display-5" />
+              <br />
+              <CounterUp start={0} end={500} duration={5} />
+              <p className={`fs-5 text-white mb-0`}>
+                {t("landing.trainersText")}
+              </p>
+            </CardBody>
+          </Card>
+        </Col>
+        <Col md={3}>
+          <Card className={`${styles.figureCards}`}>
+            <CardBody className={`text-center`}>
+              <GiWeightLiftingUp className="text-white display-5" />
+              <br />
+              <CounterUp start={0} end={500} duration={5} />
+              <p className={`fs-5 text-white mb-0`}>
+                {t("landing.trainersText")}
+              </p>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 };
-
 export default memo(HomeBanner);

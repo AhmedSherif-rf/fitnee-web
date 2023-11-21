@@ -74,4 +74,11 @@ export const traineeRoutes = [
     isPrivate: true,
     role: traineeRole,
   },
+  {
+    path: "/trainee/editProfile",
+    component: lazy(() => import("../Pages/TraineePages/EditProfile")),
+    exact: true,
+    isPrivate: true,
+    role: traineeRole,
+  },
 ];

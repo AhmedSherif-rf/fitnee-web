@@ -32,7 +32,7 @@ const AppDownloadLink = () => {
           </div>
         </Col>
         <Col md="6">
-          <div className="d-flex justify-content-center mb-4">
+          <div className="d-flex justify-content-center mb-md-4 mb-0">
             <div className="QRcodeDiv p-5 text-center">
               <img
                 className="mb-3"
@@ -44,12 +44,12 @@ const AppDownloadLink = () => {
             </div>
           </div>
           <Row className="justify-content-center">
-            <Col md={5} className="mb=3">
+            <Col md={5} className="mb-3 text-md-block text-center">
               <div className="w-100">
                 <img src={Images.APP_STORE_IMG} className="img-fluid " alt="" />
               </div>
             </Col>
-            <Col md={5} className="mb-3">
+            <Col md={5} className="mb-3 text-md-block text-center">
               <div className="w-100">
                 <img
                   src={Images.GOOGLE_PLAY_IMG}

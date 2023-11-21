@@ -275,7 +275,7 @@ const LandingPage = (props) => {
         <HomeBanner />
       </section>
 
-      <section
+      {/* <section
         id="counterSection"
         className="vh-100"
         style={{ direction: i18n.dir() }}
@@ -297,8 +297,8 @@ const LandingPage = (props) => {
                 >
                   <GiWeightLiftingUp className="text-white display-2" />
                   <br />
-                  <CounterUp start={0} end={500} duration={5} />
-                  <p className="text-white fw-bold fs-5">
+                  <CounterUp start={0} end={500} duration={5}  />
+                  <p className={`fs-5 text-white`}>
                     {t("landing.trainersText")}
                   </p>
                 </motion.div>
@@ -320,7 +320,7 @@ const LandingPage = (props) => {
                   <GiBodyBalance className="text-white display-2" />
                   <br />
                   <CounterUp start={0} end={1000} duration={7} />
-                  <p className="text-white fw-bold fs-5">
+                  <p className="text-white fs-5">
                     {t("landing.traineesText")}
                   </p>
                 </motion.div>
@@ -342,7 +342,7 @@ const LandingPage = (props) => {
                   <FaNutritionix className="text-white display-2" />
                   <br />
                   <CounterUp start={0} end={2000} duration={9} />
-                  <p className="text-white fw-bold fs-5">
+                  <p className="text-white fs-5">
                     {t("landing.nutritionistsText")}
                   </p>
                 </motion.div>
@@ -350,7 +350,7 @@ const LandingPage = (props) => {
             </Col>
           </Row>
         </Container>
-      </section>
+      </section> */}
 
       <section
         id="fitneeSection"

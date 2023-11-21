@@ -91,6 +91,7 @@ Input::-webkit-input-placeholder {
   &:active {
     background-color: $yellow;
     color: $black;
+    outline: none;
   }
 
   &:hover {
@@ -109,7 +110,7 @@ Input::-webkit-input-placeholder {
   }
 }
 
-.react-tel-input,
+react-tel-input,
 .genderBtn,
 select,
 .form-control,

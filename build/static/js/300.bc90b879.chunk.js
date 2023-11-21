@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[300],{6087:function(e,r,i){i.r(r);i(2791);var n=i(7689),c=i(7823),l=i(3009),s=i(9773),f=i(9042),t=i(184);r.default=function(e){var r=(0,n.UO)().roleType;return(0,t.jsx)(c.Z,{fluid:!0,children:(0,t.jsx)(l.Z,{children:(0,t.jsx)(s.Z,{md:12,children:(0,t.jsx)(f.Z,{cardLink:"/trainee/serviceProviderProfile",roleType:r})})})})}}}]);
+//# sourceMappingURL=300.bc90b879.chunk.js.map

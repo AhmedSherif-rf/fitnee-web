@@ -41,4 +41,13 @@ export const serviceProviderRoutes = [
     isPrivate: true,
     role: serviceProviderRole,
   },
+  {
+    path: "/serviceProvider/editProfile",
+    component: lazy(() =>
+      import("../Pages/ServiceProviderPages/EditProfile")
+    ),
+    exact: true,
+    isPrivate: true,
+    role: serviceProviderRole,
+  },
 ];

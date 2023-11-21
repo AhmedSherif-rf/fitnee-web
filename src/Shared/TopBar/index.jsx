@@ -21,7 +21,6 @@ import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { PiCaretDownBold } from "react-icons/pi";
 import { RiDashboardFill } from "react-icons/ri";
-import { FaKey, FaTrashCan } from "react-icons/fa6";
 import { FaBars, FaUserEdit } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { GiWallet, GiBodyBalance } from "react-icons/gi";
@@ -31,8 +30,15 @@ import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { PiUsersFourThin, PiAddressBookBold } from "react-icons/pi";
+import { FaKey, FaTrashCan, FaCircleArrowUp } from "react-icons/fa6";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
-import { ENGLISH_LANGUAGE, ARABIC_LANGUAGE } from "../../utils/constants";
+import {
+  ENGLISH_LANGUAGE,
+  ARABIC_LANGUAGE,
+  TRAINEE_TYPE,
+  TRAINER_TYPE,
+  NUTRITIONIST_TYPE,
+} from "../../utils/constants";
 
 const TopBar = (props) => {
   const dispatch = useDispatch();
@@ -40,6 +46,7 @@ const TopBar = (props) => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation("");
+  const roleType = localStorage.getItem("role");
   const { lang: currentLanguage } = useSelector((state) => state?.language);
 
   useEffect(() => {
@@ -87,6 +94,7 @@ const TopBar = (props) => {
     showSubscriptionInformationModal,
     setShowSubscriptionInformationModal,
   ] = useState(false);
+  const [deleteAccountModal, setDeleteAccountModal] = useState(false);
 
   const [backgroundClass, setBackgroundClass] = useState(
     props.isPublic
@@ -134,6 +142,23 @@ const TopBar = (props) => {
     setShowSubscriptionInformationModal(false);
   }, []);
 
+  const handleDeleteAccountModalClose = useCallback(() => {
+    setDeleteAccountModal(false);
+  }, []);
+
+  const handleDeleteAccountClick = useCallback(() => {
+    setDeleteAccountModal(false);
+  }, []);
+
+  const handleDeleteClick = () => {
+    setDeleteAccountModal(true);
+  };
+
+  const handleLogoutClick = () => {
+    localStorage.removeItem("role");
+    navigate("/");
+  };
+
   const handleSubscriptionClick = useCallback(() => {
     navigate("/registerAs");
   }, [navigate]);
@@ -151,7 +176,15 @@ const TopBar = (props) => {
             expand="lg"
             fixed="top"
           >
-            <Link to={"/"}>
+            <Link
+              to={
+                roleType === TRAINEE_TYPE
+                  ? "/trainee/dashboard"
+                  : roleType === TRAINER_TYPE || roleType === NUTRITIONIST_TYPE
+                  ? "/serviceProvider/dashboard"
+                  : "/"
+              }
+            >
               <img src={Logo} alt={"website-logo"} />
             </Link>
             {showNavItems && (
@@ -162,73 +195,82 @@ const TopBar = (props) => {
                 >
                   <FaBars />
                 </NavbarToggler>
-                <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
-                  <NavItem className={`${styles.navItem}`}>
-                    <Link
-                      className={`nav-link ${styles.navLink} ${textClass}`}
-                      to="/"
-                    >
-                     <span className={`borderHover`}> {t("landing.homeText")}</span>
-                    </Link>
-                  </NavItem>
-                  <NavItem>
-                    <UncontrolledDropdown>
-                      <DropdownToggle
-                        className={`${styles.navLink} ${textClass} nav-link bg-transparent border-0 p-0 mb-0 mt-2`}
+                {roleType === null && (
+                  <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
+                    <NavItem className={`${styles.navItem}`}>
+                      <Link
+                        className={`nav-link ${styles.navLink} ${textClass}`}
+                        to="/"
                       >
-                        <span className={`px-1 borderHover`}>
-                          {t("landing.servicesText")}
+                        <span className={`borderHover`}>
+                          {" "}
+                          {t("landing.homeText")}
                         </span>
-                      </DropdownToggle>
-                      <DropdownMenu style={{ right: 0, left: "auto" }}>
-                        <DropdownItem>
-                          <Link
-                            className="w-100 d-flex align-items-center"
-                            to="/guest/serviceProviderList/trainer"
-                          >
-                            <p className="text-dark mb-0">Trainers</p>
-                          </Link>
-                        </DropdownItem>
+                      </Link>
+                    </NavItem>
+                    <NavItem>
+                      <UncontrolledDropdown>
+                        <DropdownToggle
+                          className={`${styles.navLink} ${textClass} nav-link bg-transparent border-0 p-0 mb-0 mt-2`}
+                        >
+                          <span className={`px-1 borderHover`}>
+                            {t("landing.servicesText")}
+                          </span>
+                        </DropdownToggle>
+                        <DropdownMenu style={{ right: 0, left: "auto" }}>
+                          <DropdownItem>
+                            <Link
+                              className="w-100 d-flex align-items-center"
+                              to="/guest/serviceProviderList/trainer"
+                            >
+                              <p className="text-dark mb-0">Trainers</p>
+                            </Link>
+                          </DropdownItem>
 
-                        <DropdownItem>
-                          <Link
-                            className="w-100 d-flex align-items-center"
-                            to="/guest/serviceProviderList/nutritionist"
-                          >
-                            <p className="text-dark mb-0">Nutritionist</p>
-                          </Link>
-                        </DropdownItem>
+                          <DropdownItem>
+                            <Link
+                              className="w-100 d-flex align-items-center"
+                              to="/guest/serviceProviderList/nutritionist"
+                            >
+                              <p className="text-dark mb-0">Nutritionist</p>
+                            </Link>
+                          </DropdownItem>
 
-                        <DropdownItem>
-                          <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/services"
-                          >
-                            <p className="text-dark mb-0">Exercises</p>
-                          </Link>
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
-                  </NavItem>
-                  <NavItem>
-                    <div
-                      onClick={handleFitneeCommunityClick}
-                      className={`nav-link ${styles.navLink} ${textClass}`}
-                    >
-                       <span className={`borderHover`}>{t("landing.fitneeCommunityText")}</span>
-                    </div>
-                  </NavItem>
-                  <NavItem>
-                    <Link
-                      className={`nav-link ${styles.navLink} ${textClass}`}
-                      to="/contactUs"
-                    >
-                         <span className={`borderHover`}>{t("landing.contactUsText")}</span>
-                    </Link>
-                  </NavItem>
-                </Nav>
+                          <DropdownItem>
+                            <Link
+                              className=" d-flex align-items-center"
+                              to="/guest/services"
+                            >
+                              <p className="text-dark mb-0">Exercises</p>
+                            </Link>
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </UncontrolledDropdown>
+                    </NavItem>
+                    <NavItem>
+                      <div
+                        onClick={handleFitneeCommunityClick}
+                        className={`nav-link ${styles.navLink} ${textClass}`}
+                      >
+                        <span className={`borderHover`}>
+                          {t("landing.fitneeCommunityText")}
+                        </span>
+                      </div>
+                    </NavItem>
+                    <NavItem>
+                      <Link
+                        className={`nav-link ${styles.navLink} ${textClass}`}
+                        to="/contactUs"
+                      >
+                        <span className={`borderHover`}>
+                          {t("landing.contactUsText")}
+                        </span>
+                      </Link>
+                    </NavItem>
+                  </Nav>
+                )}
 
-                {!props?.isGuest && !props?.isPrivate && (
+                {!props?.isGuest && !props?.isPrivate && roleType === null && (
                   <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>
@@ -295,46 +337,80 @@ const TopBar = (props) => {
                       <DropdownMenu style={{ right: 0, left: "auto" }}>
                         <DropdownItem>
                           <Link
-                            className=" d-flex align-items-center"
-                            to="/trainee/dashboard"
+                            to={
+                              roleType === TRAINEE_TYPE
+                                ? "/trainee/dashboard"
+                                : "/serviceProvider/dashboard"
+                            }
                           >
-                            <span className="textParrotGreen me-2">
-                              <RiDashboardFill className="mb-1" />
-                            </span>
-                            <p className="text-dark mb-0">Dashboard</p>
+                            <div className="d-flex align-items-center">
+                              <span className="textParrotGreen me-2">
+                                <RiDashboardFill className="mb-1" />
+                              </span>
+                              <p className="text-dark mb-0">Dashboard</p>
+                            </div>
                           </Link>
                         </DropdownItem>
                         <DropdownItem>
-                          <Link to="" className=" d-flex align-items-center">
-                            <span className="textParrotGreen me-2">
-                              <FaUserEdit className="mb-1" />
-                            </span>
-                            <p className="text-dark mb-0">Edit Profile</p>
+                          <Link to="">
+                            <div className="d-flex align-items-center">
+                              <span className="textParrotGreen me-2">
+                                <FaUserEdit className="mb-1" />
+                              </span>
+                              <p className="text-dark mb-0">Edit Profile</p>
+                            </div>
+                          </Link>
+                        </DropdownItem>
+                        {roleType && roleType !== TRAINEE_TYPE && (
+                          <DropdownItem>
+                            <Link to="/serviceProvider/paymentHistory">
+                              <div className="d-flex align-items-center">
+                                <span className="textParrotGreen me-2">
+                                  <GiWallet className="mb-1" />
+                                </span>
+                                <p className="text-dark mb-0">Wallet</p>
+                              </div>
+                            </Link>
+                          </DropdownItem>
+                        )}
+
+                        <DropdownItem>
+                          <Link
+                            to={
+                              roleType === TRAINEE_TYPE
+                                ? "/trainee/resetPassword"
+                                : "/serviceProvider/resetPassword"
+                            }
+                          >
+                            <div className="d-flex align-items-center">
+                              <span className="textParrotGreen me-2">
+                                <FaKey className="mb-1" />
+                              </span>
+                              <p className="text-dark mb-0">Change Password</p>
+                            </div>
                           </Link>
                         </DropdownItem>
                         <DropdownItem>
-                          <Link to="" className=" d-flex align-items-center">
-                            <span className="textParrotGreen me-2">
-                              <GiWallet className="mb-1" />
-                            </span>
-                            <p className="text-dark mb-0">Wallet</p>
-                          </Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                          <Link to="" className=" d-flex align-items-center">
-                            <span className="textParrotGreen me-2">
-                              <FaKey className="mb-1" />
-                            </span>
-                            <p className="text-dark mb-0">Change Password</p>
-                          </Link>
-                        </DropdownItem>
-                        <DropdownItem>
-                          <Link to="" className=" d-flex align-items-center">
-                            <span className="textParrotGreen me-2">
+                          <div
+                            className="d-flex align-items-center"
+                            onClick={handleDeleteClick}
+                          >
+                            <span className="textParrotGreen me-2 d-flex">
                               <FaTrashCan className="mb-1" />
                             </span>
                             <p className="text-dark mb-0">Delete Account</p>
-                          </Link>
+                          </div>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <div
+                            className="d-flex align-items-center"
+                            onClick={handleLogoutClick}
+                          >
+                            <span className="textParrotGreen me-2 d-flex">
+                              <FaCircleArrowUp className="mb-1" />
+                            </span>
+                            <p className="text-dark mb-0">Logout</p>
+                          </div>
                         </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
@@ -484,6 +560,29 @@ const TopBar = (props) => {
             text={t("guest.notNowText")}
             className="py-2 px-5"
             handleOnClick={handleSubscriptionInformationModalClose}
+          />
+        }
+      />
+
+      <InformationModal
+        size={"md"}
+        TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+        className={"p-4"}
+        isOpen={deleteAccountModal}
+        onClose={handleDeleteAccountModalClose}
+        ModalTextOne="Are you sure to want to delete your account?"
+        ButtonOne={
+          <FillBtn
+            text={t("signup.yesText")}
+            className="py-2 px-5"
+            handleOnClick={handleDeleteAccountClick}
+          />
+        }
+        ButtonTwo={
+          <OutlineBtn
+            text={"No"}
+            className="py-2 px-5"
+            handleOnClick={handleDeleteAccountModalClose}
           />
         }
       />

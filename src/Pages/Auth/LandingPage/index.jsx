@@ -1,7 +1,6 @@
-import React from "react";
-import { useCallback } from "react";
 import { motion } from "framer-motion";
 import Hero from "../../../Shared/Hero";
+import React, {useCallback} from "react";
 import styles from "./style.module.scss";
 import Footer from "../../../Shared/Footer";
 import Feature from "../../../Shared/Feature";

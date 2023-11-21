@@ -36,7 +36,7 @@ const MyProgress = () => {
   }, [navigate]);
 
   const handleallServiceProviderClick = useCallback(() => {
-    navigate("/trainee/allServiceProvider");
+    navigate("/trainee/allServiceProvider/trainer");
   }, [navigate]);
 
   const handleAddProgressClick = useCallback(() => {

@@ -371,7 +371,7 @@ const LandingPage = (props) => {
         </Container>
       </section>
 
-      <section id="featureSection vh-100">
+      <section id="featureSection" className="100-vh">
         <Container fluid>
           <Feature
             textData={FeaturesTextData()}

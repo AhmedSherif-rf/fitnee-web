@@ -3,6 +3,7 @@
 .bannerVideo {
   position: relative;
   height: 100vh;
+  margin-bottom: 100px;
 
 
   .bannerTextWrapper {
@@ -46,7 +47,7 @@
     z-index: 99;
     align-items: center;
     justify-content: center;
-    bottom: 150px;
+    bottom: 100px;
     border-radius: 12px;
     border-color: $yellow;
 

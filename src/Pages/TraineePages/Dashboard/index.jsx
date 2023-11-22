@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
@@ -19,7 +18,6 @@ const InfoData = {
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.user);
 
   const handleCurrentTrainerClick = useCallback(() => {
     navigate("/trainee/serviceProviderList");
@@ -38,7 +36,7 @@ const Dashboard = () => {
   }, [navigate]);
 
   const handleAllServiceProviderClick = useCallback(() => {
-    navigate("/trainee/allServiceProvider");
+    navigate("/trainee/allServiceProvider/trainer");
   }, [navigate]);
 
   return (

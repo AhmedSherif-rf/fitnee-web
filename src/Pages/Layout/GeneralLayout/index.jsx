@@ -22,7 +22,7 @@ const GeneralLayout = (props) => {
             : props?.isGuest || props?.isAuth
             ? styles.overlapContainer
             : ""
-        }`}
+        } ${props?.theme === "light" ? styles.lightBg : ""}`}
       >
         {props.children}
       </Container>

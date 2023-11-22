@@ -1,7 +1,9 @@
+@import "../../../Assets/Scss/variables.scss";
+
 .overlapContainer {
     margin-top: 10vh !important;
 }
 
 .lightBg {
-    background-color: red;
+    background-color: $light-bg;
 }

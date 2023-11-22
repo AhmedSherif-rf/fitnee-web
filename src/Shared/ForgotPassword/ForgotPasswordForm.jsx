@@ -26,7 +26,7 @@ const ForgotPasswordForm = () => {
             <InputField
               placeholder={"Type your email"}
               type="email"
-              icon={<img src={Images.EMAIL_ICON} alt="email-icon" />}
+              icon={<img src={Images.PASSWORD_ICON_IMG} alt="email-icon" />}
               className={"mb-3 py-3 px-5"}
             />
             <FillBtn

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Hero from "../../../Shared/Hero";
-import React, {useCallback} from "react";
+import React, { useCallback } from "react";
 import styles from "./style.module.scss";
 import Footer from "../../../Shared/Footer";
 import Feature from "../../../Shared/Feature";
@@ -114,7 +114,7 @@ const LandingPage = (props) => {
     {
       heading: (
         <span className="fw-bold h2 text-white fs-1 mb-4 arabicBorderHover">
-          {t("landing.ourText")} 
+          {t("landing.ourText")}
           <span className="textYellow"> {t("landing.visionText")} </span>
         </span>
       ),

@@ -64,7 +64,7 @@ const CreditCardDetailWrapper = () => {
           <h4 className="mb-2 fw-bold">Card Detail</h4>
         </Col>
         <Col md={6}>
-          <div className="w-100 card border-0">
+          <div className="w-100 card border-0 bg-transparent p-3">
             <div className="card-body">
               <Label className="small mb-0 fw-bold">Card number</Label>
               <InputGroup>

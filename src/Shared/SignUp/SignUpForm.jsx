@@ -134,7 +134,7 @@ const SignUpForm = () => {
               </Col>
             </Row>
 
-            <Row>
+            <Row> 
               <Col md={12}>
                 <h6 className="fw-bold">Your information</h6>
               </Col>
@@ -254,7 +254,7 @@ const SignUpForm = () => {
                     </div>
                     <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
                           values.gender === "male" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "male")}
@@ -263,7 +263,7 @@ const SignUpForm = () => {
                         <FaMars />
                       </div>
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
                           values.gender === "female" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "female")}
@@ -767,7 +767,7 @@ const SignUpForm = () => {
               <Col md={6} className="mb-2">
                 <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
                   <div
-                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput ${
+                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
                       values.currentlyWorking === "yes" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "yes")}
@@ -775,7 +775,7 @@ const SignUpForm = () => {
                     <h6 className="mb-0 font14">Yes</h6>
                   </div>
                   <div
-                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput ${
+                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
                       values.currentlyWorking === "no" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "no")}

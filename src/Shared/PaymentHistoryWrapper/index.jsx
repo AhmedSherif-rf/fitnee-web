@@ -52,7 +52,7 @@ const PaymentHistoryWrapper = () => {
     <Container fluid className="mt-3 text-black-custom">
       <Row className="justify-content-center">
         <Col md={12}>
-          <Card className="BorderRadius vh-auto ">
+          <Card className="BorderRadius vh-auto mb-3 ">
             <CardHeader className="bg-transparent border-0 p-3">
               <h4 className="fw-bold text-black-custom fs-3 p-3">
                 Payment History

@@ -22,6 +22,7 @@ const routes = [
     component: lazy(() => import("../Pages/Auth/SignUp")),
     isPublic: true,
     isAuth: true,
+    theme: "light",
     exact: true,
   },
   {
@@ -36,24 +37,28 @@ const routes = [
     component: lazy(() => import("../Pages/Auth/VerifyOtp")),
     isPublic: true,
     isAuth: true,
+    theme: "light",
     exact: true,
   },
   {
     path: "/termAndCondition",
     component: lazy(() => import("../Pages/Auth/TermAndCondition")),
     isPublic: true,
+    theme: "light",
     exact: true,
   },
   {
     path: "/contactUs",
     component: lazy(() => import("../Pages/Auth/ContactUs")),
     isPublic: true,
+    theme: "light",
     exact: true,
   },
   {
     path: "/forgotPassword",
     component: lazy(() => import("../Pages/Auth/ForgotPassword")),
     isPublic: true,
+    theme: "light",
     exact: true,
   },
 ]

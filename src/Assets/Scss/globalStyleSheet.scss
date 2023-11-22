@@ -139,10 +139,11 @@ select,
 .form-check-input:checked {
   &:focus {
     box-shadow: none !important;
-    background-color: $yellow-blur !important;
+    background-color:$white !important;
     color: $parrot-green !important;
+    outline: none;
   }
-  background-color: $yellow-blur !important;
+  background-color: $white !important;
   border: 1px solid $parrot-green !important;
   color: $parrot-green !important;
 }

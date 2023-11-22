@@ -28,6 +28,7 @@ const routes = [
     path: "/signIn",
     component: lazy(() => import("../Pages/Auth/SignIn")),
     isPublic: true,
+    theme: "light",
     exact: true,
   },
   {

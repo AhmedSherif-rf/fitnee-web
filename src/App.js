@@ -17,7 +17,14 @@ import LoadingScreen from "./HelperMethods/LoadingScreen";
 import { setLanguage } from "./Redux/features/Language/languageSlice";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function withLayout(WrappedComponent, isPublic, isGuest, isPrivate, isAuth) {
+function withLayout(
+  WrappedComponent,
+  isPublic,
+  isGuest,
+  isPrivate,
+  isAuth,
+  theme = "black"
+) {
   const admin = false;
 
   return class extends React.Component {
@@ -34,6 +41,7 @@ function withLayout(WrappedComponent, isPublic, isGuest, isPrivate, isAuth) {
               isGuest={isGuest}
               isPrivate={isPrivate}
               isAuth={isAuth}
+              theme={theme}
             >
               <WrappedComponent></WrappedComponent>
             </GeneralLayout>
@@ -78,7 +86,8 @@ function App() {
                           route?.isPublic,
                           route?.isGuest,
                           route?.isPrivate,
-                          route?.isAuth
+                          route?.isAuth,
+                          route?.theme
                         )}
                       />
                     ) : (
@@ -90,7 +99,8 @@ function App() {
                           route?.isPublic,
                           route?.isGuest,
                           route?.isPrivate,
-                          route?.isAuth
+                          route?.isAuth,
+                          route?.theme
                         )}
                       />
                     )}

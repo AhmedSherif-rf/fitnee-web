@@ -19,11 +19,11 @@ const RegisterAs = (props) => {
   }, [dispatch, navigate]);
 
   const handleAsTrainerClick = useCallback(() => {
-    navigate("/serviceProvider/dashboard");
+    navigate("/signUp/trainer");
   }, [navigate]);
 
   const handleAsNutritionistClick = useCallback(() => {
-    navigate("/serviceProvider/dashboard");
+    navigate("/signUp/nutritionist");
   }, [navigate]);
 
   return (

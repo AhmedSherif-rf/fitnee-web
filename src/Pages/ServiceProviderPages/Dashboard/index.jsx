@@ -109,7 +109,7 @@ const Dashboard = () => {
                 <FillBtn
                   handleOnClick={handleCurrentSubscribersClick}
                   className="w-100 mb-2 py-2"
-                  text=    {t("trainer.trainerSubscriberText")}
+                  text={t("trainer.trainerSubscriberText")}
                 />
                 <FillBtn
                   handleOnClick={handlePaymentClick}
@@ -126,17 +126,27 @@ const Dashboard = () => {
           </div>
         </Col>
         <Col lg={9} md={8}>
-          <Card className="BorderRadius border-0">
+          <Card className="BorderRadius border-0 text-black-custom">
             <CardBody>
-              <h5 className="fw-bold my-2">{t("trainer.bioText")}</h5>
-              <p className="small">
-              
-                {t("trainer.trainerParagraphText")}
-              </p>
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <div>
+                  <h5 className="fw-bold my-2">{t("trainer.bioText")}</h5>
+                </div>
+                <div>
+                  <FillBtn
+                    handleOnClick={handleCurrentSubscribersClick}
+                    className="w-100"
+                    text="Edit"
+                  />
+                </div>
+              </div>
+              <p className="small">{t("trainer.trainerParagraphText")}</p>
 
               <Row>
                 <Col md={12}>
-                  <h5 className="fw-bold my-2">{t("trainer.trainerHeadingText")}</h5>
+                  <h5 className="fw-bold my-2">
+                    {t("trainer.trainerHeadingText")}
+                  </h5>
                 </Col>
                 {documentMedia.map((item) => {
                   return (

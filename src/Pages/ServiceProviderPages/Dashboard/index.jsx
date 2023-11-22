@@ -126,7 +126,7 @@ const Dashboard = () => {
           </div>
         </Col>
         <Col lg={9} md={8}>
-          <Card className="BorderRadius border-0">
+          <Card className="BorderRadius border-0 text-black-custom">
             <CardBody>
               <h5 className="fw-bold my-2">{t("trainer.bioText")}</h5>
               <p className="small">

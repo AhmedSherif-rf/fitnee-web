@@ -21,7 +21,7 @@ const SubscriptionCard = (props) => {
 
   return (
     <Card
-      className={`text-center BorderRadius text-black-custom p-0 h-100 ${styles.cardHeaderDesign}`}
+      className={`text-center BorderRadius text-black-custom p-0 h-100 mb-5 ${styles.cardHeaderDesign}`}
     >
       <div className="text-center d-flex justify-content-center">
         <div className={`${styles.headerCard} BorderRadius`}>{headerText}</div>

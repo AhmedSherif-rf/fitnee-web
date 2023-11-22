@@ -76,7 +76,7 @@ const HomeBanner = () => {
           </div>
         </Col>
       </Row>
-      <Row className={`justify-content-center w-100`}>
+      <Row className={`justify-content-center w-100 d-md-flex d-none`}>
         <Col md={3}>
           <Card className={`${styles.figureCards}`}>
             <CardBody className={`text-center`}>

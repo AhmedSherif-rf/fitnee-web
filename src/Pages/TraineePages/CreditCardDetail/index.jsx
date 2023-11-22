@@ -4,7 +4,7 @@ import CreditCardDetailWrapper from "../../../Shared/CreditCardDetailWrapper";
 
 const CreditCardDetail = () => {
   return (
-    <Container fluid>
+    <Container fluid >
       <Row>
         <Col md={12}>
           <CreditCardDetailWrapper />

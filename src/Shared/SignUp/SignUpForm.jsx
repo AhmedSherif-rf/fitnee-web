@@ -217,7 +217,7 @@ const SignUpForm = () => {
                     name: "phoneNumber",
                     required: true,
                     className:
-                      "form-control-lg w-100 BorderYellow py-3 px-4 customPhoneInput",
+                      "form-control-lg w-100 py-3 px-4 border customPhoneInput",
                   }}
                   defaultCountry={"ae"}
                   value={values.phoneNumber}
@@ -267,7 +267,7 @@ const SignUpForm = () => {
                     </div>
                     <InputGroup>
                       <InputGroupText
-                        className="yellowBorder"
+                        className=""
                         style={{
                           borderTopLeftRadius: "14px",
                           borderBottomLeftRadius: "14px",
@@ -288,7 +288,7 @@ const SignUpForm = () => {
                         }}
                         name="dob"
                         placeholder="Date of Birthday"
-                        className="form-control-lg yellowBorder px-4"
+                        className="form-control-lg px-4"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.dob}
@@ -367,7 +367,7 @@ const SignUpForm = () => {
                   {values?.certificates.map((image, index) => (
                     <div
                       key={index}
-                      className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius BorderYellow"
+                      className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border"
                     >
                       <img
                         src={URL.createObjectURL(image.file)}
@@ -395,7 +395,7 @@ const SignUpForm = () => {
                   ))}
                   <Label
                     id="UploadImgLabel"
-                    className="BorderRadius BorderYellow text-center mb-0"
+                    className="BorderRadius text-center mb-0"
                     style={{
                       minWidth: "220px",
                       maxHeight: "170px",
@@ -409,9 +409,9 @@ const SignUpForm = () => {
                       onChange={(event) => {
                         const files = event.currentTarget.files;
                         if (files.length > 0) {
-                          const uploadedImages = Array.from(
-                            files
-                          ).map((file) => ({ file }));
+                          const uploadedImages = Array.from(files).map(
+                            (file) => ({ file })
+                          );
                           setFieldValue("certificates", [
                             ...values.certificates,
                             ...uploadedImages,
@@ -636,7 +636,7 @@ const SignUpForm = () => {
                     name: "stcPhoneNumber",
                     required: true,
                     className:
-                      "form-control-lg w-100 BorderYellow py-3 px-4 customPhoneInput",
+                      "form-control-lg w-100 border py-3 px-4 customPhoneInput",
                   }}
                   defaultCountry={"ae"}
                   value={values.stcPhoneNumber}
@@ -666,7 +666,11 @@ const SignUpForm = () => {
                             <Field
                               as="select"
                               name={`daySchedules.${index}.day`}
-                              className="customDropDown form-control-lg w-100 BorderYellow selectField BorderRadiusInput px-4"
+                              className="customDropDown form-control-lg w-100 selectField BorderRadius border px-4"
+                              style={{
+                                paddingTop: "12px",
+                                paddingBottom: "12px",
+                              }}
                             >
                               <option
                                 className="customDropDownOption"
@@ -692,7 +696,7 @@ const SignUpForm = () => {
                             <Field
                               name={`daySchedules.${index}.fromTime`}
                               type="time"
-                              className="customDropdown form-control select-field BorderRadiusInput py-3 px-4"
+                              className="customDropdown form-control select-field BorderRadius py-3 px-4"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.fromTime`}
@@ -704,7 +708,7 @@ const SignUpForm = () => {
                             <Field
                               name={`daySchedules.${index}.toTime`}
                               type="time"
-                              className="customDropdown form-control select-field BorderRadiusInput py-3 px-4"
+                              className="customDropdown form-control select-field BorderRadius py-3 px-4"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.toTime`}

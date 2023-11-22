@@ -5,7 +5,7 @@ import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import MultiSelector from "../MultiSelector";
 import { useTranslation } from "react-i18next";
 import { FaDeleteLeft } from "react-icons/fa6";
@@ -16,6 +16,12 @@ import { ConnectedFocusError } from "focus-formik-error";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
 import { Formik, Field, FieldArray, ErrorMessage } from "formik";
+import {
+  TRAINEE_TYPE,
+  TRAINER_TYPE,
+  NUTRITIONIST_TYPE,
+} from "../../utils/constants";
+
 import {
   Container,
   Row,
@@ -35,19 +41,30 @@ import {
 
 const SignUpForm = () => {
   const navigate = useNavigate();
+  const { roleType } = useParams();
   const { t } = useTranslation("");
 
   return (
     <Container>
       <Formik
         initialValues={{ ...INITIAL_VALUES }}
-        validationSchema={SIGNUP_SCHEMA}
+        // validationSchema={SIGNUP_SCHEMA}
         validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
           setTimeout(() => {
-            alert(JSON.stringify(values));
+            // alert(JSON.stringify(values));
             setSubmitting(false);
+            if (roleType === TRAINEE_TYPE) {
+              localStorage.setItem("role", TRAINEE_TYPE);
+              navigate("/trainee/dashboard");
+            } else if (
+              roleType === TRAINER_TYPE ||
+              roleType === NUTRITIONIST_TYPE
+            ) {
+              localStorage.setItem("role", TRAINER_TYPE);
+              navigate("/serviceProvider/dashboard");
+            }
             // navigate("/verifyOtp");
           }, 400);
         }}

@@ -126,7 +126,7 @@ const Dashboard = () => {
           </div>
         </Col>
         <Col lg={9} md={8}>
-          <Card className="BorderRadius border-0">
+          <Card className="BorderRadius border-0 text-black-custom">
             <CardBody>
               <div className="d-flex align-items-center justify-content-between mb-3">
                 <div>

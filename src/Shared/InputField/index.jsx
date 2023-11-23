@@ -24,7 +24,7 @@ const InputField = (props) => {
         placeholder={placeholder}
         name={name}
         style={style}
-        className={`form-control-lg  w-100 BorderYellow ${styles.inputDesign} ${className}`}
+        className={`form-control-lg  w-100 ${styles.inputDesign} ${className}`}
         disabled={disabled}
         onChange={onChangeHandle}
         onBlur={onBlurHandle}

@@ -17,7 +17,10 @@ const DocumentCard = (props) => {
       >
         <CardBody className="p-0"></CardBody>
 
-        <CardFooter className="text-center bgBlur border-0">
+        <CardFooter className="text-center border-0 bgBlur" style={{
+           borderBottomRightRadius: "14px",
+           borderBottomLeftRadius: "14px",
+        }}>
           {documentTitle}
         </CardFooter>
       </Card>

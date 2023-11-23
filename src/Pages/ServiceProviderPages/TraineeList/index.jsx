@@ -1,4 +1,5 @@
 import React from "react";
+import PageHeading from "../../../Shared/Headings/PageHeading";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ServiceProviderRow from "../../../Shared/ServiceProviderListRow";
@@ -59,9 +60,10 @@ const index = () => {
             <CardBody className="px-4">
               <Row>
                 <Col md={12}>
-                  <h4 className="fw-bold text-black-custom fs-3 pt-3 pb-5">
-                    My Current Trainees
-                  </h4>
+                  <PageHeading
+                    headingText="My Current Trainees"
+                    categoryText=""
+                  />
                 </Col>
               </Row>
               {TraineeList.map((item) => {

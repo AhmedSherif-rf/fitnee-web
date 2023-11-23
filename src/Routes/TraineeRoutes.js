@@ -7,6 +7,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/Dashboard")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -14,6 +15,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/ServiceProviderList")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -21,6 +23,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/SubscriptionDetail")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -28,6 +31,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/MyProgress")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -35,6 +39,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/AllServiceProvider")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -44,6 +49,7 @@ export const traineeRoutes = [
     ),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -51,6 +57,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/Subscriptions")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -58,6 +65,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/CreditCardDetail")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -65,6 +73,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/AppDownloadLink")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -72,6 +81,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/ResetPassword")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
   {
@@ -79,6 +89,7 @@ export const traineeRoutes = [
     component: lazy(() => import("../Pages/TraineePages/EditProfile")),
     exact: true,
     isPrivate: true,
+    theme: "light",
     role: traineeRole,
   },
 ];

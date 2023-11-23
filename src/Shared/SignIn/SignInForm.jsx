@@ -86,7 +86,7 @@ const SignInForm = () => {
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.password}
-                  icon={<img src={Images.EMAIL_ICON} alt="email-icon" />}
+                  icon={<img src={Images.PASSWORD_ICON_IMG}  />}
                   className={
                     "form-control-lg BorderRadiusInput py-3 px-5 mb-1 mt-3"
                   }

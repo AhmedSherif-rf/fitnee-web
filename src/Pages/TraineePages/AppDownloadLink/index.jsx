@@ -40,7 +40,7 @@ const AppDownloadLink = () => {
                 src={Images.QR_CODE_IMG}
                 alt=""
               />
-              <h6 className="text-dark fw-bold text-center">GET APP</h6>
+              <h6 className="text-black-custom fw-bold text-center">GET APP</h6>
             </div>
           </div>
           <Row className="justify-content-center">

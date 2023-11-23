@@ -134,7 +134,7 @@ const SignUpForm = () => {
               </Col>
             </Row>
 
-            <Row>
+            <Row> 
               <Col md={12}>
                 <h6 className="fw-bold">Your information</h6>
               </Col>
@@ -234,7 +234,7 @@ const SignUpForm = () => {
                     name: "phoneNumber",
                     required: true,
                     className:
-                      "form-control-lg w-100 BorderYellow py-3 px-4 customPhoneInput",
+                      "form-control-lg w-100 py-3 px-4 border customPhoneInput",
                   }}
                   defaultCountry={"ae"}
                   value={values.phoneNumber}
@@ -254,7 +254,7 @@ const SignUpForm = () => {
                     </div>
                     <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
                           values.gender === "male" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "male")}
@@ -263,7 +263,7 @@ const SignUpForm = () => {
                         <FaMars />
                       </div>
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
                           values.gender === "female" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "female")}
@@ -284,7 +284,7 @@ const SignUpForm = () => {
                     </div>
                     <InputGroup>
                       <InputGroupText
-                        className="yellowBorder"
+                        className=""
                         style={{
                           borderTopLeftRadius: "14px",
                           borderBottomLeftRadius: "14px",
@@ -305,7 +305,7 @@ const SignUpForm = () => {
                         }}
                         name="dob"
                         placeholder="Date of Birthday"
-                        className="form-control-lg yellowBorder px-4"
+                        className="form-control-lg px-4"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.dob}
@@ -384,7 +384,7 @@ const SignUpForm = () => {
                   {values?.certificates.map((image, index) => (
                     <div
                       key={index}
-                      className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius BorderYellow"
+                      className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border"
                     >
                       <img
                         src={URL.createObjectURL(image.file)}
@@ -412,7 +412,7 @@ const SignUpForm = () => {
                   ))}
                   <Label
                     id="UploadImgLabel"
-                    className="BorderRadius BorderYellow text-center mb-0"
+                    className="BorderRadius text-center mb-0"
                     style={{
                       minWidth: "220px",
                       maxHeight: "170px",
@@ -426,9 +426,9 @@ const SignUpForm = () => {
                       onChange={(event) => {
                         const files = event.currentTarget.files;
                         if (files.length > 0) {
-                          const uploadedImages = Array.from(
-                            files
-                          ).map((file) => ({ file }));
+                          const uploadedImages = Array.from(files).map(
+                            (file) => ({ file })
+                          );
                           setFieldValue("certificates", [
                             ...values.certificates,
                             ...uploadedImages,
@@ -653,7 +653,7 @@ const SignUpForm = () => {
                     name: "stcPhoneNumber",
                     required: true,
                     className:
-                      "form-control-lg w-100 BorderYellow py-3 px-4 customPhoneInput",
+                      "form-control-lg w-100 border py-3 px-4 customPhoneInput",
                   }}
                   defaultCountry={"ae"}
                   value={values.stcPhoneNumber}
@@ -683,7 +683,11 @@ const SignUpForm = () => {
                             <Field
                               as="select"
                               name={`daySchedules.${index}.day`}
-                              className="customDropDown form-control-lg w-100 BorderYellow selectField BorderRadiusInput px-4"
+                              className="customDropDown form-control-lg w-100 selectField BorderRadius border px-4"
+                              style={{
+                                paddingTop: "12px",
+                                paddingBottom: "12px",
+                              }}
                             >
                               <option
                                 className="customDropDownOption"
@@ -709,7 +713,7 @@ const SignUpForm = () => {
                             <Field
                               name={`daySchedules.${index}.fromTime`}
                               type="time"
-                              className="customDropdown form-control select-field BorderRadiusInput py-3 px-4"
+                              className="customDropdown form-control select-field BorderRadius py-3 px-4"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.fromTime`}
@@ -721,7 +725,7 @@ const SignUpForm = () => {
                             <Field
                               name={`daySchedules.${index}.toTime`}
                               type="time"
-                              className="customDropdown form-control select-field BorderRadiusInput py-3 px-4"
+                              className="customDropdown form-control select-field BorderRadius py-3 px-4"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.toTime`}
@@ -763,7 +767,7 @@ const SignUpForm = () => {
               <Col md={6} className="mb-2">
                 <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
                   <div
-                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput ${
+                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
                       values.currentlyWorking === "yes" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "yes")}
@@ -771,7 +775,7 @@ const SignUpForm = () => {
                     <h6 className="mb-0 font14">Yes</h6>
                   </div>
                   <div
-                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput ${
+                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
                       values.currentlyWorking === "no" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "no")}

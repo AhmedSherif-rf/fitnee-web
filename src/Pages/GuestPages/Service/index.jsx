@@ -13,6 +13,7 @@ import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import { IoFemaleOutline, IoMaleOutline } from "react-icons/io5";
 import { MALE_BODY, FEMALE_BODY } from "../../../utils/constants";
 import InformationModal from "../../../Shared/Modal/InformationModal";
+import SubHeading from "../../../Shared/Headings/SubHeading";
 
 const Services = (props) => {
   const navigate = useNavigate();
@@ -23,11 +24,13 @@ const Services = (props) => {
     setShowSubscriptionInformatoinModal,
   ] = useState(false);
 
-  const handleChangeBodyClick = () => {
-    if (currentBody === MALE_BODY) {
-      setCurrentBody(FEMALE_BODY);
-    } else {
-      setCurrentBody(MALE_BODY);
+  const handleChangeBodyClick = (body) => {
+    if (currentBody !== body) {
+      if (currentBody === MALE_BODY) {
+        setCurrentBody(FEMALE_BODY);
+      } else {
+        setCurrentBody(MALE_BODY);
+      }
     }
   };
 
@@ -50,12 +53,15 @@ const Services = (props) => {
   return (
     <Container fluid className={`py-md-2 py-3 ${styles.servicesWrapper}`}>
       <Row className="d-flex">
+        <Col md={12}>
+          <SubHeading headingText="Our Services" categoryText="" />
+        </Col>
         <Col md={2} sm={6} xs={6}>
           <div
             className={`${styles.customBodySelect} ${
               currentBody === MALE_BODY ? styles.activeBody : ""
             } mx-md-3 mx-0`}
-            onClick={handleChangeBodyClick}
+            onClick={() => handleChangeBodyClick(MALE_BODY)}
           >
             <IoMaleOutline />
             <div className="checkbox-text">{MALE_BODY}</div>
@@ -66,7 +72,7 @@ const Services = (props) => {
             className={`${styles.customBodySelect} ${
               currentBody === FEMALE_BODY ? styles.activeBody : ""
             } mx-md-3 mx-0`}
-            onClick={handleChangeBodyClick}
+            onClick={() => handleChangeBodyClick(FEMALE_BODY)}
           >
             <IoFemaleOutline />
             <div className="checkbox-text">{FEMALE_BODY}</div>

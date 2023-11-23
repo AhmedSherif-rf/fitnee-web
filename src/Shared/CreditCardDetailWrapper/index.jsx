@@ -15,6 +15,7 @@ import {
   InputGroupText,
   Label,
 } from "reactstrap";
+import PageHeading from "../Headings/PageHeading";
 
 const CreditCardDetailWrapper = () => {
   const [date, setDate] = useState("");
@@ -59,17 +60,17 @@ const CreditCardDetailWrapper = () => {
 
   return (
     <Container fluid className="h-100">
-      <Row className="h-100 py-3 CardDetails">
+      <Row className="h-100 CardDetails">
         <Col md={12}>
-          <h4 className="mb-2 fw-bold">Card Detail</h4>
+        <PageHeading headingText="Card Detail" className="mb-0" categoryText="" />
         </Col>
         <Col md={6}>
-          <div className="w-100 card border-0">
+          <div className="w-100 card border-0 bg-transparent p-3">
             <div className="card-body">
               <Label className="small mb-0 fw-bold">Card number</Label>
               <InputGroup>
                 <InputGroupText
-                  className="form-control-lg yellowBorder py-3"
+                  className="form-control-lg border py-3"
                   style={{
                     borderTopLeftRadius: "14px",
                     borderBottomLeftRadius: "14px",
@@ -87,7 +88,7 @@ const CreditCardDetailWrapper = () => {
                     borderBottomRightRadius: "14px",
                   }}
                   placeholder="0000 0000 0000 0000"
-                  className="form-control-lg yellowBorder fs-6 py-3"
+                  className="form-control-lg border fs-6 py-3"
                   value={cardNumber}
                   onChange={handleCardNumberChange}
                   required
@@ -125,7 +126,7 @@ const CreditCardDetailWrapper = () => {
                   <Input
                     type="text"
                     placeholder="0000"
-                    className="form-control-lg BorderYellow fs-6 py-3"
+                    className="form-control-lg BorderRadius fs-6 py-3"
                     value={cvcValue}
                     onChange={handleCvcChange}
                     required
@@ -142,7 +143,7 @@ const CreditCardDetailWrapper = () => {
                     <Input
                       type="text"
                       placeholder="0000"
-                      className="form-control py-3 BorderYellow"
+                      className="form-control py-3 BorderRadius "
                       value={""}
                       onChange={handleCvcChange}
                       required

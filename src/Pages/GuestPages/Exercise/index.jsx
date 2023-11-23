@@ -4,8 +4,8 @@ import React, { useCallback, useState } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import ExerciseSection from "../../../Shared/ExerciseSection";
-import PushUpVideo from "../../../Assets/Videos/Exercise/pushUp.mp4";
 import InformationModal from "../../../Shared/Modal/InformationModal";
+import PageHeading from "../../../Shared/Headings/PageHeading";
 
 const Exercise = (props) => {
   const navigate = useNavigate();
@@ -35,8 +35,6 @@ const Exercise = (props) => {
       {
         level: "Beginner",
         categoryName: "Barbell Bench Press",
-        media1: PushUpVideo,
-        media2: PushUpVideo,
         description: [
           "Lay flat on the bench with your feet on the ground. With straight arms unrack the bar.",
           "Lower the bar to your mid chest.",
@@ -46,8 +44,6 @@ const Exercise = (props) => {
       {
         level: "Beginner",
         categoryName: "Barbell Bench Press",
-        media1: PushUpVideo,
-        media2: PushUpVideo,
         description: [
           "Lay flat on the bench with your feet on the ground. With straight arms unrack the bar.",
           "Lower the bar to your mid chest.",
@@ -58,15 +54,12 @@ const Exercise = (props) => {
   }, []);
 
   return (
-    <Container fluid>
+    <Container fluid className="px-md-5">
       <Row className="text-black-custom">
         <Col md={12}>
-          <div className="d-flex align-items-center my-3 ">
-            <h2 className="me-2 fs-3 fw-bold">Chest</h2>
-            <span className="textYellow small h6">(Upper Chest)</span>
-          </div>
+          <PageHeading headingText="Chest" />
         </Col>
-        <Col md={12} className="mb-3">
+        <Col md={12} className="mb-3 px-md-5">
           <ExerciseSection exercisesData={ExerciseData} />
         </Col>
         <Col md={12} className="mb-3">

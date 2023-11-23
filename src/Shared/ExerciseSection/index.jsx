@@ -32,7 +32,7 @@ const ExerciseSection = (props) => {
                     autoplay="yes"
                     loop="yes"
                     class="workoutVideos"
-                    src={exercise.media1}
+                    src={"https://res.cloudinary.com/ddbegwuqp/video/upload/v1700739776/sample2_sirvgw.mp4"}
                   ></video>
                 </Col>
                 <Col md={6} className="mb-2">
@@ -43,7 +43,7 @@ const ExerciseSection = (props) => {
                     autoplay="yes"
                     loop="yes"
                     class="workoutVideos"
-                    src={exercise.media2}
+                    src={"https://res.cloudinary.com/ddbegwuqp/video/upload/v1700739776/sample2_sirvgw.mp4"}
                   ></video>
                 </Col>
                 <Col md={12} className="mb-2">

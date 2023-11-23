@@ -21,7 +21,7 @@ const TransactionDetail = (props) => {
           <div className="d-flex align-items-center justify-content-between w-100">
             <div className="">
               <h6 className="fw-bold">{AmountTitle}</h6>
-              <span className="small text-dark">{TransactionTime}</span>
+              <span className="small text-black-custom">{TransactionTime}</span>
             </div>
             <div className="">
               <h4 className="mb-0">

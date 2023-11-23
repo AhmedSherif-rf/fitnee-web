@@ -109,7 +109,7 @@ const Dashboard = () => {
                 <FillBtn
                   handleOnClick={handleCurrentSubscribersClick}
                   className="w-100 mb-2 py-2"
-                  text=    {t("trainer.trainerSubscriberText")}
+                  text={t("trainer.trainerSubscriberText")}
                 />
                 <FillBtn
                   handleOnClick={handlePaymentClick}
@@ -126,7 +126,7 @@ const Dashboard = () => {
           </div>
         </Col>
         <Col lg={9} md={8}>
-          <Card className="BorderRadius border-0 text-black-custom">
+          <Card className="BorderRadius border-0 mb-3 text-black-custom">
             <CardBody>
               <div className="d-flex align-items-center justify-content-between mb-3">
                 <div>
@@ -144,12 +144,14 @@ const Dashboard = () => {
 
               <Row>
                 <Col md={12}>
-                  <h5 className="fw-bold my-2">{t("trainer.trainerHeadingText")}</h5>
+                  <h5 className="fw-bold my-2">
+                    {t("trainer.trainerHeadingText")}
+                  </h5>
                 </Col>
                 {documentMedia.map((item) => {
                   return (
                     <DocumentCard
-                      className="BorderYellow"
+                      className="BorderRadius"
                       documentTitle={item.docTitle}
                       documentImg={item.docSrc}
                     />

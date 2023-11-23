@@ -13,6 +13,7 @@ import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import { IoFemaleOutline, IoMaleOutline } from "react-icons/io5";
 import { MALE_BODY, FEMALE_BODY } from "../../../utils/constants";
 import InformationModal from "../../../Shared/Modal/InformationModal";
+import SubHeading from "../../../Shared/Headings/SubHeading";
 
 const Services = (props) => {
   const navigate = useNavigate();
@@ -50,6 +51,9 @@ const Services = (props) => {
   return (
     <Container fluid className={`py-md-2 py-3 ${styles.servicesWrapper}`}>
       <Row className="d-flex">
+        <Col md={12}>
+        <SubHeading headingText="Our Services" categoryText="" />
+        </Col>
         <Col md={2} sm={6} xs={6}>
           <div
             className={`${styles.customBodySelect} ${

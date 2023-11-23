@@ -19,10 +19,8 @@ const Index = (props) => {
 
   const { t } = useTranslation("");
 
-  const [
-    showCancelSubscriptionModal,
-    setShowCancelSubscriptionModal,
-  ] = useState(false);
+  const [showCancelSubscriptionModal, setShowCancelSubscriptionModal] =
+    useState(false);
 
   const handleCloseSubscriptionModal = () => {
     setShowCancelSubscriptionModal(false);
@@ -42,22 +40,22 @@ const Index = (props) => {
 
   return (
     <>
-      <Row className="align-items-center text-black-custom BorderRadius text-black-custom py-2 mb-2">
-        <Col md={3} sm={6} xs={6} className="mb-md-0 mb-2">
+      <Row className="align-items-center text-black-custom BorderRadius border border-light text-black-custom py-2 mb-2">
+        <Col md={3} className="mb-md-0 mb-2">
           <div className="d-flex align-items-center">
             <div
-              className="me-2 bgProperties"
+              className="me-2 bgProperties rounded-circle"
               style={{
                 width: "60px",
                 height: "60px",
                 backgroundImage: `url(${useImages})`,
-                borderRadius: "50%",
                 border: "1px solid",
               }}
             ></div>
 
-            <div className="">
+            <div className="w-100">
               <h6 className="mb-0">{userName}</h6>
+              <h6 className="mb-0 w-100">{fee}</h6>
               <span className="d-md-none d-block textDark">
                 {serviceProvider}
               </span>
@@ -86,13 +84,7 @@ const Index = (props) => {
           </Col>
         ) : (
           ""
-        )}
-
-        <Col md={1} sm={2} className="mb-2">
-          <div className="d-flex align-items-center  h-100">
-            <h6 className="mb-0 text-center w-100">{fee}</h6>
-          </div>
-        </Col>
+        )}  
 
         <Col md={4}>
           <Row className="align-items-center h-100 ">

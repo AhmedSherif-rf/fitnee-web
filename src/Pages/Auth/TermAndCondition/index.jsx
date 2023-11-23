@@ -6,7 +6,7 @@ import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 const TermAndCondition = () => {
   return (
     <Container>
-      <Row className="justify-content-center vh-100">
+      <Row className="justify-content-center">
         <Col md={10}>
           <h1 className="text-center my-4 f-w-bold ">Terms and Conditions</h1>
           <p align="justify">

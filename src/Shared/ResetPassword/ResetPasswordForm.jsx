@@ -23,19 +23,19 @@ const ResetPasswordForm = () => {
             <InputField
               placeholder={"Current Password"}
               type="password"
-              icon={<img src={Images.PERSON_ICON} alt="password-icon" />}
+              icon={<img src={Images.PASSWORD_ICON_IMG} alt="password-icon" />}
               className={"mb-2 py-3 px-5"}
             />
             <InputField
               placeholder={"New Password"}
               type="password"
-              icon={<img src={Images.PERSON_ICON} alt="password-icon" />}
+              icon={<img src={Images.PASSWORD_ICON_IMG} alt="password-icon" />}
               className={"mb-2 py-3 px-5"}
             />
             <InputField
               placeholder={"Confirm Password"} 
               type="password"
-              icon={<img src={Images.PERSON_ICON} alt="password-icon" />}
+              icon={<img src={Images.PASSWORD_ICON_IMG} alt="password-icon" />}
               className={"mb-2 py-3 px-5"}
             />
 

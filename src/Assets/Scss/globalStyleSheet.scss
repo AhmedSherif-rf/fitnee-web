@@ -1,16 +1,15 @@
 @import "./variables.scss";
 
 @mixin bgProperties {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: center center/cover no-repeat;
 }
 
-.bgBlur {
-  background-color: $blur-color !important;
-}
+.bgBlur,
 .customBgDark {
   background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.customBgDark {
   backdrop-filter: blur(20px);
   border-color: rgba(0, 0, 0, 0.2);
 }
@@ -20,9 +19,8 @@
 }
 
 .middle-subscription-card {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, z-index 1;
   transform: scale(1.1);
-  z-index: 1;
 }
 
 .custom-badge {
@@ -32,32 +30,21 @@
 }
 
 .bgProperties {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  @include bgProperties;
 }
 
-.textYellow {
-  color: $yellow !important;
-}
-.textOrange {
-  color: $orange !important;
-}
+.textYellow,
+.textOrange,
 .textGrey {
-  color: $text-muted !important;
+  color: $yellow !important;
 }
 
 .textParrotGreen {
   color: $parrot-green;
 }
 
-.BorderRadius {
-  box-shadow: $card-box-shadow;
-  border: none !important;
-}
-.BorderYellow,
 .BorderRadius,
-.BorderRadiusInput,
+.BorderYellow,
 .subscriptionDiv {
   border-radius: 14px !important;
 }
@@ -66,6 +53,7 @@
   border-top-right-radius: 14px;
   border-top-left-radius: 14px;
 }
+
 .yellowBorder,
 .BorderYellow {
   border: 1px solid $yellow !important;
@@ -87,26 +75,15 @@ Input {
 Input::-webkit-input-placeholder {
   color: $placeholder-color;
 }
+
 .dropdown-item {
-  &:active {
-    background-color: $yellow;
-    color: $black;
-    outline: none;
-  }
-
-  &:hover {
-    background-color: $yellow;
-    color: $black;
-  }
-
-  &:focus {
-    background-color: $yellow;
-    outline: none;
-  }
-
+  &:active,
+  &:hover,
+  &:focus,
   &::selection {
     background-color: $yellow;
     color: $black;
+    outline: none;
   }
 }
 
@@ -117,9 +94,10 @@ select,
 .form-control-lg {
   &:focus,
   &:focus-visible {
-    border: 1px solid $parrot-green !important;
+    border: 1px solid $yellow !important;
     box-shadow: none !important;
     outline: none !important;
+    background-color: $white;
   }
 }
 
@@ -134,7 +112,6 @@ select,
     }
   }
   .flag-dropdown {
-    border: $yellow 1px solid !important;
     border-top-left-radius: 14px !important;
     border-bottom-left-radius: 14px !important;
     .selected-flag {
@@ -160,18 +137,19 @@ select,
 }
 
 .form-check-input:checked {
-  &focus {
+  &:focus {
     box-shadow: none !important;
-    background-color: $yellow-blur !important;
+    background-color:$white !important;
     color: $parrot-green !important;
+    outline: none;
   }
-  background-color: $yellow-blur !important;
+  background-color: $white !important;
   border: 1px solid $parrot-green !important;
   color: $parrot-green !important;
 }
 
 .buttonBoxShadow {
-  box-shadow: 0px 2px 14px 0px $button-box-shadow;
+  box-shadow: 0 2px 14px 0 $button-box-shadow;
 }
 
 .errorField {
@@ -180,30 +158,15 @@ select,
   font-size: $font-14;
 }
 
-.customPhoneInput {
-  font-size: $font-14 !important;
-}
-
-.customPaddingY {
-  padding: 12px 0px !important;
-}
-
-.customSpacing {
-  letter-spacing: 1px;
-  line-height: 24px;
-}
-
-.customDropDown {
-  font-size: $font-14 !important;
-}
-
+.customPhoneInput,
+.customPaddingY,
+.customSpacing,
+.customDropDown,
 .customDropDownOption {
   font-size: $font-14 !important;
-  &:checked {
-    background-color: $yellow !important;
-  }
 }
 
+.customDropDownOption:checked,
 .customDropDown .customDropDownOption:active {
   background-color: $yellow !important;
 }
@@ -220,30 +183,30 @@ select,
   background-color: rgba(24, 24, 24, 0.99);
 }
 
-.genderBtn {
+.genderBtn,
+.rmsc {
   .selected {
     color: $parrot-green !important;
-    border: 2px solid $parrot-green !important ;
+    border: 2px solid $parrot-green !important;
   }
 }
 
-.rmsc {
-  .dropdown-container {
-    padding: 8px 10px !important;
-    border-radius: 14px !important;
-    border: 1px solid $yellow !important;
-    font-size: 14px !important;
-    &:focus-within {
-      border: 1px solid $parrot-green !important;
-      box-shadow: none !important;
-    }
+.rmsc .dropdown-container {
+  padding: 8px 10px !important;
+  border-radius: 14px !important;
+  font-size: 14px !important;
+  &:focus-within {
+    border: 1px solid $parrot-green !important;
+    box-shadow: none !important;
   }
 }
+
 .arabicBorderHover,
 .borderHover {
   position: relative;
   overflow: hidden;
 }
+
 .arabicBorderHover::before,
 .borderHover::before {
   content: "";
@@ -255,32 +218,21 @@ select,
   background-color: $yellow;
   transition: width 0.3s ease;
 }
+
 .arabicBorderHover::before {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
+
 .arabicBorderHover:hover::before,
 .borderHover:hover::before {
   width: 100%;
 }
 
-.currentlyWorkingBtn {
-  .selected {
-    color: $parrot-green !important;
-    border: 2px solid $parrot-green !important ;
-  }
-}
-
-.selectField {
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
-}
-
-.text-black-custom {
-  color: $black !important;
-}
-
+.currentlyWorkingBtn,
+.selectField,
+.text-black-custom,
 .cursorPointer {
-  cursor: pointer;
+  color: $black !important;
 }
 
 ::-webkit-scrollbar {

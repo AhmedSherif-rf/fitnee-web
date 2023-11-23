@@ -5,6 +5,7 @@ import FillBtn from "../../../Shared/Buttons/FillBtn";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import ExerciseSection from "../../../Shared/ExerciseSection";
 import InformationModal from "../../../Shared/Modal/InformationModal";
+import PageHeading from "../../../Shared/Headings/PageHeading";
 
 const Exercise = (props) => {
   const navigate = useNavigate();
@@ -56,9 +57,7 @@ const Exercise = (props) => {
     <Container fluid className="px-md-5">
       <Row className="text-black-custom">
         <Col md={12}>
-          <div className="d-flex align-items-center my-3 ">
-            <h2 className="me-2 fs-3 fw-bold">Chest</h2>
-          </div>
+          <PageHeading headingText="Chest" />
         </Col>
         <Col md={12} className="mb-3 px-md-5">
           <ExerciseSection exercisesData={ExerciseData} />

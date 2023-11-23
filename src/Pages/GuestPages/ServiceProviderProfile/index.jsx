@@ -3,9 +3,9 @@ import ServiceProviderProfileWrapper from "../../../Shared/ServiceProviderProfil
 
 const ServiceProviderProfile = () => {
   return (
-    <div className="">
+    <React.Fragment>
       <ServiceProviderProfileWrapper subscriptionLink="/guest/serviceProvider/subscription" />
-    </div>
+    </React.Fragment>
   );
 };
 

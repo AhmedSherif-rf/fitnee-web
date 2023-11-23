@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ServiceProvider from "../../../Shared/ServiceProviderListRow";
+import PageHeading from "../../../Shared/Headings/PageHeading";
 
 const index = () => {
   const ServiceProviders = [
@@ -60,7 +61,7 @@ const index = () => {
             <CardBody className="px-4">
               <Row>
                 <Col md={12}>
-                  <h5 className="fw-bold text-black-custom fs-3 pt-3 pb-5">My Current Trainer</h5>
+                <PageHeading headingText="My Current Trainer" categoryText="" />
                 </Col>
               </Row>
               {ServiceProviders.map((item) => {

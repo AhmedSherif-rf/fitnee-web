@@ -4,6 +4,7 @@ import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ServiceProvider from "../../../Shared/ServiceProviderListRow";
+import PageHeading from "../../../Shared/Headings/PageHeading";
 
 const SubscriptionDetail = () => {
   const ServiceProviders = [
@@ -56,7 +57,10 @@ const SubscriptionDetail = () => {
             <CardBody className="px-4">
               <Row>
                 <Col md={12}>
-                  <h5 className="fw-bold text-black-custom fs-3 pt-3 pb-5">Subscription Details</h5>
+                  <PageHeading
+                    headingText="Subscription Details"
+                    categoryText=""
+                  />
                 </Col>
               </Row>
               {ServiceProviders.map((item) => {

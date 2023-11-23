@@ -53,14 +53,15 @@ const Exercise = (props) => {
   }, []);
 
   return (
-    <Container fluid className="px-md-5">
+    <Container fluid>
       <Row className="text-black-custom">
         <Col md={12}>
           <div className="d-flex align-items-center my-3 ">
-            <h2 className="me-2 fs-2 fw-bold">Chest</h2>
+            <h2 className="me-2 fs-3 fw-bold">Chest</h2>
+            <span className="textYellow small h6">(Upper Chest)</span>
           </div>
         </Col>
-        <Col md={12} className="mb-3 px-md-5">
+        <Col md={12} className="mb-3">
           <ExerciseSection exercisesData={ExerciseData} />
         </Col>
         <Col md={12} className="mb-3">

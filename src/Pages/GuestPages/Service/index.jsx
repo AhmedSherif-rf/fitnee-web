@@ -23,13 +23,11 @@ const Services = (props) => {
     setShowSubscriptionInformatoinModal,
   ] = useState(false);
 
-  const handleChangeBodyClick = (body) => {
-    if (body !== currentBody) {
-      if (currentBody === MALE_BODY) {
-        setCurrentBody(FEMALE_BODY);
-      } else {
-        setCurrentBody(MALE_BODY);
-      }
+  const handleChangeBodyClick = () => {
+    if (currentBody === MALE_BODY) {
+      setCurrentBody(FEMALE_BODY);
+    } else {
+      setCurrentBody(MALE_BODY);
     }
   };
 
@@ -57,7 +55,7 @@ const Services = (props) => {
             className={`${styles.customBodySelect} ${
               currentBody === MALE_BODY ? styles.activeBody : ""
             } mx-md-3 mx-0`}
-            onClick={() => handleChangeBodyClick(MALE_BODY)}
+            onClick={handleChangeBodyClick}
           >
             <IoMaleOutline />
             <div className="checkbox-text">{MALE_BODY}</div>
@@ -68,7 +66,7 @@ const Services = (props) => {
             className={`${styles.customBodySelect} ${
               currentBody === FEMALE_BODY ? styles.activeBody : ""
             } mx-md-3 mx-0`}
-            onClick={() => handleChangeBodyClick(FEMALE_BODY)}
+            onClick={handleChangeBodyClick}
           >
             <IoFemaleOutline />
             <div className="checkbox-text">{FEMALE_BODY}</div>

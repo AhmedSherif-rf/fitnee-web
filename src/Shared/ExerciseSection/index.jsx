@@ -10,18 +10,23 @@ const ExerciseSection = (props) => {
     <>
       {exercisesData()?.map((exercise, index) => {
         return (
-          <Col md={12} className="mb-3 text-black-custom" key={index}>
-            <div className="border-bottom">
-              <h4 className="fw-bold">{exercise?.categoryName}</h4>
-            </div>
+          <Col md={12} className="mb-3 text-black-custom px-md-5" key={index}>
             <div className="mt-3">
               <h5>
-                <span className="fw-bold">Difficulty:</span> {exercise?.level}
+                <span className="fw-bold">Upper Chest</span>
               </h5>
-              <Row className="text-center">
+              <Row>
+                <Col md={12}>
+                  <div className="py-2 px-4 fw-bold fs-2 workoutVideosHeader">
+                    {exercise?.categoryName}
+                  </div>
+                  <div className="fw-bold py-0 px-4 workoutVideosLevel">
+                    {exercise?.level}
+                  </div>
+                </Col>
                 <Col md={6} className="mb-2">
                   <video
-                    playsinline=""
+                    playsinline
                     preload="metadata"
                     muted
                     autoplay="yes"
@@ -32,7 +37,7 @@ const ExerciseSection = (props) => {
                 </Col>
                 <Col md={6} className="mb-2">
                   <video
-                    playsinline=""
+                    playsinline
                     preload="metadata"
                     muted
                     autoplay="yes"

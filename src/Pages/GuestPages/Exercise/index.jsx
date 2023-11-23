@@ -4,7 +4,7 @@ import React, { useCallback, useState } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import ExerciseSection from "../../../Shared/ExerciseSection";
-import PushUpVideo from "../../../Assets/Videos/Exercise/pushUp.mp4";
+import PushUpVideo from "../../../Assets/Videos/Exercise/pushUp.MOV";
 import InformationModal from "../../../Shared/Modal/InformationModal";
 
 const Exercise = (props) => {
@@ -58,15 +58,14 @@ const Exercise = (props) => {
   }, []);
 
   return (
-    <Container fluid>
+    <Container fluid className="px-md-5">
       <Row className="text-black-custom">
         <Col md={12}>
           <div className="d-flex align-items-center my-3 ">
-            <h2 className="me-2 fs-3 fw-bold">Chest</h2>
-            <span className="textYellow small h6">(Upper Chest)</span>
+            <h2 className="me-2 fs-2 fw-bold">Chest</h2>
           </div>
         </Col>
-        <Col md={12} className="mb-3">
+        <Col md={12} className="mb-3 px-md-5">
           <ExerciseSection exercisesData={ExerciseData} />
         </Col>
         <Col md={12} className="mb-3">

@@ -25,6 +25,7 @@ import {
 } from "../../utils/constants";
 import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
 import { useTranslation } from "react-i18next";
+import PageHeading from "../Headings/PageHeading";
 
 const NutritionistData = [
   {
@@ -261,12 +262,9 @@ const ServiceProviderListWrapper = (props) => {
   return (
     <Card className={`BorderRadius my-3 ${styles.serviceProviderListWrapper}`}>
       <CardBody>
-        <Row className="align-items-center mb-5">
+        <Row className="align-items-center">
           <Col className="text-left">
-            <h4 className="fw-bold text-black-custom fs-3 p-3 m-0">
-              {" "}
-              {t("guest.listOfText")} {conditionalHeader()}
-            </h4>
+          <PageHeading headingText= {`${t("guest.listOfText")} ${conditionalHeader()}`} categoryText="" />
           </Col>
           <Col className="text-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>

@@ -15,6 +15,7 @@ import {
   InputGroupText,
   Label,
 } from "reactstrap";
+import PageHeading from "../Headings/PageHeading";
 
 const CreditCardDetailWrapper = () => {
   const [date, setDate] = useState("");
@@ -59,9 +60,9 @@ const CreditCardDetailWrapper = () => {
 
   return (
     <Container fluid className="h-100">
-      <Row className="h-100 py-3 CardDetails">
+      <Row className="h-100 CardDetails">
         <Col md={12}>
-          <h4 className="mb-2 fw-bold">Card Detail</h4>
+        <PageHeading headingText="Card Detail" className="mb-0" categoryText="" />
         </Col>
         <Col md={6}>
           <div className="w-100 card border-0 bg-transparent p-3">

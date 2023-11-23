@@ -4,6 +4,7 @@ import InputField from "../../../Shared/InputField";
 import React, { useCallback, useState } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
+import PageHeading from "../../../Shared/Headings/PageHeading";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { Row, Col, Container, Card, CardBody, Label } from "reactstrap";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
@@ -200,10 +201,8 @@ const MyProgress = () => {
             <CardBody>
               <Row>
                 <Col md={12} className="mb-2">
-                  <div className="d-flex align-items-center justify-content-between mb-2">
-                    <h5 className="mb-0 text-black-custom fs-3 fw-bold">
-                      My Progress
-                    </h5>
+                  <div className="d-flex align-items-center justify-content-between">
+                  <PageHeading headingText="My Progress" categoryText="" />
                     <div className="">
                       <FillBtn
                         text="Add Progress"

@@ -32,11 +32,11 @@
   position: fixed;
   transform: translateX(0);
   transition: transform 0.8s ease-in-out;
-  width: 40%;
+  width: 60%;
   overflow: hidden;
   z-index: 999;
   background-color: $black;
-  padding: 8px;
+  padding: 10px;
   margin-left: -20px;
 
   .nav {

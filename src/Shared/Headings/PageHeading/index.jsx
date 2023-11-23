@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const PageHeading = (props) => {
   const { headingText, categoryText, className, style } = props;
@@ -9,10 +9,12 @@ const PageHeading = (props) => {
         style={{ style, textTransform: "camelCase" }}
       >
         {headingText}
-        <span
-          className="text-muted h6 fw-bold"
-          style={{ style, textTransform: "camelCase" }}
-        >{`${categoryText}`}</span>
+        {categoryText && (
+          <span
+            className="text-muted h6 fw-bold"
+            style={{ style, textTransform: "camelCase" }}
+          >{`${categoryText}`}</span>
+        )}
       </h2>
     </React.Fragment>
   );

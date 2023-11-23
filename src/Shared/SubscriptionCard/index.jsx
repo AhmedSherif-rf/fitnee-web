@@ -21,22 +21,17 @@ const SubscriptionCard = (props) => {
 
   return (
     <Card
-      className={`text-center BorderRadius text-black-custom p-0 h-100 mb-5 mx-1 mt-2 ${styles.cardHeaderDesign}`}
+      className={`text-center BorderRadius text-black-custom p-0 h-100 mb-5 mx-1 ${styles.cardHeaderDesign}`}
     >
-      <div className="text-center  d-flex justify-content-center  ">
-        <div
-          className={`${styles.headerCard} rounded-circle Shadow  d-flex justify-content-center align-items-center`}
-          style={{ width: "200px", height: "200px" }}
-        >
-          <h4 className="">{price}</h4>
-        </div>
+      <div className="text-center d-flex justify-content-center">
+        <div className={`${styles.headerCard} BorderRadius buttonBoxShadow`}>{headerText}</div>
       </div>
 
-      <CardBody className="">
-        <div className="mb-2">{headerText}</div>
-        <img className="fluid w-50" src={ImgSrc} alt="" />
+      <CardBody className="mt-5">
+        <h1 className="mb-3">{price}</h1>
+        <img className="fluid w-50 my-3" src={ImgSrc} alt="" />
       </CardBody>
-      <CardFooter className="bg-transparent border-0">
+      <CardFooter className="bg-transparent border-0 py-3">
         <FillBtn
           className={"px-5"}
           text={"Subscribe"}

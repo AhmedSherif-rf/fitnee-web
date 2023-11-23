@@ -1,15 +1,16 @@
 @import "./variables.scss";
 
 @mixin bgProperties {
-  background: center center/cover no-repeat;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.bgBlur,
+.bgBlur {
+  background-color: $blur-color !important;
+}
 .customBgDark {
   background-color: rgba(0, 0, 0, 0.2) !important;
-}
-
-.customBgDark {
   backdrop-filter: blur(20px);
   border-color: rgba(0, 0, 0, 0.2);
 }
@@ -19,8 +20,9 @@
 }
 
 .middle-subscription-card {
-  transition: transform 0.3s ease, z-index 1;
+  transition: transform 0.3s ease;
   transform: scale(1.1);
+  z-index: 1;
 }
 
 .custom-badge {
@@ -30,21 +32,32 @@
 }
 
 .bgProperties {
-  @include bgProperties;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.textYellow,
-.textOrange,
-.textGrey {
+.textYellow {
   color: $yellow !important;
+}
+.textOrange {
+  color: $orange !important;
+}
+.textGrey {
+  color: $text-muted !important;
 }
 
 .textParrotGreen {
   color: $parrot-green;
 }
 
-.BorderRadius,
+.BorderRadius {
+  box-shadow: $card-box-shadow;
+  border: none !important;
+}
 .BorderYellow,
+.BorderRadius,
+.BorderRadiusInput,
 .subscriptionDiv {
   border-radius: 14px !important;
 }
@@ -53,7 +66,6 @@
   border-top-right-radius: 14px;
   border-top-left-radius: 14px;
 }
-
 .yellowBorder,
 .BorderYellow {
   border: 1px solid $yellow !important;
@@ -75,29 +87,38 @@ Input {
 Input::-webkit-input-placeholder {
   color: $placeholder-color;
 }
-
 .dropdown-item {
-  &:active,
-  &:hover,
-  &:focus,
+  &:active {
+    background-color: $yellow;
+    color: $black;
+  }
+
+  &:hover {
+    background-color: $yellow;
+    color: $black;
+  }
+
+  &:focus {
+    background-color: $yellow;
+    outline: none;
+  }
+
   &::selection {
     background-color: $yellow;
     color: $black;
-    outline: none;
   }
 }
 
-react-tel-input,
+.react-tel-input,
 .genderBtn,
 select,
 .form-control,
 .form-control-lg {
   &:focus,
   &:focus-visible {
-    border: 1px solid $yellow !important;
+    border: 1px solid $parrot-green !important;
     box-shadow: none !important;
     outline: none !important;
-    background-color: $white;
   }
 }
 
@@ -112,6 +133,7 @@ select,
     }
   }
   .flag-dropdown {
+    border: $yellow 1px solid !important;
     border-top-left-radius: 14px !important;
     border-bottom-left-radius: 14px !important;
     .selected-flag {
@@ -137,19 +159,18 @@ select,
 }
 
 .form-check-input:checked {
-  &:focus {
+  &focus {
     box-shadow: none !important;
-    background-color:$white !important;
+    background-color: $yellow-blur !important;
     color: $parrot-green !important;
-    outline: none;
   }
-  background-color: $white !important;
+  background-color: $yellow-blur !important;
   border: 1px solid $parrot-green !important;
   color: $parrot-green !important;
 }
 
 .buttonBoxShadow {
-  box-shadow: 0 2px 14px 0 $button-box-shadow;
+  box-shadow: 0px 2px 14px 0px $button-box-shadow;
 }
 
 .errorField {
@@ -158,15 +179,30 @@ select,
   font-size: $font-14;
 }
 
-.customPhoneInput,
-.customPaddingY,
-.customSpacing,
-.customDropDown,
-.customDropDownOption {
+.customPhoneInput {
   font-size: $font-14 !important;
 }
 
-.customDropDownOption:checked,
+.customPaddingY {
+  padding: 12px 0px !important;
+}
+
+.customSpacing {
+  letter-spacing: 1px;
+  line-height: 24px;
+}
+
+.customDropDown {
+  font-size: $font-14 !important;
+}
+
+.customDropDownOption {
+  font-size: $font-14 !important;
+  &:checked {
+    background-color: $yellow !important;
+  }
+}
+
 .customDropDown .customDropDownOption:active {
   background-color: $yellow !important;
 }
@@ -183,30 +219,30 @@ select,
   background-color: rgba(24, 24, 24, 0.99);
 }
 
-.genderBtn,
-.rmsc {
+.genderBtn {
   .selected {
     color: $parrot-green !important;
-    border: 2px solid $parrot-green !important;
+    border: 2px solid $parrot-green !important ;
   }
 }
 
-.rmsc .dropdown-container {
-  padding: 8px 10px !important;
-  border-radius: 14px !important;
-  font-size: 14px !important;
-  &:focus-within {
-    border: 1px solid $parrot-green !important;
-    box-shadow: none !important;
+.rmsc {
+  .dropdown-container {
+    padding: 8px 10px !important;
+    border-radius: 14px !important;
+    border: 1px solid $yellow !important;
+    font-size: 14px !important;
+    &:focus-within {
+      border: 1px solid $parrot-green !important;
+      box-shadow: none !important;
+    }
   }
 }
-
 .arabicBorderHover,
 .borderHover {
   position: relative;
   overflow: hidden;
 }
-
 .arabicBorderHover::before,
 .borderHover::before {
   content: "";
@@ -218,21 +254,32 @@ select,
   background-color: $yellow;
   transition: width 0.3s ease;
 }
-
 .arabicBorderHover::before {
-  margin-bottom: 0;
+  margin-bottom: 0px;
 }
-
 .arabicBorderHover:hover::before,
 .borderHover:hover::before {
   width: 100%;
 }
 
-.currentlyWorkingBtn,
-.selectField,
-.text-black-custom,
-.cursorPointer {
+.currentlyWorkingBtn {
+  .selected {
+    color: $parrot-green !important;
+    border: 2px solid $parrot-green !important ;
+  }
+}
+
+.selectField {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.text-black-custom {
   color: $black !important;
+}
+
+.cursorPointer {
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {

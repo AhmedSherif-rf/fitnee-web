@@ -24,22 +24,23 @@ const subscriptionData = [
 
 const Subscription = () => {
   return (
-    <Container fluid className="">
+    <Container fluid className="pb-5">
       <Row className="justify-content-center align-items-center">
         <Col md={12}>
           <PageHeading headingText="subscriptions" categoryText="" />
         </Col>
         <Col md={8}>
-          <Row className="mt-md-5 mt-1">
+          <Row className="mt-md-2 mt-1">
             {subscriptionData?.map((item, index) => {
               return (
                 <Col
                   md={4}
-                  className={`mb-4 ${
+                  className={`mb-md-0 mb-5 ${
                     index === 1 && window.innerWidth >= 768
                       ? "middle-subscription-card"
                       : ""
                   }`}
+                
                 >
                   <SubscriptionCard
                     headerText={item.text}

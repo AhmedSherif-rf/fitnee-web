@@ -5,8 +5,8 @@ const PageHeading = (props) => {
   return (
     <React.Fragment>
       <h2
-        className={`fw-bold text-dark p-3 ${className}`}
-        style={{ style, textTransform: "uppercase" }}
+        className={`fw-bold text-black-custom p-3 ${className}`}
+        style={{ style, textTransform: "camelCase" }}
       >
         {headingText}
         <span

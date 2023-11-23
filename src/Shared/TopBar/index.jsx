@@ -190,7 +190,7 @@ const TopBar = (props) => {
             {showNavItems && (
               <>
                 <NavbarToggler
-                  className={"textGrey yellowBorder pb-2"}
+                  className={"textYellow border-0 pb-2"}
                   onClick={slide}
                 >
                   <FaBars />
@@ -223,7 +223,7 @@ const TopBar = (props) => {
                               className="w-100 d-flex align-items-center"
                               to="/guest/serviceProviderList/trainer"
                             >
-                              <p className="text-dark mb-0">Trainers</p>
+                              <p className="text-black-custom mb-0">Trainers</p>
                             </Link>
                           </DropdownItem>
 
@@ -232,7 +232,7 @@ const TopBar = (props) => {
                               className="w-100 d-flex align-items-center"
                               to="/guest/serviceProviderList/nutritionist"
                             >
-                              <p className="text-dark mb-0">Nutritionist</p>
+                              <p className="text-black-custom mb-0">Nutritionist</p>
                             </Link>
                           </DropdownItem>
 
@@ -241,7 +241,7 @@ const TopBar = (props) => {
                               className=" d-flex align-items-center"
                               to="/guest/services"
                             >
-                              <p className="text-dark mb-0">Exercises</p>
+                              <p className="text-black-custom mb-0">Exercises</p>
                             </Link>
                           </DropdownItem>
                         </DropdownMenu>
@@ -347,7 +347,7 @@ const TopBar = (props) => {
                               <span className="textParrotGreen me-2">
                                 <RiDashboardFill className="mb-1" />
                               </span>
-                              <p className="text-dark mb-0">Dashboard</p>
+                              <p className="text-black-custom mb-0">Dashboard</p>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -363,7 +363,7 @@ const TopBar = (props) => {
                               <span className="textParrotGreen me-2">
                                 <FaUserEdit className="mb-1" />
                               </span>
-                              <p className="text-dark mb-0">Edit Profile</p>
+                              <p className="text-black-custom mb-0">Edit Profile</p>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -375,7 +375,7 @@ const TopBar = (props) => {
                                   <span className="textParrotGreen me-2">
                                     <GiWallet className="mb-1" />
                                   </span>
-                                  <p className="text-dark mb-0">Wallet</p>
+                                  <p className="text-black-custom mb-0">Wallet</p>
                                 </div>
                               </Link>
                             </DropdownItem>
@@ -394,7 +394,7 @@ const TopBar = (props) => {
                               <span className="textParrotGreen me-2">
                                 <FaKey className="mb-1" />
                               </span>
-                              <p className="text-dark mb-0">Change Password</p>
+                              <p className="text-black-custom mb-0">Change Password</p>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -406,7 +406,7 @@ const TopBar = (props) => {
                             <span className="textParrotGreen me-2 d-flex">
                               <FaTrashCan className="mb-1" />
                             </span>
-                            <p className="text-dark mb-0">Delete Account</p>
+                            <p className="text-black-custom mb-0">Delete Account</p>
                           </div>
                         </DropdownItem>
                         <DropdownItem>
@@ -417,7 +417,7 @@ const TopBar = (props) => {
                             <span className="textParrotGreen me-2 d-flex">
                               <FaCircleArrowUp className="mb-1" />
                             </span>
-                            <p className="text-dark mb-0">Logout</p>
+                            <p className="text-black-custom mb-0">Logout</p>
                           </div>
                         </DropdownItem>
                       </DropdownMenu>
@@ -433,7 +433,7 @@ const TopBar = (props) => {
             }`}
           >
             <Card className="bg-transparent border-0 h-100">
-              <CardBody className="p-0">
+              <CardBody className="p-0 p-2 mt-2">
                 <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
                   <NavItem className={`${styles.NavItem}`}>
                     <NavLink className={`${styles.NavLink}`} href="/">

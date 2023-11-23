@@ -5,7 +5,7 @@ const SubHeading = (props) => {
   return (
     <React.Fragment>
       <h4
-        className={`fw-bold text-dark p-3 ${className}`}
+        className={`fw-bold text-black-custom p-3 ${className}`}
         style={{ style, textTransform: "uppercase" }}
       >
         {headingText}

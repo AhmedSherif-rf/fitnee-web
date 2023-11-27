@@ -14,6 +14,10 @@ const ResetPasswordForm = () => {
     navigate("/");
   }, [navigate]);
 
+  const handleSubmit = useCallback(() => {
+    navigate("/trainee/dashboard");
+  }, [navigate]);
+
   return (
     <Container>
       <Row className="justify-content-center align-items-center vh-100">
@@ -33,13 +37,17 @@ const ResetPasswordForm = () => {
               className={"mb-2 py-3 px-5"}
             />
             <InputField
-              placeholder={"Confirm Password"} 
+              placeholder={"Confirm Password"}
               type="password"
               icon={<img src={Images.PASSWORD_ICON_IMG} alt="password-icon" />}
               className={"mb-2 py-3 px-5"}
             />
 
-            <FillBtn className="w-100 py-3 mb-3 mt-5" text={"Confirm"} />
+            <FillBtn
+              className="w-100 py-3 mb-3 mt-5"
+              text={"Confirm"}
+              handleOnClick={handleSubmit}
+            />
             <OutlineBtn
               className="w-100 py-3"
               text={"Cancel"}

@@ -79,7 +79,8 @@ const TopBar = (props) => {
       (location.pathname === "/termAndCondition" ||
         location.pathname === "/signIn" ||
         location.pathname === "/contactUs" ||
-        location.pathname === "/forgotPassword")
+        location.pathname === "/forgotPassword" ||
+        location.pathname === "/changePassword")
     ) {
       setShowTopBar(false);
     } else {
@@ -232,7 +233,9 @@ const TopBar = (props) => {
                               className="w-100 d-flex align-items-center"
                               to="/guest/serviceProviderList/nutritionist"
                             >
-                              <p className="text-black-custom mb-0">Nutritionist</p>
+                              <p className="text-black-custom mb-0">
+                                Nutritionist
+                              </p>
                             </Link>
                           </DropdownItem>
 
@@ -241,7 +244,9 @@ const TopBar = (props) => {
                               className=" d-flex align-items-center"
                               to="/guest/services"
                             >
-                              <p className="text-black-custom mb-0">Exercises</p>
+                              <p className="text-black-custom mb-0">
+                                Exercises
+                              </p>
                             </Link>
                           </DropdownItem>
                         </DropdownMenu>
@@ -347,7 +352,9 @@ const TopBar = (props) => {
                               <span className="textParrotGreen me-2">
                                 <RiDashboardFill className="mb-1" />
                               </span>
-                              <p className="text-black-custom mb-0">Dashboard</p>
+                              <p className="text-black-custom mb-0">
+                                Dashboard
+                              </p>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -363,7 +370,9 @@ const TopBar = (props) => {
                               <span className="textParrotGreen me-2">
                                 <FaUserEdit className="mb-1" />
                               </span>
-                              <p className="text-black-custom mb-0">Edit Profile</p>
+                              <p className="text-black-custom mb-0">
+                                Edit Profile
+                              </p>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -375,7 +384,9 @@ const TopBar = (props) => {
                                   <span className="textParrotGreen me-2">
                                     <GiWallet className="mb-1" />
                                   </span>
-                                  <p className="text-black-custom mb-0">Wallet</p>
+                                  <p className="text-black-custom mb-0">
+                                    Wallet
+                                  </p>
                                 </div>
                               </Link>
                             </DropdownItem>
@@ -394,7 +405,9 @@ const TopBar = (props) => {
                               <span className="textParrotGreen me-2">
                                 <FaKey className="mb-1" />
                               </span>
-                              <p className="text-black-custom mb-0">Change Password</p>
+                              <p className="text-black-custom mb-0">
+                                Change Password
+                              </p>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -406,7 +419,9 @@ const TopBar = (props) => {
                             <span className="textParrotGreen me-2 d-flex">
                               <FaTrashCan className="mb-1" />
                             </span>
-                            <p className="text-black-custom mb-0">Delete Account</p>
+                            <p className="text-black-custom mb-0">
+                              Delete Account
+                            </p>
                           </div>
                         </DropdownItem>
                         <DropdownItem>

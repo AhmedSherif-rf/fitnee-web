@@ -21,7 +21,7 @@ const OTPVerification = () => {
   }, []);
 
   const handleOkayClick = useCallback(() => {
-    navigate("/trainee/dashboard");
+    navigate("/changePassword");
   }, [navigate]);
 
   return (

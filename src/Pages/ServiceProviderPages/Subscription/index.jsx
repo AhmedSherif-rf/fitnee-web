@@ -27,10 +27,10 @@ const Subscription = () => {
     <Container fluid className="pb-5">
       <Row className="justify-content-center align-items-center">
         <Col md={12}>
-          <PageHeading headingText="subscriptions" categoryText="" />
+          <PageHeading headingText="Subscriptions" categoryText="" />
         </Col>
         <Col md={8}>
-          <Row className="mt-md-2 mt-1">
+          <Row className="m-md-2 mt-1">
             {subscriptionData?.map((item, index) => {
               return (
                 <Col

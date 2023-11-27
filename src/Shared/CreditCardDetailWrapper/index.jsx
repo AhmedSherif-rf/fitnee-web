@@ -150,7 +150,7 @@ const CreditCardDetailWrapper = () => {
                     />
                   </div>
                   <div className="w-100">
-                    <FillBtn text="Apply" className="w-100 py-3 customDropDownRadius" />
+                    <FillBtn text="Apply" className="w-100 py-3 customDropdownRadius" />
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@ const CreditCardDetailWrapper = () => {
                 </div>
               </div>
             </div>
-            <div className="w-100 bg-transparent border-0 customDropDownRadius">
+            <div className="w-100 bg-transparent border-0 customDropdownRadius">
               <FillBtn
                 text="Pay"
                 className="w-100 py-3"

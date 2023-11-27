@@ -254,7 +254,7 @@ const SignUpForm = () => {
                     </div>
                     <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropDownRadius  bg-white ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropdownRadius  bg-white ${
                           values.gender === "male" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "male")}
@@ -263,7 +263,7 @@ const SignUpForm = () => {
                         <FaMars />
                       </div>
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg py-3 customDropDownRadius w-100  bg-white ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg py-3 customDropdownRadius w-100  bg-white ${
                           values.gender === "female" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "female")}
@@ -714,7 +714,7 @@ const SignUpForm = () => {
                             <Field
                               name={`daySchedules.${index}.fromTime`}
                               type="time"
-                              className="customDropDownRadius form-control select-field py-3 px-4"
+                              className="customDropdownRadius form-control select-field py-3 px-4"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.fromTime`}
@@ -726,7 +726,7 @@ const SignUpForm = () => {
                             <Field
                               name={`daySchedules.${index}.toTime`}
                               type="time"
-                              className="customDropDownRadius form-control select-field py-3 px-4"
+                              className="customDropdownRadius form-control select-field py-3 px-4"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.toTime`}
@@ -768,7 +768,7 @@ const SignUpForm = () => {
               <Col md={6} className="mb-2">
                 <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2 ">
                   <div
-                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg customDropDownRadius w-100  bg-white ${
+                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg customDropdownRadius w-100  bg-white ${
                       values.currentlyWorking === "yes" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "yes")}
@@ -776,7 +776,7 @@ const SignUpForm = () => {
                     <h6 className="mb-0 font14">Yes</h6>
                   </div>
                   <div
-                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg customDropDownRadius w-100  bg-white ${
+                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg customDropdownRadius w-100  bg-white ${
                       values.currentlyWorking === "no" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "no")}

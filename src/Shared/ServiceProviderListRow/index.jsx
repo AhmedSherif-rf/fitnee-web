@@ -49,11 +49,10 @@ const Index = (props) => {
                 width: "60px",
                 height: "60px",
                 backgroundImage: `url(${useImages})`,
-                border: "1px solid",
+              
               }}
             ></div>
-
-            <div className="w-100">
+            <div className="w-75">
               <h6 className="mb-0">{userName}</h6>
               <h6 className="mb-0 w-100">{fee}</h6>
               <span className="d-md-none d-block textDark">

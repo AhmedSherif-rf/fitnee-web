@@ -61,6 +61,13 @@ const routes = [
     theme: "light",
     exact: true,
   },
+  {
+    path: "/changePassword",
+    component: lazy(() => import("../Pages/Auth/ChangePassword")),
+    isPublic: true,
+    theme: "light",
+    exact: true,
+  },
 ]
   .concat(guestRoutes)
   .concat(adminRoutes)

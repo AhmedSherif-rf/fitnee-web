@@ -143,7 +143,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="text"
                   placeholder={t("signup.firstNameText")}
                   name="firstName"
@@ -160,7 +160,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="text"
                   placeholder={t("signup.lastNameText")}
                   name="lastName"
@@ -177,7 +177,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="text"
                   name="email"
                   placeholder={t("signup.emailText")}
@@ -194,7 +194,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="password"
                   name="password"
                   placeholder={t("signup.passwordText")}
@@ -211,7 +211,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="password"
                   placeholder={t("signup.confirmPasswordText")}
                   name="confirmPassword"
@@ -234,7 +234,7 @@ const SignUpForm = () => {
                     name: "phoneNumber",
                     required: true,
                     className:
-                      "form-control-lg w-100 py-3 px-4 border customPhoneInput",
+                      "form-control-lg w-100 py-3 px-4 customPhoneInput",
                   }}
                   defaultCountry={"ae"}
                   value={values.phoneNumber}
@@ -254,7 +254,7 @@ const SignUpForm = () => {
                     </div>
                     <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropDownRadius  bg-white ${
                           values.gender === "male" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "male")}
@@ -263,7 +263,7 @@ const SignUpForm = () => {
                         <FaMars />
                       </div>
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg py-3 customDropDownRadius w-100  bg-white ${
                           values.gender === "female" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "female")}
@@ -324,7 +324,7 @@ const SignUpForm = () => {
                       *
                     </div>{" "}
                     <InputField
-                      className="form-control-lg BorderRadiusInput py-3 px-4"
+                      className="form-control-lg  py-3 px-4"
                       type="textarea"
                       style={{ minHeight: "115px" }}
                       placeholder={t("signup.addBioText")}
@@ -344,7 +344,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="number"
                   placeholder="Year of Experience"
                   name="experience"
@@ -361,7 +361,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <MyDropdown
-                  className="BorderRadiusInput py-3 px-4 mb-0"
+                  className=" py-3 px-4 mb-0"
                   Options={roleOptions}
                   name={"role"}
                   onChangeHandle={handleChange}
@@ -448,9 +448,9 @@ const SignUpForm = () => {
               <Col md={12} className="mb-3">
                 <h6 className="fw-bold mt-2">Body Information</h6>
               </Col>
-              <Col md={6} className="mb-2">
+              <Col md={6} className="mb-3">
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="number"
                   placeholder="Weight (lbs / kg)"
                   name="weight"
@@ -462,9 +462,9 @@ const SignUpForm = () => {
                   {errors.weight && touched.weight && errors.weight}
                 </p>
               </Col>
-              <Col md={6} className="mb-2">
+              <Col md={6} className="mb-3">
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="number"
                   placeholder="Hight (cm / feet)"
                   name="height"
@@ -476,9 +476,9 @@ const SignUpForm = () => {
                   {errors.height && touched.height && errors.height}
                 </p>
               </Col>
-              <Col md={6} className="mb-2">
+              <Col md={6} className="mb-3">
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="number"
                   placeholder="Skeletal Muscle Mass"
                   name="smm"
@@ -490,9 +490,9 @@ const SignUpForm = () => {
                   {errors.smm && touched.smm && errors.smm}
                 </p>
               </Col>
-              <Col md={6} className="mb-2">
+              <Col md={6} className="mb-3">
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="number"
                   placeholder="Body Fat Mass"
                   name="bfm"
@@ -504,9 +504,9 @@ const SignUpForm = () => {
                   {errors.bfm && touched.bfm && errors.bfm}
                 </p>
               </Col>
-              <Col md={6} className="mb-2">
+              <Col md={6} className="mb-3">
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="number"
                   placeholder="Total Body Water"
                   name="tbw"
@@ -518,9 +518,9 @@ const SignUpForm = () => {
                   {errors.tbw && touched.tbw && errors.tbw}
                 </p>
               </Col>
-              <Col md={6} className="mb-2">
+              <Col md={6} className="mb-3">
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="number"
                   placeholder="Protein"
                   name="protein"
@@ -545,6 +545,7 @@ const SignUpForm = () => {
                     component={MultiSelector}
                     options={specialityOptions}
                     placeholder="Select options"
+                    className="border-0"
                   />
                 </div>
               </Col>
@@ -554,7 +555,7 @@ const SignUpForm = () => {
               <Col md={6}>
                 <h6 className="mb-2 fw-bold">My goal</h6>
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="text"
                   placeholder="I want to lose my 5kg weight in 4 weeks"
                   name="myGoal"
@@ -571,7 +572,7 @@ const SignUpForm = () => {
                 <Row className="training">
                   <Col md={12} className="mb-2">
                     <MyDropdown
-                      className="BorderRadiusInput py-3 px-4"
+                      className=" shadow-0 py-3 px-4"
                       Options={trainingGoalOptions}
                       name={"trainingGoal"}
                       onChangeHandle={handleChange}
@@ -591,7 +592,7 @@ const SignUpForm = () => {
                 <Row className="activity">
                   <Col md={12} className="mb-2">
                     <MyDropdown
-                      className="BorderRadiusInput py-3 px-4"
+                      className=" shadow-0 py-3 px-4"
                       Options={activityLevelOptions}
                       name={"activityLevel"}
                       onChangeHandle={handleChange}
@@ -611,7 +612,7 @@ const SignUpForm = () => {
                 <Row className="p-0">
                   <Col md={12} className="mb-2">
                     <InputField
-                      className="form-control-lg BorderRadiusInput py-3 px-4"
+                      className="form-control-lg  py-3 px-4"
                       type="textarea"
                       style={{ minHeight: "20px" }}
                       placeholder="Describe your injury..."
@@ -632,7 +633,7 @@ const SignUpForm = () => {
               <Col md={6}>
                 <h6 className="mb-2 fw-bold">Your SAUDIREPS number</h6>
                 <InputField
-                  className="form-control-lg BorderRadiusInput py-3 px-4"
+                  className="form-control-lg  py-3 px-4"
                   type="number"
                   placeholder="Your SAUDIREPS number"
                   name="saudiReps"
@@ -653,7 +654,7 @@ const SignUpForm = () => {
                     name: "stcPhoneNumber",
                     required: true,
                     className:
-                      "form-control-lg w-100 border py-3 px-4 customPhoneInput",
+                      "form-control-lg w-100  py-3 px-4 customPhoneInput",
                   }}
                   defaultCountry={"ae"}
                   value={values.stcPhoneNumber}
@@ -679,11 +680,11 @@ const SignUpForm = () => {
                     <>
                       {values.daySchedules.map((daySchedule, index) => (
                         <Row key={index} className="mb-1">
-                          <Col lg={5} md={5}>
+                          <Col lg={5} md={5} className="mb-2">
                             <Field
                               as="select"
                               name={`daySchedules.${index}.day`}
-                              className="customDropDown form-control-lg w-100 selectField BorderRadius border px-4"
+                              className="customDropDown form-control-lg w-100 selectField BorderRadius border-0 px-4"
                               style={{
                                 paddingTop: "12px",
                                 paddingBottom: "12px",
@@ -709,11 +710,11 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={3}>
+                          <Col md={3}  className="mb-2">
                             <Field
                               name={`daySchedules.${index}.fromTime`}
                               type="time"
-                              className="customDropdown form-control select-field BorderRadius py-3 px-4"
+                              className="customDropDownRadius form-control select-field py-3 px-4"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.fromTime`}
@@ -721,11 +722,11 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={3}>
+                          <Col md={3}  className="mb-2">
                             <Field
                               name={`daySchedules.${index}.toTime`}
                               type="time"
-                              className="customDropdown form-control select-field BorderRadius py-3 px-4"
+                              className="customDropDownRadius form-control select-field py-3 px-4"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.toTime`}
@@ -733,7 +734,7 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={1}>
+                          <Col md={1}  className="mb-2">
                             <div className="d-flex align-items-center justify-content-end h-100">
                               <FaDeleteLeft
                                 className="cursorPointer"
@@ -765,9 +766,9 @@ const SignUpForm = () => {
             <Row className="mb-3">
               <h6 className="mb-2 fw-bold">Are you currently working? *</h6>
               <Col md={6} className="mb-2">
-                <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
+                <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2 ">
                   <div
-                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
+                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg customDropDownRadius w-100  bg-white ${
                       values.currentlyWorking === "yes" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "yes")}
@@ -775,7 +776,7 @@ const SignUpForm = () => {
                     <h6 className="mb-0 font14">Yes</h6>
                   </div>
                   <div
-                    className={`d-flex align-items-center justify-content-between form-control-lg border w-100 BorderRadiusInput bg-white ${
+                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg customDropDownRadius w-100  bg-white ${
                       values.currentlyWorking === "no" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "no")}

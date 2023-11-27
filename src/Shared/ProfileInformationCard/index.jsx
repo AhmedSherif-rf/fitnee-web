@@ -1,8 +1,13 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import StarRating from "../Rating";
+import { Tooltip } from "reactstrap";
 import { Card, CardBody, CardFooter } from "reactstrap";
 
 const ProfileInformationCard = (props) => {
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+
+  const toggleTooltip = () => setTooltipOpen(!tooltipOpen);
+
   const {
     index,
     infoTitle,
@@ -32,11 +37,26 @@ const ProfileInformationCard = (props) => {
       </CardBody>
       <CardFooter className="border-0 text-black-custom">
         <div className="d-flex h-100 text-white align-items-end justify-content-between">
-          <div className="d-flex align-items-center">
+          <div
+            className="d-flex align-items-center"
+            id="tooltipTarget"
+            href="#"
+            onClick={toggleTooltip}
+          >
             <img className="img-fluid" src={infoLogo} alt="info logo" />
             <p className="ms-2 fw-bold mb-0 no-Wrap text-secondary">
               {infoDes}
             </p>
+
+            <Tooltip
+              placement="top"
+              isOpen={tooltipOpen}
+              target="tooltipTarget"
+              toggle={toggleTooltip}
+
+            >
+              Experience 
+            </Tooltip>
           </div>
           <div className="d-flex align-items-center justify-content-center">
             <StarRating />

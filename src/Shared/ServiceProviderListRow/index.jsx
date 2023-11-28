@@ -49,10 +49,11 @@ const Index = (props) => {
                 width: "60px",
                 height: "60px",
                 backgroundImage: `url(${useImages})`,
-              
+                border: "1px solid",
               }}
             ></div>
-            <div className="w-75">
+
+            <div>
               <h6 className="mb-0">{userName}</h6>
               <h6 className="mb-0 w-100">{fee}</h6>
               <span className="d-md-none d-block textDark">
@@ -83,7 +84,7 @@ const Index = (props) => {
           </Col>
         ) : (
           ""
-        )}  
+        )}
 
         <Col md={4}>
           <Row className="align-items-center h-100 ">
@@ -96,10 +97,12 @@ const Index = (props) => {
                   {CancelButton}
                 </div>
               ) : (
-                <div className="BorderYellow p-2 rounded-3 d-flex align-items-center justify-content-center">
-                  <p className="mb-0 small">{startDate} </p>
-                  <span className="mb-0 mx-1">To</span>
-                  <p className="mb-0 small">{endDate}</p>
+                <div className="BorderYellow p-2 rounded-3 d-md-flex d-block align-items-center justify-content-center">
+                  <div className="d-flex align-items-center justify-content-center">
+                    <p className="mb-0 small">{startDate} </p>
+                    <span className="mb-0 mx-1">To</span>
+                    <p className="mb-0 small">{endDate}</p>
+                  </div>
                   <span className="d-md-none d-block textDark">
                     ({duration})
                   </span>

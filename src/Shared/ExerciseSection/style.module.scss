@@ -1,0 +1,23 @@
+@import "../../Assets/Scss/variables.scss";
+
+.workoutVideosHeader {
+  background-color: $yellow;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+.workoutVideosLevel {
+  position: absolute;
+  background-color: $yellow;
+  margin-top: 10px;
+  margin-left: -10px;
+  border-radius: 15px;
+}
+
+.workoutVideos {
+  height: auto;
+  max-width: 100%;
+  width: 100%;
+  border-bottom-left-radius: 14px !important;
+  border-bottom-right-radius: 14px !important;
+}

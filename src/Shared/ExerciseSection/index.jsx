@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { CardBody } from "reactstrap";
+import styles from "./style.module.scss";
 import { Card, Col, Row } from "reactstrap";
 import { FaAngleDoubleRight, FaWheelchair } from "react-icons/fa";
 import SubHeading from "../Headings/SubHeading";
@@ -11,37 +12,46 @@ const ExerciseSection = (props) => {
     <>
       {exercisesData()?.map((exercise, index) => {
         return (
-          <Col md={12} className="mb-3 text-black-custom" key={index}>
-            <SubHeading headingText={exercise?.categoryName} categoryText="" />
-
+          <Col md={12} className="mb-3 text-black-custom px-md-5" key={index}>
             <div className="mt-3">
-              <div className="d-flex align-items-center">
-                <h5>
-                  <FaWheelchair className="textParrotGreen mb-2 me-1" />
-                  <span className="fw-bold">Difficulty:</span> {exercise?.level}
-                </h5>
-              </div>
-              <Row className="text-center">
+              <h5>
+                <span className="fw-bold">Upper Chest</span>
+              </h5>
+              <Row>
+                <Col md={12}>
+                  <div
+                    className={`py-2 px-4 fw-bold fs-2 ${styles.workoutVideosHeader}`}
+                  >
+                    {exercise?.categoryName}
+                  </div>
+                  <div className={`fw-bold py-0 px-4 ${styles.workoutVideosLevel}`}>
+                    {exercise?.level}
+                  </div>
+                </Col>
                 <Col md={6} className="mb-2">
                   <video
-                    playsinline=""
+                    playsinline
                     preload="metadata"
                     muted
                     autoplay="yes"
                     loop="yes"
-                    class="workoutVideos"
-                    src={exercise.media1}
+                    class={styles.workoutVideos}
+                    src={
+                      "https://res.cloudinary.com/ddbegwuqp/video/upload/v1700739776/sample2_sirvgw.mp4"
+                    }
                   ></video>
                 </Col>
                 <Col md={6} className="mb-2">
                   <video
-                    playsinline=""
+                    playsinline
                     preload="metadata"
                     muted
                     autoplay="yes"
                     loop="yes"
-                    class="workoutVideos"
-                    src={exercise.media2}
+                    class={styles.workoutVideos}
+                    src={
+                      "https://res.cloudinary.com/ddbegwuqp/video/upload/v1700739776/sample2_sirvgw.mp4"
+                    }
                   ></video>
                 </Col>
                 <Col md={12} className="mb-2">

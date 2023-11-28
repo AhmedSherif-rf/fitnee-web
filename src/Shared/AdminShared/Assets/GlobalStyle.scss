@@ -22,8 +22,8 @@ a:focus {
       SIDEBAR STYLE
   ----------------------------------------------------- */
 .sidebar {
-  min-width: 250px;
-  max-width: 250px;
+  min-width: 260px;
+  max-width: 260px;
   background: #7386d5;
   color: #fff;
   margin-left: -250px;
@@ -85,6 +85,8 @@ li a.dropdown-toggle::after {
   .nav {
     .nav-item {
       .nav-link {
+        display: flex;
+        align-items: center;
         color: white;
         &:hover {
           color: #6d7fcc !important ;

@@ -19,22 +19,29 @@ const SideBar = ({ isOpen, toggle }) => (
       <span color="info" onClick={toggle} style={{ color: "#fff" }}>
         &times;
       </span>
-      <h3>Bootstrap Sidebar</h3>
+      <h3>FitNee Admin</h3>
     </div>
     <div className="side-menu">
       <Nav vertical className="list-unstyled pb-3">
         <p>Dummy Heading</p>
-
-        <SubMenu title="Home" icon={<FaHome className="me-2" />} items={submenus[0]} />
+        <SubMenu
+          title="Home"
+          icon={<FaHome className="me-2" />}
+          items={submenus[0]}
+        />
         <NavItem>
           <NavLink tag={Link} to={"/about"}>
-            <FaBriefcase className="me-2"/>
+            <FaBriefcase className="me-2" />
             About
           </NavLink>
         </NavItem>
-        <SubMenu title="Pages" icon={<FaCopy className="me-2" />} items={submenus[1]} />
+        <SubMenu
+          title="Pages"
+          icon={<FaCopy className="me-2" />}
+          items={submenus[1]}
+        />
         <NavItem>
-          <NavLink tag={Link} to={"/pages"} className="d-flex align-items-center">
+          <NavLink tag={Link} to={"/pages"}>
             <FaImage className="me-2" />
             Portfolio
           </NavLink>

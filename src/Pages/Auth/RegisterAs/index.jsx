@@ -1,9 +1,9 @@
 import styles from "./style.module.scss";
 import { useDispatch } from "react-redux";
 import React, { useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import { setGuest } from "../../../Redux/features/User/userSlice";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
@@ -55,7 +55,9 @@ const RegisterAs = (props) => {
               handleOnClick={handleAsNutritionistClick}
             />
             <div>
-             <Link className="text-white" to="/signIn">Already have account ?</Link>
+              <Link className="text-white" to="/signIn">
+                Already have account ?
+              </Link>
             </div>
           </div>
         </Col>

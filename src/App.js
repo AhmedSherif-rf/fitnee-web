@@ -24,7 +24,7 @@ function withLayout(
   isAuth,
   theme = "black"
 ) {
-  const admin = true;
+  const admin = false;
 
   return class extends React.Component {
     render() {

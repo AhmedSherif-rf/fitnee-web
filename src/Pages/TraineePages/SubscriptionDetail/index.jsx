@@ -63,6 +63,24 @@ const SubscriptionDetail = () => {
                   />
                 </Col>
               </Row>
+              <Row className="align-items-center justify-content-center d-md-flex d-none text-black-custom border-bottom py-2 mb-2">
+                <Col md={2} className="mb-md-0 mb-2"></Col>
+                <Col md={2} className="mb-md-0 mb-2 text-end">
+                  <h6 className="mb-0 w-100 fs-5 fw-bold ">Duration</h6>
+                </Col>
+
+                <Col md={2} className="d-md-block d-none pe-lg-5 pe-md-4">
+                  <div className="mb-md-0 py-2">
+                    <h6 className="mb-0 w-100 fs-5 fw-bold text-end">Fee</h6>
+                  </div>
+                </Col>
+                <Col md={1}></Col>
+                <Col md={3}>
+                  <div className=" text-end pe-lg-4 pe-md-2">
+                    <h6 className="mb-0 w-100 fs-5 fw-bold  ">Action</h6>
+                  </div>
+                </Col>
+              </Row>
               {ServiceProviders.map((item) => {
                 return (
                   <ServiceProvider

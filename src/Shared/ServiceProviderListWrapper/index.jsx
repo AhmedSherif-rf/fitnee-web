@@ -1,7 +1,6 @@
 import styles from "./style.module.scss";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import FillBtn from "../../Shared/Buttons/FillBtn";
+
 import {
   Card,
   CardBody,
@@ -12,6 +11,10 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import PageHeading from "../Headings/PageHeading";
+import FillBtn from "../../Shared/Buttons/FillBtn";
 import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
 import { getGuestDataLimit } from "../../utils/functions";
@@ -24,8 +27,6 @@ import {
   TRAINER_NUTRITIONIST_TYPE,
 } from "../../utils/constants";
 import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
-import { useTranslation } from "react-i18next";
-import PageHeading from "../Headings/PageHeading";
 
 const NutritionistData = [
   {
@@ -34,7 +35,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -42,7 +43,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -50,7 +51,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -58,7 +59,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -66,7 +67,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -74,7 +75,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -82,7 +83,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
 ];
 
@@ -93,7 +94,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -101,7 +102,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -109,7 +110,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -117,7 +118,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -125,7 +126,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -133,7 +134,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
   {
     infoImg: Images.PROFILE_IMG,
@@ -141,7 +142,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "30",
   },
 ];
 
@@ -164,7 +165,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "30",
     },
     {
       infoImg: Images.PROFILE_IMG,
@@ -172,7 +173,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "30",
     },
     {
       infoImg: Images.PROFILE_IMG,
@@ -180,7 +181,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "30",
     },
     {
       infoImg: Images.PROFILE_IMG,
@@ -188,7 +189,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "30",
     },
     {
       infoImg: Images.PROFILE_IMG,
@@ -196,7 +197,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "30",
     },
     {
       infoImg: Images.PROFILE_IMG,
@@ -204,7 +205,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "30",
     },
     {
       infoImg: Images.PROFILE_IMG,
@@ -212,7 +213,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "30",
     },
   ];
 
@@ -264,7 +265,10 @@ const ServiceProviderListWrapper = (props) => {
       <CardBody>
         <Row className="align-items-center">
           <Col className="text-left">
-          <PageHeading headingText= {`${t("guest.listOfText")} ${conditionalHeader()}`} categoryText="" />
+            <PageHeading
+              headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}
+              categoryText=""
+            />
           </Col>
           <Col className="text-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>

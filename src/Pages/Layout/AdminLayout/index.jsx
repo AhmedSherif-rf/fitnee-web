@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "../../../Shared/AdminShared/Assets/GlobalStyle.scss";
+// import "../../../Shared/AdminShared/Assets/GlobalStyle.scss";
 import SideBar from "../../../Shared/AdminShared/Components/SideBar";
 import Content from "../../../Shared/AdminShared/Components/Content";
 

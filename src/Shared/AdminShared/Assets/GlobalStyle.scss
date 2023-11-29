@@ -79,22 +79,22 @@ li a.dropdown-toggle::after {
   cursor: pointer;
   display: none;
 }
-.side-menu {
-  height: calc(100vh - 130px);
-  overflow-y: scroll;
-  .nav {
-    .nav-item {
-      .nav-link {
-        display: flex;
-        align-items: center;
-        color: white;
-        &:hover {
-          color: #6d7fcc !important ;
-        }
-      }
-    }
-  }
-}
+// .side-menu {
+//   height: calc(100vh - 130px);
+//   overflow-y: scroll;
+//   .nav {
+//     .nav-item {
+//       .nav-link {
+//         display: flex;
+//         align-items: center;
+//         color: white;
+//         &:hover {
+//           color: #6d7fcc !important ;
+//         }
+//       }
+//     }
+//   }
+// }
 
 .side-menu::-webkit-scrollbar {
   width: 10px;

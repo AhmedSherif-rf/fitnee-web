@@ -9,10 +9,10 @@ const GeneralLayout = (props) => {
     <React.Fragment>
       <Toaster />
       <TopBar
-        isPublic={props?.isPublic}
-        isGuest={props?.isGuest}
-        isPrivate={props?.isPrivate}
-        isAuth={props?.isAuth}
+        isPublic={props.isPublic}
+        isGuest={props.isGuest}
+        isPrivate={props.isPrivate}
+        isAuth={props.isAuth}
       />
       <Container
         fluid

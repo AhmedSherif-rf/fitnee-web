@@ -3,11 +3,12 @@ import TopBar from "../TopBar";
 import classNames from "classnames";
 import { Container } from "reactstrap";
 import { Route } from "react-router-dom";
+import styles from "./style.module.scss";
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
   <Container
     fluid
-    className={classNames("content", { "is-open": sidebarIsOpen })}
+    className={classNames(styles.content, { "is-open": sidebarIsOpen })}
   >
     <TopBar toggleSidebar={toggleSidebar} />
     {/* <Route exact path="/" component={() => "Hello"} />

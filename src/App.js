@@ -1,9 +1,8 @@
 // Import Swiper styles
+import "./App.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-
-import "./App.css";
 import routes from "./Routes/AllRoutes";
 import { useDispatch } from "react-redux";
 import React, { Suspense, useEffect } from "react";

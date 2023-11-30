@@ -40,7 +40,7 @@ const Index = (props) => {
 
   return (
     <>
-      <Row className="align-items-center text-black-custom BorderRadius border border-light text-black-custom py-2 mb-2">
+      <Row className="align-items-center justify-content-center text-black-custom border-bottom text-black-custom py-2 mb-2">
         <Col md={3} className="mb-md-0 mb-2">
           <div className="d-flex align-items-center">
             <div
@@ -52,18 +52,19 @@ const Index = (props) => {
                 border: "1px solid",
               }}
             ></div>
-
             <div>
-              <h6 className="mb-0">{userName}</h6>
-              <h6 className="mb-0 w-100">{fee}</h6>
+              <h6 className="mb-0 fw-bold ">{userName}</h6>
               <span className="d-md-none d-block textDark">
                 {serviceProvider}
               </span>
+              <div className="mb-md-0 d-md-none d-block py-2">
+                <h6 className="mb-0 w-100 small fw-bold ">{fee}</h6>
+              </div>
             </div>
           </div>
         </Col>
         {CancelButton ? (
-          <Col md={4} sm={2} xs={6}>
+          <Col md={2} sm={3} xs={6}>
             <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
               {duration}
             </div>
@@ -75,41 +76,31 @@ const Index = (props) => {
             </div>
           </Col>
         )}
-
-        {serviceProvider ? (
-          <Col md={2} sm={3} className="d-md-block d-none">
-            <div className="mb-md-0 BorderYellow text-center py-2 rounded-3">
-              {serviceProvider}
-            </div>
-          </Col>
-        ) : (
-          ""
-        )}
-
+        <Col md={2} className="d-md-block d-none">
+          <div className="mb-md-0 text-center py-2 rounded-3">
+            <h6 className="mb-0 w-100 fs-5 fw-bold ">{fee}</h6>
+          </div>
+        </Col>
         <Col md={4}>
-          <Row className="align-items-center h-100 ">
-            <Col md={12} xs={12} className="text-center">
-              {CancelButton ? (
-                <div
-                  className="text-md-end text-center"
-                  onClick={handleCancelButtonClick}
-                >
-                  {CancelButton}
-                </div>
-              ) : (
-                <div className="BorderYellow p-2 rounded-3 d-md-flex d-block align-items-center justify-content-center">
-                  <div className="d-flex align-items-center justify-content-center">
-                    <p className="mb-0 small">{startDate} </p>
-                    <span className="mb-0 mx-1">To</span>
-                    <p className="mb-0 small">{endDate}</p>
-                  </div>
-                  <span className="d-md-none d-block textDark">
-                    ({duration})
-                  </span>
-                </div>
-              )}
-            </Col>
-          </Row>
+          {CancelButton ? (
+            <div
+              className="text-md-end text-center"
+              onClick={handleCancelButtonClick}
+            >
+              {CancelButton}
+            </div>
+          ) : (
+            <div className="BorderYellow p-2 rounded-3 d-md-flex d-block align-items-center justify-content-center">
+              <div className="d-flex align-items-center justify-content-center">
+                <p className="mb-0 small">{startDate} </p>
+                <span className="mb-0 mx-1">To</span>
+                <p className="mb-0 small">{endDate}</p>
+              </div>
+              <span className="d-md-none d-block textDark text-center">
+                ({duration})
+              </span>
+            </div>
+          )}
         </Col>
       </Row>
 

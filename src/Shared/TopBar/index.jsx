@@ -343,8 +343,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         ></div>
                       </DropdownToggle>
                       <DropdownMenu style={{ right: 0, left: "auto" }}>
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <Link
+                            className="w-100 p-1"
                             to={
                               roleType === TRAINEE_TYPE
                                 ? "/trainee/dashboard"
@@ -361,15 +362,16 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             </div>
                           </Link>
                         </DropdownItem>
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <Link
+                            className="w-100 p-1"
                             to={
                               roleType === TRAINEE_TYPE
                                 ? "/trainee/editProfile"
                                 : "/serviceProvider/editProfile"
                             }
                           >
-                            <div className="d-flex align-items-center">
+                            <div className="d-flex align-items-center w-100">
                               <span className="textParrotGreen me-2">
                                 <FaUserEdit className="mb-1" />
                               </span>
@@ -381,8 +383,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         </DropdownItem>
                         {roleType && roleType !== TRAINEE_TYPE && (
                           <>
-                            <DropdownItem>
-                              <Link to="/serviceProvider/paymentHistory">
+                            <DropdownItem className="p-0">
+                              <Link
+                                className="w-100 p-1"
+                                to="/serviceProvider/paymentHistory"
+                              >
                                 <div className="d-flex align-items-center">
                                   <span className="textParrotGreen me-2">
                                     <GiWallet className="mb-1" />
@@ -396,8 +401,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           </>
                         )}
 
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <Link
+                            className="w-100 p-1"
                             to={
                               roleType === TRAINEE_TYPE
                                 ? "/trainee/resetPassword"
@@ -414,9 +420,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             </div>
                           </Link>
                         </DropdownItem>
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <div
-                            className="d-flex align-items-center"
+                            className="d-flex align-items-center w-100 p-1"
                             onClick={handleDeleteClick}
                           >
                             <span className="textParrotGreen me-2 d-flex">
@@ -427,9 +433,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             </p>
                           </div>
                         </DropdownItem>
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <div
-                            className="d-flex align-items-center"
+                            className="d-flex align-items-center w-100 p-1"
                             onClick={handleLogoutClick}
                           >
                             <span className="textParrotGreen me-2 d-flex">

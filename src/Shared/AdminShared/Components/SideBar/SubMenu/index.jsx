@@ -2,6 +2,7 @@ import classNames from "classnames";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Collapse, NavItem, NavLink } from "reactstrap";
+import styles from "./style.module.scss"
 
 const SubMenu = (props) => {
   const { icon, title, items } = props;
@@ -12,7 +13,7 @@ const SubMenu = (props) => {
     <div>
       <NavItem
         onClick={toggle}
-        className={classNames({ "menu-open": !collapsed })}
+        className={classNames({ [styles.menuOpen]: !collapsed })}
       >
         <NavLink className="dropdown-toggle d-flex align-items-center">
           {icon}
@@ -22,7 +23,7 @@ const SubMenu = (props) => {
       <Collapse
         isOpen={!collapsed}
         navbar
-        className={classNames("items-menu", { "mb-1": !collapsed })}
+        className={classNames([styles.itemsMenu], { "mb-1": !collapsed })}
       >
         {items.map((item, index) => (
           <NavItem key={index} className="pl-4">

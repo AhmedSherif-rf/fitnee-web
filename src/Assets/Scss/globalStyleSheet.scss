@@ -8,6 +8,8 @@
 
 .bgBlur {
   background-color: $blur-color !important;
+  border-bottom-left-radius: 14px !important;
+  border-bottom-right-radius: 14px !important;
 }
 .customBgDark {
   background-color: rgba(0, 0, 0, 0.2) !important;

@@ -1,8 +1,9 @@
 import React from "react";
-import TopBar from "../TopBar";
 import classNames from "classnames";
 import { Container } from "reactstrap";
-import { Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+
+import TopBar from "../../Components/TopBar";
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
   <Container
@@ -10,7 +11,8 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
     className={classNames("content", { "is-open": sidebarIsOpen })}
   >
     <TopBar toggleSidebar={toggleSidebar} />
-    {/* <Route exact path="/" component={() => "Hello"} />
+    {/* <Switch>
+      <Route exact path="/" component={() => "Hello"} />
       <Route exact path="/about" component={() => "About"} />
       <Route exact path="/Pages" component={() => "Pages"} />
       <Route exact path="/faq" component={() => "FAQ"} />
@@ -23,7 +25,8 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route exact path="/page-1" component={() => "page-1"} />
       <Route exact path="/page-2" component={() => "page-2"} />
       <Route exact path="/page-3" component={() => "page-3"} />
-      <Route exact path="/page-4" component={() => "page-4"} /> */}
+      <Route exact path="/page-4" component={() => "page-4"} />
+    </Switch> */}
   </Container>
 );
 

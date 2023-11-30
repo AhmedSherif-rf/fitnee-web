@@ -1,8 +1,10 @@
+import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import InfoModal from "../../../Shared/InfoModal";
 import InputField from "../../../Shared/InputField";
 import React, { useCallback, useState } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
+import { LineChart } from "../../../Shared/Chart/LineChart";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
@@ -10,6 +12,54 @@ import ProfileProgressBar from "../../../Shared/ProfileProgressBar";
 import { Row, Col, Container, Card, CardBody, Label } from "reactstrap";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
+
+export const myProgressGrapghOptions = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "bottom",
+    },
+    title: {
+      display: true,
+      text: "Trainee Progress Graph",
+    },
+  },
+  maintainAspectRatio: window.innerWidth > 500,
+  redraw: true,
+};
+
+const labels = ["1 Nov", "15 Nov", "30 Nov", "15 Dec", "30 Dec"];
+
+export const myProgressGrapghData = {
+  labels,
+  datasets: [
+    {
+      label: "Weight",
+      borderDash: [5, 5],
+      data: [100, 200, 150, 250, 200],
+      borderColor: "#67165A",
+      backgroundColor: "rgba(103, 22, 90, 0.40)",
+    },
+    {
+      label: "SMM",
+      data: [80, 150, 190, 300, 200],
+      borderColor: "#F67109",
+      backgroundColor: "rgba(246, 113, 9, 0.40)",
+    },
+    {
+      label: "BFM",
+      data: [105, 100, 200, 300, 100],
+      borderColor: "#F6E709",
+      backgroundColor: "rgba(246, 231, 9, 0.40)",
+    },
+    {
+      label: "Proteins",
+      data: [105, 170, 245, 198, 200],
+      borderColor: "#8EF609",
+      backgroundColor: "rgba(142, 246, 9, 0.40)",
+    },
+  ],
+};
 
 const Dashboard = () => {
   const [showAddProgressModal, setSowAddProgressModal] = useState(false);
@@ -196,7 +246,7 @@ const Dashboard = () => {
                     <PageHeading headingText="My Progress" categoryText="" />
                     <div className="">
                       <FillBtn
-                        text="Add Progress"
+                        text="Add"
                         handleOnClick={handleAddProgressClick}
                       />
                     </div>
@@ -214,11 +264,12 @@ const Dashboard = () => {
                 <Col md={12} className="mb-2">
                   {showHistory ? (
                     <>
-                      <img
-                        className="w-100"
-                        src={Images.TRAINEE_GRAPH_IMG}
-                        alt=""
-                      />
+                      <div className="py-2 d-flex justify-content-center chart-container">
+                        <LineChart
+                          options={myProgressGrapghOptions}
+                          data={myProgressGrapghData}
+                        />
+                      </div>
                       <div className="d-flex justify-content-between text-black-custom">
                         <div className="m-2">
                           <p className="mb-0">26.7.2023</p>

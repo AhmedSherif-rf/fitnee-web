@@ -40,7 +40,7 @@ import {
   NUTRITIONIST_TYPE,
 } from "../../utils/constants";
 
-const TopBar = (props) => {
+const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const TopBar = (props) => {
   const { lang: currentLanguage } = useSelector((state) => state?.language);
 
   useEffect(() => {
-    if (props.isPublic) {
+    if (isPublic) {
       window.addEventListener("scroll", listenScrollEvent);
 
       if (location.pathname === "/registerAs") {
@@ -58,24 +58,27 @@ const TopBar = (props) => {
       }
     }
 
+    if (isPrivate) {
+      setBackgroundClass("bg-white-custom");
+    } else if (isPublic) {
+      setBackgroundClass("bg-transparent");
+    }
+
     return () => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.isPublic, location.pathname]);
+  }, [isPublic, location.pathname]);
 
   useEffect(() => {
-    if (
-      props?.isPublic &&
-      (location.pathname === "/registerAs" || props?.isAuth)
-    ) {
+    if (isPublic && (location.pathname === "/registerAs" || isAuth)) {
       setShowNavItems(false);
     } else {
       setShowNavItems(true);
     }
 
     if (
-      props.isPublic &&
+      isPublic &&
       (location.pathname === "/termAndCondition" ||
         location.pathname === "/signIn" ||
         location.pathname === "/contactUs" ||
@@ -86,7 +89,7 @@ const TopBar = (props) => {
     } else {
       setShowTopBar(true);
     }
-  }, [location.pathname, props?.isAuth, props.isPublic]);
+  }, [location.pathname, isAuth, isPublic]);
 
   const [showTopBar, setShowTopBar] = useState(true);
   const [isSliding, setIsSliding] = useState(false);
@@ -98,21 +101,21 @@ const TopBar = (props) => {
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
 
   const [backgroundClass, setBackgroundClass] = useState(
-    props.isPublic
-      ? props?.isGuest
+    isPublic
+      ? isGuest
         ? "bg-white-custom"
         : "bg-transparent"
       : "bg-white-custom"
   );
 
-  const textClass = props.isPublic
-    ? props?.isGuest
+  const textClass = isPublic
+    ? isGuest
       ? "text-black-custom"
       : "text-white"
     : "text-black-custom";
 
   const listenScrollEvent = () => {
-    if (!props?.isGuest && props?.isPublic) {
+    if (!isGuest && isPublic) {
       if (window.scrollY > 180) {
         setBackgroundClass("customBgDark");
       } else {
@@ -275,7 +278,7 @@ const TopBar = (props) => {
                   </Nav>
                 )}
 
-                {!props?.isGuest && !props?.isPrivate && roleType === null && (
+                {!isGuest && !isPrivate && roleType === null && (
                   <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>
@@ -326,7 +329,7 @@ const TopBar = (props) => {
                   </Nav>
                 )}
 
-                {!props?.isGuest && !props?.isPublic && (
+                {!isGuest && !isPublic && (
                   <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
                     <UncontrolledDropdown>
                       <DropdownToggle className="p-0" nav>
@@ -340,8 +343,9 @@ const TopBar = (props) => {
                         ></div>
                       </DropdownToggle>
                       <DropdownMenu style={{ right: 0, left: "auto" }}>
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <Link
+                            className="w-100 p-1"
                             to={
                               roleType === TRAINEE_TYPE
                                 ? "/trainee/dashboard"
@@ -358,15 +362,16 @@ const TopBar = (props) => {
                             </div>
                           </Link>
                         </DropdownItem>
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <Link
+                            className="w-100 p-1"
                             to={
                               roleType === TRAINEE_TYPE
                                 ? "/trainee/editProfile"
                                 : "/serviceProvider/editProfile"
                             }
                           >
-                            <div className="d-flex align-items-center">
+                            <div className="d-flex align-items-center w-100">
                               <span className="textParrotGreen me-2">
                                 <FaUserEdit className="mb-1" />
                               </span>
@@ -378,8 +383,11 @@ const TopBar = (props) => {
                         </DropdownItem>
                         {roleType && roleType !== TRAINEE_TYPE && (
                           <>
-                            <DropdownItem>
-                              <Link to="/serviceProvider/paymentHistory">
+                            <DropdownItem className="p-0">
+                              <Link
+                                className="w-100 p-1"
+                                to="/serviceProvider/paymentHistory"
+                              >
                                 <div className="d-flex align-items-center">
                                   <span className="textParrotGreen me-2">
                                     <GiWallet className="mb-1" />
@@ -393,8 +401,9 @@ const TopBar = (props) => {
                           </>
                         )}
 
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <Link
+                            className="w-100 p-1"
                             to={
                               roleType === TRAINEE_TYPE
                                 ? "/trainee/resetPassword"
@@ -411,9 +420,9 @@ const TopBar = (props) => {
                             </div>
                           </Link>
                         </DropdownItem>
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <div
-                            className="d-flex align-items-center"
+                            className="d-flex align-items-center w-100 p-1"
                             onClick={handleDeleteClick}
                           >
                             <span className="textParrotGreen me-2 d-flex">
@@ -424,9 +433,9 @@ const TopBar = (props) => {
                             </p>
                           </div>
                         </DropdownItem>
-                        <DropdownItem>
+                        <DropdownItem className="p-0">
                           <div
-                            className="d-flex align-items-center"
+                            className="d-flex align-items-center w-100 p-1"
                             onClick={handleLogoutClick}
                           >
                             <span className="textParrotGreen me-2 d-flex">
@@ -534,7 +543,7 @@ const TopBar = (props) => {
                 </Nav>
               </CardBody>
               <CardFooter className="border-0">
-                {!props?.isGuest && (
+                {!isGuest && (
                   <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
                     <FillBtn
                       className="px-3 w-100 mb-2"

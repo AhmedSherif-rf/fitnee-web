@@ -16,41 +16,6 @@ import LoadingScreen from "./HelperMethods/LoadingScreen";
 import { setLanguage } from "./Redux/features/Language/languageSlice";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function withLayout(
-  WrappedComponent,
-  isPublic,
-  isGuest,
-  isPrivate,
-  isAuth,
-  theme = "black"
-) {
-  const admin = true;
-
-  return class extends React.Component {
-    render() {
-      return (
-        <>
-          {admin ? (
-            <AdminLayout>
-              <WrappedComponent></WrappedComponent>
-            </AdminLayout>
-          ) : (
-            <GeneralLayout
-              isPublic={isPublic}
-              isGuest={isGuest}
-              isPrivate={isPrivate}
-              isAuth={isAuth}
-              theme={theme}
-            >
-              <WrappedComponent></WrappedComponent>
-            </GeneralLayout>
-          )}
-        </>
-      );
-    }
-  };
-}
-
 function App() {
   const dispatch = useDispatch();
 
@@ -75,35 +40,57 @@ function App() {
                 path={route.path}
                 exact={route.exact}
                 element={
-                  <Suspense fallback={<LoadingScreen />}>
-                    {!route.isPublic ? (
-                      <PrivateRoute
-                        props={route}
-                        role={route?.role}
-                        Component={withLayout(
-                          Component,
-                          route?.isPublic,
-                          route?.isGuest,
-                          route?.isPrivate,
-                          route?.isAuth,
-                          route?.theme
-                        )}
-                      />
+                  <>
+                    {true ? (
+                      <GeneralLayout
+                        isPublic={route.isPublic}
+                        isGuest={route.isGuest}
+                        isPrivate={route.isPrivate}
+                        isAuth={route.isAuth}
+                        theme={route.theme ?? "black"}
+                      >
+                        <Suspense fallback={<LoadingScreen />}>
+                          {!route.isPublic ? (
+                            <PrivateRoute
+                              props={route}
+                              role={route?.role}
+                              Component={Component}
+                            />
+                          ) : (
+                            <PublicRoute
+                              props={route}
+                              role={route?.role}
+                              Component={Component}
+                            />
+                          )}
+                        </Suspense>
+                      </GeneralLayout>
                     ) : (
-                      <PublicRoute
-                        props={route}
-                        role={route?.role}
-                        Component={withLayout(
-                          Component,
-                          route?.isPublic,
-                          route?.isGuest,
-                          route?.isPrivate,
-                          route?.isAuth,
-                          route?.theme
-                        )}
-                      />
+                      <AdminLayout
+                        isPublic={route.isPublic}
+                        isGuest={route.isGuest}
+                        isPrivate={route.isPrivate}
+                        isAuth={route.isAuth}
+                        theme={route.theme ?? "black"}
+                      >
+                        <Suspense fallback={<LoadingScreen />}>
+                          {!route.isPublic ? (
+                            <PrivateRoute
+                              props={route}
+                              role={route?.role}
+                              Component={Component}
+                            />
+                          ) : (
+                            <PublicRoute
+                              props={route}
+                              role={route?.role}
+                              Component={Component}
+                            />
+                          )}
+                        </Suspense>
+                      </AdminLayout>
                     )}
-                  </Suspense>
+                  </>
                 }
               />
             );

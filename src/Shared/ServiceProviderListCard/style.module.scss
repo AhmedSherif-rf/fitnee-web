@@ -1,0 +1,22 @@
+.Card {
+    position: relative;
+  
+    .infoContainer {
+      content: "";
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.8s ease;
+      width: 100%;
+    }
+  
+    &:hover {
+      .infoContainer {
+        opacity: 1;
+        max-height: 100px;
+        margin-bottom: 0;
+        transition: all 0.8s ease;
+      }
+    }
+  }
+  

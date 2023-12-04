@@ -1,4 +1,4 @@
-// Import Swiper styles
+
 import "./App.css";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -41,7 +41,7 @@ function App() {
                 exact={route.exact}
                 element={
                   <>
-                    {true ? (
+                    {false ? (
                       <GeneralLayout
                         isPublic={route.isPublic}
                         isGuest={route.isGuest}

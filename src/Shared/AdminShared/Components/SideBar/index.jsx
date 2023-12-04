@@ -9,28 +9,26 @@ import {
   FaQuestion,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import styles from "./style.module.scss"; // Import the SCSS styles
 import { NavItem, NavLink, Nav } from "reactstrap";
 
 import SubMenu from "./SubMenu";
 
 const SideBar = ({ isOpen, toggle }) => (
-  <div className={classNames("sidebar", { "is-open": isOpen })}>
-    <div className="sidebar-header">
-      <span color="info" onClick={toggle} style={{ color: "#fff" }}>
-        &times;
-      </span>
+  <div className={classNames(styles.Sidebar, { [styles["is-open"]]: isOpen })}>
+    <div className={`py-3 ${styles.sidebarHeader}`}>
       <h3>FitNee Admin</h3>
     </div>
-    <div className="side-menu">
-      <Nav vertical className="list-unstyled pb-3">
-        <p>Dummy Heading</p>
+    <div className={`${styles.sideMenu}`}>
+      <Nav vertical className={`${styles.Nav} pb-3`}>
+        <Link to="/admin/setting">Dummy Heading</Link>
         <SubMenu
           title="Home"
           icon={<FaHome className="me-2" />}
           items={submenus[0]}
         />
-        <NavItem>
-          <NavLink tag={Link} to={"/about"}>
+        <NavItem className={`${styles.NavItem}`}>
+          <NavLink className={`${styles.NavLink}`} tag={Link} to={"/about"}>
             <FaBriefcase className="me-2" />
             About
           </NavLink>
@@ -40,20 +38,20 @@ const SideBar = ({ isOpen, toggle }) => (
           icon={<FaCopy className="me-2" />}
           items={submenus[1]}
         />
-        <NavItem>
-          <NavLink tag={Link} to={"/pages"}>
+        <NavItem className={`${styles.NavItem}`}>
+          <NavLink className={`${styles.NavLink}`} tag={Link} to={"/pages"}>
             <FaImage className="me-2" />
             Portfolio
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink tag={Link} to={"/faq"}>
+        <NavItem className={`${styles.NavItem}`}>
+          <NavLink className={`${styles.NavLink}`} tag={Link} to={"/faq"}>
             <FaQuestion className="me-2" />
             FAQ
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink tag={Link} to={"/contact"}>
+        <NavItem className={`${styles.NavItem}`}>
+          <NavLink className={`${styles.NavLink}`} tag={Link} to={"/contact"}>
             <FaPaperPlane className="me-2" />
             Contact
           </NavLink>
@@ -74,7 +72,7 @@ const submenus = [
       target: "Home-2",
     },
     {
-      itle: "Home 3",
+      title: "Home 3",
       target: "Home-3",
     },
   ],

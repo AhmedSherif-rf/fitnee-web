@@ -43,9 +43,15 @@ let Images = {
     require("../../Assets/Images/registerAsScreen/RegisterAsBackground.svg")
       .default,
   //==============================GuestServiceProviderListImgs=================
-  PROFILE_IMG:
-    require("../../Assets/Images/serviceProviderListScreen/TrainerImg.svg")
-      .default,
+  PROFILE1_IMG: require("../../Assets/tempImages/profile1.svg").default,
+  PROFILE2_IMG: require("../../Assets/tempImages/profile2.svg").default,
+  PROFILE3_IMG: require("../../Assets/tempImages/profile3.svg").default,
+  PROFILE4_IMG: require("../../Assets/tempImages/profile4.svg").default,
+  PROFILE5_IMG: require("../../Assets/tempImages/profile5.svg").default,
+  ARROW_RIGHT_IMG: require("../../Assets/Images/ConstImgs/RightArrow.svg")
+    .default,
+  SEE_MORE_BG_IMG: require("../../Assets/Images/ConstImgs/SeeMoreBg.svg")
+    .default,
   SHORTLOGO_IMG:
     require("../../Assets/Images/serviceProviderListScreen/DumbleLogo.svg")
       .default,
@@ -80,7 +86,8 @@ let Images = {
     .default,
   UPLOAD_BG_IMG: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
   UPLOAD_ICON: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
-  PASSWORD_ICON_IMG: require("../../Assets/Images/ConstImgs/passwordIcon.svg").default,
+  PASSWORD_ICON_IMG: require("../../Assets/Images/ConstImgs/passwordIcon.svg")
+    .default,
   //==============================Trainee Images====================================
   QR_CODE_IMG: require("../../Assets/Images/QRCode.svg").default,
   TRAINEE_GRAPH_IMG: require("../../Assets/Images/TraineeGraph.svg").default,

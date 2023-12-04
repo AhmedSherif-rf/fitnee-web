@@ -9,7 +9,7 @@ import {
   FaQuestion,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import styles from "./style.module.scss"; // Import the SCSS styles
+import styles from "./style.module.scss";
 import { NavItem, NavLink, Nav } from "reactstrap";
 
 import SubMenu from "./SubMenu";

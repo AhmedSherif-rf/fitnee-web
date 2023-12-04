@@ -28,10 +28,10 @@ const TrainerListCard = (props) => {
         <div className="p-0  ImgBorder"></div>
       </CardBody>
       <CardFooter className={`bgBlur ${styles.infoContainer}`}>
-        <h6 className="fw-700 fs-4 mb-0  text-white"> {infoTitle} </h6>
+        <h6 className="fw-700 fs-4 mb-0 px-2  text-white"> {infoTitle} </h6>
         <div
           className={`d-flex text-white align-items-end justify-content-between`}>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center px-2">
             <img className="img-fluid" src={infoLogo} alt="info logo" />
             <p className="ms-2 fw-bold mb-0 no-Wrap text-white">{infoDes}</p>
           </div>

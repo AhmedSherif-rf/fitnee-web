@@ -41,7 +41,7 @@ function App() {
                 exact={route.exact}
                 element={
                   <>
-                    {false ? (
+                    {true ? (
                       <GeneralLayout
                         isPublic={route.isPublic}
                         isGuest={route.isGuest}

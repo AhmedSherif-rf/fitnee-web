@@ -2,36 +2,34 @@
 
 .Card {
   position: relative;
+  overflow: hidden;
 
   .infoContainer {
     content: "";
     position: absolute;
-    right: 0;
+    right: -87%;
     bottom: 12px;
     overflow: hidden;
-    width: 85% !important;
-    border-radius: 8px 0px 0px 8px;
-    border-radius: 0 !important;
-    // transition: all 0.8s ease;
+    width: 90% !important;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0 !important;
+    transition: right 0.5s ease-in-out;
+
     &::before {
       content: "";
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 72px;
-      border-right: 10px solid yellow;
-      border-radius: 8px 0px 0px 8px;
+      height: 100%;
+      border-right: 15px solid $yellow;
+      border-bottom-left-radius: 10px;
+      border-top-left-radius: 10px;
     }
   }
-  // &:hover {
-  //   .infoContainer {
-  //     opacity: 1;
-  //     max-height: 100px;
-  //     margin-bottom: 0;
-  //     transition: all 0.8s ease;
-  //     transform: translateX(-18%);
 
-  //   }
-  // }
+  &:hover .infoContainer {
+    right: 0;
+  }
 }
- 

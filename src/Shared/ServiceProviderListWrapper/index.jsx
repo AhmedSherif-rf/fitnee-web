@@ -160,60 +160,60 @@ const ServiceProviderListWrapper = (props) => {
   const { t } = useTranslation("");
   const TrainerData = [
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE1_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "30",
+      Height: "35",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE2_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "30",
+      Height: "35",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE3_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "30",
+      Height: "35",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE4_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "30",
+      Height: "35",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE5_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "30",
+      Height: "35",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE2_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "30",
+      Height: "35",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE4_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "30",
+      Height: "35",
     },
   ];
 
@@ -362,6 +362,28 @@ const ServiceProviderListWrapper = (props) => {
                 </Col>
               );
             })}
+
+          <Col lg={3} md={4} col={6} className="mb-3">
+            <Card
+              className={`bgProperties h-100 BorderRadius`}
+              style={{ backgroundImage: `url(${Images.SEE_MORE_BG_IMG})` }}
+            >
+              <CardBody>
+                <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+                  <div className="">
+                    <p className="mb-0 fs-4 fw-bold">See More</p>
+                    <div className="w-100 text-center">
+                      <img
+                        className="img-fluid w-50"
+                        src={Images.ARROW_RIGHT_IMG}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
           <InformationModal
             size={"md"}
             TOneClassName={"fw-bold mb-4 fs-5 text-center"}

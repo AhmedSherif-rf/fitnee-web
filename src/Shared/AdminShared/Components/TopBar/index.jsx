@@ -1,57 +1,34 @@
-import React, { useState } from "react";
-import {
-  Navbar,
-  Button,
-  NavbarToggler,
-  Collapse,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
-import { Link } from "react-router-dom";
-import { FaAlignLeft } from "react-icons/fa";
+import "./style.scss";
+import React from "react";
+import { Navbar, Button } from "reactstrap";
+import { CgMenuLeft } from "react-icons/cg";
+import { GoBellFill } from "react-icons/go";
+import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
-const TopBar = ({ toggleSidebar }) => {
-  const [TopBarIsOpen, setTopBarOpen] = useState(true);
-  const toggleTopBar = () => setTopBarOpen(!TopBarIsOpen);
-
+const Topbar = ({ toggleSidebar }) => {
   return (
-    <Navbar
-      color="light"
-      light
-      className="navbar shadow-sm px-3 bg-white d-flex align-items-center justify-content-between rounded"
-      expand="md"
-    >
-      <Button color="info" onClick={toggleSidebar}>
-        <FaAlignLeft />
+    <Navbar className="navbar admin-navbar BorderRadius mb-3" expand="md">
+      <Button
+        color="info"
+        onClick={toggleSidebar}
+        className="border-0 admin-navbar-toggler"
+      >
+        <CgMenuLeft color="black" />
       </Button>
-      <NavbarToggler onClick={toggleTopBar} />
-      <Collapse isOpen={TopBarIsOpen} navbar className="p-3">
-        <Nav className="m-auto" navbar>
-          <NavItem>
-            <NavLink tag={Link} to={"/page-1"}>
-              page 1
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={Link} to={"/page-2"}>
-              page 2
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={Link} to={"/page-3"}>
-              page 3
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={Link} to={"/page-4"}>
-              page 4
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </Collapse>
+      <div className="d-flex gap-3 align-items-center">
+        <GoBellFill size={24} />
+        <div
+          className="bgProperties rounded-circle"
+          style={{
+            backgroundImage: `url(${Images.PROFILE_IMG})`,
+            width: "45px",
+            height: "45px",
+          }}
+        ></div>
+        <p className="fs-6 mb-0 fw-bold">John Smith</p>
+      </div>
     </Navbar>
   );
 };
 
-export default TopBar;
+export default Topbar;

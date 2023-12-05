@@ -1,10 +1,10 @@
-
 import "./App.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import routes from "./Routes/AllRoutes";
 import { useDispatch } from "react-redux";
+import { adminRole } from "./Routes/routeConfig";
 import React, { Suspense, useEffect } from "react";
 import { PublicRoute } from "./Routes/PublicRoutes";
 import { DEFAULT_LANGUAGE } from "./utils/constants";
@@ -41,7 +41,7 @@ function App() {
                 exact={route.exact}
                 element={
                   <>
-                    {false ? (
+                    {route.role !== adminRole ? (
                       <GeneralLayout
                         isPublic={route.isPublic}
                         isGuest={route.isGuest}

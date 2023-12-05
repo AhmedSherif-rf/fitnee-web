@@ -1,59 +1,68 @@
 import React from "react";
-import classNames from "classnames";
-import {
-  FaBriefcase,
-  FaCopy,
-  FaHome,
-  FaImage,
-  FaPaperPlane,
-  FaQuestion,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
-import styles from "./style.module.scss"; // Import the SCSS styles
-import { NavItem, NavLink, Nav } from "reactstrap";
-
 import SubMenu from "./SubMenu";
+import classNames from "classnames";
+import { Link } from "react-router-dom";
+import { NavItem, NavLink, Nav } from "reactstrap";
+import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
+import {
+  GoHome,
+  GoChecklist,
+  GoPaste,
+  GoPerson,
+  GoSortAsc,
+  GoTools,
+} from "react-icons/go";
 
 const SideBar = ({ isOpen, toggle }) => (
-  <div className={classNames(styles.Sidebar, { [styles["is-open"]]: isOpen })}>
-    <div className={`py-3 ${styles.sidebarHeader}`}>
-      <h3>FitNee Admin</h3>
+  <div className={classNames("sidebar", { "is-open": isOpen })}>
+    <div className="sidebar-header">
+      <span color="info" onClick={toggle} style={{ color: "#fff" }}>
+        &times;
+      </span>
+      <img className="py-5" src={Logo} alt={"website-logo"} />
     </div>
-    <div className={`${styles.sideMenu}`}>
-      <Nav vertical className={`${styles.Nav} pb-3`}>
-        <Link to="/admin/setting">Dummy Heading</Link>
-        <SubMenu
-          title="Home"
-          icon={<FaHome className="me-2" />}
-          items={submenus[0]}
-        />
-        <NavItem className={`${styles.NavItem}`}>
-          <NavLink className={`${styles.NavLink}`} tag={Link} to={"/about"}>
-            <FaBriefcase className="me-2" />
+    <div className="side-menu">
+      <Nav vertical className="list-unstyled pb-3">
+        <SubMenu title="Home" icon={<GoHome />} items={submenus[0]} />
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/about"}
+          >
+            <GoPaste />
             About
           </NavLink>
         </NavItem>
-        <SubMenu
-          title="Pages"
-          icon={<FaCopy className="me-2" />}
-          items={submenus[1]}
-        />
-        <NavItem className={`${styles.NavItem}`}>
-          <NavLink className={`${styles.NavLink}`} tag={Link} to={"/pages"}>
-            <FaImage className="me-2" />
+        <SubMenu title="Pages" icon={<GoChecklist />} items={submenus[1]} />
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/pages"}
+          >
+            <GoPerson />
             Portfolio
           </NavLink>
         </NavItem>
-        <NavItem className={`${styles.NavItem}`}>
-          <NavLink className={`${styles.NavLink}`} tag={Link} to={"/faq"}>
-            <FaQuestion className="me-2" />
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/faq"}
+          >
+            <GoSortAsc />
             FAQ
           </NavLink>
         </NavItem>
-        <NavItem className={`${styles.NavItem}`}>
-          <NavLink className={`${styles.NavLink}`} tag={Link} to={"/contact"}>
-            <FaPaperPlane className="me-2" />
-            Contact
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/contact"}
+          >
+            <GoTools />
+            Setting
           </NavLink>
         </NavItem>
       </Nav>
@@ -72,7 +81,7 @@ const submenus = [
       target: "Home-2",
     },
     {
-      title: "Home 3",
+      itle: "Home 3",
       target: "Home-3",
     },
   ],

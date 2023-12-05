@@ -9,9 +9,13 @@ const AdminLayout = (props) => {
   const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
   return (
     <React.Fragment>
-       <div className="App wrapper">
+      <div className="App wrapper">
         <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
-        <Content toggleSidebar={toggleSidebar} sidebarIsOpen={sidebarIsOpen} />
+        <Content
+          children={props.children}
+          toggleSidebar={toggleSidebar}
+          sidebarIsOpen={sidebarIsOpen}
+        />
       </div>
     </React.Fragment>
   );

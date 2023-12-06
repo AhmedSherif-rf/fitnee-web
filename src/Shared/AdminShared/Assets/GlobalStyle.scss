@@ -5,8 +5,8 @@
   width: 100%;
   align-items: stretch;
 }
-.parrot-green{
-background-color: $parrot-green;
+.parrot-green {
+  background-color: $parrot-green;
 }
 .sidebar {
   min-width: 250px;
@@ -20,7 +20,9 @@ background-color: $parrot-green;
     color: $white;
     padding: 10px;
   }
-
+  .dark-gray {
+    color: $dark-gray;
+  }
   .nav-item:hover {
     background: transparent;
   }
@@ -74,6 +76,39 @@ background-color: $parrot-green;
   margin-left: 0;
   height: 100vh;
   background-color: $off-white;
+}
+@mixin iconBadge {
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  background-color: transparent !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  .GoPencil,
+  .GoTrash,
+  .GoEye {
+    color:$dark-gray;
+  }
+  &:hover {
+    border: 1px solid transparent;
+    box-shadow: 1px 1px 1px 0px $blur-color;
+  }
+}
+.iconBadge {
+  @include iconBadge;
+  &:hover {
+    .GoPencil {
+      color: blue !important;
+    }
+    .GoTrash {
+      color: $orange !important;
+    }
+    .GoEye {
+      color:$yellow !important;
+    }
+  }
 }
 
 @media only screen and (max-width: 500px) {

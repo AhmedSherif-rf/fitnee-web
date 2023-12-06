@@ -9,11 +9,8 @@
     border-bottom: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    color: $black;
-    .Badge{
-      background-color: red !important;
-
-    }
+    font-size: $font-14;
+    color:$gray;
   }
 
   th {
@@ -23,29 +20,9 @@
   tbody {
     tr:nth-child(even) {
       background-color: $content-bg;
-      .iconBadge {
-        border: 1px solid transparent;
-      }
-    }
-    .iconBadge {
-      padding: 5px;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      background-color: transparent !important;
-      align-items: center;
-      justify-content: center;
-      border-radius: 100%;
-      border: 1px solid $white;
     }
     tr:hover {
       background-color: $content-bg;
-      td {
-        .iconBadge {
-          border: 1px solid transparent;
-          box-shadow: 1px 1px 1px 0px $dark-bg;
-        }
-      }
     }
   }
 }

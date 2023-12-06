@@ -99,12 +99,12 @@ const submenus = [
   ],
   [
     {
-      title: "Trainer List",
-      target: "Trainer_list",
+      title: "Service Provider List",
+      target: "/admin/Users/ServiceProviderList",
     },
     {
       title: "Trainee List",
-      target: "Trainee_list",
+      target: "/admin/Users/TraineeList",
     },
   ],
 ];

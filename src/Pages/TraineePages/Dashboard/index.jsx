@@ -26,6 +26,9 @@ export const myProgressGrapghOptions = {
   },
   maintainAspectRatio: window.innerWidth > 500,
   redraw: true,
+  interaction: {
+    intersect: false,
+  },
 };
 
 const labels = ["1 Nov", "15 Nov", "30 Nov", "15 Dec", "30 Dec"];
@@ -39,24 +42,36 @@ export const myProgressGrapghData = {
       data: [100, 200, 150, 250, 200],
       borderColor: "#67165A",
       backgroundColor: "rgba(103, 22, 90, 0.40)",
+      pointStyle: "circle",
+      pointRadius: 5,
+      pointHoverRadius: 6,
     },
     {
       label: "SMM",
       data: [80, 150, 190, 300, 200],
       borderColor: "#F67109",
       backgroundColor: "rgba(246, 113, 9, 0.40)",
+      pointStyle: "circle",
+      pointRadius: 5,
+      pointHoverRadius: 6,
     },
     {
       label: "BFM",
       data: [105, 100, 200, 300, 100],
       borderColor: "#F6E709",
       backgroundColor: "rgba(246, 231, 9, 0.40)",
+      pointStyle: "circle",
+      pointRadius: 5,
+      pointHoverRadius: 6,
     },
     {
       label: "Proteins",
       data: [105, 170, 245, 198, 200],
       borderColor: "#8EF609",
       backgroundColor: "rgba(142, 246, 9, 0.40)",
+      pointStyle: "circle",
+      pointRadius: 5,
+      pointHoverRadius: 6,
     },
   ],
 };
@@ -93,7 +108,7 @@ const Dashboard = () => {
 
   const infoData = [
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE4_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,

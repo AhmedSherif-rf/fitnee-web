@@ -13,7 +13,8 @@ const InputField = (props) => {
     className,
     icon,
     disabled,
-    style
+    style,
+    rows,
   } = props;
 
   return (
@@ -29,6 +30,7 @@ const InputField = (props) => {
         onChange={onChangeHandle}
         onBlur={onBlurHandle}
         value={value}
+        rows={rows}
       />
     </div>
   );

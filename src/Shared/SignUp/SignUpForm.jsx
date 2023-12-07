@@ -102,7 +102,7 @@ const SignUpForm = () => {
                       <div
                         className="rounded-circle bgProperties position-relative"
                         style={{
-                          backgroundImage: `url(${Images.PROFILE_IMG})`,
+                          backgroundImage: `url(${Images.PROFILE4_IMG})`,
                           height: "160px",
                           width: "160px",
                         }}

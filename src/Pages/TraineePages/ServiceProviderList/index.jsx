@@ -7,7 +7,7 @@ import PageHeading from "../../../Shared/Headings/PageHeading";
 const index = () => {
   const ServiceProviders = [
     {
-      useImages: `${Images.PROFILE_IMG}`,
+      useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
       serviceProvider: "Trainer",
       duration: "2 Months",
@@ -16,7 +16,7 @@ const index = () => {
       endDate: "11/12/2023",
     },
     {
-      useImages: `${Images.PROFILE_IMG}`,
+      useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
       serviceProvider: "Trainer",
       duration: "2 Months",
@@ -25,7 +25,7 @@ const index = () => {
       endDate: "11/12/2023",
     },
     {
-      useImages: `${Images.PROFILE_IMG}`,
+      useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
       serviceProvider: "Trainer",
       duration: "2 Months",
@@ -34,7 +34,7 @@ const index = () => {
       endDate: "11/12/2023",
     },
     {
-      useImages: `${Images.PROFILE_IMG}`,
+      useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
       serviceProvider: "Trainer",
       duration: "2 Months",
@@ -43,7 +43,7 @@ const index = () => {
       endDate: "11/12/2023",
     },
     {
-      useImages: `${Images.PROFILE_IMG}`,
+      useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
       serviceProvider: "Trainer",
       duration: "2 Months",

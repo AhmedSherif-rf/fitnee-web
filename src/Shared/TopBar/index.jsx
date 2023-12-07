@@ -58,7 +58,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       }
     }
 
-    if (isPrivate) {
+    if (isPrivate || isGuest) {
       setBackgroundClass("bg-white-custom");
     } else if (isPublic) {
       setBackgroundClass("bg-transparent");
@@ -336,7 +336,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         <div
                           className="bgProperties rounded-circle"
                           style={{
-                            backgroundImage: `url(${Images.PROFILE_IMG})`,
+                            backgroundImage: `url(${Images.PROFILE4_IMG})`,
                             width: "40px",
                             height: "40px",
                           }}

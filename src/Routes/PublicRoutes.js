@@ -17,20 +17,20 @@ export function PublicRoute({ Component, props }) {
     if (!isGuest && props.role === guestRole) {
       dispatch(setGuest(true));
     }
-    // if (user) {
-    //   navigate(getInitialUrl(user?.role));
-    // }
+    if (user) {
+      navigate(getInitialUrl(user?.role));
+    }
   }, [dispatch, isGuest, navigate, props.role, user]);
 
-  const token = null;
-  if (token) {
+  // const token = null;
+  // if (token) {
     //   const roleId = userDetail.user.RoleId;
     //   return (
     //     <Redirect
     //       to={getIntialURL(roleId)}
     //     />
     //   );
-  } else {
+  // } else {
     return <Component {...props} />;
-  }
+  // }
 }

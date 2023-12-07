@@ -14,7 +14,7 @@ const ToggleSwitch = ({ isOn, handleToggle, colorOne, colorTwo }) => {
       />
       <Label
         style={{ background: isOn ? colorOne : colorTwo }}
-        className={`${Styles.switchLabel}`}
+        className={`${Styles.switchLabel} mb-0`}
         htmlFor={`switch`}
       >
         <span className={`${Styles.switchButton}`} />

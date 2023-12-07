@@ -50,10 +50,10 @@ const SideBar = ({ isOpen, toggle }) => (
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
-            to={"/about"}
+            to={"/admin/Feedback"}
           >
             <GoPaste />
-            About
+            Feedback
           </NavLink>
         </NavItem>
 

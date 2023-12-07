@@ -20,7 +20,7 @@ const Topbar = ({ toggleSidebar }) => {
         <div
           className="bgProperties rounded-circle"
           style={{
-            backgroundImage: `url(${Images.PROFILE_IMG})`,
+            backgroundImage: `url(${Images.PROFILE4_IMG})`,
             width: "45px",
             height: "45px",
           }}

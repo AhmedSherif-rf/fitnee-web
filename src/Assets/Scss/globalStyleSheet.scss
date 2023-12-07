@@ -5,6 +5,9 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.bgProperties {
+  @include bgProperties;
+}
 
 .bgBlur {
   background-color: $blur-color !important;
@@ -31,12 +34,6 @@
   font-size: 14px !important;
   background-color: $yellow !important;
   border-radius: 30px !important;
-}
-
-.bgProperties {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .textYellow {

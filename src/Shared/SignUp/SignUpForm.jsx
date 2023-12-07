@@ -48,7 +48,7 @@ const SignUpForm = () => {
     <Container>
       <Formik
         initialValues={{ ...INITIAL_VALUES }}
-        // validationSchema={SIGNUP_SCHEMA}
+        validationSchema={SIGNUP_SCHEMA}
         validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);

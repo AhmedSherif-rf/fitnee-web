@@ -227,7 +227,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               className="w-100 d-flex align-items-center"
                               to="/guest/serviceProviderList/trainer"
                             >
-                              <p className="text-black-custom mb-0">Trainers</p>
+                              <p className="text-black-custom mb-0">{t("landing.trainersText")}</p>
                             </Link>
                           </DropdownItem>
 
@@ -237,7 +237,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               to="/guest/serviceProviderList/nutritionist"
                             >
                               <p className="text-black-custom mb-0">
-                                Nutritionist
+                              {t("landing.nutritionistsText")}
                               </p>
                             </Link>
                           </DropdownItem>
@@ -248,7 +248,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               to="/guest/services"
                             >
                               <p className="text-black-custom mb-0">
-                                Exercises
+                              {t("landing.exerciseText")}
                               </p>
                             </Link>
                           </DropdownItem>
@@ -579,7 +579,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         className={"p-4"}
         isOpen={showSubscriptionInformationModal}
         onClose={handleSubscriptionInformationModalClose}
-        ModalTextOne="Subscribe and then download the app so you can access FitNee Community"
+        ModalTextOne= {t("landing.communityFirstText")}
         ButtonOne={
           <FillBtn
             text={t("guest.subscribeText")}

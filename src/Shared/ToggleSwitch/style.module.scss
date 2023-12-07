@@ -10,8 +10,8 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: 38.67px;
-  height: 19px;
+  width: 35px;
+  height: 18px;
   background: rgb(211, 207, 207);
   border-radius: 100px;
   position: relative;
@@ -21,11 +21,11 @@
 .switchLabel .switchButton {
   content: "";
   position: absolute;
-  top: 2.5px;
+  top: 3px;
   left: 3px;
-  width: 13.33px;
-  height: 13.33px;
-  border-radius: 13.33px;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
   transition: 0.2s;
   background: #fff;
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);

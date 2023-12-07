@@ -30,7 +30,7 @@ import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon
 
 const NutritionistData = [
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -38,7 +38,7 @@ const NutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -46,7 +46,7 @@ const NutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -54,7 +54,7 @@ const NutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -62,7 +62,7 @@ const NutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -70,7 +70,7 @@ const NutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -78,7 +78,7 @@ const NutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -89,7 +89,7 @@ const NutritionistData = [
 
 const TrainerAndNutritionistData = [
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -97,7 +97,7 @@ const TrainerAndNutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -105,7 +105,7 @@ const TrainerAndNutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -113,7 +113,7 @@ const TrainerAndNutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -121,7 +121,7 @@ const TrainerAndNutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -129,7 +129,7 @@ const TrainerAndNutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -137,7 +137,7 @@ const TrainerAndNutritionistData = [
     Height: "30",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
@@ -165,7 +165,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "35",
+      Height: "38",
     },
     {
       infoImg: Images.PROFILE2_IMG,
@@ -173,7 +173,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "35",
+      Height: "38",
     },
     {
       infoImg: Images.PROFILE3_IMG,
@@ -181,7 +181,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "35",
+      Height: "38",
     },
     {
       infoImg: Images.PROFILE4_IMG,
@@ -189,7 +189,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "35",
+      Height: "38",
     },
     {
       infoImg: Images.PROFILE5_IMG,
@@ -197,15 +197,15 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "35",
+      Height: "38",
     },
     {
-      infoImg: Images.PROFILE2_IMG,
+      infoImg: Images.PROFILE3_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "35",
+      Height: "38",
     },
     {
       infoImg: Images.PROFILE4_IMG,
@@ -213,7 +213,7 @@ const ServiceProviderListWrapper = (props) => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "35",
+      Height: "38",
     },
   ];
 
@@ -366,12 +366,18 @@ const ServiceProviderListWrapper = (props) => {
           <Col lg={3} md={4} col={6} className="mb-3">
             <Card
               className={`bgProperties h-100 BorderRadius`}
-              style={{ backgroundImage: `url(${Images.SEE_MORE_BG_IMG})` }}
+              style={{
+                backgroundImage: `url(${Images.SEE_MORE_BG_IMG})`,
+                cursor: "pointer",
+              }}
+              onClick={handleSeeMoreClick}
             >
               <CardBody>
                 <div className="w-100 h-100 d-flex align-items-center justify-content-center">
                   <div className="">
-                    <p className="mb-0 fs-4 fw-bold">See More</p>
+                    <p className="mb-0 fs-4 fw-bold">
+                      {t("guest.seeMoreText")}
+                    </p>
                     <div className="w-100 text-center">
                       <img
                         className="img-fluid w-50"
@@ -406,17 +412,6 @@ const ServiceProviderListWrapper = (props) => {
               />
             }
           />
-        </Row>
-        <Row className="justify-content-center">
-          <Col md={4} sm={10}>
-            <div className="my-3 text-center">
-              <FillBtn
-                className="w-100 py-2 px-5"
-                handleOnClick={handleSeeMoreClick}
-                text={t("guest.seeMoreText")}
-              />
-            </div>
-          </Col>
         </Row>
       </CardBody>
     </Card>

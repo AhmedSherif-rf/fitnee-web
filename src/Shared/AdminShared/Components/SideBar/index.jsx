@@ -2,6 +2,7 @@ import React from "react";
 import SubMenu from "./SubMenu";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
 import {
@@ -23,18 +24,18 @@ const SideBar = ({ isOpen, toggle }) => (
     </div>
     <div className="side-menu">
       <Nav vertical className="list-unstyled pb-3">
-        <SubMenu title="Home" icon={<GoHome />} items={submenus[0]} />
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
-            to={"/about"}
+            to={"/admin/dashboard"}
           >
-            <GoPaste />
-            About
+            <RxDashboard />
+            Dashboard
           </NavLink>
         </NavItem>
-        <SubMenu title="Pages" icon={<GoChecklist />} items={submenus[1]} />
+
+        <SubMenu title="Users" icon={<GoChecklist />} items={submenus[1]} />
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
@@ -45,6 +46,17 @@ const SideBar = ({ isOpen, toggle }) => (
             Portfolio
           </NavLink>
         </NavItem>
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/about"}
+          >
+            <GoPaste />
+            About
+          </NavLink>
+        </NavItem>
+
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
@@ -87,12 +99,12 @@ const submenus = [
   ],
   [
     {
-      title: "Page 1",
-      target: "Page-1",
+      title: "Service Provider List",
+      target: "/admin/Users/ServiceProviderList",
     },
     {
-      title: "Page 2",
-      target: "Page-2",
+      title: "Trainee List",
+      target: "/admin/Users/TraineeList",
     },
   ],
 ];

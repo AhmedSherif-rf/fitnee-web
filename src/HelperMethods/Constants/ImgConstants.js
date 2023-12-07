@@ -5,7 +5,6 @@ let Images = {
   VISION_IMG: require("../../Assets/Images/homeScreen/OurVision.png"),
   ABOUT_IMG: require("../../Assets/Images/homeScreen/AboutFitnee.png"),
   DEFAULT_USER_IMG: require("../../Assets/Images/defaultImg.svg").default,
-  BACKGROUND_IMG: require("../../Assets/Images/backgroundImg.svg").default,
   FEATURE_ONE: require("../../Assets/Images/homeScreen/FeatureOneImg.png"),
   FEATURE_TWO: require("../../Assets/Images/homeScreen/FeatureTwoImg.png"),
   FEATURE_THREE: require("../../Assets/Images/homeScreen/FeatureThreeImg.png"),
@@ -44,10 +43,10 @@ let Images = {
       .default,
   //==============================GuestServiceProviderListImgs=================
   PROFILE1_IMG: require("../../Assets/tempImages/profile1.svg").default,
-  PROFILE2_IMG: require("../../Assets/tempImages/profile2.svg").default,
-  PROFILE3_IMG: require("../../Assets/tempImages/profile3.svg").default,
-  PROFILE4_IMG: require("../../Assets/tempImages/profile4.svg").default,
-  PROFILE5_IMG: require("../../Assets/tempImages/profile5.svg").default,
+  PROFILE2_IMG: require("../../Assets/tempImages/profile1.svg").default,
+  PROFILE3_IMG: require("../../Assets/tempImages/profile1.svg").default,
+  PROFILE4_IMG: require("../../Assets/tempImages/profile1.svg").default,
+  PROFILE5_IMG: require("../../Assets/tempImages/profile1.svg").default,
   ARROW_RIGHT_IMG: require("../../Assets/Images/ConstImgs/RightArrow.svg")
     .default,
   SEE_MORE_BG_IMG: require("../../Assets/Images/ConstImgs/SeeMoreBg.svg")

@@ -7,9 +7,9 @@ import { NavItem, NavLink, Nav } from "reactstrap";
 import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
 import {
   GoHome,
-  GoChecklist,
+  GoPersonAdd,
   GoPaste,
-  GoPerson,
+  GoLog,
   GoSortAsc,
   GoTools,
 } from "react-icons/go";
@@ -35,15 +35,15 @@ const SideBar = ({ isOpen, toggle }) => (
           </NavLink>
         </NavItem>
 
-        <SubMenu title="Users" icon={<GoChecklist />} items={submenus[1]} />
+        <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[1]} />
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
-            to={"/pages"}
+            to={"/admin/Reports"}
           >
-            <GoPerson />
-            Portfolio
+            <GoLog />
+            Reports
           </NavLink>
         </NavItem>
         <NavItem>

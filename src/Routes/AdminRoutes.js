@@ -20,4 +20,10 @@ export const adminRoutes = [
     exact: true,
     role: adminRole,
   },
+  {
+    path: "/admin/Reports",
+    component: lazy(() => import("../Pages/AdminPages/Reports")),
+    exact: true,
+    role: adminRole,
+  },
 ];

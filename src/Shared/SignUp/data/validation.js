@@ -1,5 +1,4 @@
 import * as Yup from "yup";
-
 export const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
     .matches(/^[A-Za-z]+$/, "First Name should contain only letters")

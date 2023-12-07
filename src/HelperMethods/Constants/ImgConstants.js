@@ -26,11 +26,11 @@ let Images = {
   // =============================sliderImgs===================================
   MIRROR_IMG: require("../../Assets/Images/homeScreen/sliderImgs/mirror.svg")
     .default,
-  SLIDER3_IMG: require("../../Assets/tempImages/profile5.svg")
+  SLIDER3_IMG: require("../../Assets/tempImages/profile1.svg")
     .default,
-  SLIDER2_IMG: require("../../Assets/tempImages/profile2.svg")
+  SLIDER2_IMG: require("../../Assets/tempImages/profile1.svg")
     .default,
-  SLIDER1_IMG: require("../../Assets/tempImages/profile3.svg")
+  SLIDER1_IMG: require("../../Assets/tempImages/profile1.svg")
     .default,
   //================================loginImgs==================================
   LOGIN_BG_IMG: require("../../Assets/Images/login/loginBgImg.svg").default,

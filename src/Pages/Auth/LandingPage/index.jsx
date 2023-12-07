@@ -137,42 +137,7 @@ const LandingPage = (props) => {
 
   const SwiperCardsData = useCallback(() => {
     return [
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER2_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER3_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER2_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER3_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
+     
       {
         sliderImg: Images.SLIDER2_IMG,
         description: t("landing.swiperText"),

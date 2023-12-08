@@ -83,7 +83,7 @@ const documentsData = [
 ];
 
 const personalData = {
-  infoImg: Images.PROFILE_IMG,
+  infoImg: Images.PROFILE4_IMG,
   infoLogo: Images.SHORTLOGO_IMG,
   infoTitle: "Shane",
   infoRating: 4,

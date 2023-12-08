@@ -41,3 +41,6 @@ export const TRAINEE_ROLE = "Trainee";
 export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
+export const CONTACT_US_URL = "/guest/contactusemail/";
+//=================StatusCodes
+export const SUCCESS_CODES = [200, 201];

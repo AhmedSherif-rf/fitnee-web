@@ -44,7 +44,7 @@ const SignInForm = () => {
       <Row className="justify-content-center text-black-custom align-items-center vh-100">
         {loading === "pending" && <LoadingScreen />}
         <Col lg={7} md={12} sm={10}>
-          <h1 className="text-center mb-5 fs-1 fw-bold">Sign In</h1>
+          <h1 className="text-center mb-5 fs-1 fw-bold"> {t("login.loginText")}</h1>
           <Formik
             initialValues={{ ...INITIAL_VALUES }}
             validationSchema={SIGNIN_SCHEMA}
@@ -68,7 +68,7 @@ const SignInForm = () => {
                 <InputField
                   type="email"
                   name="email"
-                  placeholder={t("signup.emailText")}
+                  placeholder={t("login.emailText")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.email}
@@ -81,7 +81,7 @@ const SignInForm = () => {
                 <InputField
                   type="password"
                   name="password"
-                  placeholder={t("signup.passwordText")}
+                  placeholder={t("login.passwordText")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.password}
@@ -97,16 +97,16 @@ const SignInForm = () => {
                 </p>
 
                 <Link to="/forgotPassword">
-                  <p className="text-end textYellow">Forgot Password?</p>
+                  <p className="text-end textYellow">{t("login.forgotPasswordText")}</p>
                 </Link>
                 <div className="d-flex mb-1">
                   <Checkbox
                     label={
                       <p className="mb-0 fs-6">
-                        Agree on FitNee's{" "}
+                       {t("login.agreeOnFitneeText")}
                         <Link to="/termAndCondition">
                           <span className="textYellow">
-                            terms and conditions
+                           {t("login.forgotPasswordText")}
                           </span>
                         </Link>
                       </p>
@@ -124,19 +124,19 @@ const SignInForm = () => {
                 </p>
                 <FillBtn
                   className="w-100 py-3 mb-3"
-                  text={"Sign In"}
+                  text={t("login.signInText")}
                   disabled={loading === "pending" ? true : false}
                   type={"submit"}
                 />
                 <OutlineBtn
                   className="w-100 py-3"
-                  text={"Cancel"}
+                  text={t("login.cancelText")}
                   handleOnClick={handleCancelClick}
                 />
                 <p className="pt-3 text-center">
-                  New Here?{" "}
+                {t("login.newHereText")}
                   <Link to="/registerAs" className="textYellow">
-                    Create Account
+                  {t("login.createAccountText")}
                   </Link>
                 </p>
               </Form>

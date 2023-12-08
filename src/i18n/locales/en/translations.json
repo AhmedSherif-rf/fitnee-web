@@ -8,6 +8,8 @@
     "trainersText": "Trainers",
     "traineesText": "Trainees",
     "nutritionistsText": "Nutritionists",
+    "exerciseText": "Exercise",
+    "communityFirstText": "Subscribe and then download the app so you can access FitNee Community",
     "embraceAText": "Embrace a",
     "healthierYouText": "healthier you",
     "firstHeroSectionText": "Provide a comprehensive platform to be a one-stop destination for individuals seeking fitness guidance and resources.",
@@ -29,7 +31,8 @@
     "copyrightText": "© Copyright",
     "getStartedText": "Get Started",
     "signUpText": "Sign Up",
-    "signInText": "Sign In"
+    "signInText": "Sign In",
+    "swiperText": "Your training has been transformative! Your guidance, support, and expertise have propelled my fitness journey.  Each session was empowering, and I've achieved more than I thought possible."
   },
   "registerAs": {
     "registerAsText": "Register As",
@@ -69,14 +72,14 @@
     "trainerPaymentText": "Payment History",
     "trainerPackageText": "My Packages",
     "trainerCommentContentText": "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-    "myCurrentTraineeText":"My Current Trainees"
+    "myCurrentTraineeText": "My Current Trainees"
   },
   "paymentHistory": {
     "paymentHistoryTitleText": "Payment History",
     "availableBalanceText": "Available Balance",
     "todayText": "Today",
     "amountReleasedText": "Amount Released",
-    "SARText":"SAR"
+    "SARText": "SAR"
   },
   "trainerPackages": {
     "monthText": "Month",
@@ -87,44 +90,44 @@
   "traineeDashboard": {
     "myCurrentTrainerText": "Month",
     "myCurrentNutritionistText": "My Current Nutritionist",
-    "mySubscriptionHistoryText":"My Subscription History",
+    "mySubscriptionHistoryText": "My Subscription History",
     "myProgressText": "My Progress",
     "allServiceProvidersText": "All Service Providers",
     "subsriptionDetailsText": "Subscription Details",
-    "cancelText":"Cancel",
-    "cancelledText":"Cancelled",
-    "addProgressText":"Add Progress",
-    "viewHistoryText":"View History",
-    "ProteinsText":"Proteins",
-    "bfmText":"BFM",
-    "smmText":"SMM",
-    "weightText":"Weight",
-    "bodyFatMassText":"Body Fat Mass",
-    "skeletalMuscleMassText":"Skeletal Muscle Mass",
-    "addYourProgressText":"Add Your Progress",
-    "saveText":"Save",
-    "dateText":"Date",
-    "viewGraphText":"View Graph"
+    "cancelText": "Cancel",
+    "cancelledText": "Cancelled",
+    "addProgressText": "Add Progress",
+    "viewHistoryText": "View History",
+    "ProteinsText": "Proteins",
+    "bfmText": "BFM",
+    "smmText": "SMM",
+    "weightText": "Weight",
+    "bodyFatMassText": "Body Fat Mass",
+    "skeletalMuscleMassText": "Skeletal Muscle Mass",
+    "addYourProgressText": "Add Your Progress",
+    "saveText": "Save",
+    "dateText": "Date",
+    "viewGraphText": "View Graph"
   },
   "cardDetails": {
     "cardDetailsText": "Card Detail",
     "cardNumberText": "Card number",
     "cardHolderNameText": "Cardholder Name",
     "expiryDateText": "Expiry date",
-    "CVV/CVCText":"CVV/CVC",
-    "promoCodeText":"Promo code",
-    "useFitNeeWalletText":"Use FitNee wallet",
-    "applyText":"Apply",
-    "payText":"Pay",
-    "paymentSummaryText":"Payment Summary",
-    "discountText":"Discount",
-    "fitneeWalletText":"FitNee Wallet",
-    "totalPayText":"Total Pay",
-    "congratulationsText":"Congratulations",
-    "appDownloadDescriptionOneText":"You have subscribed with XXX . XXX, he will review your profile and get back to you shortly, please download FitNee app and enable the notification.",
-     "appDownloadDescriptionTwoText":"Be informed that you have the right to cancel your Subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer or nitration specialist. You can now manage your profile and contact your Trainer/Nutrition by downloading the app",
-     "googleLinkText":"Google Link",
-     "appLinkText":"App Link"
+    "CVV/CVCText": "CVV/CVC",
+    "promoCodeText": "Promo code",
+    "useFitNeeWalletText": "Use FitNee wallet",
+    "applyText": "Apply",
+    "payText": "Pay",
+    "paymentSummaryText": "Payment Summary",
+    "discountText": "Discount",
+    "fitneeWalletText": "FitNee Wallet",
+    "totalPayText": "Total Pay",
+    "congratulationsText": "Congratulations",
+    "appDownloadDescriptionOneText": "You have subscribed with XXX . XXX, he will review your profile and get back to you shortly, please download FitNee app and enable the notification.",
+    "appDownloadDescriptionTwoText": "Be informed that you have the right to cancel your Subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer or nitration specialist. You can now manage your profile and contact your Trainer/Nutrition by downloading the app",
+    "googleLinkText": "Google Link",
+    "appLinkText": "App Link"
   },
 
   "signup": {
@@ -160,8 +163,53 @@
     "areYouCurrentlyWorkingText": "Are you currently working?",
     "yesText": "Yes",
     "noText": "No",
-    "moneyWillTransferText":"The money will be transferred to your STC Pay account, please read the"
+    "moneyWillTransferText": "The money will be transferred to your STC Pay account, please read the"
+  },
+
+  "login": {
+    "loginText": "login",
+    "firstNameText": "First Name",
+    "lastNameText": "Last Name",
+    "emailText": "Type your email",
+    "passwordText": "Type your password",
+    "forgotPasswordText": "Forgot Password",
+    "agreeOnFitneeText": "Agree on FitNee's",
+    "termsAndConditionsText": "terms and conditions",
+    "signInText": "Sign In",
+    "createAccountText": "Create Account",
+    "newHereText": "New Here?",
+    "cancelText": "Cancel",
+    "unlockYourPotentialText": "Unlock your potential",
+    "transformYourBodyText": "transform your body"
+  },
+
+  "validation": {
+    "invalidEmailText": "Invalid email address",
+    "requiredEmailText": "Email is required",
+    "invalidPasswordText": "Password must be at least 8 characters long",
+    "requiredPasswordText": "Password is required",
+    "invalidFirstNameText": "First Name should contain only letters",
+    "requiredFirstNameText": "First Name is Required",
+    "invalidLastNameText": "Last Name should contain only letters",
+    "requiredLastNameText": "Last Name is Required",
+    "invalidFamilyNameText": "Family Name should contain only letters",
+    "requiredFamilyNameText": "Family Name is required",
+    "invalidConfirmPasswordText": "Passwords must match",
+    "requiredConfirmPasswordText": "Confirm Password is required",
+    "requiredGenderText": "Gender is required",
+    "requiredContactText": "Phone Number is required",
+    "requiredYearsOfExperienceText": "Years of experience is required",
+    "requiredBioText": "Bio is required",
+    "requiredDOBText": "Date of Birth is required",
+    "requiredMinimumCertificateText": "At least one certificate is required",
+    "invalidFileCertificateText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
+    "requiredCertificateText": "Certificate is required",
+    "limitCertificateText": "File size exceeds the maximum limit (5 MB).",
+    "requiredText":"Required",
+    "requiredRole": "Role is required",
+    "requiredDayText": "Day is required",
+    "requiredFromDayText": "From Time is required",
+    "requiredToDayText": "To Time is required",
+    "requiredtermAndConditionCheck": "You must accept the terms and conditions." 
   }
 }
-
-

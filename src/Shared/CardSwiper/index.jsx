@@ -17,45 +17,48 @@ const CardSwiper = (props) => {
   const slicedCardsData = cardsData.slice(0, 20);
 
   const swiperConfiguration = {
-    effect: "coverflow",
+    // effect: "coverflow",
     grabCursor: true,
     spaceBetween: 10,
     centeredSlides: true,
     breakpoints: {
       375: {
         slidesPerView: 1,
+        spaceBetween: 20,
       },
       530: {
         slidesPerView: 2,
+        spaceBetween: 10,
       },
       992: {
         slidesPerView: 3,
       },
       1360: {
-        slidesPerView: 4,
+        slidesPerView: 3,
       },
     },
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 10,
-      modifier: 25,
-      slideShadows: true,
-    },
+    // coverflowEffect: {
+    //   rotate: 0,
+    //   stretch: 0,
+    //   depth: 10,
+    //   modifier: 25,
+    //   slideShadows: true,
+    // },
     loop: true,
     autoplay: {
-      delay: 2500,
+      delay: 3000,
       disableOnInteraction: false,
     },
     pagination: {
       clickable: true,
     },
-    modules: [FreeMode, Autoplay, EffectCoverflow, Pagination],
+    // modules: [FreeMode, Autoplay, EffectCoverflow, Pagination],
+    modules: [Autoplay, Pagination],
     className: "mySwiper",
   };
 
   return (
-    <Container fluid>
+    <Container className="px-5">
       <Row className="mb-5">
         <Col>
           <h1 className="text-center fw-bold text-white mt-5"> {heading}</h1>

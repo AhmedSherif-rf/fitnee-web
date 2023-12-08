@@ -1,10 +1,11 @@
 import * as Yup from "yup";
+import TranslationHelper from "../../TranslationHelper";
 
 export const SIGNIN_SCHEMA = Yup.object().shape({
   email: Yup.string()
     .matches(
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-      "Invalid email address"
+      TranslationHelper("validation.invalidEmail")
     )
     .required("Email is required"),
   password: Yup.string()

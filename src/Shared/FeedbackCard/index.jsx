@@ -21,10 +21,14 @@ const RatingCard = (props) => {
         >
           <div className="">
             <p className="fs-3 mb-0">{header}</p>
+           
             <div className={`${styles.descriptionDiv} px-3 pt-1`}>
+            <div className={`${styles.divider} px-3 my-2 `}></div>
+            <small >{des}</small>
+            <br /><br />
               <StarRating />
-              <br /><br />
-              <small>{des}</small>
+              
+             
             </div>
           </div>
         </div>

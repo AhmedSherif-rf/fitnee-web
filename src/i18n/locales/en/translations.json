@@ -205,6 +205,7 @@
     "invalidFileCertificateText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
     "requiredCertificateText": "Certificate is required",
     "limitCertificateText": "File size exceeds the maximum limit (5 MB).",
+    "requiredText":"Required",
     "requiredRole": "Role is required",
     "requiredDayText": "Day is required",
     "requiredFromDayText": "From Time is required",

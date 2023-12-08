@@ -5,13 +5,13 @@ import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
-import { useNavigate, useParams } from "react-router";
 import MultiSelector from "../MultiSelector";
 import { useTranslation } from "react-i18next";
 import { FaDeleteLeft } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
 import { SIGNUP_SCHEMA } from "./data/validation";
 import { INITIAL_VALUES } from "./data/initialValue";
+import { useNavigate, useParams } from "react-router";
 import { ConnectedFocusError } from "focus-formik-error";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
@@ -47,7 +47,7 @@ const SignUpForm = () => {
   return (
     <Container>
       <Formik
-        initialValues={{ ...INITIAL_VALUES }}
+        initialValues={{...INITIAL_VALUES }}
         validationSchema={SIGNUP_SCHEMA}
         validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {

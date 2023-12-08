@@ -5,13 +5,13 @@ import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
-import { useNavigate, useParams } from "react-router";
 import MultiSelector from "../MultiSelector";
 import { useTranslation } from "react-i18next";
 import { FaDeleteLeft } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
 import { SIGNUP_SCHEMA } from "./data/validation";
 import { INITIAL_VALUES } from "./data/initialValue";
+import { useNavigate, useParams } from "react-router";
 import { ConnectedFocusError } from "focus-formik-error";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
@@ -47,8 +47,8 @@ const SignUpForm = () => {
   return (
     <Container>
       <Formik
-        initialValues={{ ...INITIAL_VALUES }}
-        // validationSchema={SIGNUP_SCHEMA}
+        initialValues={{...INITIAL_VALUES }}
+        validationSchema={SIGNUP_SCHEMA}
         validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
@@ -134,7 +134,7 @@ const SignUpForm = () => {
               </Col>
             </Row>
 
-            <Row> 
+            <Row>
               <Col md={12}>
                 <h6 className="fw-bold">Your information</h6>
               </Col>
@@ -175,7 +175,7 @@ const SignUpForm = () => {
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
                   *
-                </div>{" "}
+                </div>
                 <InputField
                   className="form-control-lg  py-3 px-4"
                   type="text"
@@ -192,7 +192,7 @@ const SignUpForm = () => {
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
                   *
-                </div>{" "}
+                </div>
                 <InputField
                   className="form-control-lg  py-3 px-4"
                   type="password"
@@ -234,7 +234,7 @@ const SignUpForm = () => {
                     name: "phoneNumber",
                     required: true,
                     className:
-                      "form-control-lg w-100 py-3 px-4 customPhoneInput",
+                      "form-control-lg w-100 py-3 px-4 customPhoneInput border",
                   }}
                   defaultCountry={"ae"}
                   value={values.phoneNumber}
@@ -342,7 +342,7 @@ const SignUpForm = () => {
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
                   *
-                </div>{" "}
+                </div>
                 <InputField
                   className="form-control-lg  py-3 px-4"
                   type="number"
@@ -359,9 +359,9 @@ const SignUpForm = () => {
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
                   *
-                </div>{" "}
+                </div>
                 <MyDropdown
-                  className=" py-3 px-4 mb-0"
+                  className="border py-3 px-4 mb-0"
                   Options={roleOptions}
                   name={"role"}
                   onChangeHandle={handleChange}
@@ -572,7 +572,7 @@ const SignUpForm = () => {
                 <Row className="training">
                   <Col md={12} className="mb-2">
                     <MyDropdown
-                      className=" shadow-0 py-3 px-4"
+                      className=" shadow-0 py-3 px-4 border"
                       Options={trainingGoalOptions}
                       name={"trainingGoal"}
                       onChangeHandle={handleChange}
@@ -592,7 +592,7 @@ const SignUpForm = () => {
                 <Row className="activity">
                   <Col md={12} className="mb-2">
                     <MyDropdown
-                      className=" shadow-0 py-3 px-4"
+                      className=" shadow-0 py-3 px-4 border"
                       Options={activityLevelOptions}
                       name={"activityLevel"}
                       onChangeHandle={handleChange}
@@ -654,7 +654,7 @@ const SignUpForm = () => {
                     name: "stcPhoneNumber",
                     required: true,
                     className:
-                      "form-control-lg w-100  py-3 px-4 customPhoneInput",
+                      "form-control-lg w-100  py-3 px-4 customPhoneInput border",
                   }}
                   defaultCountry={"ae"}
                   value={values.stcPhoneNumber}
@@ -684,7 +684,7 @@ const SignUpForm = () => {
                             <Field
                               as="select"
                               name={`daySchedules.${index}.day`}
-                              className="customDropDown form-control-lg w-100 selectField BorderRadius border-0 px-4"
+                              className="customDropDown form-control-lg w-100 selectField BorderRadius border px-4"
                               style={{
                                 paddingTop: "12px",
                                 paddingBottom: "12px",
@@ -697,7 +697,7 @@ const SignUpForm = () => {
                               />
                               {weekDaysOptions?.map((option, index) => (
                                 <option
-                                  className="customDropDownOption"
+                                  className="customDropDownOption border"
                                   value={option.value}
                                   key={index}
                                   label={option.label}
@@ -710,11 +710,11 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={3}  className="mb-2">
+                          <Col md={3} className="mb-2">
                             <Field
                               name={`daySchedules.${index}.fromTime`}
                               type="time"
-                              className="customDropdownRadius form-control select-field py-3 px-4"
+                              className="customDropdownRadius form-control select-field py-3 px-4 border"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.fromTime`}
@@ -722,11 +722,11 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={3}  className="mb-2">
+                          <Col md={3} className="mb-2">
                             <Field
                               name={`daySchedules.${index}.toTime`}
                               type="time"
-                              className="customDropdownRadius form-control select-field py-3 px-4"
+                              className="customDropdownRadius form-control select-field py-3 px-4 border"
                             />
                             <ErrorMessage
                               name={`daySchedules.${index}.toTime`}
@@ -734,7 +734,7 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={1}  className="mb-2">
+                          <Col md={1} className="mb-2">
                             <div className="d-flex align-items-center justify-content-end h-100">
                               <FaDeleteLeft
                                 className="cursorPointer"
@@ -766,9 +766,9 @@ const SignUpForm = () => {
             <Row className="mb-3">
               <h6 className="mb-2 fw-bold">Are you currently working? *</h6>
               <Col md={6} className="mb-2">
-                <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2 ">
+                <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
                   <div
-                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg customDropdownRadius w-100  bg-white ${
+                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg border customDropdownRadius w-100  bg-white ${
                       values.currentlyWorking === "yes" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "yes")}
@@ -776,7 +776,7 @@ const SignUpForm = () => {
                     <h6 className="mb-0 font14">Yes</h6>
                   </div>
                   <div
-                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg customDropdownRadius w-100  bg-white ${
+                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg border customDropdownRadius w-100  bg-white ${
                       values.currentlyWorking === "no" ? "selected" : ""
                     }`}
                     onClick={() => setFieldValue("currentlyWorking", "no")}
@@ -819,7 +819,7 @@ const SignUpForm = () => {
 
             <Row className="pb-5">
               <Col md={12}>
-                <FillBtn text="Next" className="w-100 py-2" />
+                <FillBtn type={"submit"} text="Next" className="w-100 py-2" />
               </Col>
             </Row>
           </form>

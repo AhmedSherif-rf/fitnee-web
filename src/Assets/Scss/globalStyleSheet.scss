@@ -135,7 +135,7 @@ select,
     }
   }
   .flag-dropdown {
-    border: transparent 1px solid !important;
+    background-color:$content-bg !important;
     border-top-left-radius: 14px !important;
     border-bottom-left-radius: 14px !important;
     .selected-flag {

@@ -12,7 +12,6 @@ const AdminLayout = (props) => {
       <div className="App wrapper">
         <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
         <Content
-        
           children={props.children}
           toggleSidebar={toggleSidebar}
           sidebarIsOpen={sidebarIsOpen}

@@ -58,12 +58,13 @@ const documentMedia = [
 
 const infoData = [
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
     Height: "25",
+    TraineeEmail: "shane@gmail.com",
   },
 ];
 
@@ -98,6 +99,7 @@ const Dashboard = () => {
                   infoImg={item.infoImg}
                   infoDes={item.infoDes}
                   CardHeight={item.Height}
+                  TraineeEmail={item.TraineeEmail}
                 />
               );
             })}
@@ -134,7 +136,6 @@ const Dashboard = () => {
                 </div>
                 <div>
                   <FillBtn
-                    handleOnClick={handleCurrentSubscribersClick}
                     className="w-100"
                     text="Edit"
                   />

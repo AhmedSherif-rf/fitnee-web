@@ -17,7 +17,7 @@ export function PrivateRoute({ Component, role, props }) {
     // if (role?.indexOf(roleId) > -1) {
     return <Component {...props} />;
     // } else {
-    //   <Redirect to={getIntialURL(roleId)} />;
+      // <Redirect to={getIntialURL(roleId)} />;
     // return <Redirect to={getIntialURL(roleId)} />;
     // }
   // }

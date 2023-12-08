@@ -1,4 +1,5 @@
 import { Formik } from "formik";
+import Toaster from "../Toaster";
 import Checkbox from "../Checkbox";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
@@ -27,7 +28,11 @@ const SignInForm = () => {
       requestData: JSON.stringify(values),
       navigate,
     };
-    dispatch(login(data));
+    dispatch(login(data)).then((res) => {
+      if (res.type === "login/fulfilled") {
+        Toaster.success("Logged in successfully");
+      }
+    });
   };
 
   const handleCancelClick = useCallback(() => {
@@ -47,12 +52,6 @@ const SignInForm = () => {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               handleLoginSubmit(values);
-              // console.log(values);
-              // setTimeout(() => {
-              //   alert(JSON.stringify(values));
-              //   setSubmitting(false);
-              //   // navigate("/verifyOtp");
-              // }, 400);
             }}
           >
             {({
@@ -86,7 +85,9 @@ const SignInForm = () => {
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.password}
-                  icon={<img src={Images.PASSWORD_ICON_IMG}  />}
+                  icon={
+                    <img src={Images.PASSWORD_ICON_IMG} alt="password-icon" />
+                  }
                   className={
                     "form-control-lg BorderRadiusInput py-3 px-5 mb-1 mt-3"
                   }
@@ -125,6 +126,7 @@ const SignInForm = () => {
                   className="w-100 py-3 mb-3"
                   text={"Sign In"}
                   disabled={loading === "pending" ? true : false}
+                  type={"submit"}
                 />
                 <OutlineBtn
                   className="w-100 py-3"

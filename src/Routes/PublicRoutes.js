@@ -22,15 +22,15 @@ export function PublicRoute({ Component, props }) {
     // }
   }, [dispatch, isGuest, navigate, props.role, user]);
 
-  const token = null;
-  if (token) {
+  // const token = null;
+  // if (token) {
     //   const roleId = userDetail.user.RoleId;
     //   return (
     //     <Redirect
     //       to={getIntialURL(roleId)}
     //     />
     //   );
-  } else {
+  // } else {
     return <Component {...props} />;
-  }
+  // }
 }

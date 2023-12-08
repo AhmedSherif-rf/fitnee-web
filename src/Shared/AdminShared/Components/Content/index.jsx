@@ -10,10 +10,10 @@ const Content = ({ children, sidebarIsOpen, toggleSidebar }) => (
   className={`${styles.containerAfter} ${classNames("content", { "is-open": sidebarIsOpen })}`}
 >
     
-    <Row className="position-absolute pe-md-3 ps-md-1" style={{zIndex:"2"}}>
+    <Row className="position-absolute px-2 w-100" style={{zIndex:"2"}}>
       <Col md="12">
         <Topbar toggleSidebar={toggleSidebar} />
-        <Card className="border-0 BorderRadius h-75 py-3">{children}</Card>
+        <Card className="border-0 BorderRadius h-100 py-3">{children}</Card>
       </Col>
     </Row>
    

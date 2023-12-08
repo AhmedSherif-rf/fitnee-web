@@ -35,7 +35,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -43,7 +43,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -51,7 +51,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -59,7 +59,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -67,7 +67,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -75,7 +75,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -83,7 +83,7 @@ const NutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
 ];
 
@@ -94,7 +94,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -102,7 +102,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -110,7 +110,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -118,7 +118,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -126,7 +126,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -134,7 +134,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
   {
     infoImg: Images.PROFILE4_IMG,
@@ -142,7 +142,7 @@ const TrainerAndNutritionistData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "30",
+    Height: "38",
   },
 ];
 

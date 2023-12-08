@@ -20,6 +20,8 @@ export const trainingGoalOptions = [
 ];
 export const activityLevelOptions = ["Beginner", "Intermediate", "Advanced"];
 export const roleOptions = ["Trainer", "Nutrition", "Trainer & Nutrition"];
+export const exerciseLevel = ["Beginner", "Expert"];
+export const category = ["Chest", "Traps","Shoulder","Biceps","Forearms","Obliques","Abdominal","Quads","Calves"];
 export const specialityOptions = [
   { value: "Body Building", label: "Body Building" },
   { value: "Health Issue", label: "Health Issue" },

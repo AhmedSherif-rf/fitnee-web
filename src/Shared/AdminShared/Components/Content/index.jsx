@@ -13,7 +13,7 @@ const Content = ({ children, sidebarIsOpen, toggleSidebar }) => (
     <Row className="position-absolute px-2 w-100" style={{zIndex:"2"}}>
       <Col md="12">
         <Topbar toggleSidebar={toggleSidebar} />
-        <Card className="border-0 BorderRadius h-100 py-3">{children}</Card>
+        <Card className="border border-danger BorderRadius mb-3 p-3">{children}</Card>
       </Col>
     </Row>
    

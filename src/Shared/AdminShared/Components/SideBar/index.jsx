@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
+import { MdOutlineSportsGymnastics } from "react-icons/md";
 import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
 import {
   GoHome,
@@ -36,11 +37,12 @@ const SideBar = ({ isOpen, toggle }) => (
         </NavItem>
 
         <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[1]} />
+        <SubMenu title="Exercises" icon={<MdOutlineSportsGymnastics />} items={submenus[2]} />
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
-            to={"/admin/Reports"}
+            to={"/admin/reports"}
           >
             <GoLog />
             Reports
@@ -50,7 +52,7 @@ const SideBar = ({ isOpen, toggle }) => (
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
-            to={"/admin/Feedback"}
+            to={"/admin/feedback"}
           >
             <GoPaste />
             Feedback
@@ -100,11 +102,21 @@ const submenus = [
   [
     {
       title: "Service Provider List",
-      target: "/admin/Users/ServiceProviderList",
+      target: "/admin/users/serviceProviderList",
     },
     {
       title: "Trainee List",
-      target: "/admin/Users/TraineeList",
+      target: "/admin/users/traineeList",
+    },
+  ],
+  [
+    {
+      title: "Add Exercises",
+      target: "/admin/exercises/addExercises",
+    },
+    {
+      title: "View Exercises",
+      target: "/admin/exercises/viewExercises",
     },
   ],
 ];

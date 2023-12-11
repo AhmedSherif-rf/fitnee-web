@@ -1,22 +1,27 @@
 import React from "react";
 import Topbar from "../TopBar";
-import styles from "./style.module.scss";
 import classNames from "classnames";
+import styles from "./style.module.scss";
 import { Container, Card, Row, Col } from "reactstrap";
 
 const Content = ({ children, sidebarIsOpen, toggleSidebar }) => (
-<Container
-  fluid
-  className={`${styles.containerAfter} ${classNames("content", { "is-open": sidebarIsOpen })}`}
->
-    
-    <Row className="position-absolute px-2 w-100" style={{zIndex:"2"}}>
+  <Container
+    fluid
+    className={`${styles.containerAfter} ${classNames("content", {
+      "is-open": sidebarIsOpen,
+    })}`}
+  >
+    <Row className="position-absolute px-2 w-100" style={{ zIndex: "2" }}>
       <Col md="12">
         <Topbar toggleSidebar={toggleSidebar} />
-        <Card className="border border-danger BorderRadius mb-3 p-3">{children}</Card>
+        <Card
+          className="BorderRadius mb-3 p-3 overflow-scroll"
+          style={{ height: "  80vh" }}
+        >
+          {children}
+        </Card>
       </Col>
     </Row>
-   
   </Container>
 );
 

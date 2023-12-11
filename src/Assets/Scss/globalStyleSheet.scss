@@ -113,7 +113,6 @@ Input::-webkit-input-placeholder {
 
 .react-tel-input,
 .genderBtn,
-select,
 .form-control,
 .form-control-lg {
   &:focus,
@@ -135,7 +134,7 @@ select,
     }
   }
   .flag-dropdown {
-    background-color:$content-bg !important;
+    background-color: $content-bg !important;
     border-top-left-radius: 14px !important;
     border-bottom-left-radius: 14px !important;
     .selected-flag {
@@ -199,17 +198,6 @@ select,
   box-shadow: none !important;
 }
 
-.customDropDownOption {
-  font-size: $font-14 !important;
-  &:checked {
-    background-color: $yellow !important;
-  }
-}
-
-.customDropDown .customDropDownOption:active {
-  background-color: $yellow !important;
-}
-
 .CameraImg {
   position: absolute;
   width: 40px;
@@ -270,7 +258,6 @@ select,
     border: 2px solid $parrot-green !important ;
   }
 }
-
 .selectField {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
@@ -286,6 +273,7 @@ select,
 
 ::-webkit-scrollbar {
   width: 5px;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {

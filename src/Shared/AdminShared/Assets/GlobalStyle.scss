@@ -89,7 +89,7 @@
   .GoPencil,
   .GoTrash,
   .GoEye {
-    color:$dark-gray;
+    color: $dark-gray;
   }
   &:hover {
     border: 1px solid transparent;
@@ -106,7 +106,7 @@
       color: $orange !important;
     }
     .GoEye {
-      color:$yellow !important;
+      color: $yellow !important;
     }
   }
 }

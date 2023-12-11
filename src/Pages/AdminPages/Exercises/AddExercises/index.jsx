@@ -2,10 +2,11 @@ import React from "react";
 import { Col, Row } from "reactstrap";
 import InputField from "../../../../Shared/InputField";
 import MyDropdown from "../../../../Shared/MyDropdown";
-import { exerciseLevel, category } from "../../../../utils/constants";
-import PageHeading from "../../../../Shared/Headings/PageHeading";
 import FillBtn from "../../../../Shared/Buttons/FillBtn";
 import OutlineBtn from "../../../../Shared/Buttons/OutlineBtn";
+import PageHeading from "../../../../Shared/Headings/PageHeading";
+import { exerciseLevel, category } from "../../../../utils/constants";
+import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
 const ContactUs = (props) => {
   return (
@@ -38,7 +39,7 @@ const ContactUs = (props) => {
         </Col>
         <Col md="6" className="mb-2">
           <MyDropdown
-            className="border py-3 px-4 mb-0"
+            className="border border-danger py-2 px-4 mb-0"
             Options={category}
             name={"role"}
             // onChangeHandle={handleChange}
@@ -48,7 +49,7 @@ const ContactUs = (props) => {
         </Col>
         <Col md="6" className="mb-2">
           <MyDropdown
-            className="border py-3 px-4 mb-0"
+            className="border py-2 px-4 mb-0"
             Options={exerciseLevel}
             name={"role"}
             // onChangeHandle={handleChange}
@@ -88,33 +89,50 @@ const ContactUs = (props) => {
           </div>
         </Col>
         <Col md="6" className="mb-4">
-          <label htmlFor="" className="fw-bold w-100 text-start">
-            Add Primary Muscle
-          </label>
-
-          <InputField
-            className="form-control-lg  px-4"
-            type="file"
-            placeholder="Add Details"
-            name="details"
-            // onChangeHandle={handleChange}
-            // onBlurHandle={handleBlur}
-            // value={values.bio}
-          />
+          <div className="">
+            <label htmlFor="" className="fw-bold w-100 text-start">
+              Add Secondary Muscle
+            </label>
+            <InputField
+              className="form-control-lg  px-4 mb-3"
+              type="file"
+              placeholder="Add Details"
+              name="details"
+              // onChangeHandle={handleChange}
+              // onBlurHandle={handleBlur}
+              // value={values.bio}
+            />
+            <div
+              className="bgProperties BorderRadius"
+              style={{
+                backgroundImage: `url(${Images.PROFILE2_IMG})`,
+                minHeight: "300px",
+              }}
+            ></div>
+          </div>
         </Col>
         <Col md="6" className="mb-4">
-          <label htmlFor="" className="fw-bold w-100 text-start">
-            Add Secondary Muscle
-          </label>
-          <InputField
-            className="form-control-lg  px-4"
-            type="file"
-            placeholder="Add Details"
-            name="details"
-            // onChangeHandle={handleChange}
-            // onBlurHandle={handleBlur}
-            // value={values.bio}
-          />
+          <div className="">
+            <label htmlFor="" className="fw-bold w-100 text-start">
+              Add Secondary Muscle
+            </label>
+            <InputField
+              className="form-control-lg  px-4 mb-3"
+              type="file"
+              placeholder="Add Details"
+              name="details"
+              // onChangeHandle={handleChange}
+              // onBlurHandle={handleBlur}
+              // value={values.bio}
+            />
+            <div
+              className="bgProperties BorderRadius"
+              style={{
+                backgroundImage: `url(${Images.PROFILE2_IMG})`,
+                minHeight: "300px",
+              }}
+            ></div>
+          </div>
         </Col>
 
         <Col md="6" className="mb-2">

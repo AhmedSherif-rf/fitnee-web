@@ -180,7 +180,7 @@
   },
 
   "login": {
-    "loginText": "login",
+    "loginText": "Sign In",
     "firstNameText": "First Name",
     "lastNameText": "Last Name",
     "emailText": "Type your email",

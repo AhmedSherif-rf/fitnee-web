@@ -3,12 +3,7 @@ import React, { memo } from "react";
 import RatingCard from "../FeedbackCard";
 import { Container, Row, Col } from "reactstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Autoplay,
-  FreeMode,
-  Pagination,
-  EffectCoverflow,
-} from "swiper/modules";
+import { Autoplay, Pagination, EffectCoverflow } from "swiper/modules";
 
 const CardSwiper = (props) => {
   const { data: cardsData, heading } = props;

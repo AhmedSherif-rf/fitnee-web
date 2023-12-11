@@ -137,131 +137,63 @@ const LandingPage = (props) => {
 
   const SwiperCardsData = useCallback(() => {
     return [
+     
       {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
+        sliderImg: Images.SLIDER2_IMG,
+        description: t("landing.swiperText"),
 
         title: "Zorawar",
       },
       {
         sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
+        description: t("landing.swiperText"),
+
+        title: "Zorawar",
+      },
+      {
+        sliderImg: Images.SLIDER3_IMG,
+        description: t("landing.swiperText"),
 
         title: "Zorawar",
       },
       {
         sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
+        description: t("landing.swiperText"),
 
         title: "Zorawar",
       },
       {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
+        sliderImg: Images.SLIDER2_IMG,
+        description: t("landing.swiperText"),
 
         title: "Zorawar",
       },
       {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
+        sliderImg: Images.SLIDER3_IMG,
+        description: t("landing.swiperText"),
 
         title: "Zorawar",
       },
       {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
+        sliderImg: Images.SLIDER2_IMG,
+        description: t("landing.swiperText"),
         title: "Zorawar",
       },
       {
         sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
+        description: t("landing.swiperText"),
 
         title: "Zorawar",
       },
       {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
+        sliderImg: Images.SLIDER3_IMG,
+        description: t("landing.swiperText"),
 
         title: "Zorawar",
       },
       {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
+        sliderImg: Images.SLIDER2_IMG,
+        description: t("landing.swiperText"),
 
         title: "Zorawar",
       },

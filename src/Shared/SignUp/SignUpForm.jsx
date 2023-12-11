@@ -5,13 +5,13 @@ import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
-import { useNavigate, useParams } from "react-router";
 import MultiSelector from "../MultiSelector";
 import { useTranslation } from "react-i18next";
 import { FaDeleteLeft } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
 import { SIGNUP_SCHEMA } from "./data/validation";
 import { INITIAL_VALUES } from "./data/initialValue";
+import { useNavigate, useParams } from "react-router";
 import { ConnectedFocusError } from "focus-formik-error";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
@@ -47,8 +47,8 @@ const SignUpForm = () => {
   return (
     <Container>
       <Formik
-        initialValues={{ ...INITIAL_VALUES }}
-        // validationSchema={SIGNUP_SCHEMA}
+        initialValues={{...INITIAL_VALUES }}
+        validationSchema={SIGNUP_SCHEMA}
         validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
@@ -134,7 +134,7 @@ const SignUpForm = () => {
               </Col>
             </Row>
 
-            <Row> 
+            <Row>
               <Col md={12}>
                 <h6 className="fw-bold">Your information</h6>
               </Col>
@@ -710,7 +710,7 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={3}  className="mb-2">
+                          <Col md={3} className="mb-2">
                             <Field
                               name={`daySchedules.${index}.fromTime`}
                               type="time"
@@ -722,7 +722,7 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={3}  className="mb-2">
+                          <Col md={3} className="mb-2">
                             <Field
                               name={`daySchedules.${index}.toTime`}
                               type="time"
@@ -734,7 +734,7 @@ const SignUpForm = () => {
                               className="errorField"
                             />
                           </Col>
-                          <Col md={1}  className="mb-2">
+                          <Col md={1} className="mb-2">
                             <div className="d-flex align-items-center justify-content-end h-100">
                               <FaDeleteLeft
                                 className="cursorPointer"
@@ -819,7 +819,7 @@ const SignUpForm = () => {
 
             <Row className="pb-5">
               <Col md={12}>
-                <FillBtn text="Next" className="w-100 py-2" />
+                <FillBtn type={"submit"} text="Next" className="w-100 py-2" />
               </Col>
             </Row>
           </form>

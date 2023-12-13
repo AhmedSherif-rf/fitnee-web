@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 
 const TermAndCondition = () => {
+  const { t } = useTranslation("");
   return (
     <Container>
       <Row className="justify-content-center">
         <Col md={10}>
-          <h1 className="text-center my-4 f-w-bold ">Terms and Conditions</h1>
+          <h1 className="text-center my-4 f-w-bold ">{t("termAndCondition.termAndConditionHeadingText")}</h1>
           <p align="justify">
             Welcome to FitNee These terms and conditions outline the rules and
             regulations for the use of Company Name's Website, located at
@@ -62,7 +64,7 @@ const TermAndCondition = () => {
           <Row className="justify-content-center mb-3">
             <Col md={4}>
               <Link to="/">
-                <OutlineBtn className="w-100 py-3" text={"Done"} />
+                <OutlineBtn className="w-100 py-3" text={t("termAndCondition.doneText")} />
               </Link>
             </Col>
           </Row>

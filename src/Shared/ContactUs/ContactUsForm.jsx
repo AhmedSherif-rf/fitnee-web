@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import OutlineBtn from "../Buttons/OutlineBtn";
+import { useTranslation } from "react-i18next";
 import PhoneInputField from "../PhoneInputField";
 import { INITIAL_VALUES } from "./data/initialValue";
 import { CONTACT_US_SCHEMA } from "./data/validation";
@@ -20,7 +21,7 @@ const ContactUsForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state?.contactUs);
-
+  const { t } = useTranslation("");
   const [showContactUsConfirmModal, setShowContactUsConfirmModal] = useState(
     false
   );
@@ -51,7 +52,7 @@ const ContactUsForm = () => {
       <Row className="justify-content-center align-items-center vh-100">
         {loading === "pending" && <LoadingScreen />}
         <Col lg={7} md={12} sm={10}>
-          <h1 className="text-center mb-5 f-w-bold ">Contact Us</h1>
+          <h1 className="text-center mb-5 f-w-bold ">{t("contactUs.contactUsText")}</h1>
           <Formik
             initialValues={{ ...INITIAL_VALUES }}
             validationSchema={CONTACT_US_SCHEMA}
@@ -77,7 +78,7 @@ const ContactUsForm = () => {
                       className="py-3 px-5"
                       type="text"
                       name="first_name"
-                      placeholder="First name"
+                      placeholder={t("contactUs.firstNameText")}
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.first_name}
@@ -93,7 +94,7 @@ const ContactUsForm = () => {
                     <InputField
                       className="py-3 px-5"
                       type="text"
-                      placeholder="Last name"
+                      placeholder={t("contactUs.lastNameText")}
                       name="last_name"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -110,7 +111,7 @@ const ContactUsForm = () => {
                     <InputField
                       type="text"
                       name="email"
-                      placeholder="Email"
+                      placeholder={t("contactUs.EmailOnlyText")}
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.email}
@@ -141,7 +142,7 @@ const ContactUsForm = () => {
                     <InputField
                       type="textarea"
                       name="message"
-                      placeholder="Describe your issue"
+                      placeholder={t("contactUs.describeIssueText")}
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.message}
@@ -155,7 +156,7 @@ const ContactUsForm = () => {
                   <Col md={12} className="mb-2 mt-3">
                     <FillBtn
                       className="w-100 py-3"
-                      text={"Send"}
+                      text={t("contactUs.sendText")}
                       disabled={loading === "pending" ? true : false}
                       type={"submit"}
                     />
@@ -164,7 +165,7 @@ const ContactUsForm = () => {
                     <OutlineBtn
                       className="w-100 py-3"
                       handleOnClick={handleCancelClick}
-                      text="Cancel"
+                      text={t("contactUs.cancelText")}
                     />
                   </Col>
 
@@ -173,7 +174,7 @@ const ContactUsForm = () => {
                     TOneClassName={"mb-3 text-center"}
                     isOpen={showContactUsConfirmModal}
                     onClose={handleContactUsConfirmModalClose}
-                    ModalTextOne="Your email has been sent. Our representative will reach out to you within 72 hours."
+                    ModalTextOne={t("contactUs.modalOneText")}
                     ButtonThree={
                       <FillBtn
                         className="w-50"

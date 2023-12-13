@@ -93,7 +93,7 @@ const HomeBanner = () => {
           <Card className={`${styles.figureCards}`}>
             <CardBody className={`text-center`}>
               <GiWeightLiftingUp className="text-white display-5" />
-              <br />
+              <br/>
               <CounterUp start={0} end={500} duration={5} />
               <p className={`fs-5 text-white mb-0`}>
                 {t("landing.trainersText")}

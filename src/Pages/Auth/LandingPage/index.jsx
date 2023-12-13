@@ -11,6 +11,7 @@ import { Col, Container, Row } from "reactstrap";
 import CounterUp from "../../../Shared/CounterUp/";
 import CardSwiper from "../../../Shared/CardSwiper";
 import { useInView } from "react-intersection-observer";
+import FeatureSectionSlider from "../../../Shared/FeatureSectionSlider";
 import { GiWeightLiftingUp, GiBodyBalance } from "react-icons/gi";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
@@ -137,7 +138,6 @@ const LandingPage = (props) => {
 
   const SwiperCardsData = useCallback(() => {
     return [
-     
       {
         sliderImg: Images.SLIDER2_IMG,
         description: t("landing.swiperText"),
@@ -205,83 +205,6 @@ const LandingPage = (props) => {
       <section id="bannerSection" style={{ direction: i18n.dir() }}>
         <HomeBanner />
       </section>
-
-      {/* <section
-        id="counterSection"
-        className="vh-100"
-        style={{ direction: i18n.dir() }}
-      >
-        <Container fluid>
-          <Row className={`vh-100 bgProperties ${styles.bannerImg}`}>
-            <Col md={4}>
-              <div
-                className="d-flex align-items-center justify-content-center w-100 h-100"
-                style={{ bottom: 0, right: 0 }}
-              >
-                <motion.div
-                  ref={ref}
-                  initial="hidden"
-                  whileHover={{ scale: 1.2 }}
-                  animate={inView ? "visible" : "hidden"}
-                  variants={animationVariants}
-                  className="text-center"
-                >
-                  <GiWeightLiftingUp className="text-white display-2" />
-                  <br />
-                  <CounterUp start={0} end={500} duration={5}  />
-                  <p className={`fs-5 text-white`}>
-                    {t("landing.trainersText")}
-                  </p>
-                </motion.div>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div
-                className="d-flex align-items-center justify-content-center w-100 h-100"
-                style={{ bottom: 0, right: 0 }}
-              >
-                <motion.div
-                  ref={ref}
-                  initial="hidden"
-                  whileHover={{ scale: 1.2 }}
-                  animate={inView ? "visible" : "hidden"}
-                  variants={animationVariants}
-                  className="text-center"
-                >
-                  <GiBodyBalance className="text-white display-2" />
-                  <br />
-                  <CounterUp start={0} end={1000} duration={7} />
-                  <p className="text-white fs-5">
-                    {t("landing.traineesText")}
-                  </p>
-                </motion.div>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div
-                className="d-flex align-items-center justify-content-center w-100 h-100"
-                style={{ bottom: 0, right: 0 }}
-              >
-                <motion.div
-                  ref={ref}
-                  initial="hidden"
-                  whileHover={{ scale: 1.2 }}
-                  animate={inView ? "visible" : "hidden"}
-                  variants={animationVariants}
-                  className="text-center"
-                >
-                  <FaNutritionix className="text-white display-2" />
-                  <br />
-                  <CounterUp start={0} end={2000} duration={9} />
-                  <p className="text-white fs-5">
-                    {t("landing.nutritionistsText")}
-                  </p>
-                </motion.div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section> */}
 
       <section
         id="fitneeSection"

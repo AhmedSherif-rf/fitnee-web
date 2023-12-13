@@ -90,7 +90,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       setShowTopBar(true);
     }
   }, [location.pathname, isAuth, isPublic]);
-
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
   const [isSliding, setIsSliding] = useState(false);
   const [showNavItems, setShowNavItems] = useState(true);
@@ -171,6 +171,14 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     setShowSubscriptionInformationModal(true);
   }, []);
 
+  const handleMouseEnter = () => {
+    setIsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDropdownOpen(false);
+  };
+
   return (
     <>
       {showTopBar && (
@@ -213,7 +221,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       </Link>
                     </NavItem>
                     <NavItem>
-                      <UncontrolledDropdown>
+                      <UncontrolledDropdown
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        isOpen={isDropdownOpen}
+                      >
                         <DropdownToggle
                           className={`${styles.navLink} ${textClass} nav-link bg-transparent border-0 p-0 mb-0 mt-2`}
                         >
@@ -221,13 +233,21 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             {t("landing.servicesText")}
                           </span>
                         </DropdownToggle>
-                        <DropdownMenu style={{ right: 0, left: "auto" }}>
+                        <DropdownMenu
+                          style={{
+                            right: 0,
+                            left: 'auto',
+                            opacity: isDropdownOpen ? 1 : 0,
+                          }}
+                        >
                           <DropdownItem>
                             <Link
                               className="w-100 d-flex align-items-center"
                               to="/guest/serviceProviderList/trainer"
                             >
-                              <p className="text-black-custom mb-0">{t("landing.trainersText")}</p>
+                              <p className="text-black-custom mb-0">
+                                {t("landing.trainersText")}
+                              </p>
                             </Link>
                           </DropdownItem>
 
@@ -237,7 +257,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               to="/guest/serviceProviderList/nutritionist"
                             >
                               <p className="text-black-custom mb-0">
-                              {t("landing.nutritionistsText")}
+                                {t("landing.nutritionistsText")}
                               </p>
                             </Link>
                           </DropdownItem>
@@ -248,7 +268,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               to="/guest/services"
                             >
                               <p className="text-black-custom mb-0">
-                              {t("landing.exerciseText")}
+                                {t("landing.exerciseText")}
                               </p>
                             </Link>
                           </DropdownItem>
@@ -579,7 +599,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         className={"p-4"}
         isOpen={showSubscriptionInformationModal}
         onClose={handleSubscriptionInformationModalClose}
-        ModalTextOne= {t("landing.communityFirstText")}
+        ModalTextOne={t("landing.communityFirstText")}
         ButtonOne={
           <FillBtn
             text={t("guest.subscribeText")}

@@ -88,7 +88,7 @@ const personalData = {
   infoTitle: "Shane",
   infoRating: 4,
   infoDes: "2 Years",
-  Height: "25",
+  Height: "38",
 };
 
 const ServiceProviderProfileWrapper = (props) => {
@@ -134,7 +134,7 @@ const ServiceProviderProfileWrapper = (props) => {
         <Col lg={9} md={8}>
           <Card className="BorderRadius border-0 text-black-custom">
             <CardBody>
-              <h5 className="fw-bold my-2">{t("guest.meetText")} Shane</h5>
+              <h3 className="fw-bold my-2">{t("guest.meetText")} Shane</h3>
               <p className="small">
                 {" "}
                 Experienced fitness pro. With a degree in Exercise Science and
@@ -181,7 +181,7 @@ const ServiceProviderProfileWrapper = (props) => {
                       <Badge
                         key={index}
                         color="custom"
-                        className="me-2 mb-2 text-black-custom custom-badge px-3 text-center"
+                        className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
                       >
                         {item}
                       </Badge>
@@ -190,16 +190,27 @@ const ServiceProviderProfileWrapper = (props) => {
                 </Col>
               </Row>
               <Row>
-                <h5 className="fw-bold mt-3 text-black-custom">Comments</h5>
-                {commentsData.map((item) => {
-                  return (
-                    <CommentCard
-                      commentTitle={item.commentTitle}
-                      commentImg={item.imgSrc}
-                      commentContent={item.commentContent}
+                <Col md={12}>
+                  <h5 className="fw-bold mt-3 text-black-custom">Comments</h5>
+                  {commentsData.map((item) => {
+                    return (
+                      <CommentCard
+                        commentTitle={item.commentTitle}
+                        commentImg={item.imgSrc}
+                        commentContent={item.commentContent}
+                      />
+                    );
+                  })}
+                </Col>
+                <Col md={12}>
+                  <div className="text-center">
+                    <FillBtn
+                      className=" py-2"
+                      text={"See More"}
+                      // handleOnClick={handleSubscribeClick}
                     />
-                  );
-                })}
+                  </div>
+                </Col>
               </Row>
             </CardBody>
           </Card>

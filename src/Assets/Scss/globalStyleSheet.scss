@@ -90,24 +90,14 @@ Input::-webkit-input-placeholder {
   padding: 0px !important;
 }
 .dropdown-item {
-  &:active {
-    background-color: $yellow;
-    color: $black;
-  }
-  &:hover {
-    background-color: $yellow;
-    color: $black;
-    border-radius: 6px;
-  }
-
-  &:focus {
-    background-color: $yellow;
-    outline: none;
-  }
-
+  &:active,
+  &:hover,
+  &:focus,
   &::selection {
     background-color: $yellow;
     color: $black;
+    outline: none;
+    border-radius: 6px;
   }
 }
 

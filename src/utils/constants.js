@@ -20,8 +20,6 @@ export const trainingGoalOptions = [
 ];
 export const activityLevelOptions = ["Beginner", "Intermediate", "Advanced"];
 export const roleOptions = ["Trainer", "Nutrition", "Trainer & Nutrition"];
-export const exerciseLevel = ["Beginner", "Expert"];
-export const category = ["Chest", "Traps","Shoulder","Biceps","Forearms","Obliques","Abdominal","Quads","Calves"];
 export const specialityOptions = [
   { value: "Body Building", label: "Body Building" },
   { value: "Health Issue", label: "Health Issue" },
@@ -44,5 +42,18 @@ export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
-//=================StatusCodes
+//=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
+//=================Exercise======================
+export const exerciseLevel = ["Beginner", "Expert"];
+export const category = [
+  "Chest",
+  "Traps",
+  "Shoulder",
+  "Biceps",
+  "Forearms",
+  "Obliques",
+  "Abdominal",
+  "Quads",
+  "Calves",
+];

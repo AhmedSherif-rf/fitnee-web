@@ -4,13 +4,13 @@ import TranslationHelper from "../../TranslationHelper";
 export const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
     .matches(/^[A-Za-z]+$/,  TranslationHelper("validation.invalidFirstNameText"))
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
+    .min(2, TranslationHelper("validation.tooShortText"))
+    .max(50, TranslationHelper("validation.tooLongText"))
     .required(TranslationHelper("validation.requiredFirstNameText")),
   lastName: Yup.string()
     .matches(/^[A-Za-z]+$/, TranslationHelper("validation.invalidLastNameText"))
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
+    .min(2,TranslationHelper("validation.tooShortText"))
+    .max(50, TranslationHelper("validation.tooLongText"))
     .required(TranslationHelper("validation.requiredLastNameText")),
   email: Yup.string()
     .matches(
@@ -22,7 +22,7 @@ export const SIGNUP_SCHEMA = Yup.object().shape({
     .min(8, TranslationHelper("validation.invalidPasswordText"))
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-      "Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character"
+      TranslationHelper("validation.invalidPasswordTwoText")
     )
     .required(TranslationHelper("validation.requiredPasswordText")),
   confirmPassword: Yup.string()

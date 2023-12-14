@@ -30,12 +30,12 @@ const ProfileInformationCard = (props) => {
             height: `${CardHeight}vh`,
           }}
         >
-          <div className="d-flex align-items-end ps-3 h-100 justify-content-between">
-            <h5 className="fw-700 fs-4  text-white"> {infoTitle} </h5>
-          </div>
         </div>
       </CardBody>
       <CardFooter className="border-0 text-black-custom">
+      <div className="d-flex align-items-end h-100 justify-content-between">
+            <h5 className="fw-700 fs-4 text-secondary mb-0"> {infoTitle} </h5>
+          </div>
         <div className="d-flex h-100 text-white align-items-end justify-content-between">
           <div
             className="d-flex align-items-center"

@@ -15,7 +15,7 @@ const SubMenu = (props) => {
           {title}
         </NavLink>
       </NavItem>
-      <Collapse isOpen={!collapsed} navbar className="bg-dark pl-4">
+      <Collapse isOpen={!collapsed} navbar className="bg-dark pl-5">
         {items.map((item, index) => (
           <NavItem key={index}>
             <NavLink tag={Link} to={item.target}>

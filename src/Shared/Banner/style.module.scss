@@ -3,8 +3,6 @@
 .bannerVideo {
   position: relative;
   height: 100vh;
-  margin-bottom: 100px;
-
 
   .bannerTextWrapper {
     font-size: 50px;
@@ -42,22 +40,14 @@
   }
 }
 
-  .figureCards {
-    content: "";
-    z-index: 99;
-    align-items: center;
-    justify-content: center;
-    bottom: 100px;
-    border-radius: 12px;
-    border-color: $yellow;
-
-    background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    ),
-    url("../../Assets/Images/homeScreen/featureBg.svg");
-  @include bgProperties;
+.figureCards {
+  content: "";
+  z-index: 99;
+  align-items: center;
+  justify-content: center;
+  bottom: 100px;
+  border-radius: 12px;
+  background-color:gray ;
   background-position: top center;
   background-attachment: fixed;
-  }
+}

@@ -55,7 +55,7 @@ const Hero = (props) => {
                 variants={animationVariantsRightToLeft}
                 transition={{ duration: 1, ease: "easeInOut" }}
               >
-                <div className={`mb-4 ${styles.heroHeading} hoverWrapper`}>
+                <div className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}>
                   {heading}
                 </div>
                 {text}
@@ -82,10 +82,10 @@ const Hero = (props) => {
                 variants={animationVariants}
                 transition={{ duration: 1, ease: "easeInOut" }}
               >
-                <div className={`mb-4 ${styles.heroHeading} hoverWrapper`}>
+                <div className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}>
                   {heading}
                 </div>
-                {text}
+                <div className="text.center">{text}</div>
               </motion.div>
             </div>
           </motion.div>

@@ -187,13 +187,13 @@
     "passwordText": "Type your password",
     "forgotPasswordText": "Forgot Password",
     "agreeOnFitneeText": "Agree on FitNee's",
-    "termsAndConditionsText": "terms and conditions",
+    "termsAndConditionsText": "Terms and Conditions",
     "signInText": "Sign In",
     "createAccountText": "Create Account",
     "newHereText": "New Here?",
     "cancelText": "Cancel",
     "unlockYourPotentialText": "Unlock your potential",
-    "transformYourBodyText": "transform your body"
+    "transformYourBodyText": "Transform your body"
   },
 
   "validation": {

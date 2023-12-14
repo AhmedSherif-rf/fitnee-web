@@ -56,6 +56,7 @@
 }
 .customDropdownRadius,
 .BorderYellow,
+.onlyBorderRadius,
 .BorderRadius,
 .subscriptionDiv {
   border-radius: 14px !important;
@@ -271,6 +272,6 @@ Input::-webkit-input-placeholder {
   border-radius: 5px;
 }
 
-::-webkit-scrollbar-track:hover {
-  background: $white;
+::-webkit-scrollbar-track {
+  background: transparent;
 }

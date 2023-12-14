@@ -17,9 +17,9 @@ export function PublicRoute({ Component, props }) {
     if (!isGuest && props.role === guestRole) {
       dispatch(setGuest(true));
     }
-    // if (user) {
-    //   navigate(getInitialUrl(user?.role));
-    // }
+    if (user) {
+      navigate(getInitialUrl(user?.role));
+    }
   }, [dispatch, isGuest, navigate, props.role, user]);
 
   // const token = null;

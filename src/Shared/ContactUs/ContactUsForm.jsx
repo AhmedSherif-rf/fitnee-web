@@ -19,7 +19,7 @@ import { contactUs } from "../../Redux/features/ContactUs/contactUsApi";
 const ContactUsForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state?.contactUs);
+  const { loading } = useSelector((state) => state.contactUs);
 
   const [showContactUsConfirmModal, setShowContactUsConfirmModal] = useState(
     false
@@ -33,14 +33,15 @@ const ContactUsForm = () => {
     setShowContactUsConfirmModal(false);
   }, []);
 
-  const handleContactUsSubmit = (values) => {
+  const handleContactUsSubmit = (values, resetForm) => {
     const data = {
       apiEndpoint: CONTACT_US_URL,
       requestData: JSON.stringify(values),
       navigate,
     };
-    dispatch(contactUs(data)).then((res) => {
+    dispatch(contactUs(data)).then(res => {
       if (res.type === "contactUs/fulfilled") {
+        resetForm();
         setShowContactUsConfirmModal(true);
       }
     });
@@ -57,8 +58,7 @@ const ContactUsForm = () => {
             validationSchema={CONTACT_US_SCHEMA}
             onSubmit={(values, { setSubmitting, resetForm }) => {
               setSubmitting(true);
-              handleContactUsSubmit(values);
-              resetForm();
+              handleContactUsSubmit(values, resetForm);
             }}
           >
             {({

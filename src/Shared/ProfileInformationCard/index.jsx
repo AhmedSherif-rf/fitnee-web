@@ -1,6 +1,6 @@
-import React, { memo, useState } from "react";
 import StarRating from "../Rating";
 import { Tooltip } from "reactstrap";
+import React, { memo, useState } from "react";
 import { Card, CardBody, CardFooter } from "reactstrap";
 
 const ProfileInformationCard = (props) => {

@@ -37,10 +37,13 @@ export const weekDaysOptions = [
 ];
 //=====================Roles=====================
 export const TRAINEE_ROLE = "Trainee";
+export const TRAINER_ROLE = "Trainer";
 //====================Routes====================
 export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
+export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
+export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 //=================StatusCodes
 export const SUCCESS_CODES = [200, 201];

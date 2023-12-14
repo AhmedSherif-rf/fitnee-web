@@ -155,7 +155,7 @@ const ServiceProviderListWrapper = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [listingRole, setListingRole] = useState(roleType);
 
-  const { isGuest } = useSelector((state) => state?.user);
+  const { isGuest } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const { t } = useTranslation("");
   const TrainerData = [

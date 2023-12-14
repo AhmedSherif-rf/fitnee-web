@@ -1,4 +1,5 @@
 import "./style.scss";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import InfoModal from "../../../Shared/InfoModal";
 import InputField from "../../../Shared/InputField";
@@ -77,8 +78,9 @@ export const myProgressGrapghData = {
 };
 
 const Dashboard = () => {
-  const [showAddProgressModal, setSowAddProgressModal] = useState(false);
+  const {user} = useSelector((state) => state.user)
   const [showHistory, setShowHistory] = useState(true);
+  const [showAddProgressModal, setSowAddProgressModal] = useState(false);
 
   const toggleHistory = useCallback(() => {
     setShowHistory(!showHistory);
@@ -110,11 +112,9 @@ const Dashboard = () => {
     {
       infoImg: Images.PROFILE4_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
-      infoTitle: "Shane",
       infoRating: 4,
       infoDes: "2 Years",
       Height: "25",
-      TraineeEmail: "shane@gmail.com",
     },
   ];
 
@@ -216,12 +216,12 @@ const Dashboard = () => {
                   <ProfileInformationCard
                     key={index}
                     infoLogo={item.infoLogo}
-                    infoTitle={item.infoTitle}
+                    infoTitle={user?.fullname}
                     infoRating={item.infoRating}
                     infoImg={item.infoImg}
                     infoDes={item.infoDes}
                     CardHeight={item.Height}
-                    TraineeEmail={item.TraineeEmail}
+                    TraineeEmail={user?.email}
                   />
                 );
               })}

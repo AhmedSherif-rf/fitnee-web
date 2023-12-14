@@ -25,6 +25,7 @@ import { FaBars, FaUserEdit } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { GiWallet, GiBodyBalance } from "react-icons/gi";
 import InformationModal from "../Modal/InformationModal";
+import { logout } from "../../Redux/features/User/userApi";
 import Logo from "../../Assets/Images/homeScreen/Logo.svg";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
@@ -46,8 +47,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation("");
-  const roleType = localStorage.getItem("role");
-  const { lang: currentLanguage } = useSelector((state) => state?.language);
+  const { user } = useSelector((state) => state.user);
+  const { lang: currentLanguage } = useSelector((state) => state.language);
+
+  const roleType = user?.role ? user?.role.toLowerCase() : null;
 
   useEffect(() => {
     if (isPublic) {
@@ -160,7 +163,12 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
   const handleLogoutClick = () => {
     localStorage.removeItem("role");
-    navigate("/");
+    const data = {
+      apiEndpoint: "/logout/"
+    };
+    dispatch(logout(data)).then(res => {
+      navigate("/signIn")
+    })
   };
 
   const handleSubscriptionClick = useCallback(() => {
@@ -227,7 +235,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               className="w-100 d-flex align-items-center"
                               to="/guest/serviceProviderList/trainer"
                             >
-                              <p className="text-black-custom mb-0">{t("landing.trainersText")}</p>
+                              <p className="text-black-custom mb-0">
+                                {t("landing.trainersText")}
+                              </p>
                             </Link>
                           </DropdownItem>
 
@@ -237,7 +247,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               to="/guest/serviceProviderList/nutritionist"
                             >
                               <p className="text-black-custom mb-0">
-                              {t("landing.nutritionistsText")}
+                                {t("landing.nutritionistsText")}
                               </p>
                             </Link>
                           </DropdownItem>
@@ -248,7 +258,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               to="/guest/services"
                             >
                               <p className="text-black-custom mb-0">
-                              {t("landing.exerciseText")}
+                                {t("landing.exerciseText")}
                               </p>
                             </Link>
                           </DropdownItem>
@@ -579,7 +589,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         className={"p-4"}
         isOpen={showSubscriptionInformationModal}
         onClose={handleSubscriptionInformationModalClose}
-        ModalTextOne= {t("landing.communityFirstText")}
+        ModalTextOne={t("landing.communityFirstText")}
         ButtonOne={
           <FillBtn
             text={t("guest.subscribeText")}

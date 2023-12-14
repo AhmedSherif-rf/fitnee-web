@@ -20,16 +20,27 @@ const SignInForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation("");
-  const { loading } = useSelector((state) => state?.user);
+  const { loading } = useSelector((state) => state.user);
 
   const handleLoginSubmit = (values) => {
     const data = {
       apiEndpoint: LOGIN_URL,
       requestData: JSON.stringify(values),
-      navigate,
     };
     dispatch(login(data)).then((res) => {
       if (res.type === "login/fulfilled") {
+        import("../../../src/utils/constants").then((item) => {
+          switch (res?.payload?.data?.role) {
+            case item.TRAINEE_ROLE:
+              navigate(item.TRAINEE_INITIAL_URL);
+              break;
+            case item.TRAINER_ROLE:
+              navigate(item.SERVICE_PROVIDER_INITIAL_URL);
+              break;
+            default:
+              navigate("/default-dashboard");
+          }
+        });
         Toaster.success("Logged in successfully");
       }
     });
@@ -44,7 +55,10 @@ const SignInForm = () => {
       <Row className="justify-content-center text-black-custom align-items-center vh-100">
         {loading === "pending" && <LoadingScreen />}
         <Col lg={7} md={12} sm={10}>
-          <h1 className="text-center mb-5 fs-1 fw-bold"> {t("login.loginText")}</h1>
+          <h1 className="text-center mb-5 fs-1 fw-bold">
+            {" "}
+            {t("login.loginText")}
+          </h1>
           <Formik
             initialValues={{ ...INITIAL_VALUES }}
             validationSchema={SIGNIN_SCHEMA}
@@ -58,11 +72,9 @@ const SignInForm = () => {
               values,
               errors,
               touched,
-              handleChange,
-              setFieldValue,
               handleBlur,
+              handleChange,
               handleSubmit,
-              isSubmitting,
             }) => (
               <Form onSubmit={handleSubmit}>
                 <InputField
@@ -97,16 +109,19 @@ const SignInForm = () => {
                 </p>
 
                 <Link to="/forgotPassword">
-                  <p className="text-end textYellow">{t("login.forgotPasswordText")}</p>
+                  <p className="text-end textYellow">
+                    {t("login.forgotPasswordText")}
+                  </p>
                 </Link>
                 <div className="d-flex mb-1">
                   <Checkbox
                     label={
                       <p className="mb-0 fs-6">
-                       {t("login.agreeOnFitneeText")}
+                        {t("login.agreeOnFitneeText")}
                         <Link to="/termAndCondition">
                           <span className="textYellow">
-                           {t("login.forgotPasswordText")}
+                            {" "}
+                            {t("login.termsAndConditionsText")}
                           </span>
                         </Link>
                       </p>
@@ -134,9 +149,10 @@ const SignInForm = () => {
                   handleOnClick={handleCancelClick}
                 />
                 <p className="pt-3 text-center">
-                {t("login.newHereText")}
+                  {t("login.newHereText")}
                   <Link to="/registerAs" className="textYellow">
-                  {t("login.createAccountText")}
+                    {" "}
+                    {t("login.createAccountText")}
                   </Link>
                 </p>
               </Form>

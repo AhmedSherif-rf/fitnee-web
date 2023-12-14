@@ -3,12 +3,12 @@ import TranslationHelper from "../../TranslationHelper";
  
 export const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
-    .matches(/^[A-Za-z]+$/,  TranslationHelper("validation.invalidFirstNameText"))
+    .matches(/^[A-Za-z ]+$/,  TranslationHelper("validation.invalidFirstNameText"))
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required(TranslationHelper("validation.requiredFirstNameText")),
   lastName: Yup.string()
-    .matches(/^[A-Za-z]+$/, TranslationHelper("validation.invalidLastNameText"))
+    .matches(/^[A-Za-z ]+$/, TranslationHelper("validation.invalidLastNameText"))
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required(TranslationHelper("validation.requiredLastNameText")),

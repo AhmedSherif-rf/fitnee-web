@@ -130,7 +130,7 @@ const ContactUsForm = () => {
                         className:
                           "form-control-lg w-100 py-3 px-4 customPhoneInput",
                       }}
-                      defaultCountry={"ae"}
+                      defaultCountry={"sa"}
                       value={values.phone}
                       setFieldValue={setFieldValue}
                     />

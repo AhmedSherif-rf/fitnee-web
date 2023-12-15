@@ -35,8 +35,13 @@
   box-shadow: none !important;
 }
 
-.dropdown-menu.show {
-  padding: 6px;
+.custom-dropdown-menu {
+  border: none !important;
+  box-shadow: 1px 1px 8px #808080;
+}
+
+.custom-dropdown-menu.show {
+  padding: 4px !important;
 }
 
 .dropdown-item {

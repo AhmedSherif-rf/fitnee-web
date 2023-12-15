@@ -24,23 +24,18 @@ const Feature = (props) => {
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
-      <Row className="text-center">
-          <Col md={12}>
-            <span
-              className={`fw-bold textYellow fs-1 mb-0 arabicBorderHover ${styles.featureHeading}`}
-            >
-              {t("landing.featuresText")}
-            </span>
-          </Col>
-        </Row>
       <Col
         xs={12}
         md={6}
         className={`p-0 mb-md-0 mb-3 ${styles.featureSectionLeftContent}`}
       >
-        
         <div className={`d-flex align-items-center h-100`}>
           <div className="">
+            <div
+              className={`fw-bold textYellow mb-0 display-5 arabicBorderHover ${styles.featureHeading}`}
+            >
+              {t("landing.featuresText")}
+            </div>
             <div>
               <Swiper
                 speed={1000}
@@ -55,7 +50,7 @@ const Feature = (props) => {
                   clickable: true,
                 }}
                 onSlideChange={handletextSlideChange}
-                style={{ height: "80vh", overflow: "hidden" }}
+                style={{ height: "70vh", overflow: "hidden" }}
                 modules={[Pagination, Autoplay, Pagination]}
               >
                 {textData?.map((item, index) => {
@@ -63,7 +58,7 @@ const Feature = (props) => {
                     <SwiperSlide
                       key={index}
                       style={{ direction: i18n.dir() }}
-                      className="d-flex align-items-center fw-bold justify-content-start fs-5 justify-content-sm-center w-100 d-block text-black"
+                      className="d-flex align-items-center fw-bold justify-content-start fs-5 justify-content-sm-center w-100 d-block text-white"
                     >
                       {item.text}
                     </SwiperSlide>

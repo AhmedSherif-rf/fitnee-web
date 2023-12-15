@@ -1,10 +1,8 @@
-import React, { useState, useEffect, memo, useCallback } from "react";
 import {
   Navbar,
   NavbarToggler,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -31,6 +29,7 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { PiUsersFourThin, PiAddressBookBold } from "react-icons/pi";
 import { FaKey, FaTrashCan, FaCircleArrowUp } from "react-icons/fa6";
+import React, { useState, useEffect, memo, useCallback } from "react";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import {
   ENGLISH_LANGUAGE,
@@ -236,7 +235,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         <DropdownMenu
                           style={{
                             right: 0,
-                            left: 'auto',
+                            left: "auto",
                             opacity: isDropdownOpen ? 1 : 0,
                           }}
                         >
@@ -362,7 +361,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           }}
                         ></div>
                       </DropdownToggle>
-                      <DropdownMenu style={{ right: 0, left: "auto" }}>
+                      <DropdownMenu
+                        className="custom-dropdown-menu"
+                        style={{ right: 0, left: "auto" }}
+                      >
                         <DropdownItem className="p-0">
                           <Link
                             className="w-100 p-1"
@@ -479,91 +481,179 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             <Card className="bg-transparent border-0 h-100">
               <CardBody className="p-0 p-2 mt-2">
                 <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
-                  <NavItem className={`${styles.NavItem}`}>
-                    <NavLink className={`${styles.NavLink}`} href="/">
-                      <BiHome className={`fs-2 me-3 text-white`} />
-                      {t("landing.homeText")}
-                    </NavLink>
-                  </NavItem>
+                  {!isGuest && !isPrivate && roleType === null && (
+                    <>
+                      <NavItem className={`${styles.NavItem}`}>
+                        <Link className={`nav-link ${styles.NavLink}`} to="/">
+                          <BiHome className={`fs-2 me-3 text-white`} />
+                          {t("landing.homeText")}
+                        </Link>
+                      </NavItem>
 
-                  <NavItem className={`${styles.NavItem}`}>
-                    <UncontrolledDropdown
-                      nav
-                      inNavbar
-                      className={`w-100  ${styles.UncontrolledDropdown}`}
-                    >
-                      <DropdownToggle
-                        nav
-                        className={`w-100 ${styles.DropdownToggle}`}
-                      >
-                        <div className="d-flex align-items-center justify-content-between w-100">
-                          <div className="">
-                            <GiBodyBalance className={`fs-2 me-3 text-white`} />
-                            {t("landing.servicesText")}
-                          </div>
-                          <PiCaretDownBold />
+                      <NavItem className={`${styles.NavItem}`}>
+                        <UncontrolledDropdown
+                          nav
+                          inNavbar
+                          className={`w-100  ${styles.UncontrolledDropdown}`}
+                        >
+                          <DropdownToggle
+                            nav
+                            className={`w-100 ${styles.DropdownToggle}`}
+                          >
+                            <div className="d-flex align-items-center justify-content-between w-100">
+                              <div className="">
+                                <GiBodyBalance
+                                  className={`fs-2 me-3 text-white`}
+                                />
+                                {t("landing.servicesText")}
+                              </div>
+                              <PiCaretDownBold />
+                            </div>
+                          </DropdownToggle>
+                          <DropdownMenu
+                            className={` bg-black w-100 ${styles.DropdownMenu}`}
+                          >
+                            <DropdownItem
+                              className={` w-100 ${styles.DropdownItem}`}
+                            >
+                              <Link
+                                className={`w-100 d-flex align-items-center ${styles.Link}`}
+                                to="/guest/serviceProviderList/trainer"
+                              >
+                                <p className=" mb-0">Trainers</p>
+                              </Link>
+                            </DropdownItem>
+
+                            <DropdownItem
+                              className={`w-100 ${styles.DropdownItem}`}
+                            >
+                              <Link
+                                className={`w-100 d-flex align-items-center ${styles.Link}`}
+                                to="/guest/serviceProviderList/nutritionist"
+                              >
+                                <p className="mb-0">Nutritionist</p>
+                              </Link>
+                            </DropdownItem>
+
+                            <DropdownItem
+                              className={`w-100 ${styles.DropdownItem}`}
+                            >
+                              <Link
+                                className={`d-flex align-items-center ${styles.Link}`}
+                                to="/guest/services"
+                              >
+                                <p className="mb-0">Exercises</p>
+                              </Link>
+                            </DropdownItem>
+                          </DropdownMenu>
+                        </UncontrolledDropdown>
+                      </NavItem>
+
+                      <NavItem className={`${styles.NavItem}`}>
+                        <Link
+                          className={`nav-link ${styles.NavLink}`}
+                          to="#"
+                          onClick={handleFitneeCommunityClick}
+                        >
+                          <PiUsersFourThin className={`fs-2 me-3 text-white`} />
+                          {t("landing.fitneeCommunityText")}
+                        </Link>
+                      </NavItem>
+
+                      <NavItem className={`${styles.NavItem}`}>
+                        <Link
+                          className={`nav-link ${styles.NavLink}`}
+                          to="/contactUs"
+                        >
+                          <PiAddressBookBold
+                            className={`fs-2 me-3 text-white`}
+                          />
+                          {t("landing.contactUsText")}
+                        </Link>
+                      </NavItem>
+                    </>
+                  )}
+                  {!isGuest && roleType !== null && (
+                    <div>
+                      <NavItem className={`${styles.NavItem} p-2`}>
+                        <Link
+                          className={`nav-link ${styles.NavLink}`}
+                          to={
+                            roleType === TRAINEE_TYPE
+                              ? "/trainee/dashboard"
+                              : "/serviceProvider/dashboard"
+                          }
+                        >
+                          <RiDashboardFill className={`fs-2 me-3 text-white`} />
+                          {"Dashboard"}
+                        </Link>
+                      </NavItem>
+                      <NavItem className={`${styles.NavItem} p-2`}>
+                        <Link
+                          className={`nav-link ${styles.NavLink}`}
+                          to={
+                            roleType === TRAINEE_TYPE
+                              ? "/trainee/editProfile"
+                              : "/serviceProvider/editProfile"
+                          }
+                        >
+                          <FaUserEdit className={`fs-2 me-3 text-white`} />
+                          {"Edit Profile"}
+                        </Link>
+                      </NavItem>
+                      {roleType && roleType !== TRAINEE_TYPE && (
+                        <>
+                          <NavItem className={`${styles.NavItem} p-2`}>
+                            <Link
+                              className={`nav-link ${styles.NavLink}`}
+                              to="/serviceProvider/paymentHistory"
+                            >
+                              <GiWallet className={`fs-2 me-3 text-white`} />
+                              {"Wallet"}
+                            </Link>
+                          </NavItem>
+                        </>
+                      )}
+
+                      <NavItem className={`${styles.NavItem} p-2`}>
+                        <Link
+                          className={`nav-link ${styles.NavLink}`}
+                          to={
+                            roleType === TRAINEE_TYPE
+                              ? "/trainee/resetPassword"
+                              : "/serviceProvider/resetPassword"
+                          }
+                        >
+                          <FaKey className={`fs-2 me-3 text-white`} />
+                          {"Change Password"}
+                        </Link>
+                      </NavItem>
+
+                      <NavItem className={`${styles.NavItem} p-2`}>
+                        <div
+                          className="d-flex align-items-center w-100 p-1"
+                          onClick={handleDeleteClick}
+                        >
+                          <FaTrashCan className={`fs-2 me-3 text-white`} />
+                          {"Delete Account"}
                         </div>
-                      </DropdownToggle>
-                      <DropdownMenu
-                        className={` bg-black w-100 ${styles.DropdownMenu}`}
-                      >
-                        <DropdownItem
-                          className={` w-100 ${styles.DropdownItem}`}
+                      </NavItem>
+
+                      <NavItem className={`${styles.NavItem} p-2`}>
+                        <div
+                          className="d-flex align-items-center w-100 p-1"
+                          onClick={handleLogoutClick}
                         >
-                          <Link
-                            className={`w-100 d-flex align-items-center ${styles.Link}`}
-                            to="/guest/serviceProviderList/trainer"
-                          >
-                            <p className=" mb-0">Trainers</p>
-                          </Link>
-                        </DropdownItem>
-
-                        <DropdownItem
-                          className={`w-100 ${styles.DropdownItem}`}
-                        >
-                          <Link
-                            className={`w-100 d-flex align-items-center ${styles.Link}`}
-                            to="/guest/serviceProviderList/nutritionist"
-                          >
-                            <p className="mb-0">Nutritionist</p>
-                          </Link>
-                        </DropdownItem>
-
-                        <DropdownItem
-                          className={`w-100 ${styles.DropdownItem}`}
-                        >
-                          <Link
-                            className={`d-flex align-items-center ${styles.Link}`}
-                            to="/guest/services"
-                          >
-                            <p className="mb-0">Exercises</p>
-                          </Link>
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
-                  </NavItem>
-
-                  <NavItem className={`${styles.NavItem}`}>
-                    <NavLink
-                      className={`${styles.NavLink}`}
-                      href="#"
-                      onClick={handleFitneeCommunityClick}
-                    >
-                      <PiUsersFourThin className={`fs-2 me-3 text-white`} />
-                      {t("landing.fitneeCommunityText")}
-                    </NavLink>
-                  </NavItem>
-
-                  <NavItem className={`${styles.NavItem}`}>
-                    <NavLink className={`${styles.NavLink}`} href="/contactUs">
-                      <PiAddressBookBold className={`fs-2 me-3 text-white`} />
-                      {t("landing.contactUsText")}
-                    </NavLink>
-                  </NavItem>
+                          <FaCircleArrowUp className={`fs-2 me-3 text-white`} />
+                          {"Logout"}
+                        </div>
+                      </NavItem>
+                    </div>
+                  )}
                 </Nav>
               </CardBody>
               <CardFooter className="border-0">
-                {!isGuest && (
+                {!isGuest && !isPrivate && roleType === null && (
                   <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
                     <FillBtn
                       className="px-3 w-100 mb-2"

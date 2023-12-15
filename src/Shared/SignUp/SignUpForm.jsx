@@ -236,7 +236,7 @@ const SignUpForm = () => {
                     className:
                       "form-control-lg w-100 py-3 px-4 customPhoneInput border",
                   }}
-                  defaultCountry={"ae"}
+                  defaultCountry={"sa"}
                   value={values.phoneNumber}
                   setFieldValue={setFieldValue}
                 />
@@ -656,7 +656,7 @@ const SignUpForm = () => {
                     className:
                       "form-control-lg w-100  py-3 px-4 customPhoneInput border",
                   }}
-                  defaultCountry={"ae"}
+                  defaultCountry={"sa"}
                   value={values.stcPhoneNumber}
                   setFieldValue={setFieldValue}
                 />

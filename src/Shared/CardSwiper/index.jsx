@@ -3,7 +3,7 @@ import React, { memo } from "react";
 import RatingCard from "../FeedbackCard";
 import { Container, Row, Col } from "reactstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const CardSwiper = (props) => {
   const { data: cardsData, heading } = props;
@@ -35,13 +35,17 @@ const CardSwiper = (props) => {
     },
     loop: true,
     autoplay: {
-      delay: 3000,
+      delay: 1000,
       disableOnInteraction: false,
     },
     pagination: {
       clickable: true,
     },
-    modules: [Autoplay, Pagination],
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    modules: [Autoplay, Pagination, Navigation],
     className: "mySwiper",
   };
 

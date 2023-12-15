@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[8e3],{2949:function(e,r,i){i.r(r);i(2791);var n=i(7689),s=i(7823),c=i(3009),l=i(9773),u=i(6907),f=i(184);r.default=function(e){var r=(0,n.UO)().roleType;return(0,f.jsx)(s.Z,{fluid:!0,children:(0,f.jsx)(c.Z,{children:(0,f.jsx)(l.Z,{md:12,children:(0,f.jsx)(u.Z,{cardLink:"/guest/serviceProviderProfile",roleType:r})})})})}}}]);
+//# sourceMappingURL=8000.5fedd856.chunk.js.map

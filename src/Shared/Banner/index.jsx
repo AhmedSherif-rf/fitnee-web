@@ -80,21 +80,21 @@ const HomeBanner = () => {
               className="d-flex align-items-center justify-content-end w-100 position-absolute"
               style={{ bottom: 0, right: 0 }}
             >
-              <div className={"p-sm-2 mx-4 text-center lh-1 mb-2"}>
+              <div className={"p-sm-2 mx-4 text-center lh-2 mb-2"}>
                 <CounterUp start={0} end={500} duration={5} />
                 <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
                   {t("landing.trainersText")}
                 </p>
               </div>
               <span className={"fs-1 text-secondary"}>|</span>
-              <div className={"p-sm-2 mx-4 text-center lh-1 mb-2"}>
+              <div className={"p-sm-2 mx-4 text-center lh-2 mb-2"}>
                 <CounterUp start={0} end={1000} duration={7} />
                 <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
                   {t("landing.traineesText")}
                 </p>
               </div>
               <span className={"fs-1 text-secondary"}>|</span>
-              <div className="p-sm-2 mx-2 text-center lh-1 mb-2">
+              <div className="p-sm-2 mx-2 text-center lh-2 mb-2">
                 <CounterUp start={0} end={2000} duration={9} />
                 <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
                   {t("landing.nutritionistsText")}

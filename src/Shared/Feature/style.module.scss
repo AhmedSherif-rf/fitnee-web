@@ -4,8 +4,8 @@
 .featureSectionWrapper {
   background-image: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(0, 0, 0, 0.6) 100%
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.4) 100%
     ), url("../../Assets/Images/homeScreen/FeatureSectionBgImage.svg");
   @include bgProperties;
   align-items: center;
@@ -27,6 +27,7 @@
       .cardSwiperSlider {
         @include bgProperties;
         background-size: contain !important;
+        height: 450px;
       }
     }
   }

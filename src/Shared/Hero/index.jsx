@@ -16,8 +16,12 @@ const Hero = (props) => {
   });
 
   const textVariants = {
-    hidden: { opacity: 0, y: 80, scale: 0.6 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.2, ease: "easeOut" } },
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "anticipate" },
+    },
   };
 
   const animationVariants = {
@@ -41,11 +45,7 @@ const Hero = (props) => {
         className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}
       >
         {type === "textRight" ? (
-          <motion.div
-            className="h-100"
-            ref={textRef}
-            initial="hidden"
-          >
+          <div className="h-100">
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
@@ -53,9 +53,9 @@ const Hero = (props) => {
             >
               <motion.div
                 initial="hidden"
+                ref={textRef}
                 animate={textInView ? "visible" : "hidden"}
                 variants={textVariants}
-                transition={{ duration: 1, ease: "easeInOut" }}
               >
                 <div
                   className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
@@ -65,13 +65,9 @@ const Hero = (props) => {
                 {text}
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         ) : (
-          <motion.div
-            className="h-100"
-            ref={textRef}
-            initial="hidden"
-          >
+          <div className="h-100">
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
@@ -79,9 +75,9 @@ const Hero = (props) => {
             >
               <motion.div
                 initial="hidden"
+                ref={textRef}
                 animate={textInView ? "visible" : "hidden"}
                 variants={textVariants}
-                transition={{ duration: 1, ease: "easeInOut" }}
               >
                 <div
                   className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
@@ -91,7 +87,7 @@ const Hero = (props) => {
                 <div className="text.center">{text}</div>
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         )}
       </Col>
       <Col

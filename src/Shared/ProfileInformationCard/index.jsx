@@ -29,13 +29,14 @@ const ProfileInformationCard = (props) => {
             backgroundImage: `url(${infoImg})`,
             height: `${CardHeight}vh`,
           }}
-        >
-        </div>
+        ></div>
       </CardBody>
       <CardFooter className="border-0 text-black-custom">
-      <div className="d-flex align-items-end h-100 justify-content-between">
-            <h5 className="fw-700 fs-4 text-secondary mb-0"> {infoTitle} </h5>
-          </div>
+        <div className="h-100">
+          <span className="fw-700 fs-4 text-secondary mb-0"> {infoTitle} </span>
+          <span className="small text-secondary">({TraineeEmail})</span>
+        </div>
+  
         <div className="d-flex h-100 text-white align-items-end justify-content-between">
           <div
             className="d-flex align-items-center"
@@ -53,9 +54,8 @@ const ProfileInformationCard = (props) => {
               isOpen={tooltipOpen}
               target="tooltipTarget"
               toggle={toggleTooltip}
-
             >
-              Experience 
+              Experience
             </Tooltip>
           </div>
           <div className="d-flex align-items-center justify-content-center">
@@ -63,7 +63,6 @@ const ProfileInformationCard = (props) => {
             <p className="mb-0 pt-1">{infoRating}</p>
           </div>
         </div>
-        <div className="my-2 text-center fs-5">{TraineeEmail}</div>
       </CardFooter>
     </Card>
   );

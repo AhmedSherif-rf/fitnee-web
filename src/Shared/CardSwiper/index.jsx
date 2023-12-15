@@ -12,8 +12,8 @@ const CardSwiper = (props) => {
 
   const swiperConfiguration = {
     grabCursor: true,
-    spaceBetween: 40,
-    centeredSlides: true,
+    spaceBetween: 10,
+    centeredSlides: false,
     breakpoints: {
       375: {
         slidesPerView: 1,
@@ -23,11 +23,14 @@ const CardSwiper = (props) => {
         slidesPerView: 2,
         spaceBetween: 10,
       },
-      992: {
+      768: {
         slidesPerView: 3,
       },
+      992: {
+        slidesPerView: 4,
+      },
       1360: {
-        slidesPerView: 3,
+        slidesPerView: 4,
       },
     },
     loop: true,
@@ -43,7 +46,7 @@ const CardSwiper = (props) => {
   };
 
   return (
-    <Container className="px-5">
+    <Container fluid className="px-5">
       <Row className="mb-5">
         <Col>
           <h1 className="text-center fw-bold text-white mt-5"> {heading}</h1>

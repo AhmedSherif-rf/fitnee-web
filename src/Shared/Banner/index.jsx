@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import CounterUp from "../../Shared/CounterUp/";
 import React, { memo, useCallback } from "react";
-import { Card, CardBody, Col, Container, Row } from "reactstrap";
-import { GiWeightLiftingUp, GiBodyBalance } from "react-icons/gi";
+import { Col, Container, Row } from "reactstrap";
 import PushUpVideo from "../../Assets/Videos/homeBannerNew.mov";
 
 const HomeBanner = () => {
@@ -46,7 +45,7 @@ const HomeBanner = () => {
       </div>
 
       <Row className="h-100">
-        <Col md={12} className="d-flex align-items-center">
+        <Col md={6} className="d-flex align-items-center">
           <div style={{ zIndex: "1" }}>
             <motion.div
               initial="hidden"
@@ -56,7 +55,7 @@ const HomeBanner = () => {
               className={`mb-3 ms-3 ${styles.bannerTextWrapper}`}
             >
               {bannerText.map((item, index) => (
-                <p key={index} className=" text-white">
+                <p key={index} className="text-white">
                   {item.text}
                 </p>
               ))}
@@ -75,43 +74,34 @@ const HomeBanner = () => {
             </motion.div>
           </div>
         </Col>
-      </Row>
-      <Row className={`justify-content-center w-100 d-md-flex d-none`}>
-        <Col md={3}>
-          <Card className={`${styles.figureCards}`}>
-            <CardBody className={`text-center`}>
-              <GiWeightLiftingUp className="text-white display-5" />
-              <br />
-              <CounterUp start={0} end={500} duration={5} />
-              <p className={`fs-5 text-white mb-0`}>
-                {t("landing.trainersText")}
-              </p>
-            </CardBody>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card className={`${styles.figureCards}`}>
-            <CardBody className={`text-center`}>
-              <GiWeightLiftingUp className="text-white display-5" />
-              <br />
-              <CounterUp start={0} end={500} duration={5} />
-              <p className={`fs-5 text-white mb-0`}>
-                {t("landing.trainersText")}
-              </p>
-            </CardBody>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card className={`${styles.figureCards}`}>
-            <CardBody className={`text-center`}>
-              <GiWeightLiftingUp className="text-white display-5" />
-              <br />
-              <CounterUp start={0} end={500} duration={5} />
-              <p className={`fs-5 text-white mb-0`}>
-                {t("landing.trainersText")}
-              </p>
-            </CardBody>
-          </Card>
+        <Col md={6}>
+          <div className="h-100 position-relative px-5">
+            <div
+              className="d-flex align-items-center justify-content-end w-100 position-absolute"
+              style={{ bottom: 0, right: 0 }}
+            >
+              <div className={"p-sm-2 mx-4 text-center lh-1 mb-2"}>
+                <CounterUp start={0} end={500} duration={5} />
+                <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
+                  {t("landing.trainersText")}
+                </p>
+              </div>
+              <span className={"fs-1 text-secondary"}>|</span>
+              <div className={"p-sm-2 mx-4 text-center lh-1 mb-2"}>
+                <CounterUp start={0} end={1000} duration={7} />
+                <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
+                  {t("landing.traineesText")}
+                </p>
+              </div>
+              <span className={"fs-1 text-secondary"}>|</span>
+              <div className="p-sm-2 mx-2 text-center lh-1 mb-2">
+                <CounterUp start={0} end={2000} duration={9} />
+                <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
+                  {t("landing.nutritionistsText")}
+                </p>
+              </div>
+            </div>
+          </div>
         </Col>
       </Row>
     </Container>

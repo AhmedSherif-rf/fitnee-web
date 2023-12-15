@@ -10,8 +10,8 @@
     "nutritionistsText": "Nutritionists",
     "exerciseText": "Exercise",
     "communityFirstText": "Subscribe and then download the app so you can access FitNee Community",
-    "embraceAText": "Embrace a",
-    "healthierYouText": "healthier you",
+    "embraceAText": "EMBRACE A",
+    "healthierYouText": "HEALTHIER YOU",
     "firstHeroSectionText": "Provide a comprehensive platform to be a one-stop destination for individuals seeking fitness guidance and resources.",
     "featuresText": "Features",
     "fitneeText": "FitNee",
@@ -187,13 +187,13 @@
     "passwordText": "Type your password",
     "forgotPasswordText": "Forgot Password",
     "agreeOnFitneeText": "Agree on FitNee's",
-    "termsAndConditionsText": "terms and conditions",
+    "termsAndConditionsText": "Terms and Conditions",
     "signInText": "Sign In",
     "createAccountText": "Create Account",
     "newHereText": "New Here?",
     "cancelText": "Cancel",
     "unlockYourPotentialText": "Unlock your potential",
-    "transformYourBodyText": "transform your body"
+    "transformYourBodyText": "Transform your body"
   },
 
   "validation": {

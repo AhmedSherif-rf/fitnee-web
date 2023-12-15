@@ -15,13 +15,22 @@ const Hero = (props) => {
     triggerOnce: true,
   });
 
+  const textVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "anticipate" },
+    },
+  };
+
   const animationVariants = {
     hidden: { opacity: 0, x: -100 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+    visible: { opacity: 1, x: 0, transition: { duration: 1.5 } },
   };
   const animationVariantsRightToLeft = {
     hidden: { opacity: 0, x: "100%" },
-    visible: { opacity: 1, x: 0 },
+    visible: { opacity: 1, x: 0, transition: { duration: 1.5 } },
   };
 
   return (
@@ -36,14 +45,7 @@ const Hero = (props) => {
         className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}
       >
         {type === "textRight" ? (
-          <motion.div
-            className="h-100"
-            ref={textRef}
-            initial="hidden"
-            animate={textInView ? "visible" : "hidden"}
-            variants={animationVariants}
-            transition={{ duration: 1, ease: "easeInOut" }}
-          >
+          <div className="h-100">
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
@@ -51,26 +53,21 @@ const Hero = (props) => {
             >
               <motion.div
                 initial="hidden"
+                ref={textRef}
                 animate={textInView ? "visible" : "hidden"}
-                variants={animationVariantsRightToLeft}
-                transition={{ duration: 1, ease: "easeInOut" }}
+                variants={textVariants}
               >
-                <div className={`mb-4 ${styles.heroHeading} hoverWrapper`}>
+                <div
+                  className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
+                >
                   {heading}
                 </div>
                 {text}
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         ) : (
-          <motion.div
-            className="h-100"
-            ref={textRef}
-            initial="hidden"
-            animate={textInView ? "visible" : "hidden"}
-            variants={animationVariants}
-            transition={{ duration: 1, ease: "easeInOut" }}
-          >
+          <div className="h-100">
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
@@ -78,17 +75,19 @@ const Hero = (props) => {
             >
               <motion.div
                 initial="hidden"
+                ref={textRef}
                 animate={textInView ? "visible" : "hidden"}
-                variants={animationVariants}
-                transition={{ duration: 1, ease: "easeInOut" }}
+                variants={textVariants}
               >
-                <div className={`mb-4 ${styles.heroHeading} hoverWrapper`}>
+                <div
+                  className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
+                >
                   {heading}
                 </div>
-                {text}
+                <div className="text.center">{text}</div>
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         )}
       </Col>
       <Col

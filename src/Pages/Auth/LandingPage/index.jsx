@@ -1,41 +1,27 @@
-import { motion } from "framer-motion";
+import { Container } from "reactstrap";
 import Hero from "../../../Shared/Hero";
-import React, { useCallback } from "react";
 import styles from "./style.module.scss";
+import React, { useCallback } from "react";
 import Footer from "../../../Shared/Footer";
 import Feature from "../../../Shared/Feature";
 import { useTranslation } from "react-i18next";
-import { FaNutritionix } from "react-icons/fa";
 import HomeBanner from "../../../Shared/Banner";
-import { Col, Container, Row } from "reactstrap";
-import CounterUp from "../../../Shared/CounterUp/";
 import CardSwiper from "../../../Shared/CardSwiper";
-import { useInView } from "react-intersection-observer";
-import { GiWeightLiftingUp, GiBodyBalance } from "react-icons/gi";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const LandingPage = (props) => {
   const { t, i18n } = useTranslation("");
 
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-  });
-
-  const animationVariants = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-  };
-
   const WhatIsFitneeData = [
     {
       heading: (
-        <span className={`fw-bold h2 text-white fs-1 arabicBorderHover`}>
+        <span className={`fw-bold text-white display-5 arabicBorderHover`}>
           {t("landing.whatIsText")}
           <span className="textYellow"> {t("landing.fitneeText")} </span>
         </span>
       ),
       text: (
-        <p className={"fs-5 text-white customSpacing"}>
+        <p className={"fs-5 text-white text-center customSpacing"}>
           {t("landing.firstHeroSectionText")}
         </p>
       ),
@@ -85,13 +71,13 @@ const LandingPage = (props) => {
   const HeroData = [
     {
       heading: (
-        <span className="fw-bold h-2  text-white fs-1 mb-5 arabicBorderHover">
+        <span className="fw-bold text-white display-5 arabicBorderHover">
           {t("landing.ourText")}
           <span className="textYellow"> {t("landing.goalText")}</span>
         </span>
       ),
       text: (
-        <div className="customSpacing">
+        <div className="customSpacing text-center">
           <p className={"fs-5 lh-1 text-white"}>
             {t("landing.secondHeroSectionTextOne")}
           </p>
@@ -113,13 +99,13 @@ const LandingPage = (props) => {
     },
     {
       heading: (
-        <span className="fw-bold h2 text-white fs-1 mb-4 arabicBorderHover">
+        <span className="fw-bold text-white display-5 arabicBorderHover">
           {t("landing.ourText")}
           <span className="textYellow"> {t("landing.visionText")} </span>
         </span>
       ),
       text: (
-        <p className="text-white fs-5 customSpacing">
+        <p className="text-white fs-5 text-center customSpacing">
           {t("landing.thirdHeroSectionTextOne")}
         </p>
       ),
@@ -198,91 +184,13 @@ const LandingPage = (props) => {
         title: "Zorawar",
       },
     ];
-  }, []);
+  }, [t]);
 
   return (
     <div className="bg-black">
       <section id="bannerSection" style={{ direction: i18n.dir() }}>
         <HomeBanner />
       </section>
-
-      {/* <section
-        id="counterSection"
-        className="vh-100"
-        style={{ direction: i18n.dir() }}
-      >
-        <Container fluid>
-          <Row className={`vh-100 bgProperties ${styles.bannerImg}`}>
-            <Col md={4}>
-              <div
-                className="d-flex align-items-center justify-content-center w-100 h-100"
-                style={{ bottom: 0, right: 0 }}
-              >
-                <motion.div
-                  ref={ref}
-                  initial="hidden"
-                  whileHover={{ scale: 1.2 }}
-                  animate={inView ? "visible" : "hidden"}
-                  variants={animationVariants}
-                  className="text-center"
-                >
-                  <GiWeightLiftingUp className="text-white display-2" />
-                  <br />
-                  <CounterUp start={0} end={500} duration={5}  />
-                  <p className={`fs-5 text-white`}>
-                    {t("landing.trainersText")}
-                  </p>
-                </motion.div>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div
-                className="d-flex align-items-center justify-content-center w-100 h-100"
-                style={{ bottom: 0, right: 0 }}
-              >
-                <motion.div
-                  ref={ref}
-                  initial="hidden"
-                  whileHover={{ scale: 1.2 }}
-                  animate={inView ? "visible" : "hidden"}
-                  variants={animationVariants}
-                  className="text-center"
-                >
-                  <GiBodyBalance className="text-white display-2" />
-                  <br />
-                  <CounterUp start={0} end={1000} duration={7} />
-                  <p className="text-white fs-5">
-                    {t("landing.traineesText")}
-                  </p>
-                </motion.div>
-              </div>
-            </Col>
-            <Col md={4}>
-              <div
-                className="d-flex align-items-center justify-content-center w-100 h-100"
-                style={{ bottom: 0, right: 0 }}
-              >
-                <motion.div
-                  ref={ref}
-                  initial="hidden"
-                  whileHover={{ scale: 1.2 }}
-                  animate={inView ? "visible" : "hidden"}
-                  variants={animationVariants}
-                  className="text-center"
-                >
-                  <FaNutritionix className="text-white display-2" />
-                  <br />
-                  <CounterUp start={0} end={2000} duration={9} />
-                  <p className="text-white fs-5">
-                    {t("landing.nutritionistsText")}
-                  </p>
-                </motion.div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section> */}
-
       <section
         id="fitneeSection"
         className=""

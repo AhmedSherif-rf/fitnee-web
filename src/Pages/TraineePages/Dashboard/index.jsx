@@ -105,9 +105,11 @@ const Dashboard = () => {
   const handleAddProgressClick = useCallback(() => {
     setSowAddProgressModal(true);
   }, []);
+
   const handlePaymentClick = useCallback(() => {
-    navigate("/trainee/paymentHistory");
+    navigate("/trainee/myWallet");
   }, [navigate]);
+  
   const infoData = [
     {
       infoImg: Images.PROFILE4_IMG,

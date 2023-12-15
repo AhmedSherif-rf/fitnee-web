@@ -85,8 +85,8 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
-    path: "/trainee/paymentHistory",
-    component: lazy(() => import("../Pages/TraineePages/PaymentHistory")),
+    path: "/trainee/myWallet",
+    component: lazy(() => import("../Pages/TraineePages/MyWallet")),
     exact: true,
     isPrivate: true,
     theme: "light",

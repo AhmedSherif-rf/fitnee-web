@@ -66,7 +66,7 @@
   "contactUs": {
     "firstNameText": "الاسم الأول",
     "lastNameText": "اسم العائلة",
-    "EmailOnlyText": "بريد إلكتروني",
+    "emailText": "بريد إلكتروني",
     "describeIssueText": "وصف مشكلتك",
     "unlockYourPotentialText": "أطلق العنان لإمكاناتك",
     "transformYourBodyText": "تحويل جسمك",

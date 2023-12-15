@@ -111,7 +111,7 @@ const ContactUsForm = () => {
                     <InputField
                       type="text"
                       name="email"
-                      placeholder={t("contactUs.EmailOnlyText")}
+                      placeholder={t("contactUs.emailText")}
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.email}

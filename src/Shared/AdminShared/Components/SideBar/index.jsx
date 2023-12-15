@@ -23,7 +23,7 @@ const SideBar = ({ isOpen, toggle }) => (
       </span>
       <img className="py-5" src={Logo} alt={"website-logo"} />
     </div>
-    <div className="side-menu">
+    <div className="side-menu overflow-y-scroll"style={{ overflowY: 'scroll', overflowX: 'hidden' }}>
       <Nav vertical className="list-unstyled pb-3">
         <NavItem>
           <NavLink

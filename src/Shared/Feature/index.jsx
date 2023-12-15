@@ -24,23 +24,29 @@ const Feature = (props) => {
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
+      <Row className="text-center">
+          <Col md={12}>
+            <span
+              className={`fw-bold textYellow fs-1 mb-0 arabicBorderHover ${styles.featureHeading}`}
+            >
+              {t("landing.featuresText")}
+            </span>
+          </Col>
+        </Row>
       <Col
         xs={12}
         md={6}
         className={`p-0 mb-md-0 mb-3 ${styles.featureSectionLeftContent}`}
       >
+        
         <div className={`d-flex align-items-center h-100`}>
           <div className="">
             <div>
-              <span
-                className={`fw-bold textYellow fs-1 ms-4 mb-0 arabicBorderHover ${styles.featureHeading}`}
-              >
-                {t("landing.featuresText")}
-              </span>
               <Swiper
                 speed={1000}
                 spaceBetween={500}
                 grabCursor={true}
+                direction="vertical"
                 autoplay={{
                   delay: 2500,
                   disableOnInteraction: false,
@@ -49,7 +55,7 @@ const Feature = (props) => {
                   clickable: true,
                 }}
                 onSlideChange={handletextSlideChange}
-                className={`h-100 ${styles.featureTextSlider}`}
+                style={{ height: "80vh", overflow: "hidden" }}
                 modules={[Pagination, Autoplay, Pagination]}
               >
                 {textData?.map((item, index) => {
@@ -57,7 +63,7 @@ const Feature = (props) => {
                     <SwiperSlide
                       key={index}
                       style={{ direction: i18n.dir() }}
-                      className="d-flex align-items-center justify-content-start justify-content-sm-center d-block text-white"
+                      className="d-flex align-items-center fw-bold justify-content-start fs-5 justify-content-sm-center w-100 d-block text-black"
                     >
                       {item.text}
                     </SwiperSlide>

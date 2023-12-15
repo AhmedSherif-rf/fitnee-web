@@ -154,6 +154,30 @@ const LandingPage = (props) => {
 
         title: "Zorawar",
       },
+      {
+        sliderImg: Images.SLIDER1_IMG,
+        description: t("landing.swiperText"),
+
+        title: "Zorawar",
+      },
+      {
+        sliderImg: Images.GOAL_IMG,
+        description: t("landing.swiperText"),
+
+        title: "Zorawar",
+      },
+      {
+        sliderImg: Images.GOAL_IMG,
+        description: t("landing.swiperText"),
+
+        title: "Zorawar",
+      },
+      {
+        sliderImg: Images.SLIDER1_IMG,
+        description: t("landing.swiperText"),
+
+        title: "Zorawar",
+      },
     ];
   }, [t]);
 

@@ -8,7 +8,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const CardSwiper = (props) => {
   const { data: cardsData, heading } = props;
 
-  const slicedCardsData = cardsData.slice(0, 20);
+  const slicedCardsData = cardsData.slice(0, 10);
 
   const swiperConfiguration = {
     grabCursor: true,

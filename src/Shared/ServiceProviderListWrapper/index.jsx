@@ -168,7 +168,7 @@ const ServiceProviderListWrapper = (props) => {
       Height: "38",
     },
     {
-      infoImg: Images.PROFILE2_IMG,
+      infoImg: Images.GOAL_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
@@ -184,7 +184,7 @@ const ServiceProviderListWrapper = (props) => {
       Height: "38",
     },
     {
-      infoImg: Images.PROFILE4_IMG,
+      infoImg: Images.GOAL_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
@@ -200,7 +200,7 @@ const ServiceProviderListWrapper = (props) => {
       Height: "38",
     },
     {
-      infoImg: Images.PROFILE3_IMG,
+      infoImg: Images.GOAL_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,

@@ -481,7 +481,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             <Card className="bg-transparent border-0 h-100">
               <CardBody className="p-0 p-2 mt-2">
                 <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
-                  {!isGuest && !isPrivate && roleType === null && (
+                  {!isPrivate && roleType === null && (
                     <>
                       <NavItem className={`${styles.NavItem}`}>
                         <Link className={`nav-link ${styles.NavLink}`} to="/">
@@ -655,6 +655,42 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
               <CardFooter className="border-0">
                 {!isGuest && !isPrivate && roleType === null && (
                   <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav caret>
+                        <img
+                          src={
+                            currentLanguage === ENGLISH_LANGUAGE
+                              ? Images.AMERICAN_FLAG_IMG
+                              : Images.ARABIA_FLAG_IMG
+                          }
+                          alt="Flag_Image"
+                        />
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        >
+                          <span>
+                            <img
+                              src={Images.ARABIA_FLAG_IMG}
+                              alt="Arabia_Flag_Image"
+                            />
+                          </span>
+                          <span>{"العربية"}</span>
+                        </DropdownItem>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
+                        >
+                          <span>
+                            <img
+                              src={Images.AMERICAN_FLAG_IMG}
+                              alt="America_Flag_Image"
+                            />
+                          </span>
+                          <span>{"English (US)"}</span>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
                     <FillBtn
                       className="px-3 w-100 mb-2"
                       text={t("landing.signUpText")}

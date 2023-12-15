@@ -5,10 +5,10 @@
   height: 100vh;
 
   .bannerTextWrapper {
-    font-size: 50px;
-    line-height: 40px;
+    font-size: 55px;
+    line-height: 50px;
     letter-spacing: 1px;
-    word-spacing: 5px;
+    word-spacing: 8px;
   }
 
   .videoContainer {
@@ -38,16 +38,4 @@
       object-fit: cover;
     }
   }
-}
-
-.figureCards {
-  content: "";
-  z-index: 99;
-  align-items: center;
-  justify-content: center;
-  bottom: 100px;
-  border-radius: 12px;
-  background-color:gray ;
-  background-position: top center;
-  background-attachment: fixed;
 }

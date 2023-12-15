@@ -9,7 +9,7 @@ import MultiSelector from "../MultiSelector";
 import { useTranslation } from "react-i18next";
 import { FaDeleteLeft } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
-import { SIGNUP_SCHEMA } from "./data/validation";
+// import { SIGNUP_SCHEMA } from "./data/validation";
 import { INITIAL_VALUES } from "./data/initialValue";
 import { useNavigate, useParams } from "react-router";
 import { ConnectedFocusError } from "focus-formik-error";

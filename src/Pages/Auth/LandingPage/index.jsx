@@ -1,30 +1,16 @@
-import { motion } from "framer-motion";
+import { Container } from "reactstrap";
 import Hero from "../../../Shared/Hero";
-import React, { useCallback } from "react";
 import styles from "./style.module.scss";
+import React, { useCallback } from "react";
 import Footer from "../../../Shared/Footer";
 import Feature from "../../../Shared/Feature";
 import { useTranslation } from "react-i18next";
-import { FaNutritionix } from "react-icons/fa";
 import HomeBanner from "../../../Shared/Banner";
-import { Col, Container, Row } from "reactstrap";
-import CounterUp from "../../../Shared/CounterUp/";
 import CardSwiper from "../../../Shared/CardSwiper";
-import { useInView } from "react-intersection-observer";
-import { GiWeightLiftingUp, GiBodyBalance } from "react-icons/gi";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const LandingPage = (props) => {
   const { t, i18n } = useTranslation("");
-
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-  });
-
-  const animationVariants = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-  };
 
   const WhatIsFitneeData = [
     {
@@ -198,7 +184,7 @@ const LandingPage = (props) => {
         title: "Zorawar",
       },
     ];
-  }, []);
+  }, [t]);
 
   return (
     <div className="bg-black">

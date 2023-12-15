@@ -3,7 +3,7 @@ import { guestRole } from "./routeConfig";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getInitialUrl } from "../utils/functions";
+// import { getInitialUrl } from "../utils/functions";
 import { setGuest } from "../Redux/features/User/userSlice";
 
 export function PublicRoute({ Component, props }) {

@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import CounterUp from "../../Shared/CounterUp/";
 import React, { memo, useCallback } from "react";
 import { Col, Container, Row } from "reactstrap";
-import PushUpVideo from "../../Assets/Videos/homeBannerNew.mov";
 
 const HomeBanner = () => {
   const { t } = useTranslation("");
@@ -30,20 +29,7 @@ const HomeBanner = () => {
   };
 
   return (
-    <Container fluid className={styles.bannerVideo}>
-      <div className={styles.videoContainer}>
-        <div className={`${styles.overlay}`}></div>
-        <video
-          playsInline
-          preload="metadata"
-          muted
-          autoPlay
-          loop
-          className={`rounded-0`}
-          src={PushUpVideo}
-        ></video>
-      </div>
-
+    <Container fluid className={`${styles.bannerImg}`}>
       <Row className="h-100">
         <Col md={6} className="d-flex align-items-center">
           <div style={{ zIndex: "1", marginLeft: "10px", marginRight: "10px" }}>

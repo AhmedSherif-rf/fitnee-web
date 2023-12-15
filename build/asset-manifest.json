@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.c2a24407.css",
-    "main.js": "/static/js/main.d0bfa2ce.js",
-    "static/css/9804.3d68e6a4.chunk.css": "/static/css/9804.3d68e6a4.chunk.css",
-    "static/js/9804.d642d508.chunk.js": "/static/js/9804.d642d508.chunk.js",
+    "main.js": "/static/js/main.2bdf2011.js",
+    "static/css/8617.06702de6.chunk.css": "/static/css/8617.06702de6.chunk.css",
+    "static/js/8617.35a0397b.chunk.js": "/static/js/8617.35a0397b.chunk.js",
     "static/css/2362.9a786ba5.chunk.css": "/static/css/2362.9a786ba5.chunk.css",
     "static/js/2362.2d4d6f0b.chunk.js": "/static/js/2362.2d4d6f0b.chunk.js",
     "static/css/5762.342ad2b4.chunk.css": "/static/css/5762.342ad2b4.chunk.css",
@@ -79,12 +79,12 @@
     "static/js/71.0fa2ae52.chunk.js": "/static/js/71.0fa2ae52.chunk.js",
     "static/js/4481.985e2f23.chunk.js": "/static/js/4481.985e2f23.chunk.js",
     "static/js/6907.49991550.chunk.js": "/static/js/6907.49991550.chunk.js",
-    "static/media/homeBannerNew.mov": "/static/media/homeBannerNew.fd127c67873baa4c95a1.mov",
     "static/media/featureBg.svg": "/static/media/featureBg.63c3ff8d5cf8154d3a4425da4ac50157.svg",
     "static/media/profile1.svg": "/static/media/profile1.eba38efae7b4dc999cf4ac220c852d5a.svg",
     "static/media/FeatureSectionBgImage.svg": "/static/media/FeatureSectionBgImage.20242751e2821c51850b.svg",
     "static/media/CreditCardImg.svg": "/static/media/CreditCardImg.5aeb099109a5aae0a3f4cc91e2f021bd.svg",
     "static/media/RegisterAsBackground.svg": "/static/media/RegisterAsBackground.06da41d0632b8e0ef13a0c939a7e72bd.svg",
+    "static/media/homeBannerImg.png": "/static/media/homeBannerImg.99c7091478e2d1ee2a35.png",
     "static/media/TraineeGraph.svg": "/static/media/TraineeGraph.7f303c49af2e831bc8e4e3529aae235b.svg",
     "static/media/AboutFitnee.png": "/static/media/AboutFitnee.7466bdd274e23f0c436c.png",
     "static/media/OurGoal.png": "/static/media/OurGoal.13ddfbf66e313c0cdbbe.png",
@@ -130,9 +130,9 @@
     "static/media/getFetch.cjs": "/static/media/getFetch.40f37ddea2378391108f.cjs",
     "static/media/HeroBackground.svg": "/static/media/HeroBackground.e8c84b79ccfc589b098997cca1297841.svg",
     "main.c2a24407.css.map": "/static/css/main.c2a24407.css.map",
-    "main.d0bfa2ce.js.map": "/static/js/main.d0bfa2ce.js.map",
-    "9804.3d68e6a4.chunk.css.map": "/static/css/9804.3d68e6a4.chunk.css.map",
-    "9804.d642d508.chunk.js.map": "/static/js/9804.d642d508.chunk.js.map",
+    "main.2bdf2011.js.map": "/static/js/main.2bdf2011.js.map",
+    "8617.06702de6.chunk.css.map": "/static/css/8617.06702de6.chunk.css.map",
+    "8617.35a0397b.chunk.js.map": "/static/js/8617.35a0397b.chunk.js.map",
     "2362.9a786ba5.chunk.css.map": "/static/css/2362.9a786ba5.chunk.css.map",
     "2362.2d4d6f0b.chunk.js.map": "/static/js/2362.2d4d6f0b.chunk.js.map",
     "5762.342ad2b4.chunk.css.map": "/static/css/5762.342ad2b4.chunk.css.map",
@@ -211,6 +211,6 @@
   },
   "entrypoints": [
     "static/css/main.c2a24407.css",
-    "static/js/main.d0bfa2ce.js"
+    "static/js/main.2bdf2011.js"
   ]
 }

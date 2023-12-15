@@ -125,7 +125,7 @@ const LandingPage = (props) => {
     return [
      
       {
-        sliderImg: Images.SLIDER2_IMG,
+        sliderImg: Images.GOAL_IMG,
         description: t("landing.swiperText"),
 
         title: "Zorawar",
@@ -137,7 +137,7 @@ const LandingPage = (props) => {
         title: "Zorawar",
       },
       {
-        sliderImg: Images.SLIDER3_IMG,
+        sliderImg: Images.GOAL_IMG,
         description: t("landing.swiperText"),
 
         title: "Zorawar",
@@ -149,36 +149,7 @@ const LandingPage = (props) => {
         title: "Zorawar",
       },
       {
-        sliderImg: Images.SLIDER2_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER3_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER2_IMG,
-        description: t("landing.swiperText"),
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER3_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER2_IMG,
+        sliderImg: Images.GOAL_IMG,
         description: t("landing.swiperText"),
 
         title: "Zorawar",

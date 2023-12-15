@@ -51,7 +51,7 @@ const ContactUsForm = () => {
     <Container>
       <Row className="justify-content-center align-items-center vh-100">
         {loading === "pending" && <LoadingScreen />}
-        <Col lg={7} md={12} sm={10}>
+        <Col md={10} sm={10}>
           <h1 className="text-center mb-5 f-w-bold ">{t("contactUs.contactUsText")}</h1>
           <Formik
             initialValues={{ ...INITIAL_VALUES }}

@@ -105,7 +105,9 @@ const Dashboard = () => {
   const handleAddProgressClick = useCallback(() => {
     setSowAddProgressModal(true);
   }, []);
-
+  const handlePaymentClick = useCallback(() => {
+    navigate("/trainee/paymentHistory");
+  }, [navigate]);
   const infoData = [
     {
       infoImg: Images.PROFILE4_IMG,
@@ -113,7 +115,7 @@ const Dashboard = () => {
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: "2 Years",
-      Height: "25",
+      Height: "38",
       TraineeEmail: "shane@gmail.com",
     },
   ];
@@ -247,6 +249,11 @@ const Dashboard = () => {
                   className="w-100 mb-2 py-2"
                   text="All Service Providers"
                   handleOnClick={handleAllServiceProviderClick}
+                />
+                <FillBtn
+                  handleOnClick={handlePaymentClick}
+                  className="w-100 mb-2 py-2"
+                  text="My Wallet"
                 />
               </Col>
             </Row>

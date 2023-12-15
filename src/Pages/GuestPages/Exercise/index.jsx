@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
+import MyDropdown from "../../../Shared/MyDropdown";
+import { category } from "../../../utils/constants";
 import React, { useCallback, useState } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import ExerciseSection from "../../../Shared/ExerciseSection";
-import InformationModal from "../../../Shared/Modal/InformationModal";
 import PageHeading from "../../../Shared/Headings/PageHeading";
+import InformationModal from "../../../Shared/Modal/InformationModal";
 
 const Exercise = (props) => {
   const navigate = useNavigate();
@@ -56,8 +58,15 @@ const Exercise = (props) => {
   return (
     <Container fluid className="px-md-5">
       <Row className="text-black-custom">
-        <Col md={12}>
+        <Col md={6}>
           <PageHeading headingText="Chest" />
+        </Col>
+        <Col md={6} className="px-5">
+          <MyDropdown
+            className="border py-3 px-5 mt-3"
+            Options={category}
+            name={"categories"}
+          />
         </Col>
         <Col md={12} className="mb-3 px-md-5">
           <ExerciseSection exercisesData={ExerciseData} />

@@ -63,7 +63,7 @@ const infoData = [
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "25",
+    Height: "38",
     TraineeEmail: "shane@gmail.com",
   },
 ];
@@ -141,7 +141,9 @@ const Dashboard = () => {
                   />
                 </div>
               </div>
-              <p className="small">{t("trainer.trainerParagraphText")}</p>
+             <div className="overflow-scroll onlyBorderRadius p-3 border border-light"style={{maxHeight:"100px"}}>
+             <p className="small">{t("trainer.trainerParagraphText")}</p>
+             </div>
 
               <Row>
                 <Col md={12}>

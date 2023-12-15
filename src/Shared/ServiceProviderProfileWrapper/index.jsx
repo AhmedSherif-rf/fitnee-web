@@ -89,6 +89,7 @@ const personalData = {
   infoRating: 4,
   infoDes: "2 Years",
   Height: "38",
+  Email: "shane@gmail.com"
 };
 
 const ServiceProviderProfileWrapper = (props) => {
@@ -117,6 +118,7 @@ const ServiceProviderProfileWrapper = (props) => {
               infoImg={personalData.infoImg}
               infoDes={personalData.infoDes}
               CardHeight={personalData.Height}
+              TraineeEmail={personalData.Email}
             />
           </div>
           <div className="mb-3">

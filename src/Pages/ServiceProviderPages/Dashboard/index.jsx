@@ -88,44 +88,46 @@ const Dashboard = () => {
       <TopBar />
       <Row className="py-2">
         <Col lg={3} md={4} className="bg-F6F6F6">
-          <div className="mb-2">
-            {infoData.map((item, index) => {
-              return (
-                <ProfileInformationCard
-                  index={index}
-                  infoLogo={item.infoLogo}
-                  infoTitle={item.infoTitle}
-                  infoRating={item.infoRating}
-                  infoImg={item.infoImg}
-                  infoDes={item.infoDes}
-                  CardHeight={item.Height}
-                  TraineeEmail={item.TraineeEmail}
-                />
-              );
-            })}
-          </div>
+          <Card className="p-3 BorderRadius border-0">
+            <div className="mb-2">
+              {infoData.map((item, index) => {
+                return (
+                  <ProfileInformationCard
+                    index={index}
+                    infoLogo={item.infoLogo}
+                    infoTitle={item.infoTitle}
+                    infoRating={item.infoRating}
+                    infoImg={item.infoImg}
+                    infoDes={item.infoDes}
+                    CardHeight={item.Height}
+                    TraineeEmail={item.TraineeEmail}
+                  />
+                );
+              })}
+            </div>
 
-          <div className="">
-            <Row className="my-3">
-              <Col md={12}>
-                <FillBtn
-                  handleOnClick={handleCurrentSubscribersClick}
-                  className="w-100 mb-2 py-2"
-                  text={t("trainer.trainerSubscriberText")}
-                />
-                <FillBtn
-                  handleOnClick={handlePaymentClick}
-                  className="w-100 mb-2 py-2"
-                  text={t("trainer.trainerPaymentText")}
-                />
-                <FillBtn
-                  handleOnClick={handleSubscriptionsClick}
-                  className="w-100 mb-2 py-2"
-                  text={t("trainer.trainerPackageText")}
-                />
-              </Col>
-            </Row>
-          </div>
+            <div className="">
+              <Row className="my-3">
+                <Col md={12}>
+                  <FillBtn
+                    handleOnClick={handleCurrentSubscribersClick}
+                    className="w-100 mb-2 py-2"
+                    text={t("trainer.trainerSubscriberText")}
+                  />
+                  <FillBtn
+                    handleOnClick={handlePaymentClick}
+                    className="w-100 mb-2 py-2"
+                    text={t("trainer.trainerPaymentText")}
+                  />
+                  <FillBtn
+                    handleOnClick={handleSubscriptionsClick}
+                    className="w-100 mb-2 py-2"
+                    text={t("trainer.trainerPackageText")}
+                  />
+                </Col>
+              </Row>
+            </div>
+          </Card>
         </Col>
         <Col lg={9} md={8}>
           <Card className="BorderRadius border-0 mb-3 text-black-custom">
@@ -135,15 +137,15 @@ const Dashboard = () => {
                   <h5 className="fw-bold my-2">{t("trainer.bioText")}</h5>
                 </div>
                 <div>
-                  <FillBtn
-                    className="w-100"
-                    text="Edit"
-                  />
+                  <FillBtn className="w-100" text="Edit" />
                 </div>
               </div>
-             <div className="overflow-scroll onlyBorderRadius p-3 border border-light"style={{maxHeight:"100px"}}>
-             <p className="small">{t("trainer.trainerParagraphText")}</p>
-             </div>
+              <div
+                className="overflow-scroll onlyBorderRadius p-3 border border-light"
+                style={{ maxHeight: "100px" }}
+              >
+                <p className="small">{t("trainer.trainerParagraphText")}</p>
+              </div>
 
               <Row>
                 <Col md={12}>

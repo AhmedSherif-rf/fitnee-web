@@ -49,7 +49,6 @@ const SignUpForm = () => {
       <Formik
         initialValues={{...INITIAL_VALUES }}
         // validationSchema={SIGNUP_SCHEMA}
-        validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
           setTimeout(() => {
@@ -520,7 +519,7 @@ const SignUpForm = () => {
               </Col>
               <Col md={6} className="mb-3">
                 <InputField
-                  className="form-control-lg  py-3 px-4"
+                  className="form-control-lg py-3 px-4"
                   type="number"
                   placeholder="Protein"
                   name="protein"
@@ -545,7 +544,7 @@ const SignUpForm = () => {
                     component={MultiSelector}
                     options={specialityOptions}
                     placeholder="Select options"
-                    className="border-0"
+                    className="border-0 customMultiSelector"
                   />
                 </div>
               </Col>

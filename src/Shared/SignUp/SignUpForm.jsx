@@ -547,23 +547,26 @@ const SignUpForm = () => {
                     </p>
                   </Col>
                 </Row>
-                <Row className="mb-2">
-                  <Col>
-                    <div className="form-group">
-                      <h6 className="mb-2 fw-bold">
-                        Select your area of specialty
-                      </h6>
-                      <Field
-                        name="speciality"
-                        component={MultiSelector}
-                        options={specialityOptions}
-                        placeholder="Select options"
-                        className="border-0 customMultiSelector"
-                      />
-                    </div>
-                  </Col>
-                </Row>
               </>
+            )}
+
+            {roleType !== TRAINEE_TYPE && (
+              <Row className="mb-2">
+                <Col>
+                  <div className="form-group">
+                    <h6 className="mb-2 fw-bold">
+                      Select your area of specialty
+                    </h6>
+                    <Field
+                      name="speciality"
+                      component={MultiSelector}
+                      options={specialityOptions}
+                      placeholder="Select options"
+                      className="border-0 customMultiSelector"
+                    />
+                  </div>
+                </Col>
+              </Row>
             )}
 
             {roleType === TRAINEE_TYPE && (

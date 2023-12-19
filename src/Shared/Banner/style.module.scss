@@ -1,8 +1,16 @@
 @import "../../Assets/Scss/globalStyleSheet.scss";
 
-.bannerVideo {
-  position: relative;
-  height: 100vh;
+.bannerImg {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    url("../../Assets/Images/homeScreen/homeBannerImg.png");
+
+  @include bgProperties;
+  background-position: top center;
+  height: 100vh !important;
 
   .bannerTextWrapper {
     font-size: 55px;
@@ -10,32 +18,12 @@
     letter-spacing: 1px;
     word-spacing: 8px;
   }
+}
 
-  .videoContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.7) 100%
-      );
-    }
-
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+@media (max-width: 600px) {
+  .bannerImg {
+    .bannerTextWrapper {
+      font-size: 40px;
     }
   }
 }

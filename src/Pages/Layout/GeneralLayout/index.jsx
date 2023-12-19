@@ -1,10 +1,20 @@
-import React from "react";
 import { Container } from "reactstrap";
-import { Toaster } from "react-hot-toast";
+import React, { useEffect } from "react";
 import styles from "./style.module.scss";
+import { Toaster } from "react-hot-toast";
 import TopBar from "../../../Shared/TopBar";
+import { useLocation } from "react-router-dom";
 
 const GeneralLayout = (props) => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, [pathname]);
+
   return (
     <React.Fragment>
       <Toaster />

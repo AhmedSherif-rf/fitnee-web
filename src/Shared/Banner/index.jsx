@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import CounterUp from "../../Shared/CounterUp/";
 import React, { memo, useCallback } from "react";
 import { Col, Container, Row } from "reactstrap";
-import PushUpVideo from "../../Assets/Videos/homeBannerNew.mov";
 
 const HomeBanner = () => {
   const { t } = useTranslation("");
@@ -30,23 +29,10 @@ const HomeBanner = () => {
   };
 
   return (
-    <Container fluid className={styles.bannerVideo}>
-      <div className={styles.videoContainer}>
-        <div className={`${styles.overlay}`}></div>
-        <video
-          playsInline
-          preload="metadata"
-          muted
-          autoPlay
-          loop
-          className={`rounded-0`}
-          src={PushUpVideo}
-        ></video>
-      </div>
-
+    <Container fluid className={`${styles.bannerImg}`}>
       <Row className="h-100">
         <Col md={6} className="d-flex align-items-center">
-          <div style={{ zIndex: "1" }}>
+          <div style={{ zIndex: "1", marginLeft: "10px", marginRight: "10px" }}>
             <motion.div
               initial="hidden"
               animate="visible"
@@ -81,21 +67,21 @@ const HomeBanner = () => {
               style={{ bottom: 0, right: 0 }}
             >
               <div className={"p-sm-2 mx-4 text-center lh-2 mb-2"}>
-                <CounterUp start={0} end={500} duration={5} />
+                <CounterUp start={0} end={500} duration={2} />
                 <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
                   {t("landing.trainersText")}
                 </p>
               </div>
               <span className={"fs-1 text-secondary"}>|</span>
               <div className={"p-sm-2 mx-4 text-center lh-2 mb-2"}>
-                <CounterUp start={0} end={1000} duration={7} />
+                <CounterUp start={0} end={1000} duration={4} />
                 <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
                   {t("landing.traineesText")}
                 </p>
               </div>
               <span className={"fs-1 text-secondary"}>|</span>
               <div className="p-sm-2 mx-2 text-center lh-2 mb-2">
-                <CounterUp start={0} end={2000} duration={9} />
+                <CounterUp start={0} end={2000} duration={5} />
                 <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
                   {t("landing.nutritionistsText")}
                 </p>

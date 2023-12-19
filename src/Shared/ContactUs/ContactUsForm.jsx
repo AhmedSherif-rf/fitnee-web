@@ -111,7 +111,7 @@ const ContactUsForm = () => {
                     <InputField
                       type="text"
                       name="email"
-                      placeholder={t("contactUs.EmailOnlyText")}
+                      placeholder={t("contactUs.emailText")}
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.email}
@@ -130,7 +130,7 @@ const ContactUsForm = () => {
                         className:
                           "form-control-lg w-100 py-3 px-4 customPhoneInput",
                       }}
-                      defaultCountry={"ae"}
+                      defaultCountry={"sa"}
                       value={values.phone}
                       setFieldValue={setFieldValue}
                     />

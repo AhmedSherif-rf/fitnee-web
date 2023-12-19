@@ -46,7 +46,7 @@ export const traineeRoutes = [
   },
   {
     path: "/trainee/subscriptions",
-    component: lazy(() => import("../Pages/TraineePages/Subscriptions")),
+    component: lazy(() => import("../Pages/TraineePages/Subscription")),
     exact: true,
     isPrivate: true,
     theme: "light",

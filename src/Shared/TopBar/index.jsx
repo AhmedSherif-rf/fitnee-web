@@ -1,20 +1,15 @@
-import React, { useState, useEffect, memo, useCallback } from "react";
 import {
   Navbar,
   NavbarToggler,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Card,
-  CardBody,
-  CardFooter,
+  Collapse,
 } from "reactstrap";
 
-import { BiHome } from "react-icons/bi";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { useTranslation } from "react-i18next";
@@ -29,8 +24,8 @@ import Logo from "../../Assets/Images/homeScreen/Logo.svg";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { PiUsersFourThin, PiAddressBookBold } from "react-icons/pi";
 import { FaKey, FaTrashCan, FaCircleArrowUp } from "react-icons/fa6";
+import React, { useState, useEffect, memo, useCallback } from "react";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import {
   ENGLISH_LANGUAGE,
@@ -52,10 +47,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   useEffect(() => {
     if (isPublic) {
       window.addEventListener("scroll", listenScrollEvent);
-
-      if (location.pathname === "/registerAs") {
-        setShowNavItems(false);
-      }
     }
 
     if (isPrivate || isGuest) {
@@ -67,11 +58,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     return () => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPublic, location.pathname]);
 
   useEffect(() => {
-    if (isPublic && (location.pathname === "/registerAs" || isAuth)) {
+    if (isPublic && isAuth) {
       setShowNavItems(false);
     } else {
       setShowNavItems(true);
@@ -92,12 +82,17 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   }, [location.pathname, isAuth, isPublic]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
-  const [isSliding, setIsSliding] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
+  const [collapsedList, setCollapsedList] = useState(true);
   const [showNavItems, setShowNavItems] = useState(true);
   const [
     showSubscriptionInformationModal,
     setShowSubscriptionInformationModal,
   ] = useState(false);
+
+  const toggleNavbarList = () => {
+    setCollapsedList(!collapsedList);
+  };
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
 
   const [backgroundClass, setBackgroundClass] = useState(
@@ -134,9 +129,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     navigate("/registerAs");
   }, [navigate]);
 
-  const slide = () => {
-    setIsSliding(!isSliding);
-  };
+  const toggleNavbar = () => setCollapsed(!collapsed);
 
   const handleSignInClick = useCallback(() => {
     navigate("/signIn");
@@ -189,6 +182,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             fixed="top"
           >
             <Link
+              className="text-start d-block w-25"
               to={
                 roleType === TRAINEE_TYPE
                   ? "/trainee/dashboard"
@@ -202,13 +196,232 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             {showNavItems && (
               <>
                 <NavbarToggler
-                  className={"textYellow border-0 pb-2"}
-                  onClick={slide}
+                  className={"textYellow pb-2"}
+                  onClick={toggleNavbar}
                 >
                   <FaBars />
                 </NavbarToggler>
+                <Collapse isOpen={!collapsed} className="w-100 mt-2 text-white">
+                  <Nav
+                    className={` py-4 ${styles.nav} customBgDark caret`}
+                    navbar
+                  >
+                    {!isPrivate && roleType === null && (
+                      <>
+                        <NavItem className={`${styles.NavItem}`}>
+                          <Link to="/">
+                            {" "}
+                            <span className={`px-1 borderHover`}>
+                              {t("landing.homeText")}
+                            </span>
+                          </Link>
+                        </NavItem>
+
+                        <NavItem
+                          className={`${styles.NavItem}`}
+                          onClick={toggleNavbarList}
+                        >
+                          <span className={`px-1 borderHover`}>
+                            {t("landing.servicesText")}
+                          </span>
+
+                          <Collapse
+                            isOpen={!collapsedList}
+                            className="text-center bg-dark"
+                          >
+                            <Nav navbar>
+                              <NavItem>
+                                <Link
+                                  className="w-100 d-flex align-items-center"
+                                  to="/guest/serviceProviderList/trainer"
+                                >
+                                  <p className="mb-0">
+                                    {t("landing.trainersText")}
+                                  </p>
+                                </Link>
+                              </NavItem>
+                              <NavItem>
+                                <Link
+                                  className="w-100 d-flex align-items-center"
+                                  to="/guest/serviceProviderList/nutritionist"
+                                >
+                                  <p className="mb-0">
+                                    {t("landing.nutritionistsText")}
+                                  </p>
+                                </Link>
+                              </NavItem>
+                              <NavItem>
+                                <Link
+                                  className=" d-flex align-items-center"
+                                  to="/guest/services"
+                                >
+                                  <p className="mb-0">
+                                    {t("landing.exerciseText")}
+                                  </p>
+                                </Link>
+                              </NavItem>
+                            </Nav>
+                          </Collapse>
+                        </NavItem>
+
+                        <NavItem className={`${styles.NavItem}`}>
+                          <Link to="#" onClick={handleFitneeCommunityClick}>
+                            <span className={`px-1 borderHover`}>
+                              {t("landing.fitneeCommunityText")}
+                            </span>{" "}
+                          </Link>
+                        </NavItem>
+
+                        <NavItem className={`${styles.NavItem}`}>
+                          <Link to="/contactUs">
+                            <span className={`px-1 borderHover`}>
+                              {t("landing.contactUsText")}
+                            </span>
+                          </Link>
+                        </NavItem>
+                      </>
+                    )}
+                    {!isGuest && roleType !== null && (
+                      <div>
+                        <NavItem className={`${styles.NavItem} p-2`}>
+                          <Link
+                            className={`nav-link ${styles.NavLink}`}
+                            to={
+                              roleType === TRAINEE_TYPE
+                                ? "/trainee/dashboard"
+                                : "/serviceProvider/dashboard"
+                            }
+                          >
+                            <RiDashboardFill
+                              className={`fs-2 me-3 text-white`}
+                            />
+                            {"Dashboard"}
+                          </Link>
+                        </NavItem>
+                        <NavItem className={`${styles.NavItem} p-2`}>
+                          <Link
+                            className={`nav-link ${styles.NavLink}`}
+                            to={
+                              roleType === TRAINEE_TYPE
+                                ? "/trainee/editProfile"
+                                : "/serviceProvider/editProfile"
+                            }
+                          >
+                            <FaUserEdit className={`fs-2 me-3 text-white`} />
+                            {"Edit Profile"}
+                          </Link>
+                        </NavItem>
+                        {roleType && roleType !== TRAINEE_TYPE && (
+                          <>
+                            <NavItem className={`${styles.NavItem} p-2`}>
+                              <Link
+                                className={`nav-link ${styles.NavLink}`}
+                                to="/serviceProvider/paymentHistory"
+                              >
+                                <GiWallet className={`fs-2 me-3 text-white`} />
+                                {"Wallet"}
+                              </Link>
+                            </NavItem>
+                          </>
+                        )}
+
+                        <NavItem className={`${styles.NavItem} p-2`}>
+                          <Link
+                            className={`nav-link ${styles.NavLink}`}
+                            to={
+                              roleType === TRAINEE_TYPE
+                                ? "/trainee/resetPassword"
+                                : "/serviceProvider/resetPassword"
+                            }
+                          >
+                            <FaKey className={`fs-2 me-3 text-white`} />
+                            {"Change Password"}
+                          </Link>
+                        </NavItem>
+
+                        <NavItem className={`${styles.NavItem} p-2`}>
+                          <div
+                            className="d-flex align-items-center w-100 p-1"
+                            onClick={handleDeleteClick}
+                          >
+                            <FaTrashCan className={`fs-2 me-3 text-white`} />
+                            {"Delete Account"}
+                          </div>
+                        </NavItem>
+
+                        <NavItem className={`${styles.NavItem} p-2`}>
+                          <div
+                            className="d-flex align-items-center w-100 p-1"
+                            onClick={handleLogoutClick}
+                          >
+                            <FaCircleArrowUp
+                              className={`fs-2 me-3 text-white`}
+                            />
+                            {"Logout"}
+                          </div>
+                        </NavItem>
+                      </div>
+                    )}
+                  </Nav>
+                  {!isGuest && !isPrivate && roleType === null && (
+                    <>
+                      {!isGuest && !isPrivate && roleType === null && (
+                        <Nav
+                          className={`ml-auto d-lg-none d-block ${styles.nav}`}
+                        >
+                          <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                              <img
+                                src={
+                                  currentLanguage === ENGLISH_LANGUAGE
+                                    ? Images.AMERICAN_FLAG_IMG
+                                    : Images.ARABIA_FLAG_IMG
+                                }
+                                alt="Flag_Image"
+                              />
+                            </DropdownToggle>
+                            <DropdownMenu>
+                              <DropdownItem
+                                onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                              >
+                                <span>
+                                  <img
+                                    src={Images.ARABIA_FLAG_IMG}
+                                    alt="Arabia_Flag_Image"
+                                  />
+                                </span>
+                                <span>{"العربية"}</span>
+                              </DropdownItem>
+                              <DropdownItem
+                                onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
+                              >
+                                <span>
+                                  <img
+                                    src={Images.AMERICAN_FLAG_IMG}
+                                    alt="America_Flag_Image"
+                                  />
+                                </span>
+                                <span>{"English (US)"}</span>
+                              </DropdownItem>
+                            </DropdownMenu>
+                          </UncontrolledDropdown>
+                          <FillBtn
+                            className="px-3 w-100 mb-2"
+                            text={t("landing.signUpText")}
+                            handleOnClick={handleSignUpClick}
+                          />
+                          <OutlineBtn
+                            className="px-3 w-100"
+                            text={t("landing.signInText")}
+                            handleOnClick={handleSignInClick}
+                          />
+                        </Nav>
+                      )}
+                    </>
+                  )}
+                </Collapse>
                 {roleType === null && (
-                  <Nav className={"mx-auto gap-2 d-lg-flex d-none"} navbar>
+                  <Nav className={"d-lg-flex d-none"} navbar>
                     <NavItem className={`${styles.navItem}`}>
                       <Link
                         className={`nav-link ${styles.navLink} ${textClass}`}
@@ -236,7 +449,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         <DropdownMenu
                           style={{
                             right: 0,
-                            left: 'auto',
+                            left: "auto",
                             opacity: isDropdownOpen ? 1 : 0,
                           }}
                         >
@@ -297,9 +510,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                     </NavItem>
                   </Nav>
                 )}
-
                 {!isGuest && !isPrivate && roleType === null && (
-                  <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
+                  <Nav className={`d-md-flex d-none gap-2`}>
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>
                         <img
@@ -337,7 +549,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       </DropdownMenu>
                     </UncontrolledDropdown>
                     <FillBtn
-                      className="px-3 shadow-none"
+                      className="px-3 ms-1 shadow-none"
                       text={t("landing.signUpText")}
                       handleOnClick={handleSignUpClick}
                     />
@@ -348,9 +560,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                     />
                   </Nav>
                 )}
-
                 {!isGuest && !isPublic && (
-                  <Nav className={`ml-auto d-lg-flex d-none ${styles.nav}`}>
+                  <Nav className={`d-lg-flex d-none  ${styles.nav}`}>
                     <UncontrolledDropdown>
                       <DropdownToggle className="p-0" nav>
                         <div
@@ -362,7 +573,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           }}
                         ></div>
                       </DropdownToggle>
-                      <DropdownMenu style={{ right: 0, left: "auto" }}>
+                      <DropdownMenu
+                        className="custom-dropdown-menu"
+                        style={{ right: 0, left: "auto" }}
+                      >
                         <DropdownItem className="p-0">
                           <Link
                             className="w-100 p-1"
@@ -471,125 +685,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
               </>
             )}
           </Navbar>
-          <div
-            className={`d-lg-none d-block bg-black ${styles.mobileView} h-100 ${
-              isSliding ? styles["slide-right"] : styles["slide-left"]
-            }`}
-          >
-            <Card className="bg-transparent border-0 h-100">
-              <CardBody className="p-0 p-2 mt-2">
-                <Nav className={`mx-auto my-5 gap-2 ${styles.nav}`} navbar>
-                  <NavItem className={`${styles.NavItem}`}>
-                    <NavLink className={`${styles.NavLink}`} href="/">
-                      <BiHome className={`fs-2 me-3 text-white`} />
-                      {t("landing.homeText")}
-                    </NavLink>
-                  </NavItem>
-
-                  <NavItem className={`${styles.NavItem}`}>
-                    <UncontrolledDropdown
-                      nav
-                      inNavbar
-                      className={`w-100  ${styles.UncontrolledDropdown}`}
-                    >
-                      <DropdownToggle
-                        nav
-                        className={`w-100 ${styles.DropdownToggle}`}
-                      >
-                        <div className="d-flex align-items-center justify-content-between w-100">
-                          <div className="">
-                            <GiBodyBalance className={`fs-2 me-3 text-white`} />
-                            {t("landing.servicesText")}
-                          </div>
-                          <PiCaretDownBold />
-                        </div>
-                      </DropdownToggle>
-                      <DropdownMenu
-                        className={` bg-black w-100 ${styles.DropdownMenu}`}
-                      >
-                        <DropdownItem
-                          className={` w-100 ${styles.DropdownItem}`}
-                        >
-                          <Link
-                            className={`w-100 d-flex align-items-center ${styles.Link}`}
-                            to="/guest/serviceProviderList/trainer"
-                          >
-                            <p className=" mb-0">Trainers</p>
-                          </Link>
-                        </DropdownItem>
-
-                        <DropdownItem
-                          className={`w-100 ${styles.DropdownItem}`}
-                        >
-                          <Link
-                            className={`w-100 d-flex align-items-center ${styles.Link}`}
-                            to="/guest/serviceProviderList/nutritionist"
-                          >
-                            <p className="mb-0">Nutritionist</p>
-                          </Link>
-                        </DropdownItem>
-
-                        <DropdownItem
-                          className={`w-100 ${styles.DropdownItem}`}
-                        >
-                          <Link
-                            className={`d-flex align-items-center ${styles.Link}`}
-                            to="/guest/services"
-                          >
-                            <p className="mb-0">Exercises</p>
-                          </Link>
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
-                  </NavItem>
-
-                  <NavItem className={`${styles.NavItem}`}>
-                    <NavLink
-                      className={`${styles.NavLink}`}
-                      href="#"
-                      onClick={handleFitneeCommunityClick}
-                    >
-                      <PiUsersFourThin className={`fs-2 me-3 text-white`} />
-                      {t("landing.fitneeCommunityText")}
-                    </NavLink>
-                  </NavItem>
-
-                  <NavItem className={`${styles.NavItem}`}>
-                    <NavLink className={`${styles.NavLink}`} href="/contactUs">
-                      <PiAddressBookBold className={`fs-2 me-3 text-white`} />
-                      {t("landing.contactUsText")}
-                    </NavLink>
-                  </NavItem>
-                </Nav>
-              </CardBody>
-              <CardFooter className="border-0">
-                {!isGuest && (
-                  <Nav className={`ml-auto d-lg-none d-block ${styles.nav}`}>
-                    <FillBtn
-                      className="px-3 w-100 mb-2"
-                      text={t("landing.signUpText")}
-                      handleOnClick={handleSignUpClick}
-                    />
-                    <OutlineBtn
-                      className="px-3 w-100"
-                      text={t("landing.signInText")}
-                      handleOnClick={handleSignInClick}
-                    />
-                  </Nav>
-                )}
-              </CardFooter>
-            </Card>
-          </div>
-          <div
-            onClick={slide}
-            className={`d-lg-none d-block overflow-hidden ${
-              styles.bgInverse
-            } h-100 ${
-              isSliding
-                ? styles["slide-left-blank"]
-                : styles["slide-right-blank"]
-            }`}
-          ></div>
         </div>
       )}
 

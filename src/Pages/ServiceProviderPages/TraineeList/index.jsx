@@ -9,7 +9,7 @@ const index = () => {
     {
       useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
-      serviceProvider: "Trainer",
+      serviceProvider: "Trainee",
       duration: "2 Months",
       fee: "SAR 1000",
       startDate: "12/10/2023",
@@ -18,7 +18,7 @@ const index = () => {
     {
       useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
-      serviceProvider: "Trainer",
+      serviceProvider: "Trainee",
       duration: "2 Months",
       fee: "SAR 1000",
       startDate: "12/10/2023",
@@ -27,7 +27,7 @@ const index = () => {
     {
       useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
-      serviceProvider: "Trainer",
+      serviceProvider: "Trainee",
       duration: "2 Months",
       fee: "SAR 1000",
       startDate: "12/10/2023",
@@ -36,7 +36,7 @@ const index = () => {
     {
       useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
-      serviceProvider: "Trainer",
+      serviceProvider: "Trainee",
       duration: "2 Months",
       fee: "SAR 1000",
       startDate: "12/10/2023",
@@ -45,7 +45,7 @@ const index = () => {
     {
       useImages: `${Images.PROFILE4_IMG}`,
       userName: "Nayyar Mehdi",
-      serviceProvider: "Trainer",
+      serviceProvider: "Trainee",
       duration: "2 Months",
       fee: "SAR 1000",
       startDate: "12/10/2023",

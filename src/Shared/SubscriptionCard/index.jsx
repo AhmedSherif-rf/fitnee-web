@@ -1,4 +1,3 @@
-import { CardHeader } from "reactstrap";
 import styles from "./style.module.scss";
 import FillBtn from "../Buttons/FillBtn";
 import { useNavigate } from "react-router-dom";
@@ -8,23 +7,27 @@ import { Card, CardBody, CardFooter } from "reactstrap";
 
 const SubscriptionCard = (props) => {
   const { isGuest } = useSelector((state) => state.user);
-  const { headerText, price, ImgSrc } = props;
+  const { headerText, price, ImgSrc, buttonText } = props;
   const navigate = useNavigate();
 
   const handleSubscribeClick = useCallback(() => {
-    if (!isGuest) {
-      navigate("/trainee/subscriptions/creditCardDetail");
-    } else {
-      navigate("/registerAs");
+    if (buttonText !== "Edit") {
+      if (!isGuest) {
+        navigate("/trainee/subscriptions/creditCardDetail");
+      } else {
+        navigate("/registerAs");
+      }
     }
-  }, [isGuest, navigate]);
+  }, [isGuest, navigate, buttonText]);
 
   return (
     <Card
       className={`text-center BorderRadius text-black-custom p-0 h-100 mb-5 ${styles.cardHeaderDesign}`}
     >
       <div className="text-center d-flex justify-content-center">
-        <div className={`${styles.headerCard} BorderRadius shadow-sm`}>{headerText}</div>
+        <div className={`${styles.headerCard} BorderRadius shadow-sm`}>
+          {headerText}
+        </div>
       </div>
 
       <CardBody className="mt-5">
@@ -34,7 +37,7 @@ const SubscriptionCard = (props) => {
       <CardFooter className="bg-transparent border-0 py-3">
         <FillBtn
           className={"px-5"}
-          text={"Subscribe"}
+          text={buttonText}
           handleOnClick={handleSubscribeClick}
         />
       </CardFooter>

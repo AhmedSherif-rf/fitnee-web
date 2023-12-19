@@ -373,7 +373,7 @@ const ServiceProviderListWrapper = (props) => {
               onClick={handleSeeMoreClick}
             >
               <CardBody>
-                <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+                <div className="w-100 d-flex align-items-center justify-content-center" style={{height: "30vh"}}>
                   <div className="">
                     <p className="mb-0 fs-4 fw-bold">
                       {t("guest.seeMoreText")}

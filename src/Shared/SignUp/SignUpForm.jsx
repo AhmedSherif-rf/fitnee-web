@@ -47,9 +47,8 @@ const SignUpForm = () => {
   return (
     <Container>
       <Formik
-        initialValues={{...INITIAL_VALUES }}
+        initialValues={{ ...INITIAL_VALUES }}
         // validationSchema={SIGNUP_SCHEMA}
-        validate={(values) => {}}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
           setTimeout(() => {
@@ -236,7 +235,7 @@ const SignUpForm = () => {
                     className:
                       "form-control-lg w-100 py-3 px-4 customPhoneInput border",
                   }}
-                  defaultCountry={"ae"}
+                  defaultCountry={"sa"}
                   value={values.phoneNumber}
                   setFieldValue={setFieldValue}
                 />
@@ -317,66 +316,79 @@ const SignUpForm = () => {
                   </Col>
                 </Row>
               </Col>
-              <Col lg={6} md={6} className="mb-2">
-                <Row className="p-0">
-                  <Col md={12} className="mb-2">
+              {roleType !== TRAINEE_TYPE && (
+                <>
+                  <Col lg={6} md={6} className="mb-2">
+                    <Row className="p-0">
+                      <Col md={12} className="mb-2">
+                        <div
+                          className="text-end"
+                          style={{ marginBottom: "-15px" }}
+                        >
+                          *
+                        </div>{" "}
+                        <InputField
+                          className="form-control-lg  py-3 px-4"
+                          type="textarea"
+                          style={{ minHeight: "115px" }}
+                          placeholder={t("signup.addBioText")}
+                          name="bio"
+                          onChangeHandle={handleChange}
+                          onBlurHandle={handleBlur}
+                          value={values.bio}
+                        />
+                        <p className="errorField">
+                          {errors.bio && touched.bio && errors.bio}
+                        </p>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col lg={6} md={6} className="mb-2">
                     <div className="text-end" style={{ marginBottom: "-15px" }}>
                       *
-                    </div>{" "}
+                    </div>
                     <InputField
                       className="form-control-lg  py-3 px-4"
-                      type="textarea"
-                      style={{ minHeight: "115px" }}
-                      placeholder={t("signup.addBioText")}
-                      name="bio"
+                      type="number"
+                      placeholder="Year of Experience"
+                      name="experience"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
-                      value={values.bio}
+                      value={values.experience}
                     />
                     <p className="errorField">
-                      {errors.bio && touched.bio && errors.bio}
+                      {errors.experience &&
+                        touched.experience &&
+                        errors.experience}
                     </p>
                   </Col>
-                </Row>
-              </Col>
-              <Col lg={6} md={6} className="mb-2">
-                <div className="text-end" style={{ marginBottom: "-15px" }}>
-                  *
-                </div>
-                <InputField
-                  className="form-control-lg  py-3 px-4"
-                  type="number"
-                  placeholder="Year of Experience"
-                  name="experience"
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.experience}
-                />
-                <p className="errorField">
-                  {errors.experience && touched.experience && errors.experience}
-                </p>
-              </Col>
-              <Col lg={6} md={6} className="mb-2">
-                <div className="text-end" style={{ marginBottom: "-15px" }}>
-                  *
-                </div>
-                <MyDropdown
-                  className="border py-3 px-4 mb-0"
-                  Options={roleOptions}
-                  name={"role"}
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.role}
-                />
-                <p className="errorField">
-                  {errors.role && touched.role && errors.role}
-                </p>
-              </Col>
+                  <Col lg={6} md={6} className="mb-2">
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                    <MyDropdown
+                      className="border py-3 px-4 mb-0"
+                      Options={roleOptions}
+                      name={"role"}
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.role}
+                    />
+                    <p className="errorField">
+                      {errors.role && touched.role && errors.role}
+                    </p>
+                  </Col>
+                </>
+              )}
             </Row>
 
             <Row className="mb-3">
               <Col md={12}>
-                <h6 className="fw-bold">In Body</h6>
+                <h6 className="fw-bold">
+                  {roleType !== TRAINEE_TYPE
+                    ? "Attach Your Certificates"
+                    : "In Body"}
+                </h6>
               </Col>
               {console.log(values?.certificates)}
               <Col>
@@ -426,9 +438,9 @@ const SignUpForm = () => {
                       onChange={(event) => {
                         const files = event.currentTarget.files;
                         if (files.length > 0) {
-                          const uploadedImages = Array.from(files).map(
-                            (file) => ({ file })
-                          );
+                          const uploadedImages = Array.from(
+                            files
+                          ).map((file) => ({ file }));
                           setFieldValue("certificates", [
                             ...values.certificates,
                             ...uploadedImages,
@@ -444,353 +456,367 @@ const SignUpForm = () => {
               </Col>
             </Row>
 
-            <Row className="mb-3">
-              <Col md={12} className="mb-3">
-                <h6 className="fw-bold mt-2">Body Information</h6>
-              </Col>
-              <Col md={6} className="mb-3">
-                <InputField
-                  className="form-control-lg  py-3 px-4"
-                  type="number"
-                  placeholder="Weight (lbs / kg)"
-                  name="weight"
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.weight}
-                />
-                <p className="errorField">
-                  {errors.weight && touched.weight && errors.weight}
-                </p>
-              </Col>
-              <Col md={6} className="mb-3">
-                <InputField
-                  className="form-control-lg  py-3 px-4"
-                  type="number"
-                  placeholder="Hight (cm / feet)"
-                  name="height"
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.height}
-                />
-                <p className="errorField">
-                  {errors.height && touched.height && errors.height}
-                </p>
-              </Col>
-              <Col md={6} className="mb-3">
-                <InputField
-                  className="form-control-lg  py-3 px-4"
-                  type="number"
-                  placeholder="Skeletal Muscle Mass"
-                  name="smm"
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.smm}
-                />
-                <p className="errorField">
-                  {errors.smm && touched.smm && errors.smm}
-                </p>
-              </Col>
-              <Col md={6} className="mb-3">
-                <InputField
-                  className="form-control-lg  py-3 px-4"
-                  type="number"
-                  placeholder="Body Fat Mass"
-                  name="bfm"
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.bfm}
-                />
-                <p className="errorField">
-                  {errors.bfm && touched.bfm && errors.bfm}
-                </p>
-              </Col>
-              <Col md={6} className="mb-3">
-                <InputField
-                  className="form-control-lg  py-3 px-4"
-                  type="number"
-                  placeholder="Total Body Water"
-                  name="tbw"
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.tbw}
-                />
-                <p className="errorField">
-                  {errors.tbw && touched.tbw && errors.tbw}
-                </p>
-              </Col>
-              <Col md={6} className="mb-3">
-                <InputField
-                  className="form-control-lg  py-3 px-4"
-                  type="number"
-                  placeholder="Protein"
-                  name="protein"
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.protein}
-                />
-                <p className="errorField">
-                  {errors.protein && touched.protein && errors.protein}
-                </p>
-              </Col>
-            </Row>
-
-            <Row className="mb-2">
-              <Col>
-                <div className="form-group">
-                  <h6 className="mb-2 fw-bold">
-                    Select your area of specialty
-                  </h6>
-                  <Field
-                    name="speciality"
-                    component={MultiSelector}
-                    options={specialityOptions}
-                    placeholder="Select options"
-                    className="border-0"
-                  />
-                </div>
-              </Col>
-            </Row>
-
-            <Row className="mb-3">
-              <Col md={6}>
-                <h6 className="mb-2 fw-bold">My goal</h6>
-                <InputField
-                  className="form-control-lg  py-3 px-4"
-                  type="text"
-                  placeholder="I want to lose my 5kg weight in 4 weeks"
-                  name="myGoal"
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.myGoal}
-                />
-                <p className="errorField">
-                  {errors.myGoal && touched.myGoal && errors.myGoal}
-                </p>
-              </Col>
-              <Col md={6}>
-                <h6 className="mb-2 fw-bold">Training goal</h6>
-                <Row className="training">
-                  <Col md={12} className="mb-2">
-                    <MyDropdown
-                      className=" shadow-0 py-3 px-4 border"
-                      Options={trainingGoalOptions}
-                      name={"trainingGoal"}
-                      onChangeHandle={handleChange}
-                      onBlurHandle={handleBlur}
-                      value={values.trainingGoal}
-                    />
+            {roleType === TRAINEE_TYPE && (
+              <>
+                <Row className="mb-3">
+                  <Col md={12} className="mb-3">
+                    <h6 className="fw-bold mt-2">Body Information</h6>
                   </Col>
-                </Row>
-                <p className="errorField">
-                  {errors.trainingGoal &&
-                    touched.trainingGoal &&
-                    errors.trainingGoal}
-                </p>
-              </Col>
-              <Col md={6}>
-                <h6 className="mb-2 fw-bold">Activity Level</h6>
-                <Row className="activity">
-                  <Col md={12} className="mb-2">
-                    <MyDropdown
-                      className=" shadow-0 py-3 px-4 border"
-                      Options={activityLevelOptions}
-                      name={"activityLevel"}
-                      onChangeHandle={handleChange}
-                      onBlurHandle={handleBlur}
-                      value={values.activityLevel}
-                    />
-                  </Col>
-                </Row>
-                <p className="errorField">
-                  {errors.activityLevel &&
-                    touched.activityLevel &&
-                    errors.activityLevel}
-                </p>
-              </Col>
-              <Col lg={6} md={6} className="mb-2">
-                <h6 className="mb-2 fw-bold">Any Injury</h6>
-                <Row className="p-0">
-                  <Col md={12} className="mb-2">
+                  <Col md={6} className="mb-3">
                     <InputField
                       className="form-control-lg  py-3 px-4"
-                      type="textarea"
-                      style={{ minHeight: "20px" }}
-                      placeholder="Describe your injury..."
-                      name="injury"
+                      type="number"
+                      placeholder="Weight (lbs / kg)"
+                      name="weight"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
-                      value={values.injury}
+                      value={values.weight}
                     />
                     <p className="errorField">
-                      {errors.injury && touched.injury && errors.injury}
+                      {errors.weight && touched.weight && errors.weight}
+                    </p>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <InputField
+                      className="form-control-lg  py-3 px-4"
+                      type="number"
+                      placeholder="Hight (cm / feet)"
+                      name="height"
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.height}
+                    />
+                    <p className="errorField">
+                      {errors.height && touched.height && errors.height}
+                    </p>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <InputField
+                      className="form-control-lg  py-3 px-4"
+                      type="number"
+                      placeholder="Skeletal Muscle Mass"
+                      name="smm"
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.smm}
+                    />
+                    <p className="errorField">
+                      {errors.smm && touched.smm && errors.smm}
+                    </p>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <InputField
+                      className="form-control-lg  py-3 px-4"
+                      type="number"
+                      placeholder="Body Fat Mass"
+                      name="bfm"
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.bfm}
+                    />
+                    <p className="errorField">
+                      {errors.bfm && touched.bfm && errors.bfm}
+                    </p>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <InputField
+                      className="form-control-lg  py-3 px-4"
+                      type="number"
+                      placeholder="Total Body Water"
+                      name="tbw"
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.tbw}
+                    />
+                    <p className="errorField">
+                      {errors.tbw && touched.tbw && errors.tbw}
+                    </p>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <InputField
+                      className="form-control-lg py-3 px-4"
+                      type="number"
+                      placeholder="Protein"
+                      name="protein"
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.protein}
+                    />
+                    <p className="errorField">
+                      {errors.protein && touched.protein && errors.protein}
                     </p>
                   </Col>
                 </Row>
-              </Col>
-            </Row>
+              </>
+            )}
 
-            <Row className="mb-3">
-              <Col md={6}>
-                <h6 className="mb-2 fw-bold">Your SAUDIREPS number</h6>
-                <InputField
-                  className="form-control-lg  py-3 px-4"
-                  type="number"
-                  placeholder="Your SAUDIREPS number"
-                  name="saudiReps"
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  value={values.saudiReps}
-                />
-                <p className="errorField">
-                  {errors.saudiReps && touched.saudiReps && errors.saudiReps}
-                </p>
-              </Col>
-              <Col lg={6} md={6} className="mb-2">
-                <h6 className="mb-2 fw-bold">
-                  Enter the phone number that has an STC Pay Account
-                </h6>
-                <PhoneInputField
-                  inputProps={{
-                    name: "stcPhoneNumber",
-                    required: true,
-                    className:
-                      "form-control-lg w-100  py-3 px-4 customPhoneInput border",
-                  }}
-                  defaultCountry={"ae"}
-                  value={values.stcPhoneNumber}
-                  setFieldValue={setFieldValue}
-                />
-                <p className="errorField">
-                  {errors.stcPhoneNumber &&
-                    touched.stcPhoneNumber &&
-                    errors.stcPhoneNumber}
-                </p>
-              </Col>
-            </Row>
+            {roleType !== TRAINEE_TYPE && (
+              <Row className="mb-2">
+                <Col>
+                  <div className="form-group">
+                    <h6 className="mb-2 fw-bold">
+                      Select your area of specialty
+                    </h6>
+                    <Field
+                      name="speciality"
+                      component={MultiSelector}
+                      options={specialityOptions}
+                      placeholder="Select options"
+                      className="border-0 customMultiSelector"
+                    />
+                  </div>
+                </Col>
+              </Row>
+            )}
 
-            <Row>
-              <Col lg={12} md={12}>
-                <h6 className="mb-2 fw-bold">
-                  You are available to respond on your trainee *
-                </h6>
-                <FieldArray
-                  name="daySchedules"
-                  className="d-flex"
-                  render={(arrayHelpers) => (
-                    <>
-                      {values.daySchedules.map((daySchedule, index) => (
-                        <Row key={index} className="mb-1">
-                          <Col lg={5} md={5} className="mb-2">
-                            <Field
-                              as="select"
-                              name={`daySchedules.${index}.day`}
-                              className="customDropDown form-control-lg w-100 selectField BorderRadius border px-4"
-                              style={{
-                                paddingTop: "12px",
-                                paddingBottom: "12px",
-                              }}
-                            >
-                              <option
-                                className="customDropDownOption"
-                                value=""
-                                label="Select"
-                              />
-                              {weekDaysOptions?.map((option, index) => (
-                                <option
-                                  className="customDropDownOption border"
-                                  value={option.value}
-                                  key={index}
-                                  label={option.label}
+            {roleType === TRAINEE_TYPE && (
+              <Row className="mb-3">
+                <Col md={6}>
+                  <h6 className="mb-2 fw-bold">My goal</h6>
+                  <InputField
+                    className="form-control-lg  py-3 px-4"
+                    type="text"
+                    placeholder="I want to lose my 5kg weight in 4 weeks"
+                    name="myGoal"
+                    onChangeHandle={handleChange}
+                    onBlurHandle={handleBlur}
+                    value={values.myGoal}
+                  />
+                  <p className="errorField">
+                    {errors.myGoal && touched.myGoal && errors.myGoal}
+                  </p>
+                </Col>
+                <Col md={6}>
+                  <h6 className="mb-2 fw-bold">Training goal</h6>
+                  <Row className="training">
+                    <Col md={12} className="mb-2">
+                      <MyDropdown
+                        className=" shadow-0 py-3 px-4 border"
+                        Options={trainingGoalOptions}
+                        name={"trainingGoal"}
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.trainingGoal}
+                      />
+                    </Col>
+                  </Row>
+                  <p className="errorField">
+                    {errors.trainingGoal &&
+                      touched.trainingGoal &&
+                      errors.trainingGoal}
+                  </p>
+                </Col>
+                <Col md={6}>
+                  <h6 className="mb-2 fw-bold">Activity Level</h6>
+                  <Row className="activity">
+                    <Col md={12} className="mb-2">
+                      <MyDropdown
+                        className=" shadow-0 py-3 px-4 border"
+                        Options={activityLevelOptions}
+                        name={"activityLevel"}
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.activityLevel}
+                      />
+                    </Col>
+                  </Row>
+                  <p className="errorField">
+                    {errors.activityLevel &&
+                      touched.activityLevel &&
+                      errors.activityLevel}
+                  </p>
+                </Col>
+                <Col lg={6} md={6} className="mb-2">
+                  <h6 className="mb-2 fw-bold">Any Injury</h6>
+                  <Row className="p-0">
+                    <Col md={12} className="mb-2">
+                      <InputField
+                        className="form-control-lg  py-3 px-4"
+                        type="textarea"
+                        style={{ minHeight: "20px" }}
+                        placeholder="Describe your injury..."
+                        name="injury"
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.injury}
+                      />
+                      <p className="errorField">
+                        {errors.injury && touched.injury && errors.injury}
+                      </p>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+            )}
+
+            {roleType !== TRAINEE_TYPE && (
+              <>
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <h6 className="mb-2 fw-bold">Your SAUDIREPS number</h6>
+                    <InputField
+                      className="form-control-lg  py-3 px-4"
+                      type="number"
+                      placeholder="Your SAUDIREPS number"
+                      name="saudiReps"
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.saudiReps}
+                    />
+                    <p className="errorField">
+                      {errors.saudiReps &&
+                        touched.saudiReps &&
+                        errors.saudiReps}
+                    </p>
+                  </Col>
+                  <Col lg={6} md={6} className="mb-2">
+                    <h6 className="mb-2 fw-bold">
+                      Enter the phone number that has an STC Pay Account
+                    </h6>
+                    <PhoneInputField
+                      inputProps={{
+                        name: "stcPhoneNumber",
+                        required: true,
+                        className:
+                          "form-control-lg w-100  py-3 px-4 customPhoneInput border",
+                      }}
+                      defaultCountry={"sa"}
+                      value={values.stcPhoneNumber}
+                      setFieldValue={setFieldValue}
+                    />
+                    <p className="errorField">
+                      {errors.stcPhoneNumber &&
+                        touched.stcPhoneNumber &&
+                        errors.stcPhoneNumber}
+                    </p>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col lg={12} md={12}>
+                    <h6 className="mb-2 fw-bold">
+                      You are available to respond on your trainee *
+                    </h6>
+                    <FieldArray
+                      name="daySchedules"
+                      className="d-flex"
+                      render={(arrayHelpers) => (
+                        <>
+                          {values.daySchedules.map((daySchedule, index) => (
+                            <Row key={index} className="mb-1">
+                              <Col lg={5} md={5} className="mb-2">
+                                <Field
+                                  as="select"
+                                  name={`daySchedules.${index}.day`}
+                                  className="customDropDown form-control-lg w-100 selectField BorderRadius border px-4"
+                                  style={{
+                                    paddingTop: "12px",
+                                    paddingBottom: "12px",
+                                  }}
+                                >
+                                  <option
+                                    className="customDropDownOption"
+                                    value=""
+                                    label="Select"
+                                  />
+                                  {weekDaysOptions?.map((option, index) => (
+                                    <option
+                                      className="customDropDownOption border"
+                                      value={option.value}
+                                      key={index}
+                                      label={option.label}
+                                    />
+                                  ))}
+                                </Field>
+                                <ErrorMessage
+                                  name={`daySchedules.${index}.day`}
+                                  component="p"
+                                  className="errorField"
                                 />
-                              ))}
-                            </Field>
-                            <ErrorMessage
-                              name={`daySchedules.${index}.day`}
-                              component="p"
-                              className="errorField"
-                            />
-                          </Col>
-                          <Col md={3} className="mb-2">
-                            <Field
-                              name={`daySchedules.${index}.fromTime`}
-                              type="time"
-                              className="customDropdownRadius form-control select-field py-3 px-4 border"
-                            />
-                            <ErrorMessage
-                              name={`daySchedules.${index}.fromTime`}
-                              component="p"
-                              className="errorField"
-                            />
-                          </Col>
-                          <Col md={3} className="mb-2">
-                            <Field
-                              name={`daySchedules.${index}.toTime`}
-                              type="time"
-                              className="customDropdownRadius form-control select-field py-3 px-4 border"
-                            />
-                            <ErrorMessage
-                              name={`daySchedules.${index}.toTime`}
-                              component="p"
-                              className="errorField"
-                            />
-                          </Col>
-                          <Col md={1} className="mb-2">
-                            <div className="d-flex align-items-center justify-content-end h-100">
-                              <FaDeleteLeft
-                                className="cursorPointer"
-                                size={22}
-                                onClick={() => arrayHelpers.remove(index)}
-                              />
-                            </div>
-                          </Col>
-                        </Row>
-                      ))}
-                      <span
-                        className="textYellow fs-6 cursorPointer"
-                        onClick={() =>
-                          arrayHelpers.push({
-                            day: "",
-                            fromTime: "",
-                            toTime: "",
-                          })
-                        }
-                      >
-                        Add More +
-                      </span>
-                    </>
-                  )}
-                />
-              </Col>
-            </Row>
+                              </Col>
+                              <Col md={3} className="mb-2">
+                                <Field
+                                  name={`daySchedules.${index}.fromTime`}
+                                  type="time"
+                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
+                                />
+                                <ErrorMessage
+                                  name={`daySchedules.${index}.fromTime`}
+                                  component="p"
+                                  className="errorField"
+                                />
+                              </Col>
+                              <Col md={3} className="mb-2">
+                                <Field
+                                  name={`daySchedules.${index}.toTime`}
+                                  type="time"
+                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
+                                />
+                                <ErrorMessage
+                                  name={`daySchedules.${index}.toTime`}
+                                  component="p"
+                                  className="errorField"
+                                />
+                              </Col>
+                              <Col md={1} className="mb-2">
+                                <div className="d-flex align-items-center justify-content-end h-100">
+                                  <FaDeleteLeft
+                                    className="cursorPointer"
+                                    size={22}
+                                    onClick={() => arrayHelpers.remove(index)}
+                                  />
+                                </div>
+                              </Col>
+                            </Row>
+                          ))}
+                          <span
+                            className="textYellow fs-6 cursorPointer"
+                            onClick={() =>
+                              arrayHelpers.push({
+                                day: "",
+                                fromTime: "",
+                                toTime: "",
+                              })
+                            }
+                          >
+                            Add More +
+                          </span>
+                        </>
+                      )}
+                    />
+                  </Col>
+                </Row>
 
-            <Row className="mb-3">
-              <h6 className="mb-2 fw-bold">Are you currently working? *</h6>
-              <Col md={6} className="mb-2">
-                <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
-                  <div
-                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg border customDropdownRadius w-100  bg-white ${
-                      values.currentlyWorking === "yes" ? "selected" : ""
-                    }`}
-                    onClick={() => setFieldValue("currentlyWorking", "yes")}
-                  >
-                    <h6 className="mb-0 font14">Yes</h6>
-                  </div>
-                  <div
-                    className={`d-flex align-items-center py-3 justify-content-between form-control-lg border customDropdownRadius w-100  bg-white ${
-                      values.currentlyWorking === "no" ? "selected" : ""
-                    }`}
-                    onClick={() => setFieldValue("currentlyWorking", "no")}
-                  >
-                    <h6 className="mb-0 font14">No</h6>
-                  </div>
-                </div>
-                <p className="errorField">
-                  {errors.currentlyWorking &&
-                    touched.currentlyWorking &&
-                    errors.currentlyWorking}
-                </p>
-              </Col>
-            </Row>
+                <Row className="mb-3">
+                  <h6 className="mb-2 fw-bold">Are you currently working? *</h6>
+                  <Col md={6} className="mb-2">
+                    <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
+                      <div
+                        className={`d-flex align-items-center py-3 justify-content-between form-control-lg border customDropdownRadius w-100  bg-white ${
+                          values.currentlyWorking === "yes" ? "selected" : ""
+                        }`}
+                        onClick={() => setFieldValue("currentlyWorking", "yes")}
+                      >
+                        <h6 className="mb-0 font14">Yes</h6>
+                      </div>
+                      <div
+                        className={`d-flex align-items-center py-3 justify-content-between form-control-lg border customDropdownRadius w-100  bg-white ${
+                          values.currentlyWorking === "no" ? "selected" : ""
+                        }`}
+                        onClick={() => setFieldValue("currentlyWorking", "no")}
+                      >
+                        <h6 className="mb-0 font14">No</h6>
+                      </div>
+                    </div>
+                    <p className="errorField">
+                      {errors.currentlyWorking &&
+                        touched.currentlyWorking &&
+                        errors.currentlyWorking}
+                    </p>
+                  </Col>
+                </Row>
+              </>
+            )}
 
             <Row>
               <div className="d-flex mb-2">

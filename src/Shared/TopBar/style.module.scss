@@ -1,79 +1,30 @@
 @import "../../Assets/Scss/globalStyleSheet.scss";
 
 .navbar {
-  font-weight: 400 !important;
+  text-align: start;
+}
+.nav,
+.NavItem,
+a {
+  padding: 8px;
+  text-align: center;
+  width: 100% !important;
+  color: $white !important;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
 
-  .nav {
-    gap: 8px !important;
-  }
-  .navLink {
-    opacity: 1;
-    color: $white;
-    font-size: 20px;
-    font-style: normal;
+  &:hover {
+    color: $yellow !important;
     font-weight: 400;
-
-    &:hover {
-      color: $yellow !important;
-      opacity: 1;
-      font-weight: 400;
-    }
-  }
-
-  @media (max-width: 991px) {
-    &.navbarCollapse {
-      background-color: black;
-    }
   }
 }
-
-.mobileView {
-  content: "";
-  position: fixed;
-  transform: translateX(0);
-  transition: transform 0.8s ease-in-out;
-  width: 70%;
-  overflow: hidden;
-  z-index: 999;
-  background-color: $black;
-  padding: 10px;
-  margin-left: -20px;
-
-  .nav {
-    .NavItem {
-      .UncontrolledDropdown {
-        .DropdownMenu {
-          border: 0;
-          margin-bottom: 30px;
-          .DropdownItem {
-            padding: 10px;
-            .Link {
-              color: $yellow;
-            }
-            &:hover {
-              color: $white;
-            }
-          }
-        }
-      }
-      padding-left: 8px;
-      padding-right: 8px;
-      color: $yellow !important;
-      &:hover {
-        color: white !important;
-        .DropdownMenu {
-         .DropdownItem{
-          &:hover{
-            background-color:transparent;
-            color:$white !important;
-          }
-         }
-        }
-      }
-    }
-  }
-
-  &.slide-left {
-    transform: translateX(-100%);
+.nav {
+  background: $admin-dark-bg !important ;
+  padding: 0 0 0 0 !important;
+  .NavItem,
+  a {
+    display: block;
+    justify-content: center;
   }
 }

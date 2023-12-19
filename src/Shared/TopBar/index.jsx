@@ -51,10 +51,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   useEffect(() => {
     if (isPublic) {
       window.addEventListener("scroll", listenScrollEvent);
-
-      if (location.pathname === "/registerAs") {
-        setShowNavItems(false);
-      }
     }
 
     if (isPrivate || isGuest) {
@@ -70,7 +66,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   }, [isPublic, location.pathname]);
 
   useEffect(() => {
-    if (isPublic && (location.pathname === "/registerAs" || isAuth)) {
+    if (isPublic && isAuth) {
       setShowNavItems(false);
     } else {
       setShowNavItems(true);

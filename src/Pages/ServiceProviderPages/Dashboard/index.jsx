@@ -136,9 +136,6 @@ const Dashboard = () => {
                 <div>
                   <h5 className="fw-bold my-2">{t("trainer.bioText")}</h5>
                 </div>
-                <div>
-                  <FillBtn className="w-100" text="Edit" />
-                </div>
               </div>
               <div
                 className="overflow-scroll onlyBorderRadius p-3 border border-light"

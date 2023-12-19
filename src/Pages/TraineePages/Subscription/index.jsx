@@ -31,7 +31,7 @@ const Subscription = () => {
               return (
                 <Col
                   md={4}
-                  className={`mb-3 ${
+                  className={`mb-md-0 mb-5 ${
                     index === 1 && window.innerWidth >= 768
                       ? "middle-subscription-card"
                       : ""
@@ -41,6 +41,7 @@ const Subscription = () => {
                     headerText={item.text}
                     price={item.price}
                     ImgSrc={item.image}
+                    buttonText="Subscribe"
                   />
                 </Col>
               );

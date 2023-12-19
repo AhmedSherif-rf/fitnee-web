@@ -46,6 +46,7 @@ const Subscription = () => {
                     headerText={item.text}
                     price={item.price}
                     ImgSrc={item.image}
+                    buttonText={"Edit"}
                   />
                 </Col>
               );

@@ -89,7 +89,7 @@ const personalData = {
   infoRating: 4,
   infoDes: "2 Years",
   Height: "38",
-  Email: "shane@gmail.com"
+  Email: "shane@gmail.com",
 };
 
 const ServiceProviderProfileWrapper = (props) => {
@@ -129,7 +129,7 @@ const ServiceProviderProfileWrapper = (props) => {
             />
           </div>
           <div>
-            <h6 className="fw-bold text-black-custom">Available Hours</h6>
+            <h6 className="fw-bold text-white">Available Hours</h6>
             <AvailableHourList data={availableHoursData} />
           </div>
         </Col>

@@ -12,17 +12,18 @@ import {
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { GiWallet } from "react-icons/gi";
+import { FaArrowUp } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { PiCaretDownBold } from "react-icons/pi";
 import { RiDashboardFill } from "react-icons/ri";
 import { FaBars, FaUserEdit } from "react-icons/fa";
+import { FaKey, FaTrashCan } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { FaKey, FaTrashCan, FaCircleArrowUp } from "react-icons/fa6";
 import React, { useState, useEffect, memo, useCallback } from "react";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import {
@@ -43,13 +44,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const { lang: currentLanguage } = useSelector((state) => state?.language);
 
   useEffect(() => {
-    if (isPublic) {
-      window.addEventListener("scroll", listenScrollEvent);
-    }
+    window.addEventListener("scroll", listenScrollEvent);
 
-    if (isPrivate || isGuest) {
-      setBackgroundClass("bg-white-custom");
-    } else if (isPublic) {
+    if (isPublic) {
       setBackgroundClass("bg-transparent");
     }
 
@@ -97,22 +94,16 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       ? isGuest
         ? "bg-white-custom"
         : "bg-transparent"
-      : "bg-white-custom"
+      : "bg-transparent"
   );
 
-  const textClass = isPublic
-    ? isGuest
-      ? "text-black-custom"
-      : "text-white"
-    : "text-black-custom";
+  const textClass = "text-white";
 
   const listenScrollEvent = () => {
-    if (!isGuest && isPublic) {
-      if (window.scrollY > 100) {
-        setBackgroundClass("customBgDark");
-      } else {
-        setBackgroundClass("bg-transparent");
-      }
+    if (window.scrollY > 20) {
+      setBackgroundClass("customBgDark");
+    } else {
+      setBackgroundClass("bg-transparent");
     }
   };
 
@@ -189,7 +180,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
               }
             >
               <img
-                src={location.pathname === "/" ? Images.LOGO_IMG : Images.SMALL_LOGO_IMG}
+                src={
+                  location.pathname === "/"
+                    ? Images.LOGO_IMG
+                    : Images.SMALL_LOGO_IMG
+                }
                 alt={"website-logo"}
                 style={{ verticalAlign: "sub" }}
               />
@@ -197,7 +192,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             {showNavItems && (
               <>
                 <NavbarToggler
-                  className={"textYellow pb-2"}
+                  className={"textYellow d-md-none d-block pb-2"}
                   onClick={toggleNavbar}
                 >
                   <FaBars />
@@ -601,7 +596,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           >
                             <div className="d-flex align-items-center text-black-custom">
                               <span className="me-2">
-                                <RiDashboardFill className="mb-1" />
+                                <RiDashboardFill size={16} className="mb-1" />
                               </span>
                               <p className="mb-0">Dashboard</p>
                             </div>
@@ -618,7 +613,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           >
                             <div className="d-flex align-items-center w-100 text-black-custom">
                               <span className="me-2">
-                                <FaUserEdit className="mb-1" />
+                                <FaUserEdit size={16} className="mb-1" />
                               </span>
                               <p className="mb-0">Edit Profile</p>
                             </div>
@@ -633,7 +628,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               >
                                 <div className="d-flex align-items-center text-black-custom">
                                   <span className="me-2">
-                                    <GiWallet className="mb-1" />
+                                    <GiWallet size={16} className="mb-1" />
                                   </span>
                                   <p className="mb-0">Wallet</p>
                                 </div>
@@ -653,7 +648,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           >
                             <div className="d-flex align-items-center text-black-custom">
                               <span className="me-2">
-                                <FaKey className="mb-1" />
+                                <FaKey size={16} className="mb-1" />
                               </span>
                               <p className="mb-0">Change Password</p>
                             </div>
@@ -665,7 +660,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             onClick={handleDeleteClick}
                           >
                             <span className="me-2 d-flex">
-                              <FaTrashCan className="mb-1" />
+                              <FaTrashCan size={16} className="mb-1" />
                             </span>
                             <p className="mb-0">Delete Account</p>
                           </div>
@@ -676,7 +671,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             onClick={handleLogoutClick}
                           >
                             <span className="me-2 d-flex">
-                              <FaCircleArrowUp className="mb-1" />
+                              <FaArrowUp size={16} className="mb-1" />
                             </span>
                             <p className="mb-0">Logout</p>
                           </div>

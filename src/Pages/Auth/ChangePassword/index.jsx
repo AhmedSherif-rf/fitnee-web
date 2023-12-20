@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import ResetPasswordWrapper from "../../../Shared/ResetPassword/ResetPasswordWrapper";
+import NewPasswordWrapper from "../../../Shared/NewPassword/NewPasswordWrapper";
 
 const ResetPasswordData = [
   {
@@ -30,7 +30,7 @@ const SignIn = () => {
   return (
     <Container fluid className="vh-100">
       {ResetPasswordData?.map((item) => (
-        <ResetPasswordWrapper
+        <NewPasswordWrapper
           CompStyle={item.CompStyle}
           text1={item.text1}
           text2={item.text2}

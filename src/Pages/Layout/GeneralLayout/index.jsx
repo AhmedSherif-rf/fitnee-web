@@ -17,24 +17,32 @@ const GeneralLayout = (props) => {
 
   return (
     <React.Fragment>
-      <Toaster />
-      <TopBar
-        isPublic={props.isPublic}
-        isGuest={props.isGuest}
-        isPrivate={props.isPrivate}
-        isAuth={props.isAuth}
-      />
       <Container
         fluid
-        className={`p-0 ${
-          !props?.isPublic
-            ? styles.overlapContainer
-            : props?.isGuest || props?.isAuth
-            ? styles.overlapContainer
-            : ""
-        } ${props?.theme === "light" ? styles.lightBg : ""}`}
+        className={`bg-dark p-0 ${styles.overlayBackgound
+        }`}
       >
-        {props.children}
+        <Toaster />
+        <TopBar
+          isPublic={props.isPublic}
+          isGuest={props.isGuest}
+          isPrivate={props.isPrivate}
+          isAuth={props.isAuth}
+        />
+        <Container
+          fluid
+          className={`${
+            !props?.isPublic
+              ? styles.overlapContainer
+              : props?.isGuest || props?.isAuth
+              ? styles.overlapContainer
+              : "p-0"
+          } ${
+            props?.theme === "light" ? styles.lightBg : styles.transparentBg
+          }`}
+        >
+          {props.children}
+        </Container>
       </Container>
     </React.Fragment>
   );

@@ -1,11 +1,13 @@
-import { Container, Row } from "reactstrap";
-import SignUpForm  from "../../../Shared/SignUp/SignUpForm";
+import { Container, Row, Card } from "reactstrap";
+import SignUpForm from "../../../Shared/SignUp/SignUpForm";
 
 const EditProfile = () => {
   return (
-    <Container>
+    <Container fluid>
       <Row className="justify-content-center">
-        <SignUpForm />
+        <Card>
+          <SignUpForm />
+        </Card>
       </Row>
     </Container>
   );

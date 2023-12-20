@@ -1,8 +1,7 @@
 import React from "react";
 import { Container } from "reactstrap";
-import { Link } from "react-router-dom";
-import ResetPasswordWrapper from "../../../Shared/ResetPassword/ResetPasswordWrapper";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
+import ResetPasswordWrapper from "../../../Shared/ResetPassword/ResetPasswordWrapper";
 
 const ResetData = [
   {

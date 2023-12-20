@@ -1,5 +1,4 @@
 import "./CreditCardStyle.scss";
-import { FormGroup } from "reactstrap";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import ToggleSwitch from "../ToggleSwitch";
@@ -62,7 +61,11 @@ const CreditCardDetailWrapper = () => {
     <Container fluid className="h-100">
       <Row className="h-100 CardDetails">
         <Col md={12}>
-        <PageHeading headingText="Card Detail" className="mb-0" categoryText="" />
+          <PageHeading
+            headingText="Card Detail"
+            className="mb-0"
+            categoryText=""
+          />
         </Col>
         <Col md={6}>
           <div className="w-100 card border-0 bg-transparent p-3">
@@ -139,7 +142,7 @@ const CreditCardDetailWrapper = () => {
                   <p className="mb-0 fw-bold">Promo code</p>
                 </div>
                 <div className="d-flex align-items-center justify-content-between w-100">
-                  <div className="w-100 me-3">
+                  <div className="w-100">
                     <Input
                       type="text"
                       placeholder="0000"
@@ -149,10 +152,13 @@ const CreditCardDetailWrapper = () => {
                       required
                     />
                   </div>
-                  <div className="w-100">
-                    <FillBtn text="Apply" className="w-100 py-3 customDropdownRadius" />
-                  </div>
                 </div>
+              </div>
+              <div className="d-flex justify-content-end">
+                <FillBtn
+                  text="Apply"
+                  className="px-4 py-3 customDropdownRadius"
+                />
               </div>
 
               <div className="CreditCard d-flex align-items-center">

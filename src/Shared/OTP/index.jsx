@@ -35,7 +35,7 @@ const OTPVerification = () => {
           <OTPInput
             className={`${styles.otpInputs}`}
             value={OTP}
-            onChange={setOTP}
+            onChange={setOTP} 
             autoFocus={true}
             OTPLength={4}
             otpType="number"

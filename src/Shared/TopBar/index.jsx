@@ -43,11 +43,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const { lang: currentLanguage } = useSelector((state) => state?.language);
 
   useEffect(() => {
-    if (isPublic) {
-      window.addEventListener("scroll", listenScrollEvent);
-    }
+    window.addEventListener("scroll", listenScrollEvent);
 
-    if (isPrivate || isGuest) {
+    if (isGuest) {
       setBackgroundClass("bg-white-custom");
     } else if (isPublic) {
       setBackgroundClass("bg-transparent");
@@ -97,7 +95,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       ? isGuest
         ? "bg-white-custom"
         : "bg-transparent"
-      : "bg-white-custom"
+      : "bg-transparent"
   );
 
   const textClass = isPublic
@@ -107,12 +105,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     : "text-black-custom";
 
   const listenScrollEvent = () => {
-    if (!isGuest && isPublic) {
-      if (window.scrollY > 100) {
-        setBackgroundClass("customBgDark");
-      } else {
-        setBackgroundClass("bg-transparent");
-      }
+    if (window.scrollY > 20) {
+      setBackgroundClass("customBgDark");
+    } else {
+      setBackgroundClass("bg-transparent");
     }
   };
 
@@ -189,7 +185,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
               }
             >
               <img
-                src={location.pathname === "/" ? Images.LOGO_IMG : Images.SMALL_LOGO_IMG}
+                src={
+                  location.pathname === "/"
+                    ? Images.LOGO_IMG
+                    : Images.SMALL_LOGO_IMG
+                }
                 alt={"website-logo"}
                 style={{ verticalAlign: "sub" }}
               />

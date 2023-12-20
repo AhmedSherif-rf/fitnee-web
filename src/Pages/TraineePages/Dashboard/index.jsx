@@ -109,7 +109,7 @@ const Dashboard = () => {
   const handlePaymentClick = useCallback(() => {
     navigate("/trainee/myWallet");
   }, [navigate]);
-  
+
   const infoData = [
     {
       infoImg: Images.PROFILE4_IMG,
@@ -210,56 +210,54 @@ const Dashboard = () => {
   ];
 
   return (
-    <Container fluid className="bg-light">
+    <Container fluid>
       <Row className="py-2">
         <Col lg={3} md={4} className="mb-2">
-          <Card className="p-3 BorderRadius border-0">
-            <div className="mb-2">
-              {infoData.map((item, index) => {
-                return (
-                  <ProfileInformationCard
-                    key={index}
-                    infoLogo={item.infoLogo}
-                    infoTitle={item.infoTitle}
-                    infoRating={item.infoRating}
-                    infoImg={item.infoImg}
-                    infoDes={item.infoDes}
-                    CardHeight={item.Height}
-                    TraineeEmail={item.TraineeEmail}
-                  />
-                );
-              })}
-            </div>
-            <Row className="my-3">
-              <Col md={12}>
-                <FillBtn
-                  className="w-100 mb-2 py-2"
-                  text="My Current Trainer"
-                  handleOnClick={handleCurrentTrainerClick}
+          <div className="mb-2">
+            {infoData.map((item, index) => {
+              return (
+                <ProfileInformationCard
+                  key={index}
+                  infoLogo={item.infoLogo}
+                  infoTitle={item.infoTitle}
+                  infoRating={item.infoRating}
+                  infoImg={item.infoImg}
+                  infoDes={item.infoDes}
+                  CardHeight={item.Height}
+                  TraineeEmail={item.TraineeEmail}
                 />
-                <FillBtn
-                  className="w-100 mb-2 py-2"
-                  text="My Current Nutritionist"
-                  handleOnClick={handleCurrentNutritionistClick}
-                />
-                <FillBtn
-                  className="w-100 mb-2 py-2"
-                  text="My Subscription History"
-                  handleOnClick={handleSubscriptionHistoryClick}
-                />
-                <FillBtn
-                  className="w-100 mb-2 py-2"
-                  text="All Service Providers"
-                  handleOnClick={handleAllServiceProviderClick}
-                />
-                <FillBtn
-                  handleOnClick={handlePaymentClick}
-                  className="w-100 mb-2 py-2"
-                  text="My Wallet"
-                />
-              </Col>
-            </Row>
-          </Card>
+              );
+            })}
+          </div>
+          <Row className="my-3">
+            <Col md={12}>
+              <FillBtn
+                className="w-100 mb-2 py-2"
+                text="My Current Trainer"
+                handleOnClick={handleCurrentTrainerClick}
+              />
+              <FillBtn
+                className="w-100 mb-2 py-2"
+                text="My Current Nutritionist"
+                handleOnClick={handleCurrentNutritionistClick}
+              />
+              <FillBtn
+                className="w-100 mb-2 py-2"
+                text="My Subscription History"
+                handleOnClick={handleSubscriptionHistoryClick}
+              />
+              <FillBtn
+                className="w-100 mb-2 py-2"
+                text="All Service Providers"
+                handleOnClick={handleAllServiceProviderClick}
+              />
+              <FillBtn
+                handleOnClick={handlePaymentClick}
+                className="w-100 mb-2 py-2"
+                text="My Wallet"
+              />
+            </Col>
+          </Row>
         </Col>
         <Col lg={9} md={8}>
           <Card className="BorderRadius border-0">

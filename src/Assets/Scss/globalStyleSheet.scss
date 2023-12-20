@@ -15,13 +15,15 @@
   border-bottom-right-radius: 14px !important;
 }
 .customBgDark {
-  background-color: rgba(0, 0, 0, 0.2) !important;
-  backdrop-filter: blur(20px);
-  border-color: rgba(0, 0, 0, 0.2);
+  background: $dark;
 }
 
 .font14 {
   font-size: $font-14 !important;
+}
+
+.w-20 {
+  width: 20% !important;
 }
 
 .middle-subscription-card {

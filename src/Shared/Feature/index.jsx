@@ -58,7 +58,7 @@ const Feature = (props) => {
                     <SwiperSlide
                       key={index}
                       style={{ direction: i18n.dir() }}
-                      className="d-flex align-items-center fw-bold justify-content-start fs-5 justify-content-sm-center w-100 d-block text-white"
+                      className="d-flex align-items-center justify-content-start justify-content-sm-center w-100 d-block text-white fs-5 text-center customSpacing"
                     >
                       {item.text}
                     </SwiperSlide>

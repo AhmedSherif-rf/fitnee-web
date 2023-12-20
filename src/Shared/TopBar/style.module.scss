@@ -2,27 +2,37 @@
 
 .navbar {
   text-align: start;
-}
-.nav,
-.NavItem,
-a {
-  padding: 8px;
-  text-align: center;
-  width: 100% !important;
-  color: $white !important;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
+  display: flex !important;
+  align-items: center !important;
 
-  &:hover {
-    color: $yellow !important;
-    font-weight: 400;
+  .navLink {
+    font-size: 21px;
+
+    &:hover {
+      color: $yellow !important;
+    }
   }
 }
-.nav {
-  background: $admin-dark-bg !important ;
+.togglerNav {
+  .navItem,
+  a {
+    padding: 8px;
+    text-align: center;
+    width: 100% !important;
+    color: $white !important;
+    font-size: 21px;
+
+    &:hover {
+      color: $yellow !important;
+      font-weight: 400;
+    }
+  }
+}
+
+.togglerNav {
   padding: 0 0 0 0 !important;
-  .NavItem,
+  margin-top: -1px;
+  .navItem,
   a {
     display: block;
     justify-content: center;

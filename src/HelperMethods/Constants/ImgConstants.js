@@ -1,6 +1,7 @@
 let Images = {
   // =============================landingPageImgs===================================
   LOGO_IMG: require("../../Assets/Images/LOGO.svg").default,
+  SMALL_LOGO_IMG: require("../../Assets/Images/smallLogo.svg").default,
   GOAL_IMG: require("../../Assets/Images/homeScreen/OurGoal.png"),
   VISION_IMG: require("../../Assets/Images/homeScreen/OurVision.png"),
   ABOUT_IMG: require("../../Assets/Images/homeScreen/AboutFitnee.png"),

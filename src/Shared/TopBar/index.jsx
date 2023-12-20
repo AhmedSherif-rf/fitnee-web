@@ -197,9 +197,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                 >
                   <FaBars />
                 </NavbarToggler>
-                <Collapse isOpen={!collapsed} className="w-100 mt-2 text-white">
+                <Collapse isOpen={!collapsed} className="w-100 text-white">
                   <Nav
-                    className={`pt-4 ${styles.togglerNav} customBgDark caret`}
+                    className={`pt-1 ${styles.togglerNav} customBgDark caret`}
                     navbar
                   >
                     {!isPrivate && roleType === null && (
@@ -223,7 +223,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             className={`px-1 d-flex align-items-center justify-content-center`}
                           >
                             {t("landing.servicesText")}
-                            <PiCaretDownBold />
                           </span>
 
                           <Collapse
@@ -336,7 +335,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
                         <NavItem className={`${styles.NavItem} p-2`}>
                           <div
-                            className={`d-flex justify-content-center fs-4 w-100 p-1`}
+                            className={`d-flex justify-content-center w-100 ${styles.NavLink}`}
                             onClick={handleDeleteClick}
                           >
                             {"Delete Account"}
@@ -345,7 +344,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
                         <NavItem className={`${styles.NavItem} p-2`}>
                           <div
-                            className="d-flex justify-content-center fs-4 w-100 p-1"
+                            className={`d-flex justify-content-center w-100 pb-1 ${styles.NavLink}`}
                             onClick={handleLogoutClick}
                           >
                             {"Logout"}
@@ -384,7 +383,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             <Nav navbar>
                               <NavItem>
                                 <div
-                                  className="w-100 d-flex justify-content-center align-items-center py-3 text-white gap-2"
+                                  className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
                                   onClick={() =>
                                     selectLanguage(ARABIC_LANGUAGE)
                                   }
@@ -400,7 +399,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               </NavItem>
                               <NavItem>
                                 <div
-                                  className="w-100 d-flex justify-content-center align-items-center py-3 text-white gap-2"
+                                  className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
                                   onClick={() =>
                                     selectLanguage(ENGLISH_LANGUAGE)
                                   }

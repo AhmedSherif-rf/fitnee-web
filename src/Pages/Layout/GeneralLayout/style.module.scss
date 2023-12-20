@@ -1,7 +1,9 @@
 @import "../../../Assets/Scss/variables.scss";
+@import "../../../Assets/Scss/globalStyleSheet.scss";
 
 .overlayBackgound {
   background-image: url("../../../Assets/Images/layoutBgImage.png");
+  @include bgProperties;
 }
 
 .overlapContainer {

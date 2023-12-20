@@ -6,10 +6,11 @@
       rgba(0, 0, 0, 0.4) 0%,
       rgba(0, 0, 0, 0.4) 100%
     ),
-    url("../../Assets/Images/homeScreen/homeBannerImg.png");
+    url("../../Assets/Images/HOMEBANNER.png");
 
-  @include bgProperties;
-  background-position: top center;
+background-position: center center;
+background-size: cover;
+background-repeat: no-repeat;
   height: 100vh !important;
 
   .bannerTextWrapper {

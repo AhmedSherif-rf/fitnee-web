@@ -197,7 +197,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             {showNavItems && (
               <>
                 <NavbarToggler
-                  className={"textYellow pb-2"}
+                  className={"textYellow d-md-none d-block pb-2"}
                   onClick={toggleNavbar}
                 >
                   <FaBars />

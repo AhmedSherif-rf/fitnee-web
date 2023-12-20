@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import ResetPasswordForm from "./ResetPasswordForm";
 import { Col, Row, Card, Container } from "reactstrap";
 
-const ResetPasswordWrapper = (props) => {
+const ResetPasswordWrapper = () => {
   return (
     <Container fluid className="pt-3">
       <Row>

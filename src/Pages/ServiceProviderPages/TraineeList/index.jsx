@@ -53,8 +53,8 @@ const index = () => {
     },
   ];
   return (
-    <Container fluid className="h-100 p-3 text-black-custom">
-      <Row className="h-100">
+    <Container fluid className="vh-100 text-black-custom">
+      <Row className="vh-100">
         <Col md={12}>
           <Card className="BorderRadius border-0 h-100">
             <CardBody className="px-4">

@@ -13,7 +13,7 @@ const SubscriptionCard = (props) => {
   const handleSubscribeClick = useCallback(() => {
     if (buttonText !== "Edit") {
       if (!isGuest) {
-        navigate("/trainee/subscriptions/creditCardDetail");
+        navigate("/trainee/subscription/creditCardDetail");
       } else {
         navigate("/registerAs");
       }

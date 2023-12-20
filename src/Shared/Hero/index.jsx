@@ -84,7 +84,7 @@ const Hero = (props) => {
                 >
                   {heading}
                 </div>
-                <div className="text.center">{text}</div>
+                <div className="text-center">{text}</div>
               </motion.div>
             </div>
           </div>

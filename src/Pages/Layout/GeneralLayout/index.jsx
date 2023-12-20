@@ -19,8 +19,7 @@ const GeneralLayout = (props) => {
     <React.Fragment>
       <Container
         fluid
-        className={`bg-dark p-0 ${
-          props.isPrivate ? styles.overlayBackgound : ""
+        className={`bg-dark p-0 ${styles.overlayBackgound
         }`}
       >
         <Toaster />

@@ -5,7 +5,7 @@ const EditProfile = () => {
   return (
     <Container fluid>
       <Row className="justify-content-center">
-        <Card>
+        <Card className="BorderRadius">
           <SignUpForm />
         </Card>
       </Row>

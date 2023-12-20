@@ -46,9 +46,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
 
-    if (isGuest) {
-      setBackgroundClass("bg-white-custom");
-    } else if (isPublic) {
+    if (isPublic) {
       setBackgroundClass("bg-transparent");
     }
 
@@ -99,11 +97,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       : "bg-transparent"
   );
 
-  const textClass = isPublic
-    ? isGuest
-      ? "text-black-custom"
-      : "text-white"
-    : "text-black-custom";
+  const textClass = "text-white";
 
   const listenScrollEvent = () => {
     if (window.scrollY > 20) {
@@ -457,7 +451,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       >
                         <DropdownToggle
                           className={`${styles.navLink} ${textClass} bg-transparent border-0 p-0 mb-0 mt-2`}
-                          
                         >
                           <span className={`px-2`}>
                             {t("landing.servicesText")}
@@ -467,9 +460,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           style={{
                             right: 0,
                             left: "auto",
-                            opacity: isDropdownOpen ? 1 : 0
+                            opacity: isDropdownOpen ? 1 : 0,
                           }}
-                           
                         >
                           <DropdownItem>
                             <Link
@@ -526,8 +518,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                 )}
                 {!isPrivate && roleType === null && (
                   <Nav className={`d-md-flex d-none gap-2`}>
-                    <UncontrolledDropdown nav inNavbar >
-                      <DropdownToggle nav caret >
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav caret>
                         <img
                           src={
                             currentLanguage === ENGLISH_LANGUAGE
@@ -621,7 +613,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           >
                             <div className="d-flex align-items-center w-100 text-black-custom">
                               <span className="me-2">
-                                <FaUserEdit  size={16}  className="mb-1" />
+                                <FaUserEdit size={16} className="mb-1" />
                               </span>
                               <p className="mb-0">Edit Profile</p>
                             </div>
@@ -636,7 +628,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               >
                                 <div className="d-flex align-items-center text-black-custom">
                                   <span className="me-2">
-                                    <GiWallet  size={16}  className="mb-1" />
+                                    <GiWallet size={16} className="mb-1" />
                                   </span>
                                   <p className="mb-0">Wallet</p>
                                 </div>
@@ -656,7 +648,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           >
                             <div className="d-flex align-items-center text-black-custom">
                               <span className="me-2">
-                                <FaKey  size={16}  className="mb-1" />
+                                <FaKey size={16} className="mb-1" />
                               </span>
                               <p className="mb-0">Change Password</p>
                             </div>
@@ -668,7 +660,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             onClick={handleDeleteClick}
                           >
                             <span className="me-2 d-flex">
-                              <FaTrashCan  size={16}  className="mb-1" />
+                              <FaTrashCan size={16} className="mb-1" />
                             </span>
                             <p className="mb-0">Delete Account</p>
                           </div>
@@ -679,7 +671,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             onClick={handleLogoutClick}
                           >
                             <span className="me-2 d-flex">
-                              <FaArrowUp  size={16}  className="mb-1" />
+                              <FaArrowUp size={16} className="mb-1" />
                             </span>
                             <p className="mb-0">Logout</p>
                           </div>

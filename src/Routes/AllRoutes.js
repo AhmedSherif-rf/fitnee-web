@@ -15,6 +15,7 @@ const routes = [
     path: "/registerAs",
     component: lazy(() => import("../Pages/Auth/RegisterAs")),
     isPublic: true,
+    theme: "light",
     exact: true,
   },
   {

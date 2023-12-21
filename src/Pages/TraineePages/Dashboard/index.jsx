@@ -235,12 +235,12 @@ const Dashboard = () => {
                 <Col md={12}>
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="My Current Trainer"
+                    text="My Current Trainers"
                     handleOnClick={handleCurrentTrainerClick}
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="My Current Nutritionist"
+                    text="My Current Nutritionists"
                     handleOnClick={handleCurrentNutritionistClick}
                   />
                   <FillBtn

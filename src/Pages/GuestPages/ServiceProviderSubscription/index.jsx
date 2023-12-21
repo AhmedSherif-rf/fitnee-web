@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Col, Container, Row } from "reactstrap";
-import PageHeading from "../../../Shared/Headings/PageHeading";
 import SubscriptionCard from "../../../Shared/SubscriptionCard";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 

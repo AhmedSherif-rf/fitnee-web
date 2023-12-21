@@ -24,8 +24,8 @@ import InformationModal from "../Modal/InformationModal";
 import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect, memo, useCallback } from "react";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
-import React, { useState, useEffect, memo, useCallback, useRef } from "react";
 import {
   ENGLISH_LANGUAGE,
   ARABIC_LANGUAGE,
@@ -375,8 +375,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             className="w-100 p-1"
                             to={
                               roleType === TRAINEE_TYPE
-                                ? "/trainee/editProfile"
-                                : "/serviceProvider/editProfile"
+                                ? "/trainee/editProfile/trainee"
+                                : "/serviceProvider/editProfile/trainer"
                             }
                           >
                             <div className="d-flex align-items-center w-100 text-black-custom">
@@ -553,8 +553,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       className={`nav-link ${styles.NavLink}`}
                       to={
                         roleType === TRAINEE_TYPE
-                          ? "/trainee/editProfile"
-                          : "/serviceProvider/editProfile"
+                          ? "/trainee/editProfile/trainee"
+                          : "/serviceProvider/editProfile/trainer"
                       }
                     >
                       {"Edit Profile"}

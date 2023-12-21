@@ -2,7 +2,6 @@ import React from "react";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import ServiceProviderRow from "../../../Shared/ServiceProviderListRow";
 import ServiceProvider from "../../../Shared/ServiceProviderListRow";
 
 const index = () => {
@@ -62,7 +61,7 @@ const index = () => {
               <Row>
                 <Col md={12}>
                   <PageHeading
-                    headingText="My Current Trainer"
+                    headingText="My Current Subscribers"
                     categoryText=""
                   />
                 </Col>

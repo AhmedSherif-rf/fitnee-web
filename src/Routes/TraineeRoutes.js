@@ -77,7 +77,7 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
-    path: "/trainee/editProfile",
+    path: "/trainee/editProfile/:roleType",
     component: lazy(() => import("../Pages/TraineePages/EditProfile")),
     exact: true,
     isPrivate: true,

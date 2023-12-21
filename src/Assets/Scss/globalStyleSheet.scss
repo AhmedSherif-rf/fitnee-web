@@ -276,14 +276,14 @@ Input::-webkit-input-placeholder {
 
 ::-webkit-scrollbar {
   width: 5px;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $blur-color;
+  background: transparent !important;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: transparent !important;
 }

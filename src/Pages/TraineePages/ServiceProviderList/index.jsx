@@ -62,7 +62,7 @@ const index = () => {
               <Row>
                 <Col md={12}>
                   <PageHeading
-                    headingText="My Current Trainer"
+                    headingText="My Current Trainers"
                     categoryText=""
                   />
                 </Col>

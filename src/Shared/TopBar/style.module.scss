@@ -15,12 +15,12 @@
 }
 .togglerNav {
   .navItem,
-  a {
-    padding: 8px;
+  a, div {
+    padding: 6px;
     text-align: center;
     width: 100% !important;
     color: $white !important;
-    font-size: 21px;
+    font-size: 18px;
 
     &:hover {
       color: $yellow !important;

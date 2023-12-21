@@ -1,25 +1,14 @@
+import React, { memo } from "react";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
-import { useNavigate } from "react-router-dom";
-import OutlineBtn from "../Buttons/OutlineBtn";
-import React, { memo, useCallback } from "react";
 import { Col, Container, Form, Row } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const ResetPasswordForm = () => {
-  const navigate = useNavigate();
-
-  const handleCancelClick = useCallback(() => {
-    navigate("/");
-  }, [navigate]);
-
-  const handleSubmit = useCallback(() => {
-    navigate("/trainee/dashboard");
-  }, [navigate]);
 
   return (
     <Container>
-      <Row className="justify-content-center align-items-center vh-100">
+      <Row className="justify-content-center align-items-center">
         <Col lg={7} md={12} sm={10}>
           <h1 className="text-center mb-5">Change Password</h1>
           <Form>
@@ -45,12 +34,6 @@ const ResetPasswordForm = () => {
             <FillBtn
               className="w-100 py-3 mb-3 mt-5"
               text={"Confirm"}
-              handleOnClick={handleSubmit}
-            />
-            <OutlineBtn
-              className="w-100 py-3"
-              text={"Cancel"}
-              handleOnClick={handleCancelClick}
             />
           </Form>
         </Col>

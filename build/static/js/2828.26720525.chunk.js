@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[2828],{379:function(e,n,s){s.r(n);s(2791);var u=s(7823),i=s(3464),r=s(5639),c=s(184);n.default=function(e){return(0,c.jsx)(u.Z,{fluid:!0,children:(0,c.jsx)(i.Z,{className:"BorderRadius",children:(0,c.jsx)(r.Z,{})})})}}}]);
+//# sourceMappingURL=2828.26720525.chunk.js.map

@@ -50,10 +50,10 @@ const SubscriptionDetail = () => {
   ];
 
   return (
-    <Container fluid className="h-100 p-3">
-      <Row className="h-100">
+    <Container fluid className="">
+      <Row className="">
         <Col md={12}>
-          <Card className="BorderRadius border-0 h-100">
+          <Card className="BorderRadius contentCard px-3 ">
             <CardBody className="px-4">
               <Row>
                 <Col md={12}>

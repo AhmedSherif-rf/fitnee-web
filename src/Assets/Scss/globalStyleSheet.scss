@@ -41,15 +41,26 @@
 .textYellow {
   color: $yellow !important;
 }
+
 .textOrange {
   color: $orange !important;
 }
+
 .textGrey {
   color: $text-muted !important;
 }
 
 .textParrotGreen {
   color: $parrot-green;
+}
+
+.contentCard {
+  margin-top: 12vh;
+  overflow-y: scroll;
+  height: 88vh !important;
+}
+.contentCardPadding {
+  padding-top: 12vh;
 }
 
 .BorderRadius {
@@ -90,7 +101,7 @@ Input::-webkit-input-placeholder {
   color: $placeholder-color;
 }
 .dropdown-menu {
-  padding: 0px !important;
+  padding: 3px 3px !important;
 }
 .dropdown-item {
   &:active,

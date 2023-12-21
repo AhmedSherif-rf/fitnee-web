@@ -6,7 +6,7 @@ const PaymentHistory = () => {
     <Container fluid>
       <Row className="justify-content-center">
         <Col md={12}>
-          <Card className="BorderRadius w px-3 contentCard">
+          <Card className="BorderRadius contentCard overflow-x-hidden">
             <PaymentHistoryWrapper />
           </Card>
         </Col>

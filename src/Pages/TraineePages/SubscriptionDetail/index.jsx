@@ -53,8 +53,8 @@ const SubscriptionDetail = () => {
     <Container fluid className="">
       <Row className="">
         <Col md={12}>
-          <Card className="BorderRadius contentCard px-3 ">
-            <CardBody className="px-4">
+          <Card className="BorderRadius contentCard px-3">
+            <CardBody className="px-md-4">
               <Row>
                 <Col md={12}>
                   <PageHeading

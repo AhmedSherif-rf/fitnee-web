@@ -6,10 +6,6 @@
 
   &:hover .infoContainer {
     right: 0;
-
-    &::before {
-      transform: rotate(180deg);
-    }
   }
 
   .infoContainer {
@@ -20,7 +16,8 @@
     overflow: hidden;
     border: 0px;
     width: 90% !important;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
   
     transition: right 0.5s ease-in-out;
 
@@ -38,16 +35,10 @@
       height: 100%;
       background: $yellow;
       width: 20px;
-      border-bottom-left-radius: 10px;
-      border-top-left-radius: 10px
     }
   }
 
   &:hover .infoContainer.open {
     right: 0;
-
-    &::before {
-      transform: rotate(90deg);
-    }
   }
 }

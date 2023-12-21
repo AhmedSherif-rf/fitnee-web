@@ -110,7 +110,7 @@ const ServiceProviderProfileWrapper = (props) => {
     <Container fluid>
       <Row>
         <Col md={12}>
-          <Card className="contentCard px-3 bg-transparent">
+          <Card className="contentCard bg-transparent overflow-x-hidden">
             <Row>
               <Col lg={3} md={4}>
                 <div className="mb-2">

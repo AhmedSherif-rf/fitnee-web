@@ -1,12 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { Col, Row } from "reactstrap";
-import { Link } from "react-router-dom";
 import Rating from "../../../Shared/Rating";
 import ToggleSwitch from "../../../Shared/ToggleSwitch";
+import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import { GoEye, GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 
 const ContactUs = (props) => {

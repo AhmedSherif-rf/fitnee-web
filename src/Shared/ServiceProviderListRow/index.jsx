@@ -64,7 +64,7 @@ const Index = (props) => {
           </div>
         </Col>
         {CancelButton ? (
-          <Col md={2} sm={3} xs={6}>
+          <Col md={2} sm={8} xs={8}>
             <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
               {duration}
             </div>

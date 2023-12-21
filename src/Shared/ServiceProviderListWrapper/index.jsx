@@ -265,14 +265,14 @@ const ServiceProviderListWrapper = (props) => {
       className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
     >
       <CardBody>
-        <Row className="align-items-center">
-          <Col className="text-left">
+        <Row className="align-items-center mb-2">
+          <Col xs={10} sm={6} className="text-left">
             <PageHeading
               headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}
               categoryText=""
             />
           </Col>
-          <Col className="text-end">
+          <Col xs={2} sm={6} className="text-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle data-toggle="dropdown" tag="span">
                 <img

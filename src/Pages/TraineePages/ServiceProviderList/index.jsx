@@ -57,7 +57,7 @@ const index = () => {
     <Container fluid>
       <Row>
         <Col md={12}>
-          <Card className="BorderRadius contentCard">
+          <Card className="BorderRadius contentCard border-0">
             <CardBody className="px-4">
               <Row>
                 <Col md={12}>

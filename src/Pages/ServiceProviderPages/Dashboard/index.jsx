@@ -86,7 +86,7 @@ const Dashboard = () => {
     <Container fluid>
       <Row>
         <Col md="12">
-          <Card className="contentCard bg-transparent px-3">
+          <Card className="contentCard bg-transparent overflow-x-hidden">
             <Row>
               <Col lg={3} md={4} className="bg-F6F6F6">
                 <div className="mb-2">

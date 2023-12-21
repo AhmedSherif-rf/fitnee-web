@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/2085.ca5fc737.chunk.css","mappings":"AAAA,wBACE,SACE","sources":["Shared/Headings/PageHeading/styles.scss"],"sourcesContent":["@media (max-width: 500px) {\r\n  .heading {\r\n    font-size: 18px;\r\n  }\r\n}\r\n"],"names":[],"sourceRoot":""}

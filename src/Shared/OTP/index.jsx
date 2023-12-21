@@ -24,7 +24,7 @@ const OTPVerification = () => {
   }, [navigate]);
 
   return (
-    <Container className={`h-100 text-black-custom ${styles.otpContainer}`}>
+    <Container className={`vh-100 text-black-custom ${styles.otpContainer}`}>
       <Row className={`h-100 justify-content-center ${styles.otpWrapper}`}>
         <Col md={4} className={`text-center py-3 ${styles.otpCol}`}>
           <h1 className="my-5 fw-400 fw-bold">Verification</h1>

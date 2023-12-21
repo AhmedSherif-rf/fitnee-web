@@ -10,7 +10,6 @@ import React, { useState, useCallback } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import { Container, Row, Col, Card } from "reactstrap";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
-import PageHeading from "../../../Shared/Headings/PageHeading";
 import { IoFemaleOutline, IoMaleOutline } from "react-icons/io5";
 import { MALE_BODY, FEMALE_BODY } from "../../../utils/constants";
 import InformationModal from "../../../Shared/Modal/InformationModal";
@@ -20,8 +19,8 @@ const Services = (props) => {
   const [currentBody, setCurrentBody] = useState(MALE_BODY);
   const [currentActivePart, setCurrentActivePart] = useState("");
   const [
-    showSubscriptionInformatoinModal,
-    setShowSubscriptionInformatoinModal,
+    showSubscriptionInformationModal,
+    setShowSubscriptionInformationModal,
   ] = useState(false);
 
   const handleChangeBodyClick = (body) => {
@@ -35,11 +34,11 @@ const Services = (props) => {
   };
 
   const handleSubscriptionInformationModalClose = useCallback(() => {
-    setShowSubscriptionInformatoinModal(false);
+    setShowSubscriptionInformationModal(false);
   }, []);
 
   const handleNotNowClick = useCallback(() => {
-    setShowSubscriptionInformatoinModal(false);
+    setShowSubscriptionInformationModal(false);
   }, []);
 
   const handleRegisterClick = useCallback(() => {
@@ -51,12 +50,9 @@ const Services = (props) => {
   };
 
   return (
-    <Container fluid className={`py-md-2 py-3 mt-2 ${styles.servicesWrapper}`}>
-      <Card className="BorderRadius">
-        <Row className="d-flex">
-          <Col md={12}>
-            <PageHeading headingText="Our Services" />
-          </Col>
+    <Container fluid className={`pt-3 ${styles.servicesWrapper}`}>
+      <Card className="bg-transparent contentCard mt-5 px-3 border-0">
+        <Row>
           <Col md={2} sm={6} xs={6}>
             <div
               className={`${styles.customBodySelect} ${
@@ -80,7 +76,6 @@ const Services = (props) => {
             </div>
           </Col>
         </Row>
-
         <Row
           className={`gap-md-0 gap-lg-0 gap-5 justify-content-center align-items-center ${styles.servicesRow}`}
         >
@@ -105,7 +100,7 @@ const Services = (props) => {
                           if (muscle.id === "maleChest") {
                             navigate("/guest/exercises");
                           } else {
-                            setShowSubscriptionInformatoinModal(true);
+                            setShowSubscriptionInformationModal(true);
                           }
                         }}
                         d={muscle.d}
@@ -140,7 +135,7 @@ const Services = (props) => {
                           if (muscle.id === "maleBackArm") {
                             navigate("/guest/exercises");
                           } else {
-                            setShowSubscriptionInformatoinModal(true);
+                            setShowSubscriptionInformationModal(true);
                           }
                         }}
                         onMouseEnter={handleMouseEnter}
@@ -179,7 +174,7 @@ const Services = (props) => {
                           if (muscle.id === "femaleAbdominal") {
                             navigate("/guest/exercises");
                           } else {
-                            setShowSubscriptionInformatoinModal(true);
+                            setShowSubscriptionInformationModal(true);
                           }
                         }}
                         onMouseEnter={handleMouseEnter}
@@ -214,7 +209,7 @@ const Services = (props) => {
                           if (muscle.id === "femaleBackThigh") {
                             navigate("/guest/exercises");
                           } else {
-                            setShowSubscriptionInformatoinModal(true);
+                            setShowSubscriptionInformationModal(true);
                           }
                         }}
                         onMouseEnter={handleMouseEnter}
@@ -233,12 +228,11 @@ const Services = (props) => {
             </>
           )}
         </Row>
-
         <InformationModal
           size={"md"}
           TOneClassName={"fw-bold mb-4 fs-5 text-center"}
           className={"p-4"}
-          isOpen={showSubscriptionInformatoinModal}
+          isOpen={showSubscriptionInformationModal}
           onClose={handleSubscriptionInformationModalClose}
           ModalTextOne="The rest of the exercises will be hidden. Subscribe for only 39 SAR per month to access all exercises."
           ButtonOne={

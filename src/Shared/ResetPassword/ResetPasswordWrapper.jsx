@@ -4,13 +4,11 @@ import { Col, Row, Card, Container } from "reactstrap";
 
 const ResetPasswordWrapper = () => {
   return (
-    <Container fluid className="pt-3">
+    <Container fluid className="mt-5">
       <Row>
-        <Card className="BorderRadius">
-          <Col md={12} xs={12}>
-            <ResetPasswordForm />
-          </Col>
-        </Card>
+        <Col md={12} xs={12}>
+          <ResetPasswordForm />
+        </Col>
       </Row>
     </Container>
   );

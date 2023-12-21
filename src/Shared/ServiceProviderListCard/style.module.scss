@@ -1,10 +1,15 @@
 @import "../../Assets/Scss/variables.scss";
+
 .Card {
   position: relative;
   overflow: hidden;
 
   &:hover .infoContainer {
     right: 0;
+
+    &::before {
+      transform: rotate(180deg);
+    }
   }
 
   .infoContainer {
@@ -15,10 +20,8 @@
     overflow: hidden;
     border: 0px;
     width: 90% !important;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0 !important;
+    border-radius: 10px;
+  
     transition: right 0.5s ease-in-out;
 
     &::before {
@@ -36,11 +39,15 @@
       background: $yellow;
       width: 20px;
       border-bottom-left-radius: 10px;
-      border-top-left-radius: 10px;
+      border-top-left-radius: 10px
     }
   }
 
   &:hover .infoContainer.open {
     right: 0;
+
+    &::before {
+      transform: rotate(90deg);
+    }
   }
 }

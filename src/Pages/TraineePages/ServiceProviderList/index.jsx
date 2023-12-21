@@ -54,10 +54,10 @@ const index = () => {
   ];
 
   return (
-    <Container fluid className="h-100 p-3">
-      <Row className="h-100">
+    <Container fluid>
+      <Row>
         <Col md={12}>
-          <Card className="BorderRadius h-100">
+          <Card className="BorderRadius contentCard">
             <CardBody className="px-4">
               <Row>
                 <Col md={12}>

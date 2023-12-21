@@ -32,7 +32,7 @@ const SubscriptionCard = (props) => {
 
       <CardBody className="mt-5">
         <h1 className="mb-3">{price}</h1>
-        <img className="fluid w-50 my-3" src={ImgSrc} alt="" />
+        <img className="fluid w-50 my-2" src={ImgSrc} alt="" />
       </CardBody>
       <CardFooter className="bg-transparent border-0 py-3">
         <FillBtn

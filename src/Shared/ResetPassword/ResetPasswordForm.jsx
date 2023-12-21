@@ -8,7 +8,7 @@ const ResetPasswordForm = () => {
 
   return (
     <Container>
-      <Row className="justify-content-center align-items-center vh-100">
+      <Row className="justify-content-center align-items-center">
         <Col lg={7} md={12} sm={10}>
           <h1 className="text-center mb-5">Change Password</h1>
           <Form>

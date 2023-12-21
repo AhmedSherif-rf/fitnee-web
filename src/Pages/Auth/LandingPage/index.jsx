@@ -65,6 +65,9 @@ const LandingPage = (props) => {
       {
         image: Images.FEATURE_THREE,
       },
+      {
+        image: Images.FEATURE_FOUR,
+      },
     ];
   }, []);
 

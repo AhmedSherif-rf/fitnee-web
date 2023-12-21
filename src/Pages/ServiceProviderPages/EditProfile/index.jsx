@@ -1,13 +1,15 @@
-import { Container, Row, Card } from "reactstrap";
+import { Container, Row, Card, Col } from "reactstrap";
 import SignUpForm from "../../../Shared/SignUp/SignUpForm";
 
 const EditProfile = () => {
   return (
     <Container fluid>
       <Row className="justify-content-center">
-        <Card className="BorderRadius">
-          <SignUpForm />
-        </Card>
+        <Col md={12}>
+          <Card className="BorderRadius contentCard px-3">
+            <SignUpForm />
+          </Card>
+        </Col>
       </Row>
     </Container>
   );

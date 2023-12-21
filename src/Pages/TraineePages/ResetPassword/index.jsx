@@ -1,11 +1,17 @@
 import React from "react";
-import { Container } from "reactstrap";
+import { Container, Row, Col, Card } from "reactstrap";
 import ResetPasswordWrapper from "../../../Shared/ResetPassword/ResetPasswordWrapper";
 
 const ResetPassword = () => {
   return (
     <Container fluid className="vh-100">
-      <ResetPasswordWrapper />
+      <Row>
+        <Col>
+          <Card className="contentCard BorderRadius">
+            <ResetPasswordWrapper />
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 };

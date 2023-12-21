@@ -253,7 +253,7 @@ const SignUpForm = () => {
                     </div>
                     <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropdownRadius  bg-white ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropdownRadius border  bg-white ${
                           values.gender === "male" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "male")}
@@ -262,7 +262,7 @@ const SignUpForm = () => {
                         <FaMars />
                       </div>
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg py-3 customDropdownRadius w-100  bg-white ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg py-3 customDropdownRadius border w-100  bg-white ${
                           values.gender === "female" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "female")}

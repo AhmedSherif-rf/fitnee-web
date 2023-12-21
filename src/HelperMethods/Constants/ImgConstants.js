@@ -9,6 +9,7 @@ let Images = {
   FEATURE_ONE: require("../../Assets/Images/homeScreen/FeatureOneImg.png"),
   FEATURE_TWO: require("../../Assets/Images/homeScreen/FeatureTwoImg.png"),
   FEATURE_THREE: require("../../Assets/Images/homeScreen/FeatureThreeImg.png"),
+  FEATURE_FOUR: require("../../Assets/Images/homeScreen/FeatureFourImg.png"),
   ARABIA_FLAG_IMG: require("../../Assets/Images/homeScreen/ArabiaFlag.svg")
     .default,
   INSTA_IMG: require("../../Assets/Images/homeScreen/socialMedia/Insta.svg")

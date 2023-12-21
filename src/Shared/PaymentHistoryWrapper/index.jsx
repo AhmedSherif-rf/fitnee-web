@@ -50,10 +50,9 @@ const PaymentHistoryWrapper = () => {
   ];
 
   return (
-    <Container className="p-4 text-black-custom">
-      <Row className="justify-content-center">
+    <Container fluid className="text-black-custom">
+      <Row>
         <Col md={12}>
-          <Card className="BorderRadius vh-auto mb-3 p-0">
             <CardHeader className="bg-transparent border-0 p-0">
               <PageHeading
                 headingText="Payment History"
@@ -113,7 +112,6 @@ const PaymentHistoryWrapper = () => {
                 </Col>
               </Row>
             </CardBody>
-          </Card>
         </Col>
       </Row>
     </Container>

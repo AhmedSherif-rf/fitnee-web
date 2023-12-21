@@ -23,32 +23,32 @@ const subscriptionData = [
 
 const Subscription = () => {
   return (
-    <Container fluid className="vh-100">
-        <Row className="justify-content-center align-items-center mt-5">
-          <Col md={8}>
-            <Row className="m-md-2">
-              {subscriptionData?.map((item, index) => {
-                return (
-                  <Col
-                    md={4}
-                    className={`mb-md-0 mb-5 ${
-                      index === 1 && window.innerWidth >= 768
-                        ? "middle-subscription-card"
-                        : ""
-                    }`}
-                  >
-                    <SubscriptionCard
-                      headerText={item.text}
-                      price={item.price}
-                      ImgSrc={item.image}
-                      buttonText={"Edit"}
-                    />
-                  </Col>
-                );
-              })}
-            </Row>
-          </Col>
-        </Row>
+    <Container fluid className="py-md-5 py-5 vh-100">
+      <Row className="justify-content-center align-items-center mt-2">
+        <Col md={8}>
+          <Row className="mt-md-5 mt-2">
+            {subscriptionData?.map((item, index) => {
+              return (
+                <Col
+                  md={4}
+                  className={`mb-md-0 mb-5 ${
+                    index === 1 && window.innerWidth >= 768
+                      ? "middle-subscription-card"
+                      : ""
+                  }`}
+                >
+                  <SubscriptionCard
+                    headerText={item.text}
+                    price={item.price}
+                    ImgSrc={item.image}
+                    buttonText="Subscribe"
+                  />
+                </Col>
+              );
+            })}
+          </Row>
+        </Col>
+      </Row>
     </Container>
   );
 };

@@ -23,8 +23,8 @@ import { setLanguageInStorage } from "../../utils/functions";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { FaKey, FaTrashCan, FaCircleArrowUp } from "react-icons/fa6";
-import React, { useState, useEffect, memo, useCallback } from "react";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
+import React, { useState, useEffect, memo, useCallback, useRef } from "react";
 import {
   ENGLISH_LANGUAGE,
   ARABIC_LANGUAGE,
@@ -81,9 +81,31 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showTopBar, setShowTopBar] = useState(true);
+
   const [collapsed, setCollapsed] = useState(true);
   const [collapsedServiceList, setCollapsedServiceList] = useState(true);
   const [collapsedLangList, setCollapsedLangList] = useState(true);
+  // const collapseRef = useRef(null);
+
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     console.log('Clicked outside:', collapseRef.current);
+  //     // if (collapseRef.current && !collapseRef.current.contains(event.target))
+  //      {
+  //       console.log('Clicked outside:', event.target);
+  //       setCollapsed(true);
+  //       setCollapsedServiceList(true);
+  //       setCollapsedLangList(true);
+  //     }
+  //   };
+
+  //   document.addEventListener("click", handleClickOutside);
+
+  //   return () => {
+  //     document.removeEventListener("click", handleClickOutside);
+  //   };
+  // }, []);
+
   const [showNavItems, setShowNavItems] = useState(true);
   const [
     showSubscriptionInformationModal,
@@ -189,7 +211,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
               }
             >
               <img
-                src={location.pathname === "/" ? Images.LOGO_IMG : Images.SMALL_LOGO_IMG}
+                src={
+                  location.pathname === "/"
+                    ? Images.LOGO_IMG
+                    : Images.SMALL_LOGO_IMG
+                }
                 alt={"website-logo"}
                 style={{ verticalAlign: "sub" }}
               />
@@ -202,242 +228,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                 >
                   <FaBars />
                 </NavbarToggler>
-                <Collapse isOpen={!collapsed} className="w-100 mt-2 text-white">
-                  <Nav
-                    className={`pt-4 ${styles.togglerNav} customBgDark caret`}
-                    navbar
-                  >
-                    {!isPrivate && roleType === null && (
-                      <>
-                        <NavItem className={`${styles.navItem}`}>
-                          <Link to="/">
-                            {" "}
-                            <span className={`px-1`}>
-                              {t("landing.homeText")}
-                            </span>
-                          </Link>
-                        </NavItem>
 
-                        <NavItem
-                          className={`${styles.navItem}`}
-                          onClick={() =>
-                            setCollapsedServiceList(!collapsedServiceList)
-                          }
-                        >
-                          <span
-                            className={`px-1 d-flex align-items-center justify-content-center`}
-                          >
-                            {t("landing.servicesText")}
-                            <PiCaretDownBold />
-                          </span>
-
-                          <Collapse
-                            isOpen={!collapsedServiceList}
-                            className="text-center bg-dark"
-                          >
-                            <Nav navbar>
-                              <NavItem>
-                                <Link
-                                  className="w-100 d-flex align-items-center"
-                                  to="/guest/serviceProviderList/trainer"
-                                >
-                                  <p className="mb-0">
-                                    {t("landing.trainersText")}
-                                  </p>
-                                </Link>
-                              </NavItem>
-                              <NavItem>
-                                <Link
-                                  className="w-100 d-flex align-items-center"
-                                  to="/guest/serviceProviderList/nutritionist"
-                                >
-                                  <p className="mb-0">
-                                    {t("landing.nutritionistsText")}
-                                  </p>
-                                </Link>
-                              </NavItem>
-                              <NavItem>
-                                <Link
-                                  className=" d-flex align-items-center"
-                                  to="/guest/services"
-                                >
-                                  <p className="mb-0">
-                                    {t("landing.exerciseText")}
-                                  </p>
-                                </Link>
-                              </NavItem>
-                            </Nav>
-                          </Collapse>
-                        </NavItem>
-
-                        <NavItem className={`${styles.navItem}`}>
-                          <Link to="#" onClick={handleFitneeCommunityClick}>
-                            <span className={`px-1`}>
-                              {t("landing.fitneeCommunityText")}
-                            </span>{" "}
-                          </Link>
-                        </NavItem>
-
-                        <NavItem className={`${styles.navItem}`}>
-                          <Link to="/contactUs">
-                            <span className={`px-1`}>
-                              {t("landing.contactUsText")}
-                            </span>
-                          </Link>
-                        </NavItem>
-                      </>
-                    )}
-                    {!isGuest && roleType !== null && (
-                      <div>
-                        <NavItem className={`${styles.NavItem} p-2`}>
-                          <Link
-                            className={`nav-link ${styles.NavLink}`}
-                            to={
-                              roleType === TRAINEE_TYPE
-                                ? "/trainee/dashboard"
-                                : "/serviceProvider/dashboard"
-                            }
-                          >
-                            {"Dashboard"}
-                          </Link>
-                        </NavItem>
-                        <NavItem className={`${styles.NavItem} p-2`}>
-                          <Link
-                            className={`nav-link ${styles.NavLink}`}
-                            to={
-                              roleType === TRAINEE_TYPE
-                                ? "/trainee/editProfile"
-                                : "/serviceProvider/editProfile"
-                            }
-                          >
-                            {"Edit Profile"}
-                          </Link>
-                        </NavItem>
-                        {roleType && roleType !== TRAINEE_TYPE && (
-                          <>
-                            <NavItem className={`${styles.NavItem} p-2`}>
-                              <Link
-                                className={`nav-link ${styles.NavLink}`}
-                                to="/serviceProvider/paymentHistory"
-                              >
-                                {"Wallet"}
-                              </Link>
-                            </NavItem>
-                          </>
-                        )}
-
-                        <NavItem className={`${styles.NavItem} p-2`}>
-                          <Link
-                            className={`nav-link ${styles.NavLink}`}
-                            to={
-                              roleType === TRAINEE_TYPE
-                                ? "/trainee/resetPassword"
-                                : "/serviceProvider/resetPassword"
-                            }
-                          >
-                            {"Change Password"}
-                          </Link>
-                        </NavItem>
-
-                        <NavItem className={`${styles.NavItem} p-2`}>
-                          <div
-                            className={`d-flex justify-content-center fs-4 w-100 p-1`}
-                            onClick={handleDeleteClick}
-                          >
-                            {"Delete Account"}
-                          </div>
-                        </NavItem>
-
-                        <NavItem className={`${styles.NavItem} p-2`}>
-                          <div
-                            className="d-flex justify-content-center fs-4 w-100 p-1"
-                            onClick={handleLogoutClick}
-                          >
-                            {"Logout"}
-                          </div>
-                        </NavItem>
-                      </div>
-                    )}
-                  </Nav>
-                  {!isPrivate && roleType === null && (
-                    <>
-                      <Nav
-                        className={`ml-auto pb-4 d-lg-none d-block customBgDark ${styles.togglerNav}`}
-                      >
-                        <NavItem
-                          className={`${styles.navItem}`}
-                          onClick={() =>
-                            setCollapsedLangList(!collapsedLangList)
-                          }
-                        >
-                          <span className={`px-1`}>
-                            <img
-                              src={
-                                currentLanguage === ENGLISH_LANGUAGE
-                                  ? Images.AMERICAN_FLAG_IMG
-                                  : Images.ARABIA_FLAG_IMG
-                              }
-                              alt="Flag_Image"
-                            />
-                            <PiCaretDownBold />
-                          </span>
-
-                          <Collapse
-                            isOpen={!collapsedLangList}
-                            className="text-center bg-dark"
-                          >
-                            <Nav navbar>
-                              <NavItem>
-                                <div
-                                  className="w-100 d-flex justify-content-center align-items-center py-3 text-white gap-2"
-                                  onClick={() =>
-                                    selectLanguage(ARABIC_LANGUAGE)
-                                  }
-                                >
-                                  <span>
-                                    <img
-                                      src={Images.ARABIA_FLAG_IMG}
-                                      alt="Arabia_Flag_Image"
-                                    />
-                                  </span>
-                                  <span>{"العربية"}</span>
-                                </div>
-                              </NavItem>
-                              <NavItem>
-                                <div
-                                  className="w-100 d-flex justify-content-center align-items-center py-3 text-white gap-2"
-                                  onClick={() =>
-                                    selectLanguage(ENGLISH_LANGUAGE)
-                                  }
-                                >
-                                  <span>
-                                    <img
-                                      src={Images.AMERICAN_FLAG_IMG}
-                                      alt="America_Flag_Image"
-                                    />
-                                  </span>
-                                  <span>{"English (US)"}</span>
-                                </div>
-                              </NavItem>
-                            </Nav>
-                          </Collapse>
-                        </NavItem>
-                        <div className="d-flex align-items-center flex-column">
-                          <FillBtn
-                            className="w-50 px-3 mb-2"
-                            text={t("landing.signUpText")}
-                            handleOnClick={handleSignUpClick}
-                          />
-                          <OutlineBtn
-                            className="w-50 px-3"
-                            text={t("landing.signInText")}
-                            handleOnClick={handleSignInClick}
-                          />
-                        </div>
-                      </Nav>
-                    </>
-                  )}
-                </Collapse>
                 {roleType === null && (
                   <Nav className={"d-lg-flex d-none"} navbar>
                     <NavItem>
@@ -688,6 +479,234 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
               </>
             )}
           </Navbar>
+          <Collapse
+            isOpen={!collapsed}
+            className={`text-white w-100 ${styles.collapseScss}`}
+            // ref={collapseRef}
+          >
+            <Nav
+              className={`pt-4 ${styles.togglerNav} customBgDark caret`}
+              navbar
+            >
+              {!isPrivate && roleType === null && (
+                <>
+                  <NavItem className={`${styles.navItem}`}>
+                    <Link to="/">
+                      {" "}
+                      <span className={`px-1`}>{t("landing.homeText")}</span>
+                    </Link>
+                  </NavItem>
+
+                  <NavItem
+                    className={`${styles.navItem}`}
+                    onClick={() =>
+                      setCollapsedServiceList(!collapsedServiceList)
+                    }
+                  >
+                    <span
+                      className={`px-1 d-flex align-items-center justify-content-center`}
+                    >
+                      {t("landing.servicesText")}
+                      <PiCaretDownBold />
+                    </span>
+
+                    <Collapse
+                      isOpen={!collapsedServiceList}
+                      className="text-center bg-dark"
+                    >
+                      <Nav navbar>
+                        <NavItem>
+                          <Link
+                            className="w-100 d-flex align-items-center"
+                            to="/guest/serviceProviderList/trainer"
+                          >
+                            <p className="mb-0">{t("landing.trainersText")}</p>
+                          </Link>
+                        </NavItem>
+                        <NavItem>
+                          <Link
+                            className="w-100 d-flex align-items-center"
+                            to="/guest/serviceProviderList/nutritionist"
+                          >
+                            <p className="mb-0">
+                              {t("landing.nutritionistsText")}
+                            </p>
+                          </Link>
+                        </NavItem>
+                        <NavItem>
+                          <Link
+                            className=" d-flex align-items-center"
+                            to="/guest/services"
+                          >
+                            <p className="mb-0">{t("landing.exerciseText")}</p>
+                          </Link>
+                        </NavItem>
+                      </Nav>
+                    </Collapse>
+                  </NavItem>
+
+                  <NavItem className={`${styles.navItem}`}>
+                    <Link to="#" onClick={handleFitneeCommunityClick}>
+                      <span className={`px-1`}>
+                        {t("landing.fitneeCommunityText")}
+                      </span>{" "}
+                    </Link>
+                  </NavItem>
+
+                  <NavItem className={`${styles.navItem}`}>
+                    <Link to="/contactUs">
+                      <span className={`px-1`}>
+                        {t("landing.contactUsText")}
+                      </span>
+                    </Link>
+                  </NavItem>
+                </>
+              )}
+              {!isGuest && roleType !== null && (
+                <div>
+                  <NavItem className={`${styles.NavItem} p-2`}>
+                    <Link
+                      className={`nav-link ${styles.NavLink}`}
+                      to={
+                        roleType === TRAINEE_TYPE
+                          ? "/trainee/dashboard"
+                          : "/serviceProvider/dashboard"
+                      }
+                    >
+                      {"Dashboard"}
+                    </Link>
+                  </NavItem>
+                  <NavItem className={`${styles.NavItem} p-2`}>
+                    <Link
+                      className={`nav-link ${styles.NavLink}`}
+                      to={
+                        roleType === TRAINEE_TYPE
+                          ? "/trainee/editProfile"
+                          : "/serviceProvider/editProfile"
+                      }
+                    >
+                      {"Edit Profile"}
+                    </Link>
+                  </NavItem>
+                  {roleType && roleType !== TRAINEE_TYPE && (
+                    <>
+                      <NavItem className={`${styles.NavItem} p-2`}>
+                        <Link
+                          className={`nav-link ${styles.NavLink}`}
+                          to="/serviceProvider/paymentHistory"
+                        >
+                          {"Wallet"}
+                        </Link>
+                      </NavItem>
+                    </>
+                  )}
+
+                  <NavItem className={`${styles.NavItem} p-2`}>
+                    <Link
+                      className={`nav-link ${styles.NavLink}`}
+                      to={
+                        roleType === TRAINEE_TYPE
+                          ? "/trainee/resetPassword"
+                          : "/serviceProvider/resetPassword"
+                      }
+                    >
+                      {"Change Password"}
+                    </Link>
+                  </NavItem>
+
+                  <NavItem className={`${styles.NavItem} p-2`}>
+                    <div
+                      className={`d-flex justify-content-center fs-4 w-100 p-1`}
+                      onClick={handleDeleteClick}
+                    >
+                      {"Delete Account"}
+                    </div>
+                  </NavItem>
+
+                  <NavItem className={`${styles.NavItem} p-2`}>
+                    <div
+                      className="d-flex justify-content-center fs-4 w-100 p-1"
+                      onClick={handleLogoutClick}
+                    >
+                      {"Logout"}
+                    </div>
+                  </NavItem>
+                </div>
+              )}
+            </Nav>
+            {!isPrivate && roleType === null && (
+              <>
+                <Nav
+                  className={`ml-auto pb-4 d-lg-none d-block customBgDark ${styles.togglerNav}`}
+                >
+                  <NavItem
+                    className={`${styles.navItem}`}
+                    onClick={() => setCollapsedLangList(!collapsedLangList)}
+                  >
+                    <span className={`px-1`}>
+                      <img
+                        src={
+                          currentLanguage === ENGLISH_LANGUAGE
+                            ? Images.AMERICAN_FLAG_IMG
+                            : Images.ARABIA_FLAG_IMG
+                        }
+                        alt="Flag_Image"
+                      />
+                      <PiCaretDownBold />
+                    </span>
+
+                    <Collapse
+                      isOpen={!collapsedLangList}
+                      className="text-center bg-dark"
+                    >
+                      <Nav navbar>
+                        <NavItem>
+                          <div
+                            className="w-100 d-flex justify-content-center align-items-center py-3 text-white gap-2"
+                            onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                          >
+                            <span>
+                              <img
+                                src={Images.ARABIA_FLAG_IMG}
+                                alt="Arabia_Flag_Image"
+                              />
+                            </span>
+                            <span>{"العربية"}</span>
+                          </div>
+                        </NavItem>
+                        <NavItem>
+                          <div
+                            className="w-100 d-flex justify-content-center align-items-center py-3 text-white gap-2"
+                            onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
+                          >
+                            <span>
+                              <img
+                                src={Images.AMERICAN_FLAG_IMG}
+                                alt="America_Flag_Image"
+                              />
+                            </span>
+                            <span>{"English (US)"}</span>
+                          </div>
+                        </NavItem>
+                      </Nav>
+                    </Collapse>
+                  </NavItem>
+                  <div className="d-flex align-items-center flex-column">
+                    <FillBtn
+                      className="w-50 px-3 mb-2"
+                      text={t("landing.signUpText")}
+                      handleOnClick={handleSignUpClick}
+                    />
+                    <OutlineBtn
+                      className="w-50 px-3"
+                      text={t("landing.signInText")}
+                      handleOnClick={handleSignInClick}
+                    />
+                  </div>
+                </Nav>
+              </>
+            )}
+          </Collapse>
         </div>
       )}
 

@@ -87,11 +87,11 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleCurrentTrainerClick = useCallback(() => {
-    navigate("/trainee/serviceProviderList");
+    navigate("/trainee/trainerList");
   }, [navigate]);
 
   const handleCurrentNutritionistClick = useCallback(() => {
-    navigate("/trainee/serviceProviderList");
+    navigate("/trainee/nutritionistList");
   }, [navigate]);
 
   const handleSubscriptionHistoryClick = useCallback(() => {
@@ -250,7 +250,7 @@ const Dashboard = () => {
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="All Service Providers"
+                    text="All Trainers and Nutritionists"
                     handleOnClick={handleAllServiceProviderClick}
                   />
                   <FillBtn

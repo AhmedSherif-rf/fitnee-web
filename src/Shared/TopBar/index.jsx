@@ -376,7 +376,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             to={
                               roleType === TRAINEE_TYPE
                                 ? "/trainee/editProfile/trainee"
-                                : "/serviceProvider/editProfile/trainer"
+                                : roleType === TRAINER_TYPE
+                                ? "/serviceProvider/editProfile/trainer"
+                                : "/serviceProvider/editProfile/nutritionist"
                             }
                           >
                             <div className="d-flex align-items-center w-100 text-black-custom">
@@ -554,7 +556,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       to={
                         roleType === TRAINEE_TYPE
                           ? "/trainee/editProfile/trainee"
-                          : "/serviceProvider/editProfile/trainer"
+                          : roleType === TRAINER_TYPE
+                          ? "/serviceProvider/editProfile/trainer"
+                          : "/serviceProvider/editProfile/nutritionist"
                       }
                     >
                       {"Edit Profile"}

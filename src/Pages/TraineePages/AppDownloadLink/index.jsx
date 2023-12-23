@@ -12,21 +12,21 @@ const AppDownloadLink = () => {
             <Row>
               <Col md="6" className="text-center">
                 <div className=" pt-3">
-                  <h4>Congratulations</h4>
+                  <h3 className="py-3 fw-bold">Congratulations</h3>
                   <p className="px-5">
-                    You have subscribed with XXX . XXX, he will review your
+                    You have subscribed with XXX . XXX, he/she will review your
                     profile and get back to you shortly, please download FitNee
                     app and enable the notification.
                   </p>
                   <p className="px-5 mb-0">
                     Be informed that you have the right to cancel your
-                    Subscription for any reason within 72 hours and your money
+                    subscription for any reason within 72 hours and your money
                     will be in your wallet in the app so you can re-subscribe
-                    with other trainer or nitration specialist.
+                    with other trainer or nutrition specialist.
                   </p>
                   <p className="px-5">
-                    You can now manage your profile and contact your
-                    Trainer/Nutrition by downloading the app
+                    Manage your profile and contact your
+                    trainer/nutrition by downloading the app
                   </p>
                 </div>
                 <div className="text-center">

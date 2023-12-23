@@ -69,6 +69,13 @@ const routes = [
     theme: "light",
     exact: true,
   },
+  {
+    path: "/serviceProvider/appDownloadLink",
+    component: lazy(() => import("../Pages/Auth/AppDownloadLink")),
+    isPublic: true,
+    theme: "dark",
+    exact: true,
+  },
 ]
   .concat(guestRoutes)
   .concat(adminRoutes)

@@ -19,8 +19,10 @@ const Index = (props) => {
 
   const { t } = useTranslation("");
 
-  const [showCancelSubscriptionModal, setShowCancelSubscriptionModal] =
-    useState(false);
+  const [
+    showCancelSubscriptionModal,
+    setShowCancelSubscriptionModal,
+  ] = useState(false);
 
   const handleCloseSubscriptionModal = () => {
     setShowCancelSubscriptionModal(false);
@@ -110,7 +112,7 @@ const Index = (props) => {
         className={"p-4"}
         isOpen={showCancelSubscriptionModal}
         onClose={handleCloseSubscriptionModal}
-        ModalTextOne="Subscribe and then download the app so you can access FitNee Community"
+        ModalTextOne="Are you sure about canceling your subscription?"
         ButtonOne={
           <FillBtn
             text={t("signup.yesText")}

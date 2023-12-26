@@ -3,17 +3,17 @@ import React, { memo } from "react";
 import RatingCard from "../FeedbackCard";
 import { Container, Row, Col } from "reactstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const CardSwiper = (props) => {
   const { data: cardsData, heading } = props;
 
-  const slicedCardsData = cardsData.slice(0, 20);
+  const slicedCardsData = cardsData.slice(0, 10);
 
   const swiperConfiguration = {
     grabCursor: true,
-    spaceBetween: 40,
-    centeredSlides: true,
+    spaceBetween: 10,
+    centeredSlides: false,
     breakpoints: {
       375: {
         slidesPerView: 1,
@@ -23,27 +23,34 @@ const CardSwiper = (props) => {
         slidesPerView: 2,
         spaceBetween: 10,
       },
-      992: {
+      768: {
         slidesPerView: 3,
       },
+      992: {
+        slidesPerView: 4,
+      },
       1360: {
-        slidesPerView: 3,
+        slidesPerView: 4,
       },
     },
     loop: true,
     autoplay: {
-      delay: 3000,
+      delay: 4000,
       disableOnInteraction: false,
     },
     pagination: {
       clickable: true,
     },
-    modules: [Autoplay, Pagination],
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    modules: [Autoplay, Pagination, Navigation],
     className: "mySwiper",
   };
 
   return (
-    <Container className="px-5">
+    <Container fluid className="px-5">
       <Row className="mb-5">
         <Col>
           <h1 className="text-center fw-bold text-white mt-5"> {heading}</h1>

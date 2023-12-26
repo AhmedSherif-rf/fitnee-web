@@ -41,7 +41,6 @@ const ResetPasswordForm = () => {
         {loading === "pending" && <LoadingScreen />}
         <Col lg={7} md={12} sm={10}>
           <h1 className="text-center mb-5">Change Password</h1>
-
           <Formik
             initialValues={{ ...CHANGE_PASSWORD_INITIAL_VALUES }}
             validationSchema={CHANGE_PASSWORD_SCHEMA}

@@ -1,5 +1,4 @@
 import OTPInput from "otp-input-react";
-import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -25,32 +24,33 @@ const OTPVerification = () => {
   }, [navigate]);
 
   return (
-    <Container className={`h-100 text-black-custom ${styles.otpContainer}`}>
+    <Container className={`vh-100 text-black-custom ${styles.otpContainer}`}>
       <Row className={`h-100 justify-content-center ${styles.otpWrapper}`}>
         <Col md={4} className={`text-center py-3 ${styles.otpCol}`}>
           <h1 className="my-5 fw-400 fw-bold">Verification</h1>
           <p className="mb-5 fs-4 lh-1 px-5">
-            Open your email and insert the code{" "}
+            Open your email and insert the code
           </p>
 
           <OTPInput
-            className={styles.otpInputs}
+            className={`${styles.otpInputs}`}
             value={OTP}
-            onChange={setOTP}
+            onChange={setOTP} 
             autoFocus={true}
             OTPLength={4}
             otpType="number"
             disabled={false}
           />
 
-          <p className="mb-0">I Didn't Receive a Code!</p>
-          <Link to="#0" className="pb-5 textYellow">
-            Resend code
-          </Link>
+          <p className="mb-0 fw-bold">Didn't Receive a Code!</p>
+          <p to="#0" className="text-black-custom">
+            Resend code in <span className="textYellow fw-bold">00:60</span>
+          </p>
+          <p className="pb-2 fw-bold textYellow">Resend Code</p>
 
           <FillBtn
             text="Next"
-            className="w-100 py-2 mt-5"
+            className="w-100 py-2 mt-3"
             handleOnClick={handleNextClick}
           />
           <InformationModal

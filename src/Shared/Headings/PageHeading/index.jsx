@@ -1,3 +1,4 @@
+import "./styles.scss";
 import React from "react";
 
 const PageHeading = (props) => {
@@ -5,7 +6,7 @@ const PageHeading = (props) => {
   return (
     <React.Fragment>
       <h2
-        className={`fw-bold text-black-custom p-3 ${className}`}
+        className={`fw-bold text-black-custom px-md-3 pt-3 ${className} heading`}
         style={{ style, textTransform: "camelCase" }}
       >
         {headingText}

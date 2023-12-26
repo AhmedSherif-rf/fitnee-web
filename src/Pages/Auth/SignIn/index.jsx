@@ -8,7 +8,8 @@ import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 
 const SignIn = () => {
-  const { t, i18n } = useTranslation("");
+  const { t } = useTranslation("");
+
   const SingInData = [
     {
       CompStyle: { backgroundImage: `url(${Images.LOGIN_BG_IMG})` },

@@ -33,6 +33,14 @@
     "signInText": "تسجيل الدخول",
     "swiperText": "لقد كان التدريب الخاص بك تحويليا! إن توجيهاتك ودعمك وخبرتك هي التي دفعت رحلتي للياقة البدنية.كانت كل جلسة بمثابة التمكين، ولقد حققت أكثر مما كنت أعتقد أنه ممكن."
   },
+  "termAndCondition": {
+    "termAndConditionHeadingText": "الأحكام والشروط",
+    "term1Text": "Welcome to FitNee These terms and conditions outline the rules and regulations for the use of Company Name's Website, located at Website.com. By accessing this website we assume you accept these terms and conditions. Do not continue to use Website Name if you do not agree to take all of the terms and conditions stated on this page. The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: “Client”, “You” and “Your” refers to you, the person log on this website and compliant to the Company's terms and conditions.",
+    "term2Text": "The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same. Cookies We employ the use of cookies. By accessing Website Name, you agreed to use cookies in agreement with the Company Name's Privacy Policy.",
+    "term3Text": "Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies. License Unless otherwise stated, Company Name and/or its licensors own the intellectual property rights for all material on Website Name. All intellectual property rights are reserved. You may access this from Website Name for your own personal use subjected to restrictions set in these terms and conditions. You must not: Republish material from Website Name Sell, rent or sub-license material from Website Name Reproduce, duplicate or copy material from Website Name Redistribute content from Website Name This Agreement shall begin on the date hereof. Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website.",
+    "term4Text": "Company Name does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Company Name,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, Company Name shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. Company Name reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.",
+    "doneText": "منتهي"
+  },
   "registerAs": {
     "registerAsText": "سجل باسم",
     "traineeText": "المتدرب",
@@ -56,11 +64,16 @@
     "healthyLifeStyleText": "نمط حياة صحي"
   },
   "contactUs": {
+    "firstNameText": "الاسم الأول",
+    "lastNameText": "اسم العائلة",
+    "emailText": "بريد إلكتروني",
+    "describeIssueText": "وصف مشكلتك",
     "unlockYourPotentialText": "أطلق العنان لإمكاناتك",
     "transformYourBodyText": "تحويل جسمك",
     "contactUsText": "اتصل بنا",
     "sendText": "يرسل",
-    "cancelText": "يلغي"
+    "cancelText": "يلغي",
+    "modalOneText": "تم إرسال البريد الإلكتروني الخاص بك. وسيتواصل معك مندوبنا خلال 72 ساعة."
   },
   "trainer": {
     "bioText": "السيرة الذاتية",
@@ -87,7 +100,7 @@
   },
   "traineeDashboard": {
     "myCurrentTrainerText": "Month",
-    "myCurrentNutritionistText": "My Current Nutritionist",
+    "myCurrentNutritionistText": "My Current Nutritionists",
     "mySubscriptionHistoryText": "My Subscription History",
     "myProgressText": "My Progress",
     "allServiceProvidersText": "All Service Providers",
@@ -183,11 +196,13 @@
     "invalidEmailText": "عنوان البريد الإلكتروني غير صالح",
     "requiredEmailText": "البريد الالكتروني مطلوب",
     "invalidPasswordText": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+    "invalidPasswordTwoText": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل، وحرف واحد صغير، وحرف كبير واحد، وحرف خاص واحد",
     "requiredPasswordText": "كلمة المرور مطلوبة",
     "invalidFirstNameText": "يجب أن يحتوي الاسم الأول على أحرف فقط",
     "requiredFirstNameText": "الإسم الأول مطلوب",
     "invalidLastNameText": "يجب أن يحتوي الاسم الأخير على أحرف فقط",
     "requiredLastNameText": "إسم العائلة مطلوب",
+    "requiredMessageText": "الرسالة مطلوبة",
     "invalidFamilyNameText": "يجب أن يحتوي اسم العائلة على أحرف فقط",
     "requiredFamilyNameText": "اسم العائلة مطلوب",
     "invalidConfirmPasswordText": "يجب أن تتطابق كلمات المرور",
@@ -197,14 +212,20 @@
     "requiredYearsOfExperienceText": "سنوات الخبرة مطلوبة",
     "requiredBioText": "السيرة الذاتية مطلوبة",
     "requiredDOBText": "تاريخ الميلاد مطلوب",
-    "requiredMinimumInbodyText": "مطلوب شهادة واحدة على الأقل",
-    "invalidFileInbodyText": "تنسيق ملف غير صالح. يُسمح فقط بالصور PNG وJPG وJPEG.",
-    "requiredInbodyText": "الشهادة مطلوبة",
-    "limitInbodyText": "يتجاوز حجم الملف الحد الأقصى (5 ميغابايت).",
-    "requiredRole": "الدور مطلوب",
+    "requiredMinimumCertificateText": "مطلوب شهادة واحدة على الأقل",
+    "invalidFileCertificateText": "تنسيق ملف غير صالح. يُسمح فقط بالصور PNG وJPG وJPEG.",
+    "requiredCertificateText": "الشهادة مطلوبة",
+    "limitCertificateText": "يتجاوز حجم الملف الحد الأقصى (5 ميغابايت).",
+    "requiredMinimumBodyImageText": "At least one body image is required",
+    "invalidFileBodyImageText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
+    "requiredBodyImageText": "Body Image is required",
+    "limitBodyImageText": "File size exceeds the maximum limit (5 MB).",
+    "requiredRoleText": "الدور مطلوب",
     "requiredDayText": "اليوم مطلوب",
     "requiredFromDayText": "من الوقت مطلوب",
     "requiredToDayText": "مطلوب للوقت",
-    "requiredtermAndConditionCheck": "يجب عليك قبول الأحكام والشروط."
+    "requiredtermAndConditionCheck": "يجب عليك قبول الأحكام والشروط.",
+    "tooShortText": "قصير جدا!",
+    "tooLongText": "طويل جدا!"
   }
 }

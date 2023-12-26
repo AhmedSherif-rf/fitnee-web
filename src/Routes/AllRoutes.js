@@ -15,6 +15,7 @@ const routes = [
     path: "/registerAs",
     component: lazy(() => import("../Pages/Auth/RegisterAs")),
     isPublic: true,
+    theme: "light",
     exact: true,
   },
   {
@@ -22,7 +23,7 @@ const routes = [
     component: lazy(() => import("../Pages/Auth/SignUp")),
     isPublic: true,
     isAuth: true,
-    theme: "light",
+    theme: "dark",
     exact: true,
   },
   {
@@ -66,6 +67,13 @@ const routes = [
     component: lazy(() => import("../Pages/Auth/ChangePassword")),
     isPublic: true,
     theme: "light",
+    exact: true,
+  },
+  {
+    path: "/serviceProvider/appDownloadLink",
+    component: lazy(() => import("../Pages/Auth/AppDownloadLink")),
+    isPublic: true,
+    theme: "dark",
     exact: true,
   },
 ]

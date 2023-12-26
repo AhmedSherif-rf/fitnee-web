@@ -38,7 +38,7 @@ const createFormData = (data) => {
   const formData = new FormData();
 
   for (const key in data) {
-    if (data.hasOwnProperty(key)) {
+    if (data.hasOwnProperty(key) && data[key] !== "") {
       formData.append(key, data[key]);
     }
   }

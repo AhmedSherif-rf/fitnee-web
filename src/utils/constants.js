@@ -45,5 +45,18 @@ export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 export const LOGIN_URL = "/login/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
-//=================StatusCodes
+//=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
+//=================Exercise======================
+export const exerciseLevel = ["Beginner", "Expert"];
+export const category = [
+  "Chest",
+  "Traps",
+  "Shoulder",
+  "Biceps",
+  "Forearms",
+  "Obliques",
+  "Abdominal",
+  "Quads",
+  "Calves",
+];

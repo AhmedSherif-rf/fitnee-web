@@ -8,7 +8,7 @@ export const guestRoutes = [
     exact: true,
     isPublic: true,
     role: guestRole,
-    theme: "light",
+    theme: "dark",
     isGuest: true,
   },
   {
@@ -17,7 +17,7 @@ export const guestRoutes = [
     exact: true,
     isPublic: true,
     role: guestRole,
-    theme: "light",
+    theme: "dark",
     isGuest: true,
   },
   {
@@ -28,7 +28,7 @@ export const guestRoutes = [
     exact: true,
     isPublic: true,
     role: guestRole,
-    theme: "light",
+    theme: "dark",
     isGuest: true,
   },
   {
@@ -37,7 +37,7 @@ export const guestRoutes = [
     exact: true,
     isPublic: true,
     role: guestRole,
-    theme: "light",
+    theme: "dark",
     isGuest: true,
   },
   {
@@ -46,7 +46,7 @@ export const guestRoutes = [
     exact: true,
     isPublic: true,
     role: guestRole,
-    theme: "light",
+    theme: "dark",
     isGuest: true,
   },
 ];

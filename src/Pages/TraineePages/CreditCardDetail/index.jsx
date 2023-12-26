@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row } from "reactstrap";
+import { Col, Container, Row, Card } from "reactstrap";
 import CreditCardDetailWrapper from "../../../Shared/CreditCardDetailWrapper";
 
 const CreditCardDetail = () => {
@@ -7,7 +7,9 @@ const CreditCardDetail = () => {
     <Container fluid>
       <Row>
         <Col md={12}>
-          <CreditCardDetailWrapper />
+          <Card className="BorderRadius contentCard">
+            <CreditCardDetailWrapper />
+          </Card>
         </Col>
       </Row>
     </Container>

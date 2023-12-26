@@ -10,15 +10,15 @@
     "nutritionistsText": "Nutritionists",
     "exerciseText": "Exercise",
     "communityFirstText": "Subscribe and then download the app so you can access FitNee Community",
-    "embraceAText": "Embrace a",
-    "healthierYouText": "healthier you",
+    "embraceAText": "EMBRACE A",
+    "healthierYouText": "HEALTHIER YOU",
     "firstHeroSectionText": "Provide a comprehensive platform to be a one-stop destination for individuals seeking fitness guidance and resources.",
     "featuresText": "Features",
     "fitneeText": "FitNee",
-    "firstFeaturesText": "Connect Users with Qualified Trainers: FitNee will maintain a directory of certified and experienced fitness trainers. You will be. connecting with trainers who can provide personalized workout plans, tailored to their specific needs and goals. We strive to ensure that each trainer listed on our platform meets high standards of expertise and professionalism.",
-    "secondFeaturesText": "Facilitate Nutritional Guidance: we recognizes the importance of nutrition in achieving fitness goals. We aim to provide a comprehensive list of nutrition specialists who can offer personalized meal plans, dietary advice, and guidance on healthy eating habits.",
-    "thirdFeaturesText": "Comprehensive Exercise Library: we will feature an extensive collection of exercises, including detailed instructions, videos, and variations to provide you with a diverse range of exercises that target different muscle groups and fitness levels. We aim to cater to both beginners and advanced fitness enthusiasts, ensuring that our exercise library offers something for everyone.",
-    "fourthFeaturesText": "FitNee's Community: FitNee strives to create a vibrant and supportive community where users can connect with like-minded individuals, share their fitness journeys, and seek motivation and encouragement.",
+    "firstFeaturesText": "Comprehensive Exercise Library: we will feature an extensive collection of exercises, including detailed instructions, videos, and variations to provide you with a diverse range of exercises that target different muscle groups and fitness levels. We aim to cater to both beginners and advanced fitness enthusiasts, ensuring that our exercise library offers something for everyone.",
+    "secondFeaturesText": "FitNee's Community: FitNee strives to create a vibrant and supportive community where users can connect with like-minded individuals, share their fitness journeys, and seek motivation and encouragement.",
+    "thirdFeaturesText": "Connect Users with Qualified Trainers: FitNee will maintain a directory of certified and experienced fitness trainers. You will be connecting with trainers who can provide personalized workout plans, tailored to their specific needs and goals. We strive to ensure that each trainer listed on our platform meets high standards of expertise and professionalism.",
+    "fourthFeaturesText": "Facilitate Nutritional Guidance: we recognizes the importance of nutrition in achieving fitness goals. We aim to provide a comprehensive list of nutrition specialists who can offer personalized meal plans, dietary advice, and guidance on healthy eating habits.",
     "ourText": "Our",
     "whatIsText": " What Is",
     "feedbackText": "Feedbacks",
@@ -33,6 +33,14 @@
     "signUpText": "Sign Up",
     "signInText": "Sign In",
     "swiperText": "Your training has been transformative! Your guidance, support, and expertise have propelled my fitness journey.  Each session was empowering, and I've achieved more than I thought possible."
+  },
+  "termAndCondition": {
+    "termAndConditionHeadingText": "Terms and Conditions",
+    "term1Text": "Welcome to FitNee These terms and conditions outline the rules and regulations for the use of Company Name's Website, located at Website.com. By accessing this website we assume you accept these terms and conditions. Do not continue to use Website Name if you do not agree to take all of the terms and conditions stated on this page. The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: “Client”, “You” and “Your” refers to you, the person log on this website and compliant to the Company's terms and conditions.",
+    "term2Text": "The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same. Cookies We employ the use of cookies. By accessing Website Name, you agreed to use cookies in agreement with the Company Name's Privacy Policy.",
+    "term3Text": "Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies. License Unless otherwise stated, Company Name and/or its licensors own the intellectual property rights for all material on Website Name. All intellectual property rights are reserved. You may access this from Website Name for your own personal use subjected to restrictions set in these terms and conditions. You must not: Republish material from Website Name Sell, rent or sub-license material from Website Name Reproduce, duplicate or copy material from Website Name Redistribute content from Website Name This Agreement shall begin on the date hereof. Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website.",
+    "term4Text": "Company Name does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Company Name,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, Company Name shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. Company Name reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.",
+    "doneText": "Done"
   },
   "registerAs": {
     "registerAsText": "Register As",
@@ -57,11 +65,16 @@
     "healthyLifeStyleText": "Healthy Lifestyle"
   },
   "contactUs": {
+    "firstNameText": "First Name",
+    "lastNameText": "Last Name",
+    "emailText": "Email",
+    "describeIssueText": "Describe Your Issue",
     "unlockYourPotentialText": "Unlock your potential",
     "transformYourBodyText": "transform your body",
-    "contactUsText": " Contact Us",
+    "contactUsText": "Contact Us",
     "sendText": "Send",
-    "cancelText": "Cancel"
+    "cancelText": "Cancel",
+    "modalOneText": "Your email has been sent. Our representative will reach out to you within 72 hours."
   },
   "trainer": {
     "bioText": "Bio",
@@ -89,7 +102,7 @@
   },
   "traineeDashboard": {
     "myCurrentTrainerText": "Month",
-    "myCurrentNutritionistText": "My Current Nutritionist",
+    "myCurrentNutritionistText": "My Current Nutritionists",
     "mySubscriptionHistoryText": "My Subscription History",
     "myProgressText": "My Progress",
     "allServiceProvidersText": "All Service Providers",
@@ -167,31 +180,33 @@
   },
 
   "login": {
-    "loginText": "login",
+    "loginText": "Sign In",
     "firstNameText": "First Name",
     "lastNameText": "Last Name",
     "emailText": "Type your email",
     "passwordText": "Type your password",
     "forgotPasswordText": "Forgot Password",
     "agreeOnFitneeText": "Agree on FitNee's",
-    "termsAndConditionsText": "terms and conditions",
+    "termsAndConditionsText": "Terms and Conditions",
     "signInText": "Sign In",
     "createAccountText": "Create Account",
     "newHereText": "New Here?",
     "cancelText": "Cancel",
     "unlockYourPotentialText": "Unlock your potential",
-    "transformYourBodyText": "transform your body"
+    "transformYourBodyText": "Transform your body"
   },
 
   "validation": {
     "invalidEmailText": "Invalid email address",
     "requiredEmailText": "Email is required",
     "invalidPasswordText": "Password must be at least 8 characters long",
+    "invalidPasswordTwoText": "Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character",
     "requiredPasswordText": "Password is required",
     "invalidFirstNameText": "First Name should contain only letters",
     "requiredFirstNameText": "First Name is Required",
     "invalidLastNameText": "Last Name should contain only letters",
     "requiredLastNameText": "Last Name is Required",
+    "requiredMessageText": "Message is Required",
     "invalidFamilyNameText": "Family Name should contain only letters",
     "requiredFamilyNameText": "Family Name is required",
     "invalidConfirmPasswordText": "Passwords must match",
@@ -201,15 +216,21 @@
     "requiredYearsOfExperienceText": "Years of experience is required",
     "requiredBioText": "Bio is required",
     "requiredDOBText": "Date of Birth is required",
-    "requiredMinimumInbodyText": "At least one Inbody is required",
-    "invalidFileInbodyText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
-    "requiredInbodyText": "Inbody is required",
-    "limitInbodyText": "File size exceeds the maximum limit (5 MB).",
-    "requiredText":"Required",
-    "requiredRole": "Role is required",
+    "requiredMinimumCertificateText": "At least one certificate is required",
+    "invalidFileCertificateText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
+    "requiredCertificateText": "Certificate is required",
+    "limitCertificateText": "File size exceeds the maximum limit (5 MB).",
+    "requiredMinimumBodyImageText": "At least one body image is required",
+    "invalidFileBodyImageText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
+    "requiredBodyImageText": "Body Image is required",
+    "limitBodyImageText": "File size exceeds the maximum limit (5 MB).",
+    "requiredText": "Required",
+    "requiredRoleText": "Role is required",
     "requiredDayText": "Day is required",
     "requiredFromDayText": "From Time is required",
     "requiredToDayText": "To Time is required",
-    "requiredtermAndConditionCheck": "You must accept the terms and conditions." 
+    "requiredtermAndConditionCheck": "You must accept the terms and conditions.",
+    "tooShortText": "Too Short!",
+    "tooLongText": "Too Long!"
   }
 }

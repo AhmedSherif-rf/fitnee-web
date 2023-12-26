@@ -1,12 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { Col, Row } from "reactstrap";
-import { Link } from "react-router-dom";
 import Rating from "../../../Shared/Rating";
 import ToggleSwitch from "../../../Shared/ToggleSwitch";
+import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import { GoEye, GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 
 const ContactUs = (props) => {
@@ -101,170 +100,6 @@ const ContactUs = (props) => {
         </div>
       ),
     },
-    {
-      userName: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE3_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Nadeem Abbas</h6>
-        </div>
-      ),
-
-      serviceProvider: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE3_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Nadeem Abbas</h6>
-        </div>
-      ),
-
-      rating: <Rating />,
-
-      summary: (
-        <div
-          className="d-flex align-items-center "
-          style={{ maxWidth: "300px" }}
-        >
-          <div className="d-flex align-items-center mb-0">
-            {showFullText
-              ? "Lorazepam, sold under the brand name Ativan among others, is a benzodiazepine medication. It is used to treat anxiety, trouble sleeping, severe agitation, active seizures including status epilepticus, alcohol withdrawal, and chemotherapy-induced nausea and"
-              : "Lorazepam, sold under the brand name Ativan among others,"}
-          </div>
-          <div>
-            {showFullText ? (
-              <GoTriangleUp
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
-            ) : (
-              <GoTriangleDown
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
-            )}
-          </div>
-        </div>
-      ),
-
-      date: "02:00 PM - 03/04/2023",
-
-      ReportingTo: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE3_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Edgar</h6>
-        </div>
-      ),
-
-      publish: (
-        <div className="d-flex align-items-center justify-content-md-center">
-          <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
-        </div>
-      ),
-    },
-
-    {
-      userName: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE3_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Nadeem Abbas</h6>
-        </div>
-      ),
-
-      serviceProvider: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE3_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Nadeem Abbas</h6>
-        </div>
-      ),
-
-      rating: <Rating />,
-
-      summary: (
-        <div
-          className="d-flex align-items-center "
-          style={{ maxWidth: "300px" }}
-        >
-          <div className="d-flex align-items-center mb-0">
-            {showFullText
-              ? "Lorazepam, sold under the brand name Ativan among others, is a benzodiazepine medication. It is used to treat anxiety, trouble sleeping, severe agitation, active seizures including status epilepticus, alcohol withdrawal, and chemotherapy-induced nausea and"
-              : "Lorazepam, sold under the brand name Ativan among others,"}
-          </div>
-          <div>
-            {showFullText ? (
-              <GoTriangleUp
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
-            ) : (
-              <GoTriangleDown
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
-            )}
-          </div>
-        </div>
-      ),
-
-      date: "02:00 PM - 03/04/2023",
-
-      ReportingTo: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE3_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Edgar</h6>
-        </div>
-      ),
-
-      publish: (
-        <div className="d-flex align-items-center justify-content-md-center">
-          <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
-        </div>
-      ),
-    },
-
     {
       userName: (
         <div className="d-flex align-items-center">

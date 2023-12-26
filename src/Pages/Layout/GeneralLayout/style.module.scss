@@ -1,9 +1,17 @@
 @import "../../../Assets/Scss/variables.scss";
+@import "../../../Assets/Scss/globalStyleSheet.scss";
 
-.overlapContainer {
-  margin-top: 10vh !important;
+.overlayBackgound {
+  background-image: url("../../../Assets/Images/layoutBgImage.png");
+  @include bgProperties;
+  height: 100vh;
+  max-height: auto;
 }
 
 .lightBg {
   background-color: $light-bg;
+}
+
+.transparentBg {
+  background-color: transparent !important;
 }

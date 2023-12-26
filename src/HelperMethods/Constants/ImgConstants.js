@@ -1,6 +1,7 @@
 let Images = {
   // =============================landingPageImgs===================================
   LOGO_IMG: require("../../Assets/Images/LOGO.svg").default,
+  SMALL_LOGO_IMG: require("../../Assets/Images/smallLogo.svg").default,
   GOAL_IMG: require("../../Assets/Images/homeScreen/OurGoal.png"),
   VISION_IMG: require("../../Assets/Images/homeScreen/OurVision.png"),
   ABOUT_IMG: require("../../Assets/Images/homeScreen/AboutFitnee.png"),
@@ -8,6 +9,7 @@ let Images = {
   FEATURE_ONE: require("../../Assets/Images/homeScreen/FeatureOneImg.png"),
   FEATURE_TWO: require("../../Assets/Images/homeScreen/FeatureTwoImg.png"),
   FEATURE_THREE: require("../../Assets/Images/homeScreen/FeatureThreeImg.png"),
+  FEATURE_FOUR: require("../../Assets/Images/homeScreen/FeatureFourImg.png"),
   ARABIA_FLAG_IMG: require("../../Assets/Images/homeScreen/ArabiaFlag.svg")
     .default,
   INSTA_IMG: require("../../Assets/Images/homeScreen/socialMedia/Insta.svg")

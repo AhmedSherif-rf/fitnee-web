@@ -64,7 +64,7 @@ const confirmPasswordValidation = Yup.string()
 const bioValidation = Yup.string().required(
   TranslationHelper("validation.requiredBioText")
 );
-const phoneValidaton = Yup.string().required(
+const phoneNumberValidaton = Yup.string().required(
   TranslationHelper("validation.requiredContactText")
 );
 
@@ -80,15 +80,15 @@ const experienceValidation = Yup.string().required(
   TranslationHelper("validation.requiredYearsOfExperienceText")
 );
 
-const inbodyValidation = Yup.array()
-  .min(1, TranslationHelper("validation.requiredMinimumInbodyText"))
+const bodyImageValidation = Yup.array()
+  .min(1, TranslationHelper("validation.requiredMinimumBodyImageText"))
   .of(
     Yup.object().shape({
       file: Yup.mixed()
-        .required(TranslationHelper("validation.requiredInbodyText"))
+        .required(TranslationHelper("validation.requiredBodyImageText"))
         .test(
           "fileFormat",
-          TranslationHelper("validation.invalidFileInbodyText"),
+          TranslationHelper("validation.invalidFileBodyImageText"),
           (value) => {
             if (value) {
               return ["image/png", "image/jpeg", "image/jpg"].includes(
@@ -100,7 +100,7 @@ const inbodyValidation = Yup.array()
         )
         .test(
           "fileSize",
-          TranslationHelper("validation.limitInbodyText"),
+          TranslationHelper("validation.limitBodyImageText"),
           (value) => {
             if (value) {
               return value.size <= 5 * 1024 * 1024;
@@ -137,16 +137,15 @@ const termAndConditionCheckValidation = Yup.bool().oneOf(
 );
 
 export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({
-  dob: dobValidation,
   email: emailValidation,
-  phone: phoneValidaton,
   gender: genderValidation,
-  inbody: inbodyValidation,
   password: passwordValidation,
+  date_of_birth: dobValidation,
   last_name: lastNameValidation,
   first_name: firstNameValidation,
+  body_images: bodyImageValidation,
+  phone_number: phoneNumberValidaton,
   confirm_password: confirmPasswordValidation,
-  term_and_condition_check: termAndConditionCheckValidation,
 });
 
 export const CHANGE_PASSWORD_SCHEMA = Yup.object().shape({

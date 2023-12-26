@@ -299,7 +299,9 @@ const SignUpForm = () => {
                   setFieldValue={setFieldValue}
                 />
                 <p className="errorField">
-                  {errors.phone_number && touched.phone_number && errors.phone_number}
+                  {errors.phone_number &&
+                    touched.phone_number &&
+                    errors.phone_number}
                 </p>
               </Col>
               <Col lg={6} md={6} className="mb-2">
@@ -462,13 +464,13 @@ const SignUpForm = () => {
               </Col>
               <Col>
                 <div className="form-group multi-preview d-flex flex-wrap align-items-center">
-                  {values?.body_images.map((image, index) => (
+                  {values?.body_images.map((file, index) => (
                     <div
                       key={index}
                       className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border"
                     >
                       <img
-                        src={URL.createObjectURL(image.file)}
+                        src={URL.createObjectURL(file)}
                         alt={`${index + 1}`}
                         className="uploaded-image BorderRadius"
                         style={{
@@ -507,9 +509,7 @@ const SignUpForm = () => {
                       onChange={(event) => {
                         const files = event.currentTarget.files;
                         if (files.length > 0) {
-                          const uploadedImages = Array.from(
-                            files
-                          ).map((file) => ({ file }));
+                          const uploadedImages = Array.from(files);
                           setFieldValue("body_images", [
                             ...values.body_images,
                             ...uploadedImages,

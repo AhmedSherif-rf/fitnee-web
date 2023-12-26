@@ -80,36 +80,35 @@ const experienceValidation = Yup.string().required(
   TranslationHelper("validation.requiredYearsOfExperienceText")
 );
 
-const bodyImageValidation = Yup.array()
-  .min(1, TranslationHelper("validation.requiredMinimumBodyImageText"))
-  .of(
-    Yup.object().shape({
-      file: Yup.mixed()
-        .required(TranslationHelper("validation.requiredBodyImageText"))
-        .test(
-          "fileFormat",
-          TranslationHelper("validation.invalidFileBodyImageText"),
-          (value) => {
-            if (value) {
-              return ["image/png", "image/jpeg", "image/jpg"].includes(
-                value.type
-              );
-            }
-            return true;
+const bodyImageValidation = Yup.lazy((value) => {
+  if (value && value.length > 0) {
+    return Yup.array()
+      .required(TranslationHelper("validation.requiredMinimumBodyImageText"))
+      .test(
+        "imagesFormat",
+        TranslationHelper("validation.invalidFileBodyImageText"),
+        (files) => {
+          if (files) {
+            return files.every((file) =>
+              ["image/png", "image/jpeg", "image/jpg"].includes(file.type)
+            );
           }
-        )
-        .test(
-          "fileSize",
-          TranslationHelper("validation.limitBodyImageText"),
-          (value) => {
-            if (value) {
-              return value.size <= 5 * 1024 * 1024;
-            }
-            return true;
+          return true;
+        }
+      )
+      .test(
+        "imagesSize",
+        TranslationHelper("validation.limitBodyImageText"),
+        (files) => {
+          if (files) {
+            return files.every((file) => file.size <= 5 * 1024 * 1024);
           }
-        ),
-    })
-  );
+          return true;
+        }
+      );
+  }
+  return Yup.mixed();
+});
 
 const roleValidation = Yup.string().required(
   TranslationHelper("validation.requiredRoleText")

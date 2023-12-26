@@ -19,8 +19,10 @@ const Index = (props) => {
 
   const { t } = useTranslation("");
 
-  const [showCancelSubscriptionModal, setShowCancelSubscriptionModal] =
-    useState(false);
+  const [
+    showCancelSubscriptionModal,
+    setShowCancelSubscriptionModal,
+  ] = useState(false);
 
   const handleCloseSubscriptionModal = () => {
     setShowCancelSubscriptionModal(false);
@@ -64,7 +66,7 @@ const Index = (props) => {
           </div>
         </Col>
         {CancelButton ? (
-          <Col md={2} sm={3} xs={6}>
+          <Col md={2} sm={8} xs={8}>
             <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
               {duration}
             </div>
@@ -110,7 +112,7 @@ const Index = (props) => {
         className={"p-4"}
         isOpen={showCancelSubscriptionModal}
         onClose={handleCloseSubscriptionModal}
-        ModalTextOne="Subscribe and then download the app so you can access FitNee Community"
+        ModalTextOne="Are you sure about canceling your subscription?"
         ButtonOne={
           <FillBtn
             text={t("signup.yesText")}

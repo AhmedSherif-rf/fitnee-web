@@ -1,13 +1,17 @@
 import React from "react";
-import { Container, Card } from "reactstrap";
+import { Container, Card, Row, Col } from "reactstrap";
 import SignUpForm from "../../../Shared/SignUp/SignUpForm";
 
 const SignUp = (props) => {
   return (
     <Container fluid>
-      <Card className="BorderRadius">
+   <Row>
+    <Col md="12">
+    <Card className="BorderRadius contentCard">
       <SignUpForm />
       </Card>
+    </Col>
+   </Row>
     </Container>
   );
 };

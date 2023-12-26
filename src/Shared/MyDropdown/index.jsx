@@ -7,7 +7,7 @@ const MyDropdown = (props) => {
   return (
     <div className="mb-0">
       <Input
-        className={`customDropDown form-control-lg  w-100 BorderYellow ${className}`}
+        className={`customDropDown customDropdownRadius form-control-lg w-100 ${className}`}
         type="select"
         name={name}
         onChange={onChangeHandle}

@@ -5,13 +5,13 @@ import CreditCardDetailWrapper from "../../../Shared/CreditCardDetailWrapper";
 const CreditCardDetail = () => {
   return (
     <Container fluid>
-      <Card className="BorderRadius">
-        <Row>
-          <Col md={12}>
+      <Row>
+        <Col md={12}>
+          <Card className="BorderRadius contentCard">
             <CreditCardDetailWrapper />
-          </Col>
-        </Row>
-      </Card>
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 };

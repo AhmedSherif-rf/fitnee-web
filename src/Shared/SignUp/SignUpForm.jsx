@@ -57,14 +57,15 @@ const SignUpForm = () => {
             if (roleType === TRAINEE_TYPE) {
               localStorage.setItem("role", TRAINEE_TYPE);
               navigate("/trainee/dashboard");
-            } else if (
-              roleType === TRAINER_TYPE ||
-              roleType === NUTRITIONIST_TYPE
-            ) {
+            } else if (roleType === TRAINER_TYPE) {
               localStorage.setItem("role", TRAINER_TYPE);
-              navigate("/serviceProvider/dashboard");
+              // navigate("/serviceProvider/dashboard");
+              navigate("/serviceProvider/appDownloadLink");
+            } else if (roleType === NUTRITIONIST_TYPE) {
+              localStorage.setItem("role", NUTRITIONIST_TYPE);
+              // navigate("/serviceProvider/dashboard");
+              navigate("/serviceProvider/appDownloadLink");
             }
-            // navigate("/verifyOtp");
           }, 400);
         }}
       >
@@ -253,7 +254,7 @@ const SignUpForm = () => {
                     </div>
                     <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropdownRadius  bg-white ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropdownRadius border  bg-white ${
                           values.gender === "male" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "male")}
@@ -262,7 +263,7 @@ const SignUpForm = () => {
                         <FaMars />
                       </div>
                       <div
-                        className={`d-flex align-items-center justify-content-between form-control-lg py-3 customDropdownRadius w-100  bg-white ${
+                        className={`d-flex align-items-center justify-content-between form-control-lg py-3 customDropdownRadius border w-100  bg-white ${
                           values.gender === "female" ? "selected" : ""
                         }`}
                         onClick={() => setFieldValue("gender", "female")}
@@ -378,6 +379,17 @@ const SignUpForm = () => {
                       {errors.role && touched.role && errors.role}
                     </p>
                   </Col>
+                  {roleType === NUTRITIONIST_TYPE && (
+                    <Col lg={6} md={6} className="mb-2">
+                      <MyDropdown
+                        className="border py-3 px-4 mb-0"
+                        Options={["What you will provide to end user"]}
+                        name={"role"}
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                      />
+                    </Col>
+                  )}
                 </>
               )}
             </Row>
@@ -552,12 +564,12 @@ const SignUpForm = () => {
               </>
             )}
 
-            {roleType !== TRAINEE_TYPE && (
+            {roleType === TRAINER_TYPE && (
               <Row className="mb-2">
                 <Col>
                   <div className="form-group">
                     <h6 className="mb-2 fw-bold">
-                      Select your area of specialty
+                      Select your area of specialty *
                     </h6>
                     <Field
                       name="speciality"
@@ -609,6 +621,18 @@ const SignUpForm = () => {
                   </p>
                 </Col>
                 <Col md={6}>
+                  <h6 className="mb-2 fw-bold">Any Food Sensitive</h6>
+                  <InputField
+                    className="form-control-lg  py-3 px-4"
+                    type="text"
+                    placeholder="See food"
+                    name="food_sensitive"
+                    onChangeHandle={handleChange}
+                    onBlurHandle={handleBlur}
+                    value={values.food_sensitive}
+                  />
+                </Col>
+                <Col md={6}>
                   <h6 className="mb-2 fw-bold">Activity Level</h6>
                   <Row className="activity">
                     <Col md={12} className="mb-2">
@@ -654,26 +678,45 @@ const SignUpForm = () => {
             {roleType !== TRAINEE_TYPE && (
               <>
                 <Row className="mb-3">
-                  <Col md={6}>
-                    <h6 className="mb-2 fw-bold">Your SAUDIREPS number</h6>
-                    <InputField
-                      className="form-control-lg  py-3 px-4"
-                      type="number"
-                      placeholder="Your SAUDIREPS number"
-                      name="saudiReps"
-                      onChangeHandle={handleChange}
-                      onBlurHandle={handleBlur}
-                      value={values.saudiReps}
-                    />
-                    <p className="errorField">
-                      {errors.saudiReps &&
-                        touched.saudiReps &&
-                        errors.saudiReps}
-                    </p>
-                  </Col>
+                  {roleType === TRAINER_TYPE && (
+                    <Col md={6}>
+                      <h6 className="mb-2 fw-bold">Your SAUDIREPS number</h6>
+                      <InputField
+                        className="form-control-lg  py-3 px-4"
+                        type="number"
+                        placeholder="Your SAUDIREPS number"
+                        name="saudiReps"
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.saudiReps}
+                      />
+                      <p className="errorField">
+                        {errors.saudiReps &&
+                          touched.saudiReps &&
+                          errors.saudiReps}
+                      </p>
+                    </Col>
+                  )}
+
+                  {roleType === NUTRITIONIST_TYPE && (
+                    <Col md={6}>
+                      <h6 className="mb-2 fw-bold">
+                        Enter your professional license number
+                      </h6>
+                      <InputField
+                        className="form-control-lg  py-3 px-4"
+                        type="number"
+                        placeholder="001122"
+                        name="saudiReps"
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.saudiReps}
+                      />
+                    </Col>
+                  )}
                   <Col lg={6} md={6} className="mb-2">
                     <h6 className="mb-2 fw-bold">
-                      Enter the phone number that has an STC Pay Account
+                      Enter the phone number that has an STC Pay Account *
                     </h6>
                     <PhoneInputField
                       inputProps={{
@@ -697,7 +740,11 @@ const SignUpForm = () => {
                 <Row>
                   <Col lg={12} md={12}>
                     <h6 className="mb-2 fw-bold">
-                      You are available to respond on your trainee *
+                      {`You are available to respond on your ${
+                        roleType === NUTRITIONIST_TYPE
+                          ? "subscriber"
+                          : "trainee"
+                      } *`}
                     </h6>
                     <FieldArray
                       name="daySchedules"
@@ -710,20 +757,20 @@ const SignUpForm = () => {
                                 <Field
                                   as="select"
                                   name={`daySchedules.${index}.day`}
-                                  className="customDropDown form-control-lg w-100 selectField BorderRadius border px-4"
+                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4"
                                   style={{
                                     paddingTop: "12px",
                                     paddingBottom: "12px",
                                   }}
                                 >
                                   <option
-                                    className="customDropDownOption"
+                                    className="customDropDownOption text-black-custom"
                                     value=""
                                     label="Select"
                                   />
                                   {weekDaysOptions?.map((option, index) => (
                                     <option
-                                      className="customDropDownOption border"
+                                      className="customDropDownOption text-black-custom border"
                                       value={option.value}
                                       key={index}
                                       label={option.label}
@@ -790,7 +837,7 @@ const SignUpForm = () => {
                 </Row>
 
                 <Row className="mb-3">
-                  <h6 className="mb-2 fw-bold">Are you currently working? *</h6>
+                  <h6 className="mb-2 fw-bold">Are you currently working?</h6>
                   <Col md={6} className="mb-2">
                     <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
                       <div
@@ -820,30 +867,34 @@ const SignUpForm = () => {
               </>
             )}
 
-            <Row>
-              <div className="d-flex mb-2">
-                <Checkbox
-                  label={
-                    <p className="mb-0 fs-6">
-                      The money will be transferred to your STC Pay account,
-                      please read the{" "}
-                      <Link to="/termAndCondition">
-                        <span className="textYellow">terms and conditions</span>
-                      </Link>
-                    </p>
-                  }
-                  name={"termAndConditionCheck"}
-                  onChangeHandle={handleChange}
-                  onBlurHandle={handleBlur}
-                  checked={values.termAndConditionCheck}
-                />
-              </div>
-              <p className="errorField">
-                {errors.termAndConditionCheck &&
-                  touched.termAndConditionCheck &&
-                  errors.termAndConditionCheck}
-              </p>
-            </Row>
+            {roleType !== TRAINEE_TYPE && (
+              <Row>
+                <div className="d-flex mb-2">
+                  <Checkbox
+                    label={
+                      <p className="mb-0 fs-6">
+                        The money will be transferred to your STC Pay account,
+                        please read the{" "}
+                        <Link to="/termAndCondition">
+                          <span className="textYellow">
+                            terms and conditions
+                          </span>
+                        </Link>
+                      </p>
+                    }
+                    name={"termAndConditionCheck"}
+                    onChangeHandle={handleChange}
+                    onBlurHandle={handleBlur}
+                    checked={values.termAndConditionCheck}
+                  />
+                </div>
+                <p className="errorField">
+                  {errors.termAndConditionCheck &&
+                    touched.termAndConditionCheck &&
+                    errors.termAndConditionCheck}
+                </p>
+              </Row>
+            )}
 
             <Row className="pb-5">
               <Col md={12}>

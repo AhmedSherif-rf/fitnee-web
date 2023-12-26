@@ -105,7 +105,7 @@
   },
   "traineeDashboard": {
     "myCurrentTrainerText": "Month",
-    "myCurrentNutritionistText": "My Current Nutritionist",
+    "myCurrentNutritionistText": "My Current Nutritionists",
     "mySubscriptionHistoryText": "My Subscription History",
     "myProgressText": "My Progress",
     "allServiceProvidersText": "All Service Providers",
@@ -225,9 +225,6 @@
   },
   "appDownloadLink": {
     "congratulationsText": "Congratulations",
-    "youHaveSubscribeText": "You have subscribed with XXX . XXX, he will review your profile and get back to you shortly, please download FitNee app and enable the notification.",
-    "beInformedThatText": "Be informed that you have the right to cancel your Subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer or nitration specialist.",
-    "youCanManageText": " You can now manage your profile and contact your Trainer/Nutrition by downloading the app",
     "getAppText": "GET APP"
   },
   "traineeServiceProviderList": {

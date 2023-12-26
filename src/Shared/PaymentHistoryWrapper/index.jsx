@@ -1,10 +1,9 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import PageHeading from "../Headings/PageHeading";
-import { CardBody, CardHeader } from "reactstrap";
 import TransactionDetail from "../TransactionDetail";
-import { Card, Col, Container, Row } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import { CardBody, CardHeader, Card, Col, Row } from "reactstrap";
 
 const PaymentHistoryWrapper = () => {
   const { t } = useTranslation("");
@@ -52,73 +51,71 @@ const PaymentHistoryWrapper = () => {
   ];
 
   return (
-    <Container className="p-4 text-black-custom">
-      <Row className="justify-content-center">
-        <Col md={12}>
-          <Card className="BorderRadius vh-auto mb-3 p-0">
-            <CardHeader className="bg-transparent border-0 p-0">
-              <PageHeading
-                headingText={t("paymentHistory.paymentHistoryTitleText")}
-                className="mb-0"
-                categoryText=""
-              />
-            </CardHeader>
-            <CardBody>
-              <Row>
-                <Col md={12}>
-                  <Card className="BorderYellow text-black-custom BorderRadius px-2">
-                    <CardBody className="">
-                      <div className="w-100 text-center">
-                        <h3 className="fw-bold">{t("paymentHistory.availableBalanceText")}</h3>
-                      </div>
-                      <div className="w-100 text-center">
-                        <h1 className="fw-bold mb-0">SAR 500</h1>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-              <Row className="my-2 text-black-custom">
-                <Col md={12}>
-                  <h5 className="my-3">{t("paymentHistory.todayText")}</h5>
-                  {Transactions.map((item, index) => {
-                    return (
-                      <TransactionDetail
-                        key={index}
-                        ArrowIcon={item.ArrowIcon}
-                        Dr_or_Cr={item.Dr_or_Cr}
-                        Currency={item.Currency}
-                        Amount={item.Amount}
-                        AmountTitle={item.AmountTitle}
-                        TransactionTime={item.TransactionTime}
-                      />
-                    );
-                  })}
-                </Col>
-              </Row>
-              <Row className="my-2 text-black-custom">
-                <Col md={12}>
-                  <h5>Aug / 23 / 23</h5>
-                  {Transactions.map((item, index) => {
-                    return (
-                      <TransactionDetail
-                        key={index}
-                        ArrowIcon={item.ArrowIcon}
-                        Dr_or_Cr={item.Dr_or_Cr}
-                        Currency={item.Currency}
-                        Amount={item.Amount}
-                        AmountTitle={item.AmountTitle}
-                        TransactionTime={item.TransactionTime}
-                      />
-                    );
-                  })}
-                </Col>
-              </Row>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Row className="text-black-custom">
+      <Col md={12}>
+        <CardHeader className="bg-transparent border-0 p-0">
+          <PageHeading
+            headingText="Payment History"
+            className="mb-0"
+            categoryText=""
+          />
+        </CardHeader>
+        <CardBody>
+          <Row>
+            <Col md={12}>
+              <Card className="BorderYellow text-black-custom BorderRadius px-2">
+                <CardBody className="">
+                  <div className="w-100 text-center">
+                    <h3 className="fw-bold">
+                      {t("paymentHistory.availableBalanceText")}
+                    </h3>
+                  </div>
+                  <div className="w-100 text-center">
+                    <h1 className="fw-bold mb-0">SAR 500</h1>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          <Row className="my-2 text-black-custom">
+            <Col md={12}>
+              <h5 className="my-3">{t("paymentHistory.todayText")}</h5>
+              {Transactions.map((item, index) => {
+                return (
+                  <TransactionDetail
+                    key={index}
+                    ArrowIcon={item.ArrowIcon}
+                    Dr_or_Cr={item.Dr_or_Cr}
+                    Currency={item.Currency}
+                    Amount={item.Amount}
+                    AmountTitle={item.AmountTitle}
+                    TransactionTime={item.TransactionTime}
+                  />
+                );
+              })}
+            </Col>
+          </Row>
+          <Row className="my-2 text-black-custom">
+            <Col md={12}>
+              <h5>Aug / 23 / 23</h5>
+              {Transactions.map((item, index) => {
+                return (
+                  <TransactionDetail
+                    key={index}
+                    ArrowIcon={item.ArrowIcon}
+                    Dr_or_Cr={item.Dr_or_Cr}
+                    Currency={item.Currency}
+                    Amount={item.Amount}
+                    AmountTitle={item.AmountTitle}
+                    TransactionTime={item.TransactionTime}
+                  />
+                );
+              })}
+            </Col>
+          </Row>
+        </CardBody>
+      </Col>
+    </Row>
   );
 };
 

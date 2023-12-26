@@ -1,6 +1,5 @@
 import React from "react";
-import { Col, Container, Row, Card } from "reactstrap";
-import PageHeading from "../../../Shared/Headings/PageHeading";
+import { Card, Col, Container, Row } from "reactstrap";
 import SubscriptionCard from "../../../Shared/SubscriptionCard";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
@@ -24,14 +23,11 @@ const subscriptionData = [
 
 const ServiceProviderSubscription = () => {
   return (
-    <Container fluid>
-      <Card className="vh-100">
-        <Row className="justify-content-center align-items-center">
-          <Col md={12}>
-            <PageHeading headingText="Subscription" categoryText="" />
-          </Col>
-          <Col md={8} className="mt-3">
-            <Row className="mt-md-5 mt-1">
+    <Container fluid className="vh-100">
+      <Row className="justify-content-center align-items-center">
+        <Col md={9} className="">
+          <Card className="contentCard px-3 pt-5 bg-transparent">
+            <Row className="pt-2">
               {subscriptionData?.map((item, index) => {
                 return (
                   <Col
@@ -53,9 +49,9 @@ const ServiceProviderSubscription = () => {
                 );
               })}
             </Row>
-          </Col>
-        </Row>
-      </Card>
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 };

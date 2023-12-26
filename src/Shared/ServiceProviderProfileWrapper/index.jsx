@@ -129,9 +129,7 @@ const ServiceProviderProfileWrapper = (props) => {
             />
           </div>
           <div>
-            <h6 className="fw-bold text-white">
-              {t("guest.availableHoursText")}
-            </h6>
+            <h6 className="fw-bold text-white">Available Hours</h6>
             <AvailableHourList data={availableHoursData} />
           </div>
         </Col>
@@ -140,6 +138,7 @@ const ServiceProviderProfileWrapper = (props) => {
             <CardBody>
               <h3 className="fw-bold my-2">{t("guest.meetText")} Shane</h3>
               <p className="small">
+                {" "}
                 Experienced fitness pro. With a degree in Exercise Science and
                 national certifications, I craft personalized fitness plans. My
                 philosophy encompasses exercise, nutrition, and mental health
@@ -194,9 +193,7 @@ const ServiceProviderProfileWrapper = (props) => {
               </Row>
               <Row>
                 <Col md={12}>
-                  <h5 className="fw-bold mt-3 text-black-custom">
-                    {t("guest.commentsText")}{" "}
-                  </h5>
+                  <h5 className="fw-bold mt-3 text-black-custom">Comments</h5>
                   {commentsData.map((item) => {
                     return (
                       <CommentCard
@@ -211,7 +208,7 @@ const ServiceProviderProfileWrapper = (props) => {
                   <div className="text-center">
                     <FillBtn
                       className=" py-2"
-                      text={t("guest.seeMoreText")}
+                      text={"See More"}
                       // handleOnClick={handleSubscribeClick}
                     />
                   </div>

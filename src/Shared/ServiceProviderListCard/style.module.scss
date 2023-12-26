@@ -1,4 +1,5 @@
 @import "../../Assets/Scss/variables.scss";
+
 .Card {
   position: relative;
   overflow: hidden;
@@ -17,8 +18,7 @@
     width: 90% !important;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0 !important;
+  
     transition: right 0.5s ease-in-out;
 
     &::before {
@@ -35,8 +35,6 @@
       height: 100%;
       background: $yellow;
       width: 20px;
-      border-bottom-left-radius: 10px;
-      border-top-left-radius: 10px;
     }
   }
 

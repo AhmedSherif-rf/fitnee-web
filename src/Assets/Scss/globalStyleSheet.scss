@@ -41,15 +41,27 @@
 .textYellow {
   color: $yellow !important;
 }
+
 .textOrange {
   color: $orange !important;
 }
+
 .textGrey {
   color: $text-muted !important;
 }
 
 .textParrotGreen {
   color: $parrot-green;
+}
+
+.contentCard {
+  margin-top: 12vh;
+  overflow-y: scroll;
+  height: 88vh !important;
+  border: none !important;
+}
+.contentCardPadding {
+  padding-top: 12vh;
 }
 
 .BorderRadius {
@@ -106,6 +118,7 @@ Input::-webkit-input-placeholder {
 
 .react-tel-input,
 .genderBtn,
+.select,
 .form-control,
 .form-control-lg {
   &:focus,
@@ -115,7 +128,6 @@ Input::-webkit-input-placeholder {
     outline: none !important;
   }
 }
-
 .react-tel-input {
   border-radius: 14px;
   .form-control-lg {
@@ -266,14 +278,14 @@ Input::-webkit-input-placeholder {
 
 ::-webkit-scrollbar {
   width: 5px;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $blur-color;
+  background: transparent !important;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: transparent !important;
 }

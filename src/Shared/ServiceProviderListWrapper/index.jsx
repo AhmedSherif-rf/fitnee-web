@@ -261,16 +261,18 @@ const ServiceProviderListWrapper = (props) => {
   };
 
   return (
-    <Card className={`BorderRadius my-3 ${styles.serviceProviderListWrapper}`}>
+    <Card
+      className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
+    >
       <CardBody>
-        <Row className="align-items-center">
-          <Col className="text-left">
+        <Row className="align-items-center mb-2">
+          <Col xs={10} sm={6} className="text-left">
             <PageHeading
               headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}
               categoryText=""
             />
           </Col>
-          <Col className="text-end">
+          <Col xs={2} sm={6} className="text-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle data-toggle="dropdown" tag="span">
                 <img
@@ -373,7 +375,10 @@ const ServiceProviderListWrapper = (props) => {
               onClick={handleSeeMoreClick}
             >
               <CardBody>
-                <div className="w-100 d-flex align-items-center justify-content-center" style={{height: "30vh"}}>
+                <div
+                  className="w-100 d-flex align-items-center justify-content-center"
+                  style={{ height: "30vh" }}
+                >
                   <div className="">
                     <p className="mb-0 fs-4 fw-bold">
                       {t("guest.seeMoreText")}

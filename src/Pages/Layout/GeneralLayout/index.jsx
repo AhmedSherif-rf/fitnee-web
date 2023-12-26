@@ -17,11 +17,7 @@ const GeneralLayout = (props) => {
 
   return (
     <React.Fragment>
-      <Container
-        fluid
-        className={`bg-dark p-0 ${styles.overlayBackgound
-        }`}
-      >
+      <Container fluid className={`bg-dark p-0 ${styles.overlayBackgound}`}>
         <Toaster />
         <TopBar
           isPublic={props.isPublic}
@@ -31,13 +27,7 @@ const GeneralLayout = (props) => {
         />
         <Container
           fluid
-          className={`${
-            !props?.isPublic
-              ? styles.overlapContainer
-              : props?.isGuest || props?.isAuth
-              ? styles.overlapContainer
-              : "p-0"
-          } ${
+          className={`p-0 ${
             props?.theme === "light" ? styles.lightBg : styles.transparentBg
           }`}
         >

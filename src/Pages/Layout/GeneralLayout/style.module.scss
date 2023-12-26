@@ -4,10 +4,8 @@
 .overlayBackgound {
   background-image: url("../../../Assets/Images/layoutBgImage.png");
   @include bgProperties;
-}
-
-.overlapContainer {
-  padding-top: 10vh !important;
+  height: 100vh;
+  max-height: auto;
 }
 
 .lightBg {

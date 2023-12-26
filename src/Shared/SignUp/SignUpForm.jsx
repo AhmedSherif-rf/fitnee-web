@@ -450,9 +450,9 @@ const SignUpForm = () => {
                       onChange={(event) => {
                         const files = event.currentTarget.files;
                         if (files.length > 0) {
-                          const uploadedImages = Array.from(
-                            files
-                          ).map((file) => ({ file }));
+                          const uploadedImages = Array.from(files).map(
+                            (file) => ({ file })
+                          );
                           setFieldValue("certificates", [
                             ...values.certificates,
                             ...uploadedImages,
@@ -617,6 +617,18 @@ const SignUpForm = () => {
                       touched.trainingGoal &&
                       errors.trainingGoal}
                   </p>
+                </Col>
+                <Col md={6}>
+                  <h6 className="mb-2 fw-bold">Any Food Sensitive</h6>
+                  <InputField
+                    className="form-control-lg  py-3 px-4"
+                    type="text"
+                    placeholder="See food"
+                    name="food_sensitive"
+                    onChangeHandle={handleChange}
+                    onBlurHandle={handleBlur}
+                    value={values.food_sensitive}
+                  />
                 </Col>
                 <Col md={6}>
                   <h6 className="mb-2 fw-bold">Activity Level</h6>

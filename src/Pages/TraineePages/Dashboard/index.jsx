@@ -12,6 +12,7 @@ import ProfileProgressBar from "../../../Shared/ProfileProgressBar";
 import { Row, Col, Container, Card, CardBody, Label } from "reactstrap";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
+import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 
 export const myProgressGrapghOptions = {
   responsive: true,
@@ -209,6 +210,24 @@ const Dashboard = () => {
     },
   ];
 
+  const users = [
+    {
+      currentDate: "26/ Dec /2023",
+      Weight: "50 kg",
+      SMM: "30 kg",
+      BFM: "30 kg",
+      Proteins: "30 kg",
+    },
+  ];
+
+  const columns = [
+    { label: "Date", dataKey: "currentDate" },
+    { label: "Weight", dataKey: "Weight", align: "center" },
+    { label: "SMM", dataKey: "SMM", align: "center" },
+    { label: "BFM", dataKey: "BFM", align: "center" },
+    { label: "Proteins", dataKey: "Proteins", align: "center" },
+  ];
+
   return (
     <Container fluid>
       <Row className="">
@@ -297,32 +316,15 @@ const Dashboard = () => {
                               data={myProgressGrapghData}
                             />
                           </div>
-                          <div className="d-flex justify-content-between text-black-custom">
-                            <div className="m-2">
-                              <p className="mb-0">26.7.2023</p>
-                              <p className="mb-0">
-                                <span>Weight:</span>
-                                <span>50 kg</span>
-                              </p>
-                              <p className="mb-0">
-                                <span>SMM:</span>
-                                <span>30 kg</span>
-                              </p>
-                              <p className="mb-0">
-                                <span>BFM:</span>
-                                <span>20 kg</span>
-                              </p>
-                              <p className="mb-0">
-                                <span>Proteins:</span>
-                                <span>10 kg</span>
-                              </p>
-                            </div>
-                            <div className="">
-                              <FillBtn
-                                text="View History"
-                                handleOnClick={toggleHistory}
-                              />
-                            </div>
+
+                          <div className="mb-3">
+                            <ListingTable users={users} columns={columns} />
+                          </div>
+                          <div className="text-center">
+                            <FillBtn
+                              text="View History"
+                              handleOnClick={toggleHistory}
+                            />
                           </div>
                         </>
                       ) : (

@@ -240,6 +240,21 @@
     "startDateText": "Start Date",
     "endDateText": "End Date"
   },
+  "traineeSubscription": {
+    "oneMonthDurationText": "1 Months",
+    "twoMonthsDurationText": "2 Months",
+    "threeMonthsDurationText": "3 Months",
+    "subscribeText": "Subscribe"
+  },
+  "traineeSubscriptionDetails": {
+    "cancelPlanText": "Cancel Plan",
+    "twoMonthsDurationText": "2 Months",
+    "cancelledText": "Cancelled",
+    "durationText": "Duration",
+    "feeText": "Fee",
+    "actionText": "Action",
+    "subscriptionDetailsText": "Subscription Details"
+  },
 
   "validation": {
     "invalidEmailText": "عنوان البريد الإلكتروني غير صالح",

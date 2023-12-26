@@ -289,7 +289,7 @@
     "requiredDayText": "Day is required",
     "requiredFromDayText": "From Time is required",
     "requiredToDayText": "To Time is required",
-    "requiredtermAndConditionCheck": "You must accept the terms and conditions.",
+    "requiredTermAndConditionCheck": "You must accept the terms and conditions.",
     "tooShortText": "Too Short!",
     "tooLongText": "Too Long!"
   }

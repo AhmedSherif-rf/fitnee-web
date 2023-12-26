@@ -135,7 +135,7 @@ const SignUpForm = () => {
 
             <Row>
               <Col md={12}>
-                <h6 className="fw-bold">Your information</h6>
+                <h6 className="fw-bold">{t("signup.yourInformationText")}</h6>
               </Col>
               <Col lg={6} md={6} className="mb-2">
                 <div className="text-end" style={{ marginBottom: "-15px" }}>
@@ -350,7 +350,7 @@ const SignUpForm = () => {
                     <InputField
                       className="form-control-lg  py-3 px-4"
                       type="number"
-                      placeholder="Year of Experience"
+                      placeholder={t("signup.yearOfExperienceText")}
                       name="experience"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -386,8 +386,8 @@ const SignUpForm = () => {
               <Col md={12}>
                 <h6 className="fw-bold">
                   {roleType !== TRAINEE_TYPE
-                    ? "Attach Your Certificates"
-                    : "In Body"}
+                    ? t("signup.attachCertificateText")
+                    : t("signup.inBodyText")}
                 </h6>
               </Col>
               {console.log(values?.certificates)}
@@ -438,9 +438,9 @@ const SignUpForm = () => {
                       onChange={(event) => {
                         const files = event.currentTarget.files;
                         if (files.length > 0) {
-                          const uploadedImages = Array.from(
-                            files
-                          ).map((file) => ({ file }));
+                          const uploadedImages = Array.from(files).map(
+                            (file) => ({ file })
+                          );
                           setFieldValue("certificates", [
                             ...values.certificates,
                             ...uploadedImages,
@@ -460,13 +460,15 @@ const SignUpForm = () => {
               <>
                 <Row className="mb-3">
                   <Col md={12} className="mb-3">
-                    <h6 className="fw-bold mt-2">Body Information</h6>
+                    <h6 className="fw-bold mt-2">
+                      {t("signup.bodyInformationText")}
+                    </h6>
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
                       className="form-control-lg  py-3 px-4"
                       type="number"
-                      placeholder="Weight (lbs / kg)"
+                      placeholder={t("signup.weightText")}
                       name="weight"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}

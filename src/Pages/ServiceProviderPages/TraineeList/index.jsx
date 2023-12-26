@@ -4,7 +4,7 @@ import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ServiceProviderRow from "../../../Shared/ServiceProviderListRow";
 
-const index = () => {
+const Index = () => {
   const TraineeList = [
     {
       useImages: `${Images.PROFILE4_IMG}`,
@@ -87,4 +87,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

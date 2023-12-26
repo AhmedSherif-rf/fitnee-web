@@ -1,5 +1,6 @@
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import InfoModal from "../../../Shared/InfoModal";
 import InputField from "../../../Shared/InputField";
 import React, { useCallback, useState } from "react";
@@ -79,7 +80,7 @@ export const myProgressGrapghData = {
 const Dashboard = () => {
   const [showAddProgressModal, setSowAddProgressModal] = useState(false);
   const [showHistory, setShowHistory] = useState(true);
-
+  const { t } = useTranslation("");
   const toggleHistory = useCallback(() => {
     setShowHistory(!showHistory);
   }, [showHistory]);
@@ -233,28 +234,28 @@ const Dashboard = () => {
             <Col md={12}>
               <FillBtn
                 className="w-100 mb-2 py-2"
-                text="My Current Trainer"
+                text={t("traineeDashboard.myCurrentTrainerText")}
                 handleOnClick={handleCurrentTrainerClick}
               />
               <FillBtn
                 className="w-100 mb-2 py-2"
-                text="My Current Nutritionist"
+                text={t("traineeDashboard.myCurrentNutritionistText")}
                 handleOnClick={handleCurrentNutritionistClick}
               />
               <FillBtn
                 className="w-100 mb-2 py-2"
-                text="My Subscription History"
+                text={t("traineeDashboard.mySubscriptionHistoryText")}
                 handleOnClick={handleSubscriptionHistoryClick}
               />
               <FillBtn
                 className="w-100 mb-2 py-2"
-                text="All Service Providers"
+                text={t("traineeDashboard.allServiceProvidersText")}
                 handleOnClick={handleAllServiceProviderClick}
               />
               <FillBtn
                 handleOnClick={handlePaymentClick}
                 className="w-100 mb-2 py-2"
-                text="My Wallet"
+                text={t("traineeDashboard.myWalletText")}
               />
             </Col>
           </Row>
@@ -265,10 +266,10 @@ const Dashboard = () => {
               <Row>
                 <Col md={12}>
                   <div className="d-flex align-items-center justify-content-between">
-                    <PageHeading headingText="My Progress" categoryText="" />
+                    <PageHeading headingText={t("traineeDashboard.myProgressText")} categoryText="" />
                     <div className="">
                       <FillBtn
-                        text="Add"
+                        text={t("traineeDashboard.addText")}
                         handleOnClick={handleAddProgressClick}
                       />
                     </div>
@@ -314,7 +315,7 @@ const Dashboard = () => {
                         </div>
                         <div className="">
                           <FillBtn
-                            text="View History"
+                            text={t("traineeDashboard.viewHistoryText")}
                             handleOnClick={toggleHistory}
                           />
                         </div>
@@ -342,7 +343,7 @@ const Dashboard = () => {
                       </Row>
                       <div className="text-center pt-3">
                         <FillBtn
-                          text="View Graph"
+                          text={t("traineeDashboard.viewGraphText")}
                           handleOnClick={toggleHistory}
                         />
                       </div>
@@ -350,7 +351,7 @@ const Dashboard = () => {
                   )}
 
                   <InfoModal
-                    heading={"Add Your Progress"}
+                    heading={t("traineeDashboard.addYourProgressText")}
                     size={"md"}
                     TOneClassName={"fw-bold mb-4 fs-5"}
                     isOpen={showAddProgressModal}
@@ -367,7 +368,7 @@ const Dashboard = () => {
                         />
 
                         <Label className="mb-0 fw-normal small">
-                          Skeletal Muscle Mass
+                        {t("traineeDashboard.skeletalMuscleMassText")}
                         </Label>
                         <InputField
                           className="mb-2"
@@ -376,7 +377,7 @@ const Dashboard = () => {
                         />
 
                         <Label className="mb-0 fw-normal small">
-                          Body Fat Mass
+                        {t("traineeDashboard.bodyFatMassText")}
                         </Label>
                         <InputField
                           className="mb-2"
@@ -384,7 +385,7 @@ const Dashboard = () => {
                           placeholder="Kg"
                         />
 
-                        <Label className="mb-0 fw-normal small">Protein</Label>
+                        <Label className="mb-0 fw-normal small"> {t("traineeDashboard.ProteinText")}</Label>
                         <InputField
                           className="mb-2"
                           type="text"
@@ -392,11 +393,11 @@ const Dashboard = () => {
                         />
                       </>
                     }
-                    ButtonOne={<FillBtn className="w-100" text={"Save"} />}
+                    ButtonOne={<FillBtn className="w-100" text={t("traineeDashboard.saveText")} />}
                     ButtonTwo={
                       <OutlineBtn
                         className="w-100"
-                        text={"Cancel"}
+                        text={t("traineeDashboard.cancelText")} 
                         handleOnClick={useCallback(() => {
                           setSowAddProgressModal(false);
                         }, [])}

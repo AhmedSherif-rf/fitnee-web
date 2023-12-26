@@ -1,27 +1,29 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
 import SubscriptionCard from "../../../Shared/SubscriptionCard";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
-const subscriptionData = [
-  {
-    text: "1 Month",
-    price: "SAR 500",
-    image: Images.ONE_MONTH_IMG,
-  },
-  {
-    text: "2 Month",
-    price: "SAR 600",
-    image: Images.TWO_MONTH_IMG,
-  },
-  {
-    text: "3 Month",
-    price: "SAR 700",
-    image: Images.THREE_MONTH_IMG,
-  },
-];
-
 const Subscription = () => {
+  const { t } = useTranslation("");
+
+  const subscriptionData = [
+    {
+      text:  t("traineeSubscription.oneMonthDurationText"),
+      price: "SAR 500",
+      image: Images.ONE_MONTH_IMG,
+    },
+    {
+      text:t("traineeSubscription.twoMonthsDurationText"),
+      price: "SAR 600",
+      image: Images.TWO_MONTH_IMG,
+    },
+    {
+      text: t("traineeSubscription.threeMontshDurationText"),
+      price: "SAR 700",
+      image: Images.THREE_MONTH_IMG,
+    },
+  ];
   return (
     <Container fluid className="py-md-5 py-2">
       <Row className="justify-content-center align-items-center mt-3">
@@ -41,7 +43,7 @@ const Subscription = () => {
                     headerText={item.text}
                     price={item.price}
                     ImgSrc={item.image}
-                    buttonText="Subscribe"
+                    buttonText={t("traineeSubscription.subscribeText")}
                   />
                 </Col>
               );

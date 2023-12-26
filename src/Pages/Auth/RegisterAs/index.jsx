@@ -56,7 +56,7 @@ const RegisterAs = (props) => {
             />
             <div>
               <Link className="text-white" to="/signIn">
-                Already have account ?
+              {t("registerAs.alreadyAccountText")}
               </Link>
             </div>
           </div>

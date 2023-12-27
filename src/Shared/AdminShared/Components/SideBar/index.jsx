@@ -5,15 +5,8 @@ import { Link } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import { MdOutlineSportsGymnastics } from "react-icons/md";
+import { GoPersonAdd, GoPaste, GoLog } from "react-icons/go";
 import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
-import {
-  GoHome,
-  GoPersonAdd,
-  GoPaste,
-  GoLog,
-  GoSortAsc,
-  GoTools,
-} from "react-icons/go";
 
 const SideBar = ({ isOpen, toggle }) => (
   <div className={classNames("sidebar", { "is-open": isOpen })}>
@@ -23,7 +16,10 @@ const SideBar = ({ isOpen, toggle }) => (
       </span>
       <img className="py-5" src={Logo} alt={"website-logo"} />
     </div>
-    <div className="side-menu overflow-y-scroll"style={{ overflowY: 'scroll', overflowX: 'hidden' }}>
+    <div
+      className="side-menu overflow-y-scroll"
+      style={{ overflowY: "scroll", overflowX: "hidden" }}
+    >
       <Nav vertical className="list-unstyled pb-3">
         <NavItem>
           <NavLink
@@ -37,7 +33,11 @@ const SideBar = ({ isOpen, toggle }) => (
         </NavItem>
 
         <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[1]} />
-        <SubMenu title="Exercises" icon={<MdOutlineSportsGymnastics />} items={submenus[2]} />
+        <SubMenu
+          title="Exercises"
+          icon={<MdOutlineSportsGymnastics />}
+          items={submenus[2]}
+        />
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
@@ -56,27 +56,6 @@ const SideBar = ({ isOpen, toggle }) => (
           >
             <GoPaste />
             Feedback
-          </NavLink>
-        </NavItem>
-
-        <NavItem>
-          <NavLink
-            className="py-3 d-flex align-items-center gap-2"
-            tag={Link}
-            to={"/faq"}
-          >
-            <GoSortAsc />
-            FAQ
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            className="py-3 d-flex align-items-center gap-2"
-            tag={Link}
-            to={"/contact"}
-          >
-            <GoTools />
-            Setting
           </NavLink>
         </NavItem>
       </Nav>

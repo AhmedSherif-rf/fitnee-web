@@ -22,6 +22,12 @@ const Services = (props) => {
     showSubscriptionInformationModal,
     setShowSubscriptionInformationModal,
   ] = useState(false);
+  const activeBodyParts = [
+    "maleChest",
+    "maleBackArm",
+    "femaleAbdominal",
+    "femaleBackThigh",
+  ];
 
   const handleChangeBodyClick = (body) => {
     if (currentBody !== body) {
@@ -94,8 +100,13 @@ const Services = (props) => {
                     return (
                       <path
                         className={`${
-                          muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
+                          muscle.fill === "#EBEBEB"
+                            ? activeBodyParts.includes(muscle.id)
+                              ? styles.activeBodyMuscle
+                              : styles.inActiveBodyMuscle
+                            : ""
                         }`}
+                        key={index}
                         onClick={() => {
                           if (muscle.id === "maleChest") {
                             navigate("/guest/exercises");
@@ -108,7 +119,9 @@ const Services = (props) => {
                         id={muscle?.id}
                         fill={
                           currentActivePart === muscle?.id
-                            ? "#F5E74C"
+                            ? activeBodyParts.includes(muscle.id)
+                              ? "#F5E74C"
+                              : "#f67109"
                             : muscle.fill
                         }
                       />
@@ -129,7 +142,11 @@ const Services = (props) => {
                     return (
                       <path
                         className={`${
-                          muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
+                          muscle.fill === "#EBEBEB"
+                            ? activeBodyParts.includes(muscle.id)
+                              ? styles.activeBodyMuscle
+                              : styles.inActiveBodyMuscle
+                            : ""
                         }`}
                         onClick={() => {
                           if (muscle.id === "maleBackArm") {
@@ -143,7 +160,9 @@ const Services = (props) => {
                         d={muscle.d}
                         fill={
                           currentActivePart === muscle?.id
-                            ? "#F5E74C"
+                            ? activeBodyParts.includes(muscle.id)
+                              ? "#F5E74C"
+                              : "#f67109"
                             : muscle.fill
                         }
                       />
@@ -168,7 +187,11 @@ const Services = (props) => {
                     return (
                       <path
                         className={`${
-                          muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
+                          muscle.fill === "#EBEBEB"
+                            ? activeBodyParts.includes(muscle.id)
+                              ? styles.activeBodyMuscle
+                              : styles.inActiveBodyMuscle
+                            : ""
                         }`}
                         onClick={() => {
                           if (muscle.id === "femaleAbdominal") {
@@ -182,7 +205,9 @@ const Services = (props) => {
                         d={muscle.d}
                         fill={
                           currentActivePart === muscle?.id
-                            ? "#F5E74C"
+                            ? activeBodyParts.includes(muscle.id)
+                              ? "#F5E74C"
+                              : "#f67109"
                             : muscle.fill
                         }
                       />
@@ -203,7 +228,11 @@ const Services = (props) => {
                     return (
                       <path
                         className={`${
-                          muscle.fill === "#EBEBEB" ? styles.bodyMuscle : ""
+                          muscle.fill === "#EBEBEB"
+                            ? activeBodyParts.includes(muscle.id)
+                              ? styles.activeBodyMuscle
+                              : styles.inActiveBodyMuscle
+                            : ""
                         }`}
                         onClick={() => {
                           if (muscle.id === "femaleBackThigh") {
@@ -217,7 +246,9 @@ const Services = (props) => {
                         d={muscle.d}
                         fill={
                           currentActivePart === muscle?.id
-                            ? "#F5E74C"
+                            ? activeBodyParts.includes(muscle.id)
+                              ? "#F5E74C"
+                              : "#f67109"
                             : muscle.fill
                         }
                       />

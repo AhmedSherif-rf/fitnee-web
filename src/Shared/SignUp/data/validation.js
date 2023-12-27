@@ -1,15 +1,18 @@
 import * as Yup from "yup";
 import TranslationHelper from "../../TranslationHelper";
- 
+
 export const SIGNUP_SCHEMA = Yup.object().shape({
   firstName: Yup.string()
-    .matches(/^[A-Za-z]+$/,  TranslationHelper("validation.invalidFirstNameText"))
+    .matches(
+      /^[A-Za-z]+$/,
+      TranslationHelper("validation.invalidFirstNameText")
+    )
     .min(2, TranslationHelper("validation.tooShortText"))
     .max(50, TranslationHelper("validation.tooLongText"))
     .required(TranslationHelper("validation.requiredFirstNameText")),
   lastName: Yup.string()
     .matches(/^[A-Za-z]+$/, TranslationHelper("validation.invalidLastNameText"))
-    .min(2,TranslationHelper("validation.tooShortText"))
+    .min(2, TranslationHelper("validation.tooShortText"))
     .max(50, TranslationHelper("validation.tooLongText"))
     .required(TranslationHelper("validation.requiredLastNameText")),
   email: Yup.string()
@@ -26,13 +29,22 @@ export const SIGNUP_SCHEMA = Yup.object().shape({
     )
     .required(TranslationHelper("validation.requiredPasswordText")),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], TranslationHelper("validation.invalidConfirmPasswordText")) // Ensure confirm password matches password
+    .oneOf(
+      [Yup.ref("password"), null],
+      TranslationHelper("validation.invalidConfirmPasswordText")
+    ) // Ensure confirm password matches password
     .required(TranslationHelper("validation.requiredConfirmPasswordText")),
   bio: Yup.string().required(TranslationHelper("validation.requiredBioText")),
-  phoneNumber: Yup.string().required(TranslationHelper("validation.requiredContactText")),
+  phoneNumber: Yup.string().required(
+    TranslationHelper("validation.requiredContactText")
+  ),
   dob: Yup.string().required(TranslationHelper("validation.requiredDOBText")),
-  gender: Yup.string().required(TranslationHelper("validation.requiredGenderText")),
-  experience: Yup.string().required(TranslationHelper("validation.requiredYearsOfExperienceText")),
+  gender: Yup.string().required(
+    TranslationHelper("validation.requiredGenderText")
+  ),
+  experience: Yup.string().required(
+    TranslationHelper("validation.requiredYearsOfExperienceText")
+  ),
   certificates: Yup.array()
     .min(1, TranslationHelper("validation.requiredMinimumCertificateText"))
     .of(
@@ -67,13 +79,19 @@ export const SIGNUP_SCHEMA = Yup.object().shape({
   currentlyWorking: Yup.string().required("validation.RequiredText"),
   daySchedules: Yup.array().of(
     Yup.object().shape({
-      day: Yup.string().required(TranslationHelper("validation.requiredDayText")),
-      fromTime: Yup.string().required(TranslationHelper("validation.requiredFromDayText")),
-      toTime: Yup.string().required(TranslationHelper("validation.requiredToDayText")),
+      day: Yup.string().required(
+        TranslationHelper("validation.requiredDayText")
+      ),
+      fromTime: Yup.string().required(
+        TranslationHelper("validation.requiredFromDayText")
+      ),
+      toTime: Yup.string().required(
+        TranslationHelper("validation.requiredToDayText")
+      ),
     })
   ),
   termAndConditionCheck: Yup.bool().oneOf(
     [true],
-    TranslationHelper("validation.requiredtermAndConditionCheck")
+    TranslationHelper("validation.requiredTermAndConditionCheck")
   ),
 });

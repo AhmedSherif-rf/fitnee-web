@@ -1,5 +1,6 @@
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import InfoModal from "../../../Shared/InfoModal";
 import InputField from "../../../Shared/InputField";
 import React, { useCallback, useState } from "react";
@@ -80,7 +81,7 @@ export const myProgressGrapghData = {
 const Dashboard = () => {
   const [showAddProgressModal, setSowAddProgressModal] = useState(false);
   const [showHistory, setShowHistory] = useState(true);
-
+  const { t } = useTranslation("");
   const toggleHistory = useCallback(() => {
     setShowHistory(!showHistory);
   }, [showHistory]);
@@ -254,28 +255,28 @@ const Dashboard = () => {
                 <Col md={12}>
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="My Current Trainers"
+                    text={t("traineeDashboard.myCurrentTrainerText")}
                     handleOnClick={handleCurrentTrainerClick}
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="My Current Nutritionists"
+                    text={t("traineeDashboard.myCurrentNutritionistText")}
                     handleOnClick={handleCurrentNutritionistClick}
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="My Subscription History"
+                    text={t("traineeDashboard.mySubscriptionHistoryText")}
                     handleOnClick={handleSubscriptionHistoryClick}
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="All Trainers and Nutritionists"
+                    text={t("traineeDashboard.allServiceProvidersText")}
                     handleOnClick={handleAllServiceProviderClick}
                   />
                   <FillBtn
                     handleOnClick={handlePaymentClick}
                     className="w-100 mb-2 py-2"
-                    text="My Wallet"
+                    text={t("traineeDashboard.myWalletText")}
                   />
                 </Col>
               </Row>

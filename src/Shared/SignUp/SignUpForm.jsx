@@ -462,7 +462,7 @@ const SignUpForm = () => {
                       multiple
                       style={{ display: "none" }}
                     />
-                    <h6>Upload Image</h6>
+                    <h6>{t("signup.uploadImageText")}</h6>
                   </Label>
                 </div>
               </Col>
@@ -494,7 +494,7 @@ const SignUpForm = () => {
                     <InputField
                       className="form-control-lg  py-3 px-4"
                       type="number"
-                      placeholder="Hight (cm / feet)"
+                      placeholder={t("signup.heightText")}
                       name="height"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -508,7 +508,7 @@ const SignUpForm = () => {
                     <InputField
                       className="form-control-lg  py-3 px-4"
                       type="number"
-                      placeholder="Skeletal Muscle Mass"
+                      placeholder={t("signup.skeletonMuscleText")}
                       name="smm"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -522,7 +522,7 @@ const SignUpForm = () => {
                     <InputField
                       className="form-control-lg  py-3 px-4"
                       type="number"
-                      placeholder="Body Fat Mass"
+                      placeholder={t("signup.bodyFatText")}
                       name="bfm"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -536,7 +536,7 @@ const SignUpForm = () => {
                     <InputField
                       className="form-control-lg  py-3 px-4"
                       type="number"
-                      placeholder="Total Body Water"
+                      placeholder={t("signup.totalBodyText")}
                       name="tbw"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -550,7 +550,7 @@ const SignUpForm = () => {
                     <InputField
                       className="form-control-lg py-3 px-4"
                       type="number"
-                      placeholder="Protein"
+                      placeholder={t("signup.protienText")}
                       name="protein"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -569,7 +569,7 @@ const SignUpForm = () => {
                 <Col>
                   <div className="form-group">
                     <h6 className="mb-2 fw-bold">
-                      Select your area of specialty *
+                      {t("signup.selectAreaOfSpecialtyText")}*
                     </h6>
                     <Field
                       name="speciality"
@@ -586,11 +586,11 @@ const SignUpForm = () => {
             {roleType === TRAINEE_TYPE && (
               <Row className="mb-3">
                 <Col md={6}>
-                  <h6 className="mb-2 fw-bold">My goal</h6>
+                  <h6 className="mb-2 fw-bold">{t("signup.myGoalText")}</h6>
                   <InputField
                     className="form-control-lg  py-3 px-4"
                     type="text"
-                    placeholder="I want to lose my 5kg weight in 4 weeks"
+                    placeholder={t("signup.looseWeightText")}
                     name="myGoal"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -601,7 +601,9 @@ const SignUpForm = () => {
                   </p>
                 </Col>
                 <Col md={6}>
-                  <h6 className="mb-2 fw-bold">Training goal</h6>
+                  <h6 className="mb-2 fw-bold">
+                    {t("signup.trainingGoalText")}
+                  </h6>
                   <Row className="training">
                     <Col md={12} className="mb-2">
                       <MyDropdown
@@ -621,11 +623,13 @@ const SignUpForm = () => {
                   </p>
                 </Col>
                 <Col md={6}>
-                  <h6 className="mb-2 fw-bold">Any Food Sensitive</h6>
+                  <h6 className="mb-2 fw-bold">
+                    {t("signup.anyFoodSensitiveText")}
+                  </h6>
                   <InputField
                     className="form-control-lg  py-3 px-4"
                     type="text"
-                    placeholder="See food"
+                    placeholder={t("signup.seeFoodText")}
                     name="food_sensitive"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -633,7 +637,9 @@ const SignUpForm = () => {
                   />
                 </Col>
                 <Col md={6}>
-                  <h6 className="mb-2 fw-bold">Activity Level</h6>
+                  <h6 className="mb-2 fw-bold">
+                    {t("signup.activityLevelText")}
+                  </h6>
                   <Row className="activity">
                     <Col md={12} className="mb-2">
                       <MyDropdown
@@ -653,14 +659,14 @@ const SignUpForm = () => {
                   </p>
                 </Col>
                 <Col lg={6} md={6} className="mb-2">
-                  <h6 className="mb-2 fw-bold">Any Injury</h6>
+                  <h6 className="mb-2 fw-bold">{t("signup.anyInjuryText")}</h6>
                   <Row className="p-0">
                     <Col md={12} className="mb-2">
                       <InputField
                         className="form-control-lg  py-3 px-4"
                         type="textarea"
                         style={{ minHeight: "20px" }}
-                        placeholder="Describe your injury..."
+                        placeholder={t("signup.describeInjuryText")}
                         name="injury"
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
@@ -680,11 +686,14 @@ const SignUpForm = () => {
                 <Row className="mb-3">
                   {roleType === TRAINER_TYPE && (
                     <Col md={6}>
-                      <h6 className="mb-2 fw-bold">Your SAUDIREPS number</h6>
+                      <h6 className="mb-2 fw-bold">
+                        {" "}
+                        {t("signup.saudiRepsNumberText")}{" "}
+                      </h6>
                       <InputField
                         className="form-control-lg  py-3 px-4"
                         type="number"
-                        placeholder="Your SAUDIREPS number"
+                        placeholder={t("signup.saudiRepsNumberText")}
                         name="saudiReps"
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
@@ -701,7 +710,7 @@ const SignUpForm = () => {
                   {roleType === NUTRITIONIST_TYPE && (
                     <Col md={6}>
                       <h6 className="mb-2 fw-bold">
-                        Enter your professional license number
+                        {t("signup.enterYourProfessionalText")}
                       </h6>
                       <InputField
                         className="form-control-lg  py-3 px-4"
@@ -716,7 +725,7 @@ const SignUpForm = () => {
                   )}
                   <Col lg={6} md={6} className="mb-2">
                     <h6 className="mb-2 fw-bold">
-                      Enter the phone number that has an STC Pay Account *
+                      {t("signup.enterStcPayAccountText")} *
                     </h6>
                     <PhoneInputField
                       inputProps={{
@@ -740,7 +749,7 @@ const SignUpForm = () => {
                 <Row>
                   <Col lg={12} md={12}>
                     <h6 className="mb-2 fw-bold">
-                      {`You are available to respond on your ${
+                      {`   ${t("signup.availableToRespondTraineeText")} ${
                         roleType === NUTRITIONIST_TYPE
                           ? "subscriber"
                           : "trainee"
@@ -828,7 +837,7 @@ const SignUpForm = () => {
                               })
                             }
                           >
-                            Add More +
+                            {t("signup.addMoreText")}
                           </span>
                         </>
                       )}
@@ -837,7 +846,10 @@ const SignUpForm = () => {
                 </Row>
 
                 <Row className="mb-3">
-                  <h6 className="mb-2 fw-bold">Are you currently working?</h6>
+                  <h6 className="mb-2 fw-bold">
+                    {" "}
+                    {t("signup.areYouCurrentlyWorkingText")}
+                  </h6>
                   <Col md={6} className="mb-2">
                     <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
                       <div
@@ -846,7 +858,7 @@ const SignUpForm = () => {
                         }`}
                         onClick={() => setFieldValue("currentlyWorking", "yes")}
                       >
-                        <h6 className="mb-0 font14">Yes</h6>
+                        <h6 className="mb-0 font14"> {t("signup.yesText")}</h6>
                       </div>
                       <div
                         className={`d-flex align-items-center py-3 justify-content-between form-control-lg border customDropdownRadius w-100  bg-white ${
@@ -854,7 +866,7 @@ const SignUpForm = () => {
                         }`}
                         onClick={() => setFieldValue("currentlyWorking", "no")}
                       >
-                        <h6 className="mb-0 font14">No</h6>
+                        <h6 className="mb-0 font14"> {t("signup.noText")}</h6>
                       </div>
                     </div>
                     <p className="errorField">
@@ -873,11 +885,10 @@ const SignUpForm = () => {
                   <Checkbox
                     label={
                       <p className="mb-0 fs-6">
-                        The money will be transferred to your STC Pay account,
-                        please read the{" "}
+                        {t("signup.moneyTransferText")}
                         <Link to="/termAndCondition">
                           <span className="textYellow">
-                            terms and conditions
+                            {t("signup.termsAndConditionText")}
                           </span>
                         </Link>
                       </p>
@@ -898,7 +909,11 @@ const SignUpForm = () => {
 
             <Row className="pb-5">
               <Col md={12}>
-                <FillBtn type={"submit"} text="Next" className="w-100 py-2" />
+                <FillBtn
+                  type={"submit"}
+                  text={t("signup.nextText")}
+                  className="w-100 py-2"
+                />
               </Col>
             </Row>
           </form>

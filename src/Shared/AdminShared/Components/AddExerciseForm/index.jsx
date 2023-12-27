@@ -41,7 +41,7 @@ const AddExerciseForm = () => {
               toggle("1");
             }}
           >
-            العنوان الفرعي العربي
+            العربي
           </NavLink>
         </NavItem>
         <NavItem>
@@ -53,7 +53,7 @@ const AddExerciseForm = () => {
               toggle("2");
             }}
           >
-            English sub title
+            English
           </NavLink>
         </NavItem>
       </Nav>

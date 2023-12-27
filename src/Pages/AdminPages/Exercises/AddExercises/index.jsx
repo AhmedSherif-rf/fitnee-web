@@ -35,11 +35,11 @@ const ContactUs = (props) => {
             />
           </Col>
         </Row>
-        <Row className="mb-2">
-          <Col md="6">
+        <Row className="mb-2 justify-content-center">
+          <Col md="4">
             <FillBtn text="Submit" className="w-100 py-2" />
           </Col>
-          <Col md="6">
+          <Col md="4">
             <OutlineBtn text="Discard" className="w-100 py-2" />
           </Col>
         </Row>

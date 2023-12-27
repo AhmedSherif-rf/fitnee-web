@@ -19,10 +19,8 @@ const Index = (props) => {
 
   const { t } = useTranslation("");
 
-  const [
-    showCancelSubscriptionModal,
-    setShowCancelSubscriptionModal,
-  ] = useState(false);
+  const [showCancelSubscriptionModal, setShowCancelSubscriptionModal] =
+    useState(false);
 
   const handleCloseSubscriptionModal = () => {
     setShowCancelSubscriptionModal(false);

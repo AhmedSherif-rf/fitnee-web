@@ -1,9 +1,11 @@
 import React from "react";
 import "./DownloadLinkStyle.scss";
+import { useTranslation } from "react-i18next";
 import { Col, Container, Row, Card } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const AppDownloadLink = () => {
+  const { t } = useTranslation("");
   return (
     <Container fluid>
       <Row>
@@ -12,7 +14,9 @@ const AppDownloadLink = () => {
             <Row>
               <Col md="6" className="text-center">
                 <div className=" pt-3">
-                  <h3 className="py-3 fw-bold">Congratulations</h3>
+                  <h3 className="py-3 fw-bold">
+                    {t("appDownloadLink.congratulationsText")}
+                  </h3>
                   <p className="px-5">
                     You have subscribed with XXX . XXX, he/she will review your
                     profile and get back to you shortly, please download FitNee
@@ -25,8 +29,8 @@ const AppDownloadLink = () => {
                     with other trainer or nutrition specialist.
                   </p>
                   <p className="px-5">
-                    Manage your profile and contact your
-                    trainer/nutrition by downloading the app
+                    Manage your profile and contact your trainer/nutrition by
+                    downloading the app
                   </p>
                 </div>
                 <div className="text-center">
@@ -43,7 +47,7 @@ const AppDownloadLink = () => {
                       alt=""
                     />
                     <h6 className="text-black-custom fw-bold text-center">
-                      GET APP
+                      {t("appDownloadLink.getAppText")}
                     </h6>
                   </div>
                 </div>

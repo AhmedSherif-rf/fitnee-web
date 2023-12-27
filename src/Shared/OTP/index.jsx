@@ -2,12 +2,14 @@ import OTPInput from "otp-input-react";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
 import React, { useCallback, useState } from "react";
 import InformationModal from "../Modal/InformationModal";
 
 const OTPVerification = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation("");
   const [OTP, setOTP] = useState("");
   const [showWrongOtpModal, setShowWrongOtpModal] = useState(false);
 
@@ -27,9 +29,9 @@ const OTPVerification = () => {
     <Container className={`vh-100 text-black-custom ${styles.otpContainer}`}>
       <Row className={`h-100 justify-content-center ${styles.otpWrapper}`}>
         <Col md={4} className={`text-center py-3 ${styles.otpCol}`}>
-          <h1 className="my-5 fw-400 fw-bold">Verification</h1>
+          <h1 className="my-5 fw-400 fw-bold">{t("otpVerification.verificationText")}</h1>
           <p className="mb-5 fs-4 lh-1 px-5">
-            Open your email and insert the code
+          {t("otpVerification.openYourEmailText")}
           </p>
 
           <OTPInput
@@ -42,14 +44,14 @@ const OTPVerification = () => {
             disabled={false}
           />
 
-          <p className="mb-0 fw-bold">Didn't Receive a Code!</p>
+          <p className="mb-0 fw-bold">{t("otpVerification.didNotRecieveCodeText")}</p>
           <p to="#0" className="text-black-custom">
-            Resend code in <span className="textYellow fw-bold">00:60</span>
+          {t("otpVerification.resendCodeInText")} <span className="textYellow fw-bold">00:60</span>
           </p>
-          <p className="pb-2 fw-bold textYellow">Resend Code</p>
+          <p className="pb-2 fw-bold textYellow">{t("otpVerification.resendCodeText")}</p>
 
           <FillBtn
-            text="Next"
+            text={t("otpVerification.nextText")}
             className="w-100 py-2 mt-3"
             handleOnClick={handleNextClick}
           />
@@ -59,10 +61,10 @@ const OTPVerification = () => {
             className={"p-4"}
             isOpen={showWrongOtpModal}
             onClose={handleWrongOtpModalClose}
-            ModalTextOne={"You entered an Invalid OTP, please try again"}
+            ModalTextOne= {t("otpVerification.invalidOtpModalText")}
             ButtonOne={
               <FillBtn
-                text={"Okay"}
+                text={t("otpVerification.okayText")}
                 className="py-2 px-5"
                 handleOnClick={handleOkayClick}
               />

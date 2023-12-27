@@ -28,3 +28,12 @@ export const CHANGE_PASSWORD_INITIAL_VALUES = {
   confirm_password: "",
   previous_password: "",
 };
+
+export const FORGOT_PASSWORD_INITIAL_VALUES = {
+  email: "",
+};
+
+export const NEW_PASSWORD_INITIAL_VALUES = {
+  new_password: "",
+  confirm_password: "",
+};

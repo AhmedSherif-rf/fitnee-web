@@ -17,6 +17,6 @@ export const SIGNIN_SCHEMA = Yup.object().shape({
     .required(TranslationHelper("validation.requiredPasswordText")),
   termAndConditionCheck: Yup.bool().oneOf(
     [true],
-    TranslationHelper("validation.requiredtermAndConditionCheck")
+    TranslationHelper("validation.requiredTermAndConditionCheck")
   ),
 });

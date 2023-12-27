@@ -152,3 +152,12 @@ export const CHANGE_PASSWORD_SCHEMA = Yup.object().shape({
   previous_password: currentPasswordValidation,
   confirm_password: confirmNewPasswordValidation,
 });
+
+export const FORGOT_PASSWORD_SCHEMA = Yup.object().shape({
+  email: emailValidation,
+});
+
+export const NEW_PASSWORD_SCHEMA = Yup.object().shape({
+  new_password: newPasswordValidation,
+  confirm_password: confirmNewPasswordValidation,
+});

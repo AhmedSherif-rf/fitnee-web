@@ -1,9 +1,8 @@
 import { Formik } from "formik";
+import React, { memo } from "react";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import { useNavigate } from "react-router-dom";
-import OutlineBtn from "../Buttons/OutlineBtn";
-import React, { memo, useCallback } from "react";
 import { Col, Container, Form, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
@@ -16,11 +15,7 @@ import { CHANGE_PASSWORD_INITIAL_VALUES } from "../ValidationData/initialValue";
 const ResetPasswordForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, user } = useSelector((state) => state.user);
-
-  const handleCancelClick = useCallback(() => {
-    navigate("/");
-  }, [navigate]);
+  const { loading } = useSelector((state) => state.user);
 
   const handleChangePasswordSubmit = (values, resetForm) => {
     const data = {
@@ -125,13 +120,6 @@ const ResetPasswordForm = () => {
                   handleOnClick={handleSubmit}
                   disabled={loading === "pending" ? true : false}
                 />
-                {!user && (
-                  <OutlineBtn
-                    className="w-100 py-3"
-                    text={"Cancel"}
-                    handleOnClick={handleCancelClick}
-                  />
-                )}
               </Form>
             )}
           </Formik>

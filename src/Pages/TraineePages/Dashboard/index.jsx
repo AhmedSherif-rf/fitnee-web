@@ -1,6 +1,6 @@
 import "./style.scss";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import InfoModal from "../../../Shared/InfoModal";
 import InputField from "../../../Shared/InputField";
 import React, { useCallback, useState } from "react";
@@ -13,6 +13,7 @@ import ProfileProgressBar from "../../../Shared/ProfileProgressBar";
 import { Row, Col, Container, Card, CardBody, Label } from "reactstrap";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
+import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 
 export const myProgressGrapghOptions = {
   responsive: true,
@@ -78,10 +79,10 @@ export const myProgressGrapghData = {
 };
 
 const Dashboard = () => {
-  const {user} = useSelector((state) => state.user)
   const [showHistory, setShowHistory] = useState(true);
   const [showAddProgressModal, setSowAddProgressModal] = useState(false);
 
+  const { t } = useTranslation("");
   const toggleHistory = useCallback(() => {
     setShowHistory(!showHistory);
   }, [showHistory]);
@@ -210,6 +211,24 @@ const Dashboard = () => {
     },
   ];
 
+  const users = [
+    {
+      currentDate: "26/ Dec /2023",
+      Weight: "50 kg",
+      SMM: "30 kg",
+      BFM: "30 kg",
+      Proteins: "30 kg",
+    },
+  ];
+
+  const columns = [
+    { label: "Date", dataKey: "currentDate" },
+    { label: "Weight", dataKey: "Weight", align: "center" },
+    { label: "SMM", dataKey: "SMM", align: "center" },
+    { label: "BFM", dataKey: "BFM", align: "center" },
+    { label: "Proteins", dataKey: "Proteins", align: "center" },
+  ];
+
   return (
     <Container fluid>
       <Row>
@@ -236,28 +255,28 @@ const Dashboard = () => {
                 <Col md={12}>
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="My Current Trainers"
+                    text={t("traineeDashboard.myCurrentTrainerText")}
                     handleOnClick={handleCurrentTrainerClick}
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="My Current Nutritionists"
+                    text={t("traineeDashboard.myCurrentNutritionistText")}
                     handleOnClick={handleCurrentNutritionistClick}
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="My Subscription History"
+                    text={t("traineeDashboard.mySubscriptionHistoryText")}
                     handleOnClick={handleSubscriptionHistoryClick}
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text="All Trainers and Nutritionists"
+                    text={t("traineeDashboard.allServiceProvidersText")}
                     handleOnClick={handleAllServiceProviderClick}
                   />
                   <FillBtn
                     handleOnClick={handlePaymentClick}
                     className="w-100 mb-2 py-2"
-                    text="My Wallet"
+                    text={t("traineeDashboard.myWalletText")}
                   />
                 </Col>
               </Row>
@@ -298,32 +317,15 @@ const Dashboard = () => {
                               data={myProgressGrapghData}
                             />
                           </div>
-                          <div className="d-flex justify-content-between text-black-custom">
-                            <div className="m-2">
-                              <p className="mb-0">26.7.2023</p>
-                              <p className="mb-0">
-                                <span>Weight:</span>
-                                <span>50 kg</span>
-                              </p>
-                              <p className="mb-0">
-                                <span>SMM:</span>
-                                <span>30 kg</span>
-                              </p>
-                              <p className="mb-0">
-                                <span>BFM:</span>
-                                <span>20 kg</span>
-                              </p>
-                              <p className="mb-0">
-                                <span>Proteins:</span>
-                                <span>10 kg</span>
-                              </p>
-                            </div>
-                            <div className="">
-                              <FillBtn
-                                text="View History"
-                                handleOnClick={toggleHistory}
-                              />
-                            </div>
+
+                          <div className="mb-3">
+                            <ListingTable users={users} columns={columns} />
+                          </div>
+                          <div className="text-center">
+                            <FillBtn
+                              text="View History"
+                              handleOnClick={toggleHistory}
+                            />
                           </div>
                         </>
                       ) : (

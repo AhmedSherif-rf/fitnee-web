@@ -39,14 +39,16 @@
     "term2Text": "The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same. Cookies We employ the use of cookies. By accessing Website Name, you agreed to use cookies in agreement with the Company Name's Privacy Policy.",
     "term3Text": "Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies. License Unless otherwise stated, Company Name and/or its licensors own the intellectual property rights for all material on Website Name. All intellectual property rights are reserved. You may access this from Website Name for your own personal use subjected to restrictions set in these terms and conditions. You must not: Republish material from Website Name Sell, rent or sub-license material from Website Name Reproduce, duplicate or copy material from Website Name Redistribute content from Website Name This Agreement shall begin on the date hereof. Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website.",
     "term4Text": "Company Name does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Company Name,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, Company Name shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. Company Name reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.",
-    "doneText": "منتهي"
+    "doneButtonText": "Done",
+    "backButtonText": "Back"
   },
   "registerAs": {
     "registerAsText": "سجل باسم",
     "traineeText": "المتدرب",
     "trainerText": "مدرب",
     "nutritionistText": "اخصائي تغذيه",
-    "guestText": "ضيف"
+    "guestText": "ضيف",
+    "alreadyAccountText": "لديك حساب بالفعل؟"
   },
   "guest": {
     "listOfText": "قائمة من",
@@ -56,11 +58,13 @@
     "registerText": "يسجل",
     "notNowText": "ليس الآن",
     "subscribeText": "يشترك",
+    "availableHoursText": "الساعات المتاحة",
     "meetText": "يقابل",
     "qualificationExperienceText": "المؤهلات والخبرة",
     "areaSpecialtyText": "مجال التخصص",
     "bodyBuildingText": "بناء الجسم",
     "powerLiftingText": "رفع الاثقال",
+    "commentsText": "Comments",
     "healthyLifeStyleText": "نمط حياة صحي"
   },
   "contactUs": {
@@ -86,6 +90,7 @@
     "trainerCommentContentText": "مدرب مثالي! أدت التدريبات المصممة بمهارة والتحفيز المستمر والخبرة إلى تقدم ملحوظ. موصى به للغاية لرحلات اللياقة البدنية التحويلية.",
     "myCurrentTraineeText": "My Current Trainees"
   },
+
   "paymentHistory": {
     "paymentHistoryTitleText": "Payment History",
     "availableBalanceText": "Available Balance",
@@ -131,7 +136,7 @@
     "applyText": "Apply",
     "payText": "Pay",
     "paymentSummaryText": "Payment Summary",
-    "discountText": "Discount",
+    "discountText": "Discount %",
     "fitneeWalletText": "FitNee Wallet",
     "totalPayText": "Total Pay",
     "congratulationsText": "Congratulations",
@@ -157,6 +162,7 @@
     "heightText": "Hight (cm / feet)",
     "skeletonMuscleText": "Skeletal Muscle Mass",
     "bodyFatText": "Body Fat Mass",
+    "inBodyText": "In Body",
     "totalBodyText": "Total Body Water",
     "protienText": "Protein",
     "selectAreaOfSpecialtyText": "Select area of Specialty",
@@ -164,16 +170,22 @@
     "looseWeightText": "I want to lose my 5kg weight in 4 weeks",
     "trainingGoalText": "Training goal",
     "activityLevelText": "Activity Level",
+    "anyFoodSensitiveText": "Any Food Sensitive",
+    "seeFoodText": "See food",
     "anyInjuryText": "Any Injury",
     "describeInjuryText": "Describe your injury",
     "saudiRepsNumberText": "Your SAUDIREPS number",
     "enterStcPayAccountText": "Enter the phone number that has an STC Pay Account",
-    "availableToRespondTraineeText": "You are available to respond on your trainee",
+    "enterYourProfessionalText": "Enter your professional license number",
+    "availableToRespondTraineeText": "You are available to respond on your",
     "addMoreText": "Add More +",
     "areYouCurrentlyWorkingText": "Are you currently working?",
     "yesText": "Yes",
     "noText": "No",
-    "moneyWillTransferText": "The money will be transferred to your STC Pay account, please read the"
+    "nextText": "Next",
+    "uploadImageText": "Upload Image",
+    "attachCertificateText": "Attach Your Certificates",
+    "moneyTransferText": "The money will be transferred to your STC Pay account, please read the terms and conditions"
   },
   "login": {
     "loginText": "تسجيل الدخول",
@@ -190,6 +202,59 @@
     "cancelText": "يلغي",
     "unlockYourPotentialText": "أطلق العنان لإمكاناتك",
     "transformYourBodyText": "تحويل جسمك"
+  },
+  "forgotPassword": {
+    "emailText": "Type your email",
+    "forgotPasswordText": "Forgot Password",
+    "knowMyPasswordText": "I know my password take me back to login",
+    "sendText": "Send",
+    "cancelText": "Cancel"
+  },
+  "otpVerification": {
+    "verificationText": "Verification",
+    "openYourEmailText": "Open your email and insert the code",
+    "didNotRecieveCodeText": "Didn't Receive a Code!",
+    "resendCodeInText": "Resend code in ",
+    "resendCodeText": "Resend Code",
+    "invalidOtpModalText": "You entered an Invalid OTP, please try again",
+    "nextText": "Next",
+    "okayText": "Okay"
+  },
+  "changePassword": {
+    "currentPasswordText": "Current Password",
+    "confirmPasswordText": "Confirm Password",
+    "newPasswordText": "New Password",
+    "confirmText": "Confirm",
+    "cancelText": "Cancel"
+  },
+  "appDownloadLink": {
+    "congratulationsText": "Congratulations",
+    "getAppText": "GET APP"
+  },
+  "traineeServiceProviderList": {
+    "trainerText": "Trainer",
+    "twoMonthDurationText": "2 Months",
+    "myCurrentTrainerText": "My Current Trainer",
+    "nameText": "Name",
+    "durationText": "Duration",
+    "priceText": "Price",
+    "startDateText": "Start Date",
+    "endDateText": "End Date"
+  },
+  "traineeSubscription": {
+    "oneMonthDurationText": "1 Months",
+    "twoMonthsDurationText": "2 Months",
+    "threeMonthsDurationText": "3 Months",
+    "subscribeText": "Subscribe"
+  },
+  "traineeSubscriptionDetails": {
+    "cancelPlanText": "Cancel Plan",
+    "twoMonthsDurationText": "2 Months",
+    "cancelledText": "Cancelled",
+    "durationText": "Duration",
+    "feeText": "Fee",
+    "actionText": "Action",
+    "subscriptionDetailsText": "Subscription Details"
   },
 
   "validation": {
@@ -224,7 +289,7 @@
     "requiredDayText": "اليوم مطلوب",
     "requiredFromDayText": "من الوقت مطلوب",
     "requiredToDayText": "مطلوب للوقت",
-    "requiredtermAndConditionCheck": "يجب عليك قبول الأحكام والشروط.",
+    "requiredTermAndConditionCheck": "يجب عليك قبول الأحكام والشروط.",
     "tooShortText": "قصير جدا!",
     "tooLongText": "طويل جدا!"
   }

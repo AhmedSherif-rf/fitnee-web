@@ -92,6 +92,6 @@ export const SIGNUP_SCHEMA = Yup.object().shape({
   ),
   termAndConditionCheck: Yup.bool().oneOf(
     [true],
-    TranslationHelper("validation.requiredtermAndConditionCheck")
+    TranslationHelper("validation.requiredTermAndConditionCheck")
   ),
 });

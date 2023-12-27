@@ -34,7 +34,7 @@ const routes = [
     exact: true,
   },
   {
-    path: "/verifyOtp",
+    path: "/verifyOtp/:type",
     component: lazy(() => import("../Pages/Auth/VerifyOtp")),
     isPublic: true,
     isAuth: true,

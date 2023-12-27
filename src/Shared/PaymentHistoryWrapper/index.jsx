@@ -1,18 +1,19 @@
 import { memo } from "react";
-import { Card, Col, Row } from "reactstrap";
+import { useTranslation } from "react-i18next";
 import PageHeading from "../Headings/PageHeading";
-import { CardBody, CardHeader } from "reactstrap";
 import TransactionDetail from "../TransactionDetail";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import { CardBody, CardHeader, Card, Col, Row } from "reactstrap";
 
 const PaymentHistoryWrapper = () => {
+  const { t } = useTranslation("");
   const Transactions = [
     {
       ArrowIcon: Images.ARROW_UP_IMG,
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
       TransactionTime: "11:40 am",
     },
     {
@@ -20,7 +21,7 @@ const PaymentHistoryWrapper = () => {
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
       TransactionTime: "11:40 am",
     },
     {
@@ -28,7 +29,7 @@ const PaymentHistoryWrapper = () => {
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
       TransactionTime: "11:40 am",
     },
     {
@@ -36,7 +37,7 @@ const PaymentHistoryWrapper = () => {
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
       TransactionTime: "11:40 am",
     },
     {
@@ -44,7 +45,7 @@ const PaymentHistoryWrapper = () => {
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
       TransactionTime: "11:40 am",
     },
   ];
@@ -65,7 +66,9 @@ const PaymentHistoryWrapper = () => {
               <Card className="BorderYellow text-black-custom BorderRadius px-2">
                 <CardBody className="">
                   <div className="w-100 text-center">
-                    <h3 className="fw-bold">Available Balance</h3>
+                    <h3 className="fw-bold">
+                      {t("paymentHistory.availableBalanceText")}
+                    </h3>
                   </div>
                   <div className="w-100 text-center">
                     <h1 className="fw-bold mb-0">SAR 500</h1>
@@ -76,7 +79,7 @@ const PaymentHistoryWrapper = () => {
           </Row>
           <Row className="my-2 text-black-custom">
             <Col md={12}>
-              <h5 className="my-3">Today</h5>
+              <h5 className="my-3">{t("paymentHistory.todayText")}</h5>
               {Transactions.map((item, index) => {
                 return (
                   <TransactionDetail

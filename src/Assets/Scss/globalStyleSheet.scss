@@ -60,8 +60,13 @@
   height: 88vh !important;
   border: none !important;
 }
+
 .contentCardPadding {
   padding-top: 12vh;
+}
+
+.cursorPointer {
+  cursor: pointer;
 }
 
 .BorderRadius {
@@ -118,6 +123,7 @@ Input::-webkit-input-placeholder {
 
 .react-tel-input,
 .genderBtn,
+.select,
 .form-control,
 .form-control-lg {
   &:focus,

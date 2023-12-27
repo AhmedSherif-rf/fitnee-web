@@ -5,6 +5,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import languageSlice from "./features/Language/languageSlice.js";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactUsSlice from "./features/ContactUs/contactUsSlice.js";
+import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.js";
 
 const persistConfig = {
   key: "root",
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   language: languageSlice,
   user: userSlice,
   contactUs: contactUsSlice,
+  forgotPassword: forgotPasswordSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

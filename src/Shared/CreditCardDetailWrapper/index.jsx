@@ -3,6 +3,7 @@ import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import ToggleSwitch from "../ToggleSwitch";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import React, { useState, memo, useCallback } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { Card, Col, Container, InputGroup, Row } from "reactstrap";
@@ -21,6 +22,7 @@ const CreditCardDetailWrapper = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [cvcValue, setCvcValue] = useState("");
   const navigate = useNavigate();
+  const { t } = useTranslation("");
   const [checked, setChecked] = useState(true);
 
   const handleToggle = () => {
@@ -62,7 +64,7 @@ const CreditCardDetailWrapper = () => {
       <Row className="h-100 CardDetails">
         <Col md={12}>
           <PageHeading
-            headingText="Card Detail"
+            headingText={t("cardDetails.cardDetailsText")}
             className="mb-0"
             categoryText=""
           />
@@ -70,7 +72,7 @@ const CreditCardDetailWrapper = () => {
         <Col md={6}>
           <div className="w-100 card border-0 bg-transparent p-3">
             <div className="card-body">
-              <Label className="small mb-0 fw-bold">Card number</Label>
+              <Label className="small mb-0 fw-bold">{t("cardDetails.cardNumberText")}</Label>
               <InputGroup>
                 <InputGroupText
                   className="form-control-lg border py-3"
@@ -98,7 +100,7 @@ const CreditCardDetailWrapper = () => {
                 />
               </InputGroup>
 
-              <Label className="small mt-2 mb-0 fw-bold">Cardholder name</Label>
+              <Label className="small mt-2 mb-0 fw-bold">{t("cardDetails.cardHolderNameText")}</Label>
               <InputField
                 type="text"
                 className="small py-3"
@@ -107,7 +109,7 @@ const CreditCardDetailWrapper = () => {
 
               <div className="d-flex align-items-center justify-content-between mb-3">
                 <div className="w-100 me-3">
-                  <Label className="small mt-2 mb-0 fw-bold">Expiry date</Label>
+                  <Label className="small mt-2 mb-0 fw-bold">{t("cardDetails.expiryDateText")}</Label>
                   <InputField
                     type="date"
                     className="fs-6 py-3"
@@ -120,7 +122,7 @@ const CreditCardDetailWrapper = () => {
                 <div className="w-100">
                   <Label className="small mt-2 mb-0 fw-bold">
                     <span className="d-flex align-items-center gap-2">
-                      <span>CVV/CVC</span>
+                      <span>{t("cardDetails.CVV_CVCText")}</span>
                       <span className="mb-1">
                         <img src={Images.CVV_IMG} alt="" />
                       </span>
@@ -139,7 +141,7 @@ const CreditCardDetailWrapper = () => {
 
               <div className="d-flex align-items-center justify-content-between mb-2">
                 <div className="w-100 me-3">
-                  <p className="mb-0 fw-bold">Promo code</p>
+                  <p className="mb-0 fw-bold">{t("cardDetails.promoCodeText")}</p>
                 </div>
                 <div className="d-flex align-items-center justify-content-between w-100">
                   <div className="w-100">
@@ -156,14 +158,14 @@ const CreditCardDetailWrapper = () => {
               </div>
               <div className="d-flex justify-content-end">
                 <FillBtn
-                  text="Apply"
+                  text={t("cardDetails.applyText")}
                   className="px-4 py-3 customDropdownRadius"
                 />
               </div>
 
               <div className="CreditCard d-flex align-items-center">
                 <div className=" me-2">
-                  <p className="mb-0 fw-bold">Use FitNee wallet</p>
+                  <p className="mb-0 fw-bold">{t("cardDetails.useFitNeeWalletText")}</p>
                 </div>
                 <div className="d-flex align-items-center mt-2">
                   <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
@@ -172,7 +174,7 @@ const CreditCardDetailWrapper = () => {
             </div>
             <div className="w-100 bg-transparent border-0 customDropdownRadius">
               <FillBtn
-                text="Pay"
+                text={t("cardDetails.payText")}
                 className="w-100 py-3"
                 handleOnClick={handlePayClick}
               />
@@ -182,12 +184,12 @@ const CreditCardDetailWrapper = () => {
         <Col md={6}>
           <Card className="BorderRadius my-2">
             <CardHeader className="bg-transparent py-4 fw-bold">
-              <h6 className="mb-0 fw-bold">Payment Summary</h6>
+              <h6 className="mb-0 fw-bold">{t("cardDetails.paymentSummaryText")}</h6>
             </CardHeader>
             <CardBody>
               <div className="d-flex align-items-center justify-content-between">
                 <div className="">
-                  <h6>Discount %</h6>
+                  <h6>{t("cardDetails.discountText")}</h6>
                 </div>
                 <div style={{ width: "20%" }}>
                   <h6>SAR 0</h6>
@@ -195,7 +197,7 @@ const CreditCardDetailWrapper = () => {
               </div>
               <div className="d-flex align-items-center justify-content-between">
                 <div className="">
-                  <h6>FitNee Wallet</h6>
+                  <h6>{t("cardDetails.fitneeWalletText")}</h6>
                 </div>
                 <div style={{ width: "20%" }}>
                   <h6>SAR 500</h6>
@@ -205,7 +207,7 @@ const CreditCardDetailWrapper = () => {
             <CardFooter className="bg-transparent">
               <div className="d-flex align-items-center justify-content-between">
                 <div>
-                  <h6 className="mb-0 py-3 fw-bold">Total Pay</h6>
+                  <h6 className="mb-0 py-3 fw-bold">{t("cardDetails.totalPayText")}</h6>
                 </div>
                 <div style={{ width: "20%" }}>
                   <h6 className="mb-0">SAR 500</h6>

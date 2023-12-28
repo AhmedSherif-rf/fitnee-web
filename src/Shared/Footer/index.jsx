@@ -34,7 +34,7 @@ const Footer = () => {
             <img src={Image.INSTA_IMG} alt="logo" />
           </div>
           <div className="d-flex mx-4 align-items-start justify-content-center">
-            <Link to="/termAndCondition">
+            <Link to="/termAndCondition/general">
               <h6 className="text-white mb-0">
                 {t("landing.termsAndConditionsText")}
               </h6>

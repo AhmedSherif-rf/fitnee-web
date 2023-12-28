@@ -10,11 +10,11 @@ const Footer = () => {
 
   return (
     <Container fluid>
-      <Row className="bg-dark py-3">
+      <Row className="customBgDark py-3">
         <Col md={4}>
-          <div className=" d-flex align-items-center justify-content-center mx-3 h-100 p-3">
+          <div className="d-flex align-items-center justify-content-center mx-3 h-100 py-3">
             <Link to={"/"}>
-              <img src={Image.LOGO_IMG} alt="logo" />
+              <img src={Image.SMALL_LOGO_IMG} alt="logo" />
             </Link>
           </div>
         </Col>
@@ -34,7 +34,7 @@ const Footer = () => {
             <img src={Image.INSTA_IMG} alt="logo" />
           </div>
           <div className="d-flex mx-4 align-items-start justify-content-center">
-            <Link to="/termAndCondition">
+            <Link to="/termAndCondition/general">
               <h6 className="text-white mb-0">
                 {t("landing.termsAndConditionsText")}
               </h6>

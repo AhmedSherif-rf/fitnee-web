@@ -1,30 +1,38 @@
-import React from "react";
 import { Container } from "reactstrap";
-import { Toaster } from "react-hot-toast";
+import React, { useEffect } from "react";
 import styles from "./style.module.scss";
+import { Toaster } from "react-hot-toast";
 import TopBar from "../../../Shared/TopBar";
+import { useLocation } from "react-router-dom";
 
 const GeneralLayout = (props) => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }, [pathname]);
+
   return (
     <React.Fragment>
-      <Toaster />
-      <TopBar
-        isPublic={props?.isPublic}
-        isGuest={props?.isGuest}
-        isPrivate={props?.isPrivate}
-        isAuth={props?.isAuth}
-      />
-      <Container
-        fluid
-        className={`p-0 ${
-          !props?.isPublic
-            ? styles.overlapContainer
-            : props?.isGuest || props?.isAuth
-            ? styles.overlapContainer
-            : ""
-        }`}
-      >
-        {props.children}
+      <Container fluid className={`bg-dark p-0 ${styles.overlayBackgound}`}>
+        <Toaster />
+        <TopBar
+          isPublic={props.isPublic}
+          isGuest={props.isGuest}
+          isPrivate={props.isPrivate}
+          isAuth={props.isAuth}
+        />
+        <Container
+          fluid
+          className={`p-0 ${
+            props?.theme === "light" ? styles.lightBg : styles.transparentBg
+          }`}
+        >
+          {props.children}
+        </Container>
       </Container>
     </React.Fragment>
   );

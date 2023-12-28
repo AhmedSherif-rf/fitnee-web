@@ -7,6 +7,7 @@ export const serviceProviderRoutes = [
     component: lazy(() => import("../Pages/ServiceProviderPages/Dashboard")),
     exact: true,
     isPrivate: true,
+    theme: "dark",
     role: serviceProviderRole,
   },
   {
@@ -16,6 +17,7 @@ export const serviceProviderRoutes = [
     ),
     exact: true,
     isPrivate: true,
+    theme: "dark",
     role: serviceProviderRole,
   },
   {
@@ -23,6 +25,7 @@ export const serviceProviderRoutes = [
     component: lazy(() => import("../Pages/ServiceProviderPages/TraineeList")),
     exact: true,
     isPrivate: true,
+    theme: "dark",
     role: serviceProviderRole,
   },
   {
@@ -30,6 +33,7 @@ export const serviceProviderRoutes = [
     component: lazy(() => import("../Pages/ServiceProviderPages/Subscription")),
     exact: true,
     isPrivate: true,
+    theme: "dark",
     role: serviceProviderRole,
   },
   {
@@ -39,6 +43,17 @@ export const serviceProviderRoutes = [
     ),
     exact: true,
     isPrivate: true,
+    theme: "dark",
+    role: serviceProviderRole,
+  },
+  {
+    path: "/serviceProvider/editProfile/:roleType",
+    component: lazy(() =>
+      import("../Pages/ServiceProviderPages/EditProfile")
+    ),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
     role: serviceProviderRole,
   },
 ];

@@ -14,7 +14,10 @@
     padding: 12px 20px;
     border: 1px solid $yellow;
     transition: border-color 0.3s ease;
-    background-color: transparent;
+    background-color: $white;
+    &:hover {
+      background-color: $hoverYellow;
+    }
   }
   .activeBody {
     background-color: $yellow;
@@ -24,7 +27,13 @@
     .servicesCol {
       .humanBody {
         height: 75vh;
-        .bodyMuscle {
+        .inActiveBodyMuscle {
+          &:hover {
+            fill: $orange;
+            cursor: pointer;
+          }
+        }
+        .activeBodyMuscle {
           &:hover {
             fill: $yellow;
             cursor: pointer;

@@ -1,3 +1,4 @@
+import "./styles.scss";
 import PropTypes from "prop-types";
 import React, { memo } from "react";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
@@ -36,7 +37,7 @@ const InformationModal = (props) => {
         <div className={`${TOneClassName}`}> {ModalTextOne}</div>
         <div className={`${TTwoClassName}`}> {ModalTextTwo}</div>
         <div className="w-100 text-center">{ButtonThree}</div>
-        <div className="w-100 d-flex align-items-center justify-content-center gap-3">
+        <div className="w-100 d-flex align-items-center justify-content-center gap-3 modalButtons">
           <div>{ButtonOne}</div>
           <div>{ButtonTwo}</div>
         </div>
@@ -47,7 +48,6 @@ const InformationModal = (props) => {
 
 InformationModal.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
   onClose: PropTypes.func,
   isOpen: PropTypes.bool,
   size: PropTypes.string,

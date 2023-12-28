@@ -1,14 +1,15 @@
 let Images = {
   // =============================landingPageImgs===================================
   LOGO_IMG: require("../../Assets/Images/LOGO.svg").default,
+  SMALL_LOGO_IMG: require("../../Assets/Images/smallLogo.svg").default,
   GOAL_IMG: require("../../Assets/Images/homeScreen/OurGoal.png"),
   VISION_IMG: require("../../Assets/Images/homeScreen/OurVision.png"),
   ABOUT_IMG: require("../../Assets/Images/homeScreen/AboutFitnee.png"),
   DEFAULT_USER_IMG: require("../../Assets/Images/defaultImg.svg").default,
-  BACKGROUND_IMG: require("../../Assets/Images/backgroundImg.svg").default,
   FEATURE_ONE: require("../../Assets/Images/homeScreen/FeatureOneImg.png"),
   FEATURE_TWO: require("../../Assets/Images/homeScreen/FeatureTwoImg.png"),
   FEATURE_THREE: require("../../Assets/Images/homeScreen/FeatureThreeImg.png"),
+  FEATURE_FOUR: require("../../Assets/Images/homeScreen/FeatureFourImg.png"),
   ARABIA_FLAG_IMG: require("../../Assets/Images/homeScreen/ArabiaFlag.svg")
     .default,
   INSTA_IMG: require("../../Assets/Images/homeScreen/socialMedia/Insta.svg")
@@ -27,11 +28,11 @@ let Images = {
   // =============================sliderImgs===================================
   MIRROR_IMG: require("../../Assets/Images/homeScreen/sliderImgs/mirror.svg")
     .default,
-  SLIDER3_IMG: require("../../Assets/Images/homeScreen/sliderImgs/slider3.svg")
+  SLIDER3_IMG: require("../../Assets/tempImages/profile1.svg")
     .default,
-  SLIDER2_IMG: require("../../Assets/Images/homeScreen/sliderImgs/slider2.svg")
+  SLIDER2_IMG: require("../../Assets/tempImages/profile1.svg")
     .default,
-  SLIDER1_IMG: require("../../Assets/Images/homeScreen/sliderImgs/slider1.svg")
+  SLIDER1_IMG: require("../../Assets/tempImages/profile1.svg")
     .default,
   //================================loginImgs==================================
   LOGIN_BG_IMG: require("../../Assets/Images/login/loginBgImg.svg").default,
@@ -43,9 +44,15 @@ let Images = {
     require("../../Assets/Images/registerAsScreen/RegisterAsBackground.svg")
       .default,
   //==============================GuestServiceProviderListImgs=================
-  PROFILE_IMG:
-    require("../../Assets/Images/serviceProviderListScreen/TrainerImg.svg")
-      .default,
+  PROFILE1_IMG: require("../../Assets/tempImages/profile1.svg").default,
+  PROFILE2_IMG: require("../../Assets/tempImages/profile1.svg").default,
+  PROFILE3_IMG: require("../../Assets/tempImages/profile1.svg").default,
+  PROFILE4_IMG: require("../../Assets/tempImages/profile1.svg").default,
+  PROFILE5_IMG: require("../../Assets/tempImages/profile1.svg").default,
+  ARROW_RIGHT_IMG: require("../../Assets/Images/ConstImgs/RightArrow.svg")
+    .default,
+  SEE_MORE_BG_IMG: require("../../Assets/Images/ConstImgs/SeeMoreBg.svg")
+    .default,
   SHORTLOGO_IMG:
     require("../../Assets/Images/serviceProviderListScreen/DumbleLogo.svg")
       .default,
@@ -80,6 +87,8 @@ let Images = {
     .default,
   UPLOAD_BG_IMG: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
   UPLOAD_ICON: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
+  PASSWORD_ICON_IMG: require("../../Assets/Images/ConstImgs/passwordIcon.svg")
+    .default,
   //==============================Trainee Images====================================
   QR_CODE_IMG: require("../../Assets/Images/QRCode.svg").default,
   TRAINEE_GRAPH_IMG: require("../../Assets/Images/TraineeGraph.svg").default,
@@ -87,6 +96,10 @@ let Images = {
     .default,
   FEATURE_BG_IMG: require("../../Assets/Images/homeScreen/featureBg.svg")
     .default,
+  //==============================appStore and Google btn Images====================================
+  APP_STORE_IMG: require("../../Assets/Images/appStore.svg").default,
+  GOOGLE_PLAY_IMG: require("../../Assets/Images/googlePlay.svg").default,
+  CVV_IMG: require("../../Assets/Images/ConstImgs/Hint.svg").default,
 };
 
 export default Images;

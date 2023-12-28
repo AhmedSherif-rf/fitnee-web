@@ -1,5 +1,5 @@
-import { login } from "./userApi";
 import { createSlice } from "@reduxjs/toolkit";
+import { login, logout, changePassword } from "./userApi";
 
 export const userSlice = createSlice({
   name: "user",
@@ -27,7 +27,27 @@ export const userSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
-      });
+      })
+      .addCase(logout.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.user = null;
+      })
+      .addCase(logout.rejected, (state, action) => {
+        state.loading = "failed";
+        state.user = null;
+      })
+      .addCase(changePassword.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(changePassword.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+      })
+      .addCase(changePassword.rejected, (state, action) => {
+        state.loading = "failed";
+      })
   },
 });
 

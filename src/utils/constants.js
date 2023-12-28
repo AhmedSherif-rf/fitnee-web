@@ -3,6 +3,7 @@ export const ARABIC_LANGUAGE = "ar";
 export const ENGLISH_LANGUAGE = "en";
 export const DEFAULT_LANGUAGE = "en";
 //======================serviceProviders===========
+export const TRAINEE_TYPE = "trainee";
 export const TRAINER_TYPE = "trainer";
 export const NUTRITIONIST_TYPE = "nutritionist";
 export const TRAINER_NUTRITIONIST_TYPE = "both";
@@ -36,7 +37,30 @@ export const weekDaysOptions = [
 ];
 //=====================Roles=====================
 export const TRAINEE_ROLE = "Trainee";
+export const TRAINER_ROLE = "Trainer";
 //====================Routes====================
 export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
+export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
+export const NEW_PASSWORD_URL = "/forget_password/";
+export const CONTACT_US_URL = "/guest/contactusemail/";
+export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
+export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
+export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
+export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
+//=================StatusCodes===================
+export const SUCCESS_CODES = [200, 201];
+//=================Exercise======================
+export const exerciseLevel = ["Beginner", "Expert"];
+export const category = [
+  "Chest",
+  "Traps",
+  "Shoulder",
+  "Biceps",
+  "Forearms",
+  "Obliques",
+  "Abdominal",
+  "Quads",
+  "Calves",
+];

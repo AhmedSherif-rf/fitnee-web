@@ -1,7 +1,6 @@
 import styles from "./style.module.scss";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import FillBtn from "../../Shared/Buttons/FillBtn";
+
 import {
   Card,
   CardBody,
@@ -12,6 +11,10 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import PageHeading from "../Headings/PageHeading";
+import FillBtn from "../../Shared/Buttons/FillBtn";
 import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
 import { getGuestDataLimit } from "../../utils/functions";
@@ -24,123 +27,122 @@ import {
   TRAINER_NUTRITIONIST_TYPE,
 } from "../../utils/constants";
 import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
-import { useTranslation } from "react-i18next";
 
 const NutritionistData = [
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
 ];
 
 const TrainerAndNutritionistData = [
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
   {
-    infoImg: Images.PROFILE_IMG,
+    infoImg: Images.PROFILE4_IMG,
     infoLogo: Images.SHORTLOGO_IMG,
     infoTitle: "Shane",
     infoRating: 4,
     infoDes: "2 Years",
-    Height: "20",
+    Height: "38",
   },
 ];
 
@@ -153,65 +155,65 @@ const ServiceProviderListWrapper = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [listingRole, setListingRole] = useState(roleType);
 
-  const { isGuest } = useSelector((state) => state?.user);
+  const { isGuest } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const { t } = useTranslation("");
   const TrainerData = [
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE1_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "38",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.GOAL_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "38",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE3_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "38",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.GOAL_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "38",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE5_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "38",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.GOAL_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "38",
     },
     {
-      infoImg: Images.PROFILE_IMG,
+      infoImg: Images.PROFILE4_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
       infoTitle: "Shane",
       infoRating: 4,
       infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "20",
+      Height: "38",
     },
   ];
 
@@ -259,16 +261,18 @@ const ServiceProviderListWrapper = (props) => {
   };
 
   return (
-    <Card className={`BorderRadius my-3 ${styles.serviceProviderListWrapper}`}>
+    <Card
+      className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
+    >
       <CardBody>
-        <Row className="align-items-center mb-5">
-          <Col className="text-left">
-            <h4 className="fw-bold text-black-custom fs-3 p-3 m-0">
-              {" "}
-              {t("guest.listOfText")} {conditionalHeader()}
-            </h4>
+        <Row className="align-items-center mb-2">
+          <Col xs={10} sm={6} className="text-left">
+            <PageHeading
+              headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}
+              categoryText=""
+            />
           </Col>
-          <Col className="text-end">
+          <Col xs={2} sm={6} className="text-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle data-toggle="dropdown" tag="span">
                 <img
@@ -278,7 +282,9 @@ const ServiceProviderListWrapper = (props) => {
                 />
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem onClick={() => handleDropdownItemClick(TRAINER_TYPE)}>
+                <DropdownItem
+                  onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
+                >
                   Trainers
                 </DropdownItem>
                 <DropdownItem
@@ -287,7 +293,9 @@ const ServiceProviderListWrapper = (props) => {
                   Nutritionists
                 </DropdownItem>
                 <DropdownItem
-                  onClick={() => handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)}
+                  onClick={() =>
+                    handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
+                  }
                 >
                   Both
                 </DropdownItem>
@@ -356,6 +364,37 @@ const ServiceProviderListWrapper = (props) => {
                 </Col>
               );
             })}
+
+          <Col lg={3} md={4} col={6} className="mb-3">
+            <Card
+              className={`bgProperties h-100 BorderRadius`}
+              style={{
+                backgroundImage: `url(${Images.SEE_MORE_BG_IMG})`,
+                cursor: "pointer",
+              }}
+              onClick={handleSeeMoreClick}
+            >
+              <CardBody>
+                <div
+                  className="w-100 d-flex align-items-center justify-content-center"
+                  style={{ height: "30vh" }}
+                >
+                  <div className="">
+                    <p className="mb-0 fs-4 fw-bold">
+                      {t("guest.seeMoreText")}
+                    </p>
+                    <div className="w-100 text-center">
+                      <img
+                        className="img-fluid w-50"
+                        src={Images.ARROW_RIGHT_IMG}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
           <InformationModal
             size={"md"}
             TOneClassName={"fw-bold mb-4 fs-5 text-center"}
@@ -378,17 +417,6 @@ const ServiceProviderListWrapper = (props) => {
               />
             }
           />
-        </Row>
-        <Row className="justify-content-center">
-          <Col md={4} sm={10}>
-            <div className="my-3 text-center">
-              <FillBtn
-                className="w-100 py-2 px-5"
-                handleOnClick={handleSeeMoreClick}
-                text={t("guest.seeMoreText")}
-              />
-            </div>
-          </Col>
         </Row>
       </CardBody>
     </Card>

@@ -1,122 +1,121 @@
 import { memo } from "react";
-import { CardBody, CardHeader } from "reactstrap";
+import { useTranslation } from "react-i18next";
+import PageHeading from "../Headings/PageHeading";
 import TransactionDetail from "../TransactionDetail";
-import { Card, Col, Container, Row } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import { CardBody, CardHeader, Card, Col, Row } from "reactstrap";
 
 const PaymentHistoryWrapper = () => {
+  const { t } = useTranslation("");
   const Transactions = [
     {
       ArrowIcon: Images.ARROW_UP_IMG,
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
-      TransactionTime: "11:40:30",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
+      TransactionTime: "11:40 am",
     },
     {
       ArrowIcon: Images.ARROW_UP_IMG,
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
-      TransactionTime: "11:40:30",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
+      TransactionTime: "11:40 am",
     },
     {
       ArrowIcon: Images.ARROW_UP_IMG,
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
-      TransactionTime: "11:40:30",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
+      TransactionTime: "11:40 am",
     },
     {
       ArrowIcon: Images.ARROW_UP_IMG,
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
-      TransactionTime: "11:40:30",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
+      TransactionTime: "11:40 am",
     },
     {
       ArrowIcon: Images.ARROW_UP_IMG,
       Dr_or_Cr: "-",
       Currency: "SAR",
       Amount: "500",
-      AmountTitle: "Amount Released",
-      TransactionTime: "11:40:30",
+      AmountTitle: t("paymentHistory.amountReleasedText"),
+      TransactionTime: "11:40 am",
     },
   ];
 
   return (
-    <Container fluid className="mt-3 text-black-custom">
-      <Row className="justify-content-center">
-        <Col md={12}>
-          <Card className="BorderRadius vh-auto ">
-            <CardHeader className="bg-transparent border-0 p-3">
-              <h4 className="fw-bold text-black-custom fs-3 p-3">
-                Payment History
-              </h4>
-            </CardHeader>
-            <CardBody>
-              <Row>
-                <Col md={12}>
-                  <Card className="BorderYellow text-black-custom BorderRadius py-3 px-2">
-                    <CardBody className="d-flex align-items-center justify-content-center">
-                      <div className="w-100 text-center">
-                        <h3 className="fw-bold">Available Balance</h3>
-                      </div>
-                      <div className="w-25 text-center">
-                        <hr className="fw-bold textOrange border-2" />
-                      </div>
-                      <div className="w-100 text-center">
-                        <h1 className="fw-bold">SAR 500</h1>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-              <Row className="my-2 text-black-custom">
-                <Col md={12}>
-                  <h5 className="my-3">Today</h5>
-                  {Transactions.map((item, index) => {
-                    return (
-                      <TransactionDetail
-                        key={index}
-                        ArrowIcon={item.ArrowIcon}
-                        Dr_or_Cr={item.Dr_or_Cr}
-                        Currency={item.Currency}
-                        Amount={item.Amount}
-                        AmountTitle={item.AmountTitle}
-                        TransactionTime={item.TransactionTime}
-                      />
-                    );
-                  })}
-                </Col>
-              </Row>
-              <Row className="my-2 text-black-custom">
-                <Col md={12}>
-                  <h5>Aug 23</h5>
-                  {Transactions.map((item, index) => {
-                    return (
-                      <TransactionDetail
-                        key={index}
-                        ArrowIcon={item.ArrowIcon}
-                        Dr_or_Cr={item.Dr_or_Cr}
-                        Currency={item.Currency}
-                        Amount={item.Amount}
-                        AmountTitle={item.AmountTitle}
-                        TransactionTime={item.TransactionTime}
-                      />
-                    );
-                  })}
-                </Col>
-              </Row>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Row className="text-black-custom">
+      <Col md={12}>
+        <CardHeader className="bg-transparent border-0 p-0">
+          <PageHeading
+            headingText="Payment History"
+            className="mb-0"
+            categoryText=""
+          />
+        </CardHeader>
+        <CardBody>
+          <Row>
+            <Col md={12}>
+              <Card className="BorderYellow text-black-custom BorderRadius px-2">
+                <CardBody className="">
+                  <div className="w-100 text-center">
+                    <h3 className="fw-bold">
+                      {t("paymentHistory.availableBalanceText")}
+                    </h3>
+                  </div>
+                  <div className="w-100 text-center">
+                    <h1 className="fw-bold mb-0">SAR 500</h1>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+          <Row className="my-2 text-black-custom">
+            <Col md={12}>
+              <h5 className="my-3">{t("paymentHistory.todayText")}</h5>
+              {Transactions.map((item, index) => {
+                return (
+                  <TransactionDetail
+                    key={index}
+                    ArrowIcon={item.ArrowIcon}
+                    Dr_or_Cr={item.Dr_or_Cr}
+                    Currency={item.Currency}
+                    Amount={item.Amount}
+                    AmountTitle={item.AmountTitle}
+                    TransactionTime={item.TransactionTime}
+                  />
+                );
+              })}
+            </Col>
+          </Row>
+          <Row className="my-2 text-black-custom">
+            <Col md={12}>
+              <h5>Aug / 23 / 23</h5>
+              {Transactions.map((item, index) => {
+                return (
+                  <TransactionDetail
+                    key={index}
+                    ArrowIcon={item.ArrowIcon}
+                    Dr_or_Cr={item.Dr_or_Cr}
+                    Currency={item.Currency}
+                    Amount={item.Amount}
+                    AmountTitle={item.AmountTitle}
+                    TransactionTime={item.TransactionTime}
+                  />
+                );
+              })}
+            </Col>
+          </Row>
+        </CardBody>
+      </Col>
+    </Row>
   );
 };
 

@@ -1,72 +1,128 @@
 import OTPInput from "otp-input-react";
-import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
-import React, { useCallback, useState } from "react";
-import InformationModal from "../Modal/InformationModal";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
+import {
+  resendOtp,
+  verifyOtp,
+} from "../../Redux/features/ForgotPassword/forgotPasswordApi";
+import {
+  FORGOT_PASSWORD_VERIFY_URL,
+  FORGOT_PASSWORD_RESEND_OTP_URL,
+} from "../../utils/constants";
 
 const OTPVerification = () => {
+  const { type } = useParams();
   const navigate = useNavigate();
-  const [OTP, setOTP] = useState("");
-  const [showWrongOtpModal, setShowWrongOtpModal] = useState(false);
+  const dispatch = useDispatch();
+  const { t } = useTranslation("");
+  const [otp, setOtp] = useState("");
+  const [timer, setTimer] = useState({ minutes: 1, seconds: 59 });
+  const { email, loading } = useSelector((state) => state.forgotPassword);
 
-  const handleNextClick = useCallback(() => {
-    setShowWrongOtpModal(true);
-  }, []);
+  useEffect(() => {
+    const otpTimeInterval = setInterval(() => {
+      if (timer.seconds > 0) {
+        setTimer({ ...timer, seconds: timer.seconds - 1 });
+      }
+      if (timer.seconds === 0) {
+        if (timer.minutes === 0) {
+          clearInterval(otpTimeInterval);
+        } else {
+          setTimer({ minutes: timer.minutes - 1, seconds: 59 });
+        }
+      }
+    }, 1000);
 
-  const handleWrongOtpModalClose = useCallback(() => {
-    setShowWrongOtpModal(false);
-  }, []);
+    return () => {
+      clearInterval(otpTimeInterval);
+    };
+  }, [timer]);
 
-  const handleOkayClick = useCallback(() => {
-    navigate("/trainee/dashboard");
-  }, [navigate]);
+  const handleNextClick = () => {
+    if (type === "forgotPassword") {
+      const data = {
+        apiEndpoint: FORGOT_PASSWORD_VERIFY_URL,
+        requestData: JSON.stringify({ email, otp }),
+      };
+      dispatch(verifyOtp(data)).then((res) => {
+        if (res.type === "verifyOtp/fulfilled") {
+          navigate("/changePassword");
+        }
+      });
+    }
+  };
+
+  const handleResendClick = () => {
+    if (timer.seconds === 0 && timer.minutes === 0) {
+      if (type === "forgotPassword") {
+        const data = {
+          apiEndpoint: FORGOT_PASSWORD_RESEND_OTP_URL,
+          requestData: JSON.stringify({ email }),
+        };
+        dispatch(resendOtp(data)).then((res) => {
+          if (res.type === "resendOtp/fulfilled") {
+            setTimer({ minutes: 1, seconds: 59 });
+          }
+        });
+      }
+    }
+  };
 
   return (
-    <Container className={`h-100 text-black-custom ${styles.otpContainer}`}>
+    <Container className={`vh-100 text-black-custom ${styles.otpContainer}`}>
       <Row className={`h-100 justify-content-center ${styles.otpWrapper}`}>
+        {loading === "pending" && <LoadingScreen />}
         <Col md={4} className={`text-center py-3 ${styles.otpCol}`}>
-          <h1 className="my-5 fw-400 fw-bold">Verification</h1>
+          <h1 className="my-5 fw-400 fw-bold">
+            {t("otpVerification.verificationText")}
+          </h1>
           <p className="mb-5 fs-4 lh-1 px-5">
-            Open your email and insert the code{" "}
+            {t("otpVerification.openYourEmailText")}
           </p>
 
           <OTPInput
-            className={styles.otpInputs}
-            value={OTP}
-            onChange={setOTP}
+            className={`${styles.otpInputs}`}
+            value={otp}
+            onChange={setOtp}
             autoFocus={true}
-            OTPLength={4}
+            OTPLength={6}
             otpType="number"
             disabled={false}
           />
 
-          <p className="mb-0">I Didn't Receive a Code!</p>
-          <Link to="#0" className="pb-5 textYellow">
-            Resend code
-          </Link>
+          <p className="mb-0 fw-bold">
+            {t("otpVerification.didNotRecieveCodeText")}
+          </p>
+          <p className="text-black-custom">
+            {t("otpVerification.resendCodeInText")}{" "}
+            <span className="textYellow fw-bold">
+              {timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes}:
+              {timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
+            </span>
+          </p>
+          <p
+            className={`pb-2 fw-bold ${
+              timer.seconds !== 0 || timer.minutes !== 0
+                ? "text-muted"
+                : "cursorPointer textYellow"
+            }`}
+            onClick={() => handleResendClick()}
+          >
+            {t("otpVerification.resendCodeText")}
+          </p>
 
           <FillBtn
-            text="Next"
-            className="w-100 py-2 mt-5"
+            text={t("otpVerification.nextText")}
+            className="w-100 py-2 mt-3"
+            disabled={otp.length < 6 ? true : false}
             handleOnClick={handleNextClick}
-          />
-          <InformationModal
-            size={"md"}
-            TOneClassName={"fw-bold mb-4 fs-5 text-center"}
-            className={"p-4"}
-            isOpen={showWrongOtpModal}
-            onClose={handleWrongOtpModalClose}
-            ModalTextOne={"You entered an Invalid OTP, please try again"}
-            ButtonOne={
-              <FillBtn
-                text={"Okay"}
-                className="py-2 px-5"
-                handleOnClick={handleOkayClick}
-              />
-            }
           />
         </Col>
       </Row>

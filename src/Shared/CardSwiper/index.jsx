@@ -3,59 +3,54 @@ import React, { memo } from "react";
 import RatingCard from "../FeedbackCard";
 import { Container, Row, Col } from "reactstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Autoplay,
-  FreeMode,
-  Pagination,
-  EffectCoverflow,
-} from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const CardSwiper = (props) => {
   const { data: cardsData, heading } = props;
 
-  // Slice the first 3 elements from the cardsData array
-  const slicedCardsData = cardsData.slice(0, 20);
+  const slicedCardsData = cardsData.slice(0, 10);
 
   const swiperConfiguration = {
-    effect: "coverflow",
     grabCursor: true,
     spaceBetween: 10,
-    centeredSlides: true,
+    centeredSlides: false,
     breakpoints: {
       375: {
         slidesPerView: 1,
+        spaceBetween: 20,
       },
       530: {
         slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      768: {
+        slidesPerView: 3,
       },
       992: {
-        slidesPerView: 3,
+        slidesPerView: 4,
       },
       1360: {
         slidesPerView: 4,
       },
     },
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 10,
-      modifier: 25,
-      slideShadows: true,
-    },
     loop: true,
     autoplay: {
-      delay: 2500,
+      delay: 4000,
       disableOnInteraction: false,
     },
     pagination: {
       clickable: true,
     },
-    modules: [FreeMode, Autoplay, EffectCoverflow, Pagination],
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    modules: [Autoplay, Pagination, Navigation],
     className: "mySwiper",
   };
 
   return (
-    <Container fluid>
+    <Container fluid className="px-5">
       <Row className="mb-5">
         <Col>
           <h1 className="text-center fw-bold text-white mt-5"> {heading}</h1>

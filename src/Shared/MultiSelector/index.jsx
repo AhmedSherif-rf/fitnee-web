@@ -1,5 +1,6 @@
 import React from "react";
-import { MultiSelect } from "react-multi-select-component";
+import "./styles.scss";
+import Select from "react-select";
 
 const MultiSelector = ({ field, form, options, ...props }) => {
   const handleChange = (selectedOptions) => {
@@ -7,12 +8,14 @@ const MultiSelector = ({ field, form, options, ...props }) => {
   };
 
   return (
-    <MultiSelect
+    <Select
       options={options}
       value={field.value}
       onChange={handleChange}
-      labelledBy="Select"
+      isMulti={true}
+      isSearchable={false}
       {...props}
+      labelledBy={props.placeholder}
     />
   );
 };

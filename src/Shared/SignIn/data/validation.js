@@ -1,21 +1,22 @@
 import * as Yup from "yup";
+import TranslationHelper from "../../TranslationHelper";
 
 export const SIGNIN_SCHEMA = Yup.object().shape({
   email: Yup.string()
     .matches(
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-      "Invalid email address"
+      TranslationHelper("validation.invalidEmailText")
     )
-    .required("Email is required"),
+    .required(TranslationHelper("validation.requiredEmailText")),
   password: Yup.string()
-    .min(8, "Password must be at least 8 characters long")
+    .min(8, TranslationHelper("validation.invalidPasswordText"))
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-      "Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character"
+      TranslationHelper("validation.invalidPasswordTwoText")
     )
-    .required("Password is required"),
+    .required(TranslationHelper("validation.requiredPasswordText")),
   termAndConditionCheck: Yup.bool().oneOf(
     [true],
-    "You must accept the terms and conditions."
+    TranslationHelper("validation.requiredTermAndConditionCheck")
   ),
 });

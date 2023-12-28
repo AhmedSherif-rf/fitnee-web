@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col } from "reactstrap";
+import MyDropdown from "../../../Shared/MyDropdown";
+import { category } from "../../../utils/constants";
 import React, { useCallback, useState } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
+import { Container, Row, Col, Card } from "reactstrap";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import ExerciseSection from "../../../Shared/ExerciseSection";
-import PushUpVideo from "../../../Assets/Videos/Exercise/pushUp.mp4";
+import PageHeading from "../../../Shared/Headings/PageHeading";
 import InformationModal from "../../../Shared/Modal/InformationModal";
 
 const Exercise = (props) => {
@@ -35,8 +37,6 @@ const Exercise = (props) => {
       {
         level: "Beginner",
         categoryName: "Barbell Bench Press",
-        media1: PushUpVideo,
-        media2: PushUpVideo,
         description: [
           "Lay flat on the bench with your feet on the ground. With straight arms unrack the bar.",
           "Lower the bar to your mid chest.",
@@ -46,8 +46,6 @@ const Exercise = (props) => {
       {
         level: "Beginner",
         categoryName: "Barbell Bench Press",
-        media1: PushUpVideo,
-        media2: PushUpVideo,
         description: [
           "Lay flat on the bench with your feet on the ground. With straight arms unrack the bar.",
           "Lower the bar to your mid chest.",
@@ -58,25 +56,37 @@ const Exercise = (props) => {
   }, []);
 
   return (
-    <Container fluid>
-      <Row className="text-black-custom">
-        <Col md={12}>
-          <div className="d-flex align-items-center my-3 ">
-            <h2 className="me-2 fs-3 fw-bold">Chest</h2>
-            <span className="textYellow small h6">(Upper Chest)</span>
-          </div>
-        </Col>
-        <Col md={12} className="mb-3">
-          <ExerciseSection exercisesData={ExerciseData} />
-        </Col>
-        <Col md={12} className="mb-3">
-          <div className="text-center w-100">
-            <FillBtn
-              className="py-2 px-5 buttonBoxShadow"
-              text="Show More"
-              handleOnClick={handleSeeMoreClick}
-            />
-          </div>
+    <Container fluid className="contentCardPadding">
+      <Row className="text-black-custom ">
+        <Col md="12">
+          <Card className="BorderRadius contentCard mt-0 px-3">
+            <Col md={12}>
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="w-50">
+                  <PageHeading headingText="Chest" />
+                </div>
+                <div className="w-50 px-3">
+                  <MyDropdown
+                    className="border py-3 my-2"
+                    Options={category}
+                    name={"categories"}
+                  />
+                </div>
+              </div>
+            </Col>
+            <Col md={12} className="mb-3">
+              <ExerciseSection exercisesData={ExerciseData} />
+            </Col>
+            <Col md={12} className="mb-3">
+              <div className="text-center w-100">
+                <FillBtn
+                  className="py-2 buttonBoxShadow"
+                  text="Show More"
+                  handleOnClick={handleSeeMoreClick}
+                />
+              </div>
+            </Col>
+          </Card>
         </Col>
       </Row>
 

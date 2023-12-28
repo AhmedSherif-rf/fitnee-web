@@ -5,7 +5,7 @@ import styles from "./style.module.scss";
 const LoadingScreen = () => (
   <div className={styles.loadingOverlay}>
     <div className={styles.loadingContent}>
-      <Spinner className={styles.spinner} color={"custom"} type="grow" />
+      <Spinner className={styles.spinner} type="grow" />
     </div>
   </div>
 );

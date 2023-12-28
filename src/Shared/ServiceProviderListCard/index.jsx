@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import styles from "./style.module.scss";
 import MyRatingComponent from "../Rating";
 import { Card, CardBody, CardFooter } from "reactstrap";
 
@@ -9,40 +10,38 @@ const TrainerListCard = (props) => {
     infoLogo,
     className,
     infoTitle,
-    infoRating,
     CardHeight,
     handleOnClick,
   } = props;
 
   return (
     <Card
-      className={`BorderRadius ${className}`}
-      onClick={handleOnClick}
+      className={`BorderRadius bgProperties ${className} ${styles.Card}`}
+      onClick={() => handleOnClick()}
+      style={{
+        backgroundImage: `url(${infoImg})`,
+        height: `${CardHeight}vh`,
+      }}
     >
       <CardBody className="p-0">
-        <div
-          className="p-0 bgProperties ImgBorder"
-          style={{
-            backgroundImage: `url(${infoImg})`,
-            height: `${CardHeight}vh`,
-          }}
-        >
-          <div className="d-flex align-items-end ps-3 h-100 justify-content-between">
-            <h5 className="fw-700 fs-4  text-white"> {infoTitle} </h5>
-          </div>
-        </div>
+        <div className="p-0  ImgBorder"></div>
       </CardBody>
-      <CardFooter className="border-0">
-        <div className="d-flex h-100 text-white align-items-end justify-content-between">
-          <div className="d-flex align-items-center">
+      <CardFooter
+        className={`bgBlur ${styles.infoContainer}`}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <h6 className="fw-700 fs-4 mb-0 px-2  text-white"> {infoTitle} </h6>
+        <div
+          className={`d-flex text-white align-items-end justify-content-between`}
+        >
+          <div className="d-flex align-items-center px-2">
             <img className="img-fluid" src={infoLogo} alt="info logo" />
-            <p className="ms-2 fw-bold mb-0 no-Wrap text-secondary">
-              {infoDes}
-            </p>
+            <p className="ms-2 fw-bold mb-0 no-Wrap text-white">{infoDes}</p>
           </div>
           <div className="d-flex align-items-center justify-content-center">
             <MyRatingComponent />
-            <p className="mb-0 pt-1">{infoRating}</p>
           </div>
         </div>
       </CardFooter>

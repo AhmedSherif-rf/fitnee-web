@@ -1,23 +1,22 @@
 import React from "react";
-import { Container } from "reactstrap";
-import styles from "./style.module.scss";
+import { useState } from "react";
+import "../../../Shared/AdminShared/Assets/GlobalStyle.scss";
+import SideBar from "../../../Shared/AdminShared/Components/SideBar";
+import Content from "../../../Shared/AdminShared/Components/Content";
 
 const AdminLayout = (props) => {
+  const [sidebarIsOpen, setSidebarOpen] = useState(true);
+  const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
   return (
     <React.Fragment>
-      navbar/sidebar
-      <Container
-        fluid
-        className={`p-0 ${
-          !props?.isPublic
-            ? styles.overlapContainer
-            : props?.isGuest || props?.isAuth
-            ? styles.overlapContainer
-            : ""
-        }`}
-      >
-        {props.children}
-      </Container>
+      <div className="App wrapper">
+        <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+        <Content
+          children={props.children}
+          toggleSidebar={toggleSidebar}
+          sidebarIsOpen={sidebarIsOpen}
+        />
+      </div>
     </React.Fragment>
   );
 };

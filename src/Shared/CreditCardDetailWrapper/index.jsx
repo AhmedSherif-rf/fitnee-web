@@ -1,7 +1,9 @@
 import "./CreditCardStyle.scss";
-import { FormGroup } from "reactstrap";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
+import ToggleSwitch from "../ToggleSwitch";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import React, { useState, memo, useCallback } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { Card, Col, Container, InputGroup, Row } from "reactstrap";
@@ -13,15 +15,19 @@ import {
   InputGroupText,
   Label,
 } from "reactstrap";
-import { useNavigate } from "react-router-dom";
+import PageHeading from "../Headings/PageHeading";
 
 const CreditCardDetailWrapper = () => {
   const [date, setDate] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cvcValue, setCvcValue] = useState("");
-  const [state, setState] = useState(true);
   const navigate = useNavigate();
+  const { t } = useTranslation("");
+  const [checked, setChecked] = useState(true);
 
+  const handleToggle = () => {
+    setChecked(!checked);
+  };
   const handlePayClick = useCallback(() => {
     navigate("/trainee/appDownloadLink");
   }, [navigate]);
@@ -55,110 +61,121 @@ const CreditCardDetailWrapper = () => {
 
   return (
     <Container fluid className="h-100">
-      <Row className="h-100 py-3 CardDetails">
+      <Row className="h-100 CardDetails">
         <Col md={12}>
-          <h4 className="mb-2 fw-bold">Card Detail</h4>
+          <PageHeading
+            headingText={t("cardDetails.cardDetailsText")}
+            className="mb-0"
+            categoryText=""
+          />
         </Col>
         <Col md={6}>
-          <div className="w-100">
-            <Label className="small mb-0">Card number</Label>
-            <InputGroup>
-              <InputGroupText
-                className="form-control-lg yellowBorder"
-                style={{
-                  borderTopLeftRadius: "14px",
-                  borderBottomLeftRadius: "14px",
-                }}
-              >
-                <img src={Images.CARD_ICON_IMG} alt="" />
-              </InputGroupText>
+          <div className="w-100 card border-0 bg-transparent p-3">
+            <div className="card-body">
+              <Label className="small mb-0 fw-bold">{t("cardDetails.cardNumberText")}</Label>
+              <InputGroup>
+                <InputGroupText
+                  className="form-control-lg border py-3"
+                  style={{
+                    borderTopLeftRadius: "14px",
+                    borderBottomLeftRadius: "14px",
+                  }}
+                >
+                  <img src={Images.CARD_ICON_IMG} alt="" />
+                </InputGroupText>
 
-              <Input
-                type="text"
-                style={{
-                  backgroundColor: "white",
-                  color: "black",
-                  borderTopRightRadius: "14px",
-                  borderBottomRightRadius: "14px",
-                }}
-                placeholder="0000 0000 0000 0000"
-                className="form-control-lg yellowBorder"
-                value={cardNumber}
-                onChange={handleCardNumberChange}
-                required
-              />
-            </InputGroup>
-
-            <Label className="small mt-2 mb-0">Cardholder Name</Label>
-            <InputField type="text" className="" />
-
-            <div className="d-flex align-items-center justify-content-between mb-2">
-              <div className="w-100 me-3">
-                <Label className="small mt-2 mb-0">Expiry date</Label>
-                <InputField
-                  type="date"
-                  className="fs-6"
-                  style={{ paddingTop: "11px", paddingBottom: "11px" }}
-                  placeholder="MM/YYYY"
-                  // value={""}
-                  onChange={handleDateChange}
-                />
-              </div>
-              <div className="w-100">
-                <Label className="small mt-2 mb-0">CVV/CVC </Label>
                 <Input
                   type="text"
-                  placeholder="0000"
-                  className="form-control-lg BorderYellow"
-                  value={cvcValue}
-                  onChange={handleCvcChange}
+                  style={{
+                    backgroundColor: "white",
+                    color: "black",
+                    borderTopRightRadius: "14px",
+                    borderBottomRightRadius: "14px",
+                  }}
+                  placeholder="0000 0000 0000 0000"
+                  className="form-control-lg border fs-6 py-3"
+                  value={cardNumber}
+                  onChange={handleCardNumberChange}
                   required
                 />
-              </div>
-            </div>
+              </InputGroup>
 
-            <div className="d-flex align-items-center justify-content-between mb-2">
-              <div className="w-100 me-3">
-                <p className="mb-0">Promo code</p>
-              </div>
-              <div className="d-flex align-items-center justify-content-between w-100">
+              <Label className="small mt-2 mb-0 fw-bold">{t("cardDetails.cardHolderNameText")}</Label>
+              <InputField
+                type="text"
+                className="small py-3"
+                placeholder="XyzAbc"
+              />
+
+              <div className="d-flex align-items-center justify-content-between mb-3">
                 <div className="w-100 me-3">
+                  <Label className="small mt-2 mb-0 fw-bold">{t("cardDetails.expiryDateText")}</Label>
+                  <InputField
+                    type="date"
+                    className="fs-6 py-3"
+                    style={{ paddingTop: "11px", paddingBottom: "11px" }}
+                    placeholder="MM/YYYY"
+                    // value={""}
+                    onChange={handleDateChange}
+                  />
+                </div>
+                <div className="w-100">
+                  <Label className="small mt-2 mb-0 fw-bold">
+                    <span className="d-flex align-items-center gap-2">
+                      <span>{t("cardDetails.CVV_CVCText")}</span>
+                      <span className="mb-1">
+                        <img src={Images.CVV_IMG} alt="" />
+                      </span>
+                    </span>
+                  </Label>
                   <Input
                     type="text"
                     placeholder="0000"
-                    className="form-control py-2 BorderYellow"
-                    value={""}
+                    className="form-control-lg BorderRadius fs-6 py-3"
+                    value={cvcValue}
                     onChange={handleCvcChange}
                     required
                   />
                 </div>
-                <div className="w-100">
-                  <FillBtn text="Apply" className="w-100" />
+              </div>
+
+              <div className="d-flex align-items-center justify-content-between mb-2">
+                <div className="w-100 me-3">
+                  <p className="mb-0 fw-bold">{t("cardDetails.promoCodeText")}</p>
+                </div>
+                <div className="d-flex align-items-center justify-content-between w-100">
+                  <div className="w-100">
+                    <Input
+                      type="text"
+                      placeholder="0000"
+                      className="form-control py-3 BorderRadius "
+                      value={""}
+                      onChange={handleCvcChange}
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex justify-content-end">
+                <FillBtn
+                  text={t("cardDetails.applyText")}
+                  className="px-4 py-3 customDropdownRadius"
+                />
+              </div>
+
+              <div className="CreditCard d-flex align-items-center">
+                <div className=" me-2">
+                  <p className="mb-0 fw-bold">{t("cardDetails.useFitNeeWalletText")}</p>
+                </div>
+                <div className="d-flex align-items-center mt-2">
+                  <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
                 </div>
               </div>
             </div>
-
-            <div className="CreditCard d-flex align-items-center justify-content-between mb-2">
-              <div className="">
-                <p className="mb-0">Use FitNee wallet</p>
-              </div>
-              <div className="w-50 d-flex justify-content-end ">
-                <FormGroup switch>
-                  <Input
-                    className="form-control"
-                    type="switch"
-                    checked={state}
-                    onClick={() => {
-                      setState(!state);
-                    }}
-                  />
-                </FormGroup>
-              </div>
-            </div>
-            <div className="w-100">
+            <div className="w-100 bg-transparent border-0 customDropdownRadius">
               <FillBtn
-                text="Pay"
-                className="w-100"
+                text={t("cardDetails.payText")}
+                className="w-100 py-3"
                 handleOnClick={handlePayClick}
               />
             </div>
@@ -166,23 +183,23 @@ const CreditCardDetailWrapper = () => {
         </Col>
         <Col md={6}>
           <Card className="BorderRadius my-2">
-            <CardHeader className="bg-transparent">
-              <h5 className="mb-0">Payment Summary</h5>
+            <CardHeader className="bg-transparent py-4 fw-bold">
+              <h6 className="mb-0 fw-bold">{t("cardDetails.paymentSummaryText")}</h6>
             </CardHeader>
             <CardBody>
               <div className="d-flex align-items-center justify-content-between">
                 <div className="">
-                  <h6>Discount %</h6>
+                  <h6>{t("cardDetails.discountText")}</h6>
                 </div>
-                <div className="">
+                <div style={{ width: "20%" }}>
                   <h6>SAR 0</h6>
                 </div>
               </div>
               <div className="d-flex align-items-center justify-content-between">
                 <div className="">
-                  <h6>FitNee Wallet</h6>
+                  <h6>{t("cardDetails.fitneeWalletText")}</h6>
                 </div>
-                <div className="">
+                <div style={{ width: "20%" }}>
                   <h6>SAR 500</h6>
                 </div>
               </div>
@@ -190,9 +207,9 @@ const CreditCardDetailWrapper = () => {
             <CardFooter className="bg-transparent">
               <div className="d-flex align-items-center justify-content-between">
                 <div>
-                  <h6 className="mb-0">Total Pay</h6>
+                  <h6 className="mb-0 py-3 fw-bold">{t("cardDetails.totalPayText")}</h6>
                 </div>
-                <div>
+                <div style={{ width: "20%" }}>
                   <h6 className="mb-0">SAR 500</h6>
                 </div>
               </div>

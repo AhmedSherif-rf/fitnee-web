@@ -1,0 +1,135 @@
+@import "../../../Assets/Scss/variables.scss";
+
+.App {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+.parrot-green {
+  background-color: $parrot-green;
+}
+.sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: $admin-dark-bg;
+  color: $white;
+  margin-left: -250px;
+  transition: all 0.5s;
+
+  .sidebar ul p {
+    color: $white;
+    padding: 10px;
+  }
+  .dark-gray {
+    color: $dark-gray;
+  }
+  .nav-item:hover {
+    background: transparent;
+  }
+
+  li a.dropdown-toggle::after {
+    display: inline-flex;
+    color: $white !important;
+    position: relative;
+    left: 60%;
+    font-size: small;
+  }
+
+  .sidebar-header > span {
+    position: relative;
+    float: right;
+    margin: 0.5em;
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+  }
+  .side-menu {
+    height: calc(100vh - 130px);
+    padding: 15px 2px;
+  }
+
+  .side-menu .nav .nav-item a {
+    color: $white;
+  }
+
+  .side-menu::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .side-menu::-webkit-scrollbar-thumb {
+    background: $admin-dark-bg;
+    border-radius: 3px;
+  }
+
+  .side-menu::-webkit-scrollbar-thumb:hover {
+    background: $admin-dark-bg;
+  }
+}
+
+.sidebar.is-open {
+  margin-left: 0;
+  transition: 0.5s;
+}
+
+.content {
+  padding: 20px;
+  margin-left: 0;
+  height: 100vh;
+  background-color: $off-white;
+}
+@mixin iconBadge {
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  background-color: transparent !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  .GoPencil,
+  .GoTrash,
+  .GoEye {
+    color: $dark-gray;
+  }
+  &:hover {
+    border: 1px solid transparent;
+    box-shadow: 1px 1px 1px 0px $blur-color;
+  }
+}
+.iconBadge {
+  @include iconBadge;
+  &:hover {
+    .GoPencil {
+      color: blue !important;
+    }
+    .GoTrash {
+      color: $orange !important;
+    }
+    .GoEye {
+      color: $yellow !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .content.is-open {
+    margin-left: 100%;
+  }
+
+  .sidebar.is-open {
+    min-width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    transition: all 0.5s, height 0s;
+  }
+
+  .sidebar.is-open > .sidebar-header span {
+    display: unset;
+  }
+
+  li a.dropdown-toggle::after {
+    display: inline-block;
+    position: relative;
+    left: 68%;
+  }
+}

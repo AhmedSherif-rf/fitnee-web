@@ -2,19 +2,19 @@ import React from "react";
 import { Input } from "reactstrap";
 
 const MyDropdown = (props) => {
-  const { Options, className, name, onChangeHandle, onBlurHandle } = props;
+  const { Options, className, name, onChangeHandle, onBlurHandle, placeholder } = props;
 
   return (
     <div className="mb-0">
       <Input
-        className={`customDropDown form-control-lg  w-100 BorderYellow ${className}`}
+        className={`customDropDown customDropdownRadius form-control-lg w-100 ${className}`}
         type="select"
         name={name}
         onChange={onChangeHandle}
         onBlur={onBlurHandle}
       >
         <option value="" className="customDropDownOption">
-          Select
+          {placeholder}
         </option>
         {Options &&
           Options?.map((item, index) => (

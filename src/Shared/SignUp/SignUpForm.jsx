@@ -349,7 +349,7 @@ const SignUpForm = () => {
                       *
                     </div>
                     <InputField
-                      className="py-3 px-4 border border-danger"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.yearOfExperienceText")}
                       name="experience"

@@ -9,6 +9,7 @@ import {
   DropdownItem,
   Collapse,
 } from "reactstrap";
+import Toaster from "../Toaster";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { GiWallet } from "react-icons/gi";
@@ -21,11 +22,13 @@ import { FaBars, FaUserEdit } from "react-icons/fa";
 import { FaKey, FaTrashCan } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
-import { logout } from "../../Redux/features/User/userApi";
 import { setLanguageInStorage } from "../../utils/functions";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, memo, useCallback } from "react";
+import { DELETE_ACCOUNT_URL, LOGOUT_URL } from "../../utils/constants";
+import { logout, deleteAccount } from "../../Redux/features/User/userApi";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import {
   ENGLISH_LANGUAGE,
@@ -41,7 +44,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation("");
-  const { user } = useSelector((state) => state.user);
+  const { loading, user } = useSelector((state) => state.user);
   const { lang: currentLanguage } = useSelector((state) => state.language);
 
   const roleType = user?.role ? user?.role.toLowerCase() : null;
@@ -139,8 +142,18 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   }, []);
 
   const handleDeleteAccountClick = useCallback(() => {
+    const data = {
+      apiEndpoint: DELETE_ACCOUNT_URL.replace("userId", user?.id),
+    };
+    dispatch(deleteAccount(data)).then((res) => {
+      if (res.type === "deleteAccount/fulfilled") {
+        Toaster.success("Account is deleted successfully");
+        navigate("/signIn");
+      }
+    });
+
     setDeleteAccountModal(false);
-  }, []);
+  }, [dispatch, navigate, user]);
 
   const handleDeleteClick = () => {
     setDeleteAccountModal(true);
@@ -149,11 +162,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const handleLogoutClick = () => {
     localStorage.removeItem("role");
     const data = {
-      apiEndpoint: "/logout/"
+      apiEndpoint: LOGOUT_URL,
     };
-    dispatch(logout(data)).then(res => {
-      navigate("/signIn")
-    })
+    dispatch(logout(data)).then((res) => {
+      navigate("/signIn");
+    });
   };
 
   const handleSubscriptionClick = useCallback(() => {
@@ -174,6 +187,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
   return (
     <>
+      {loading === "pending" && <LoadingScreen />}
       {showTopBar && (
         <div>
           <Navbar

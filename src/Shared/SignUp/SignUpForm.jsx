@@ -349,7 +349,7 @@ const SignUpForm = () => {
                       *
                     </div>
                     <InputField
-                      className="py-3 px-4 remove-arrow border border-danger"
+                      className="py-3 px-4 border border-danger"
                       type="number"
                       placeholder={t("signup.yearOfExperienceText")}
                       name="experience"
@@ -373,7 +373,7 @@ const SignUpForm = () => {
                       className="border py-3 px-4 mb-0"
                       Options={roleOptions}
                       name={"role"}
-                      defaultSelected="What you will provide to the end user"
+                      placeholder="What you will provide to the end user"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.role}
@@ -387,7 +387,7 @@ const SignUpForm = () => {
                       <MyDropdown
                         className="border py-3 px-4 mb-0"
                         Options={["What you will provide to end user"]}
-                        defaultSelected="What you will provide to the end user"
+                        placeholder="What you will provide to the end user"
                         name={"role"}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
@@ -482,7 +482,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="py-3 px-4 remove-arrow"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.weightText")}
                       name="weight"
@@ -496,7 +496,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="py-3 px-4 remove-arrow"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.heightText")}
                       name="height"
@@ -510,7 +510,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="py-3 px-4 remove-arrow"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.skeletonMuscleText")}
                       name="smm"
@@ -524,7 +524,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="py-3 px-4 remove-arrow"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.bodyFatText")}
                       name="bfm"
@@ -538,7 +538,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="py-3 px-4 remove-arrow"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.totalBodyText")}
                       name="tbw"
@@ -552,7 +552,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="py-3 px-4 remove-arrow"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.protienText")}
                       name="protein"
@@ -694,7 +694,7 @@ const SignUpForm = () => {
                         {t("signup.saudiRepsNumberText")}{" "}
                       </h6>
                       <InputField
-                        className="py-3 px-4 remove-arrow"
+                        className="py-3 px-4"
                         type="number"
                         placeholder={t("signup.saudiRepsNumberText")}
                         name="saudiReps"
@@ -716,7 +716,7 @@ const SignUpForm = () => {
                         {t("signup.enterYourProfessionalText")}
                       </h6>
                       <InputField
-                        className="py-3 px-4 remove-arrow"
+                        className="py-3 px-4"
                         type="number"
                         placeholder="001122"
                         name="saudiReps"

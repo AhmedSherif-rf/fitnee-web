@@ -74,7 +74,7 @@ const AddExerciseForm = () => {
                 className="border py-3 px-4 mb-0"
                 Options={category}
                 name={"role"}
-                defaultSelected="اختر الفئة"
+                placeholder="اختر الفئة"
                 // onChangeHandle={handleChange}
                 // onBlurHandle={handleBlur}
                 // value={values.role}
@@ -85,7 +85,7 @@ const AddExerciseForm = () => {
                 className="border py-3 px-4 mb-0"
                 Options={exerciseLevel}
                 name={"role"}
-                defaultSelected="اختار مستوى"
+                placeholder="اختار مستوى"
                 // onChangeHandle={handleChange}
                 // onBlurHandle={handleBlur}
                 // value={values.role}
@@ -126,7 +126,7 @@ const AddExerciseForm = () => {
                 className="border py-3 px-4 mb-0"
                 Options={category}
                 name={"role"}
-                defaultSelected="Select Category"
+                placeholder="Select Category"
                 // onChangeHandle={handleChange}
                 // onBlurHandle={handleBlur}
                 // value={values.role}
@@ -137,7 +137,7 @@ const AddExerciseForm = () => {
                 className="border py-3 px-4 mb-0"
                 Options={exerciseLevel}
                 name={"role"}
-                defaultSelected="Select Level"
+                placeholder="Select Level"
                 // onChangeHandle={handleChange}
                 // onBlurHandle={handleBlur}
                 // value={values.role}

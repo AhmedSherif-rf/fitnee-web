@@ -25,7 +25,9 @@ const InputField = (props) => {
         placeholder={placeholder}
         name={name}
         style={style}
-        className={`form-control-lg  w-100 ${styles.inputDesign} ${className}`}
+        className={`form-control-lg  w-100 ${styles.inputDesign} ${
+          type === "number" ? "remove-arrow" : ""
+        } ${className}`}
         disabled={disabled}
         onChange={onChangeHandle}
         onBlur={onBlurHandle}

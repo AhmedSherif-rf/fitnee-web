@@ -69,7 +69,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
     if (
       isPublic &&
-      (location.pathname === "/termAndCondition" ||
+      (location.pathname.startsWith("/termAndCondition/") ||
         location.pathname === "/signIn" ||
         location.pathname === "/contactUs" ||
         location.pathname === "/forgotPassword" ||

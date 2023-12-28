@@ -13,6 +13,7 @@ const MultiSelector = ({ field, form, options, ...props }) => {
       value={field.value}
       onChange={handleChange}
       isMulti={true}
+      isSearchable={false}
       {...props}
       labelledBy={props.placeholder}
     />

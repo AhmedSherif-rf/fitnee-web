@@ -10,8 +10,8 @@ const SubMenu = (props) => {
   return (
     <div>
       <NavItem onClick={toggle}>
-        <NavLink className="dropdown-toggle justify-content-between me-5 pe-4">
-          <div className="py-3 d-flex align-items-center gap-2">
+        <NavLink className="dropdown-toggle justify-content-between me-5 pe-5">
+          <div className="py-2 d-flex align-items-center gap-2">
             {icon}
             {title}
           </div>

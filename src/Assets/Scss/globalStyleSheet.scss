@@ -294,3 +294,19 @@ Input::-webkit-input-placeholder {
 ::-webkit-scrollbar-track {
   background: transparent !important;
 }
+
+.remove-arrow {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.remove-arrow::-webkit-inner-spin-button,
+.remove-arrow::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.remove-arrow::-ms-clear {
+  display: none;
+}

@@ -96,7 +96,7 @@ const ContactUs = (props) => {
 
       publish: (
         <div className="d-flex align-items-center justify-content-md-center">
-          <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
+          <ToggleSwitch id={2} isOn={checked} handleToggle={handleToggle} />
         </div>
       ),
     },
@@ -177,7 +177,7 @@ const ContactUs = (props) => {
 
       publish: (
         <div className="d-flex align-items-center justify-content-md-center">
-          <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
+          <ToggleSwitch id={1} isOn={checked} handleToggle={handleToggle} />
         </div>
       ),
     },

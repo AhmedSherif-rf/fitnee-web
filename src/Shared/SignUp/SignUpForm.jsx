@@ -143,7 +143,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <InputField
-                  className="form-control-lg  py-3 px-4"
+                  className="py-3 px-4"
                   type="text"
                   placeholder={t("signup.firstNameText")}
                   name="firstName"
@@ -160,7 +160,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <InputField
-                  className="form-control-lg  py-3 px-4"
+                  className="py-3 px-4"
                   type="text"
                   placeholder={t("signup.lastNameText")}
                   name="lastName"
@@ -177,7 +177,7 @@ const SignUpForm = () => {
                   *
                 </div>
                 <InputField
-                  className="form-control-lg  py-3 px-4"
+                  className="py-3 px-4"
                   type="text"
                   name="email"
                   placeholder={t("signup.emailText")}
@@ -194,7 +194,7 @@ const SignUpForm = () => {
                   *
                 </div>
                 <InputField
-                  className="form-control-lg  py-3 px-4"
+                  className="py-3 px-4"
                   type="password"
                   name="password"
                   placeholder={t("signup.passwordText")}
@@ -211,7 +211,7 @@ const SignUpForm = () => {
                   *
                 </div>{" "}
                 <InputField
-                  className="form-control-lg  py-3 px-4"
+                  className="py-3 px-4"
                   type="password"
                   placeholder={t("signup.confirmPasswordText")}
                   name="confirmPassword"
@@ -284,7 +284,7 @@ const SignUpForm = () => {
                     </div>
                     <InputGroup>
                       <InputGroupText
-                        className=""
+                       
                         style={{
                           borderTopLeftRadius: "14px",
                           borderBottomLeftRadius: "14px",
@@ -329,7 +329,7 @@ const SignUpForm = () => {
                           *
                         </div>{" "}
                         <InputField
-                          className="form-control-lg  py-3 px-4"
+                          className="py-3 px-4"
                           type="textarea"
                           style={{ minHeight: "115px" }}
                           placeholder={t("signup.addBioText")}
@@ -349,14 +349,16 @@ const SignUpForm = () => {
                       *
                     </div>
                     <InputField
-                      className="form-control-lg  py-3 px-4"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.yearOfExperienceText")}
                       name="experience"
+                      onWheel={ event => event.currentTarget.blur() }
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.experience}
                     />
+
                     <p className="errorField">
                       {errors.experience &&
                         touched.experience &&
@@ -371,6 +373,7 @@ const SignUpForm = () => {
                       className="border py-3 px-4 mb-0"
                       Options={roleOptions}
                       name={"role"}
+                      placeholder="What you will provide to the end user"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.role}
@@ -384,6 +387,7 @@ const SignUpForm = () => {
                       <MyDropdown
                         className="border py-3 px-4 mb-0"
                         Options={["What you will provide to end user"]}
+                        placeholder="What you will provide to the end user"
                         name={"role"}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
@@ -478,7 +482,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="form-control-lg  py-3 px-4"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.weightText")}
                       name="weight"
@@ -492,7 +496,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="form-control-lg  py-3 px-4"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.heightText")}
                       name="height"
@@ -506,7 +510,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="form-control-lg  py-3 px-4"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.skeletonMuscleText")}
                       name="smm"
@@ -520,7 +524,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="form-control-lg  py-3 px-4"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.bodyFatText")}
                       name="bfm"
@@ -534,7 +538,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="form-control-lg  py-3 px-4"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.totalBodyText")}
                       name="tbw"
@@ -548,7 +552,7 @@ const SignUpForm = () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <InputField
-                      className="form-control-lg py-3 px-4"
+                      className="py-3 px-4"
                       type="number"
                       placeholder={t("signup.protienText")}
                       name="protein"
@@ -588,7 +592,7 @@ const SignUpForm = () => {
                 <Col md={6}>
                   <h6 className="mb-2 fw-bold">{t("signup.myGoalText")}</h6>
                   <InputField
-                    className="form-control-lg  py-3 px-4"
+                    className="py-3 px-4"
                     type="text"
                     placeholder={t("signup.looseWeightText")}
                     name="myGoal"
@@ -627,7 +631,7 @@ const SignUpForm = () => {
                     {t("signup.anyFoodSensitiveText")}
                   </h6>
                   <InputField
-                    className="form-control-lg  py-3 px-4"
+                    className="py-3 px-4"
                     type="text"
                     placeholder={t("signup.seeFoodText")}
                     name="food_sensitive"
@@ -663,7 +667,7 @@ const SignUpForm = () => {
                   <Row className="p-0">
                     <Col md={12} className="mb-2">
                       <InputField
-                        className="form-control-lg  py-3 px-4"
+                        className="py-3 px-4"
                         type="textarea"
                         style={{ minHeight: "20px" }}
                         placeholder={t("signup.describeInjuryText")}
@@ -687,11 +691,10 @@ const SignUpForm = () => {
                   {roleType === TRAINER_TYPE && (
                     <Col md={6}>
                       <h6 className="mb-2 fw-bold">
-                        {" "}
                         {t("signup.saudiRepsNumberText")}{" "}
                       </h6>
                       <InputField
-                        className="form-control-lg  py-3 px-4"
+                        className="py-3 px-4"
                         type="number"
                         placeholder={t("signup.saudiRepsNumberText")}
                         name="saudiReps"
@@ -713,7 +716,7 @@ const SignUpForm = () => {
                         {t("signup.enterYourProfessionalText")}
                       </h6>
                       <InputField
-                        className="form-control-lg  py-3 px-4"
+                        className="py-3 px-4"
                         type="number"
                         placeholder="001122"
                         name="saudiReps"

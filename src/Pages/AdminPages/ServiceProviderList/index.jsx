@@ -43,7 +43,7 @@ const Dashboard = (props) => {
       ),
       Unblock: (
         <div className="d-flex align-items-center justify-content-md-center">
-          <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
+          <ToggleSwitch id="1" isOn={checked} handleToggle={handleToggle} />
         </div>
       ),
       Action: (
@@ -94,7 +94,7 @@ const Dashboard = (props) => {
       ),
       Unblock: (
         <div className="d-flex align-items-center justify-content-md-center">
-          <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
+          <ToggleSwitch id="2" isOn={checked} handleToggle={handleToggle} />
         </div>
       ),
       Action: (
@@ -146,7 +146,7 @@ const Dashboard = (props) => {
       ),
       Unblock: (
         <div className="d-flex align-items-center justify-content-md-center">
-          <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
+          <ToggleSwitch id="3" isOn={checked} handleToggle={handleToggle} />
         </div>
       ),
       Action: (

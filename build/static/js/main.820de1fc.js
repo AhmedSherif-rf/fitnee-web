@@ -6292,12 +6292,12 @@
             for (n = 0; n < e.length; n++)
               (o = t.hasOwnProperty("$" + e[n].value)),
                 e[n].selected !== o && (e[n].selected = o),
-                o && r && (e[n].defaultSelected = !0);
+                o && r && (e[n].placeholder = !0);
           } else {
             for (n = "" + V(n), t = null, o = 0; o < e.length; o++) {
               if (e[o].value === n)
                 return (
-                  (e[o].selected = !0), void (r && (e[o].defaultSelected = !0))
+                  (e[o].selected = !0), void (r && (e[o].placeholder = !0))
                 );
               null !== t || e[o].disabled || (t = e[o]);
             }

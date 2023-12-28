@@ -56,8 +56,8 @@ const Services = (props) => {
   };
 
   return (
-    <Container fluid className={`pt-3 ${styles.servicesWrapper}`}>
-      <Card className="bg-transparent contentCard mt-5 px-3">
+    <Container fluid className={`pt-2 ${styles.servicesWrapper}`}>
+      <Card className="bg-transparent contentCard mt-5 px-3 pt-1">
         <Row>
           <Col md={2} sm={6} xs={6}>
             <div

@@ -80,36 +80,6 @@ const experienceValidation = Yup.string().required(
   TranslationHelper("validation.requiredYearsOfExperienceText")
 );
 
-const bodyImageValidation = Yup.lazy((value) => {
-  if (value && value.length > 0) {
-    return Yup.array()
-      .required(TranslationHelper("validation.requiredMinimumBodyImageText"))
-      .test(
-        "imagesFormat",
-        TranslationHelper("validation.invalidFileBodyImageText"),
-        (files) => {
-          if (files) {
-            return files.every((file) =>
-              ["image/png", "image/jpeg", "image/jpg"].includes(file.type)
-            );
-          }
-          return true;
-        }
-      )
-      .test(
-        "imagesSize",
-        TranslationHelper("validation.limitBodyImageText"),
-        (files) => {
-          if (files) {
-            return files.every((file) => file.size <= 5 * 1024 * 1024);
-          }
-          return true;
-        }
-      );
-  }
-  return Yup.mixed();
-});
-
 const roleValidation = Yup.string().required(
   TranslationHelper("validation.requiredRoleText")
 );
@@ -142,7 +112,6 @@ export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({
   date_of_birth: dobValidation,
   last_name: lastNameValidation,
   first_name: firstNameValidation,
-  body_images: bodyImageValidation,
   phone_number: phoneNumberValidaton,
   confirm_password: confirmPasswordValidation,
 });

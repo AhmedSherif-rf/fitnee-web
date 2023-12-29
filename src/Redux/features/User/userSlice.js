@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, logout, changePassword } from "./userApi";
+import { login, logout, changePassword, signUp } from "./userApi";
 
 export const userSlice = createSlice({
   name: "user",
@@ -31,23 +31,32 @@ export const userSlice = createSlice({
       .addCase(logout.pending, (state) => {
         state.loading = "pending";
       })
-      .addCase(logout.fulfilled, (state, action) => {
+      .addCase(logout.fulfilled, (state) => {
         state.loading = "succeeded";
         state.user = null;
       })
-      .addCase(logout.rejected, (state, action) => {
+      .addCase(logout.rejected, (state) => {
         state.loading = "failed";
         state.user = null;
       })
       .addCase(changePassword.pending, (state) => {
         state.loading = "pending";
       })
-      .addCase(changePassword.fulfilled, (state, action) => {
+      .addCase(changePassword.fulfilled, (state) => {
         state.loading = "succeeded";
       })
-      .addCase(changePassword.rejected, (state, action) => {
+      .addCase(changePassword.rejected, (state) => {
         state.loading = "failed";
       })
+      .addCase(signUp.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(signUp.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(signUp.rejected, (state) => {
+        state.loading = "failed";
+      });
   },
 });
 

@@ -5,7 +5,6 @@ import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
-import { useDispatch } from "react-redux";
 import MultiSelector from "../MultiSelector";
 import { useTranslation } from "react-i18next";
 import { FaDeleteLeft } from "react-icons/fa6";
@@ -13,9 +12,11 @@ import PhoneInputField from "../PhoneInputField";
 import { SIGNUP_SCHEMA } from "./data/validation";
 import { INITIAL_VALUES } from "./data/initialValue";
 import { useNavigate, useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import { createFormData } from "../../utils/functions";
 import { ConnectedFocusError } from "focus-formik-error";
 import { signUp } from "../../Redux/features/User/userApi";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
 import { Formik, Field, FieldArray, ErrorMessage } from "formik";
@@ -45,10 +46,11 @@ import {
 } from "../../utils/constants";
 
 const SignUpForm = () => {
-  // const navigate = useNavigate();
-  const { roleType } = useParams();
-  const { t } = useTranslation("");
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation("");
+  const { roleType } = useParams();
+  const { loading, user } = useSelector((state) => state.user);
 
   const getInitialValues = () => {
     switch (roleType) {
@@ -72,25 +74,26 @@ const SignUpForm = () => {
 
   const handleSignUpSubmit = async (values) => {
     const formData = createFormData(values);
-    const formDataEntries = Array.from(formData.entries());
-    formDataEntries.map(([key, value], index) => console.log(key, value));
-
     const data = {
       apiEndpoint: "/registeruser/",
       requestData: formData,
     };
 
-    dispatch(signUp(data));
+    dispatch(signUp(data)).then((res) => {
+      if (res.type === "signUp/fulfilled") {
+        navigate("/signIn");
+      }
+    });
   };
 
   return (
     <Container>
+      {loading === "pending" && <LoadingScreen />}
       <Formik
         initialValues={getInitialValues()}
         validationSchema={getSchemaValidation()}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values) => {
           handleSignUpSubmit(values);
-          // console.log(values);
           // setTimeout(() => {
           //   setSubmitting(false);
           //   if (roleType === TRAINEE_TYPE) {
@@ -136,7 +139,6 @@ const SignUpForm = () => {
           setFieldValue,
           handleBlur,
           handleSubmit,
-          isSubmitting,
         }) => (
           <form onSubmit={handleSubmit}>
             <ConnectedFocusError />
@@ -342,7 +344,6 @@ const SignUpForm = () => {
                     </div>
                     <InputGroup>
                       <InputGroupText
-                       
                         style={{
                           borderTopLeftRadius: "14px",
                           borderBottomLeftRadius: "14px",
@@ -413,7 +414,7 @@ const SignUpForm = () => {
                       type="number"
                       placeholder={t("signup.yearOfExperienceText")}
                       name="experience"
-                      onWheel={ event => event.currentTarget.blur() }
+                      onWheel={(event) => event.currentTarget.blur()}
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.experience}
@@ -468,14 +469,11 @@ const SignUpForm = () => {
               </Col>
               <Col>
                 <div className="form-group multi-preview d-flex flex-wrap align-items-center">
-                  {values?.body_images.map((file, index) => (
-                    <div
-                      key={index}
-                      className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border"
-                    >
+                  {values?.body_images && (
+                    <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border">
                       <img
-                        src={URL.createObjectURL(file)}
-                        alt={`${index + 1}`}
+                        src={URL.createObjectURL(values?.body_images)}
+                        alt="body_images"
                         className="uploaded-image BorderRadius"
                         style={{
                           width: "100%",
@@ -488,50 +486,38 @@ const SignUpForm = () => {
                         type="button"
                         className="deleteButton"
                         onClick={() => {
-                          const updatedImages = [...values.body_images];
-                          updatedImages.splice(index, 1);
-                          setFieldValue("body_images", updatedImages);
+                          setFieldValue("body_images", null);
                         }}
                       >
                         &#10006;
                       </button>
                     </div>
-                  ))}
-                  <Label
-                    id="UploadImgLabel"
-                    className="BorderRadius text-center mb-0"
-                    style={{
-                      minWidth: "220px",
-                      maxHeight: "170px",
-                    }}
-                  >
-                    <img src={Images.UPLOAD_ICON} alt="" />
-                    <input
-                      id="file-upload"
-                      type="file"
-                      accept=".png, .jpg, .jpeg"
-                      onChange={(event) => {
-                        const files = event.currentTarget.files;
-                        if (files.length > 0) {
-                          const uploadedImages = Array.from(files);
-                          setFieldValue("body_images", [
-                            ...values.body_images,
-                            ...uploadedImages,
-                          ]);
-                        }
+                  )}
+                  {values?.body_images === null && (
+                    <Label
+                      id="UploadImgLabel"
+                      className="BorderRadius text-center mb-0"
+                      style={{
+                        minWidth: "220px",
+                        maxHeight: "170px",
                       }}
-                      multiple
-                      style={{ display: "none" }}
-                    />
-                    <h6>{t("signup.uploadImageText")}</h6>
-                  </Label>
+                    >
+                      <img src={Images.UPLOAD_ICON} alt="" />
+                      <input
+                        id="body_images"
+                        type="file"
+                        accept=".png, .jpg, .jpeg"
+                        onChange={(event) => {
+                          const selectedFile = event.currentTarget.files[0];
+                          setFieldValue("body_images", selectedFile);
+                        }}
+                        style={{ display: "none" }}
+                      />
+                      <h6>{t("signup.uploadImageText")}</h6>
+                    </Label>
+                  )}
                 </div>
               </Col>
-              <p className="errorField">
-                {errors.body_images &&
-                  touched.body_images &&
-                  errors.body_images}
-              </p>
             </Row>
 
             {roleType === TRAINEE_TYPE && (
@@ -639,7 +625,7 @@ const SignUpForm = () => {
                     className="py-3 px-4"
                     type="text"
                     placeholder={t("signup.looseWeightText")}
-                    name="myGoal"
+                    name="goal"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.goal}
@@ -654,10 +640,10 @@ const SignUpForm = () => {
                       <MyDropdown
                         className=" shadow-0 py-3 px-4 border"
                         Options={trainingGoalOptions}
-                        name={"trainingGoal"}
+                        name={"training_goal"}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
-                        value={values.trainingGoal}
+                        value={values.training_goal}
                       />
                     </Col>
                   </Row>
@@ -685,25 +671,13 @@ const SignUpForm = () => {
                       <MyDropdown
                         className=" shadow-0 py-3 px-4 border"
                         Options={activityLevelOptions}
-                        name={"activityLevel"}
+                        name={"activity_level"}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
-                        value={values.activityLevel}
+                        value={values.activity_level}
                       />
                     </Col>
                   </Row>
-                </Col>
-                <Col md={6}>
-                  <h6 className="mb-2 fw-bold">Any Food Sensitive</h6>
-                  <InputField
-                    className="form-control-lg  py-3 px-4"
-                    type="text"
-                    placeholder="See food"
-                    name="food_sensitive"
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.food_sensitive}
-                  />
                 </Col>
                 <Col lg={6} md={6} className="mb-2">
                   <h6 className="mb-2 fw-bold">{t("signup.anyInjuryText")}</h6>
@@ -714,7 +688,7 @@ const SignUpForm = () => {
                         type="textarea"
                         style={{ minHeight: "20px" }}
                         placeholder={t("signup.describeInjuryText")}
-                        name="injury"
+                        name="injury_details"
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
                         value={values.injury_details}
@@ -956,6 +930,7 @@ const SignUpForm = () => {
                   type={"submit"}
                   text={t("signup.nextText")}
                   className="w-100 py-2"
+                  disabled={loading === "pending" ? true : false}
                 />
               </Col>
             </Row>

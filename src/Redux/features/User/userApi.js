@@ -49,13 +49,17 @@ export const signUp = createAsyncThunk(
   "signUp",
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
-      console.log(apiEndpoint);
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      console.log(response);
-      return response?.data;
+      Toaster.success("User created successfully");
+      return response;
     } catch (error) {
-      // Toaster.error(error?.response?.data?.error?.Message);
-      console.log(error);
+      if (error?.response?.data?.error?.email) {
+        Toaster.error(error?.response?.data?.error?.email[0]);
+      } else if (error?.response?.data?.error?.phone_number) {
+        Toaster.error(error?.response?.data?.error?.phone_number[0]);
+      } else {
+        Toaster.error(error?.response?.data?.message);
+      }
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

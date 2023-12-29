@@ -43,6 +43,8 @@ export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
 export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
+export const LOGOUT_URL = "/logout/";
+export const DELETE_ACCOUNT_URL = "/delete/userId/";
 export const NEW_PASSWORD_URL = "/forget_password/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";

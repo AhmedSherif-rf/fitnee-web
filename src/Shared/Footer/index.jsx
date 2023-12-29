@@ -28,10 +28,18 @@ const Footer = () => {
         </Col>
         <Col md={4} className="lh-1">
           <div className="d-flex gap-3 mx-4 align-items-center justify-content-center p-2">
-            <img src={Image.TWITTER_IMG} alt="logo" />
-            <img src={Image.YOUTUBE_IMG} alt="logo" />
-            <img src={Image.TIKTOK_IMG} alt="logo" />
-            <img src={Image.INSTA_IMG} alt="logo" />
+            <Link to="https://www.instagram.com/fitnee.app" target="_blank">
+              <img src={Image.INSTA_IMG} alt="logo" />
+            </Link>
+            <Link to="https://twitter.com/Fitnee_fit" target="_blank">
+              <img src={Image.TWITTER_IMG} alt="logo" />
+            </Link>
+            {/* <Link to="" target="_blank">
+              <img src={Image.YOUTUBE_IMG} alt="logo" />
+            </Link>
+            <Link to="" target="_blank">
+              <img src={Image.TIKTOK_IMG} alt="logo" />
+            </Link> */}
           </div>
           <div className="d-flex mx-4 align-items-start justify-content-center">
             <Link to="/termAndCondition/general">

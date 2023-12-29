@@ -44,7 +44,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation("");
-  const { loading, user } = useSelector((state) => state.user);
+  const { loading: userLoading, user } = useSelector((state) => state.user);
   const { lang: currentLanguage } = useSelector((state) => state.language);
 
   const roleType = user?.role ? user?.role.toLowerCase() : null;
@@ -187,7 +187,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
   return (
     <>
-      {loading === "pending" && <LoadingScreen />}
+      {userLoading === "pending" && <LoadingScreen />}
       {showTopBar && (
         <div>
           <Navbar
@@ -742,6 +742,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
           <FillBtn
             text={t("signup.yesText")}
             className="py-2 px-5"
+            disabled={userLoading === "pending" ? true : false}
             handleOnClick={handleDeleteAccountClick}
           />
         }

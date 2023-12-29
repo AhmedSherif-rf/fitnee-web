@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, logout, changePassword, signUp } from "./userApi";
+import {
+  login,
+  logout,
+  changePassword,
+  signUp,
+  deleteAccount,
+} from "./userApi";
 
 export const userSlice = createSlice({
   name: "user",
@@ -55,6 +61,16 @@ export const userSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(signUp.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(deleteAccount.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(deleteAccount.fulfilled, (state) => {
+        state.user = null;
+        state.loading = "succeeded";
+      })
+      .addCase(deleteAccount.rejected, (state) => {
         state.loading = "failed";
       });
   },

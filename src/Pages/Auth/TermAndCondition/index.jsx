@@ -969,7 +969,7 @@ const TermAndCondition = () => {
           </h1>
 
           <div
-            className="d-flex align-items-end my-2 textYellow"
+            className="d-flex align-items-end my-2 textYellow cursorPointer"
             onClick={() => navigate("/")}
           >
             <div>

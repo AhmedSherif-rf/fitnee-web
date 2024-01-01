@@ -50,8 +50,8 @@ export const signUp = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      Toaster.success("User created successfully");
-      return response;
+      Toaster.success("OTP send successfully");
+      return response.data.data.email;
     } catch (error) {
       if (error?.response?.data?.error?.email) {
         Toaster.error(error?.response?.data?.error?.email[0]);
@@ -60,6 +60,20 @@ export const signUp = createAsyncThunk(
       } else {
         Toaster.error(error?.response?.data?.message);
       }
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const editProfile = createAsyncThunk(
+  "editProfile",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.patch(apiEndpoint, requestData);
+      Toaster.success("Profile edit successfully");
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.message);
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

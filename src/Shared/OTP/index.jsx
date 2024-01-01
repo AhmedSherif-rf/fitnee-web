@@ -8,6 +8,7 @@ import { Col, Container, Row } from "reactstrap";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
+import { setEmail } from "../../Redux/features/User/userSlice";
 import {
   resendOtp,
   verifyOtp,
@@ -24,7 +25,10 @@ const OTPVerification = () => {
   const { t } = useTranslation("");
   const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState({ minutes: 1, seconds: 59 });
-  const { email, loading } = useSelector((state) => state.forgotPassword);
+  const { email: userEmail } = useSelector((state) => state.user);
+  const { forgotPasswordEmail, loading } = useSelector(
+    (state) => state.forgotPassword
+  );
 
   useEffect(() => {
     const otpTimeInterval = setInterval(() => {
@@ -46,28 +50,40 @@ const OTPVerification = () => {
   }, [timer]);
 
   const handleNextClick = () => {
-    if (type === "forgotPassword") {
-      const data = {
-        apiEndpoint: FORGOT_PASSWORD_VERIFY_URL,
-        requestData: JSON.stringify({ email, otp }),
-      };
-      dispatch(verifyOtp(data)).then((res) => {
-        if (res.type === "verifyOtp/fulfilled") {
-          navigate("/changePassword");
-        }
-      });
+    let email = "";
+    if (type === "forgotPassword" || type === "signUp") {
+      email = type === "forgotPassword" ? forgotPasswordEmail : userEmail;
     }
+    const data = {
+      apiEndpoint: FORGOT_PASSWORD_VERIFY_URL,
+      requestData: JSON.stringify({ email, otp }),
+    };
+    dispatch(verifyOtp(data)).then((res) => {
+      if (res.type === "verifyOtp/fulfilled") {
+        if (type === "forgotPassword") {
+          navigate("/changePassword");
+        } else {
+          dispatch(setEmail(""));
+          navigate("/signIn");
+        }
+      }
+    });
   };
 
   const handleResendClick = () => {
+    let email = "";
+    if (type === "forgotPassword" || type === "signUp") {
+      email = type === "forgotPassword" ? forgotPasswordEmail : userEmail;
+    }
     if (timer.seconds === 0 && timer.minutes === 0) {
-      if (type === "forgotPassword") {
+      if (type === "forgotPassword" || type === "signUp") {
         const data = {
           apiEndpoint: FORGOT_PASSWORD_RESEND_OTP_URL,
           requestData: JSON.stringify({ email }),
         };
         dispatch(resendOtp(data)).then((res) => {
           if (res.type === "resendOtp/fulfilled") {
+            setOtp("");
             setTimer({ minutes: 1, seconds: 59 });
           }
         });

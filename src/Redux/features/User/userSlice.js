@@ -5,6 +5,7 @@ import {
   changePassword,
   signUp,
   deleteAccount,
+  editProfile,
 } from "./userApi";
 
 export const userSlice = createSlice({
@@ -14,10 +15,14 @@ export const userSlice = createSlice({
     isGuest: false,
     loading: "idle",
     error: null,
+    email: "",
   },
   reducers: {
     setGuest: (state, action) => {
       state.isGuest = action.payload;
+    },
+    setEmail: (state, action) => {
+      state.email = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -57,8 +62,9 @@ export const userSlice = createSlice({
       .addCase(signUp.pending, (state) => {
         state.loading = "pending";
       })
-      .addCase(signUp.fulfilled, (state) => {
+      .addCase(signUp.fulfilled, (state, action) => {
         state.loading = "succeeded";
+        state.email = action.payload;
       })
       .addCase(signUp.rejected, (state) => {
         state.loading = "failed";
@@ -72,10 +78,20 @@ export const userSlice = createSlice({
       })
       .addCase(deleteAccount.rejected, (state) => {
         state.loading = "failed";
+      })
+      .addCase(editProfile.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(editProfile.fulfilled, (state, action) => {
+        state.user = action.payload.data;
+        state.loading = "succeeded";
+      })
+      .addCase(editProfile.rejected, (state) => {
+        state.loading = "failed";
       });
   },
 });
 
-export const { setGuest } = userSlice.actions;
+export const { setGuest, setEmail } = userSlice.actions;
 
 export default userSlice.reducer;

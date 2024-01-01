@@ -116,6 +116,15 @@ export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({
   confirm_password: confirmPasswordValidation,
 });
 
+export const TRAINEE_EDIT_PROFILE_SCHEMA = Yup.object().shape({
+  email: Yup.string(),
+  gender: Yup.string(),
+  last_name: Yup.string(),
+  first_name: Yup.string(),
+  phone_number: Yup.string(),
+  date_of_birth: Yup.string(),
+});
+
 export const CHANGE_PASSWORD_SCHEMA = Yup.object().shape({
   new_password: newPasswordValidation,
   previous_password: currentPasswordValidation,

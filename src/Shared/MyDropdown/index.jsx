@@ -2,7 +2,15 @@ import React from "react";
 import { Input } from "reactstrap";
 
 const MyDropdown = (props) => {
-  const { Options, className, name, onChangeHandle, onBlurHandle, placeholder } = props;
+  const {
+    Options,
+    className,
+    name,
+    onChangeHandle,
+    onBlurHandle,
+    placeholder,
+    value,
+  } = props;
 
   return (
     <div className="mb-0">
@@ -12,6 +20,7 @@ const MyDropdown = (props) => {
         name={name}
         onChange={onChangeHandle}
         onBlur={onBlurHandle}
+        value={value}
       >
         <option value="" className="customDropDownOption">
           {placeholder}

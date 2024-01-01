@@ -284,7 +284,6 @@ const SignUpForm = () => {
                     </div>
                     <InputGroup>
                       <InputGroupText
-                       
                         style={{
                           borderTopLeftRadius: "14px",
                           borderBottomLeftRadius: "14px",
@@ -295,16 +294,15 @@ const SignUpForm = () => {
                       <Input
                         type="date"
                         style={{
+                          color: "black",
                           fontSize: "14px",
                           paddingTop: "16px",
                           paddingBottom: "16px",
                           backgroundColor: "white",
-                          color: "black",
                           borderTopRightRadius: "14px",
                           borderBottomRightRadius: "14px",
                         }}
                         name="dob"
-                        placeholder="Date of Birthday"
                         className="form-control-lg px-4"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -353,7 +351,7 @@ const SignUpForm = () => {
                       type="number"
                       placeholder={t("signup.yearOfExperienceText")}
                       name="experience"
-                      onWheel={ event => event.currentTarget.blur() }
+                      onWheel={(event) => event.currentTarget.blur()}
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.experience}

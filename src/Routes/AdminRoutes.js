@@ -40,7 +40,9 @@ export const adminRoutes = [
   },
   {
     path: "/admin/exercises/viewExercises",
-    component: lazy(() => import("../Pages/AdminPages/Exercises/ViewExercises")),
+    component: lazy(() =>
+      import("../Pages/AdminPages/Exercises/ViewExercises")
+    ),
     exact: true,
     role: adminRole,
   },

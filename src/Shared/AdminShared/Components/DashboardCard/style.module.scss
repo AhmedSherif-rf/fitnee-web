@@ -1,0 +1,22 @@
+@import "../../Assets/GlobalStyle.scss";
+@import "../../../../Assets/Scss/variables.scss";
+
+:root {
+  --yellow: #f6e709;
+  --gray: #bebebe;
+}
+
+.AdminCard {
+  --shadow-color: hsl(0deg 0% 0% / 0.2);
+  filter: drop-shadow(1px 2px 4px var(--gray));
+  &:hover {
+    --shadow-color: hsl(0deg 0% 0% / 0.2);
+    filter: drop-shadow(1px 2px 4px var(--yellow));
+  }
+  border: none;
+  .CardBody {
+    .cardIcon {
+      opacity: 0.4;
+    }
+  }
+}

@@ -2,7 +2,14 @@ import React from "react";
 import { Input } from "reactstrap";
 
 const MyDropdown = (props) => {
-  const { Options, className, name, onChangeHandle, onBlurHandle, placeholder } = props;
+  const {
+    Options,
+    className,
+    name,
+    onChangeHandle,
+    onBlurHandle,
+    placeholder,
+  } = props;
 
   return (
     <div className="mb-0">

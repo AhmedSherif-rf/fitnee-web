@@ -13,5 +13,8 @@
     padding: 0.8rem 0.8rem;
     font-size: $font-14;
     border-radius: $border-radius-14;
+    &::placeholder {
+      color: $placeholder-color;
+    }
   }
 }

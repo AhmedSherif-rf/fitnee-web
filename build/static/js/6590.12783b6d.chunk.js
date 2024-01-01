@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[6590],{6590:function(e,n,i){i.r(n);var s=i(2791),r=i(184);n.default=function(e){return(0,r.jsx)(s.Fragment,{children:(0,r.jsx)("h4",{children:"This is Admin Dashboard"})})}}}]);
-//# sourceMappingURL=6590.12783b6d.chunk.js.map

@@ -1141,7 +1141,8 @@ const SignUpForm = () => {
                     label={
                       <p className="mb-0 fs-6">
                         {t("signup.moneyTransferText")}
-                        <Link to="/termAndCondition">
+
+                        <Link to="/termAndCondition/serviceProvider">
                           <span className="textYellow">
                             {t("signup.termsAndConditionText")}
                           </span>
@@ -1158,6 +1159,19 @@ const SignUpForm = () => {
                   {errors.term_and_condition &&
                     touched.term_and_condition &&
                     errors.term_and_condition}
+                </p>
+              </Row>
+            )}
+
+            {roleType === TRAINEE_TYPE && (
+              <Row>
+                <p className="mb-0 fs-6">
+                  {t("signup.pleaseReadText")}
+                  <Link to="/termAndCondition/trainee">
+                    <span className="textYellow">
+                      {t("signup.termsAndConditionText")}
+                    </span>
+                  </Link>
                 </p>
               </Row>
             )}

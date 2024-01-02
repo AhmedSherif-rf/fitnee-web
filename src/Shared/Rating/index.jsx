@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Rating } from "react-simple-star-rating";
 
-const StarRating = () => {
-  const [rating, setRating] = useState(3);
+const StarRating = (props) => {
+  const [rating, setRating] = useState(props.rating);
 
   const handleRating = (rate) => {
     setRating(rate);

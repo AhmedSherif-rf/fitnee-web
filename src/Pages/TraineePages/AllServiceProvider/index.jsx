@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
-import ServiceProviderListWrapper from "../../../Shared/ServiceProviderListWrapper";
+import TraineeServiceProviderListWrapper from "../../../Shared/TraineeServiceProviderListWrapper";
 
 const AllServiceProvider = (props) => {
   const { roleType } = useParams();
@@ -10,7 +10,7 @@ const AllServiceProvider = (props) => {
     <Container fluid>
       <Row>
         <Col md={12}>
-          <ServiceProviderListWrapper
+          <TraineeServiceProviderListWrapper
             cardLink={"/trainee/serviceProviderProfile"}
             roleType={roleType}
           />

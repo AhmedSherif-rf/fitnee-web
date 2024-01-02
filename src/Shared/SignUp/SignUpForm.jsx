@@ -931,16 +931,6 @@ const SignUpForm = () => {
                   />
                 </div>
               </Row>
-              // <Row>
-              //   <p className="mb-0 fs-6">
-              //   {t("signup.pleaseReadText")}
-              //     <Link to="/termAndCondition/trainee">
-              //       <span className="textYellow">
-              //         {t("signup.termsAndConditionText")}
-              //       </span>
-              //     </Link>
-              //   </p>
-              // </Row>
             )}
 
             <Row className="pb-5">

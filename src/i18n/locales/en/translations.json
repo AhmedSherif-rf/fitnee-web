@@ -38,7 +38,7 @@
     "termAndConditionHeadingText": "Terms and Conditions",
     "termAndConditionServiceProvidersHeadingText": "Terms and Conditions of Service Providers",
     "termAndConditionTrainerHeadingText": "Terms and Conditions of Clients",
-    
+
     "doneButtonText": "Done",
     "backButtonText": "Back",
     "general": {
@@ -294,7 +294,6 @@
       "sectionThirtySevenDescriptionTwoText": "All dates referred to in this agreement or referred to via FitNee platform are calculated with the Gregorian date."
     },
     "serviceProviders": {
-     
       "sectionOneHeadingText": "Section 1: Specific Obligations ",
       "sectionOneDescriptionOneText": "The service providers shall be bound to get all permits and licenses connected with the exercise of their activities and FitNee platform shall not ensure the validity or legality of these permits and licenses and it shall not ensure that they have been issued by their legal competent bodies. The service provider also guarantees the validity and legality of all certificates and documents provided through the platform, bearing full legal responsibility in case they are forged, inaccurate, or expired.",
       "sectionOneDescriptionTwoText": " The service provider complies with the terms and conditions and all applicable laws, which include the E. Commerce law and its executive regulations, all civil and commercial transaction laws, electronic crime laws, consumer protection laws, anti-corruption and bribery laws. Exports, imports, tax and customs laws and other laws.",
@@ -343,7 +342,6 @@
       "sectionThreeDescriptionThreeListThreeText": "- Invalidity of the payment method provided by the service provider to receive financial dues."
     },
     "trainee": {
-     
       "sectionOneHeadingText": "Section 1: Specific Obligations ",
       "sectionOneDescriptionOneText": "The client must have the legal capacity to request services through FitNee platform, and to request services through his account registered with us and in accordance with the terms and conditions of this agreement.",
       "sectionOneDescriptionTwoText": "All services which the client request through his account in FitNee platform serve as legal acts to which the client shall be bound, and give rise to contractual obligations both between us and the client under this agreement, or under the bilateral contract that arises between the client and the service provider under this agreement.",
@@ -384,7 +382,7 @@
     "trainerText": "Trainer",
     "nutritionistText": "Nutritionist",
     "guestText": "Guest",
-    "alreadyAccountText": "Already have account ?"
+    "alreadyAccountText": "Already have account?"
   },
   "guest": {
     "listOfText": "List of",
@@ -528,7 +526,7 @@
     "attachCertificateText": "Attach Your Certificates",
     "moneyTransferText": "The money will be transferred to your STC Pay account, please read the  ",
     "termsAndConditionText": "terms and conditions",
-    "pleaseReadText":"Please read  "
+    "acknowledgeText": "I acknowledge that I have reviewed and accepted the "
   },
 
   "login": {
@@ -538,7 +536,7 @@
     "emailText": "Type your email",
     "passwordText": "Type your password",
     "forgotPasswordText": "Forgot Password",
-    "agreeOnFitneeText": "Agree on FitNee's",
+    "agreeOnFitneeText": "Agree on FitNee's  ",
     "termsAndConditionsText": "Terms and Conditions",
     "signInText": "Sign In",
     "createAccountText": "Create Account",

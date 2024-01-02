@@ -911,14 +911,25 @@ const SignUpForm = () => {
 
             {roleType === TRAINEE_TYPE && (
               <Row>
-                <p className="mb-0 fs-6">
-                {t("signup.pleaseReadText")}
-                  <Link to="/termAndCondition/trainee">
-                    <span className="textYellow">
-                      {t("signup.termsAndConditionText")}
-                    </span>
-                  </Link>
-                </p>
+                <div className="d-flex mb-2">
+                  <Checkbox
+                    label={
+                      <p className="mb-0 fs-6">
+                        {t("signup.acknowledgeText")}
+
+                        <Link to="/termAndCondition/trainee">
+                          <span className="textYellow">
+                            {t("signup.termsAndConditionText")}
+                          </span>
+                        </Link>
+                      </p>
+                    }
+                    name={"termAndConditionCheck"}
+                    onChangeHandle={handleChange}
+                    onBlurHandle={handleBlur}
+                    checked={values.termAndConditionCheck}
+                  />
+                </div>
               </Row>
             )}
 

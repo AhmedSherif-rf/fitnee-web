@@ -1,6 +1,4 @@
 import styles from "./style.module.scss";
-import { useSelector } from "react-redux";
-
 import {
   Card,
   CardBody,
@@ -15,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import PageHeading from "../Headings/PageHeading";
 import FillBtn from "../../Shared/Buttons/FillBtn";
+import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
 import { getGuestDataLimit } from "../../utils/functions";
@@ -146,7 +145,7 @@ const TrainerAndNutritionistData = [
   },
 ];
 
-const ServiceProviderListWrapper = (props) => {
+const TraineeServiceProviderListWrapper = (props) => {
   const { cardLink, roleType } = props;
   const [
     showSubscriptionInformationModal,
@@ -309,7 +308,7 @@ const ServiceProviderListWrapper = (props) => {
               const isDisable = isGuest && index >= getGuestDataLimit();
               return (
                 <Col lg={3} md={4} col={6} className="mb-3" key={index}>
-                  <ServiceProviderListCard
+                  {/* <ServiceProviderListCard
                     className={`${
                       isDisable ? styles.blurCard : styles.activeTrainerCard
                     }`}
@@ -320,7 +319,7 @@ const ServiceProviderListWrapper = (props) => {
                     infoDes={item.infoDes}
                     CardHeight={item.Height}
                     handleOnClick={() => handleCardOnClick(isDisable)}
-                  />
+                  /> */}
                 </Col>
               );
             })}
@@ -329,7 +328,7 @@ const ServiceProviderListWrapper = (props) => {
               const isDisable = isGuest && index >= getGuestDataLimit();
               return (
                 <Col lg={3} md={4} col={6} className="mb-3" key={index}>
-                  <ServiceProviderListCard
+                  {/* <ServiceProviderListCard
                     className={`${
                       isDisable ? styles.blurCard : styles.activeTrainerCard
                     }`}
@@ -340,7 +339,7 @@ const ServiceProviderListWrapper = (props) => {
                     infoDes={item.infoDes}
                     CardHeight={item.Height}
                     handleOnClick={() => handleCardOnClick(isDisable)}
-                  />
+                  /> */}
                 </Col>
               );
             })}
@@ -349,7 +348,7 @@ const ServiceProviderListWrapper = (props) => {
               const isDisable = isGuest && index >= getGuestDataLimit();
               return (
                 <Col lg={3} md={4} col={6} className="mb-3" key={index}>
-                  <ServiceProviderListCard
+                  {/* <ServiceProviderListCard
                     className={`${
                       isDisable ? styles.blurCard : styles.activeTrainerCard
                     }`}
@@ -360,7 +359,7 @@ const ServiceProviderListWrapper = (props) => {
                     infoDes={item.infoDes}
                     CardHeight={item.Height}
                     handleOnClick={() => handleCardOnClick(isDisable)}
-                  />
+                  /> */}
                 </Col>
               );
             })}
@@ -423,4 +422,4 @@ const ServiceProviderListWrapper = (props) => {
   );
 };
 
-export default memo(ServiceProviderListWrapper);
+export default memo(TraineeServiceProviderListWrapper);

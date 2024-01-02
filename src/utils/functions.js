@@ -13,10 +13,6 @@ const getLanguageFromStorage = () => {
   return localStorage.getItem("Website_Language__fitnee");
 };
 
-const getGuestDataLimit = () => {
-  return 5;
-};
-
 const getInitialUrl = (role) => {
   let initialUrl = "";
 
@@ -49,7 +45,6 @@ const createFormData = (data) => {
 module.exports = {
   getInitialUrl,
   createFormData,
-  getGuestDataLimit,
   setLanguageInStorage,
   getLanguageFromStorage,
 };

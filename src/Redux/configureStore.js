@@ -1,6 +1,7 @@
 import thunk from "redux-thunk";
 import storage from "redux-persist/lib/storage";
 import userSlice from "./features/User/userSlice.js";
+import guestSlice from "./features/Guest/guestSlice.js";
 import { persistStore, persistReducer } from "redux-persist";
 import languageSlice from "./features/Language/languageSlice.js";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
@@ -14,8 +15,9 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  language: languageSlice,
   user: userSlice,
+  guest: guestSlice,
+  language: languageSlice,
   contactUs: contactUsSlice,
   forgotPassword: forgotPasswordSlice,
 });

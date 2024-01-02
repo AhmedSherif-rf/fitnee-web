@@ -32,7 +32,7 @@ const ContactUs = () => {
           </span>
         </div>
       ),
-      text3: <h6 className="small text-center text-white">www.fitnee.com</h6>,
+      text3: <h6 className="small text-center text-white">fitnee.fit</h6>,
     },
   ];
 

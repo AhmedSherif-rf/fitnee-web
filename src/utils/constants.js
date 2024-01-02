@@ -49,6 +49,7 @@ export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
+export const GUEST_SERVICE_PROVIDER_LISTING = "/guest/serviceprovide";
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
 //=================Exercise======================

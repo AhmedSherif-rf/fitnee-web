@@ -23,9 +23,8 @@ const ContactUsForm = () => {
   const { t } = useTranslation("");
   const { loading } = useSelector((state) => state?.contactUs);
 
-  const [showContactUsConfirmModal, setShowContactUsConfirmModal] = useState(
-    false
-  );
+  const [showContactUsConfirmModal, setShowContactUsConfirmModal] =
+    useState(false);
 
   const handleCancelClick = useCallback(() => {
     navigate("/");
@@ -54,7 +53,7 @@ const ContactUsForm = () => {
       <Row className="justify-content-center align-items-center vh-100">
         {loading === "pending" && <LoadingScreen />}
         <Col md={10} sm={10}>
-          <h1 className="text-center mb-5 f-w-bold ">
+          <h1 className="text-center mb-2 f-w-bold">
             {t("contactUs.contactUsText")}
           </h1>
           <Formik
@@ -149,7 +148,7 @@ const ContactUsForm = () => {
                       onBlurHandle={handleBlur}
                       value={values.message}
                       className={"p-3"}
-                      rows={"5"}
+                      rows={"2"}
                     />
                     <p className="errorField">
                       {errors.message && touched.message && errors.message}

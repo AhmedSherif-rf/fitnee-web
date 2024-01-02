@@ -2,8 +2,9 @@ const {
   TRAINEE_ROLE,
   TRAINEE_TYPE,
   TRAINER_ROLE,
+  TRAINER_TYPE,
   TRAINEE_INITIAL_URL,
-  TRAINER_INITIAL_URL,
+  SERVICE_PROVIDER_INITIAL_URL,
 } = require("./constants");
 
 const setLanguageInStorage = (language) => {
@@ -26,11 +27,12 @@ const getInitialUrl = (role) => {
       initialUrl = TRAINEE_INITIAL_URL;
       break;
     case TRAINER_ROLE:
-      initialUrl = TRAINER_INITIAL_URL;
+      initialUrl = SERVICE_PROVIDER_INITIAL_URL;
       break;
     default:
       break;
   }
+  console.log(initialUrl, role);
 
   return initialUrl;
 };
@@ -45,6 +47,15 @@ const createFormData = (data) => {
   }
 
   return formData;
+};
+
+const copyToClipboard = (text) => {
+  const textField = document.createElement("textarea");
+  textField.innerText = text;
+  document.body.appendChild(textField);
+  textField.select();
+  document.execCommand("copy");
+  document.body.removeChild(textField);
 };
 
 const setTraineeInitialValuesForTrainee = (initalValues, user) => {
@@ -116,12 +127,33 @@ const filterSignUpFields = (roleType, user) => {
       "food_sensitive",
       "injury_details",
     ];
+  } else if (roleType === TRAINER_TYPE && user === null) {
+    return [
+      "bio",
+      "role",
+      "email",
+      "gender",
+      "stc_pay",
+      "password",
+      "full_name",
+      "experience",
+      "profile_pic",
+      "specialities",
+      "certification",
+      "confirm_password",
+      "saudireps_number",
+      "certificate_title",
+      "term_and_condition",
+      "profile_availability",
+      "is_currently_working",
+    ];
   }
 };
 
 module.exports = {
   getInitialUrl,
   createFormData,
+  copyToClipboard,
   getGuestDataLimit,
   filterSignUpFields,
   setLanguageInStorage,

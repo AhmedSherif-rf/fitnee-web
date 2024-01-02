@@ -1,6 +1,5 @@
 import "./style.scss";
 import Checkbox from "../Checkbox";
-import React, { memo } from "react";
 import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
 import { Link } from "react-router-dom";
@@ -15,18 +14,27 @@ import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { createFormData } from "../../utils/functions";
 import { ConnectedFocusError } from "focus-formik-error";
+import React, { memo, useState, useEffect } from "react";
 import { filterSignUpFields } from "../../utils/functions";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
 import { Formik, Field, FieldArray, ErrorMessage } from "formik";
-import { signUp, editProfile } from "../../Redux/features/User/userApi";
+import { setTraineeInitialValuesForTrainee } from "../../utils/functions";
+import {
+  signUp,
+  editProfile,
+  getSpecialities,
+} from "../../Redux/features/User/userApi";
 import {
   TRAINEE_SIGNUP_SCHEMA,
   TRAINEE_EDIT_PROFILE_SCHEMA,
+  TRAINER_SIGNUP_SCHEMA,
 } from "../ValidationData/validation";
-import { setTraineeInitialValuesForTrainee } from "../../utils/functions";
-import { TRAINEE_SIGNUP_INITIAL_VALUES } from "../ValidationData/initialValue";
+import {
+  TRAINEE_SIGNUP_INITIAL_VALUES,
+  TRAINER_SIGNUP_INITIAL_VALUES,
+} from "../ValidationData/initialValue";
 import {
   TRAINEE_TYPE,
   TRAINER_TYPE,
@@ -47,7 +55,6 @@ import {
   trainingGoalOptions,
   activityLevelOptions,
   roleOptions,
-  specialityOptions,
   weekDaysOptions,
 } from "../../utils/constants";
 
@@ -56,8 +63,29 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation("");
   const { roleType } = useParams();
+  const { lang } = useSelector((state) => state.language);
   const { loading, user } = useSelector((state) => state.user);
   const filterFields = filterSignUpFields(roleType, user);
+
+  const [specialityOptions, setSpecialityOptions] = useState([]);
+
+  useEffect(() => {
+    if (roleType === TRAINER_TYPE) {
+      const data = {
+        apiEndpoint: `/specialities?locale=${lang}`,
+      };
+      dispatch(getSpecialities(data)).then((res) => {
+        if (res.type === "getSpecialities/fulfilled") {
+          let specialities = res.payload.data.results;
+          specialities = specialities.map(({ id, name }) => ({
+            label: name,
+            value: id,
+          }));
+          setSpecialityOptions(specialities);
+        }
+      });
+    }
+  }, [dispatch, lang, roleType]);
 
   const getInitialValues = () => {
     if (user) {
@@ -75,6 +103,8 @@ const SignUpForm = () => {
       switch (roleType) {
         case TRAINEE_TYPE:
           return TRAINEE_SIGNUP_INITIAL_VALUES;
+        case TRAINER_TYPE:
+          return TRAINER_SIGNUP_INITIAL_VALUES;
 
         default:
           return INITIAL_VALUES;
@@ -95,9 +125,11 @@ const SignUpForm = () => {
       switch (roleType) {
         case TRAINEE_TYPE:
           return TRAINEE_SIGNUP_SCHEMA;
+        case TRAINER_TYPE:
+          return TRAINER_SIGNUP_SCHEMA;
 
         default:
-          return INITIAL_VALUES;
+        // return INITIAL_VALUES;
       }
     }
   };
@@ -259,6 +291,26 @@ const SignUpForm = () => {
                     {errors.first_name &&
                       touched.first_name &&
                       errors.first_name}
+                  </p>
+                </Col>
+              )}
+
+              {filterFields.includes("full_name") && (
+                <Col lg={6} md={6} className="mb-2">
+                  <div className="text-end" style={{ marginBottom: "-15px" }}>
+                    *
+                  </div>{" "}
+                  <InputField
+                    className="py-3 px-4"
+                    type="text"
+                    placeholder={t("signup.fullNameText")}
+                    name="full_name"
+                    onChangeHandle={handleChange}
+                    onBlurHandle={handleBlur}
+                    value={values.full_name}
+                  />
+                  <p className="errorField">
+                    {errors.full_name && touched.full_name && errors.full_name}
                   </p>
                 </Col>
               )}
@@ -441,27 +493,6 @@ const SignUpForm = () => {
                 </Col>
               )}
 
-              {filterFields.includes("bio") && (
-                <Col md={6} lg={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>{" "}
-                  <InputField
-                    className="py-3 px-4"
-                    type="textarea"
-                    style={{ minHeight: "115px" }}
-                    placeholder={t("signup.addBioText")}
-                    name="bio"
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.bio}
-                  />
-                  <p className="errorField">
-                    {errors.bio && touched.bio && errors.bio}
-                  </p>
-                </Col>
-              )}
-
               {filterFields.includes("experience") && (
                 <Col lg={6} md={6} className="mb-2">
                   <div className="text-end" style={{ marginBottom: "-15px" }}>
@@ -495,7 +526,7 @@ const SignUpForm = () => {
                     className="border py-3 px-4 mb-0"
                     Options={roleOptions}
                     name={"role"}
-                    placeholder="Select role"
+                    placeholder="What you will provide to the end user"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.role}
@@ -506,58 +537,141 @@ const SignUpForm = () => {
                 </Col>
               )}
 
-              {filterFields.includes("role") && (
-                <Col lg={6} md={6} className="mb-2">
-                  <MyDropdown
-                    className="border py-3 px-4 mb-0"
-                    Options={["What you will provide to end user"]}
-                    placeholder="What you will provide to the end user"
-                    name={"role"}
+              {filterFields.includes("bio") && (
+                <Col md={6} lg={6} className="mb-2">
+                  <div className="text-end" style={{ marginBottom: "-15px" }}>
+                    *
+                  </div>{" "}
+                  <InputField
+                    className="py-3 px-4"
+                    type="textarea"
+                    style={{ minHeight: "115px" }}
+                    placeholder={t("signup.addBioText")}
+                    name="bio"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
-                    value={values.role}
+                    value={values.bio}
                   />
+                  <p className="errorField">
+                    {errors.bio && touched.bio && errors.bio}
+                  </p>
                 </Col>
               )}
             </Row>
 
             <Row className="mb-3">
-              <Col md={12}>
-                <h6 className="fw-bold">
-                  {roleType !== TRAINEE_TYPE
-                    ? t("signup.attachCertificateText")
-                    : t("signup.inBodyText")}
-                </h6>
-              </Col>
-
               {filterFields.includes("body_images") && (
-                <Col>
-                  <div className="form-group multi-preview d-flex flex-wrap align-items-center">
-                    {values?.body_images && (
-                      <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border">
-                        <img
-                          src={URL.createObjectURL(values?.body_images)}
-                          alt="body_images"
-                          className="uploaded-image BorderRadius"
+                <>
+                  <Col md={12}>
+                    <h6 className="fw-bold">{t("signup.inBodyText")}</h6>
+                  </Col>
+                  <Col>
+                    <div className="form-group multi-preview d-flex flex-wrap align-items-center">
+                      {values?.body_images && (
+                        <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border">
+                          <img
+                            src={URL.createObjectURL(values?.body_images)}
+                            alt="body_images"
+                            className="uploaded-image BorderRadius"
+                            style={{
+                              width: "100%",
+                              height: "170px",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                            }}
+                          />
+                          <button
+                            type="button"
+                            className="deleteButton"
+                            onClick={() => {
+                              setFieldValue("body_images", null);
+                            }}
+                          >
+                            &#10006;
+                          </button>
+                        </div>
+                      )}
+                      {values?.body_images === null && (
+                        <Label
+                          id="UploadImgLabel"
+                          className="BorderRadius text-center mb-0"
                           style={{
-                            width: "100%",
-                            height: "170px",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                          }}
-                        />
-                        <button
-                          type="button"
-                          className="deleteButton"
-                          onClick={() => {
-                            setFieldValue("body_images", null);
+                            minWidth: "220px",
+                            maxHeight: "170px",
                           }}
                         >
-                          &#10006;
-                        </button>
-                      </div>
-                    )}
-                    {values?.body_images === null && (
+                          <img src={Images.UPLOAD_ICON} alt="" />
+                          <input
+                            id="body_images"
+                            type="file"
+                            accept=".png, .jpg, .jpeg"
+                            onChange={(event) => {
+                              const selectedFile = event.currentTarget.files[0];
+                              setFieldValue("body_images", selectedFile);
+                            }}
+                            style={{ display: "none" }}
+                          />
+                          <h6>{t("signup.uploadImageText")}</h6>
+                        </Label>
+                      )}
+                    </div>
+                  </Col>
+                </>
+              )}
+
+              {filterFields.includes("certification") && (
+                <>
+                  <Col md={12}>
+                    <h6 className="fw-bold">
+                      {t("signup.attachCertificateText")} *
+                    </h6>
+                  </Col>
+                  <Col>
+                    <div className="form-group multi-preview d-flex flex-wrap align-items-center">
+                      {values.certification.map((image, index) => (
+                        <div
+                          key={index}
+                          className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border"
+                        >
+                          <Field
+                            name={`certificate_title.${index}`}
+                            type="text"
+                            className="form-control-lg certificatioTitle bgBlur"
+                            placeholder="Add title"
+                          />
+                          <img
+                            src={URL.createObjectURL(image)}
+                            alt={`${index + 1}`}
+                            className="uploaded-image BorderRadius"
+                            style={{
+                              width: "100%",
+                              height: "170px",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                            }}
+                          />
+                          <button
+                            type="button"
+                            className="deleteButton"
+                            onClick={() => {
+                              const updatedImages = [...values.certification];
+                              updatedImages.splice(index, 1);
+                              setFieldValue("certification", updatedImages);
+
+                              const updatedCertificateTitles = [
+                                ...values.certificate_title,
+                              ];
+                              updatedCertificateTitles.splice(index, 1);
+                              setFieldValue(
+                                "certificate_title",
+                                updatedCertificateTitles
+                              );
+                            }}
+                          >
+                            &#10006;
+                          </button>
+                        </div>
+                      ))}
                       <Label
                         id="UploadImgLabel"
                         className="BorderRadius text-center mb-0"
@@ -568,42 +682,60 @@ const SignUpForm = () => {
                       >
                         <img src={Images.UPLOAD_ICON} alt="" />
                         <input
-                          id="body_images"
+                          id="file-upload"
                           type="file"
                           accept=".png, .jpg, .jpeg"
                           onChange={(event) => {
-                            const selectedFile = event.currentTarget.files[0];
-                            setFieldValue("body_images", selectedFile);
+                            const files = event.currentTarget.files;
+                            if (files.length > 0) {
+                              const uploadedImages = Array.from(files);
+                              setFieldValue("certification", [
+                                ...values.certification,
+                                ...uploadedImages,
+                              ]);
+                            }
                           }}
+                          multiple
                           style={{ display: "none" }}
                         />
                         <h6>{t("signup.uploadImageText")}</h6>
                       </Label>
-                    )}
-                  </div>
-                </Col>
+                    </div>
+                  </Col>
+                </>
               )}
+              <p className="errorField">
+                {errors.certification &&
+                  touched.certification &&
+                  errors.certification}
+              </p>
+              <p className="errorField">
+                {errors.certificate_title &&
+                  touched.certificate_title &&
+                  errors.certificate_title}
+              </p>
             </Row>
 
             <Row className="mb-3">
-              <Col md={12} className="mb-3">
-                <h6 className="fw-bold mt-2">
-                  {t("signup.bodyInformationText")}
-                </h6>
-              </Col>
-
               {filterFields.includes("weight") && (
-                <Col md={6} className="mb-3">
-                  <InputField
-                    className="py-3 px-4"
-                    type="number"
-                    placeholder={t("signup.weightText")}
-                    name="weight"
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.weight}
-                  />
-                </Col>
+                <>
+                  <Col md={12} className="mb-3">
+                    <h6 className="fw-bold mt-2">
+                      {t("signup.bodyInformationText")}
+                    </h6>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <InputField
+                      className="py-3 px-4"
+                      type="number"
+                      placeholder={t("signup.weightText")}
+                      name="weight"
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.weight}
+                    />
+                  </Col>
+                </>
               )}
 
               {filterFields.includes("height") && (
@@ -678,22 +810,30 @@ const SignUpForm = () => {
             </Row>
 
             <Row className="mb-2">
-              {filterFields.includes("speciality") && (
-                <Col md={12}>
-                  <div className="form-group">
-                    <h6 className="mb-2 fw-bold">
-                      {t("signup.selectAreaOfSpecialtyText")}*
-                    </h6>
-                    <Field
-                      name="speciality"
-                      component={MultiSelector}
-                      options={specialityOptions}
-                      placeholder="Select options"
-                      className="border-0 customMultiSelector"
-                    />
-                  </div>
-                </Col>
-              )}
+              {filterFields.includes("specialities") &&
+                specialityOptions.length > 0 && (
+                  <>
+                    <Col md={12}>
+                      <div className="form-group">
+                        <h6 className="mb-2 fw-bold">
+                          {t("signup.selectAreaOfSpecialtyText")}*
+                        </h6>
+                        <Field
+                          name="specialities"
+                          component={MultiSelector}
+                          options={specialityOptions}
+                          placeholder="Select options"
+                          className="border-0 customMultiSelector"
+                        />
+                      </div>
+                    </Col>
+                    <p className="errorField">
+                      {errors.specialities &&
+                        touched.specialities &&
+                        errors.specialities}
+                    </p>
+                  </>
+                )}
             </Row>
 
             <Row className="mb-3">
@@ -793,7 +933,7 @@ const SignUpForm = () => {
             </Row>
 
             <Row className="mb-3">
-              {filterFields.includes("saudiReps") && (
+              {filterFields.includes("saudireps_number") && (
                 <Col md={6}>
                   <h6 className="mb-2 fw-bold">
                     {t("signup.saudiRepsNumberText")}{" "}
@@ -802,13 +942,15 @@ const SignUpForm = () => {
                     className="py-3 px-4"
                     type="number"
                     placeholder={t("signup.saudiRepsNumberText")}
-                    name="saudiReps"
+                    name="saudireps_number"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
-                    value={values.saudiReps}
+                    value={values.saudireps_number}
                   />
                   <p className="errorField">
-                    {errors.saudiReps && touched.saudiReps && errors.saudiReps}
+                    {errors.saudireps_number &&
+                      touched.saudireps_number &&
+                      errors.saudireps_number}
                   </p>
                 </Col>
               )}
@@ -830,33 +972,31 @@ const SignUpForm = () => {
                 </Col>
               )}
 
-              {filterFields.includes("stcPhoneNumber") && (
+              {filterFields.includes("stc_pay") && (
                 <Col lg={6} md={6} className="mb-2">
                   <h6 className="mb-2 fw-bold">
                     {t("signup.enterStcPayAccountText")} *
                   </h6>
                   <PhoneInputField
                     inputProps={{
-                      name: "stcPhoneNumber",
+                      name: "stc_pay",
                       required: true,
                       className:
                         "form-control-lg w-100  py-3 px-4 customPhoneInput border",
                     }}
                     defaultCountry={"sa"}
-                    value={values.stcPhoneNumber}
+                    value={values.stc_pay}
                     setFieldValue={setFieldValue}
                   />
                   <p className="errorField">
-                    {errors.stcPhoneNumber &&
-                      touched.stcPhoneNumber &&
-                      errors.stcPhoneNumber}
+                    {errors.stc_pay && touched.stc_pay && errors.stc_pay}
                   </p>
                 </Col>
               )}
             </Row>
 
             <Row>
-              {filterFields.includes("day_schedules") && (
+              {filterFields.includes("profile_availability") && (
                 <Col lg={12} md={12}>
                   <h6 className="mb-2 fw-bold">
                     {`   ${t("signup.availableToRespondTraineeText")} ${
@@ -864,84 +1004,86 @@ const SignUpForm = () => {
                     } *`}
                   </h6>
                   <FieldArray
-                    name="daySchedules"
+                    name="profile_availability"
                     className="d-flex"
                     render={(arrayHelpers) => (
                       <>
-                        {values.daySchedules.map((daySchedule, index) => (
-                          <Row key={index} className="mb-1">
-                            <Col lg={5} md={5} className="mb-2">
-                              <Field
-                                as="select"
-                                name={`daySchedules.${index}.day`}
-                                className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4"
-                                style={{
-                                  paddingTop: "12px",
-                                  paddingBottom: "12px",
-                                }}
-                              >
-                                <option
-                                  className="customDropDownOption text-black-custom"
-                                  value=""
-                                  label="Select"
-                                />
-                                {weekDaysOptions?.map((option, index) => (
+                        {values.profile_availability.map(
+                          (daySchedule, index) => (
+                            <Row key={index} className="mb-1">
+                              <Col lg={5} md={5} className="mb-2">
+                                <Field
+                                  as="select"
+                                  name={`profile_availability.${index}.day`}
+                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4"
+                                  style={{
+                                    paddingTop: "12px",
+                                    paddingBottom: "12px",
+                                  }}
+                                >
                                   <option
-                                    className="customDropDownOption text-black-custom border"
-                                    value={option.value}
-                                    key={index}
-                                    label={option.label}
+                                    className="customDropDownOption text-black-custom"
+                                    value=""
+                                    label="Select"
                                   />
-                                ))}
-                              </Field>
-                              <ErrorMessage
-                                name={`day_schedules.${index}.day`}
-                                component="p"
-                                className="errorField"
-                              />
-                            </Col>
-                            <Col md={3} className="mb-2">
-                              <Field
-                                name={`day_schedules.${index}.fromTime`}
-                                type="time"
-                                className="customDropdownRadius form-control select-field py-3 px-4 border"
-                              />
-                              <ErrorMessage
-                                name={`day_schedules.${index}.fromTime`}
-                                component="p"
-                                className="errorField"
-                              />
-                            </Col>
-                            <Col md={3} className="mb-2">
-                              <Field
-                                name={`day_schedules.${index}.toTime`}
-                                type="time"
-                                className="customDropdownRadius form-control select-field py-3 px-4 border"
-                              />
-                              <ErrorMessage
-                                name={`day_schedules.${index}.toTime`}
-                                component="p"
-                                className="errorField"
-                              />
-                            </Col>
-                            <Col md={1} className="mb-2">
-                              <div className="d-flex align-items-center justify-content-end h-100">
-                                <FaDeleteLeft
-                                  className="cursorPointer"
-                                  size={22}
-                                  onClick={() => arrayHelpers.remove(index)}
+                                  {weekDaysOptions?.map((option, index) => (
+                                    <option
+                                      className="customDropDownOption text-black-custom border"
+                                      value={option.value}
+                                      key={index}
+                                      label={option.label}
+                                    />
+                                  ))}
+                                </Field>
+                                <ErrorMessage
+                                  name={`profile_availability.${index}.day`}
+                                  component="p"
+                                  className="errorField"
                                 />
-                              </div>
-                            </Col>
-                          </Row>
-                        ))}
+                              </Col>
+                              <Col md={3} className="mb-2">
+                                <Field
+                                  name={`profile_availability.${index}.starttime`}
+                                  type="time"
+                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
+                                />
+                                <ErrorMessage
+                                  name={`profile_availability.${index}.starttime`}
+                                  component="p"
+                                  className="errorField"
+                                />
+                              </Col>
+                              <Col md={3} className="mb-2">
+                                <Field
+                                  name={`profile_availability.${index}.endtime`}
+                                  type="time"
+                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
+                                />
+                                <ErrorMessage
+                                  name={`profile_availability.${index}.endtime`}
+                                  component="p"
+                                  className="errorField"
+                                />
+                              </Col>
+                              <Col md={1} className="mb-2">
+                                <div className="d-flex align-items-center justify-content-end h-100">
+                                  <FaDeleteLeft
+                                    className="cursorPointer"
+                                    size={22}
+                                    onClick={() => arrayHelpers.remove(index)}
+                                  />
+                                </div>
+                              </Col>
+                            </Row>
+                          )
+                        )}
                         <span
                           className="textYellow fs-6 cursorPointer"
                           onClick={() =>
                             arrayHelpers.push({
                               day: "",
-                              fromTime: "",
-                              toTime: "",
+                              starttime: "",
+                              endtime: "",
                             })
                           }
                         >
@@ -954,7 +1096,7 @@ const SignUpForm = () => {
               )}
             </Row>
 
-            {filterFields.includes("currently_working") && (
+            {filterFields.includes("is_currently_working") && (
               <Row className="mb-3">
                 <h6 className="mb-2 fw-bold">
                   {" "}
@@ -964,31 +1106,35 @@ const SignUpForm = () => {
                   <div className="d-flex currentlyWorkingBtn align-items-center justify-content-between gap-2">
                     <div
                       className={`d-flex align-items-center py-3 justify-content-between form-control-lg border customDropdownRadius w-100  bg-white ${
-                        values.currentlyWorking === "yes" ? "selected" : ""
+                        values.is_currently_working === true ? "selected" : ""
                       }`}
-                      onClick={() => setFieldValue("currentlyWorking", "yes")}
+                      onClick={() =>
+                        setFieldValue("is_currently_working", true)
+                      }
                     >
                       <h6 className="mb-0 font14"> {t("signup.yesText")}</h6>
                     </div>
                     <div
                       className={`d-flex align-items-center py-3 justify-content-between form-control-lg border customDropdownRadius w-100  bg-white ${
-                        values.currentlyWorking === "no" ? "selected" : ""
+                        values.is_currently_working === false ? "selected" : ""
                       }`}
-                      onClick={() => setFieldValue("currentlyWorking", "no")}
+                      onClick={() =>
+                        setFieldValue("is_currently_working", false)
+                      }
                     >
                       <h6 className="mb-0 font14"> {t("signup.noText")}</h6>
                     </div>
                   </div>
                   <p className="errorField">
-                    {errors.currently_working &&
-                      touched.currently_working &&
-                      errors.currently_working}
+                    {errors.is_currently_working &&
+                      touched.is_currently_working &&
+                      errors.is_currently_working}
                   </p>
                 </Col>
               </Row>
             )}
 
-            {filterFields.includes("termAndConditionCheck") && (
+            {filterFields.includes("term_and_condition") && (
               <Row>
                 <div className="d-flex mb-2">
                   <Checkbox
@@ -1002,16 +1148,16 @@ const SignUpForm = () => {
                         </Link>
                       </p>
                     }
-                    name={"termAndConditionCheck"}
+                    name={"term_and_condition"}
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
-                    checked={values.termAndConditionCheck}
+                    checked={values.term_and_condition}
                   />
                 </div>
                 <p className="errorField">
-                  {errors.termAndConditionCheck &&
-                    touched.termAndConditionCheck &&
-                    errors.termAndConditionCheck}
+                  {errors.term_and_condition &&
+                    touched.term_and_condition &&
+                    errors.term_and_condition}
                 </p>
               </Row>
             )}

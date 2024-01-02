@@ -160,12 +160,14 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   };
 
   const handleLogoutClick = () => {
-    localStorage.removeItem("role");
     const data = {
       apiEndpoint: LOGOUT_URL,
+      requestData: { refresh: user.tokens.refresh },
     };
     dispatch(logout(data)).then((res) => {
-      navigate("/signIn");
+      if (res.type === "logout/fullfiled") {
+        navigate("/signIn");
+      }
     });
   };
 

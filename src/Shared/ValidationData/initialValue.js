@@ -23,6 +23,26 @@ export const TRAINEE_SIGNUP_INITIAL_VALUES = {
   confirm_password: "",
 };
 
+export const TRAINER_SIGNUP_INITIAL_VALUES = {
+  bio: "",
+  role: "",
+  email: "",
+  gender: "",
+  stc_pay: "",
+  password: "",
+  full_name: "",
+  experience: "",
+  specialities: [],
+  profile_pic: null,
+  certification: [],
+  confirm_password: "",
+  saudireps_number: "",
+  certificate_title: [],
+  is_currently_working: "",
+  term_and_condition: false,
+  profile_availability: [{ day: "", starttime: "", endtime: "" }],
+};
+
 export const CHANGE_PASSWORD_INITIAL_VALUES = {
   new_password: "",
   confirm_password: "",

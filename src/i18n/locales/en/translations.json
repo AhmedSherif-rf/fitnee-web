@@ -177,6 +177,7 @@
 
   "signup": {
     "yourInformationText": "Your information",
+    "fullNameText": "Full Name",
     "firstNameText": "First Name",
     "lastNameText": "Last Name",
     "emailText": "Type your email",
@@ -185,7 +186,7 @@
     "maleText": "Male",
     "femaleText": "Female",
     "addBioText": "Add your bio here",
-    "yearOfExperienceText": "Year of Experience",
+    "yearOfExperienceText": "Years of Experience",
     "selectText": "Select",
     "bodyInformationText": "Body Information",
     "weightText": "Weight (lbs / kg)",
@@ -297,6 +298,8 @@
     "requiredPasswordText": "Password is required",
     "invalidFirstNameText": "First Name should contain only letters",
     "requiredFirstNameText": "First Name is Required",
+    "invalidFullNameText": "Full Name should contain only letters",
+    "requiredFullNameText": "Full Name is Required",
     "invalidLastNameText": "Last Name should contain only letters",
     "requiredLastNameText": "Last Name is Required",
     "requiredMessageText": "Message is Required",

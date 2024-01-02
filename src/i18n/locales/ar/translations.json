@@ -171,6 +171,7 @@
   },
   "signup": {
     "yourInformationText": "Your information",
+    "fullNameText": "Full Name",
     "firstNameText": "الاسم الأول",
     "lastNameText": "اسم العائلة",
     "emailText": "اكتب بريدك الإلكتروني",
@@ -289,6 +290,8 @@
     "requiredPasswordText": "كلمة المرور مطلوبة",
     "invalidFirstNameText": "يجب أن يحتوي الاسم الأول على أحرف فقط",
     "requiredFirstNameText": "الإسم الأول مطلوب",
+    "invalidFullNameText": "Full Name should contain only letters",
+    "requiredFullNameText": "Full Name is Required",
     "invalidLastNameText": "يجب أن يحتوي الاسم الأخير على أحرف فقط",
     "requiredLastNameText": "إسم العائلة مطلوب",
     "requiredMessageText": "الرسالة مطلوبة",

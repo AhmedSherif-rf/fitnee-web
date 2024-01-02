@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
-import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import InformationModal from "../Modal/InformationModal";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { setEmail } from "../../Redux/features/User/userSlice";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   resendOtp,
   verifyOtp,
@@ -24,7 +25,9 @@ const OTPVerification = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation("");
   const [otp, setOtp] = useState("");
+  const [requestId, setRequestId] = useState("");
   const [timer, setTimer] = useState({ minutes: 1, seconds: 59 });
+  const [showReviewRequestModal, setShowReviewRequestModal] = useState(false);
   const { email: userEmail } = useSelector((state) => state.user);
   const { forgotPasswordEmail, loading } = useSelector(
     (state) => state.forgotPassword
@@ -64,7 +67,8 @@ const OTPVerification = () => {
           navigate("/changePassword");
         } else {
           dispatch(setEmail(""));
-          navigate("/signIn");
+          setRequestId(res.payload.data.request_id);
+          setShowReviewRequestModal(true);
         }
       }
     });
@@ -90,6 +94,12 @@ const OTPVerification = () => {
       }
     }
   };
+
+  const handleReviewRequestModalClose = useCallback(() => {
+    setShowReviewRequestModal(false);
+  }, []);
+
+  const handleReviewRequestOkayClick = useCallback(() => {}, []);
 
   return (
     <Container className={`vh-100 text-black-custom ${styles.otpContainer}`}>
@@ -141,6 +151,28 @@ const OTPVerification = () => {
             handleOnClick={handleNextClick}
           />
         </Col>
+        <InformationModal
+          size={"md"}
+          className={"p-4"}
+          TTwoClassName={"mb-2 text-center"}
+          TOneClassName={"mb-2 text-center"}
+          isOpen={showReviewRequestModal}
+          onClose={handleReviewRequestModalClose}
+          requestId={requestId}
+          ModalTextOne={
+            "Your request has been submitted successfully. After review you are notify by email."
+          }
+          ModalTextTwo={
+            "In order to serve you better, we have generated a ticket ID for your request, please tab to copy this ID."
+          }
+          ButtonOne={
+            <FillBtn
+              text={t("otpVerification.okayText")}
+              className="py-2 px-5"
+              handleOnClick={handleReviewRequestOkayClick}
+            />
+          }
+        />
       </Row>
     </Container>
   );

@@ -15,8 +15,8 @@ const ContactUs = () => {
         <div className="text-center">
           <Link to="/">
             <img
-              className="img-fluid w-25 m-3"
-              src={Images.LOGO_IMG}
+              className="img-fluid  m-3"
+              src={Images.SMALL_LOGO_IMG}
               alt={""}
             />
           </Link>
@@ -32,7 +32,11 @@ const ContactUs = () => {
           </span>
         </div>
       ),
-      text3: <h6 className="small text-center text-white">fitnee.fit</h6>,
+      text3: (
+        <Link className="text-white" to="/">
+          <h6 className="small text-center text-white">www.fitnee.fit</h6>
+        </Link>
+      ),
     },
   ];
 

@@ -43,7 +43,7 @@ export const verifyOtp = createAsyncThunk(
       if (SUCCESS_CODES.includes(response.status)) {
         Toaster.success(response?.data?.data?.response);
       }
-      return response;
+      return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.response);
       return thunkAPI.rejectWithValue(error?.response?.data);

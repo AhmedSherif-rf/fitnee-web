@@ -1,9 +1,12 @@
 import React from "react";
 import "./DownloadLinkStyle.scss";
+import { useParams } from "react-router-dom";
 import { Col, Container, Row, Card } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const AppDownloadLink = () => {
+  const { requestId } = useParams();
+
   return (
     <Container fluid>
       <Row>
@@ -13,13 +16,13 @@ const AppDownloadLink = () => {
               <Col md="6" className="text-center">
                 <div className=" pt-3">
                   <h3 className="py-3 fw-bold">Congratulations</h3>
-                  <p className="px-5">
+                  <p className="px-md-5 mx-md-2">
                     The admin will review your profile and get back to you
                     shortly by email, please keep checking your emails.
                     Meanwhile, you can download the app with by accessing the
                     below link.
                   </p>
-                  <p className="py-4 fw-bold">Ticket ID : 123456</p>
+                  <p className="py-4 fw-bold">Ticket ID : {requestId}</p>
                 </div>
                 <div className="text-center">
                   <img className="w-75" src={Images.CREDIT_CARD_IMG} alt="" />

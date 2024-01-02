@@ -7,14 +7,15 @@ import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import React, { memo, useCallback } from "react";
 import { SIGNIN_SCHEMA } from "./data/validation";
-import { LOGIN_URL } from "../../utils/constants";
 import { INITIAL_VALUES } from "./data/initialValue";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Form, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../Redux/features/User/userApi";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
+import { setEmail } from "../../Redux/features/User/userSlice";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import { FORBIDDEN_CODE, LOGIN_URL } from "../../utils/constants";
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -42,6 +43,11 @@ const SignInForm = () => {
           }
         });
         Toaster.success("Logged in successfully");
+      } else if (res.type === "login/rejected") {
+        if (res?.payload?.statusCode === FORBIDDEN_CODE) {
+          dispatch(setEmail(values.email));
+          navigate("/verifyOtp/signUp");
+        }
       }
     });
   };

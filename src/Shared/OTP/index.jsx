@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
-import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import InformationModal from "../Modal/InformationModal";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
+import { setEmail } from "../../Redux/features/User/userSlice";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   resendOtp,
   verifyOtp,
@@ -23,8 +25,13 @@ const OTPVerification = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation("");
   const [otp, setOtp] = useState("");
+  const [requestId, setRequestId] = useState("");
   const [timer, setTimer] = useState({ minutes: 1, seconds: 59 });
-  const { email, loading } = useSelector((state) => state.forgotPassword);
+  const [showReviewRequestModal, setShowReviewRequestModal] = useState(false);
+  const { email: userEmail } = useSelector((state) => state.user);
+  const { forgotPasswordEmail, loading } = useSelector(
+    (state) => state.forgotPassword
+  );
 
   useEffect(() => {
     const otpTimeInterval = setInterval(() => {
@@ -46,34 +53,56 @@ const OTPVerification = () => {
   }, [timer]);
 
   const handleNextClick = () => {
-    if (type === "forgotPassword") {
-      const data = {
-        apiEndpoint: FORGOT_PASSWORD_VERIFY_URL,
-        requestData: JSON.stringify({ email, otp }),
-      };
-      dispatch(verifyOtp(data)).then((res) => {
-        if (res.type === "verifyOtp/fulfilled") {
-          navigate("/changePassword");
-        }
-      });
+    let email = "";
+    if (type === "forgotPassword" || type === "signUp") {
+      email = type === "forgotPassword" ? forgotPasswordEmail : userEmail;
     }
+    const data = {
+      apiEndpoint: FORGOT_PASSWORD_VERIFY_URL,
+      requestData: JSON.stringify({ email, otp }),
+    };
+    dispatch(verifyOtp(data)).then((res) => {
+      if (res.type === "verifyOtp/fulfilled") {
+        if (type === "forgotPassword") {
+          navigate("/changePassword");
+        } else {
+          dispatch(setEmail(""));
+          setRequestId(res.payload.data.request_id);
+          setShowReviewRequestModal(true);
+        }
+      }
+    });
   };
 
   const handleResendClick = () => {
+    let email = "";
+    if (type === "forgotPassword" || type === "signUp") {
+      email = type === "forgotPassword" ? forgotPasswordEmail : userEmail;
+    }
     if (timer.seconds === 0 && timer.minutes === 0) {
-      if (type === "forgotPassword") {
+      if (type === "forgotPassword" || type === "signUp") {
         const data = {
           apiEndpoint: FORGOT_PASSWORD_RESEND_OTP_URL,
           requestData: JSON.stringify({ email }),
         };
         dispatch(resendOtp(data)).then((res) => {
           if (res.type === "resendOtp/fulfilled") {
+            setOtp("");
             setTimer({ minutes: 1, seconds: 59 });
           }
         });
       }
     }
   };
+
+  const handleReviewRequestModalClose = useCallback(() => {
+    setShowReviewRequestModal(false);
+  }, []);
+
+  const handleReviewRequestOkayClick = useCallback(() => {
+    setShowReviewRequestModal(false);
+    navigate(`/serviceProvider/appDownloadLink/${requestId}`);
+  }, [navigate, requestId]);
 
   return (
     <Container className={`vh-100 text-black-custom ${styles.otpContainer}`}>
@@ -125,6 +154,28 @@ const OTPVerification = () => {
             handleOnClick={handleNextClick}
           />
         </Col>
+        <InformationModal
+          size={"md"}
+          className={"p-4"}
+          TTwoClassName={"mb-2 text-center"}
+          TOneClassName={"mb-2 text-center"}
+          isOpen={showReviewRequestModal}
+          onClose={handleReviewRequestModalClose}
+          requestId={requestId}
+          ModalTextOne={
+            "Your request has been submitted successfully. After review you are notify by email."
+          }
+          ModalTextTwo={
+            "In order to serve you better, we have generated a ticket ID for your request, please tab to copy this ID."
+          }
+          ButtonOne={
+            <FillBtn
+              text={t("otpVerification.okayText")}
+              className="py-2 px-5"
+              handleOnClick={handleReviewRequestOkayClick}
+            />
+          }
+        />
       </Row>
     </Container>
   );

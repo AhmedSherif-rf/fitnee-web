@@ -5,8 +5,6 @@ import { useTranslation } from "react-i18next";
 import SignInWrapper from "../../../Shared/SignIn/SignInWrapper";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
-
-
 const SignIn = () => {
   const { t } = useTranslation("");
 
@@ -16,19 +14,29 @@ const SignIn = () => {
       text1: (
         <div className="text-center">
           <Link to="/">
-            <img className="img-fluid w-25 m-3" src={Images.LOGO_IMG} alt={""} />
+            <img
+              className="img-fluid  m-3"
+              src={Images.SMALL_LOGO_IMG}
+              alt={""}
+            />
           </Link>
         </div>
       ),
       text2: (
         <div className="text-center lh-1">
-          <h1 className="fw-bold fs-1 text-white">{t("login.unlockYourPotentialText")}</h1>
+          <h1 className="fw-bold fs-1 text-white">
+            {t("login.unlockYourPotentialText")}
+          </h1>
           <span className="fs-2 text-white fst-italic">
-          {t("login.transformYourBodyText")}
+            {t("login.transformYourBodyText")}
           </span>
         </div>
       ),
-      text3: <h6 className="small text-center text-white">www.fitnee.com</h6>,
+      text3: (
+        <Link className="text-white" to="/">
+          <h6 className="small text-center text-white">www.fitnee.fit</h6>
+        </Link>
+      ),
     },
   ];
   return (

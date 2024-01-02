@@ -21,6 +21,7 @@ export const TRAINEE_SIGNUP_INITIAL_VALUES = {
   food_sensitive: "",
   injury_details: "",
   confirm_password: "",
+  term_and_condition: false,
 };
 
 export const TRAINER_SIGNUP_INITIAL_VALUES = {

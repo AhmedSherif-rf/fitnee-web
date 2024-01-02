@@ -33,6 +33,7 @@ const InformationModal = (props) => {
       isOpen={isOpen}
       toggle={onClose}
       className={className}
+      backdrop="static"
     >
       {heading && (
         <ModalHeader className="border-0">

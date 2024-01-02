@@ -168,6 +168,7 @@ export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({
   first_name: firstNameValidation,
   phone_number: phoneNumberValidaton,
   confirm_password: confirmPasswordValidation,
+  term_and_condition: termAndConditionCheckValidation,
 });
 
 export const TRAINER_SIGNUP_SCHEMA = Yup.object().shape({

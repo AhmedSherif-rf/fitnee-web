@@ -1165,13 +1165,29 @@ const SignUpForm = () => {
 
             {roleType === TRAINEE_TYPE && (
               <Row>
-                <p className="mb-0 fs-6">
-                  {t("signup.pleaseReadText")}
-                  <Link to="/termAndCondition/trainee">
-                    <span className="textYellow">
-                      {t("signup.termsAndConditionText")}
-                    </span>
-                  </Link>
+                <div className="d-flex mb-2">
+                  <Checkbox
+                    label={
+                      <p className="mb-0 fs-6">
+                        {t("signup.acknowledgeText")}
+
+                        <Link to="/termAndCondition/trainee">
+                          <span className="textYellow">
+                            {t("signup.termsAndConditionText")}
+                          </span>
+                        </Link>
+                      </p>
+                    }
+                    name={"term_and_condition"}
+                    onChangeHandle={handleChange}
+                    onBlurHandle={handleBlur}
+                    checked={values.term_and_condition}
+                  />
+                </div>
+                <p className="errorField">
+                  {errors.term_and_condition &&
+                    touched.term_and_condition &&
+                    errors.term_and_condition}
                 </p>
               </Row>
             )}

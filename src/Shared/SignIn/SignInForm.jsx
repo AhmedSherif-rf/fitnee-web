@@ -13,6 +13,7 @@ import { Col, Container, Form, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../Redux/features/User/userApi";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
+import { setEmail } from "../../Redux/features/User/userSlice";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FORBIDDEN_CODE, LOGIN_URL } from "../../utils/constants";
 
@@ -44,6 +45,7 @@ const SignInForm = () => {
         Toaster.success("Logged in successfully");
       } else if (res.type === "login/rejected") {
         if (res?.payload?.statusCode === FORBIDDEN_CODE) {
+          dispatch(setEmail(values.email));
           navigate("/verifyOtp/signUp");
         }
       }

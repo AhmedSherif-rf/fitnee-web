@@ -99,7 +99,10 @@ const OTPVerification = () => {
     setShowReviewRequestModal(false);
   }, []);
 
-  const handleReviewRequestOkayClick = useCallback(() => {}, []);
+  const handleReviewRequestOkayClick = useCallback(() => {
+    setShowReviewRequestModal(false);
+    navigate(`/serviceProvider/appDownloadLink/${requestId}`);
+  }, [navigate, requestId]);
 
   return (
     <Container className={`vh-100 text-black-custom ${styles.otpContainer}`}>

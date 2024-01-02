@@ -342,7 +342,6 @@ const SignUpForm = () => {
                     </div>
                     <InputGroup>
                       <InputGroupText
-                       
                         style={{
                           borderTopLeftRadius: "14px",
                           borderBottomLeftRadius: "14px",
@@ -353,11 +352,11 @@ const SignUpForm = () => {
                       <Input
                         type="date"
                         style={{
+                          color: "black",
                           fontSize: "14px",
                           paddingTop: "16px",
                           paddingBottom: "16px",
                           backgroundColor: "white",
-                          color: "black",
                           borderTopRightRadius: "14px",
                           borderBottomRightRadius: "14px",
                         }}
@@ -413,7 +412,7 @@ const SignUpForm = () => {
                       type="number"
                       placeholder={t("signup.yearOfExperienceText")}
                       name="experience"
-                      onWheel={ event => event.currentTarget.blur() }
+                      onWheel={(event) => event.currentTarget.blur()}
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
                       value={values.experience}
@@ -929,7 +928,8 @@ const SignUpForm = () => {
                     label={
                       <p className="mb-0 fs-6">
                         {t("signup.moneyTransferText")}
-                        <Link to="/termAndCondition">
+
+                        <Link to="/termAndCondition/serviceProvider">
                           <span className="textYellow">
                             {t("signup.termsAndConditionText")}
                           </span>
@@ -946,6 +946,19 @@ const SignUpForm = () => {
                   {errors.termAndConditionCheck &&
                     touched.termAndConditionCheck &&
                     errors.termAndConditionCheck}
+                </p>
+              </Row>
+            )}
+
+            {roleType === TRAINEE_TYPE && (
+              <Row>
+                <p className="mb-0 fs-6">
+                {t("signup.pleaseReadText")}
+                  <Link to="/termAndCondition/trainee">
+                    <span className="textYellow">
+                      {t("signup.termsAndConditionText")}
+                    </span>
+                  </Link>
                 </p>
               </Row>
             )}

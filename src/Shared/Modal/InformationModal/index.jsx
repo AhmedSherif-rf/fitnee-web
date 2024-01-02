@@ -2,7 +2,7 @@ import "./styles.scss";
 import PropTypes from "prop-types";
 import React, { memo, useState } from "react";
 import { MdContentCopy } from "react-icons/md";
-import { copyToClipboard } from "../../../utils/functions";
+import functions from "../../../utils/functions";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
@@ -48,7 +48,7 @@ const InformationModal = (props) => {
           <div
             className="text-center fw-bold mb-3 fs-4 cursorPointer"
             onClick={() => {
-              copyToClipboard(requestId);
+              functions.copyToClipboard(requestId);
               setIsRequestIdCopied(true);
               setTimeout(() => {
                 setIsRequestIdCopied(false);

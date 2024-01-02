@@ -1,11 +1,11 @@
 import i18n from "i18next";
+import functions from "../utils/functions";
 import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 import { DEFAULT_LANGUAGE } from "../utils/constants";
-import { getLanguageFromStorage } from "../utils/functions";
 import LanguageDetector from "i18next-browser-languagedetector";
 
-const currentLanguage = getLanguageFromStorage();
+const currentLanguage = functions.getLanguageFromStorage();
 
 i18n
   .use(Backend)

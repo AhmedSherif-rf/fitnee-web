@@ -5,6 +5,7 @@ import InputField from "../InputField";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
 import MultiSelector from "../MultiSelector";
+import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import { FaDeleteLeft } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
@@ -12,15 +13,12 @@ import { SIGNUP_SCHEMA } from "./data/validation";
 import { INITIAL_VALUES } from "./data/initialValue";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { createFormData } from "../../utils/functions";
 import { ConnectedFocusError } from "focus-formik-error";
 import React, { memo, useState, useEffect } from "react";
-import { filterSignUpFields } from "../../utils/functions";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
 import { Formik, Field, FieldArray, ErrorMessage } from "formik";
-import { setTraineeInitialValuesForTrainee } from "../../utils/functions";
 import {
   signUp,
   editProfile,
@@ -40,8 +38,6 @@ import {
   TRAINER_TYPE,
   NUTRITIONIST_TYPE,
 } from "../../utils/constants";
-import { getInitialUrl } from "../../utils/functions";
-
 import {
   Container,
   Row,
@@ -65,7 +61,7 @@ const SignUpForm = () => {
   const { roleType } = useParams();
   const { lang } = useSelector((state) => state.language);
   const { loading, user } = useSelector((state) => state.user);
-  const filterFields = filterSignUpFields(roleType, user);
+  const filterFields = functions.filterSignUpFields(roleType, user);
 
   const [specialityOptions, setSpecialityOptions] = useState([]);
 
@@ -91,7 +87,7 @@ const SignUpForm = () => {
     if (user) {
       switch (roleType) {
         case TRAINEE_TYPE:
-          return setTraineeInitialValuesForTrainee(
+          return functions.setTraineeInitialValuesForTrainee(
             TRAINEE_SIGNUP_INITIAL_VALUES,
             user
           );
@@ -135,7 +131,7 @@ const SignUpForm = () => {
   };
 
   const handleSignUpSubmit = (values) => {
-    const formData = createFormData(values);
+    const formData = functions.createFormData(values);
     if (user === null) {
       const data = {
         apiEndpoint: "/registeruser/",
@@ -153,7 +149,7 @@ const SignUpForm = () => {
       };
       dispatch(editProfile(data)).then((res) => {
         if (res.type === "editProfile/fulfilled") {
-          navigate(getInitialUrl(user?.role));
+          navigate(functions.getInitialUrl(user?.role));
         }
       });
     }

@@ -16,7 +16,7 @@ import FillBtn from "../../Shared/Buttons/FillBtn";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
-import { getGuestDataLimit } from "../../utils/functions";
+// import { getGuestDataLimit } from "../../utils/functions";
 import React, { useState, useCallback, memo } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import ServiceProviderListCard from "../../Shared/ServiceProviderListCard";
@@ -305,7 +305,7 @@ const TraineeServiceProviderListWrapper = (props) => {
         <Row>
           {listingRole === TRAINER_TYPE &&
             TrainerData.map((item, index) => {
-              const isDisable = isGuest && index >= getGuestDataLimit();
+              // const isDisable = isGuest && index >= getGuestDataLimit();
               return (
                 <Col lg={3} md={4} col={6} className="mb-3" key={index}>
                   {/* <ServiceProviderListCard
@@ -325,7 +325,7 @@ const TraineeServiceProviderListWrapper = (props) => {
             })}
           {listingRole === NUTRITIONIST_TYPE &&
             NutritionistData.map((item, index) => {
-              const isDisable = isGuest && index >= getGuestDataLimit();
+              // const isDisable = isGuest && index >= getGuestDataLimit();
               return (
                 <Col lg={3} md={4} col={6} className="mb-3" key={index}>
                   {/* <ServiceProviderListCard
@@ -345,7 +345,7 @@ const TraineeServiceProviderListWrapper = (props) => {
             })}
           {listingRole === TRAINER_NUTRITIONIST_TYPE &&
             TrainerAndNutritionistData.map((item, index) => {
-              const isDisable = isGuest && index >= getGuestDataLimit();
+              // const isDisable = isGuest && index >= getGuestDataLimit();
               return (
                 <Col lg={3} md={4} col={6} className="mb-3" key={index}>
                   {/* <ServiceProviderListCard

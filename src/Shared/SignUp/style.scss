@@ -1,29 +1,23 @@
 @import "../../Assets/Scss/variables.scss";
 
-.imgTitle {
-  content: "";
-  position: absolute;
-  background-color: rgba(39, 38, 38, 0.473);
-  z-index: 99;
-  bottom: 0;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  color: white;
-  .TitleInput {
-    background-color: transparent !important;
-    border: none !important;
-    color: white;
-    text-align: center;
-    &:focus-visible {
-      border: none !important;
-      outline: none !important;
-    }
-  }
-}
 .deleteButton {
   border: none;
   position: absolute;
   background: none;
   color: $yellow;
   right: 0px;
+}
+
+.certificatioTitle {
+  bottom: 0;
+  border: none;
+  color: $white;
+  height: 3rem;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
 }

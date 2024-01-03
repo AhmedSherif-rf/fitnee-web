@@ -400,7 +400,7 @@ const Dashboard = () => {
                             <InputField
                               className="mb-2"
                               type="text"
-                              placeholder="Kg"
+                              placeholder="g / kg"
                             />
                           </>
                         }

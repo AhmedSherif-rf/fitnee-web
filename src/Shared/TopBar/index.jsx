@@ -14,6 +14,7 @@ import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { GiWallet } from "react-icons/gi";
 import { FaArrowUp } from "react-icons/fa6";
+import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { PiCaretDownBold } from "react-icons/pi";
@@ -22,7 +23,6 @@ import { FaBars, FaUserEdit } from "react-icons/fa";
 import { FaKey, FaTrashCan } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
-import { setLanguageInStorage } from "../../utils/functions";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
@@ -120,7 +120,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const selectLanguage = (language) => {
     dispatch(setLanguage(language));
     i18n.changeLanguage(language);
-    setLanguageInStorage(language);
+    functions.setLanguageInStorage(language);
   };
 
   const handleSignUpClick = useCallback(() => {
@@ -160,12 +160,14 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   };
 
   const handleLogoutClick = () => {
-    localStorage.removeItem("role");
     const data = {
       apiEndpoint: LOGOUT_URL,
+      requestData: { refresh: user.tokens.refresh },
     };
     dispatch(logout(data)).then((res) => {
-      navigate("/signIn");
+      if (res.type === "logout/fullfiled") {
+        navigate("/signIn");
+      }
     });
   };
 

@@ -19,13 +19,7 @@ export const trainingGoalOptions = [
   "Power Lifting",
 ];
 export const activityLevelOptions = ["Beginner", "Intermediate", "Advanced"];
-export const roleOptions = ["Trainer", "Nutrition", "Trainer & Nutrition"];
-export const specialityOptions = [
-  { value: "Body Building", label: "Body Building" },
-  { value: "Health Issue", label: "Health Issue" },
-  { value: "Power Lifting", label: "Power Lifting" },
-  { value: "Healthy Lifestyle", label: "Healthy Lifestyle" },
-];
+export const roleOptions = ["Trainer", "Nutrition", "Both"];
 export const weekDaysOptions = [
   { value: "monday", label: "Monday" },
   { value: "tuesday", label: "Tuesday" },
@@ -55,6 +49,7 @@ export const GUEST_SERVICE_PROVIDER_LISTING = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE = "/guest/serviceprovide";
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
+export const FORBIDDEN_CODE = 403;
 //=================Exercise======================
 export const exerciseLevel = ["Beginner", "Expert"];
 export const category = [

@@ -70,7 +70,7 @@ const routes = [
     exact: true,
   },
   {
-    path: "/serviceProvider/appDownloadLink",
+    path: "/serviceProvider/appDownloadLink/:requestId",
     component: lazy(() => import("../Pages/Auth/AppDownloadLink")),
     isPublic: true,
     theme: "dark",

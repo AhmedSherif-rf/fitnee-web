@@ -1409,7 +1409,7 @@ const TermAndCondition = () => {
                 </h6>
                 <ol align="justify">
                   {sectionSeven.map((item, index) => {
-                    return <span key={index}>{item.description}</span>;
+                    return <li key={index}>{item.description}</li>;
                   })}
                 </ol>
                 <h6 className="fw-bold">

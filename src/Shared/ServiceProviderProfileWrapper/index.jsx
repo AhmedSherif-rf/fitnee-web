@@ -1,40 +1,17 @@
 import CommentCard from "../CommentCard";
 import DocumentCard from "../DocumentCard";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import React, { useCallback, memo } from "react";
 import FillBtn from "../../Shared/Buttons/FillBtn";
+import { useSelector, useDispatch } from "react-redux";
 import AvailableHourList from "../AvailableHourListing";
+import { useNavigate, useParams } from "react-router-dom";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../ProfileInformationCard";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import React, { useCallback, memo, useState, useEffect } from "react";
+import { GUEST_SERVICE_PROVIDER_PROFILE } from "../../utils/constants";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
-
-const availableHoursData = [
-  {
-    day: "Monday",
-    time: "13:00 - 14:00",
-  },
-  {
-    day: "Tuesday",
-    time: "15:00 - 16:00",
-  },
-  {
-    day: "Wednesday",
-    time: "17:00 - 18:00",
-  },
-  {
-    day: "Thursday",
-    time: "19:00 - 20:00",
-  },
-  {
-    day: "Friday",
-    time: "21:00 - 22:00",
-  },
-  {
-    day: "Saturday",
-    time: "13:00 - 24:00",
-  },
-];
+import { getServiceProviderProfile } from "../../Redux/features/Guest/guestApi";
 
 const commentsData = [
   {
@@ -63,51 +40,36 @@ const commentsData = [
   },
 ];
 
-const documentsData = [
-  {
-    docSrc: Images.DOCUMENT_IMG,
-    docTitle: "Loki",
-  },
-  {
-    docSrc: Images.DOCUMENT_IMG,
-    docTitle: "Loki",
-  },
-  {
-    docSrc: Images.DOCUMENT_IMG,
-    docTitle: "Loki",
-  },
-  {
-    docSrc: Images.DOCUMENT_IMG,
-    docTitle: "Loki",
-  },
-];
-
-const personalData = {
-  infoImg: Images.PROFILE4_IMG,
-  infoLogo: Images.SHORTLOGO_IMG,
-  infoTitle: "Shane",
-  infoRating: 4,
-  infoDes: "2 Years",
-  Height: "38",
-  Email: "shane@gmail.com",
-};
-
 const ServiceProviderProfileWrapper = (props) => {
+  const { uuid } = useParams();
   const { subscriptionLink } = props;
+  const { loading } = useSelector((state) => state.guest);
+
+  const [serviceProviderProfile, setServiceProviderProfile] = useState([]);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation("");
 
-  const categories = [
-    t("guest.bodyBuildingText"),
-    t("guest.powerLiftingText"),
-    t("guest.healthyLifeStyleText"),
-  ];
+  useEffect(() => {
+    const data = {
+      apiEndpoint: `${GUEST_SERVICE_PROVIDER_PROFILE}?uuid=${uuid}`,
+    };
+
+    dispatch(getServiceProviderProfile(data)).then((res) => {
+      if (res.type === "getServiceProviderProfile/fulfilled") {
+        setServiceProviderProfile(res.payload.data.results[0]);
+      }
+    });
+  }, [dispatch, uuid]);
+
   const handleSubscribeClick = useCallback(() => {
     navigate(subscriptionLink);
   }, [navigate, subscriptionLink]);
 
   return (
     <Container fluid>
+      {loading === "pending" && <LoadingScreen />}
       <Row>
         <Col md={12}>
           <Card className="contentCard bg-transparent overflow-x-hidden">
@@ -115,13 +77,7 @@ const ServiceProviderProfileWrapper = (props) => {
               <Col lg={3} md={4}>
                 <div className="mb-2">
                   <ProfileInformationCard
-                    infoLogo={personalData.infoLogo}
-                    infoTitle={personalData.infoTitle}
-                    infoRating={personalData.infoRating}
-                    infoImg={personalData.infoImg}
-                    infoDes={personalData.infoDes}
-                    CardHeight={personalData.Height}
-                    TraineeEmail={personalData.Email}
+                    providerProfile={serviceProviderProfile}
                   />
                 </div>
                 <div className="mb-3">
@@ -133,36 +89,25 @@ const ServiceProviderProfileWrapper = (props) => {
                 </div>
                 <div>
                   <h6 className="fw-bold text-white">Available Hours</h6>
-                  <AvailableHourList data={availableHoursData} />
+                  <AvailableHourList
+                    data={serviceProviderProfile?.profile_availability}
+                  />
                 </div>
               </Col>
               <Col lg={9} md={8}>
                 <Card className="BorderRadius border-0 text-black-custom">
                   <CardBody>
                     <h3 className="fw-bold my-2">
-                      {t("guest.meetText")} Shane
+                      {t("guest.meetText")} {serviceProviderProfile?.full_name}
                     </h3>
-                    <p className="small">
-                      {" "}
-                      Experienced fitness pro. With a degree in Exercise Science
-                      and national certifications, I craft personalized fitness
-                      plans. My philosophy encompasses exercise, nutrition, and
-                      mental health for a complete wellness approach. Assessing
-                      your needs comprehensively, I focus on strength, cardio,
-                      and flexibility. Custom workouts blend challenges with
-                      achievable goals to ensure steady progress and avoid
-                      injuries. Nutrition is vital. I offer diet advice to fuel
-                      workouts and recovery. As your coach, I'm more than
-                      workouts – I motivate and keep you on track, adjusting
-                      plans as needed. Mental well-being is a priority too;
-                      stress reduction and relaxation techniques are part of my
-                      training. Results speak. I've transformed lives by
-                      tailoring programs for weight loss, muscle gain, or
-                      overall health. From novices to experts, I've got you.
-                      Passionate, I'm committed to staying current in fitness
-                      trends. Join me to celebrate milestones, conquer
-                      challenges, and achieve well-being.
-                    </p>
+                    <div className="BorderRadius overflow-hidden">
+                      <div
+                        className=" overflow-scroll p-3"
+                        style={{ height: "100px" }}
+                      >
+                        <p className="small">{serviceProviderProfile?.bio}</p>
+                      </div>
+                    </div>
 
                     <Row>
                       <Col md={12}>
@@ -170,32 +115,33 @@ const ServiceProviderProfileWrapper = (props) => {
                           {t("guest.qualificationExperienceText")}
                         </h5>
                       </Col>
-                      {documentsData.map((item) => {
-                        return (
+                      {serviceProviderProfile?.ServiceProvider_Certification?.map(
+                        (certificate, index) => (
                           <DocumentCard
+                            key={index}
                             className="BorderYellow"
-                            documentTitle={item.docTitle}
-                            documentImg={item.docSrc}
+                            documentTitle={certificate?.title}
+                            documentImg={certificate?.certificate_image}
                           />
-                        );
-                      })}
+                        )
+                      )}
                     </Row>
                     <Row>
                       <Col md={12}>
                         <h5 className="fw-bold my-2">
                           {t("guest.areaSpecialtyText")}
                         </h5>
-                        {categories?.map((item, index) => {
-                          return (
+                        {serviceProviderProfile?.specialities?.map(
+                          (specialty, index) => (
                             <Badge
                               key={index}
                               color="custom"
                               className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
                             >
-                              {item}
+                              {specialty.name}
                             </Badge>
-                          );
-                        })}
+                          )
+                        )}
                       </Col>
                     </Row>
                     <Row>
@@ -215,11 +161,7 @@ const ServiceProviderProfileWrapper = (props) => {
                       </Col>
                       <Col md={12}>
                         <div className="text-center">
-                          <FillBtn
-                            className=" py-2"
-                            text={"See More"}
-                            // handleOnClick={handleSubscribeClick}
-                          />
+                          <FillBtn className=" py-2" text={"See More"} />
                         </div>
                       </Col>
                     </Row>

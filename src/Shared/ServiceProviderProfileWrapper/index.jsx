@@ -9,8 +9,8 @@ import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../ProfileInformationCard";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { useCallback, memo, useState, useEffect } from "react";
-import { GUEST_SERVICE_PROVIDER_PROFILE } from "../../utils/constants";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
+import { GUEST_SERVICE_PROVIDER_PROFILE_URL } from "../../utils/constants";
 import { getServiceProviderProfile } from "../../Redux/features/Guest/guestApi";
 
 const commentsData = [
@@ -53,7 +53,7 @@ const ServiceProviderProfileWrapper = (props) => {
 
   useEffect(() => {
     const data = {
-      apiEndpoint: `${GUEST_SERVICE_PROVIDER_PROFILE}?uuid=${uuid}`,
+      apiEndpoint: `${GUEST_SERVICE_PROVIDER_PROFILE_URL}?uuid=${uuid}`,
     };
 
     dispatch(getServiceProviderProfile(data)).then((res) => {

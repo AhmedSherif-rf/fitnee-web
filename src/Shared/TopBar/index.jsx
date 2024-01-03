@@ -367,7 +367,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         <div
                           className="bgProperties rounded-circle"
                           style={{
-                            backgroundImage: `url(${Images.PROFILE4_IMG})`,
+                            backgroundImage:
+                              user?.profile_pic === null
+                                ? `url(${Images.USER_DUMMY_IMG})`
+                                : user?.profile_pic,
                             width: "40px",
                             height: "40px",
                           }}

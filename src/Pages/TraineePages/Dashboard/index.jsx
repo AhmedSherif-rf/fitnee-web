@@ -236,7 +236,7 @@ const Dashboard = () => {
           <Row>
             <Col lg={3} md={4} className="mb-2">
               <div className="mb-2">
-                {infoData.map((item, index) => {
+                {/* {infoData.map((item, index) => {
                   return (
                     <ProfileInformationCard
                       key={index}
@@ -249,7 +249,7 @@ const Dashboard = () => {
                       TraineeEmail={item.TraineeEmail}
                     />
                   );
-                })}
+                })} */}
               </div>
               <Row className="my-3">
                 <Col md={12}>

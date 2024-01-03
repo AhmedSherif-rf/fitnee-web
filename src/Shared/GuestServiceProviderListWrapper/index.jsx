@@ -30,7 +30,7 @@ import {
 } from "../../utils/constants";
 
 const GuestServiceProviderListWrapper = (props) => {
-  const { cardLink, roleType } = props;
+  const { roleType } = props;
   const [
     showSubscriptionInformationModal,
     setShowSubscriptionInformationModal,
@@ -57,7 +57,6 @@ const GuestServiceProviderListWrapper = (props) => {
       }
     });
   }, [dispatch, listingRole]);
-
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const handleDropdownItemClick = (role) => {
@@ -142,7 +141,11 @@ const GuestServiceProviderListWrapper = (props) => {
                   <ServiceProviderListCard
                     className={`${styles.activeTrainerCard}`}
                     serviceProvider={serviceProvider}
-                    handleOnClick={() => navigate(cardLink)}
+                    handleOnClick={() =>
+                      navigate(
+                        `/guest/serviceProviderProfile/${serviceProvider.uuid}`
+                      )
+                    }
                   />
                 </Col>
               );

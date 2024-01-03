@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getServiceProviderGuestMode } from "./guestApi";
+import { getServiceProviderGuestMode, getServiceProviderProfile } from "./guestApi";
 
 export const guestSlice = createSlice({
   name: "guest",
@@ -16,6 +16,15 @@ export const guestSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(getServiceProviderGuestMode.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(getServiceProviderProfile.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getServiceProviderProfile.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getServiceProviderProfile.rejected, (state) => {
         state.loading = "failed";
       });
   },

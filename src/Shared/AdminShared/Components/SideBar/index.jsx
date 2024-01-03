@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import { MdOutlineSportsGymnastics } from "react-icons/md";
-import { GoPersonAdd, GoPaste, GoLog } from "react-icons/go";
 import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
+import { GoPersonAdd, GoPaste, GoLog ,GoPeople  } from "react-icons/go";
+ 
 
 const SideBar = ({ isOpen, toggle }) => (
   <div className={classNames("sidebar", { "is-open": isOpen })}>
@@ -31,7 +32,16 @@ const SideBar = ({ isOpen, toggle }) => (
             Dashboard
           </NavLink>
         </NavItem>
-
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/admin/userRequest"}
+          >
+            <GoPeople />
+            User Requests
+          </NavLink>
+        </NavItem>
         <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[1]} />
         <SubMenu
           title="Exercises"

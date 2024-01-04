@@ -1142,12 +1142,12 @@ const TermAndCondition = () => {
   const ServiceProviderSectionThree = [
     {
       description: t(
-        "termAndCondition.serviceProviders.sectionTwoDescriptionOneText"
+        "termAndCondition.serviceProviders.sectionThreeDescriptionOneText"
       ),
     },
     {
       description: t(
-        "termAndCondition.serviceProviders.sectionTwoDescriptionTwoText"
+        "termAndCondition.serviceProviders.sectionThreeDescriptionTwoText"
       ),
     },
     {
@@ -1409,7 +1409,7 @@ const TermAndCondition = () => {
                 </h6>
                 <ol align="justify">
                   {sectionSeven.map((item, index) => {
-                    return <span key={index}>{item.description}</span>;
+                    return <li key={index}>{item.description}</li>;
                   })}
                 </ol>
                 <h6 className="fw-bold">
@@ -1801,11 +1801,11 @@ const TermAndCondition = () => {
                   )}
                 </h6>
                 <p align="justify">
-                  <ol>
+                 
                     {traineeSectionThree.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
+                      return <span key={index}>{item.description}</span>;
                     })}
-                  </ol>     
+                 
                 </p>
                 <h6 className="fw-bold">
                   {t(
@@ -1813,11 +1813,11 @@ const TermAndCondition = () => {
                   )}
                 </h6>
                 <p align="justify">
-                  <ol>
+              
                     {traineeSectionFour.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
+                      return <span key={index}>{item.description}</span>;
                     })}
-                  </ol>     
+                
                 </p>
               </div>
             </div>

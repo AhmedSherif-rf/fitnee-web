@@ -53,7 +53,7 @@ const GuestServiceProviderListWrapper = (props) => {
 
     dispatch(getServiceProviderGuestMode(data)).then((res) => {
       if (res.type === "getServiceProviderGuestMode/fulfilled") {
-        setServiceProviderData(res.payload.data.results);
+        setServiceProviderData(res.payload.data);
       }
     });
   }, [dispatch, listingRole]);

@@ -1,3 +1,5 @@
+//===============AdminCredentials==================
+export const ADMIN_EMAIL = "admin@admin.com";
 //======================paginationParams============
 export const PAGE_RANGE = 2;
 export const PER_PAGE_COUNT = 20;
@@ -22,27 +24,33 @@ export const trainingGoalOptions = [
   "Power Lifting",
 ];
 export const activityLevelOptions = ["Beginner", "Intermediate", "Advanced"];
-export const roleOptions = ["Trainer", "Nutrition", "Both"];
 export const weekDaysOptions = [
-  { value: "monday", label: "Monday" },
-  { value: "tuesday", label: "Tuesday" },
-  { value: "wednesday", label: "Wednesday" },
-  { value: "thursday", label: "Thursday" },
-  { value: "friday", label: "Friday" },
+  { value: "Monday", label: "Monday" },
+  { value: "Tuesday", label: "Tuesday" },
+  { value: "Wednesday", label: "Wednesday" },
+  { value: "Thursday", label: "Thursday" },
+  { value: "Friday", label: "Friday" },
   { value: "Saturday", label: "Saturday" },
   { value: "Sunday", label: "Sunday" },
 ];
 //=====================Roles=====================
+export const ADMIN_ROLE = "Admin";
 export const TRAINEE_ROLE = "Trainee";
 export const TRAINER_ROLE = "Trainer";
+export const NUTRITIONIST_ROLE = "Nutritionist";
+export const TRAINER_NUTRITIONIST_ROLE = "Trainer And Nutritionist";
 //====================Routes====================
+export const ADMIN_INITIAL_URL = "/admin/dashboard";
 export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
 export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
 export const LOGOUT_URL = "/logout/";
+export const EDIT_PROFILE_URL = "/User/userId/";
+export const REGISTER_URL = "/registeruser/";
 export const DELETE_ACCOUNT_URL = "/delete/userId/";
 export const NEW_PASSWORD_URL = "/forget_password/";
+export const GET_SPECIALITIES_URL = "/specialities/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
@@ -50,10 +58,13 @@ export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
 export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
-export const TRAINEE_SERVICE_PROVIDER_LISTING_URL = "/serviceprovider_logged_in";
+export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
+  "/serviceprovider_logged_in";
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
 export const FORBIDDEN_CODE = 403;
+export const PRECONDITION_REQUIRED_CODE = 428;
+export const UNAVAILABLE_FOR_LEGAL_REASONS_CODE = 451;
 //=================Exercise======================
 export const exerciseLevel = ["Beginner", "Expert"];
 export const category = [

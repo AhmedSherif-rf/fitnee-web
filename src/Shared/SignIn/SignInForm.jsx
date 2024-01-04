@@ -5,23 +5,41 @@ import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
-import React, { memo, useCallback } from "react";
 import { SIGNIN_SCHEMA } from "./data/validation";
 import { INITIAL_VALUES } from "./data/initialValue";
 import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Form, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
+import InformationModal from "../Modal/InformationModal";
 import { login } from "../../Redux/features/User/userApi";
+import React, { memo, useCallback, useState } from "react";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { setEmail } from "../../Redux/features/User/userSlice";
 import Images from "../../HelperMethods/Constants/ImgConstants";
-import { FORBIDDEN_CODE, LOGIN_URL } from "../../utils/constants";
+import {
+  LOGIN_URL,
+  ADMIN_EMAIL,
+  FORBIDDEN_CODE,
+  ADMIN_INITIAL_URL,
+  PRECONDITION_REQUIRED_CODE,
+  UNAVAILABLE_FOR_LEGAL_REASONS_CODE,
+} from "../../utils/constants";
 
 const SignInForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation("");
   const { loading } = useSelector((state) => state.user);
+
+  const [showAccountRequestModal, setShowAccountRequestModal] = useState(false);
+  const [
+    accountRequestModalErrorText,
+    setAccountRequestModalErrorText,
+  ] = useState("");
+
+  const handleAccountRequestModalClose = useCallback(() => {
+    setShowAccountRequestModal(false);
+  }, []);
 
   const handleLoginSubmit = (values) => {
     const data = {
@@ -30,23 +48,42 @@ const SignInForm = () => {
     };
     dispatch(login(data)).then((res) => {
       if (res.type === "login/fulfilled") {
-        import("../../../src/utils/constants").then((item) => {
-          switch (res?.payload?.data?.role) {
-            case item.TRAINEE_ROLE:
-              navigate(item.TRAINEE_INITIAL_URL);
-              break;
-            case item.TRAINER_ROLE:
-              navigate(item.SERVICE_PROVIDER_INITIAL_URL);
-              break;
-            default:
-              navigate("/default-dashboard");
-          }
-        });
+        if (res.payload.data.email === ADMIN_EMAIL) {
+          navigate(ADMIN_INITIAL_URL);
+        } else {
+          import("../../../src/utils/constants").then((item) => {
+            switch (res?.payload?.data?.role) {
+              case item.TRAINEE_ROLE:
+                navigate(item.TRAINEE_INITIAL_URL);
+                break;
+              case item.TRAINER_ROLE:
+                navigate(item.SERVICE_PROVIDER_INITIAL_URL);
+                break;
+              case item.NUTRITIONIST_ROLE:
+                navigate(item.SERVICE_PROVIDER_INITIAL_URL);
+                break;
+              case item.TRAINER_NUTRITIONIST_ROLE:
+                navigate(item.SERVICE_PROVIDER_INITIAL_URL);
+                break;
+              default:
+            }
+          });
+        }
         Toaster.success("Logged in successfully");
       } else if (res.type === "login/rejected") {
         if (res?.payload?.statusCode === FORBIDDEN_CODE) {
           dispatch(setEmail(values.email));
           navigate("/verifyOtp/signUp");
+        } else if (res?.payload?.statusCode === PRECONDITION_REQUIRED_CODE) {
+          setAccountRequestModalErrorText("Your request is under Process");
+          setShowAccountRequestModal(true);
+        } else if (
+          res?.payload?.statusCode === UNAVAILABLE_FOR_LEGAL_REASONS_CODE
+        ) {
+          setAccountRequestModalErrorText(
+            "Your request has been rejected by FitNee Admin, Please check your email."
+          );
+          setShowAccountRequestModal(true);
         }
       }
     });
@@ -154,7 +191,7 @@ const SignInForm = () => {
                   handleOnClick={handleCancelClick}
                 />
                 <p className="pt-3 text-center">
-                  {t("login.newHereText")}
+                  {t("login.newHereText")}{" "}
                   <Link to="/registerAs" className="textYellow">
                     {t("login.createAccountText")}
                   </Link>
@@ -164,6 +201,21 @@ const SignInForm = () => {
           </Formik>
         </Col>
       </Row>
+      <InformationModal
+        size={"md"}
+        TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+        className={"p-4"}
+        isOpen={showAccountRequestModal}
+        onClose={handleAccountRequestModalClose}
+        ModalTextOne={accountRequestModalErrorText}
+        ButtonOne={
+          <FillBtn
+            text={"Okay"}
+            className="py-2 px-5"
+            handleOnClick={handleAccountRequestModalClose}
+          />
+        }
+      />
     </Container>
   );
 };

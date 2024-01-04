@@ -28,15 +28,26 @@ import {
   TRAINEE_SIGNUP_SCHEMA,
   TRAINEE_EDIT_PROFILE_SCHEMA,
   TRAINER_SIGNUP_SCHEMA,
+  TRAINER_EDIT_PROFILE_SCHEMA,
+  NUTRITIONIST_SIGNUP_SCHEMA,
+  NUTRITIONIST_EDIT_PROFILE_SCHEMA,
+  TRAINER_NUTRITIONIST_SIGNUP_SCHEMA,
+  TRAINER_NUTRITIONIST_EDIT_PROFILE_SCHEMA,
 } from "../ValidationData/validation";
 import {
   TRAINEE_SIGNUP_INITIAL_VALUES,
   TRAINER_SIGNUP_INITIAL_VALUES,
+  NUTRITIONIST_SIGNUP_INITIAL_VALUES,
+  TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES,
 } from "../ValidationData/initialValue";
 import {
+  REGISTER_URL,
   TRAINEE_TYPE,
   TRAINER_TYPE,
+  EDIT_PROFILE_URL,
   NUTRITIONIST_TYPE,
+  GET_SPECIALITIES_URL,
+  TRAINER_NUTRITIONIST_TYPE,
 } from "../../utils/constants";
 import {
   Container,
@@ -50,7 +61,6 @@ import {
 import {
   trainingGoalOptions,
   activityLevelOptions,
-  roleOptions,
   weekDaysOptions,
 } from "../../utils/constants";
 
@@ -66,13 +76,18 @@ const SignUpForm = () => {
   const [specialityOptions, setSpecialityOptions] = useState([]);
 
   useEffect(() => {
-    if (roleType === TRAINER_TYPE) {
+    if (roleType === TRAINER_TYPE || roleType === TRAINER_NUTRITIONIST_TYPE) {
       const data = {
-        apiEndpoint: `/specialities?locale=${lang}`,
+        apiEndpoint: GET_SPECIALITIES_URL,
       };
       dispatch(getSpecialities(data)).then((res) => {
         if (res.type === "getSpecialities/fulfilled") {
-          let specialities = res.payload.data.results;
+          let specialities = [];
+          if (lang === "en") {
+            specialities = res.payload.data.en;
+          } else {
+            specialities = res.payload.data.ar;
+          }
           specialities = specialities.map(({ id, name }) => ({
             label: name,
             value: id,
@@ -87,8 +102,23 @@ const SignUpForm = () => {
     if (user) {
       switch (roleType) {
         case TRAINEE_TYPE:
-          return functions.setTraineeInitialValuesForTrainee(
+          return functions.setTraineeInitialValues(
             TRAINEE_SIGNUP_INITIAL_VALUES,
+            user
+          );
+        case TRAINER_TYPE:
+          return functions.setTrainerInitialValues(
+            TRAINER_SIGNUP_INITIAL_VALUES,
+            user
+          );
+        case NUTRITIONIST_TYPE:
+          return functions.setNutritionistInitialValues(
+            NUTRITIONIST_SIGNUP_INITIAL_VALUES,
+            user
+          );
+        case TRAINER_NUTRITIONIST_TYPE:
+          return functions.setTrainerNutritionistInitialValues(
+            TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES,
             user
           );
 
@@ -101,6 +131,10 @@ const SignUpForm = () => {
           return TRAINEE_SIGNUP_INITIAL_VALUES;
         case TRAINER_TYPE:
           return TRAINER_SIGNUP_INITIAL_VALUES;
+        case NUTRITIONIST_TYPE:
+          return NUTRITIONIST_SIGNUP_INITIAL_VALUES;
+        case TRAINER_NUTRITIONIST_TYPE:
+          return TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES;
 
         default:
           return INITIAL_VALUES;
@@ -113,7 +147,12 @@ const SignUpForm = () => {
       switch (roleType) {
         case TRAINEE_TYPE:
           return TRAINEE_EDIT_PROFILE_SCHEMA;
-
+        case TRAINER_TYPE:
+          return TRAINER_EDIT_PROFILE_SCHEMA;
+        case NUTRITIONIST_TYPE:
+          return NUTRITIONIST_EDIT_PROFILE_SCHEMA;
+        case TRAINER_NUTRITIONIST_TYPE:
+          return TRAINER_NUTRITIONIST_EDIT_PROFILE_SCHEMA;
         default:
           return SIGNUP_SCHEMA;
       }
@@ -123,6 +162,10 @@ const SignUpForm = () => {
           return TRAINEE_SIGNUP_SCHEMA;
         case TRAINER_TYPE:
           return TRAINER_SIGNUP_SCHEMA;
+        case NUTRITIONIST_TYPE:
+          return NUTRITIONIST_SIGNUP_SCHEMA;
+        case TRAINER_NUTRITIONIST_TYPE:
+          return TRAINER_NUTRITIONIST_SIGNUP_SCHEMA;
 
         default:
         // return INITIAL_VALUES;
@@ -134,7 +177,7 @@ const SignUpForm = () => {
     const formData = functions.createFormData(values);
     if (user === null) {
       const data = {
-        apiEndpoint: "/registeruser/",
+        apiEndpoint: REGISTER_URL,
         requestData: formData,
       };
       dispatch(signUp(data)).then((res) => {
@@ -144,7 +187,7 @@ const SignUpForm = () => {
       });
     } else {
       const data = {
-        apiEndpoint: `/User/${user?.id}/`,
+        apiEndpoint: EDIT_PROFILE_URL.replace("userId", user?.id),
         requestData: formData,
       };
       dispatch(editProfile(data)).then((res) => {
@@ -217,9 +260,13 @@ const SignUpForm = () => {
                 <Col md={2} className="my-4">
                   <div className="d-flex justify-content-center align-items-center">
                     <div className="rounded-circle bgProperties position-relative">
-                      {values.profile_pic ? (
+                      {values.profile_pic || user?.profile_pic ? (
                         <img
-                          src={URL.createObjectURL(values?.profile_pic)}
+                          src={
+                            user?.profile_pic
+                              ? user?.profile_pic
+                              : URL.createObjectURL(values?.profile_pic)
+                          }
                           className="rounded-circle bgProperties position-relative"
                           alt="Profile Preview"
                           style={{
@@ -232,7 +279,7 @@ const SignUpForm = () => {
                         <div
                           className="rounded-circle bgProperties position-relative"
                           style={{
-                            backgroundImage: `url(${Images.PROFILE4_IMG})`,
+                            backgroundImage: `url(${Images.USER_DUMMY_IMG})`,
                             height: "160px",
                             width: "160px",
                           }}
@@ -513,26 +560,6 @@ const SignUpForm = () => {
                 </Col>
               )}
 
-              {filterFields.includes("role") && (
-                <Col lg={6} md={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>
-                  <MyDropdown
-                    className="border py-3 px-4 mb-0"
-                    Options={roleOptions}
-                    name={"role"}
-                    placeholder="What you will provide to the end user"
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.role}
-                  />
-                  <p className="errorField">
-                    {errors.role && touched.role && errors.role}
-                  </p>
-                </Col>
-              )}
-
               {filterFields.includes("bio") && (
                 <Col md={6} lg={6} className="mb-2">
                   <div className="text-end" style={{ marginBottom: "-15px" }}>
@@ -748,58 +775,58 @@ const SignUpForm = () => {
                 </Col>
               )}
 
-              {filterFields.includes("smm") && (
+              {filterFields.includes("skeletal_muscel_mass") && (
                 <Col md={6} className="mb-3">
                   <InputField
                     className="py-3 px-4"
                     type="number"
                     placeholder={t("signup.skeletonMuscleText")}
-                    name="smm"
+                    name="skeletal_muscel_mass"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
-                    value={values.smm}
+                    value={values.skeletal_muscel_mass}
                   />
                 </Col>
               )}
 
-              {filterFields.includes("bfm") && (
+              {filterFields.includes("body_fat_mass") && (
                 <Col md={6} className="mb-3">
                   <InputField
                     className="py-3 px-4"
                     type="number"
                     placeholder={t("signup.bodyFatText")}
-                    name="bfm"
+                    name="body_fat_mass"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
-                    value={values.bfm}
+                    value={values.body_fat_mass}
                   />
                 </Col>
               )}
 
-              {filterFields.includes("tbw") && (
+              {filterFields.includes("total_body_water") && (
                 <Col md={6} className="mb-3">
                   <InputField
                     className="py-3 px-4"
                     type="number"
                     placeholder={t("signup.totalBodyText")}
-                    name="tbw"
+                    name="total_body_water"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
-                    value={values.tbw}
+                    value={values.total_body_water}
                   />
                 </Col>
               )}
 
-              {filterFields.includes("protein") && (
+              {filterFields.includes("protien") && (
                 <Col md={6} className="mb-3">
                   <InputField
                     className="py-3 px-4"
                     type="number"
                     placeholder={t("signup.protienText")}
-                    name="protein"
+                    name="protien"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
-                    value={values.protein}
+                    value={values.protien}
                   />
                 </Col>
               )}
@@ -947,6 +974,28 @@ const SignUpForm = () => {
                     {errors.saudireps_number &&
                       touched.saudireps_number &&
                       errors.saudireps_number}
+                  </p>
+                </Col>
+              )}
+
+              {filterFields.includes("license_number") && (
+                <Col md={6}>
+                  <h6 className="mb-2 fw-bold">
+                    {t("signup.enterYourProfessionalText")}{" "}
+                  </h6>
+                  <InputField
+                    className="py-3 px-4"
+                    type="number"
+                    placeholder={t("signup.enterYourProfessionalText")}
+                    name="license_number"
+                    onChangeHandle={handleChange}
+                    onBlurHandle={handleBlur}
+                    value={values.license_number}
+                  />
+                  <p className="errorField">
+                    {errors.license_number &&
+                      touched.license_number &&
+                      errors.license_number}
                   </p>
                 </Col>
               )}
@@ -1135,44 +1184,27 @@ const SignUpForm = () => {
                 <div className="d-flex mb-2">
                   <Checkbox
                     label={
-                      <p className="mb-0 fs-6">
-                        {t("signup.moneyTransferText")}
+                      roleType === TRAINER_TYPE ? (
+                        <p className="mb-0 fs-6">
+                          {t("signup.moneyTransferText")}
 
-                        <Link to="/termAndCondition/serviceProvider">
-                          <span className="textYellow">
-                            {t("signup.termsAndConditionText")}
-                          </span>
-                        </Link>
-                      </p>
-                    }
-                    name={"term_and_condition"}
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    checked={values.term_and_condition}
-                  />
-                </div>
-                <p className="errorField">
-                  {errors.term_and_condition &&
-                    touched.term_and_condition &&
-                    errors.term_and_condition}
-                </p>
-              </Row>
-            )}
+                          <Link to="/termAndCondition/serviceProvider">
+                            <span className="textYellow">
+                              {t("signup.termsAndConditionText")}
+                            </span>
+                          </Link>
+                        </p>
+                      ) : (
+                        <p className="mb-0 fs-6">
+                          {t("signup.acknowledgeText")}
 
-            {roleType === TRAINEE_TYPE && (
-              <Row>
-                <div className="d-flex mb-2">
-                  <Checkbox
-                    label={
-                      <p className="mb-0 fs-6">
-                        {t("signup.acknowledgeText")}
-
-                        <Link to="/termAndCondition/trainee">
-                          <span className="textYellow">
-                            {t("signup.termsAndConditionText")}
-                          </span>
-                        </Link>
-                      </p>
+                          <Link to="/termAndCondition/trainee">
+                            <span className="textYellow">
+                              {t("signup.termsAndConditionText")}
+                            </span>
+                          </Link>
+                        </p>
+                      )
                     }
                     name={"term_and_condition"}
                     onChangeHandle={handleChange}

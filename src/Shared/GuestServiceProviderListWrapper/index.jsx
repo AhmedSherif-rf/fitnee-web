@@ -26,7 +26,7 @@ import {
   TRAINER_TYPE,
   NUTRITIONIST_TYPE,
   TRAINER_NUTRITIONIST_TYPE,
-  GUEST_SERVICE_PROVIDER_LISTING,
+  GUEST_SERVICE_PROVIDER_LISTING_URL,
 } from "../../utils/constants";
 
 const GuestServiceProviderListWrapper = (props) => {
@@ -46,7 +46,7 @@ const GuestServiceProviderListWrapper = (props) => {
 
   useEffect(() => {
     const data = {
-      apiEndpoint: `${GUEST_SERVICE_PROVIDER_LISTING}?role=${
+      apiEndpoint: `${GUEST_SERVICE_PROVIDER_LISTING_URL}?role=${
         listingRole[0].toUpperCase() + listingRole.slice(1)
       }`,
     };

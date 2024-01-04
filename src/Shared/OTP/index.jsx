@@ -29,7 +29,7 @@ const OTPVerification = () => {
   const [timer, setTimer] = useState({ minutes: 1, seconds: 59 });
   const [showReviewRequestModal, setShowReviewRequestModal] = useState(false);
   const { email: userEmail } = useSelector((state) => state.user);
-  const { forgotPasswordEmail, loading } = useSelector(
+  const { email: forgotPasswordEmail, loading } = useSelector(
     (state) => state.forgotPassword
   );
 
@@ -67,8 +67,12 @@ const OTPVerification = () => {
           navigate("/changePassword");
         } else {
           dispatch(setEmail(""));
-          setRequestId(res.payload.data.request_id);
-          setShowReviewRequestModal(true);
+          if (res?.payload?.data?.request_id) {
+            setRequestId(res.payload.data.request_id);
+            setShowReviewRequestModal(true);
+          } else {
+            navigate("/signIn");
+          }
         }
       }
     });

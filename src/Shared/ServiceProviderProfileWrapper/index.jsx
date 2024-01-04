@@ -65,7 +65,7 @@ const commentsData = [
 
 const documentsData = [
   {
-    docSrc: Images.DOCUMENT_IMG,
+    docSrc: Images.FEATURE_BG_IMG,
     docTitle: "Loki",
   },
   {

@@ -49,13 +49,14 @@ const Hero = (props) => {
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
-              } px-4 pt-4 d-flex align-items-center`}
+              } w-100 px-4 pt-4 d-flex align-items-center`}
             >
               <motion.div
                 initial="hidden"
                 ref={textRef}
                 animate={textInView ? "visible" : "hidden"}
                 variants={textVariants}
+                className="w-100"
               >
                 <div
                   className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
@@ -71,13 +72,14 @@ const Hero = (props) => {
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
-              } px-4 pt-4 d-flex align-items-center`}
+              } w-100 px-4 pt-4 d-flex align-items-center`}
             >
               <motion.div
                 initial="hidden"
                 ref={textRef}
                 animate={textInView ? "visible" : "hidden"}
                 variants={textVariants}
+                className="w-100"
               >
                 <div
                   className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}

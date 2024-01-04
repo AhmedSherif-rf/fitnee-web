@@ -4,11 +4,26 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const login = createAsyncThunk(
   "login",
-  async ({ apiEndpoint, requestData, navigate }, thunkAPI) => {
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      handleRoleRedirect(response?.data, navigate);
-      return response?.data;
+      localStorage.setItem("fitnee_user", JSON.stringify(response?.data?.data));
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue({ statusCode: error.response.status });
+    }
+  }
+);
+
+export const logout = createAsyncThunk(
+  "logout",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      localStorage.removeItem("fitnee_user");
+      Toaster.success("Logged out successfully");
+      return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.Message);
       return thunkAPI.rejectWithValue(error?.response?.data);
@@ -16,14 +31,77 @@ export const login = createAsyncThunk(
   }
 );
 
-const handleRoleRedirect = (response, navigate) => {
-  import("../../../utils/constants").then((item) => {
-    switch (response?.data?.role) {
-      case item.TRAINEE_ROLE:
-        navigate(item.TRAINEE_INITIAL_URL);
-        break;
-      default:
-        navigate("/default-dashboard");
+export const changePassword = createAsyncThunk(
+  "changePassword",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      Toaster.success(response?.data?.data?.Message);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
     }
-  });
-};
+  }
+);
+
+export const signUp = createAsyncThunk(
+  "signUp",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      Toaster.success("OTP send successfully");
+      return response.data.data.email;
+    } catch (error) {
+      if (error?.response?.data?.error?.email) {
+        Toaster.error(error?.response?.data?.error?.email[0]);
+      } else if (error?.response?.data?.error?.phone_number) {
+        Toaster.error(error?.response?.data?.error?.phone_number[0]);
+      } else {
+        Toaster.error(error?.response?.data?.message);
+      }
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const editProfile = createAsyncThunk(
+  "editProfile",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.patch(apiEndpoint, requestData);
+      Toaster.success("Profile edit successfully");
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const deleteAccount = createAsyncThunk(
+  "deleteAccount",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.delete(apiEndpoint);
+      localStorage.removeItem("fitnee_user");
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const getSpecialities = createAsyncThunk(
+  "getSpecialities",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);

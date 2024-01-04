@@ -34,7 +34,7 @@ const routes = [
     exact: true,
   },
   {
-    path: "/verifyOtp",
+    path: "/verifyOtp/:type",
     component: lazy(() => import("../Pages/Auth/VerifyOtp")),
     isPublic: true,
     isAuth: true,
@@ -70,7 +70,7 @@ const routes = [
     exact: true,
   },
   {
-    path: "/serviceProvider/appDownloadLink",
+    path: "/serviceProvider/appDownloadLink/:requestId",
     component: lazy(() => import("../Pages/Auth/AppDownloadLink")),
     isPublic: true,
     theme: "dark",

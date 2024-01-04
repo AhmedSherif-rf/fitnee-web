@@ -60,8 +60,13 @@
   height: 88vh !important;
   border: none !important;
 }
+
 .contentCardPadding {
   padding-top: 12vh;
+}
+
+.cursorPointer {
+  cursor: pointer;
 }
 
 .BorderRadius {
@@ -142,6 +147,7 @@ Input::-webkit-input-placeholder {
     background-color: $content-bg !important;
     border-top-left-radius: 14px !important;
     border-bottom-left-radius: 14px !important;
+    border:none !important;
     .selected-flag {
       border-top-left-radius: 14px !important;
       border-bottom-left-radius: 14px !important;

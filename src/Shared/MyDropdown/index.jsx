@@ -9,6 +9,7 @@ const MyDropdown = (props) => {
     onChangeHandle,
     onBlurHandle,
     placeholder,
+    value,
   } = props;
 
   return (
@@ -19,6 +20,7 @@ const MyDropdown = (props) => {
         name={name}
         onChange={onChangeHandle}
         onBlur={onBlurHandle}
+        value={value}
       >
         <option value="" className="customDropDownOption">
           {placeholder}

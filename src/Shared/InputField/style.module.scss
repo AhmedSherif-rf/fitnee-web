@@ -9,6 +9,13 @@
     transform: translateY(-50%);
     cursor: pointer;
   }
+  .passwordIconWrapper {
+    position: absolute;
+    top: 48%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
   .inputDesign {
     padding: 0.8rem 0.8rem;
     font-size: $font-14;

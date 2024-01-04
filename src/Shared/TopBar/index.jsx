@@ -9,10 +9,12 @@ import {
   DropdownItem,
   Collapse,
 } from "reactstrap";
+import Toaster from "../Toaster";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { GiWallet } from "react-icons/gi";
 import { FaArrowUp } from "react-icons/fa6";
+import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { PiCaretDownBold } from "react-icons/pi";
@@ -21,10 +23,12 @@ import { FaBars, FaUserEdit } from "react-icons/fa";
 import { FaKey, FaTrashCan } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
-import { setLanguageInStorage } from "../../utils/functions";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, memo, useCallback } from "react";
+import { DELETE_ACCOUNT_URL, LOGOUT_URL } from "../../utils/constants";
+import { logout, deleteAccount } from "../../Redux/features/User/userApi";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import {
   ENGLISH_LANGUAGE,
@@ -40,8 +44,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation("");
-  const roleType = localStorage.getItem("role");
-  const { lang: currentLanguage } = useSelector((state) => state?.language);
+  const { loading: userLoading, user } = useSelector((state) => state.user);
+  const { lang: currentLanguage } = useSelector((state) => state.language);
+
+  const roleType = user?.role ? user?.role.toLowerCase() : null;
 
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -114,7 +120,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const selectLanguage = (language) => {
     dispatch(setLanguage(language));
     i18n.changeLanguage(language);
-    setLanguageInStorage(language);
+    functions.setLanguageInStorage(language);
   };
 
   const handleSignUpClick = useCallback(() => {
@@ -136,16 +142,33 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   }, []);
 
   const handleDeleteAccountClick = useCallback(() => {
+    const data = {
+      apiEndpoint: DELETE_ACCOUNT_URL.replace("userId", user?.id),
+    };
+    dispatch(deleteAccount(data)).then((res) => {
+      if (res.type === "deleteAccount/fulfilled") {
+        Toaster.success("Account is deleted successfully");
+        navigate("/signIn");
+      }
+    });
+
     setDeleteAccountModal(false);
-  }, []);
+  }, [dispatch, navigate, user]);
 
   const handleDeleteClick = () => {
     setDeleteAccountModal(true);
   };
 
   const handleLogoutClick = () => {
-    localStorage.removeItem("role");
-    navigate("/");
+    const data = {
+      apiEndpoint: LOGOUT_URL,
+      requestData: { refresh: user?.tokens?.refresh },
+    };
+    dispatch(logout(data)).then((res) => {
+      if (res.type === "logout/fullfiled") {
+        navigate("/signIn");
+      }
+    });
   };
 
   const handleSubscriptionClick = useCallback(() => {
@@ -166,6 +189,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
   return (
     <>
+      {userLoading === "pending" && <LoadingScreen />}
       {showTopBar && (
         <div>
           <Navbar
@@ -343,7 +367,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         <div
                           className="bgProperties rounded-circle"
                           style={{
-                            backgroundImage: `url(${Images.PROFILE4_IMG})`,
+                            backgroundImage:
+                              user?.profile_pic === null
+                                ? `url(${Images.USER_DUMMY_IMG})`
+                                : user?.profile_pic,
                             width: "40px",
                             height: "40px",
                           }}
@@ -720,6 +747,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
           <FillBtn
             text={t("signup.yesText")}
             className="py-2 px-5"
+            disabled={userLoading === "pending" ? true : false}
             handleOnClick={handleDeleteAccountClick}
           />
         }

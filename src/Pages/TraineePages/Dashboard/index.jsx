@@ -1,4 +1,5 @@
 import "./style.scss";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import InfoModal from "../../../Shared/InfoModal";
@@ -79,8 +80,10 @@ export const myProgressGrapghData = {
 };
 
 const Dashboard = () => {
-  const [showAddProgressModal, setSowAddProgressModal] = useState(false);
+  const { user } = useSelector((state) => state.user);
   const [showHistory, setShowHistory] = useState(true);
+  const [showAddProgressModal, setSowAddProgressModal] = useState(false);
+
   const { t } = useTranslation("");
   const toggleHistory = useCallback(() => {
     setShowHistory(!showHistory);
@@ -116,7 +119,6 @@ const Dashboard = () => {
     {
       infoImg: Images.PROFILE4_IMG,
       infoLogo: Images.SHORTLOGO_IMG,
-      infoTitle: "Shane",
       infoRating: 4,
       infoDes: "2 Years",
       Height: "38",
@@ -231,25 +233,12 @@ const Dashboard = () => {
 
   return (
     <Container fluid>
-      <Row className="">
+      <Row>
         <Card className="px-3 contentCard bg-transparent">
           <Row>
             <Col lg={3} md={4} className="mb-2">
               <div className="mb-2">
-                {infoData.map((item, index) => {
-                  return (
-                    <ProfileInformationCard
-                      key={index}
-                      infoLogo={item.infoLogo}
-                      infoTitle={item.infoTitle}
-                      infoRating={item.infoRating}
-                      infoImg={item.infoImg}
-                      infoDes={item.infoDes}
-                      CardHeight={item.Height}
-                      TraineeEmail={item.TraineeEmail}
-                    />
-                  );
-                })}
+                <ProfileInformationCard providerProfile={user} />
               </div>
               <Row className="my-3">
                 <Col md={12}>

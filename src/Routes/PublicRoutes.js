@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
 import { guestRole } from "./routeConfig";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import functions from "../utils/functions";
 import { useNavigate } from "react-router-dom";
-// import { getInitialUrl } from "../utils/functions";
+import React, { useLayoutEffect } from "react";
 import { setGuest } from "../Redux/features/User/userSlice";
 
 export function PublicRoute({ Component, props }) {
@@ -13,24 +13,22 @@ export function PublicRoute({ Component, props }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isGuest && props.role === guestRole) {
       dispatch(setGuest(true));
     }
-    // if (user) {
-    //   navigate(getInitialUrl(user?.role));
-    // }
+    if (user) {
+      navigate(
+        functions.getInitialUrl(
+          user?.email === "admin@admin.com" ? "Admin" : user?.role
+        )
+      );
+    }
   }, [dispatch, isGuest, navigate, props.role, user]);
 
-  // const token = null;
-  // if (token) {
-    //   const roleId = userDetail.user.RoleId;
-    //   return (
-    //     <Redirect
-    //       to={getIntialURL(roleId)}
-    //     />
-    //   );
+  // if (user) {
+  //   return navigate(getInitialUrl(user?.role));
   // } else {
-    return <Component {...props} />;
+  return <Component {...props} />;
   // }
 }

@@ -26,6 +26,10 @@ const RegisterAs = (props) => {
     navigate("/signUp/nutritionist");
   }, [navigate]);
 
+  const handleAsTrainerNutritionistClick = useCallback(() => {
+    navigate("/signUp/both");
+  }, [navigate]);
+
   return (
     <Container fluid className={`vh-100 ${styles.registerAsContainer}`}>
       <Row
@@ -40,23 +44,28 @@ const RegisterAs = (props) => {
           </h2>
           <div className="pt-3">
             <FillBtn
-              className="w-100 mb-4 customPaddingY"
+              className="w-100 mb-3 customPaddingY"
               text={t("registerAs.traineeText")}
               handleOnClick={handleAsTraineeClick}
             />
             <FillBtn
-              className="w-100 mb-4 customPaddingY"
+              className="w-100 mb-3 customPaddingY"
               text={t("registerAs.trainerText")}
               handleOnClick={handleAsTrainerClick}
             />
             <FillBtn
-              className="w-100 customPaddingY"
+              className="w-100 mb-3 customPaddingY"
               text={t("registerAs.nutritionistText")}
               handleOnClick={handleAsNutritionistClick}
             />
+            <FillBtn
+              className="w-100 customPaddingY"
+              text={t("registerAs.trainerNutritionistText")}
+              handleOnClick={handleAsTrainerNutritionistClick}
+            />
             <div>
               <Link className="text-white" to="/signIn">
-              {t("registerAs.alreadyAccountText")}
+                {t("registerAs.alreadyAccountText")}
               </Link>
             </div>
           </div>

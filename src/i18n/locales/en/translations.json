@@ -381,6 +381,7 @@
     "traineeText": "Trainee",
     "trainerText": "Trainer",
     "nutritionistText": "Nutritionist",
+    "trainerNutritionistText": "Trainer and Nutritionist",
     "guestText": "Guest",
     "alreadyAccountText": "Already have account?"
   },
@@ -486,6 +487,7 @@
 
   "signup": {
     "yourInformationText": "Your information",
+    "fullNameText": "Full Name",
     "firstNameText": "First Name",
     "lastNameText": "Last Name",
     "emailText": "Type your email",
@@ -494,7 +496,7 @@
     "maleText": "Male",
     "femaleText": "Female",
     "addBioText": "Add your bio here",
-    "yearOfExperienceText": "Year of Experience",
+    "yearOfExperienceText": "Years of Experience",
     "selectText": "Select",
     "bodyInformationText": "Body Information",
     "weightText": "Weight (lbs / kg)",
@@ -546,6 +548,7 @@
     "transformYourBodyText": "Transform your body"
   },
   "forgotPassword": {
+    "emailText": "Type your email",
     "forgotPasswordText": "Forgot Password",
     "knowMyPasswordText": "I know my password take me back to login",
     "sendText": "Send",
@@ -562,7 +565,6 @@
     "okayText": "Okay"
   },
   "changePassword": {
-    "changePasswordText": "Change Password",
     "currentPasswordText": "Current Password",
     "confirmPasswordText": "Confirm Password",
     "newPasswordText": "New Password",
@@ -607,6 +609,8 @@
     "requiredPasswordText": "Password is required",
     "invalidFirstNameText": "First Name should contain only letters",
     "requiredFirstNameText": "First Name is Required",
+    "invalidFullNameText": "Full Name should contain only letters",
+    "requiredFullNameText": "Full Name is Required",
     "invalidLastNameText": "Last Name should contain only letters",
     "requiredLastNameText": "Last Name is Required",
     "requiredMessageText": "Message is Required",
@@ -623,6 +627,10 @@
     "invalidFileCertificateText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
     "requiredCertificateText": "Certificate is required",
     "limitCertificateText": "File size exceeds the maximum limit (5 MB).",
+    "requiredMinimumBodyImageText": "At least one body image is required",
+    "invalidFileBodyImageText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
+    "requiredBodyImageText": "Body Image is required",
+    "limitBodyImageText": "File size exceeds the maximum limit (5 MB).",
     "requiredText": "Required",
     "requiredRoleText": "Role is required",
     "requiredDayText": "Day is required",

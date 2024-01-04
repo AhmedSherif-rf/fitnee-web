@@ -959,13 +959,366 @@ const TermAndCondition = () => {
       ),
     },
   ];
+  const ServiceProviderSectionOne = [
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionOneText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwoText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionThreeText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionFourText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionFiveText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionSixText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionSevenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionEightText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionNineText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionElevenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwelveText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionThirteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionFourteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionFifteenText"
+      ),
+    },
+
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionSixteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionSeventeenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionEighteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionNineteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentyText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentyOneText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentyTwoText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentyThreeText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentyFourText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentyFiveText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentySixText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentySevenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentyEightText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionTwentyNineText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionThirtyText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionThirtyOneText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionThirtyTwoText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionOneDescriptionThirtyThreeText"
+      ),
+    },
+  ];
+  const ServiceProviderSectionTwo = [
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionTwoDescriptionOneText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionTwoDescriptionTwoText"
+      ),
+    },
+  ];
+  const ServiceProviderSectionThree = [
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionTwoDescriptionOneText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionTwoDescriptionTwoText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.serviceProviders.sectionThreeDescriptionThreeText"
+      ),
+    },
+  ];
+  const traineeSectionOne = [
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionOneText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionTwoText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionThreeText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionFourText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionFiveText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionSixText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionSevenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionEightText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionNineText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionTenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionElevenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionTwelveText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionThirteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionFourteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionFifteenText"
+      ),
+    },
+
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionSixteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionSeventeenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionEighteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionNineteenText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionOneDescriptionTwentyText"
+      ),
+    }
+    
+  ];
+  const traineeSectionTwo = [
+    {
+      description: t(
+        "termAndCondition.trainee.sectionTwoDescriptionOneText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionTwoDescriptionTwoText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionTwoDescriptionThreeText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionTwoDescriptionFourText"
+      ),
+    },
+    {
+      description: t(
+        "termAndCondition.trainee.sectionTwoDescriptionFiveText"
+      ),
+    }
+    
+    
+    
+  ];
+  const traineeSectionThree = [
+    {
+      description: t(
+        "termAndCondition.trainee.sectionThreeDescriptionOneText"
+      ),
+    }
+    
+    
+  ];
+  const traineeSectionFour = [
+    {
+      description: t(
+        "termAndCondition.trainee.sectionFourDescriptionOneText"
+      ),
+    }
+    
+    
+  ];
 
   return (
     <Container>
       <Row className="justify-content-center">
         <Col md={12}>
           <h1 className="text-center my-4 f-w-bold ">
-            {t("termAndCondition.termAndConditionHeadingText")}
+            {type === "serviceProvider"
+              ? t(
+                  "termAndCondition.termAndConditionServiceProvidersHeadingText"
+                ) : type === "trainee" ? t("termAndCondition.termAndConditionTrainerHeadingText")
+              : t("termAndCondition.termAndConditionHeadingText")}
           </h1>
 
           <div
@@ -1361,6 +1714,110 @@ const TermAndCondition = () => {
                       return <li key={index}>{item.description}</li>;
                     })}
                   </ol>
+                </p>
+              </div>
+            </div>
+          )}
+          {type === "serviceProvider" && (
+            <div style={{ direction: i18n.dir() }}>
+              <div>
+                <h6 className="fw-bold">
+                  {t("termAndCondition.serviceProviders.sectionOneHeadingText")}
+                </h6>
+                <ol align="justify">
+                  {ServiceProviderSectionOne.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
+
+                <h6 className="fw-bold">
+                  {t("termAndCondition.serviceProviders.sectionTwoHeadingText")}
+                </h6>
+                <p align="justify">
+                  <ol>
+                    {ServiceProviderSectionTwo.map((item, index) => {
+                      return <li key={index}>{item.description}</li>;
+                    })}
+                  </ol>
+                </p>
+
+                <h6 className="fw-bold">
+                  {t(
+                    "termAndCondition.serviceProviders.sectionThreeHeadingText"
+                  )}
+                </h6>
+                <p align="justify">
+                  <ol>
+                    {ServiceProviderSectionThree.map((item, index) => {
+                      return <li key={index}>{item.description}</li>;
+                    })}
+                  </ol>
+
+                  <p className="p-0 m-0" align="justify">
+                    {t(
+                      "termAndCondition.serviceProviders.sectionThreeDescriptionThreeListOneText"
+                    )}
+                  </p>
+                  <p className="p-0 m-0" align="justify">
+                    {t(
+                      "termAndCondition.serviceProviders.sectionThreeDescriptionThreeListTwoText"
+                    )}
+                  </p>
+                  <p className="p-0 m-0" align="justify">
+                    {t(
+                      "termAndCondition.serviceProviders.sectionThreeDescriptionThreeListThreeText"
+                    )}
+                  </p>
+                </p>
+              </div>
+            </div>
+          )}
+            {type === "trainee" && (
+            <div style={{ direction: i18n.dir() }}>
+              <div>
+                <h6 className="fw-bold">
+                  {t("termAndCondition.trainee.sectionOneHeadingText")}
+                </h6>
+                <ol align="justify">
+                  {traineeSectionOne.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
+
+                <h6 className="fw-bold">
+                  {t("termAndCondition.trainee.sectionTwoHeadingText")}
+                </h6>
+                <p align="justify">
+                  <ol>
+                    {traineeSectionTwo.map((item, index) => {
+                      return <li key={index}>{item.description}</li>;
+                    })}
+                  </ol>
+                </p>
+
+                <h6 className="fw-bold">
+                  {t(
+                    "termAndCondition.trainee.sectionThreeHeadingText"
+                  )}
+                </h6>
+                <p align="justify">
+                  <ol>
+                    {traineeSectionThree.map((item, index) => {
+                      return <li key={index}>{item.description}</li>;
+                    })}
+                  </ol>     
+                </p>
+                <h6 className="fw-bold">
+                  {t(
+                    "termAndCondition.trainee.sectionFourHeadingText"
+                  )}
+                </h6>
+                <p align="justify">
+                  <ol>
+                    {traineeSectionFour.map((item, index) => {
+                      return <li key={index}>{item.description}</li>;
+                    })}
+                  </ol>     
                 </p>
               </div>
             </div>

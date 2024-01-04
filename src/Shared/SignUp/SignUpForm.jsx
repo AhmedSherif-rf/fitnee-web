@@ -887,7 +887,8 @@ const SignUpForm = () => {
                     label={
                       <p className="mb-0 fs-6">
                         {t("signup.moneyTransferText")}
-                        <Link to="/termAndCondition">
+
+                        <Link to="/termAndCondition/serviceProvider">
                           <span className="textYellow">
                             {t("signup.termsAndConditionText")}
                           </span>
@@ -905,6 +906,30 @@ const SignUpForm = () => {
                     touched.termAndConditionCheck &&
                     errors.termAndConditionCheck}
                 </p>
+              </Row>
+            )}
+
+            {roleType === TRAINEE_TYPE && (
+              <Row>
+                <div className="d-flex mb-2">
+                  <Checkbox
+                    label={
+                      <p className="mb-0 fs-6">
+                        {t("signup.acknowledgeText")}
+
+                        <Link to="/termAndCondition/trainee">
+                          <span className="textYellow">
+                            {t("signup.termsAndConditionText")}
+                          </span>
+                        </Link>
+                      </p>
+                    }
+                    name={"termAndConditionCheck"}
+                    onChangeHandle={handleChange}
+                    onBlurHandle={handleBlur}
+                    checked={values.termAndConditionCheck}
+                  />
+                </div>
               </Row>
             )}
 

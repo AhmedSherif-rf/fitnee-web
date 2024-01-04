@@ -16,7 +16,7 @@ const SignIn = () => {
       text1: (
         <div className="text-center">
           <Link to="/">
-            <img className="img-fluid w-25 m-3" src={Images.LOGO_IMG} alt={""} />
+            <img className="img-fluid  m-3" src={Images.SMALL_LOGO_IMG} alt={""} />
           </Link>
         </div>
       ),
@@ -28,7 +28,8 @@ const SignIn = () => {
           </span>
         </div>
       ),
-      text3: <h6 className="small text-center text-white">www.fitnee.com</h6>,
+      text3:   <h6 className="small text-center text-white"> <Link className="text-white" to="/">www.fitnee.fit</Link>  </h6>,
+      
     },
   ];
   return (

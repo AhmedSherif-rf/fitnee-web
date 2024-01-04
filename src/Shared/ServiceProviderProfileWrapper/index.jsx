@@ -42,7 +42,6 @@ const commentsData = [
 
 const ServiceProviderProfileWrapper = (props) => {
   const { uuid } = useParams();
-  const { subscriptionLink } = props;
   const { loading } = useSelector((state) => state.guest);
 
   const [serviceProviderProfile, setServiceProviderProfile] = useState([]);
@@ -58,14 +57,14 @@ const ServiceProviderProfileWrapper = (props) => {
 
     dispatch(getServiceProviderProfile(data)).then((res) => {
       if (res.type === "getServiceProviderProfile/fulfilled") {
-        setServiceProviderProfile(res.payload.data.results[0]);
+        setServiceProviderProfile(res.payload.data[0]);
       }
     });
   }, [dispatch, uuid]);
 
   const handleSubscribeClick = useCallback(() => {
-    navigate(subscriptionLink);
-  }, [navigate, subscriptionLink]);
+    navigate("/guest/serviceProvider/subscription");
+  }, [navigate]);
 
   return (
     <Container fluid>

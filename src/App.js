@@ -5,6 +5,7 @@ import "swiper/css/effect-coverflow";
 import routes from "./Routes/AllRoutes";
 import functions from "./utils/functions";
 import { useDispatch } from "react-redux";
+import { Toaster } from "react-hot-toast";
 import { adminRole } from "./Routes/routeConfig";
 import React, { Suspense, useEffect } from "react";
 import { PublicRoute } from "./Routes/PublicRoutes";
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <React.Fragment>
+      <Toaster />
       <Router>
         <Routes>
           {routes.map((route, index) => {

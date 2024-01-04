@@ -134,10 +134,6 @@ const experienceValidation = Yup.string().required(
   TranslationHelper("validation.requiredYearsOfExperienceText")
 );
 
-const roleValidation = Yup.string().required(
-  TranslationHelper("validation.requiredRoleText")
-);
-
 const currentlyWorkingValidation = Yup.string().required(
   "validation.RequiredText"
 );
@@ -173,7 +169,37 @@ export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({
 
 export const TRAINER_SIGNUP_SCHEMA = Yup.object().shape({
   bio: bioValidation,
-  role: roleValidation,
+  email: emailValidation,
+  gender: genderValidation,
+  password: passwordValidation,
+  stc_pay: phoneNumberValidaton,
+  full_name: fullNameValidation,
+  experience: experienceValidation,
+  specialities: specialitiesValidation,
+  certification: certificationValidation,
+  confirm_password: confirmPasswordValidation,
+  certificate_title: certificateTitleValidation,
+  profile_availability: profileAvailabilityValidation,
+  term_and_condition: termAndConditionCheckValidation,
+});
+
+export const NUTRITIONIST_SIGNUP_SCHEMA = Yup.object().shape({
+  bio: bioValidation,
+  email: emailValidation,
+  gender: genderValidation,
+  password: passwordValidation,
+  stc_pay: phoneNumberValidaton,
+  full_name: fullNameValidation,
+  experience: experienceValidation,
+  certification: certificationValidation,
+  confirm_password: confirmPasswordValidation,
+  certificate_title: certificateTitleValidation,
+  profile_availability: profileAvailabilityValidation,
+  term_and_condition: termAndConditionCheckValidation,
+});
+
+export const TRAINER_NUTRITIONIST_SIGNUP_SCHEMA = Yup.object().shape({
+  bio: bioValidation,
   email: emailValidation,
   gender: genderValidation,
   password: passwordValidation,
@@ -195,6 +221,34 @@ export const TRAINEE_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   first_name: Yup.string(),
   phone_number: Yup.string(),
   date_of_birth: Yup.string(),
+});
+
+export const TRAINER_EDIT_PROFILE_SCHEMA = Yup.object().shape({
+  bio: Yup.string(),
+  gender: Yup.string(),
+  full_name: Yup.string(),
+  experience: Yup.string(),
+  saudireps_number: Yup.string(),
+  is_currently_working: Yup.string(),
+});
+
+export const NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
+  bio: Yup.string(),
+  gender: Yup.string(),
+  full_name: Yup.string(),
+  experience: Yup.string(),
+  license_number: Yup.string(),
+  is_currently_working: Yup.string(),
+});
+
+export const TRAINER_NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
+  bio: Yup.string(),
+  gender: Yup.string(),
+  full_name: Yup.string(),
+  experience: Yup.string(),
+  license_number: Yup.string(),
+  saudireps_number: Yup.string(),
+  is_currently_working: Yup.string(),
 });
 
 export const CHANGE_PASSWORD_SCHEMA = Yup.object().shape({

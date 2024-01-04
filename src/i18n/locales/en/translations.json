@@ -381,6 +381,7 @@
     "traineeText": "Trainee",
     "trainerText": "Trainer",
     "nutritionistText": "Nutritionist",
+    "trainerNutritionistText": "Trainer and Nutritionist",
     "guestText": "Guest",
     "alreadyAccountText": "Already have account?"
   },

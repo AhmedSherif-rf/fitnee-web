@@ -83,7 +83,7 @@ export const userSlice = createSlice({
         state.loading = "pending";
       })
       .addCase(editProfile.fulfilled, (state, action) => {
-        state.user = action.payload.data;
+        state.user = { ...action.payload.data, tokens: state.user.tokens };
         state.loading = "succeeded";
       })
       .addCase(editProfile.rejected, (state) => {

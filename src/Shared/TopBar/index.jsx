@@ -162,7 +162,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const handleLogoutClick = () => {
     const data = {
       apiEndpoint: LOGOUT_URL,
-      requestData: { refresh: user.tokens.refresh },
+      requestData: { refresh: user?.tokens?.refresh },
     };
     dispatch(logout(data)).then((res) => {
       if (res.type === "logout/fullfiled") {

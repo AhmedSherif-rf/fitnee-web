@@ -18,13 +18,17 @@ export function PublicRoute({ Component, props }) {
       dispatch(setGuest(true));
     }
     if (user) {
-      navigate(functions.getInitialUrl(user?.role));
+      navigate(
+        functions.getInitialUrl(
+          user?.email === "admin@admin.com" ? "Admin" : user?.role
+        )
+      );
     }
   }, [dispatch, isGuest, navigate, props.role, user]);
 
   // if (user) {
   //   return navigate(getInitialUrl(user?.role));
   // } else {
-    return <Component {...props} />;
+  return <Component {...props} />;
   // }
 }

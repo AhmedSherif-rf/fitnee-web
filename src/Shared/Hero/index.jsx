@@ -45,7 +45,7 @@ const Hero = (props) => {
         className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}
       >
         {type === "textRight" ? (
-          <div className="h-100">
+          <div className="h-100 w-100">
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
@@ -67,7 +67,7 @@ const Hero = (props) => {
             </div>
           </div>
         ) : (
-          <div className="h-100">
+          <div className="h-100 w-100">
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""

@@ -1,5 +1,8 @@
 //===============AdminCredentials==================
 export const ADMIN_EMAIL = "admin@admin.com";
+//======================paginationParams============
+export const PAGE_RANGE = 2;
+export const PER_PAGE_COUNT = 20;
 //======================languages===================
 export const ARABIC_LANGUAGE = "ar";
 export const ENGLISH_LANGUAGE = "en";
@@ -53,8 +56,10 @@ export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
-export const GUEST_SERVICE_PROVIDER_LISTING = "/guest/serviceprovide";
-export const GUEST_SERVICE_PROVIDER_PROFILE = "/guest/serviceprovide";
+export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
+export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
+export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
+  "/serviceprovider_logged_in";
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
 export const FORBIDDEN_CODE = 403;

@@ -10,10 +10,7 @@ const AllServiceProvider = (props) => {
     <Container fluid>
       <Row>
         <Col md={12}>
-          <TraineeServiceProviderListWrapper
-            cardLink={"/trainee/serviceProviderProfile"}
-            roleType={roleType}
-          />
+          <TraineeServiceProviderListWrapper roleType={roleType} />
         </Col>
       </Row>
     </Container>

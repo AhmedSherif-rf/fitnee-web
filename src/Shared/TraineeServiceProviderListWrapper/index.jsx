@@ -11,227 +11,67 @@ import {
 } from "reactstrap";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import Pagination from "../../Shared/Pagination";
 import PageHeading from "../Headings/PageHeading";
 import FillBtn from "../../Shared/Buttons/FillBtn";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
-// import { getGuestDataLimit } from "../../utils/functions";
-import React, { useState, useCallback, memo } from "react";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import React, { useState, useCallback, memo, useEffect } from "react";
 import ServiceProviderListCard from "../../Shared/ServiceProviderListCard";
+import { getServiceProviderGuestMode } from "../../Redux/features/Guest/guestApi";
+import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
 import {
   TRAINER_TYPE,
+  PER_PAGE_COUNT,
   NUTRITIONIST_TYPE,
   TRAINER_NUTRITIONIST_TYPE,
+  TRAINEE_SERVICE_PROVIDER_LISTING_URL,
 } from "../../utils/constants";
-import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
-
-const NutritionistData = [
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-];
-
-const TrainerAndNutritionistData = [
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-  },
-];
 
 const TraineeServiceProviderListWrapper = (props) => {
-  const { cardLink, roleType } = props;
+  const { roleType } = props;
   const [
     showSubscriptionInformationModal,
     setShowSubscriptionInformationModal,
   ] = useState(false);
+  const { loading } = useSelector((state) => state.guest);
+
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [listingRole, setListingRole] = useState(roleType);
+  const [serviceProviderData, setServiceProviderData] = useState([]);
 
-  const { isGuest } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation("");
-  const TrainerData = [
-    {
-      infoImg: Images.PROFILE1_IMG,
-      infoLogo: Images.SHORTLOGO_IMG,
-      infoTitle: "Shane",
-      infoRating: 4,
-      infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "38",
-    },
-    {
-      infoImg: Images.GOAL_IMG,
-      infoLogo: Images.SHORTLOGO_IMG,
-      infoTitle: "Shane",
-      infoRating: 4,
-      infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "38",
-    },
-    {
-      infoImg: Images.PROFILE3_IMG,
-      infoLogo: Images.SHORTLOGO_IMG,
-      infoTitle: "Shane",
-      infoRating: 4,
-      infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "38",
-    },
-    {
-      infoImg: Images.GOAL_IMG,
-      infoLogo: Images.SHORTLOGO_IMG,
-      infoTitle: "Shane",
-      infoRating: 4,
-      infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "38",
-    },
-    {
-      infoImg: Images.PROFILE5_IMG,
-      infoLogo: Images.SHORTLOGO_IMG,
-      infoTitle: "Shane",
-      infoRating: 4,
-      infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "38",
-    },
-    {
-      infoImg: Images.GOAL_IMG,
-      infoLogo: Images.SHORTLOGO_IMG,
-      infoTitle: "Shane",
-      infoRating: 4,
-      infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "38",
-    },
-    {
-      infoImg: Images.PROFILE4_IMG,
-      infoLogo: Images.SHORTLOGO_IMG,
-      infoTitle: "Shane",
-      infoRating: 4,
-      infoDes: `2  ${t("guest.yearsText")}`,
-      Height: "38",
-    },
-  ];
 
+  const handlePageChange = useCallback((page) => {
+    setPage(page.selected + 1);
+  }, []);
+
+  useEffect(() => {
+    const data = {
+      apiEndpoint: `${TRAINEE_SERVICE_PROVIDER_LISTING_URL}?role=${
+        listingRole[0].toUpperCase() + listingRole.slice(1)
+      }&page=${page}`,
+    };
+
+    dispatch(getServiceProviderGuestMode(data)).then((res) => {
+      if (res.type === "getServiceProviderGuestMode/fulfilled") {
+        setTotalPages(res.payload.data.results.count);
+        setServiceProviderData(res.payload.data.results);
+      }
+    });
+  }, [dispatch, listingRole]);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const handleDropdownItemClick = (role) => {
     setListingRole(role);
   };
-
-  const handleCardOnClick = useCallback(
-    (isDisable) => {
-      if (isDisable) {
-        setShowSubscriptionInformationModal(true);
-      } else {
-        navigate(cardLink);
-      }
-    },
-    [navigate, cardLink]
-  );
 
   const handleSeeMoreClick = useCallback(() => {
     setShowSubscriptionInformationModal(true);
@@ -265,6 +105,7 @@ const TraineeServiceProviderListWrapper = (props) => {
     >
       <CardBody>
         <Row className="align-items-center mb-2">
+          {loading === "pending" && <LoadingScreen />}
           <Col xs={10} sm={6} className="text-left">
             <PageHeading
               headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}
@@ -303,97 +144,30 @@ const TraineeServiceProviderListWrapper = (props) => {
           </Col>
         </Row>
         <Row>
-          {listingRole === TRAINER_TYPE &&
-            TrainerData.map((item, index) => {
-              // const isDisable = isGuest && index >= getGuestDataLimit();
+          {serviceProviderData.length > 0 &&
+            serviceProviderData.map((serviceProvider, index) => {
               return (
                 <Col lg={3} md={4} col={6} className="mb-3" key={index}>
-                  {/* <ServiceProviderListCard
-                    className={`${
-                      isDisable ? styles.blurCard : styles.activeTrainerCard
-                    }`}
-                    infoLogo={item.infoLogo}
-                    infoTitle={item.infoTitle}
-                    infoRating={item.infoRating}
-                    infoImg={item.infoImg}
-                    infoDes={item.infoDes}
-                    CardHeight={item.Height}
-                    handleOnClick={() => handleCardOnClick(isDisable)}
-                  /> */}
+                  <ServiceProviderListCard
+                    className={`${styles.activeTrainerCard}`}
+                    serviceProvider={serviceProvider}
+                    handleOnClick={() =>
+                      navigate(
+                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}`
+                      )
+                    }
+                  />
                 </Col>
               );
             })}
-          {listingRole === NUTRITIONIST_TYPE &&
-            NutritionistData.map((item, index) => {
-              // const isDisable = isGuest && index >= getGuestDataLimit();
-              return (
-                <Col lg={3} md={4} col={6} className="mb-3" key={index}>
-                  {/* <ServiceProviderListCard
-                    className={`${
-                      isDisable ? styles.blurCard : styles.activeTrainerCard
-                    }`}
-                    infoLogo={item.infoLogo}
-                    infoTitle={item.infoTitle}
-                    infoRating={item.infoRating}
-                    infoImg={item.infoImg}
-                    infoDes={item.infoDes}
-                    CardHeight={item.Height}
-                    handleOnClick={() => handleCardOnClick(isDisable)}
-                  /> */}
-                </Col>
-              );
-            })}
-          {listingRole === TRAINER_NUTRITIONIST_TYPE &&
-            TrainerAndNutritionistData.map((item, index) => {
-              // const isDisable = isGuest && index >= getGuestDataLimit();
-              return (
-                <Col lg={3} md={4} col={6} className="mb-3" key={index}>
-                  {/* <ServiceProviderListCard
-                    className={`${
-                      isDisable ? styles.blurCard : styles.activeTrainerCard
-                    }`}
-                    infoLogo={item.infoLogo}
-                    infoTitle={item.infoTitle}
-                    infoRating={item.infoRating}
-                    infoImg={item.infoImg}
-                    infoDes={item.infoDes}
-                    CardHeight={item.Height}
-                    handleOnClick={() => handleCardOnClick(isDisable)}
-                  /> */}
-                </Col>
-              );
-            })}
+          {serviceProviderData.length <= 0 && (
+            <Row className="justify-content-center align-items-center mt-5 pt-4">
+              <Col className="text-center" md={4}>
+                <img img-fluid src={Images.NO_DATA_FOUND_IMG} alt="" />
+              </Col>
+            </Row>
+          )}
 
-          <Col lg={3} md={4} col={6} className="mb-3">
-            <Card
-              className={`bgProperties h-100 BorderRadius`}
-              style={{
-                backgroundImage: `url(${Images.SEE_MORE_BG_IMG})`,
-                cursor: "pointer",
-              }}
-              onClick={handleSeeMoreClick}
-            >
-              <CardBody>
-                <div
-                  className="w-100 d-flex align-items-center justify-content-center"
-                  style={{ height: "30vh" }}
-                >
-                  <div className="">
-                    <p className="mb-0 fs-4 fw-bold">
-                      {t("guest.seeMoreText")}
-                    </p>
-                    <div className="w-100 text-center">
-                      <img
-                        className="img-fluid w-50"
-                        src={Images.ARROW_RIGHT_IMG}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
           <InformationModal
             size={"md"}
             TOneClassName={"fw-bold mb-4 fs-5 text-center"}
@@ -418,6 +192,9 @@ const TraineeServiceProviderListWrapper = (props) => {
           />
         </Row>
       </CardBody>
+      {serviceProviderData.length > PER_PAGE_COUNT && (
+        <Pagination size={totalPages} handlePageChange={handlePageChange} />
+      )}
     </Card>
   );
 };

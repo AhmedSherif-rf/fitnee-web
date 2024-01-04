@@ -405,7 +405,7 @@
     "emailText": " البريد االلكتروني",
     "describeIssueText": " اكتب استفسارك هنا",
     "unlockYourPotentialText": " أطلق العنان إلمكانياتك",
-    "transformYourBodyText": "تحويل جسمك",
+    "transformYourBodyText": "لياقتك قرارك",
     "contactUsText": "معنا تواصل",
     "sendText": "إرسال",
     "cancelText": "إلغاء",
@@ -532,11 +532,11 @@
     "agreeOnFitneeText": "على أوافق",
     "termsAndConditionsText": "جميع شروط وأحكام فتني",
     "signInText": " تسجيل الدخول",
-    "createAccountText": "حساب إنشاء",
-    "newHereText": "جديد هنا؟",
+    "createAccountText": " انشاء حساب جديد",
+    "newHereText": " ليس لديك حساب؟",
     "cancelText": "إلغاء",
     "unlockYourPotentialText": "إلمكانياتك العنان أطلق",
-    "transformYourBodyText": "تحويل جسمك"
+    "transformYourBodyText": "لياقتك قرارك"
   },
   "forgotPassword": {
     "forgotPasswordText": "السري الرقم نسيت",

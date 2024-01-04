@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import MyDropdown from "../../../Shared/MyDropdown";
 import { category } from "../../../utils/constants";
@@ -11,6 +12,7 @@ import InformationModal from "../../../Shared/Modal/InformationModal";
 
 const Exercise = (props) => {
   const navigate = useNavigate();
+  const { i18n } = useTranslation("");
   const [
     showSubscriptionInformatoinModal,
     setShowSubscriptionInformatoinModal,
@@ -57,7 +59,7 @@ const Exercise = (props) => {
 
   return (
     <Container fluid className="contentCardPadding">
-      <Row className="text-black-custom ">
+      <Row className="text-black-custom" style={{ direction: i18n.dir() }}>
         <Col md="12">
           <Card className="BorderRadius contentCard mt-0 px-3">
             <Col md={12}>

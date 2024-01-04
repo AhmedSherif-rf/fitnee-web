@@ -2,11 +2,13 @@ import React, { memo } from "react";
 import { CardBody } from "reactstrap";
 import styles from "./style.module.scss";
 import { Card, Col, Row } from "reactstrap";
+import { useTranslation } from "react-i18next";
 import { FaAngleDoubleRight, FaWheelchair } from "react-icons/fa";
-import SubHeading from "../Headings/SubHeading";
 
 const ExerciseSection = (props) => {
   const { exercisesData } = props;
+  const { i18n } = useTranslation("");
+  console.log("awdawdwa", i18n.dir());
 
   return (
     <>
@@ -24,18 +26,20 @@ const ExerciseSection = (props) => {
                   >
                     {exercise?.categoryName}
                   </div>
-                  <div className={`fw-bold py-0 px-4 ${styles.workoutVideosLevel}`}>
+                  <div
+                    className={`fw-bold py-0 px-4 ${styles.workoutVideosLevel}`}
+                  >
                     {exercise?.level}
                   </div>
                 </Col>
                 <Col md={6} className="mb-2">
                   <video
-                    playsinline
+                    playsInline
                     preload="metadata"
                     muted
-                    autoplay="yes"
+                    autoPlay="yes"
                     loop="yes"
-                    class={styles.workoutVideos}
+                    className={styles.workoutVideos}
                     src={
                       "https://res.cloudinary.com/ddbegwuqp/video/upload/v1700739776/sample2_sirvgw.mp4"
                     }
@@ -43,12 +47,12 @@ const ExerciseSection = (props) => {
                 </Col>
                 <Col md={6} className="mb-2">
                   <video
-                    playsinline
+                    playsInline
                     preload="metadata"
                     muted
-                    autoplay="yes"
+                    autoPlay="yes"
                     loop="yes"
-                    class={styles.workoutVideos}
+                    className={styles.workoutVideos}
                     src={
                       "https://res.cloudinary.com/ddbegwuqp/video/upload/v1700739776/sample2_sirvgw.mp4"
                     }

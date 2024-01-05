@@ -120,10 +120,7 @@ const ServiceProviderProfileWrapper = (props) => {
                               key={index}
                               className="BorderYellow"
                               documentTitle={certificate?.title}
-                              documentImg={certificate?.certificate_image.replace(
-                                "/api",
-                                ""
-                              )}
+                              documentImg={certificate?.certificate_image}
                             />
                           )
                         )}

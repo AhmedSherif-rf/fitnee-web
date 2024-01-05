@@ -10,7 +10,7 @@ const DashboardCard = (props) => {
         <Row className="d-flex align-items-center justify-content-between">
           <Col md={8} className="text-start">
             <h4 className={`fw-bold mb-0`}>{textOne}</h4>
-            <p className="small mb-0">{textTwo}</p>
+            <p className="small mb-0 mt-2">{textTwo}</p>
           </Col>
           <Col md={4}>
             <div

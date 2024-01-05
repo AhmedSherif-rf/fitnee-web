@@ -66,16 +66,12 @@ const TraineeServiceProviderListWrapper = (props) => {
         setServiceProviderData(res.payload.data.results);
       }
     });
-  }, [dispatch, listingRole]);
+  }, [dispatch, listingRole, page]);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const handleDropdownItemClick = (role) => {
     setListingRole(role);
   };
-
-  const handleSeeMoreClick = useCallback(() => {
-    setShowSubscriptionInformationModal(true);
-  }, []);
 
   const handleNotNowClick = useCallback(() => {
     setShowSubscriptionInformationModal(false);

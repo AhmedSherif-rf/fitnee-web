@@ -9,14 +9,22 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
-    path: "/admin/Users/serviceProviderList",
-    component: lazy(() => import("../Pages/AdminPages/ServiceProviderList")),
+    path: "/admin/reviewRequest",
+    component: lazy(() => import("../Pages/AdminPages/ReviewRequest")),
     exact: true,
     role: adminRole,
   },
   {
-    path: "/admin/Users/traineeList",
-    component: lazy(() => import("../Pages/AdminPages/TraineeList")),
+    path: "/admin/user/serviceProviderList",
+    component: lazy(() =>
+      import("../Pages/AdminPages/User/ServiceProviderList")
+    ),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/user/traineeList",
+    component: lazy(() => import("../Pages/AdminPages/User/TraineeList")),
     exact: true,
     role: adminRole,
   },

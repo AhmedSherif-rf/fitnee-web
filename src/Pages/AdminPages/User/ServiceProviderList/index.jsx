@@ -2,11 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
-import ToggleSwitch from "../../../Shared/ToggleSwitch";
+import ToggleSwitch from "../../../../Shared/ToggleSwitch";
 import { GoTrash, GoPencil, GoEye } from "react-icons/go";
-import PageHeading from "../../../Shared/Headings/PageHeading";
-import Images from "../../../HelperMethods/Constants/ImgConstants";
-import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
+import PageHeading from "../../../../Shared/Headings/PageHeading";
+import Images from "../../../../HelperMethods/Constants/ImgConstants";
+import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
 
 const Dashboard = (props) => {
   const [checked, setChecked] = useState(true);
@@ -190,12 +190,12 @@ const Dashboard = (props) => {
       <Row>
         <Col md="12" className="text-start">
           <PageHeading
-            headingText="Trainee List"
+            headingText="Service Provider List"
             categoryText=""
           />
         </Col>
         <Col md="12">
-          <ListingTable users={users} columns={columns} />
+          <ListingTable data={users} columns={columns} />
         </Col>
       </Row>
     </React.Fragment>

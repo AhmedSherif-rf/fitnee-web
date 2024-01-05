@@ -9,7 +9,6 @@ import FillBtn from "../../../Shared/Buttons/FillBtn";
 import { LineChart } from "../../../Shared/Chart/LineChart";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import PageHeading from "../../../Shared/Headings/PageHeading";
-import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ProfileProgressBar from "../../../Shared/ProfileProgressBar";
 import { Row, Col, Container, Card, CardBody, Label } from "reactstrap";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
@@ -114,17 +113,6 @@ const Dashboard = () => {
   const handlePaymentClick = useCallback(() => {
     navigate("/trainee/myWallet");
   }, [navigate]);
-
-  const infoData = [
-    {
-      infoImg: Images.PROFILE4_IMG,
-      infoLogo: Images.SHORTLOGO_IMG,
-      infoRating: 4,
-      infoDes: "2 Years",
-      Height: "38",
-      TraineeEmail: "shane@gmail.com",
-    },
-  ];
 
   const HistoryData = [
     {
@@ -308,7 +296,7 @@ const Dashboard = () => {
                           </div>
 
                           <div className="mb-3">
-                            <ListingTable users={users} columns={columns} />
+                            <ListingTable data={users} columns={columns} />
                           </div>
                           <div className="text-center">
                             <FillBtn

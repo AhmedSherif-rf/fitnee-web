@@ -30,7 +30,7 @@ const InfoModal = (props) => {
       <ModalHeader className="border-0 ">
         <b>{heading}</b>
       </ModalHeader>
-      <ModalBody>
+      <ModalBody className="p-4">
         <div className={`${TOneClassName}`}> {ModalText1}</div>
         <div className={`${TTwoClassName}`}> {ModalText2}</div>
         <div className="w-100 text-center">{ButtonThree}</div>

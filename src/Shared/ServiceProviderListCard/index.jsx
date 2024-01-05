@@ -38,7 +38,7 @@ const TrainerListCard = (props) => {
         <div
           className={`d-flex text-white align-items-end justify-content-between`}
         >
-          <div className="d-flex align-items-center px-2">
+          <div className="d-flex align-items-center ps-3">
             <img
               className="img-fluid"
               src={Images.SHORTLOGO_IMG}

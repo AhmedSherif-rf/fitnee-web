@@ -1,16 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const TermAndCondition = () => {
   const { type } = useParams();
   const navigate = useNavigate();
+
   const { t, i18n } = useTranslation("");
 
+  const goBack = () => {
+    navigate(-1);
+  };
   const sectionOne = [
     {
       heading: t("termAndCondition.general.sectionOneDescriptionTwoBoldText"),
@@ -1158,54 +1161,34 @@ const TermAndCondition = () => {
   ];
   const traineeSectionOne = [
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionOneText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionOneText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionTwoText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionTwoText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionThreeText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionThreeText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionFourText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionFourText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionFiveText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionFiveText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionSixText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionSixText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionSevenText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionSevenText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionEightText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionEightText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionNineText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionNineText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionOneDescriptionTenText"
-      ),
+      description: t("termAndCondition.trainee.sectionOneDescriptionTenText"),
     },
     {
       description: t(
@@ -1257,56 +1240,34 @@ const TermAndCondition = () => {
       description: t(
         "termAndCondition.trainee.sectionOneDescriptionTwentyText"
       ),
-    }
-    
+    },
   ];
   const traineeSectionTwo = [
     {
-      description: t(
-        "termAndCondition.trainee.sectionTwoDescriptionOneText"
-      ),
+      description: t("termAndCondition.trainee.sectionTwoDescriptionOneText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionTwoDescriptionTwoText"
-      ),
+      description: t("termAndCondition.trainee.sectionTwoDescriptionTwoText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionTwoDescriptionThreeText"
-      ),
+      description: t("termAndCondition.trainee.sectionTwoDescriptionThreeText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionTwoDescriptionFourText"
-      ),
+      description: t("termAndCondition.trainee.sectionTwoDescriptionFourText"),
     },
     {
-      description: t(
-        "termAndCondition.trainee.sectionTwoDescriptionFiveText"
-      ),
-    }
-    
-    
-    
+      description: t("termAndCondition.trainee.sectionTwoDescriptionFiveText"),
+    },
   ];
   const traineeSectionThree = [
     {
-      description: t(
-        "termAndCondition.trainee.sectionThreeDescriptionOneText"
-      ),
-    }
-    
-    
+      description: t("termAndCondition.trainee.sectionThreeDescriptionOneText"),
+    },
   ];
   const traineeSectionFour = [
     {
-      description: t(
-        "termAndCondition.trainee.sectionFourDescriptionOneText"
-      ),
-    }
-    
-    
+      description: t("termAndCondition.trainee.sectionFourDescriptionOneText"),
+    },
   ];
 
   return (
@@ -1317,13 +1278,15 @@ const TermAndCondition = () => {
             {type === "serviceProvider"
               ? t(
                   "termAndCondition.termAndConditionServiceProvidersHeadingText"
-                ) : type === "trainee" ? t("termAndCondition.termAndConditionTrainerHeadingText")
+                )
+              : type === "trainee"
+              ? t("termAndCondition.termAndConditionTrainerHeadingText")
               : t("termAndCondition.termAndConditionHeadingText")}
           </h1>
 
           <div
             className="d-flex align-items-end my-2 textYellow cursorPointer"
-            onClick={() => navigate("/")}
+            onClick={goBack}
           >
             <div>
               <IoIosArrowRoundBack size={42} />
@@ -1772,7 +1735,7 @@ const TermAndCondition = () => {
               </div>
             </div>
           )}
-            {type === "trainee" && (
+          {type === "trainee" && (
             <div style={{ direction: i18n.dir() }}>
               <div>
                 <h6 className="fw-bold">
@@ -1796,28 +1759,20 @@ const TermAndCondition = () => {
                 </p>
 
                 <h6 className="fw-bold">
-                  {t(
-                    "termAndCondition.trainee.sectionThreeHeadingText"
-                  )}
+                  {t("termAndCondition.trainee.sectionThreeHeadingText")}
                 </h6>
                 <p align="justify">
-                 
-                    {traineeSectionThree.map((item, index) => {
-                      return <span key={index}>{item.description}</span>;
-                    })}
-                 
+                  {traineeSectionThree.map((item, index) => {
+                    return <span key={index}>{item.description}</span>;
+                  })}
                 </p>
                 <h6 className="fw-bold">
-                  {t(
-                    "termAndCondition.trainee.sectionFourHeadingText"
-                  )}
+                  {t("termAndCondition.trainee.sectionFourHeadingText")}
                 </h6>
                 <p align="justify">
-              
-                    {traineeSectionFour.map((item, index) => {
-                      return <span key={index}>{item.description}</span>;
-                    })}
-                
+                  {traineeSectionFour.map((item, index) => {
+                    return <span key={index}>{item.description}</span>;
+                  })}
                 </p>
               </div>
             </div>
@@ -1825,7 +1780,7 @@ const TermAndCondition = () => {
 
           <Row className="justify-content-center mb-3">
             <Col md={4}>
-              <Link to="/">
+              <Link to="/" onClick={goBack}>
                 <OutlineBtn
                   className="w-100 py-3"
                   text={t("termAndCondition.doneButtonText")}

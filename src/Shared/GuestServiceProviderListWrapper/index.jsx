@@ -9,6 +9,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import PageHeading from "../Headings/PageHeading";
@@ -46,9 +47,9 @@ const GuestServiceProviderListWrapper = (props) => {
 
   useEffect(() => {
     const data = {
-      apiEndpoint: `${GUEST_SERVICE_PROVIDER_LISTING_URL}?role=${
-        listingRole[0].toUpperCase() + listingRole.slice(1)
-      }`,
+      apiEndpoint: `${GUEST_SERVICE_PROVIDER_LISTING_URL}?role=${functions.getListingRole(
+        listingRole
+      )}`,
     };
 
     dispatch(getServiceProviderGuestMode(data)).then((res) => {

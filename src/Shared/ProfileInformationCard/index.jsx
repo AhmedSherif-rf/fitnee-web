@@ -20,7 +20,7 @@ const ProfileInformationCard = (props) => {
             backgroundImage:
               providerProfile?.profile_pic === null
                 ? `url(${Images.USER_DUMMY_IMG})`
-                : providerProfile?.profile_pic,
+                : `url(${providerProfile?.profile_pic.replace("/api", "")})`,
             height: "38vh",
           }}
         ></div>

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getReviewRequestListing,
   approveReviewRequest,
+  rejectReviewRequest,
 } from ".//ReviewRequestApi";
 
 export const reviewRequestSlice = createSlice({
@@ -32,6 +33,17 @@ export const reviewRequestSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(approveReviewRequest.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(rejectReviewRequest.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(rejectReviewRequest.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(rejectReviewRequest.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

@@ -263,9 +263,11 @@ const SignUpForm = () => {
                       {values.profile_pic || user?.profile_pic ? (
                         <img
                           src={
-                            user?.profile_pic
-                              ? user?.profile_pic
-                              : URL.createObjectURL(values?.profile_pic)
+                            values?.profile_pic
+                              ? URL.createObjectURL(values?.profile_pic)
+                              : user?.profile_pic
+                              ? user?.profile_pic.replace("/api", "")
+                              : ""
                           }
                           className="rounded-circle bgProperties position-relative"
                           alt="Profile Preview"

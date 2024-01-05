@@ -2,7 +2,6 @@ import { Col, Row } from "reactstrap";
 import styles from "./styles.module.scss";
 import Pagination from "../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { PER_PAGE_COUNT } from "../../../utils/constants";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import React, { useState, useEffect, useCallback } from "react";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
@@ -13,7 +12,13 @@ import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 import {
   getReviewRequestListing,
   approveReviewRequest,
+  rejectReviewRequest,
 } from "../../../Redux/features/Admin/ReviewRequest/ReviewRequestApi";
+import {
+  ADMIN_APPROVE_REVIEW_REQUEST_URL,
+  PER_PAGE_COUNT,
+  ADMIN_REJECT_REVIEW_REQUEST_URL,
+} from "../../../utils/constants";
 
 const ReviewRequest = () => {
   const dispatch = useDispatch();
@@ -47,12 +52,26 @@ const ReviewRequest = () => {
 
   const handleApproveRequestClick = (email) => {
     const data = {
-      apiEndpoint: `/service_provider_approve/`,
+      apiEndpoint: ADMIN_APPROVE_REVIEW_REQUEST_URL,
       requestData: JSON.stringify({ email }),
     };
 
     dispatch(approveReviewRequest(data)).then((res) => {
       if (res.type === "approveReviewRequest/fulfilled") {
+        setPage(1);
+        fetchReviewRequests();
+      }
+    });
+  };
+
+  const handleRejectRequestClick = (email) => {
+    const data = {
+      apiEndpoint: ADMIN_REJECT_REVIEW_REQUEST_URL,
+      requestData: JSON.stringify({ email }),
+    };
+
+    dispatch(rejectReviewRequest(data)).then((res) => {
+      if (res.type === "rejectReviewRequest/fulfilled") {
         setPage(1);
         fetchReviewRequests();
       }
@@ -74,7 +93,7 @@ const ReviewRequest = () => {
                   backgroundImage:
                     request?.profile_pic === null
                       ? `url(${Images.PROFILE3_IMG})`
-                      : request?.profile_pic,
+                      : `url(${request?.profile_pic.replace("/api", "")})`,
                 }}
               ></div>
               <h6 className="text-secondary fw-bold mb-0">
@@ -89,7 +108,10 @@ const ReviewRequest = () => {
           phone_number: request?.phone_number,
           action: (
             <div className="d-flex align-items-center justify-content-md-center">
-              <span className={`iconBadge px-2 cursorPointer`}>
+              <span
+                className={`iconBadge px-2 cursorPointer`}
+                onClick={() => handleRejectRequestClick(request?.email)}
+              >
                 <BsFillPersonXFill size={22} className="rejectUser mb-1" />
               </span>
               <span

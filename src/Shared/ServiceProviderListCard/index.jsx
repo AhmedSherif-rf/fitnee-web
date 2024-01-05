@@ -15,10 +15,9 @@ const TrainerListCard = (props) => {
       onClick={() => handleOnClick()}
       style={{
         backgroundImage: `${
-          (serviceProvider?.profile_pic === "" ||
-          serviceProvider?.profile_pic === null)
+          serviceProvider?.profile_pic === null
             ? `url(${Images.USER_DUMMY_IMG})`
-            : serviceProvider?.profile_pic
+            : `url(${serviceProvider?.profile_pic.replace("/api", "")})`
         }`,
         height: `38vh`,
       }}

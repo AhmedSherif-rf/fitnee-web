@@ -46,8 +46,8 @@ export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
 export const LOGOUT_URL = "/logout/";
-export const EDIT_PROFILE_URL = "/User/userId/";
 export const REGISTER_URL = "/registeruser/";
+export const EDIT_PROFILE_URL = "/User/userId/";
 export const DELETE_ACCOUNT_URL = "/delete/userId/";
 export const NEW_PASSWORD_URL = "/forget_password/";
 export const GET_SPECIALITIES_URL = "/specialities/";
@@ -59,6 +59,8 @@ export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
 export const ADMIN_REVIEW_REQUEST_URL = "/service_provider_requests";
 export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
+export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
+export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL = "/serviceprovider_logged_in";
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];

@@ -2,13 +2,10 @@ import React, { memo } from "react";
 import { CardBody } from "reactstrap";
 import styles from "./style.module.scss";
 import { Card, Col, Row } from "reactstrap";
-import { useTranslation } from "react-i18next";
-import { FaAngleDoubleRight, FaWheelchair } from "react-icons/fa";
+import { FaAngleDoubleRight } from "react-icons/fa";
 
 const ExerciseSection = (props) => {
   const { exercisesData } = props;
-  const { i18n } = useTranslation("");
-  console.log("awdawdwa", i18n.dir());
 
   return (
     <>
@@ -17,7 +14,7 @@ const ExerciseSection = (props) => {
           <Col md={12} className="mb-3 text-black-custom px-md-5" key={index}>
             <div className="mt-3">
               <h5>
-                <span className="fw-bold">Upper Chest</span>
+                <span className="fw-bold">{exercise?.title}</span>
               </h5>
               <Row>
                 <Col md={12}>

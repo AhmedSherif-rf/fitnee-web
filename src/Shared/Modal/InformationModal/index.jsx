@@ -41,7 +41,7 @@ const InformationModal = (props) => {
         </ModalHeader>
       )}
 
-      <ModalBody className="py-4 px-2 text-black-custom">
+      <ModalBody className="py-4 text-black-custom">
         <div className={`${TOneClassName}`}> {ModalTextOne}</div>
         <div className={`${TTwoClassName}`}> {ModalTextTwo}</div>
         {requestId && (

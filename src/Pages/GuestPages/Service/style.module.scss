@@ -29,7 +29,7 @@
         height: 75vh;
         .inActiveBodyMuscle {
           &:hover {
-            fill: $orange;
+            fill: $red;
             cursor: pointer;
           }
         }

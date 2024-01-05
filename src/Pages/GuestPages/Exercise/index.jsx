@@ -37,6 +37,7 @@ const Exercise = (props) => {
   const ExerciseData = useCallback(() => {
     return [
       {
+        title: "Upper Chest",
         level: "Beginner",
         categoryName: "Barbell Bench Press",
         description: [
@@ -46,6 +47,7 @@ const Exercise = (props) => {
         ],
       },
       {
+        title: "Lower Chest",
         level: "Beginner",
         categoryName: "Barbell Bench Press",
         description: [

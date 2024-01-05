@@ -121,7 +121,7 @@ const Services = (props) => {
                           currentActivePart === muscle?.id
                             ? activeBodyParts.includes(muscle.id)
                               ? "#F5E74C"
-                              : "#f67109"
+                              : "rgb(255, 0, 0)"
                             : muscle.fill
                         }
                       />
@@ -162,7 +162,7 @@ const Services = (props) => {
                           currentActivePart === muscle?.id
                             ? activeBodyParts.includes(muscle.id)
                               ? "#F5E74C"
-                              : "#f67109"
+                              : "rgb(255, 0, 0)"
                             : muscle.fill
                         }
                       />
@@ -207,7 +207,7 @@ const Services = (props) => {
                           currentActivePart === muscle?.id
                             ? activeBodyParts.includes(muscle.id)
                               ? "#F5E74C"
-                              : "#f67109"
+                              : "rgb(255, 0, 0)"
                             : muscle.fill
                         }
                       />
@@ -248,7 +248,7 @@ const Services = (props) => {
                           currentActivePart === muscle?.id
                             ? activeBodyParts.includes(muscle.id)
                               ? "#F5E74C"
-                              : "#f67109"
+                              : "rgb(255, 0, 0)"
                             : muscle.fill
                         }
                       />

@@ -7,6 +7,7 @@ import languageSlice from "./features/Language/languageSlice.js";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactUsSlice from "./features/ContactUs/contactUsSlice.js";
 import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.js";
+import ReviewRequestSlice from "./features/Admin/ReviewRequest/ReviewRequestSlice.js";
 
 const persistConfig = {
   key: "root",
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   guest: guestSlice,
   language: languageSlice,
   contactUs: contactUsSlice,
+  reviewRequest: ReviewRequestSlice,
   forgotPassword: forgotPasswordSlice,
 });
 

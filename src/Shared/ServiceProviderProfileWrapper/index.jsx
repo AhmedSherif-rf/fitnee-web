@@ -42,7 +42,7 @@ const commentsData = [
 
 const ServiceProviderProfileWrapper = (props) => {
   const { uuid } = useParams();
-  const {subscriptionLink} = props;
+  const { subscriptionLink } = props;
   const { loading } = useSelector((state) => state.guest);
 
   const [serviceProviderProfile, setServiceProviderProfile] = useState([]);
@@ -100,13 +100,11 @@ const ServiceProviderProfileWrapper = (props) => {
                     <h3 className="fw-bold my-2">
                       {t("guest.meetText")} {serviceProviderProfile?.full_name}
                     </h3>
-                    <div className="BorderRadius overflow-hidden">
-                      <div
-                        className=" overflow-scroll p-3"
-                        style={{ height: "100px" }}
-                      >
-                        <p className="small">{serviceProviderProfile?.bio}</p>
-                      </div>
+                    <div
+                      className="overflow-scroll onlyBorderRadius p-3 border border-light"
+                      style={{ maxHeight: "100px" }}
+                    >
+                      <p className="small">{serviceProviderProfile?.bio}</p>
                     </div>
 
                     <Row>
@@ -115,33 +113,35 @@ const ServiceProviderProfileWrapper = (props) => {
                           {t("guest.qualificationExperienceText")}
                         </h5>
                       </Col>
-                      {serviceProviderProfile?.ServiceProvider_Certification?.map(
-                        (certificate, index) => (
-                          <DocumentCard
-                            key={index}
-                            className="BorderYellow"
-                            documentTitle={certificate?.title}
-                            documentImg={certificate?.certificate_image}
-                          />
-                        )
-                      )}
+                      {serviceProviderProfile?.ServiceProvider_Certification &&
+                        serviceProviderProfile?.ServiceProvider_Certification?.map(
+                          (certificate, index) => (
+                            <DocumentCard
+                              key={index}
+                              className="BorderYellow"
+                              documentTitle={certificate?.title}
+                              documentImg={certificate?.certificate_image}
+                            />
+                          )
+                        )}
                     </Row>
                     <Row>
                       <Col md={12}>
                         <h5 className="fw-bold my-2">
                           {t("guest.areaSpecialtyText")}
                         </h5>
-                        {serviceProviderProfile?.specialities?.map(
-                          (specialty, index) => (
-                            <Badge
-                              key={index}
-                              color="custom"
-                              className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
-                            >
-                              {specialty.name}
-                            </Badge>
-                          )
-                        )}
+                        {serviceProviderProfile?.specialities &&
+                          serviceProviderProfile?.specialities?.map(
+                            (specialty, index) => (
+                              <Badge
+                                key={index}
+                                color="custom"
+                                className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
+                              >
+                                {specialty.name}
+                              </Badge>
+                            )
+                          )}
                       </Col>
                     </Row>
                     <Row>

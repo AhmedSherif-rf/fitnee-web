@@ -1,5 +1,5 @@
-@import "../../Assets/GlobalStyle.scss";
 @import "../../../../Assets/Scss/variables.scss";
+
 .stripedTable {
   border-collapse: collapse;
   width: 100%;
@@ -10,7 +10,7 @@
     padding: 8px;
     text-align: left;
     font-size: $font-14;
-    color:$gray;
+    color: $gray;
   }
 
   th {

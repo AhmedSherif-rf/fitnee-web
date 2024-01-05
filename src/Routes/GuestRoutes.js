@@ -12,7 +12,7 @@ export const guestRoutes = [
     isGuest: true,
   },
   {
-    path: "/guest/serviceProviderProfile",
+    path: "/guest/serviceProviderProfile/:uuid",
     component: lazy(() => import("../Pages/GuestPages/ServiceProviderProfile")),
     exact: true,
     isPublic: true,

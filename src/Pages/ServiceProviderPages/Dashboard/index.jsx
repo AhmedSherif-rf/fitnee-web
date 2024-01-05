@@ -90,7 +90,7 @@ const Dashboard = () => {
             <Row>
               <Col lg={3} md={4} className="bg-F6F6F6">
                 <div className="mb-2">
-                  {infoData.map((item, index) => {
+                  {/* {infoData.map((item, index) => {
                     return (
                       <ProfileInformationCard
                         index={index}
@@ -103,7 +103,7 @@ const Dashboard = () => {
                         TraineeEmail={item.TraineeEmail}
                       />
                     );
-                  })}
+                  })} */}
                 </div>
 
                 <div className="">

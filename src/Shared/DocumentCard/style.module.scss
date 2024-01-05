@@ -28,23 +28,23 @@
       max-height: 100%;
       cursor: pointer;
     }
-    &::after{
-        content:'✕';
-        color:$yellow;
-        font-size: 10px;
-        right:10px;
-        font-weight: bolder;
-        display:flex;
-        align-items: center;
-        justify-content:center;
-        top:10px;
-        position: absolute;
-        z-index: 9999;
-        border-radius: 100%;
-        border:1px solid $yellow;
-        width: 30px;
-        height:30px;
-        transition: all 0.3s ease-in-out;
+    &::after {
+      content: "✕";
+      color: $yellow;
+      font-size: 10px;
+      right: 10px;
+      font-weight: bolder;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 10px;
+      position: absolute;
+      z-index: 9999;
+      border-radius: 100%;
+      border: 1px solid $yellow;
+      width: 30px;
+      height: 30px;
+      transition: all 0.3s ease-in-out;
     }
   }
 }

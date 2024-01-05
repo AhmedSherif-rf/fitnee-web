@@ -2,7 +2,6 @@ import styles from "./style.module.scss";
 import React, { memo, useState } from "react";
 import { Col, Card, CardBody, CardFooter } from "reactstrap";
 
-
 const DocumentCard = (props) => {
   const { documentImg, documentTitle, className } = props;
   const [showFullImage, setShowFullImage] = useState(false);

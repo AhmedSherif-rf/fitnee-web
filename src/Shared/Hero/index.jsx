@@ -45,17 +45,18 @@ const Hero = (props) => {
         className={`p-0 d-flex align-items-center ${styles.heroSectionLeftContent}`}
       >
         {type === "textRight" ? (
-          <div className="h-100">
+          <div className="h-100 w-100">
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
-              } px-4 pt-4 d-flex align-items-center`}
+              } w-100 px-4 pt-4 d-flex align-items-center`}
             >
               <motion.div
                 initial="hidden"
                 ref={textRef}
                 animate={textInView ? "visible" : "hidden"}
                 variants={textVariants}
+                className="w-100"
               >
                 <div
                   className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
@@ -67,17 +68,18 @@ const Hero = (props) => {
             </div>
           </div>
         ) : (
-          <div className="h-100">
+          <div className="h-100 w-100">
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
-              } px-4 pt-4 d-flex align-items-center`}
+              } w-100 px-4 pt-4 d-flex align-items-center`}
             >
               <motion.div
                 initial="hidden"
                 ref={textRef}
                 animate={textInView ? "visible" : "hidden"}
                 variants={textVariants}
+                className="w-100"
               >
                 <div
                   className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}

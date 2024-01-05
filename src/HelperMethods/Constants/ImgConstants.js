@@ -89,6 +89,8 @@ let Images = {
   UPLOAD_ICON: require("../../Assets/Images/ConstImgs/uploadImg.svg").default,
   PASSWORD_ICON_IMG: require("../../Assets/Images/ConstImgs/passwordIcon.svg")
     .default,
+  USER_DUMMY_IMG: require("../../Assets/Images/ConstImgs/userDummyImg.png"),
+  NO_DATA_FOUND_IMG: require("../../Assets/Images/ConstImgs/noDataFound.png"),
   //==============================Trainee Images====================================
   QR_CODE_IMG: require("../../Assets/Images/QRCode.svg").default,
   TRAINEE_GRAPH_IMG: require("../../Assets/Images/TraineeGraph.svg").default,

@@ -20,11 +20,11 @@ import { contactUs } from "../../Redux/features/ContactUs/contactUsApi";
 const ContactUsForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state?.contactUs);
   const { t } = useTranslation("");
-  const [showContactUsConfirmModal, setShowContactUsConfirmModal] = useState(
-    false
-  );
+  const { loading } = useSelector((state) => state?.contactUs);
+
+  const [showContactUsConfirmModal, setShowContactUsConfirmModal] =
+    useState(false);
 
   const handleCancelClick = useCallback(() => {
     navigate("/");
@@ -34,7 +34,7 @@ const ContactUsForm = () => {
     setShowContactUsConfirmModal(false);
   }, []);
 
-  const handleContactUsSubmit = (values) => {
+  const handleContactUsSubmit = (values, resetForm) => {
     const data = {
       apiEndpoint: CONTACT_US_URL,
       requestData: JSON.stringify(values),
@@ -42,6 +42,7 @@ const ContactUsForm = () => {
     };
     dispatch(contactUs(data)).then((res) => {
       if (res.type === "contactUs/fulfilled") {
+        resetForm();
         setShowContactUsConfirmModal(true);
       }
     });
@@ -52,14 +53,15 @@ const ContactUsForm = () => {
       <Row className="justify-content-center align-items-center vh-100">
         {loading === "pending" && <LoadingScreen />}
         <Col md={10} sm={10}>
-          <h1 className="text-center mb-5 f-w-bold ">{t("contactUs.contactUsText")}</h1>
+          <h1 className="text-center mb-2 f-w-bold">
+            {t("contactUs.contactUsText")}
+          </h1>
           <Formik
             initialValues={{ ...INITIAL_VALUES }}
             validationSchema={CONTACT_US_SCHEMA}
             onSubmit={(values, { setSubmitting, resetForm }) => {
               setSubmitting(true);
-              handleContactUsSubmit(values);
-              resetForm();
+              handleContactUsSubmit(values, resetForm);
             }}
           >
             {({
@@ -126,7 +128,6 @@ const ContactUsForm = () => {
                     <PhoneInputField
                       inputProps={{
                         name: "phone",
-                        required: true,
                         className:
                           "form-control-lg w-100 py-3 px-4 customPhoneInput",
                       }}
@@ -147,7 +148,7 @@ const ContactUsForm = () => {
                       onBlurHandle={handleBlur}
                       value={values.message}
                       className={"p-3"}
-                      rows={"5"}
+                      rows={"2"}
                     />
                     <p className="errorField">
                       {errors.message && touched.message && errors.message}

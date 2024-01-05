@@ -32,9 +32,11 @@ const ContactUs = () => {
           </span>
         </div>
       ),
-      text3: 
-      
-      <h6 className="small text-center text-white"> <Link className="text-white" to="/">www.fitnee.fit</Link>  </h6>,
+      text3: (
+        <Link className="text-white" to="/">
+          <h6 className="small text-center text-white">www.fitnee.fit</h6>
+        </Link>
+      ),
     },
   ];
 

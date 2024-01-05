@@ -1184,7 +1184,7 @@ const SignUpForm = () => {
                 <div className="d-flex mb-2">
                   <Checkbox
                     label={
-                      roleType === TRAINER_TYPE ? (
+                      roleType !== TRAINEE_TYPE ? (
                         <p className="mb-0 fs-6">
                           {t("signup.moneyTransferText")}
 

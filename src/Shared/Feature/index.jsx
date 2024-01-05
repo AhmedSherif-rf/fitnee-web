@@ -15,7 +15,6 @@ const Feature = (props) => {
     console.log(swiper, swiper.activeIndex);
     cardSwiperRef.current.slideTo(swiper.activeIndex);
   };
-
   return (
     <Row
       className={`p-4 ${styles.featureSectionWrapper} ${
@@ -32,7 +31,9 @@ const Feature = (props) => {
             <div
               className={`fw-bold textYellow mb-0 display-5 p-0 ${styles.featureHeading}`}
             >
-              <span className="arabicBorderHover p-0">{t("landing.featuresText")}</span>
+              <span className="arabicBorderHover p-0">
+                {t("landing.featuresText")}
+              </span>
             </div>
             <div>
               <Swiper

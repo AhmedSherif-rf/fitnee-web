@@ -26,6 +26,7 @@
       position: absolute;
       display: flex;
       align-items: center;
+      justify-content: center;
       bottom: 0;
       font-size: 50px;
       font-weight: 600;
@@ -34,6 +35,7 @@
       height: 100%;
       background: $yellow;
       width: 20px;
+      padding-bottom: 10px;
     }
   }
 

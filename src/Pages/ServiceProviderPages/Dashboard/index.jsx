@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import CommentCard from "../../../Shared/CommentCard";
 import DocumentCard from "../../../Shared/DocumentCard";
+import { TRAINER_ROLE } from "../../../utils/constants";
 import { Row, Col, Container, Card, CardBody } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
@@ -71,7 +72,11 @@ const Dashboard = () => {
                       <FillBtn
                         handleOnClick={handleCurrentSubscribersClick}
                         className="w-100 mb-2 py-2"
-                        text={t("trainer.trainerSubscriberText")}
+                        text={
+                          user?.role === TRAINER_ROLE
+                            ? "My Current Trainees"
+                            : t("trainer.trainerSubscriberText")
+                        }
                       />
                       <FillBtn
                         handleOnClick={handlePaymentClick}

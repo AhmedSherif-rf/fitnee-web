@@ -98,7 +98,7 @@ const ServiceProviderProfileWrapper = (props) => {
                 <Card className="BorderRadius border-0 text-black-custom">
                   <CardBody>
                     <h3 className="fw-bold my-2">
-                      {t("guest.meetText")} {serviceProviderProfile?.full_name}
+                      {serviceProviderProfile?.full_name}
                     </h3>
                     <div
                       className="overflow-scroll onlyBorderRadius p-3 border border-light"

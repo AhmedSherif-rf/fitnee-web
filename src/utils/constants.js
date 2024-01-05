@@ -23,7 +23,7 @@ export const trainingGoalOptions = [
   "Lose Weight",
   "Power Lifting",
 ];
-export const activityLevelOptions = ["Beginner", "Intermediate", "Advanced"];
+export const activityLevelOptions = ["No active", "Active", "Super active"];
 export const weekDaysOptions = [
   { value: "Monday", label: "Monday" },
   { value: "Tuesday", label: "Tuesday" },

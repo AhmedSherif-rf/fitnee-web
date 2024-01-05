@@ -48,7 +48,7 @@ const InputField = (props) => {
           onClick={togglePasswordVisibility}
           className={styles.passwordIconWrapper}
         >
-          {isPasswordVisible ? <GoEyeClosed /> : <GoEye />}
+          {isPasswordVisible ? <GoEye /> : <GoEyeClosed />}
         </div>
       )}
     </div>

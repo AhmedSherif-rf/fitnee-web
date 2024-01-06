@@ -27,9 +27,9 @@ const Exercise = (props) => {
   }, []);
 
   const handleRegisterClick = useCallback(() => {
-    showSubscriptionInformatoinModal(false);
+    setShowSubscriptionInformatoinModal(false);
     navigate("/registerAs");
-  }, [navigate, showSubscriptionInformatoinModal]);
+  }, [navigate]);
 
   const handleSeeMoreClick = useCallback(() => {
     setShowSubscriptionInformatoinModal(true);

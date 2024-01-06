@@ -172,9 +172,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   };
 
   const handleSubscriptionClick = useCallback(() => {
-    showSubscriptionInformationModal(false);
+    setShowSubscriptionInformationModal(false);
     navigate("/registerAs");
-  }, [navigate, showSubscriptionInformationModal]);
+  }, [navigate]);
 
   const handleFitneeCommunityClick = useCallback(() => {
     setShowSubscriptionInformationModal(true);

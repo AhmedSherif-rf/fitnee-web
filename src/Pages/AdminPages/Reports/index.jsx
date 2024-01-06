@@ -2,13 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
-import {
-  GoTrash,
-  GoPencil,
-  GoEye,
-  GoTriangleDown,
-  GoTriangleUp,
-} from "react-icons/go";
+import { GoEye, GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
@@ -81,7 +75,6 @@ const ContactUs = (props) => {
       reportFrom: "FitNee Community",
       view: (
         <div className="d-flex align-items-center justify-content-md-center">
-         
           <span className={`iconBadge me-1`}>
             <Link to="#0">
               <GoEye className="GoEye mb-1" />
@@ -151,14 +144,13 @@ const ContactUs = (props) => {
       reportFrom: "FitNee Community",
       view: (
         <div className="d-flex align-items-center justify-content-md-center">
-         
           <span className={`iconBadge me-1`}>
             <Link to="#0">
               <GoEye className="GoEye mb-1" />
             </Link>
           </span>
         </div>
-      ), 
+      ),
     },
     {
       ReportingUser: (
@@ -219,7 +211,6 @@ const ContactUs = (props) => {
       reportFrom: "FitNee Community",
       view: (
         <div className="d-flex align-items-center justify-content-md-center">
-         
           <span className={`iconBadge me-1`}>
             <Link to="#0">
               <GoEye className="GoEye mb-1" />

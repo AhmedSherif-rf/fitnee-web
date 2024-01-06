@@ -207,7 +207,7 @@ const Dashboard = () => {
       Weight: "50 kg",
       SMM: "30 kg",
       BFM: "30 kg",
-      Proteins: "30 kg",
+      Proteins: "30 g / kg",
     },
   ];
 

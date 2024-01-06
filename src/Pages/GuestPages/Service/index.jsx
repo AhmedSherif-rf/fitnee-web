@@ -48,8 +48,9 @@ const Services = (props) => {
   }, []);
 
   const handleRegisterClick = useCallback(() => {
+    showSubscriptionInformationModal(false);
     navigate("/registerAs");
-  }, [navigate]);
+  }, [navigate, showSubscriptionInformationModal]);
 
   const handleMouseEnter = (e) => {
     setCurrentActivePart(e.target.id);

@@ -320,9 +320,11 @@ const SignUpForm = () => {
               </Col>
               {filterFields.includes("first_name") && (
                 <Col lg={6} md={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>{" "}
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -342,9 +344,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("full_name") && (
                 <Col lg={6} md={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>{" "}
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -362,9 +366,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("last_name") && (
                 <Col lg={6} md={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>{" "}
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -382,9 +388,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("email") && (
                 <Col lg={6} md={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -402,9 +410,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("password") && (
                 <Col lg={6} md={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <InputField
                     className="py-3 px-4"
                     type="password"
@@ -422,9 +432,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("confirm_password") && (
                 <Col lg={6} md={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>{" "}
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <InputField
                     className="py-3 px-4"
                     type="password"
@@ -444,9 +456,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("phone_number") && (
                 <Col lg={6} md={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>{" "}
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <PhoneInputField
                     inputProps={{
                       name: "phone_number",
@@ -468,9 +482,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("gender") && (
                 <Col md={6} lg={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                     <div
                       className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropdownRadius border  bg-white ${
@@ -499,9 +515,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("date_of_birth") && (
                 <Col md={6} lg={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <InputGroup>
                     <InputGroupText
                       style={{
@@ -540,9 +558,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("experience") && (
                 <Col lg={6} md={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <InputField
                     className="py-3 px-4"
                     type="number"
@@ -564,9 +584,11 @@ const SignUpForm = () => {
 
               {filterFields.includes("bio") && (
                 <Col md={6} lg={6} className="mb-2">
-                  <div className="text-end" style={{ marginBottom: "-15px" }}>
-                    *
-                  </div>{" "}
+                  {user === null && (
+                    <div className="text-end" style={{ marginBottom: "-15px" }}>
+                      *
+                    </div>
+                  )}
                   <InputField
                     className="py-3 px-4"
                     type="textarea"
@@ -592,6 +614,21 @@ const SignUpForm = () => {
                   </Col>
                   <Col>
                     <div className="form-group multi-preview d-flex flex-wrap align-items-center">
+                      {user?.body_images && (
+                        <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border">
+                          <img
+                            src={user?.body_images}
+                            alt="body_images"
+                            className="uploaded-image BorderRadius"
+                            style={{
+                              width: "100%",
+                              height: "170px",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                            }}
+                          />
+                        </div>
+                      )}
                       {values?.body_images && (
                         <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border">
                           <img
@@ -648,7 +685,7 @@ const SignUpForm = () => {
                 <>
                   <Col md={12}>
                     <h6 className="fw-bold">
-                      {t("signup.attachCertificateText")} *
+                      {t("signup.attachCertificateText")} {user === null && "*"}
                     </h6>
                   </Col>
                   <Col>
@@ -841,7 +878,8 @@ const SignUpForm = () => {
                     <Col md={12}>
                       <div className="form-group">
                         <h6 className="mb-2 fw-bold">
-                          {t("signup.selectAreaOfSpecialtyText")}*
+                          {t("signup.selectAreaOfSpecialtyText")}{" "}
+                          {user === null && "*"}
                         </h6>
                         <Field
                           name="specialities"
@@ -1022,7 +1060,7 @@ const SignUpForm = () => {
               {filterFields.includes("stc_pay") && (
                 <Col lg={6} md={6} className="mb-2">
                   <h6 className="mb-2 fw-bold">
-                    {t("signup.enterStcPayAccountText")} *
+                    {t("signup.enterStcPayAccountText")} {user === null && "*"}
                   </h6>
                   <PhoneInputField
                     inputProps={{
@@ -1048,7 +1086,7 @@ const SignUpForm = () => {
                   <h6 className="mb-2 fw-bold">
                     {`   ${t("signup.availableToRespondTraineeText")} ${
                       roleType === NUTRITIONIST_TYPE ? "subscriber" : "trainee"
-                    } *`}
+                    } ${user === null && "*"}`}
                   </h6>
                   <FieldArray
                     name="profile_availability"
@@ -1190,7 +1228,7 @@ const SignUpForm = () => {
                         <p className="mb-0 fs-6">
                           {t("signup.moneyTransferText")}
 
-                          <Link to="/termAndCondition/serviceProvider">
+                          <Link to={`/termAndCondition/serviceProvider/signUp`}>
                             <span className="textYellow">
                               {t("signup.termsAndConditionText")}
                             </span>
@@ -1200,7 +1238,7 @@ const SignUpForm = () => {
                         <p className="mb-0 fs-6">
                           {t("signup.acknowledgeText")}
 
-                          <Link to="/termAndCondition/trainee">
+                          <Link to={`/termAndCondition/trainee/signUp`}>
                             <span className="textYellow">
                               {t("signup.termsAndConditionText")}
                             </span>

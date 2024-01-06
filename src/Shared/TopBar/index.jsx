@@ -97,7 +97,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     setShowSubscriptionInformationModal,
   ] = useState(false);
 
-  const [deleteAccountModal, setDeleteAccountModal] = useState(false);
+  const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
 
   const [backgroundClass, setBackgroundClass] = useState(
     isPublic
@@ -138,7 +138,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   }, []);
 
   const handleDeleteAccountModalClose = useCallback(() => {
-    setDeleteAccountModal(false);
+    setShowDeleteAccountModal(false);
   }, []);
 
   const handleDeleteAccountClick = useCallback(() => {
@@ -152,11 +152,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       }
     });
 
-    setDeleteAccountModal(false);
+    setShowDeleteAccountModal(false);
   }, [dispatch, navigate, user]);
 
   const handleDeleteClick = () => {
-    setDeleteAccountModal(true);
+    setShowDeleteAccountModal(true);
   };
 
   const handleLogoutClick = () => {
@@ -172,8 +172,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   };
 
   const handleSubscriptionClick = useCallback(() => {
+    showSubscriptionInformationModal(false);
     navigate("/registerAs");
-  }, [navigate]);
+  }, [navigate, showSubscriptionInformationModal]);
 
   const handleFitneeCommunityClick = useCallback(() => {
     setShowSubscriptionInformationModal(true);
@@ -740,7 +741,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         size={"md"}
         TOneClassName={"fw-bold mb-4 fs-5 text-center"}
         className={"p-4"}
-        isOpen={deleteAccountModal}
+        isOpen={showDeleteAccountModal}
         onClose={handleDeleteAccountModalClose}
         ModalTextOne="Are you sure to want to delete your account?"
         ButtonOne={

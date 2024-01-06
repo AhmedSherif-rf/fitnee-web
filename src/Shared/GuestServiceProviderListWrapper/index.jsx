@@ -73,8 +73,9 @@ const GuestServiceProviderListWrapper = (props) => {
   }, []);
 
   const handleRegisterClick = useCallback(() => {
+    showSubscriptionInformationModal(false);
     navigate("/registerAs");
-  }, [navigate]);
+  }, [navigate, showSubscriptionInformationModal]);
 
   const handleSubscriptionInformationModalClose = useCallback(() => {
     setShowSubscriptionInformationModal(false);

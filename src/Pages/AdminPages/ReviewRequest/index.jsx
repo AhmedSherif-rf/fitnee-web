@@ -59,7 +59,6 @@ const ReviewRequest = () => {
     dispatch(approveReviewRequest(data)).then((res) => {
       if (res.type === "approveReviewRequest/fulfilled") {
         setPage(1);
-        fetchReviewRequests();
       }
     });
   };
@@ -73,7 +72,6 @@ const ReviewRequest = () => {
     dispatch(rejectReviewRequest(data)).then((res) => {
       if (res.type === "rejectReviewRequest/fulfilled") {
         setPage(1);
-        fetchReviewRequests();
       }
     });
   };
@@ -91,8 +89,8 @@ const ReviewRequest = () => {
                   width: "40px",
                   height: "40px",
                   backgroundImage:
-                    request?.profile_pic === null
-                      ? `url(${Images.PROFILE3_IMG})`
+                    request?.profile_pic === "" || request?.profile_pic === null
+                      ? `url(${Images.USER_DUMMY_IMG})`
                       : `url(${request?.profile_pic.replace("/api", "")})`,
                 }}
               ></div>
@@ -101,6 +99,7 @@ const ReviewRequest = () => {
               </h6>
             </div>
           ),
+          role: request?.role,
           request_id: (
             <div className="fw-bold text-secondary">{request?.request_id}</div>
           ),
@@ -133,7 +132,8 @@ const ReviewRequest = () => {
 
   const columns = [
     { label: "Full Name", dataKey: "full_name" },
-    { label: "Request ID", dataKey: "request_id" },
+    { label: "Role", dataKey: "role" },
+    { label: "Ticket ID", dataKey: "request_id" },
     { label: "Email", dataKey: "email", align: "center" },
     { label: "Phone", dataKey: "phone_number", align: "center" },
     { label: "Action", dataKey: "action", align: "center" },

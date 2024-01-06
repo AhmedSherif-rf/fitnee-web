@@ -1,29 +1,79 @@
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row, Card } from "reactstrap";
-import SubscriptionCard from "../../../Shared/SubscriptionCard";
-import Images from "../../../HelperMethods/Constants/ImgConstants";
-
-const subscriptionData = [
-  {
-    text: "1 Month",
-    price: "SAR 500",
-    image: Images.ONE_MONTH_IMG,
-  },
-  {
-    text: "2 Month",
-    price: "SAR 600",
-    image: Images.TWO_MONTH_IMG,
-  },
-  {
-    text: "3 Month",
-    price: "SAR 700",
-    image: Images.THREE_MONTH_IMG,
-  },
-];
+import React, { useState, useCallback, useEffect } from "react";
+import LoadingScreen from "../../../HelperMethods/LoadingScreen";
+import { SUBSCRIPTION_PLAN_URL } from "../../../utils/constants";
+import EditSubscriptionCard from "../../../Shared/EditSubscriptionCard";
+import {
+  createSubscriptionPlan,
+  getServiceProviderSubscriptionPlans,
+} from "../../../Redux/features/SubscriptionPlan/subscriptionPlanApi";
 
 const Subscription = () => {
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.subscriptionPlan);
+
+  const [subscriptionData, setSubscriptionData] = useState([]);
+
+  useEffect(() => {
+    fetchServiceProviderSubscriptionPlan();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
+
+  const fetchServiceProviderSubscriptionPlan = () => {
+    const data = {
+      apiEndpoint: SUBSCRIPTION_PLAN_URL,
+    };
+    dispatch(getServiceProviderSubscriptionPlans(data)).then((res) => {
+      if (res.type === "getServiceProviderSubscriptionPlans/fulfilled") {
+        filterSubscriptionPackageData(res.payload.data);
+      }
+    });
+  };
+
+  const filterSubscriptionPackageData = (packageArray) => {
+    const durationsPresent = packageArray.map((item) => item.duration);
+
+    const requiredDurations = [1, 2, 3];
+    const missingDurations = requiredDurations.filter(
+      (duration) => !durationsPresent.includes(duration)
+    );
+
+    missingDurations.forEach((duration) => {
+      const dummyPackage = {
+        price: "",
+        isDummy: true,
+        duration: duration,
+      };
+
+      packageArray.push(dummyPackage);
+    });
+
+    packageArray.sort((a, b) => a.duration - b.duration);
+
+    setSubscriptionData(packageArray);
+  };
+
+  const handleOnEdit = useCallback(
+    (values) => {
+      const data = {
+        apiEndpoint: SUBSCRIPTION_PLAN_URL,
+        requestData: JSON.stringify(values),
+      };
+      dispatch(createSubscriptionPlan(data)).then((res) => {
+        if (res.type === "createSubscriptionPlan/fulfilled") {
+          fetchServiceProviderSubscriptionPlan();
+        }
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dispatch]
+  );
+
   return (
     <Container fluid className="vh-100">
+      {loading === "pending" && <LoadingScreen />}
       <Row className="justify-content-center align-items-center">
         <Col md={9} className="">
           <Card className="contentCard px-3 pt-5 bg-transparent">
@@ -39,11 +89,11 @@ const Subscription = () => {
                         : ""
                     }`}
                   >
-                    <SubscriptionCard
-                      headerText={item.text}
+                    <EditSubscriptionCard
+                      duration={item.duration}
                       price={item.price}
-                      ImgSrc={item.image}
-                      buttonText="Edit"
+                      handleOnEdit={handleOnEdit}
+                      isDummy={item?.isDummy}
                     />
                   </Col>
                 );

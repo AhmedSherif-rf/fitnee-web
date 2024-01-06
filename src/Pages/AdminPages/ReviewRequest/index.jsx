@@ -1,4 +1,5 @@
 import { Col, Row } from "reactstrap";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import Pagination from "../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
@@ -82,22 +83,27 @@ const ReviewRequest = () => {
       reviewRequests.forEach((request) =>
         requestArray.push({
           full_name: (
-            <div className="d-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    request?.profile_pic === "" || request?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${request?.profile_pic.replace("/api", "")})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {request?.full_name}
-              </h6>
-            </div>
+            <Link
+              to={`/admin/serviceProviderProfile/0187a117-4efe-48f0-9cc8-62ed5c531fd2`}
+            >
+              <div className="d-flex align-items-center">
+                <div
+                  className="bgProperties rounded-circle me-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      request?.profile_pic === "" ||
+                      request?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${request?.profile_pic.replace("/api", "")})`,
+                  }}
+                ></div>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {request?.full_name}
+                </h6>
+              </div>
+            </Link>
           ),
           role: request?.role,
           request_id: (

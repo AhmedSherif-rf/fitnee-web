@@ -8,6 +8,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactUsSlice from "./features/ContactUs/contactUsSlice.js";
 import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.js";
 import ReviewRequestSlice from "./features/Admin/ReviewRequest/ReviewRequestSlice.js";
+import subscriptionPlanSlice from "./features/SubscriptionPlan/subscriptionPlanSlice.js";
 
 const persistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   contactUs: contactUsSlice,
   reviewRequest: ReviewRequestSlice,
   forgotPassword: forgotPasswordSlice,
+  subscriptionPlan: subscriptionPlanSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

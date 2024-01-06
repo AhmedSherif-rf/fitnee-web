@@ -3,7 +3,7 @@ import {
   getReviewRequestListing,
   approveReviewRequest,
   rejectReviewRequest,
-} from ".//ReviewRequestApi";
+} from "./ReviewRequestApi";
 
 export const reviewRequestSlice = createSlice({
   name: "reviewRequest",

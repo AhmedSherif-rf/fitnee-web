@@ -1,3 +1,5 @@
+//===============Currency=========================
+export const CURRENCY = "SAR";
 //===============AdminCredentials==================
 export const ADMIN_EMAIL = "admin@admin.com";
 //======================paginationParams============
@@ -53,6 +55,7 @@ export const NEW_PASSWORD_URL = "/forget_password/";
 export const GET_SPECIALITIES_URL = "/specialities/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
+export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";

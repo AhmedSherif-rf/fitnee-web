@@ -16,8 +16,21 @@ export const createSubscriptionPlan = createAsyncThunk(
   }
 );
 
-export const getServiceProviderSubscriptionPlans = createAsyncThunk(
-  "getServiceProviderSubscriptionPlans",
+export const getTraineeSubscriptionPlans = createAsyncThunk(
+  "getTraineeSubscriptionPlans",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const getGuestServiceProviderSubscriptionPlans = createAsyncThunk(
+  "getGuestServiceProviderSubscriptionPlans",
   async ({ apiEndpoint }, thunkAPI) => {
     try {
       const response = await axiosInstance.get(apiEndpoint);

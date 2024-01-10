@@ -21,7 +21,7 @@ export const guestRoutes = [
     isGuest: true,
   },
   {
-    path: "/guest/serviceProvider/subscription",
+    path: "/guest/serviceProvider/subscription/:uuid",
     component: lazy(() =>
       import("../Pages/GuestPages/ServiceProviderSubscription")
     ),

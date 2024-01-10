@@ -1,5 +1,5 @@
 import "./styles.scss";
-import React from "react";
+import React, { memo } from "react";
 
 const PageHeading = (props) => {
   const { headingText, categoryText, className, style } = props;
@@ -20,4 +20,4 @@ const PageHeading = (props) => {
     </React.Fragment>
   );
 };
-export default PageHeading;
+export default memo(PageHeading);

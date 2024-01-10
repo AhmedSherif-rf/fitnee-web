@@ -458,7 +458,7 @@
     "viewGraphText": "عرض الرسم البياني"
   },
   "cardDetails": {
-    "cardDetailsText": "البطاقة معلومات",
+    "PaymentMethodText": "البطاقة معلومات",
     "cardNumberText": "البطاقة رقم",
     "cardHolderNameText": "البطاقة حامل اسم",
     "expiryDateText": "االنتهاء تاريخ",
@@ -622,6 +622,7 @@
     "invalidFileBodyImageText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
     "requiredBodyImageText": "Body Image is required",
     "limitBodyImageText": "File size exceeds the maximum limit (5 MB).",
+    "requiredText": "Required",
     "requiredRoleText": "الدور مطلوب",
     "requiredDayText": "اليوم مطلوب",
     "requiredFromDayText": "من الوقت مطلوب",

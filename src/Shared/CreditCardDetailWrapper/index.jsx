@@ -1,190 +1,310 @@
+import { Formik } from "formik";
 import "./CreditCardStyle.scss";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import ToggleSwitch from "../ToggleSwitch";
+import {
+  CitySelect,
+  CountrySelect,
+  StateSelect,
+} from "react-country-state-city";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import React, { useState, memo, useCallback } from "react";
-import Images from "../../HelperMethods/Constants/ImgConstants";
-import { Card, Col, Container, InputGroup, Row } from "reactstrap";
-import {
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Input,
-  InputGroupText,
-  Label,
-} from "reactstrap";
+import SubHeading from "../Headings/SubHeading";
 import PageHeading from "../Headings/PageHeading";
+import { useDispatch, useSelector } from "react-redux";
+import React, { memo, useCallback, useState } from "react";
+import { Card, Col, Container, Row, Form } from "reactstrap";
+import { CardBody, CardFooter, CardHeader } from "reactstrap";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
+import Images from "../../HelperMethods/Constants/ImgConstants";
+import "react-country-state-city/dist/react-country-state-city.css";
+import { PAYMENT_METHOD_DETAIL_SCHEMA } from "../ValidationData/validation";
+import { getCheckoutId } from "../../Redux/features/Subscription/subscriptionApi";
+import { PAYMENT_METHOD_DETAIL_INITIAL_VALUES } from "../ValidationData/initialValue";
 
 const CreditCardDetailWrapper = () => {
-  const [date, setDate] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [cvcValue, setCvcValue] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { t } = useTranslation("");
-  const [checked, setChecked] = useState(true);
+  const { user } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.subscription);
 
-  const handleToggle = () => {
-    setChecked(!checked);
-  };
-  const handlePayClick = useCallback(() => {
-    navigate("/trainee/appDownloadLink");
-  }, [navigate]);
+  const [countryData, setCountryData] = useState({
+    countryId: "",
+    stateId: "",
+  });
 
-  const handleCardNumberChange = (e) => {
-    const inputValue = e.target.value;
-    const numericValue = inputValue.replace(/\D/g, "").slice(0, 16);
-    setCardNumber(numericValue);
-  };
-
-  const handleCvcChange = (e) => {
-    const inputValue = e.target.value;
-    const numericValue = inputValue.replace(/\D/g, "").slice(0, 4);
-    setCvcValue(numericValue);
-  };
-  const handleDateChange = (e) => {
-    const inputDate = e.target.value;
-    let formattedDate = "";
-
-    if (inputDate) {
-      const parts = inputDate.split("-");
-      if (parts.length === 3) {
-        const year = parts[0];
-        const month = parts[1];
-        formattedDate = `${month}/${year}`;
-      }
-    }
-
-    setDate(formattedDate);
-  };
+  const handlePayClick = useCallback(
+    (values) => {
+      const data = {
+        apiEndpoint: "/payment/hyperpay/",
+        requestData: JSON.stringify({ ...values, email: user?.email }),
+      };
+      dispatch(getCheckoutId(data)).then((res) => {
+        navigate(`/trainee/subscription/addCard/${res.payload.data.id}`);
+      });
+    },
+    [dispatch, navigate, user?.email]
+  );
 
   return (
     <Container fluid className="h-100">
+      {loading === "pending" && <LoadingScreen />}
       <Row className="h-100 CardDetails">
         <Col md={12}>
           <PageHeading
-            headingText={t("cardDetails.cardDetailsText")}
+            headingText={t("cardDetails.PaymentMethodText")}
             className="mb-0"
             categoryText=""
           />
         </Col>
         <Col md={6}>
-          <div className="w-100 card border-0 bg-transparent p-3">
-            <div className="card-body">
-              <Label className="small mb-0 fw-bold">{t("cardDetails.cardNumberText")}</Label>
-              <InputGroup>
-                <InputGroupText
-                  className="form-control-lg border py-3"
-                  style={{
-                    borderTopLeftRadius: "14px",
-                    borderBottomLeftRadius: "14px",
-                  }}
-                >
-                  <img src={Images.CARD_ICON_IMG} alt="" />
-                </InputGroupText>
+          <Formik
+            initialValues={{ ...PAYMENT_METHOD_DETAIL_INITIAL_VALUES }}
+            validationSchema={PAYMENT_METHOD_DETAIL_SCHEMA}
+            onSubmit={(values, { setSubmitting }) => {
+              setSubmitting(true);
+              handlePayClick(values);
+            }}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              setFieldValue,
+            }) => (
+              <Form onSubmit={handleSubmit}>
+                {console.log(errors)}
+                <Container>
+                  <Row className="paymentMethodBtn py-4">
+                    <Col md={4} className="mb-1">
+                      <div
+                        className={`d-flex align-items-center justify-content-between form-control-lg py-2 customDropdownRadius border bg-white cursorPointer ${
+                          values.entity === "VISA" ? "selected" : ""
+                        }`}
+                        onClick={() => setFieldValue("entity", "VISA")}
+                      >
+                        <h6 className="mb-0 font14">VISA/Master</h6>
+                        <img src={Images.VISA_ICON} alt="visa-icon" />
+                      </div>
+                    </Col>
+                    <Col md={4} className="mb-1">
+                      <div
+                        className={`d-flex align-items-center justify-content-between form-control-lg py-2 customDropdownRadius border w-100 bg-white cursorPointer ${
+                          values.entity === "MADA" ? "selected" : ""
+                        }`}
+                        onClick={() => setFieldValue("entity", "MADA")}
+                      >
+                        <h6 className="mb-0 font14">Mada</h6>
+                        <img src={Images.MADA_ICON} alt="mada-icon" />
+                      </div>
+                    </Col>
+                    <Col md={4} className="mb-1">
+                      <div
+                        className={`d-flex align-items-center justify-content-between form-control-lg py-2 customDropdownRadius border w-100 bg-white cursorPointer ${
+                          values.entity === "APPLE_PAY" ? "selected" : ""
+                        }`}
+                        onClick={() => setFieldValue("entity", "APPLE_PAY")}
+                      >
+                        <h6 className="mb-0 font14">Apple pay</h6>
+                        <img src={Images.APPLE_PAY_ICON} alt="mada-icon" />
+                      </div>
+                    </Col>
+                    <p className="errorField">
+                      {errors.entity && touched.entity && errors.entity}
+                    </p>
+                  </Row>
+                  <Row>
+                    <Col md={12}>
+                      <SubHeading
+                        headingText={"Billing Address"}
+                        className="mb-0"
+                        categoryText=""
+                      />
+                    </Col>
+                    <Col md={6} className="mb-2">
+                      <InputField
+                        type="text"
+                        name="surname"
+                        placeholder={"Surname"}
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.surname}
+                        icon={<img src={Images.PERSON_ICON} alt="email-icon" />}
+                        className={
+                          "form-control-lg BorderRadiusInput py-3 px-5"
+                        }
+                      />
+                      <p className="errorField">
+                        {errors.surname && touched.surname && errors.surname}
+                      </p>
+                    </Col>
+                    <Col md={6} className="mb-2">
+                      <InputField
+                        type="text"
+                        name="givenName"
+                        placeholder={"Given name"}
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.givenName}
+                        icon={<img src={Images.PERSON_ICON} alt="email-icon" />}
+                        className={
+                          "form-control-lg BorderRadiusInput py-3 px-5"
+                        }
+                      />
+                      <p className="errorField">
+                        {errors.givenName &&
+                          touched.givenName &&
+                          errors.givenName}
+                      </p>
+                    </Col>
+                    <Col md={6} className="mb-2">
+                      <InputField
+                        type="text"
+                        name="postcode"
+                        placeholder={"Postcode"}
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.postcode}
+                        icon={<img src={Images.PERSON_ICON} alt="email-icon" />}
+                        className={
+                          "form-control-lg BorderRadiusInput py-3 px-5"
+                        }
+                      />
+                      <p className="errorField">
+                        {errors.postcode && touched.postcode && errors.postcode}
+                      </p>
+                    </Col>
+                    <Col md={6} className="mb-2">
+                      <CountrySelect
+                        def
+                        onChange={(e) => {
+                          setCountryData({ ...countryData, countryId: e.id });
+                          setFieldValue("country", e.iso2);
+                        }}
+                        containerClassName={"countryContainerClass"}
+                        placeHolder="Select Country"
+                      />
+                      <p className="errorField">
+                        {errors.country && touched.country && errors.country}
+                      </p>
+                    </Col>
 
-                <Input
-                  type="text"
-                  style={{
-                    backgroundColor: "white",
-                    color: "black",
-                    borderTopRightRadius: "14px",
-                    borderBottomRightRadius: "14px",
-                  }}
-                  placeholder="0000 0000 0000 0000"
-                  className="form-control-lg border fs-6 py-3"
-                  value={cardNumber}
-                  onChange={handleCardNumberChange}
-                  required
-                />
-              </InputGroup>
-
-              <Label className="small mt-2 mb-0 fw-bold">{t("cardDetails.cardHolderNameText")}</Label>
-              <InputField
-                type="text"
-                className="small py-3"
-                placeholder="XyzAbc"
-              />
-
-              <div className="d-flex align-items-center justify-content-between mb-3">
-                <div className="w-100 me-3">
-                  <Label className="small mt-2 mb-0 fw-bold">{t("cardDetails.expiryDateText")}</Label>
-                  <InputField
-                    type="date"
-                    className="fs-6 py-3"
-                    style={{ paddingTop: "11px", paddingBottom: "11px" }}
-                    placeholder="MM/YYYY"
-                    // value={""}
-                    onChange={handleDateChange}
-                  />
-                </div>
-                <div className="w-100">
-                  <Label className="small mt-2 mb-0 fw-bold">
-                    <span className="d-flex align-items-center gap-2">
-                      <span>{t("cardDetails.CVV_CVCText")}</span>
-                      <span className="mb-1">
-                        <img src={Images.CVV_IMG} alt="" />
-                      </span>
-                    </span>
-                  </Label>
-                  <Input
-                    type="text"
-                    placeholder="0000"
-                    className="form-control-lg BorderRadius fs-6 py-3"
-                    value={cvcValue}
-                    onChange={handleCvcChange}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="d-flex align-items-center justify-content-between mb-2">
-                <div className="w-100 me-3">
-                  <p className="mb-0 fw-bold">{t("cardDetails.promoCodeText")}</p>
-                </div>
-                <div className="d-flex align-items-center justify-content-between w-100">
-                  <div className="w-100">
-                    <Input
-                      type="text"
-                      placeholder="0000"
-                      className="form-control py-3 BorderRadius "
-                      value={""}
-                      onChange={handleCvcChange}
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="d-flex justify-content-end">
-                <FillBtn
-                  text={t("cardDetails.applyText")}
-                  className="px-4 py-3 customDropdownRadius"
-                />
-              </div>
-
-              <div className="CreditCard d-flex align-items-center">
-                <div className=" me-2">
-                  <p className="mb-0 fw-bold">{t("cardDetails.useFitNeeWalletText")}</p>
-                </div>
-                <div className="d-flex align-items-center mt-2">
-                  <ToggleSwitch isOn={checked} handleToggle={handleToggle} />
-                </div>
-              </div>
-            </div>
-            <div className="w-100 bg-transparent border-0 customDropdownRadius">
-              <FillBtn
-                text={t("cardDetails.payText")}
-                className="w-100 py-3"
-                handleOnClick={handlePayClick}
-              />
-            </div>
-          </div>
+                    <Col md={6} className="mb-2">
+                      <StateSelect
+                        countryid={countryData.countryId}
+                        onChange={(e) => {
+                          setCountryData({ ...countryData, stateId: e.id });
+                          setFieldValue("state", e.name);
+                        }}
+                        containerClassName={"countryContainerClass"}
+                        placeHolder="Select State"
+                      />
+                      <p className="errorField">
+                        {errors.state && touched.state && errors.state}
+                      </p>
+                    </Col>
+                    <Col md={6} className="mb-2">
+                      <CitySelect
+                        countryid={countryData.countryId}
+                        onChange={(e) => {
+                          setFieldValue("city", e.name);
+                        }}
+                        containerClassName={"countryContainerClass"}
+                        stateid={countryData.stateId}
+                        placeHolder="Select City"
+                      />
+                      <p className="errorField">
+                        {errors.city && touched.city && errors.city}
+                      </p>
+                    </Col>
+                    <Col md={12} className="mb-2">
+                      <InputField
+                        type="text"
+                        name="street1"
+                        placeholder={"Address"}
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.street1}
+                        icon={<img src={Images.PERSON_ICON} alt="email-icon" />}
+                        className={
+                          "form-control-lg BorderRadiusInput py-3 px-5"
+                        }
+                      />
+                      <p className="errorField">
+                        {errors.street1 && touched.street1 && errors.street1}
+                      </p>
+                    </Col>
+                    <Col md={12}>
+                      <div className="CreditCard d-flex justify-content-between align-items-center">
+                        <div className=" me-2">
+                          <p className="mb-0 fw-bold">
+                            {t("cardDetails.useFitNeeWalletText")}
+                          </p>
+                        </div>
+                        <div className="d-flex align-items-center">
+                          <ToggleSwitch
+                            id="use_wallet"
+                            isOn={values.use_wallet}
+                            handleToggle={() => {
+                              setFieldValue("use_wallet", !values.use_wallet);
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </Col>
+                    <Col md={12}>
+                      <Row className="d-flex my-4 align-items-center">
+                        <Col md={4}>
+                          <p className="mb-0 fw-bold">
+                            {t("cardDetails.promoCodeText")}
+                          </p>
+                        </Col>
+                        <Col
+                          md={8}
+                          className="d-flex gap-2 justify-content-end"
+                        >
+                          <InputField
+                            type="number"
+                            name="promo_code"
+                            placeholder={"Promo Code"}
+                            onChangeHandle={handleChange}
+                            onBlurHandle={handleBlur}
+                            value={values.promo_code}
+                            className={
+                              "form-control-lg BorderRadiusInput py-3 px-3 fs-6"
+                            }
+                          />
+                          <FillBtn
+                            text={t("cardDetails.applyText")}
+                            className="px-4 py-3 customDropdownRadius"
+                          />
+                        </Col>
+                      </Row>
+                    </Col>
+                    <div className="w-100 bg-transparent border-0 customDropdownRadius">
+                      <FillBtn
+                        type="submit"
+                        text={t("cardDetails.payText")}
+                        className="w-100 py-3"
+                      />
+                    </div>
+                  </Row>
+                </Container>
+              </Form>
+            )}
+          </Formik>
         </Col>
         <Col md={6}>
           <Card className="BorderRadius my-2">
             <CardHeader className="bg-transparent py-4 fw-bold">
-              <h6 className="mb-0 fw-bold">{t("cardDetails.paymentSummaryText")}</h6>
+              <h6 className="mb-0 fw-bold">
+                {t("cardDetails.paymentSummaryText")}
+              </h6>
             </CardHeader>
             <CardBody>
               <div className="d-flex align-items-center justify-content-between">
@@ -207,7 +327,9 @@ const CreditCardDetailWrapper = () => {
             <CardFooter className="bg-transparent">
               <div className="d-flex align-items-center justify-content-between">
                 <div>
-                  <h6 className="mb-0 py-3 fw-bold">{t("cardDetails.totalPayText")}</h6>
+                  <h6 className="mb-0 py-3 fw-bold">
+                    {t("cardDetails.totalPayText")}
+                  </h6>
                 </div>
                 <div style={{ width: "20%" }}>
                   <h6 className="mb-0">SAR 500</h6>

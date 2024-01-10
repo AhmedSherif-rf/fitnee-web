@@ -463,7 +463,7 @@
   },
 
   "cardDetails": {
-    "cardDetailsText": "Card Detail",
+    "PaymentMethodText": "Payment Method",
     "cardNumberText": "Card number",
     "cardHolderNameText": "Cardholder Name",
     "expiryDateText": "Expiry date",

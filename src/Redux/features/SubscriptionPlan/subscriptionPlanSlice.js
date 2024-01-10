@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   createSubscriptionPlan,
-  getServiceProviderSubscriptionPlans,
+  getTraineeSubscriptionPlans,
+  getGuestServiceProviderSubscriptionPlans,
 } from "./subscriptionPlanApi";
 
 export const subscriptionPlanSlice = createSlice({
@@ -24,15 +25,26 @@ export const subscriptionPlanSlice = createSlice({
         state.loading = "failed";
         state.error = action.payload.error;
       })
-      .addCase(getServiceProviderSubscriptionPlans.pending, (state) => {
+      .addCase(getTraineeSubscriptionPlans.pending, (state) => {
         state.loading = "pending";
       })
-      .addCase(getServiceProviderSubscriptionPlans.fulfilled, (state) => {
+      .addCase(getTraineeSubscriptionPlans.fulfilled, (state) => {
+        state.loading = "succeeded";
+        state.success = true;
+      })
+      .addCase(getTraineeSubscriptionPlans.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getGuestServiceProviderSubscriptionPlans.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getGuestServiceProviderSubscriptionPlans.fulfilled, (state) => {
         state.loading = "succeeded";
         state.success = true;
       })
       .addCase(
-        getServiceProviderSubscriptionPlans.rejected,
+        getGuestServiceProviderSubscriptionPlans.rejected,
         (state, action) => {
           state.loading = "failed";
           state.error = action.payload.error;

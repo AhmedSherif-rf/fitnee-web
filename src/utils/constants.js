@@ -60,6 +60,7 @@ export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
 export const ADMIN_REVIEW_REQUEST_URL = "/service_provider_requests";
+export const GUEST_SUBSCRIPTION_PLAN_URL = "/guest/service_subscription";
 export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
 export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";

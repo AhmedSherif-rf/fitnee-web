@@ -6,7 +6,7 @@ import { SUBSCRIPTION_PLAN_URL } from "../../../utils/constants";
 import EditSubscriptionCard from "../../../Shared/EditSubscriptionCard";
 import {
   createSubscriptionPlan,
-  getServiceProviderSubscriptionPlans,
+  getTraineeSubscriptionPlans,
 } from "../../../Redux/features/SubscriptionPlan/subscriptionPlanApi";
 
 const Subscription = () => {
@@ -25,8 +25,8 @@ const Subscription = () => {
     const data = {
       apiEndpoint: SUBSCRIPTION_PLAN_URL,
     };
-    dispatch(getServiceProviderSubscriptionPlans(data)).then((res) => {
-      if (res.type === "getServiceProviderSubscriptionPlans/fulfilled") {
+    dispatch(getTraineeSubscriptionPlans(data)).then((res) => {
+      if (res.type === "getTraineeSubscriptionPlans/fulfilled") {
         filterSubscriptionPackageData(res.payload.data);
       }
     });

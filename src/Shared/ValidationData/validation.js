@@ -138,6 +138,10 @@ const currentlyWorkingValidation = Yup.string().required(
   "validation.RequiredText"
 );
 
+const RequiredValidation = Yup.string().required(
+  TranslationHelper("validation.requiredText")
+);
+
 const profileAvailabilityValidation = Yup.array().of(
   Yup.object().shape({
     day: Yup.string().required(TranslationHelper("validation.requiredDayText")),
@@ -264,4 +268,15 @@ export const FORGOT_PASSWORD_SCHEMA = Yup.object().shape({
 export const NEW_PASSWORD_SCHEMA = Yup.object().shape({
   new_password: newPasswordValidation,
   confirm_password: confirmNewPasswordValidation,
+});
+
+export const PAYMENT_METHOD_DETAIL_SCHEMA = Yup.object().shape({
+  city: RequiredValidation,
+  state: RequiredValidation,
+  entity: RequiredValidation,
+  country: RequiredValidation,
+  street1: RequiredValidation,
+  surname: RequiredValidation,
+  postcode: RequiredValidation,
+  givenName: RequiredValidation,
 });

@@ -60,6 +60,7 @@ const ReviewRequest = () => {
     dispatch(approveReviewRequest(data)).then((res) => {
       if (res.type === "approveReviewRequest/fulfilled") {
         setPage(1);
+        fetchReviewRequests();
       }
     });
   };
@@ -73,6 +74,7 @@ const ReviewRequest = () => {
     dispatch(rejectReviewRequest(data)).then((res) => {
       if (res.type === "rejectReviewRequest/fulfilled") {
         setPage(1);
+        fetchReviewRequests();
       }
     });
   };
@@ -84,7 +86,7 @@ const ReviewRequest = () => {
         requestArray.push({
           full_name: (
             <Link
-              to={`/admin/serviceProviderProfile/0187a117-4efe-48f0-9cc8-62ed5c531fd2`}
+              to={`/admin/serviceProviderProfile/${request?.uuid}`}
             >
               <div className="d-flex align-items-center">
                 <div
@@ -110,7 +112,7 @@ const ReviewRequest = () => {
             <div className="fw-bold text-secondary">{request?.request_id}</div>
           ),
           email: request?.email,
-          phone_number: request?.phone_number,
+          stc_pay: request?.stc_pay,
           action: (
             <div className="d-flex align-items-center justify-content-md-center">
               <span
@@ -141,7 +143,7 @@ const ReviewRequest = () => {
     { label: "Role", dataKey: "role" },
     { label: "Ticket ID", dataKey: "request_id" },
     { label: "Email", dataKey: "email", align: "center" },
-    { label: "Phone", dataKey: "phone_number", align: "center" },
+    { label: "STC Phone No", dataKey: "stc_pay", align: "center" },
     { label: "Action", dataKey: "action", align: "center" },
   ];
 

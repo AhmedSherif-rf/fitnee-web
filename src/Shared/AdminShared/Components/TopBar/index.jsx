@@ -1,13 +1,44 @@
 import "./style.scss";
-import React from "react";
-import { Navbar, Button } from "reactstrap";
+import {
+  Navbar,
+  Button,
+  Nav,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
+import React, { memo } from "react";
+import { FaArrowUp } from "react-icons/fa6";
 import { CgMenuLeft } from "react-icons/cg";
 import { GoBellFill } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { LOGOUT_URL } from "../../../../utils/constants";
+import { logout } from "../../../../Redux/features/User/userApi";
+import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
 const Topbar = ({ toggleSidebar }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, loading } = useSelector((state) => state.user);
+
+  const handleLogoutClick = () => {
+    const data = {
+      apiEndpoint: LOGOUT_URL,
+      requestData: { refresh: user?.tokens?.refresh },
+    };
+    dispatch(logout(data)).then((res) => {
+      if (res.type === "logout/fullfiled") {
+        navigate("/signIn");
+      }
+    });
+  };
+
   return (
     <Navbar className="navbar admin-navbar BorderRadius mb-3" expand="md">
+      {loading === "pending" && <LoadingScreen />}
       <Button
         color="info"
         onClick={toggleSidebar}
@@ -17,18 +48,39 @@ const Topbar = ({ toggleSidebar }) => {
       </Button>
       <div className="d-flex gap-3 align-items-center">
         <GoBellFill size={24} />
-        <div
-          className="bgProperties rounded-circle"
-          style={{
-            backgroundImage: `url(${Images.PROFILE4_IMG})`,
-            width: "45px",
-            height: "45px",
-          }}
-        ></div>
-        <p className="fs-6 mb-0 fw-bold">John Smith</p>
+        <Nav className={`d-lg-flex d-none text-black-custom`}>
+          <UncontrolledDropdown>
+            <DropdownToggle className="p-0" nav>
+              <div
+                className="bgProperties rounded-circle"
+                style={{
+                  backgroundImage: `url(${Images.USER_DUMMY_IMG})`,
+                  width: "40px",
+                  height: "40px",
+                }}
+              ></div>
+            </DropdownToggle>
+            <DropdownMenu
+              className="custom-dropdown-menu"
+              style={{ right: 0, left: "auto" }}
+            >
+              <DropdownItem className="p-0">
+                <div
+                  className="d-flex align-items-center w-100 p-1 text-black-custom"
+                  onClick={handleLogoutClick}
+                >
+                  <span className="me-2 d-flex">
+                    <FaArrowUp size={16} className="mb-1" />
+                  </span>
+                  <p className="mb-0">Logout</p>
+                </div>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        </Nav>
       </div>
     </Navbar>
   );
 };
 
-export default Topbar;
+export default memo(Topbar);

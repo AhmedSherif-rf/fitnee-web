@@ -36,7 +36,7 @@ const InformationModal = (props) => {
       backdrop={"static"}
     >
       {heading && (
-        <ModalHeader className="border-0">
+        <ModalHeader className="border-0 pt-3 pb-0">
           <b>{heading}</b>
         </ModalHeader>
       )}

@@ -1,0 +1,18 @@
+.CategoryCard {
+  .CategoryCardHeader {
+    background-color: #fffaad !important;
+    &:hover {
+      background-color: #e0e0e0 !important;
+      cursor: pointer;
+    }
+  }
+}
+.UncontrolledDropdown {
+  .DropdownMenu {
+    .DropdownItem {
+      &:active {
+        background: green($color: #000000);
+      }
+    }
+  }
+}

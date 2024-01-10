@@ -2,15 +2,20 @@ import React from "react";
 import SubMenu from "./SubMenu";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import styles from "./styles.module.scss";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import { BsPersonBoundingBox } from "react-icons/bs";
 import { MdOutlineSportsGymnastics } from "react-icons/md";
-import { GoPersonAdd, GoPaste, GoLog } from "react-icons/go";
 import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
+import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
 
 const SideBar = ({ isOpen, toggle }) => (
-  <div className={classNames("sidebar", { "is-open": isOpen })}>
+  <div
+    className={`${styles.sideNav} ${classNames("sidebar", {
+      "is-open": isOpen,
+    })}`}
+  >
     <div className="sidebar-header">
       <span color="info" onClick={toggle} style={{ color: "#fff" }}>
         &times;
@@ -32,7 +37,6 @@ const SideBar = ({ isOpen, toggle }) => (
             Dashboard
           </NavLink>
         </NavItem>
-
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
@@ -43,7 +47,6 @@ const SideBar = ({ isOpen, toggle }) => (
             Review Requests
           </NavLink>
         </NavItem>
-
         <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[0]} />
         <SubMenu
           title="Exercises"
@@ -68,6 +71,17 @@ const SideBar = ({ isOpen, toggle }) => (
           >
             <GoPaste />
             Feedback
+          </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/admin/Settings"}
+          >
+            <GoGear />
+            Settings
           </NavLink>
         </NavItem>
       </Nav>

@@ -8,7 +8,7 @@ import PageHeading from "../../../../Shared/Headings/PageHeading";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
 
-const Dashboard = (props) => {
+const TraineeList = (props) => {
   const [checked, setChecked] = useState(true);
 
   const handleToggle = () => {
@@ -139,8 +139,7 @@ const Dashboard = (props) => {
           <div
             className="me-2 bg-warning rounded-circle"
             style={{ minWidth: "8px", minHeight: "8px" }}
-          >
-          </div>
+          ></div>
           <span>Active</span>
         </div>
       ),
@@ -189,10 +188,7 @@ const Dashboard = (props) => {
     <React.Fragment>
       <Row>
         <Col md="12" className="text-start">
-          <PageHeading
-            headingText="Trainee List"
-            categoryText=""
-          />
+          <PageHeading headingText="Trainee List" categoryText="" />
         </Col>
         <Col md="12">
           <ListingTable data={users} columns={columns} />
@@ -202,4 +198,4 @@ const Dashboard = (props) => {
   );
 };
 
-export default Dashboard;
+export default TraineeList;

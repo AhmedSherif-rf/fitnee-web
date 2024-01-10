@@ -56,9 +56,31 @@ export const adminRoutes = [
   },
   {
     path: "/admin/serviceProviderProfile/:uuid",
-    component: lazy(() =>
-      import("../Pages/AdminPages/ServiceProviderProfile")
-    ),
+    component: lazy(() => import("../Pages/AdminPages/ServiceProviderProfile")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/settings",
+    component: lazy(() => import("../Pages/AdminPages/Settings")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/settings/category",
+    component: lazy(() => import("../Pages/AdminPages/Category")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/settings/category/subCategory",
+    component: lazy(() => import("../Pages/AdminPages/Category/SubCategory")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/settings/promoCode",
+    component: lazy(() => import("../Pages/AdminPages/PromoCode")),
     exact: true,
     role: adminRole,
   },

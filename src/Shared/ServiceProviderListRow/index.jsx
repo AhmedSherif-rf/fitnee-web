@@ -1,5 +1,6 @@
 import { Col, Row } from "reactstrap";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
@@ -18,7 +19,6 @@ const Index = (props) => {
   } = props;
 
   const { t } = useTranslation("");
-
   const [showCancelSubscriptionModal, setShowCancelSubscriptionModal] =
     useState(false);
 
@@ -43,15 +43,18 @@ const Index = (props) => {
       <Row className="align-items-center justify-content-center text-black-custom border-bottom text-black-custom py-2 mb-2">
         <Col md={3} className="mb-md-0 mb-2">
           <div className="d-flex align-items-center">
-            <div
-              className="me-2 bgProperties rounded-circle"
-              style={{
-                width: "60px",
-                height: "60px",
-                backgroundImage: `url(${useImages})`,
-                border: "1px solid",
-              }}
-            ></div>
+            <Link to="/trainee/serviceProviderProfile/0187a117-4efe-48f0-9cc8-62ed5c531fd2">
+              <div
+                className="me-2 bgProperties rounded-circle"
+                style={{
+                  width: "60px",
+                  height: "60px",
+                  cursor: "pointer",
+                  backgroundImage: `url(${useImages})`,
+                  border: "1px solid",
+                }}
+              ></div>
+            </Link>
             <div>
               <h6 className="mb-0 fw-bold ">{userName}</h6>
               <span className="d-md-none d-block textDark">

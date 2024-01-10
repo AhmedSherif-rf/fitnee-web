@@ -2,17 +2,23 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { useParams, useNavigate } from "react-router-dom";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
-import { useParams, useNavigate, Link } from "react-router-dom";
 
 const TermAndCondition = () => {
-  const { type } = useParams();
   const navigate = useNavigate();
+  const { type, backLink } = useParams();
 
   const { t, i18n } = useTranslation("");
 
   const goBack = () => {
-    navigate(-1);
+    if (backLink === "home") {
+      navigate("/");
+    } else if (backLink === "signUp") {
+      navigate(-1);
+    } else {
+      navigate(`/${backLink}`);
+    }
   };
   const sectionOne = [
     {
@@ -1780,12 +1786,11 @@ const TermAndCondition = () => {
 
           <Row className="justify-content-center mb-3">
             <Col md={4}>
-              <Link to="/" onClick={goBack}>
-                <OutlineBtn
-                  className="w-100 py-3"
-                  text={t("termAndCondition.doneButtonText")}
-                />
-              </Link>
+              <OutlineBtn
+                handleOnClick={goBack}
+                className="w-100 py-3"
+                text={t("termAndCondition.doneButtonText")}
+              />
             </Col>
           </Row>
         </Col>

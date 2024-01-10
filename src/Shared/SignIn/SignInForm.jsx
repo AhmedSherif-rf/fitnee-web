@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { SIGNIN_SCHEMA } from "./data/validation";
 import { INITIAL_VALUES } from "./data/initialValue";
-import { Link, useNavigate } from "react-router-dom";
 import { Col, Container, Form, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
@@ -16,6 +15,7 @@ import React, { memo, useCallback, useState } from "react";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { setEmail } from "../../Redux/features/User/userSlice";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   LOGIN_URL,
   ADMIN_EMAIL,
@@ -26,6 +26,7 @@ import {
 } from "../../utils/constants";
 
 const SignInForm = () => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation("");
@@ -105,7 +106,6 @@ const SignInForm = () => {
           <Formik
             initialValues={{ ...INITIAL_VALUES }}
             validationSchema={SIGNIN_SCHEMA}
-            validate={(values) => {}}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               handleLoginSubmit(values);
@@ -161,7 +161,7 @@ const SignInForm = () => {
                     label={
                       <p className="mb-0 fs-6">
                         {t("login.agreeOnFitneeText")}
-                        <Link to="/termAndCondition/general">
+                        <Link to={`/termAndCondition/general${pathname}`}>
                           <span className="textYellow">
                             {t("login.termsAndConditionsText")}
                           </span>

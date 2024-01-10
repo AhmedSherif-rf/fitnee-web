@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -6,7 +7,7 @@ import Image from "../../HelperMethods/Constants/ImgConstants";
 
 const Footer = () => {
   const { t } = useTranslation("");
-  const currentYear = new Date().getFullYear();
+  const currentYear = moment().year();
 
   return (
     <Container fluid>
@@ -42,7 +43,7 @@ const Footer = () => {
             </Link> */}
           </div>
           <div className="d-flex mx-4 align-items-start justify-content-center">
-            <Link to="/termAndCondition/general">
+            <Link to={`termAndCondition/general/home`}>
               <h6 className="text-white mb-0">
                 {t("landing.termsAndConditionsText")}
               </h6>

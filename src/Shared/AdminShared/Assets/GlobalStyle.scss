@@ -81,29 +81,25 @@
   background-color: $off-white;
 }
 @mixin iconBadge {
-  padding: 5px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  background-color: transparent !important;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
   .GoPencil,
   .GoTrash,
+  .approveUser,
+  .rejectUser,
   .GoEye {
     color: $dark-gray;
-  }
-  &:hover {
-    border: 1px solid transparent;
-    box-shadow: 1px 1px 1px 0px $blur-color;
   }
 }
 .iconBadge {
   @include iconBadge;
   &:hover {
     .GoPencil {
-      color: blue !important;
+      color: $blur-color !important;
+    }
+    .approveUser {
+      color: $green !important;
+    }
+    .rejectUser {
+      color: $red !important;
     }
     .GoTrash {
       color: $orange !important;

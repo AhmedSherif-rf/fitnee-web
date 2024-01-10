@@ -98,3 +98,19 @@ export const NEW_PASSWORD_INITIAL_VALUES = {
   new_password: "",
   confirm_password: "",
 };
+
+export const PAYMENT_METHOD_DETAIL_INITIAL_VALUES = {
+  city: "",
+  state: "",
+  entity: "",
+  country: "",
+  street1: "",
+  surname: "",
+  postcode: "",
+  givenName: "",
+  promo_code: "",
+  currency: "SAR",
+  amount: "100.00",
+  paymentType: "DB",
+  use_wallet: false,
+};

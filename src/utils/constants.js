@@ -1,8 +1,10 @@
+//===============Currency=========================
+export const CURRENCY = "SAR";
 //===============AdminCredentials==================
 export const ADMIN_EMAIL = "admin@admin.com";
 //======================paginationParams============
 export const PAGE_RANGE = 2;
-export const PER_PAGE_COUNT = 20;
+export const PER_PAGE_COUNT = 8;
 //======================languages===================
 export const ARABIC_LANGUAGE = "ar";
 export const ENGLISH_LANGUAGE = "en";
@@ -23,7 +25,7 @@ export const trainingGoalOptions = [
   "Lose Weight",
   "Power Lifting",
 ];
-export const activityLevelOptions = ["Beginner", "Intermediate", "Advanced"];
+export const activityLevelOptions = ["No active", "Active", "Super active"];
 export const weekDaysOptions = [
   { value: "Monday", label: "Monday" },
   { value: "Tuesday", label: "Tuesday" },
@@ -46,20 +48,24 @@ export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
 export const LOGOUT_URL = "/logout/";
-export const EDIT_PROFILE_URL = "/User/userId/";
 export const REGISTER_URL = "/registeruser/";
+export const EDIT_PROFILE_URL = "/User/userId/";
 export const DELETE_ACCOUNT_URL = "/delete/userId/";
 export const NEW_PASSWORD_URL = "/forget_password/";
 export const GET_SPECIALITIES_URL = "/specialities/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
+export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
+export const ADMIN_REVIEW_REQUEST_URL = "/service_provider_requests";
+export const GUEST_SUBSCRIPTION_PLAN_URL = "/guest/service_subscription";
 export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
-export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
-  "/serviceprovider_logged_in";
+export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
+export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
+export const TRAINEE_SERVICE_PROVIDER_LISTING_URL = "/serviceprovider_logged_in";
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
 export const FORBIDDEN_CODE = 403;

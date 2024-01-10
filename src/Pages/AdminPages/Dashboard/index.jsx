@@ -10,29 +10,29 @@ const Dashboard = (props) => {
       <Row className="py-3">
         <Col md={3}>
           <DashboardCard
-            cardIcon={<FaUser className="display-3" />}
-            textOne="45k+"
+            cardIcon={<FaUser size={60} />}
+            textOne="45"
             textTwo="Active User"
           />
         </Col>
         <Col md={3}>
           <DashboardCard
-            cardIcon={<FaRegUser className="display-3" />}
-            textOne="05k+"
+            cardIcon={<FaRegUser size={60} />}
+            textOne="05"
             textTwo="Non-Active Users"
           />
         </Col>
         <Col md={3}>
           <DashboardCard
-            cardIcon={<FaUsers className="display-3" />}
-            textOne="04k+"
+            cardIcon={<FaUsers size={65} />}
+            textOne="04"
             textTwo="Subscribers"
           />
         </Col>
         <Col md={3}>
           <DashboardCard
-            cardIcon={<AiOutlineUserSwitch className="display-3" />}
-            textOne="02k+"
+            cardIcon={<AiOutlineUserSwitch size={65} />}
+            textOne="02"
             textTwo="Re-Subscribers"
           />
         </Col>

@@ -266,10 +266,21 @@ const filterSignUpFields = (roleType, user) => {
   }
 };
 
+const getListingRole = (listingType) => {
+  if (listingType === "trainer") {
+    return TRAINER_ROLE;
+  } else if (listingType === "nutritionist") {
+    return NUTRITIONIST_ROLE;
+  } else if (listingType === "both") {
+    return TRAINER_NUTRITIONIST_ROLE;
+  }
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getInitialUrl,
   createFormData,
+  getListingRole,
   copyToClipboard,
   filterSignUpFields,
   setLanguageInStorage,

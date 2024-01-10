@@ -42,10 +42,10 @@ const commentsData = [
 
 const ServiceProviderProfileWrapper = (props) => {
   const { uuid } = useParams();
-  const {subscriptionLink} = props;
+  const { subscriptionLink } = props;
   const { loading } = useSelector((state) => state.guest);
 
-  const [serviceProviderProfile, setServiceProviderProfile] = useState([]);
+  const [serviceProviderProfile, setServiceProviderProfile] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -64,114 +64,120 @@ const ServiceProviderProfileWrapper = (props) => {
   }, [dispatch, uuid]);
 
   const handleSubscribeClick = useCallback(() => {
-    navigate(subscriptionLink);
-  }, [navigate, subscriptionLink]);
+    navigate(`${subscriptionLink}/${uuid}`);
+  }, [navigate, subscriptionLink, uuid]);
 
   return (
     <Container fluid>
       {loading === "pending" && <LoadingScreen />}
-      <Row>
-        <Col md={12}>
-          <Card className="contentCard bg-transparent overflow-x-hidden">
-            <Row>
-              <Col lg={3} md={4}>
-                <div className="mb-2">
-                  <ProfileInformationCard
-                    providerProfile={serviceProviderProfile}
-                  />
-                </div>
-                <div className="mb-3">
-                  <FillBtn
-                    className="w-100 py-2"
-                    text={t("guest.subscribeText")}
-                    handleOnClick={handleSubscribeClick}
-                  />
-                </div>
-                <div>
-                  <h6 className="fw-bold text-white">Available Hours</h6>
-                  <AvailableHourList
-                    data={serviceProviderProfile?.profile_availability}
-                  />
-                </div>
-              </Col>
-              <Col lg={9} md={8}>
-                <Card className="BorderRadius border-0 text-black-custom">
-                  <CardBody>
-                    <h3 className="fw-bold my-2">
-                      {t("guest.meetText")} {serviceProviderProfile?.full_name}
-                    </h3>
-                    <div className="BorderRadius overflow-hidden">
+      {serviceProviderProfile ? (
+        <Row>
+          <Col md={12}>
+            <Card className="contentCard bg-transparent overflow-x-hidden">
+              <Row>
+                <Col lg={3} md={4}>
+                  <div className="mb-2">
+                    <ProfileInformationCard
+                      providerProfile={serviceProviderProfile}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <FillBtn
+                      className="w-100 py-2"
+                      text={t("guest.subscribeText")}
+                      handleOnClick={handleSubscribeClick}
+                    />
+                  </div>
+                  <div>
+                    <h6 className="fw-bold text-white">Available Hours</h6>
+                    <AvailableHourList
+                      data={serviceProviderProfile?.profile_availability}
+                    />
+                  </div>
+                </Col>
+                <Col lg={9} md={8}>
+                  <Card className="BorderRadius border-0 text-black-custom">
+                    <CardBody>
+                      <h3 className="fw-bold my-2">
+                        {serviceProviderProfile?.full_name}
+                      </h3>
                       <div
-                        className=" overflow-scroll p-3"
-                        style={{ height: "100px" }}
+                        className="overflow-scroll onlyBorderRadius p-3 border border-light"
+                        style={{ maxHeight: "100px" }}
                       >
                         <p className="small">{serviceProviderProfile?.bio}</p>
                       </div>
-                    </div>
 
-                    <Row>
-                      <Col md={12}>
-                        <h5 className="fw-bold my-2">
-                          {t("guest.qualificationExperienceText")}
-                        </h5>
-                      </Col>
-                      {serviceProviderProfile?.ServiceProvider_Certification?.map(
-                        (certificate, index) => (
-                          <DocumentCard
-                            key={index}
-                            className="BorderYellow"
-                            documentTitle={certificate?.title}
-                            documentImg={certificate?.certificate_image}
-                          />
-                        )
-                      )}
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <h5 className="fw-bold my-2">
-                          {t("guest.areaSpecialtyText")}
-                        </h5>
-                        {serviceProviderProfile?.specialities?.map(
-                          (specialty, index) => (
-                            <Badge
-                              key={index}
-                              color="custom"
-                              className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
-                            >
-                              {specialty.name}
-                            </Badge>
-                          )
-                        )}
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <h5 className="fw-bold mt-3 text-black-custom">
-                          Comments
-                        </h5>
-                        {commentsData.map((item) => {
-                          return (
-                            <CommentCard
-                              commentTitle={item.commentTitle}
-                              commentImg={item.imgSrc}
-                              commentContent={item.commentContent}
-                            />
-                          );
-                        })}
-                      </Col>
-                      <Col md={12}>
-                        <div className="text-center">
-                          <FillBtn className=" py-2" text={"See More"} />
-                        </div>
-                      </Col>
-                    </Row>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-      </Row>
+                      <Row>
+                        <Col md={12}>
+                          <h5 className="fw-bold my-2">
+                            {t("guest.qualificationExperienceText")}
+                          </h5>
+                        </Col>
+                        {serviceProviderProfile?.ServiceProvider_Certification &&
+                          serviceProviderProfile?.ServiceProvider_Certification?.map(
+                            (certificate, index) => (
+                              <DocumentCard
+                                key={index}
+                                className="BorderYellow"
+                                documentTitle={certificate?.title}
+                                documentImg={certificate?.certificate_image}
+                              />
+                            )
+                          )}
+                      </Row>
+                      <Row>
+                        <Col md={12}>
+                          <h5 className="fw-bold my-2">
+                            {t("guest.areaSpecialtyText")}
+                          </h5>
+                          {serviceProviderProfile?.specialities &&
+                            serviceProviderProfile?.specialities?.map(
+                              (specialty, index) => (
+                                <Badge
+                                  key={index}
+                                  color="custom"
+                                  className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
+                                >
+                                  {specialty.name}
+                                </Badge>
+                              )
+                            )}
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md={12}>
+                          <h5 className="fw-bold mt-3 text-black-custom">
+                            Comments
+                          </h5>
+                          {commentsData.map((item) => {
+                            return (
+                              <CommentCard
+                                commentTitle={item.commentTitle}
+                                commentImg={item.imgSrc}
+                                commentContent={item.commentContent}
+                              />
+                            );
+                          })}
+                        </Col>
+                        <Col md={12}>
+                          <div className="text-center">
+                            <FillBtn className=" py-2" text={"See More"} />
+                          </div>
+                        </Col>
+                      </Row>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+        </Row>
+      ) : (
+        <div className="d-flex vh-100 justify-content-center align-items-center">
+          <img src={Images.NO_DATA_FOUND_IMG} alt="no-data-found" />
+        </div>
+      )}
     </Container>
   );
 };

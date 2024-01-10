@@ -1,10 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { TRAINER_ROLE } from "../../../utils/constants";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ServiceProvider from "../../../Shared/ServiceProviderListRow";
 
 const Index = () => {
+  const { t } = useTranslation("");
+  const { user } = useSelector((state) => state.user);
+
   const TraineeList = [
     {
       useImages: `${Images.PROFILE4_IMG}`,
@@ -61,7 +67,11 @@ const Index = () => {
               <Row>
                 <Col md={12}>
                   <PageHeading
-                    headingText="My Current Subscribers"
+                    headingText={
+                      user?.role === TRAINER_ROLE
+                        ? "My Current Trainees"
+                        : t("trainer.trainerSubscriberText")
+                    }
                     categoryText=""
                   />
                 </Col>

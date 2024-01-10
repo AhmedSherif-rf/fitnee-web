@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
+import { BsPersonBoundingBox } from "react-icons/bs";
 import { MdOutlineSportsGymnastics } from "react-icons/md";
 import { GoPersonAdd, GoPaste, GoLog } from "react-icons/go";
 import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
@@ -32,11 +33,22 @@ const SideBar = ({ isOpen, toggle }) => (
           </NavLink>
         </NavItem>
 
-        <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[1]} />
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/admin/reviewRequest"}
+          >
+            <BsPersonBoundingBox />
+            Review Requests
+          </NavLink>
+        </NavItem>
+
+        <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[0]} />
         <SubMenu
           title="Exercises"
           icon={<MdOutlineSportsGymnastics />}
-          items={submenus[2]}
+          items={submenus[1]}
         />
         <NavItem>
           <NavLink
@@ -66,26 +78,12 @@ const SideBar = ({ isOpen, toggle }) => (
 const submenus = [
   [
     {
-      title: "Home 1",
-      target: "Home-1",
-    },
-    {
-      title: "Home 2",
-      target: "Home-2",
-    },
-    {
-      itle: "Home 3",
-      target: "Home-3",
-    },
-  ],
-  [
-    {
       title: "Service Provider List",
-      target: "/admin/users/serviceProviderList",
+      target: "/admin/user/serviceProviderList",
     },
     {
       title: "Trainee List",
-      target: "/admin/users/traineeList",
+      target: "/admin/user/traineeList",
     },
   ],
   [

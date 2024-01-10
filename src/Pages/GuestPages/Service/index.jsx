@@ -48,6 +48,7 @@ const Services = (props) => {
   }, []);
 
   const handleRegisterClick = useCallback(() => {
+    setShowSubscriptionInformationModal(false);
     navigate("/registerAs");
   }, [navigate]);
 

@@ -1,10 +1,12 @@
 import React from "react";
 import { useCallback } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import CommentCard from "../../../Shared/CommentCard";
 import DocumentCard from "../../../Shared/DocumentCard";
+import { TRAINER_ROLE } from "../../../utils/constants";
 import { Row, Col, Container, Card, CardBody } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
@@ -36,40 +38,11 @@ const commentMedia = [
   },
 ];
 
-const documentMedia = [
-  {
-    docSrc: Images.DOCUMENT_IMG,
-    docTitle: "Loki",
-  },
-  {
-    docSrc: Images.DOCUMENT_IMG,
-    docTitle: "Loki",
-  },
-  {
-    docSrc: Images.DOCUMENT_IMG,
-    docTitle: "Loki",
-  },
-  {
-    docSrc: Images.DOCUMENT_IMG,
-    docTitle: "Loki",
-  },
-];
-
-const infoData = [
-  {
-    infoImg: Images.PROFILE4_IMG,
-    infoLogo: Images.SHORTLOGO_IMG,
-    infoTitle: "Shane",
-    infoRating: 4,
-    infoDes: "2 Years",
-    Height: "38",
-    TraineeEmail: "shane@gmail.com",
-  },
-];
-
 const Dashboard = () => {
   const navigate = useNavigate();
   const { t } = useTranslation("");
+  const { user } = useSelector((state) => state.user);
+
   const handleCurrentSubscribersClick = useCallback(() => {
     navigate("/serviceProvider/subscriber");
   }, [navigate]);
@@ -90,20 +63,7 @@ const Dashboard = () => {
             <Row>
               <Col lg={3} md={4} className="bg-F6F6F6">
                 <div className="mb-2">
-                  {/* {infoData.map((item, index) => {
-                    return (
-                      <ProfileInformationCard
-                        index={index}
-                        infoLogo={item.infoLogo}
-                        infoTitle={item.infoTitle}
-                        infoRating={item.infoRating}
-                        infoImg={item.infoImg}
-                        infoDes={item.infoDes}
-                        CardHeight={item.Height}
-                        TraineeEmail={item.TraineeEmail}
-                      />
-                    );
-                  })} */}
+                  <ProfileInformationCard providerProfile={user} />
                 </div>
 
                 <div className="">
@@ -112,7 +72,11 @@ const Dashboard = () => {
                       <FillBtn
                         handleOnClick={handleCurrentSubscribersClick}
                         className="w-100 mb-2 py-2"
-                        text={t("trainer.trainerSubscriberText")}
+                        text={
+                          user?.role === TRAINER_ROLE
+                            ? "My Current Trainees"
+                            : t("trainer.trainerSubscriberText")
+                        }
                       />
                       <FillBtn
                         handleOnClick={handlePaymentClick}
@@ -140,9 +104,7 @@ const Dashboard = () => {
                       className="overflow-scroll onlyBorderRadius p-3 border border-light"
                       style={{ maxHeight: "100px" }}
                     >
-                      <p className="small">
-                        {t("trainer.trainerParagraphText")}
-                      </p>
+                      <p className="small">{user?.bio}</p>
                     </div>
 
                     <Row>
@@ -151,22 +113,29 @@ const Dashboard = () => {
                           {t("trainer.trainerHeadingText")}
                         </h5>
                       </Col>
-                      {documentMedia.map((item) => {
-                        return (
-                          <DocumentCard
-                            className="BorderRadius"
-                            documentTitle={item.docTitle}
-                            documentImg={item.docSrc}
-                          />
-                        );
-                      })}
+                      {user?.ServiceProvider_Certification &&
+                        user?.ServiceProvider_Certification.map(
+                          (certificate, index) => {
+                            return (
+                              <DocumentCard
+                                key={index}
+                                className="BorderRadius"
+                                documentTitle={certificate.title}
+                                documentImg={certificate.certificate_image.replace(
+                                  "/api",
+                                  ""
+                                )}
+                              />
+                            );
+                          }
+                        )}
                     </Row>
 
                     <Row>
                       <h5 className="fw-bold my-2">
                         {t("trainer.commentText")}
                       </h5>
-                      {commentMedia.map((item) => {
+                      {commentMedia?.map((item) => {
                         return (
                           <CommentCard
                             commentTitle={item.commentTitle}

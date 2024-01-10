@@ -42,7 +42,7 @@ const routes = [
     exact: true,
   },
   {
-    path: "/termAndCondition/:type",
+    path: "/termAndCondition/:type/:backLink",
     component: lazy(() => import("../Pages/Auth/TermAndCondition")),
     isPublic: true,
     theme: "light",

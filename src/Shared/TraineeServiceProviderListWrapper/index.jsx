@@ -9,6 +9,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../Shared/Pagination";
@@ -55,9 +56,9 @@ const TraineeServiceProviderListWrapper = (props) => {
 
   useEffect(() => {
     const data = {
-      apiEndpoint: `${TRAINEE_SERVICE_PROVIDER_LISTING_URL}?role=${
-        listingRole[0].toUpperCase() + listingRole.slice(1)
-      }&page=${page}`,
+      apiEndpoint: `${TRAINEE_SERVICE_PROVIDER_LISTING_URL}?role=${functions.getListingRole(
+        listingRole
+      )}&page=${page}`,
     };
 
     dispatch(getServiceProviderGuestMode(data)).then((res) => {
@@ -66,22 +67,19 @@ const TraineeServiceProviderListWrapper = (props) => {
         setServiceProviderData(res.payload.data.results);
       }
     });
-  }, [dispatch, listingRole]);
+  }, [dispatch, listingRole, page]);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const handleDropdownItemClick = (role) => {
     setListingRole(role);
   };
 
-  const handleSeeMoreClick = useCallback(() => {
-    setShowSubscriptionInformationModal(true);
-  }, []);
-
   const handleNotNowClick = useCallback(() => {
     setShowSubscriptionInformationModal(false);
   }, []);
 
   const handleRegisterClick = useCallback(() => {
+    setShowSubscriptionInformationModal(false);
     navigate("/registerAs");
   }, [navigate]);
 

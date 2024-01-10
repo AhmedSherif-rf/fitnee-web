@@ -6,7 +6,10 @@ import { persistStore, persistReducer } from "redux-persist";
 import languageSlice from "./features/Language/languageSlice.js";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactUsSlice from "./features/ContactUs/contactUsSlice.js";
+import subscriptionSlice from "./features/Subscription/subscriptionSlice.js";
 import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.js";
+import reviewRequestSlice from "./features/Admin/ReviewRequest/ReviewRequestSlice.js";
+import subscriptionPlanSlice from "./features/SubscriptionPlan/subscriptionPlanSlice.js";
 
 const persistConfig = {
   key: "root",
@@ -19,7 +22,10 @@ const rootReducer = combineReducers({
   guest: guestSlice,
   language: languageSlice,
   contactUs: contactUsSlice,
+  subscription: subscriptionSlice,
+  reviewRequest: reviewRequestSlice,
   forgotPassword: forgotPasswordSlice,
+  subscriptionPlan: subscriptionPlanSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

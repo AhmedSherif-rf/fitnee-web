@@ -123,6 +123,7 @@ Input::-webkit-input-placeholder {
 
 .react-tel-input,
 .genderBtn,
+.paymentMethodBtn,
 .select,
 .form-control,
 .form-control-lg {
@@ -147,7 +148,7 @@ Input::-webkit-input-placeholder {
     background-color: $content-bg !important;
     border-top-left-radius: 14px !important;
     border-bottom-left-radius: 14px !important;
-    border:none !important;
+    border: none !important;
     .selected-flag {
       border-top-left-radius: 14px !important;
       border-bottom-left-radius: 14px !important;
@@ -222,6 +223,13 @@ Input::-webkit-input-placeholder {
 }
 
 .genderBtn {
+  .selected {
+    color: $parrot-green !important;
+    border: 2px solid $parrot-green !important ;
+  }
+}
+
+.paymentMethodBtn {
   .selected {
     color: $parrot-green !important;
     border: 2px solid $parrot-green !important ;

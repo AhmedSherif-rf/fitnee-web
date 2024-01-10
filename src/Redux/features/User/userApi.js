@@ -57,6 +57,12 @@ export const signUp = createAsyncThunk(
         Toaster.error(error?.response?.data?.error?.email[0]);
       } else if (error?.response?.data?.error?.phone_number) {
         Toaster.error(error?.response?.data?.error?.phone_number[0]);
+      } else if (error?.response?.data?.error?.bio) {
+        Toaster.error(error?.response?.data?.error?.bio[0]);
+      } else if (error?.response?.data?.error?.weight) {
+        Toaster.error(error?.response?.data?.error?.weight[0]);
+      } else if (error?.response?.data?.error?.height) {
+        Toaster.error(error?.response?.data?.error?.height[0]);
       } else {
         Toaster.error(error?.response?.data?.message);
       }

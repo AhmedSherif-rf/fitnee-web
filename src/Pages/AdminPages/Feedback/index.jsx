@@ -204,7 +204,7 @@ const ContactUs = (props) => {
           <PageHeading headingText="Feedback" categoryText="" />
         </Col>
         <Col md="12">
-          <ListingTable users={users} columns={columns} />
+          <ListingTable data={users} columns={columns} />
         </Col>
       </Row>
     </React.Fragment>

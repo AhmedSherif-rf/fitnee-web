@@ -3,7 +3,7 @@ import Toaster from "../Shared/Toaster";
 
 const axiosInstance = axios.create({
   // baseURL: process.env.REACT_APP_BACKEND_BASE_URL,
-  baseURL: "",
+  baseURL: "/api",
 });
 
 axiosInstance.interceptors.request.use(

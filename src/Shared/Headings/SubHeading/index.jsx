@@ -1,13 +1,10 @@
-import React, { Component } from "react";
+import React, { memo } from "react";
 
 const SubHeading = (props) => {
   const { headingText, categoryText, className, style } = props;
   return (
     <React.Fragment>
-      <h4
-        className={`fw-bold text-black-custom p-3 ${className}`}
-        style={{ style, textTransform: "uppercase" }}
-      >
+      <h4 className={`fw-bold text-black-custom p-3 ${className}`}>
         {headingText}
         <span
           className="text-muted h6 fw-bold"
@@ -17,4 +14,4 @@ const SubHeading = (props) => {
     </React.Fragment>
   );
 };
-export default SubHeading;
+export default memo(SubHeading);

@@ -26,7 +26,7 @@ import {
 } from "../../utils/constants";
 
 const SignInForm = () => {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation("");
@@ -106,7 +106,6 @@ const SignInForm = () => {
           <Formik
             initialValues={{ ...INITIAL_VALUES }}
             validationSchema={SIGNIN_SCHEMA}
-            validate={(values) => {}}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               handleLoginSubmit(values);

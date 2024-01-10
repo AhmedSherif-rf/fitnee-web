@@ -51,7 +51,11 @@ const ServiceProviderProfileWrapper = (props) => {
       requestData: JSON.stringify({ email }),
     };
 
-    dispatch(approveReviewRequest(data));
+    dispatch(approveReviewRequest(data)).then((res) => {
+      if (res.type === "approveReviewRequest/fulfilled") {
+        navigate("/admin/reviewRequest");
+      }
+    });
   };
 
   const handleRejectRequestClick = (email) => {
@@ -60,20 +64,22 @@ const ServiceProviderProfileWrapper = (props) => {
       requestData: JSON.stringify({ email }),
     };
 
-    dispatch(rejectReviewRequest(data));
+    dispatch(rejectReviewRequest(data)).then((res) => {
+      if (res.type === "rejectReviewRequest/fulfilled") {
+        navigate("/admin/reviewRequest");
+      }
+    });
   };
 
   return (
     <Container fluid className="p-2">
       <div
-        className="d-flex align-items-end textYellow cursorPointer"
+        className="d-flex align-items-center textYellow cursorPointer my-2"
         onClick={() => navigate(-1)}
       >
+        <IoIosArrowRoundBack size={25} />
         <div>
-          <IoIosArrowRoundBack size={40} />
-        </div>
-        <div>
-          <h5>Go Back</h5>
+          <small>Go Back</small>
         </div>
       </div>
       <Row>
@@ -103,34 +109,34 @@ const ServiceProviderProfileWrapper = (props) => {
                           {serviceProviderProfile?.full_name}
                         </h3>
                       </div>
-                      {/* <div>
-                      <span
-                        className={`iconBadge px-2 cursorPointer`}
-                        onClick={() =>
-                          handleRejectRequestClick(
-                            serviceProviderProfile?.email
-                          )
-                        }
-                      >
-                        <BsFillPersonXFill
-                          size={22}
-                          className="rejectUser mb-1"
-                        />
-                      </span>
-                      <span
-                        className={`iconBadge px-2 cursorPointer`}
-                        onClick={() =>
-                          handleApproveRequestClick(
-                            serviceProviderProfile?.email
-                          )
-                        }
-                      >
-                        <BsPersonCheckFill
-                          size={22}
-                          className="approveUser mb-1"
-                        />
-                      </span>
-                    </div> */}
+                      <div>
+                        <span
+                          className={`iconBadge px-2 cursorPointer`}
+                          onClick={() =>
+                            handleRejectRequestClick(
+                              serviceProviderProfile?.email
+                            )
+                          }
+                        >
+                          <BsFillPersonXFill
+                            size={22}
+                            className="rejectUser mb-1"
+                          />
+                        </span>
+                        <span
+                          className={`iconBadge px-2 cursorPointer`}
+                          onClick={() =>
+                            handleApproveRequestClick(
+                              serviceProviderProfile?.email
+                            )
+                          }
+                        >
+                          <BsPersonCheckFill
+                            size={22}
+                            className="approveUser mb-1"
+                          />
+                        </span>
+                      </div>
                     </div>
                     <div
                       className="overflow-scroll onlyBorderRadius p-3 border border-light"

@@ -35,7 +35,6 @@ const ReviewRequest = () => {
 
   useEffect(() => {
     fetchReviewRequests();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, page]);
 
   const fetchReviewRequests = () => {

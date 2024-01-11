@@ -10,9 +10,9 @@ const Checkbox = ({ label, onChangeHandle, onBlurHandle, name, checked }) => {
         onChange={onChangeHandle}
         onBlur={onBlurHandle}
         checked={checked}
-        className="p-2 checkBox me-2"
+        className="p-2 checkBox me-2 mb-1"
       />
-      <Label check>{label}</Label>
+      <Label className="mb-0" check>{label}</Label>
     </>
   );
 };

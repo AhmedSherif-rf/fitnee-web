@@ -485,10 +485,13 @@
     "emailText": "اكتب بريدك الإلكتروني",
     "passwordText": "اكتب كلمة المرور الخاصة بك",
     "confirmPasswordText": "تأكيد كلمة المرور",
+    "genderText":"جنس ",
+    "roleText":"وظيفة ",
     "maleText": "ذكر",
     "femaleText": "أنثى",
     "addBioText": "هنا الذاتية السيره اضف",
     "yearOfExperienceText": "الخبره سنوات",
+    "experienceText": "خبرة",
     "selectText": "تحديد",
     "bodyInformationText": "العامة المعلومات",
     "weightText": "الوزن (lbs / kg)",
@@ -520,7 +523,8 @@
     "attachCertificateText": "إرفاق الشهادات الخاصة بك",
     "moneyWillTransferText": " ، STC Pay  في حسابك الى المبلغ تحويل سيتم",
     "termsAndConditionText": "الأحكام والشروط",
-    "acknowledgeText": " أقر بأنني قمت بمراجعة وقبلت "
+    "acknowledgeText": " أقر بأنني قمت بمراجعة وقبلت ",
+    "generalText": " الاحكام والشروط العامة  "
   },
   "login": {
     "loginText": "تسجيل الدخول",

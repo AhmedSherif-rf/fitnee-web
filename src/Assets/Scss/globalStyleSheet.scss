@@ -147,7 +147,7 @@ Input::-webkit-input-placeholder {
     background-color: $content-bg !important;
     border-top-left-radius: 14px !important;
     border-bottom-left-radius: 14px !important;
-    border:none !important;
+    border: none !important;
     .selected-flag {
       border-top-left-radius: 14px !important;
       border-bottom-left-radius: 14px !important;
@@ -310,4 +310,9 @@ Input::-webkit-input-placeholder {
 
 .remove-arrow::-ms-clear {
   display: none;
+}
+
+.shimmer-thumbnail {
+  height: 38vh !important;
+  border-radius: 14px;
 }

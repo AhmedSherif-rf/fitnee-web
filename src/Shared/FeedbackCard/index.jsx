@@ -1,16 +1,11 @@
 import StarRating from "../Rating";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
 import { Card, CardFooter } from "reactstrap";
 import { LuArrowUp } from "react-icons/lu";
 
 const RatingCard = (props) => {
   const { header, image, des } = props;
-  const [isHovered, setIsHovered] = useState(false);
-  const toggleHover = () => {
-    setIsHovered((prevIsHovered) => !prevIsHovered);
-  };
-
   return (
     <Card
       className={`rounded-0 ${styles.customCard}`}
@@ -19,10 +14,7 @@ const RatingCard = (props) => {
       }}
     >
       <CardFooter
-        className={`text-center w-100 p-0 m-0 ${styles.customCardFooter} ${
-          isHovered ? styles.hovered : ""
-        }`}
-      >
+        className={`text-center w-100 p-0 m-0 ${styles.customCardFooter} `}>
         <div
           className={`${styles.customCardFooterText} d-flex align-items-end justify-content-center`}
         >
@@ -41,9 +33,6 @@ const RatingCard = (props) => {
       </CardFooter>
       <div
         className={`position-absolute rounded-circle d-md-none d-flex align-items-center justify-content-center textParrotGreen ${styles.arrowCircle}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={toggleHover}
       >
         <LuArrowUp />
       </div>

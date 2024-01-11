@@ -233,7 +233,7 @@ const LandingPage = (props) => {
         </Container>
       </section>
       <br />
-      <section id="swiperSection">
+      <section id="swiperSection" className="border border-danger">
         <CardSwiper
           data={SwiperCardsData()}
           heading={t("landing.feedbackText")}

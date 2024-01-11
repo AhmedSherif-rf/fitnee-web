@@ -56,7 +56,6 @@ const InformationModal = (props) => {
             }}
           >
             {requestId}
-            {"  "}
             <span>
               {isRequestIdCopied ? (
                 <IoMdCheckmarkCircleOutline color="#F6E709" />

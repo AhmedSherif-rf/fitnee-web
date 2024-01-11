@@ -13,7 +13,7 @@ const CardSwiper = (props) => {
   const swiperConfiguration = {
     grabCursor: true,
     spaceBetween: 10,
-    centeredSlides: false,
+    centeredSlides: true,
     breakpoints: {
       375: {
         slidesPerView: 1,
@@ -27,10 +27,10 @@ const CardSwiper = (props) => {
         slidesPerView: 3,
       },
       992: {
-        slidesPerView: 4,
+        slidesPerView: 3,
       },
       1360: {
-        slidesPerView: 4,
+        slidesPerView: 3,
       },
     },
     loop: true,
@@ -44,6 +44,10 @@ const CardSwiper = (props) => {
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
+    },
+    zoom: {
+      enabled: true,
+      maxRatio: 1.5,
     },
     modules: [Autoplay, Pagination, Navigation],
     className: "mySwiper",

@@ -6,7 +6,7 @@ const ProfileView = () => {
     <Container fluid>
       <Row className="justify-content-center">
         <Col md={12}>
-          <Card className="BorderRadius contentCard px-3">
+          <Card className="BorderRadius contentCard px-md-5 px-2 pb-4">
             <ProfileViewWrapper />
           </Card>
         </Col>

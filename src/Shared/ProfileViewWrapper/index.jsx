@@ -18,7 +18,7 @@ const ProfileViewWrapper = () => {
   const { user } = useSelector((state) => state.user);
 
   return (
-    <Container fluid>
+    <Container>
       <Row className=" justify-content-center">
         <Col md="12">
           <div className="d-flex justify-content-center align-items-center my-4 gap-4">
@@ -58,7 +58,7 @@ const ProfileViewWrapper = () => {
             </div>
           </div>
 
-          <Row className=" my-3">
+          <Row className="my-3">
             <Col md={6} sm={12} className="lh-1">
               <h6 className="fw-bold my-2">{t("signup.fullNameText")}</h6>
               <p className="small">{user?.full_name}</p>
@@ -67,7 +67,7 @@ const ProfileViewWrapper = () => {
               <h6 className="fw-bold my-2">{t("trainer.bioText")}</h6>
               <p className="small">{user?.bio}</p>
             </Col>
-            <Col md={6} sm={12}>
+            <Col md={6} sm={12} className="lh-1">
               <h6 className="fw-bold my-2">{t("contactUs.emailText")}</h6>
               <p className="small">{user?.email}</p>
               <h6 className="fw-bold my-2">{t("signup.experienceText")}</h6>
@@ -102,7 +102,7 @@ const ProfileViewWrapper = () => {
                 </>
               )}
             </Col>
-            <Col md={6} sm={12}>
+            <Col md={6} sm={12} className="lh-1">
               <div className="d-flex align-items-center gap-2">
                 <h6 className="fw-bold my-2">{"STC Pay Account"}</h6>
                 <small className="textYellow">(Change)</small>
@@ -112,7 +112,7 @@ const ProfileViewWrapper = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={12}>
+            <Col md={12} className="lh-1">
               <div className="d-flex align-items-center gap-2">
                 <h6 className="fw-bold my-2">
                   {t("guest.qualificationExperienceText")}
@@ -131,7 +131,7 @@ const ProfileViewWrapper = () => {
               ))}
           </Row>
           <Row>
-            <Col md={12}>
+            <Col md={12} className="lh-1">
               <h6 className="fw-bold my-2">{t("guest.areaSpecialtyText")}</h6>
               {user?.specialities &&
                 user?.specialities?.map((specialty, index) => (

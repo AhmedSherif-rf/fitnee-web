@@ -1132,11 +1132,7 @@ const SignUpForm = () => {
                                 <Field
                                   as="select"
                                   name={`profile_availability.${index}.day`}
-                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4 h-100"
-                                  style={{
-                                    paddingTop: "12px",
-                                    paddingBottom: "12px",
-                                  }}
+                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4 h-75"
                                 >
                                   <option
                                     className="customDropDownOption text-black-custom"

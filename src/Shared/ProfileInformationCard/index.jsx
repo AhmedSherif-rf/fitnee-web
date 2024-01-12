@@ -36,7 +36,7 @@ const ProfileInformationCard = (props) => {
 
           {providerProfile?.email && (
             <span className="small text-secondary">
-              ({providerProfile?.email})
+              {providerProfile?.email}
             </span>
           )}
         </div>

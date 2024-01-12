@@ -4,7 +4,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
 import React, { memo, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import AvailableHourList from "../../../AvailableHourListing";
+import AvailableHourListing from "../../../AvailableHourListing";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../../../ProfileInformationCard";
 import { BsFillPersonXFill, BsPersonCheckFill } from "react-icons/bs";
@@ -95,7 +95,7 @@ const ServiceProviderProfileWrapper = (props) => {
                 />
                 <div className="mt-2">
                   <h6 className="fw-bold text-dark">Available Hours</h6>
-                  <AvailableHourList
+                  <AvailableHourListing
                     data={serviceProviderProfile?.profile_availability}
                   />
                 </div>

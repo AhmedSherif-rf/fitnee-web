@@ -35,6 +35,7 @@ export const weekDaysOptions = [
   { value: "Saturday", label: "Saturday" },
   { value: "Sunday", label: "Sunday" },
 ];
+export const roleOptions = ["Trainer", "Both"];
 //=====================Roles=====================
 export const ADMIN_ROLE = "Admin";
 export const TRAINEE_ROLE = "Trainee";
@@ -65,7 +66,8 @@ export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
 export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
-export const TRAINEE_SERVICE_PROVIDER_LISTING_URL = "/serviceprovider_logged_in";
+export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
+  "/serviceprovider_logged_in";
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
 export const FORBIDDEN_CODE = 403;

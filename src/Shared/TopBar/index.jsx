@@ -27,7 +27,11 @@ import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, memo, useCallback } from "react";
-import { DELETE_ACCOUNT_URL, LOGOUT_URL } from "../../utils/constants";
+import {
+  DELETE_ACCOUNT_URL,
+  LOGOUT_URL,
+  TRAINER_NUTRITIONIST_ROLE,
+} from "../../utils/constants";
 import { logout, deleteAccount } from "../../Redux/features/User/userApi";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import {
@@ -371,7 +375,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             backgroundImage:
                               user?.profile_pic === null
                                 ? `url(${Images.USER_DUMMY_IMG})`
-                                : `url(${user?.profile_pic.replace("/api", "")})`,
+                                : `url(${user?.profile_pic.replace(
+                                    "/api",
+                                    ""
+                                  )})`,
                             width: "40px",
                             height: "40px",
                           }}
@@ -399,23 +406,34 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           </Link>
                         </DropdownItem>
                         <DropdownItem className="p-0">
-                          <Link
-                            className="w-100 p-1"
-                            to={
-                              roleType === TRAINEE_TYPE
-                                ? "/trainee/editProfile/trainee"
-                                : roleType === TRAINER_TYPE
-                                ? "/serviceProvider/editProfile/trainer"
-                                : "/serviceProvider/editProfile/nutritionist"
-                            }
-                          >
-                            <div className="d-flex align-items-center w-100 text-black-custom">
-                              <span className="me-2">
-                                <FaUserEdit size={16} className="mb-1" />
-                              </span>
-                              <p className="mb-0">Edit Profile</p>
-                            </div>
-                          </Link>
+                          {roleType === TRAINEE_TYPE && (
+                            <Link
+                              className="w-100 p-1"
+                              to={"/trainee/editProfile/trainee"}
+                            >
+                              <div className="d-flex align-items-center w-100 text-black-custom">
+                                <span className="me-2">
+                                  <FaUserEdit size={16} className="mb-1" />
+                                </span>
+                                <p className="mb-0">Edit Profile</p>
+                              </div>
+                            </Link>
+                          )}
+                          {(roleType === TRAINER_TYPE ||
+                            roleType === NUTRITIONIST_TYPE ||
+                            user?.role === TRAINER_NUTRITIONIST_ROLE) && (
+                            <Link
+                              className="w-100 p-1"
+                              to={"/serviceProvider/profile"}
+                            >
+                              <div className="d-flex align-items-center w-100 text-black-custom">
+                                <span className="me-2">
+                                  <FaUserEdit size={16} className="mb-1" />
+                                </span>
+                                <p className="mb-0">Profile</p>
+                              </div>
+                            </Link>
+                          )}
                         </DropdownItem>
                         {roleType && roleType !== TRAINEE_TYPE && (
                           <>
@@ -484,7 +502,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
           <Collapse
             isOpen={collapsed}
             className={`text-white w-100 ${styles.collapseScss}`}
-            // ref={collapseRef}
           >
             <Nav
               className={`pt-2 ${styles.togglerNav} customBgDark caret`}
@@ -579,18 +596,24 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                     </Link>
                   </NavItem>
                   <NavItem className={`${styles.NavItem} p-2`}>
-                    <Link
-                      className={`nav-link ${styles.NavLink}`}
-                      to={
-                        roleType === TRAINEE_TYPE
-                          ? "/trainee/editProfile/trainee"
-                          : roleType === TRAINER_TYPE
-                          ? "/serviceProvider/editProfile/trainer"
-                          : "/serviceProvider/editProfile/nutritionist"
-                      }
-                    >
-                      {"Edit Profile"}
-                    </Link>
+                    {roleType === TRAINEE_TYPE && (
+                      <Link
+                        className={`nav-link ${styles.NavLink}`}
+                        to={"/trainee/editProfile/trainee"}
+                      >
+                        {"Edit Profile"}
+                      </Link>
+                    )}
+                    {(roleType === TRAINER_TYPE ||
+                      roleType === NUTRITIONIST_TYPE ||
+                      user?.role === TRAINER_NUTRITIONIST_ROLE) && (
+                      <Link
+                        className={`nav-link ${styles.NavLink}`}
+                        to={"/serviceProvider/profile"}
+                      >
+                        {"Profile"}
+                      </Link>
+                    )}
                   </NavItem>
                   {roleType && roleType !== TRAINEE_TYPE && (
                     <>

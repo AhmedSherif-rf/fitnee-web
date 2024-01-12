@@ -35,7 +35,7 @@ export const weekDaysOptions = [
   { value: "Saturday", label: "Saturday" },
   { value: "Sunday", label: "Sunday" },
 ];
-export const roleOptions = ["Trainer", "Both"];
+export const roleOptions = ["Trainer", "Trainer And Nutritionist"];
 //=====================Roles=====================
 export const ADMIN_ROLE = "Admin";
 export const TRAINEE_ROLE = "Trainee";
@@ -44,7 +44,9 @@ export const NUTRITIONIST_ROLE = "Nutritionist";
 export const TRAINER_NUTRITIONIST_ROLE = "Trainer And Nutritionist";
 //====================Routes====================
 export const ADMIN_INITIAL_URL = "/admin/dashboard";
+export const TRAINEE_PROFILE_URL = "/trainee/profile";
 export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
+export const SERVICE_PROVIDER_PROFILE_URL = "/serviceProvider/profile";
 export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";

@@ -7,8 +7,7 @@ const ProfileView = () => {
       <Row className="justify-content-center">
         <Col md={12}>
           <Card className="BorderRadius contentCard px-3">
-         
-            <ProfileViewWrapper/>
+            <ProfileViewWrapper />
           </Card>
         </Col>
       </Row>

@@ -1,9 +1,11 @@
 import toast from "react-hot-toast";
+import { FaCheck, FaXmark } from "react-icons/fa6";
 
 class Toaster {
   static success(message) {
     toast.success(message, {
       position: "top-right",
+      icon: <FaCheck color="green" />,
       style: {
         borderRadius: "10px",
         background:
@@ -16,6 +18,7 @@ class Toaster {
   static error(message) {
     toast.error(message, {
       position: "top-right",
+      icon: <FaXmark color="red" />,
       style: {
         borderRadius: "10px",
         background:

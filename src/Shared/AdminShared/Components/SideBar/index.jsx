@@ -2,6 +2,7 @@ import React from "react";
 import SubMenu from "./SubMenu";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { GiWallet } from "react-icons/gi";
 import styles from "./styles.module.scss";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
@@ -52,6 +53,11 @@ const SideBar = ({ isOpen, toggle }) => (
           title="Exercises"
           icon={<MdOutlineSportsGymnastics />}
           items={submenus[1]}
+        />
+        <SubMenu
+          title="Wallet System"
+          icon={<GiWallet />}
+          items={submenus[2]}
         />
         <NavItem>
           <NavLink
@@ -108,6 +114,12 @@ const submenus = [
     {
       title: "View Exercises",
       target: "/admin/exercises/viewExercises",
+    },
+  ],  
+  [
+    {
+      title: "Wallet Overview",
+      target: "/admin/walletSystem/walletOverview",
     },
   ],
 ];

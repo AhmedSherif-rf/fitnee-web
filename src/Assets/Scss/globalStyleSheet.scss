@@ -209,7 +209,26 @@ Input::-webkit-input-placeholder {
   font-size: $font-14 !important;
   box-shadow: none !important;
 }
-
+.CategoryCard {
+  .CategoryCardHeader {
+    background-color: #fffaad !important;
+    &:hover {
+      background-color: #e0e0e0 !important;
+      cursor: pointer;
+    }
+  }
+}
+.UncontrolledDropdown {
+  .DropdownMenu {
+    .DropdownItem {
+      padding: 5px;
+      &:hover,
+      &:active {
+        background: $yellow;
+      }
+    }
+  }
+}
 .CameraImg {
   position: absolute;
   width: 40px;

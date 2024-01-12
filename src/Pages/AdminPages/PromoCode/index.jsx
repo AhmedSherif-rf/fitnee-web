@@ -38,7 +38,7 @@ const promoCode = (props) => {
           <Col md="12" className={`text-start mb-2 b`}>
             <PageHeading headingText="Add Promo Code" categoryText="" />
           </Col>
-          <Col md={12} className="mb-2">
+          <Col md={12} className="mb-3">
             <Card className="shadow-sm border-0">
               <CardBody>
                 <Row>
@@ -130,8 +130,6 @@ const promoCode = (props) => {
               </CardBody>
             </Card>
           </Col>
-        </Row>
-        <Row className="p-4">
           <Col md={12} className="mb-2">
             <ListingTable data={tableData} columns={columns} />
           </Col>

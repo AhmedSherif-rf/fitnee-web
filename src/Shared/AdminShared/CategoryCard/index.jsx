@@ -1,4 +1,3 @@
-import styles from "./style.module.scss";
 import FillBtn from "../../Buttons/FillBtn";
 import OutlineBtn from "../../Buttons/OutlineBtn";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -50,19 +49,19 @@ const CategoryCard = (props) => {
 
   return (
     <>
-      <Card className={`border-0 p-0 ${styles.CategoryCard}`}>
+      <Card className={`border-0 p-0 CategoryCard`}>
         <CardHeader
           className={`p-0 onlyBorderRadius d-flex align-items-center justify-content-between border-0`}
         >
           <Link className="w-100" to={LinkTo}>
             <div
-              className={`w-100 p-3 onlyBorderRadius  ${styles.CategoryCardHeader}`}
+              className={`w-100 p-3 onlyBorderRadius  ${`CategoryCardHeader`}`}
             >
               <h6 className="mb-0 text-start fw-bold textGrey">{CategoryName}</h6>
             </div>
           </Link>
           <div className="w-25">
-            <UncontrolledDropdown className={styles.UncontrolledDropdown}>
+            <UncontrolledDropdown className={`UncontrolledDropdown`}>
               <DropdownToggle
                 className={`p-0 d-flex align-items-center justify-content-center`}
                 nav
@@ -72,10 +71,10 @@ const CategoryCard = (props) => {
                 </div>
               </DropdownToggle>
               <DropdownMenu
-                className={`${styles.DropdownMenu}`}
+                className={`DropdownMenu`}
                 style={{ right: 0, left: "auto" }}
               >
-                <DropdownItem className={`p-0 ${styles.DropdownItem}`}>
+                <DropdownItem className={`p-0 DropdownItem`}>
                   <div className="d-flex align-items-center justify-content-center w-100 text-black-custom">
                     <button
                       className=" w-100 border-0 bg-transparent fs-6 pb-2 text-primary"

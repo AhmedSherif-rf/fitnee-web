@@ -906,7 +906,7 @@ const SignUpForm = () => {
                     <Col md={12}>
                       <div className="form-group">
                         <h6 className="mb-2 fw-bold">
-                          {t("signup.selectAreaOfSpecialtyText")}{" "}
+                          {t("signup.selectAreaOfSpecialtyText")}
                           {user === null && "*"}
                         </h6>
                         <Field
@@ -1128,7 +1128,7 @@ const SignUpForm = () => {
                                 <Field
                                   as="select"
                                   name={`profile_availability.${index}.day`}
-                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4"
+                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4 h-100"
                                   style={{
                                     paddingTop: "12px",
                                     paddingBottom: "12px",
@@ -1289,13 +1289,19 @@ const SignUpForm = () => {
                         <p className="mb-0 fs-6">
                           {t("signup.moneyTransferText")}
 
-                          <Link to={`/termAndCondition/serviceProvider/signUp`}>
+                          <Link
+                            target="blank"
+                            to={`/termAndCondition/serviceProvider/signUp`}
+                          >
                             <span className="textYellow">
                               {t("signup.termsAndConditionText")}
                             </span>
-                            &
                           </Link>
-                          <Link to={`/termAndCondition/general/home`}>
+                          <span> & </span>
+                          <Link
+                            target="blank"
+                            to={`/termAndCondition/general/home`}
+                          >
                             <span className="textYellow">
                               {t("signup.generalText")}
                             </span>
@@ -1305,9 +1311,21 @@ const SignUpForm = () => {
                         <p className="mb-0 fs-6">
                           {t("signup.acknowledgeText")}
 
-                          <Link to={`/termAndCondition/trainee/signUp`}>
+                          <Link
+                            target="blank"
+                            to={`/termAndCondition/trainee/signUp`}
+                          >
                             <span className="textYellow">
                               {t("signup.termsAndConditionText")}
+                            </span>
+                          </Link>
+                          <span> & </span>
+                          <Link
+                            target="blank"
+                            to={`/termAndCondition/general/home`}
+                          >
+                            <span className="textYellow">
+                              {t("signup.generalText")}
                             </span>
                           </Link>
                         </p>

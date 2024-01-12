@@ -1293,6 +1293,12 @@ const SignUpForm = () => {
                             <span className="textYellow">
                               {t("signup.termsAndConditionText")}
                             </span>
+                            &
+                          </Link>
+                          <Link to={`/termAndCondition/general/home`}>
+                            <span className="textYellow">
+                              {t("signup.generalText")}
+                            </span>
                           </Link>
                         </p>
                       ) : (

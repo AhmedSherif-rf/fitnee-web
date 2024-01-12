@@ -114,7 +114,7 @@ const bioValidation = Yup.string().required(
   TranslationHelper("validation.requiredBioText")
 );
 
-const serviceValidation = Yup.string().required(
+const roleValidation = Yup.string().required(
   TranslationHelper("validation.requiredText")
 );
 
@@ -184,9 +184,9 @@ export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({
 
 export const TRAINER_SIGNUP_SCHEMA = Yup.object().shape({
   bio: bioValidation,
+  role: roleValidation,
   email: emailValidation,
   gender: genderValidation,
-  service: serviceValidation,
   password: passwordValidation,
   stc_pay: phoneNumberValidaton,
   full_name: fullNameValidation,

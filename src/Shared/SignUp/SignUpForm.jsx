@@ -49,6 +49,8 @@ import {
   NUTRITIONIST_TYPE,
   GET_SPECIALITIES_URL,
   TRAINER_NUTRITIONIST_TYPE,
+  NUTRITIONIST_ROLE,
+  TRAINER_NUTRITIONIST_ROLE,
 } from "../../utils/constants";
 import {
   Container,
@@ -193,7 +195,7 @@ const SignUpForm = () => {
       };
       dispatch(editProfile(data)).then((res) => {
         if (res.type === "editProfile/fulfilled") {
-          navigate(functions.getInitialUrl(user?.role));
+          navigate(functions.getInitialProfileUrl(user?.role));
         }
       });
     }
@@ -248,10 +250,10 @@ const SignUpForm = () => {
           values,
           errors,
           touched,
-          handleChange,
-          setFieldValue,
           handleBlur,
+          handleChange,
           handleSubmit,
+          setFieldValue,
         }) => (
           <form onSubmit={handleSubmit}>
             <ConnectedFocusError />
@@ -583,7 +585,7 @@ const SignUpForm = () => {
                 </Col>
               )}
 
-              {filterFields.includes("service") && (
+              {filterFields.includes("role") && (
                 <Col md={6}>
                   <Row className="training">
                     <Col md={12} className="mb-2">
@@ -596,14 +598,14 @@ const SignUpForm = () => {
                       <MyDropdown
                         className="shadow-0 py-3 px-4 border"
                         Options={roleOptions}
-                        name={"service"}
+                        name={"role"}
                         placeholder={"What you will provide to the end user"}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
-                        value={values.service}
+                        value={values.role}
                       />
                       <p className="errorField">
-                        {errors.service && touched.service && errors.service}
+                        {errors.role && touched.role && errors.role}
                       </p>
                     </Col>
                   </Row>
@@ -1046,27 +1048,29 @@ const SignUpForm = () => {
                 </Col>
               )}
 
-              {filterFields.includes("license_number") && (
-                <Col md={6}>
-                  <h6 className="mb-2 fw-bold">
-                    {t("signup.enterYourProfessionalText")}{" "}
-                  </h6>
-                  <InputField
-                    className="py-3 px-4"
-                    type="number"
-                    placeholder={t("signup.enterYourProfessionalText")}
-                    name="license_number"
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.license_number}
-                  />
-                  <p className="errorField">
-                    {errors.license_number &&
-                      touched.license_number &&
-                      errors.license_number}
-                  </p>
-                </Col>
-              )}
+              {filterFields.includes("license_number") &&
+                (values.role === NUTRITIONIST_ROLE ||
+                  values.role === TRAINER_NUTRITIONIST_ROLE) && (
+                  <Col md={6}>
+                    <h6 className="mb-2 fw-bold">
+                      {t("signup.enterYourProfessionalText")}{" "}
+                    </h6>
+                    <InputField
+                      className="py-3 px-4"
+                      type="number"
+                      placeholder={t("signup.enterYourProfessionalText")}
+                      name="license_number"
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.license_number}
+                    />
+                    <p className="errorField">
+                      {errors.license_number &&
+                        touched.license_number &&
+                        errors.license_number}
+                    </p>
+                  </Col>
+                )}
 
               {filterFields.includes("saudiReps") && (
                 <Col md={6}>

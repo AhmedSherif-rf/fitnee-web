@@ -103,6 +103,12 @@ Input {
   }
 }
 
+.profileEditIcon {
+  &:hover {
+    fill: $yellow;
+  }
+}
+
 Input::-webkit-input-placeholder {
   color: $placeholder-color;
 }

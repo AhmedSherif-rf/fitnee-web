@@ -1,6 +1,10 @@
 import axiosInstance from "../../interceptor";
 import Toaster from "../../../Shared/Toaster";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  FORBIDDEN_CODE,
+  PRECONDITION_REQUIRED_CODE,
+} from "../../../utils/constants";
 
 export const login = createAsyncThunk(
   "login",
@@ -10,7 +14,12 @@ export const login = createAsyncThunk(
       localStorage.setItem("fitnee_user", JSON.stringify(response?.data?.data));
       return response.data;
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.Message);
+      if (
+        error.response.status !== FORBIDDEN_CODE &&
+        error.response.status !== PRECONDITION_REQUIRED_CODE
+      ) {
+        Toaster.error(error?.response?.data?.error?.Message);
+      }
       return thunkAPI.rejectWithValue({ statusCode: error.response.status });
     }
   }

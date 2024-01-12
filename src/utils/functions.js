@@ -10,6 +10,7 @@ const {
   TRAINEE_INITIAL_URL,
   TRAINER_NUTRITIONIST_ROLE,
   TRAINER_NUTRITIONIST_TYPE,
+  SERVICE_PROVIDER_PROFILE_URL,
   SERVICE_PROVIDER_INITIAL_URL,
 } = require("./constants");
 
@@ -47,6 +48,29 @@ const getInitialUrl = (role) => {
   return initialUrl;
 };
 
+const getInitialProfileUrl = (role) => {
+  let initialUrl = "";
+
+  switch (role) {
+    case TRAINEE_ROLE:
+      initialUrl = TRAINEE_INITIAL_URL;
+      break;
+    case TRAINER_ROLE:
+      initialUrl = SERVICE_PROVIDER_PROFILE_URL;
+      break;
+    case NUTRITIONIST_ROLE:
+      initialUrl = SERVICE_PROVIDER_PROFILE_URL;
+      break;
+    case TRAINER_NUTRITIONIST_ROLE:
+      initialUrl = SERVICE_PROVIDER_PROFILE_URL;
+      break;
+    default:
+      break;
+  }
+
+  return initialUrl;
+};
+
 const createFormData = (data) => {
   const formData = new FormData();
 
@@ -56,7 +80,7 @@ const createFormData = (data) => {
         data[key].forEach((certification, index) => {
           formData.append(`certification`, certification);
         });
-      } else if (Array.isArray(data[key])) {
+      } else if (Array.isArray(data[key]) && data[key].length > 0) {
         formData.append(key, JSON.stringify(data[key]));
       } else {
         formData.append(key, data[key]);
@@ -104,10 +128,8 @@ const setTrainerInitialValues = (initalValues, user) => {
     ...initalValues,
     bio: user?.bio,
     gender: user?.gender,
-    stc_pay: user?.stc_pay,
     full_name: user?.full_name,
     experience: user?.experience,
-    saudireps_number: user?.saudireps_number,
     is_currently_working: user?.is_currently_working,
   };
 };
@@ -184,9 +206,9 @@ const filterSignUpFields = (roleType, user) => {
   } else if (roleType === TRAINER_TYPE && user === null) {
     return [
       "bio",
+      "role",
       "email",
       "gender",
-      "service",
       "stc_pay",
       "password",
       "full_name",
@@ -195,6 +217,7 @@ const filterSignUpFields = (roleType, user) => {
       "phone_number",
       "specialities",
       "certification",
+      "license_number",
       "confirm_password",
       "saudireps_number",
       "certificate_title",
@@ -207,11 +230,9 @@ const filterSignUpFields = (roleType, user) => {
     return [
       "bio",
       "gender",
-      "stc_pay",
       "full_name",
       "experience",
       "profile_pic",
-      "saudireps_number",
       "is_currently_working",
     ];
   } else if (roleType === NUTRITIONIST_TYPE && user === null) {
@@ -293,6 +314,7 @@ export default {
   getListingRole,
   copyToClipboard,
   filterSignUpFields,
+  getInitialProfileUrl,
   setLanguageInStorage,
   getLanguageFromStorage,
   setTraineeInitialValues,

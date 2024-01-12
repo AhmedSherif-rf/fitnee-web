@@ -167,10 +167,10 @@ const OTPVerification = () => {
           onClose={handleReviewRequestModalClose}
           requestId={requestId}
           ModalTextOne={
-            "Your request has been submitted successfully. After review you are notify by email."
+            "Welcome to FitNee. Your account is currently undergoing thorough review, and a personalized ticket has been generated for this process. We anticipate completing the approval within the next 48 hours."
           }
           ModalTextTwo={
-            "In order to serve you better, we have generated a ticket ID for your request, please tab to copy this ID."
+            "Your patience is valued as we work to ensure the highest standards for the FitNee community."
           }
           ButtonOne={
             <FillBtn

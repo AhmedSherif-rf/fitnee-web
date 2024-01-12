@@ -29,11 +29,13 @@ export const TRAINER_SIGNUP_INITIAL_VALUES = {
   email: "",
   gender: "",
   stc_pay: "",
+  service: "",
   password: "",
   full_name: "",
   experience: "",
   role: "Trainer",
   specialities: [],
+  phone_number: "",
   profile_pic: null,
   certification: [],
   confirm_password: "",
@@ -42,6 +44,11 @@ export const TRAINER_SIGNUP_INITIAL_VALUES = {
   is_currently_working: "",
   term_and_condition: false,
   profile_availability: [{ day: "", starttime: "", endtime: "" }],
+  subscription_plans: [
+    { price: "", membership_type: "Trainer", duration: "1" },
+    { price: "", membership_type: "Trainer", duration: "2" },
+    { price: "", membership_type: "Trainer", duration: "3" },
+  ],
 };
 
 export const NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
@@ -52,6 +59,7 @@ export const NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
   password: "",
   full_name: "",
   experience: "",
+  phone_number: "",
   profile_pic: null,
   certification: [],
   license_number: "",
@@ -61,6 +69,11 @@ export const NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
   is_currently_working: "",
   term_and_condition: false,
   profile_availability: [{ day: "", starttime: "", endtime: "" }],
+  subscription_plans: [
+    { price: "", membership_type: "Nutrition", duration: "1" },
+    { price: "", membership_type: "Nutrition", duration: "2" },
+    { price: "", membership_type: "Nutrition", duration: "3" },
+  ],
 };
 
 export const TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
@@ -71,6 +84,7 @@ export const TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
   password: "",
   full_name: "",
   experience: "",
+  phone_number: "",
   specialities: [],
   profile_pic: null,
   certification: [],

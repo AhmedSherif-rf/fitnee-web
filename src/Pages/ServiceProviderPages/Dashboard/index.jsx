@@ -7,8 +7,9 @@ import FillBtn from "../../../Shared/Buttons/FillBtn";
 import CommentCard from "../../../Shared/CommentCard";
 import DocumentCard from "../../../Shared/DocumentCard";
 import { TRAINER_ROLE } from "../../../utils/constants";
-import { Row, Col, Container, Card, CardBody } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
+import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
+import AvailableHourListing from "../../../Shared/AvailableHourListing";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 
 const commentMedia = [
@@ -66,30 +67,32 @@ const Dashboard = () => {
                   <ProfileInformationCard providerProfile={user} />
                 </div>
 
-                <div className="">
-                  <Row className="my-3">
-                    <Col md={12}>
-                      <FillBtn
-                        handleOnClick={handleCurrentSubscribersClick}
-                        className="w-100 mb-2 py-2"
-                        text={
-                          user?.role === TRAINER_ROLE
-                            ? "My Current Trainees"
-                            : t("trainer.trainerSubscriberText")
-                        }
-                      />
-                      <FillBtn
-                        handleOnClick={handlePaymentClick}
-                        className="w-100 mb-2 py-2"
-                        text={t("trainer.trainerPaymentText")}
-                      />
-                      <FillBtn
-                        handleOnClick={handleSubscriptionsClick}
-                        className="w-100 mb-2 py-2"
-                        text={t("trainer.trainerPackageText")}
-                      />
-                    </Col>
-                  </Row>
+                <Row className="mt-3">
+                  <Col md={12}>
+                    <FillBtn
+                      handleOnClick={handleCurrentSubscribersClick}
+                      className="w-100 mb-2 py-2"
+                      text={
+                        user?.role === TRAINER_ROLE
+                          ? "My Current Trainees"
+                          : t("trainer.trainerSubscriberText")
+                      }
+                    />
+                    <FillBtn
+                      handleOnClick={handlePaymentClick}
+                      className="w-100 mb-2 py-2"
+                      text={t("trainer.trainerPaymentText")}
+                    />
+                    <FillBtn
+                      handleOnClick={handleSubscriptionsClick}
+                      className="w-100 mb-2 py-2"
+                      text={t("trainer.trainerPackageText")}
+                    />
+                  </Col>
+                </Row>
+                <div>
+                  <h6 className="fw-bold text-white">Available Hours</h6>
+                  <AvailableHourListing data={user?.profile_availability} />
                 </div>
               </Col>
               <Col lg={9} md={8}>
@@ -129,6 +132,24 @@ const Dashboard = () => {
                             );
                           }
                         )}
+                    </Row>
+
+                    <Row>
+                      <Col md={12}>
+                        <h5 className="fw-bold my-2">
+                          {t("guest.areaSpecialtyText")}
+                        </h5>
+                        {user?.specialities &&
+                          user?.specialities?.map((specialty, index) => (
+                            <Badge
+                              key={index}
+                              color="custom"
+                              className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
+                            >
+                              {specialty.name}
+                            </Badge>
+                          ))}
+                      </Col>
                     </Row>
 
                     <Row>

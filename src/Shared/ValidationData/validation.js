@@ -113,6 +113,11 @@ const confirmPasswordValidation = Yup.string()
 const bioValidation = Yup.string().required(
   TranslationHelper("validation.requiredBioText")
 );
+
+const serviceValidation = Yup.string().required(
+  TranslationHelper("validation.requiredText")
+);
+
 const specialitiesValidation = Yup.array().min(
   1,
   TranslationHelper("validation.requiredText")
@@ -154,6 +159,12 @@ const profileAvailabilityValidation = Yup.array().of(
   })
 );
 
+const subscriptionPlanValidation = Yup.array().of(
+  Yup.object().shape({
+    price: Yup.string().required(TranslationHelper("validation.requiredText")),
+  })
+);
+
 const termAndConditionCheckValidation = Yup.bool().oneOf(
   [true],
   TranslationHelper("validation.requiredTermAndConditionCheck")
@@ -175,14 +186,17 @@ export const TRAINER_SIGNUP_SCHEMA = Yup.object().shape({
   bio: bioValidation,
   email: emailValidation,
   gender: genderValidation,
+  service: serviceValidation,
   password: passwordValidation,
   stc_pay: phoneNumberValidaton,
   full_name: fullNameValidation,
   experience: experienceValidation,
+  phone_number: phoneNumberValidaton,
   specialities: specialitiesValidation,
   certification: certificationValidation,
   confirm_password: confirmPasswordValidation,
   certificate_title: certificateTitleValidation,
+  subscription_plans: subscriptionPlanValidation,
   profile_availability: profileAvailabilityValidation,
   term_and_condition: termAndConditionCheckValidation,
 });
@@ -195,9 +209,11 @@ export const NUTRITIONIST_SIGNUP_SCHEMA = Yup.object().shape({
   stc_pay: phoneNumberValidaton,
   full_name: fullNameValidation,
   experience: experienceValidation,
+  phone_number: phoneNumberValidaton,
   certification: certificationValidation,
   confirm_password: confirmPasswordValidation,
   certificate_title: certificateTitleValidation,
+  subscription_plans: subscriptionPlanValidation,
   profile_availability: profileAvailabilityValidation,
   term_and_condition: termAndConditionCheckValidation,
 });
@@ -210,6 +226,7 @@ export const TRAINER_NUTRITIONIST_SIGNUP_SCHEMA = Yup.object().shape({
   stc_pay: phoneNumberValidaton,
   full_name: fullNameValidation,
   experience: experienceValidation,
+  phone_number: phoneNumberValidaton,
   specialities: specialitiesValidation,
   certification: certificationValidation,
   confirm_password: confirmPasswordValidation,

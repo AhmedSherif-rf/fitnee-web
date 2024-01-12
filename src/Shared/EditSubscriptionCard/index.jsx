@@ -10,22 +10,31 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const EditSubscriptionCard = (props) => {
   const { user } = useSelector((state) => state.user);
-  const { duration, price, isDummy, handleOnEdit } = props;
+  const { id, duration, price, isDummy, handleOnEdit, handleOnAdd } = props;
 
   const [packagePrice, setPackagePrice] = useState(price);
 
-  const handleEditClick = () => {
+  const handleSubmit = () => {
     if (packagePrice === "") {
       Toaster.error("Add price to create subscription plan");
     } else {
-      handleOnEdit(
-        {
-          price: Number(packagePrice),
-          duration: duration,
-          membership_type: user === TRAINER_TYPE ? "Trainer" : "Nutrition",
-        },
-        duration
-      );
+      if (isDummy) {
+        handleOnAdd(
+          {
+            price: Number(packagePrice),
+            duration: duration,
+            membership_type: user === TRAINER_TYPE ? "Trainer" : "Nutrition",
+          },
+          duration
+        );
+      } else {
+        handleOnEdit(
+          {
+            price: Number(packagePrice),
+          },
+          id
+        );
+      }
     }
   };
 
@@ -44,22 +53,16 @@ const EditSubscriptionCard = (props) => {
       </div>
 
       <CardBody className="mt-5">
-        {!isDummy && (
-          <h1 className="mb-3">
-            {CURRENCY} {price}
-          </h1>
-        )}
-        {isDummy && (
-          <div className="d-flex justify-content-center">
-            <InputField
-              placeholder="Add Price"
-              className="text-center fs-4 border-0 w-50"
-              type="number"
-              value={packagePrice}
-              onChangeHandle={handlePriceChange}
-            />
-          </div>
-        )}
+        <h4 className="m-0">{CURRENCY}</h4>
+        <div className="d-flex justify-content-center">
+          <InputField
+            placeholder="Add Price"
+            className="text-center fs-4 border-0 w-50"
+            type="number"
+            value={packagePrice}
+            onChangeHandle={handlePriceChange}
+          />
+        </div>
         <img className="fluid w-50 my-2" src={Images.ONE_MONTH_IMG} alt="" />
       </CardBody>
       <CardFooter className="bg-transparent border-0 py-3">
@@ -67,7 +70,15 @@ const EditSubscriptionCard = (props) => {
           <FillBtn
             className={"px-5"}
             text={"Add"}
-            handleOnClick={handleEditClick}
+            handleOnClick={handleSubmit}
+          />
+        )}
+        {!isDummy && (
+          <FillBtn
+            className={"px-5"}
+            text={"Edit"}
+            disabled={packagePrice === price ? true : false}
+            handleOnClick={handleSubmit}
           />
         )}
       </CardFooter>

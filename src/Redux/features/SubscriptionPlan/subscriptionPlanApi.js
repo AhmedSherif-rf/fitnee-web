@@ -16,6 +16,20 @@ export const createSubscriptionPlan = createAsyncThunk(
   }
 );
 
+export const editSubscriptionPlan = createAsyncThunk(
+  "editSubscriptionPlan",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.patch(apiEndpoint, requestData);
+      Toaster.success("Plan updated successfully");
+      return response;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.non_field_errors[0]);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const getTraineeSubscriptionPlans = createAsyncThunk(
   "getTraineeSubscriptionPlans",
   async ({ apiEndpoint }, thunkAPI) => {

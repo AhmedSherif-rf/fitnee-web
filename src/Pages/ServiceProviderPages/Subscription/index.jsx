@@ -5,6 +5,7 @@ import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import { SUBSCRIPTION_PLAN_URL } from "../../../utils/constants";
 import EditSubscriptionCard from "../../../Shared/EditSubscriptionCard";
 import {
+  editSubscriptionPlan,
   createSubscriptionPlan,
   getTraineeSubscriptionPlans,
 } from "../../../Redux/features/SubscriptionPlan/subscriptionPlanApi";
@@ -42,6 +43,7 @@ const Subscription = () => {
 
     missingDurations.forEach((duration) => {
       const dummyPackage = {
+        id: "",
         price: "",
         isDummy: true,
         duration: duration,
@@ -56,6 +58,22 @@ const Subscription = () => {
   };
 
   const handleOnEdit = useCallback(
+    (values, id) => {
+      const data = {
+        apiEndpoint: `${SUBSCRIPTION_PLAN_URL}${id}/`,
+        requestData: JSON.stringify(values),
+      };
+      dispatch(editSubscriptionPlan(data)).then((res) => {
+        if (res.type === "editSubscriptionPlan/fulfilled") {
+          fetchServiceProviderSubscriptionPlan();
+        }
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dispatch]
+  );
+
+  const handleOnAdd = useCallback(
     (values) => {
       const data = {
         apiEndpoint: SUBSCRIPTION_PLAN_URL,
@@ -90,8 +108,10 @@ const Subscription = () => {
                     }`}
                   >
                     <EditSubscriptionCard
+                      id={item.id}
                       duration={item.duration}
                       price={item.price}
+                      handleOnAdd={handleOnAdd}
                       handleOnEdit={handleOnEdit}
                       isDummy={item?.isDummy}
                     />

@@ -41,6 +41,7 @@ import {
   TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES,
 } from "../ValidationData/initialValue";
 import {
+  roleOptions,
   REGISTER_URL,
   TRAINEE_TYPE,
   TRAINER_TYPE,
@@ -579,6 +580,33 @@ const SignUpForm = () => {
                       touched.experience &&
                       errors.experience}
                   </p>
+                </Col>
+              )}
+
+              {filterFields.includes("service") && (
+                <Col md={6}>
+                  <Row className="training">
+                    <Col md={12} className="mb-2">
+                      <div
+                        className="text-end"
+                        style={{ marginBottom: "-15px" }}
+                      >
+                        *
+                      </div>
+                      <MyDropdown
+                        className="shadow-0 py-3 px-4 border"
+                        Options={roleOptions}
+                        name={"service"}
+                        placeholder={"What you will provide to the end user"}
+                        onChangeHandle={handleChange}
+                        onBlurHandle={handleBlur}
+                        value={values.service}
+                      />
+                      <p className="errorField">
+                        {errors.service && touched.service && errors.service}
+                      </p>
+                    </Col>
+                  </Row>
                 </Col>
               )}
 
@@ -1181,6 +1209,39 @@ const SignUpForm = () => {
               )}
             </Row>
 
+            <Row className="my-3">
+              {filterFields.includes("subscription_plans") && (
+                <>
+                  <h5 className="mb-2 fw-bold">Subscription Plans</h5>
+                  <FieldArray
+                    name="subscription_plans"
+                    className="d-flex"
+                    render={(arrayHelpers) => (
+                      <>
+                        {values.subscription_plans.map(
+                          (subscription_plan, index) => (
+                            <Col md={4}>
+                              <p className="mb-0">{`${index + 1} Months`}</p>
+                              <Field
+                                name={`subscription_plans.${index}.price`}
+                                type="number"
+                                className="customDropdownRadius form-control select-field py-3 px-4 border"
+                              />
+                              <ErrorMessage
+                                name={`subscription_plans.${index}.price`}
+                                component="p"
+                                className="errorField"
+                              />
+                            </Col>
+                          )
+                        )}
+                      </>
+                    )}
+                  />
+                </>
+              )}
+            </Row>
+
             {filterFields.includes("is_currently_working") && (
               <Row className="mb-3">
                 <h6 className="mb-2 fw-bold">
@@ -1231,6 +1292,12 @@ const SignUpForm = () => {
                           <Link to={`/termAndCondition/serviceProvider/signUp`}>
                             <span className="textYellow">
                               {t("signup.termsAndConditionText")}
+                            </span>
+                            &
+                          </Link>
+                          <Link to={`/termAndCondition/general/home`}>
+                            <span className="textYellow">
+                              {t("signup.generalText")}
                             </span>
                           </Link>
                         </p>

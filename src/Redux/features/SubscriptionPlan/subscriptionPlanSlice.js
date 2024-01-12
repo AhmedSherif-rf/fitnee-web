@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  editSubscriptionPlan,
   createSubscriptionPlan,
   getTraineeSubscriptionPlans,
   getGuestServiceProviderSubscriptionPlans,
@@ -49,7 +50,18 @@ export const subscriptionPlanSlice = createSlice({
           state.loading = "failed";
           state.error = action.payload.error;
         }
-      );
+      )
+      .addCase(editSubscriptionPlan.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(editSubscriptionPlan.fulfilled, (state) => {
+        state.loading = "succeeded";
+        state.success = true;
+      })
+      .addCase(editSubscriptionPlan.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      });
   },
 });
 

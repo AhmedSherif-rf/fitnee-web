@@ -87,6 +87,10 @@ export const adminRoutes = [
   {
     path: "/admin/walletSystem/walletOverview",
     component: lazy(() => import("../Pages/AdminPages/WalletSystem/WalletOverview")),
+    path: "/admin/reviewRequestDetail/:uuid",
+    component: lazy(() =>
+      import("../Pages/AdminPages/ReviewRequest/ReviewRequestDetail")
+    ),
     exact: true,
     role: adminRole,
   },

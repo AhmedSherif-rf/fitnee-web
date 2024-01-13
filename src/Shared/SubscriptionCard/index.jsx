@@ -1,6 +1,7 @@
 import styles from "./style.module.scss";
 import FillBtn from "../Buttons/FillBtn";
 import { useNavigate } from "react-router-dom";
+import { CURRENCY } from "../../utils/constants";
 import React, { memo, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardBody, CardFooter } from "reactstrap";
@@ -33,7 +34,7 @@ const SubscriptionCard = (props) => {
       </div>
 
       <CardBody className="mt-5">
-        <h1 className="mb-3">{price}</h1>
+        <h1 className="mb-3">{CURRENCY} {price}</h1>
         <img className="fluid w-50 my-2" src={Images.ONE_MONTH_IMG} alt="" />
       </CardBody>
       <CardFooter className="bg-transparent border-0 py-3">

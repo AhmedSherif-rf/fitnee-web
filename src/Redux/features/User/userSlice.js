@@ -24,6 +24,9 @@ export const userSlice = createSlice({
     setEmail: (state, action) => {
       state.email = action.payload;
     },
+    customLogout: (state) => {
+      state.user = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -92,6 +95,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setGuest, setEmail } = userSlice.actions;
+export const { setGuest, setEmail, customLogout } = userSlice.actions;
 
 export default userSlice.reducer;

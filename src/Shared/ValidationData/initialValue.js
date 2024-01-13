@@ -37,7 +37,6 @@ export const TRAINER_SIGNUP_INITIAL_VALUES = {
   phone_number: "",
   profile_pic: null,
   certification: [],
-  license_number: "",
   confirm_password: "",
   saudireps_number: "",
   certificate_title: [],

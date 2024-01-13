@@ -2,8 +2,8 @@ import axiosInstance from "../../interceptor";
 import Toaster from "../../../Shared/Toaster";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  FORBIDDEN_CODE,
   PRECONDITION_REQUIRED_CODE,
+  UNAVAILABLE_FOR_LEGAL_REASONS_CODE,
 } from "../../../utils/constants";
 
 export const login = createAsyncThunk(
@@ -11,12 +11,11 @@ export const login = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      localStorage.setItem("fitnee_user", JSON.stringify(response?.data?.data));
       return response.data;
     } catch (error) {
       if (
-        error.response.status !== FORBIDDEN_CODE &&
-        error.response.status !== PRECONDITION_REQUIRED_CODE
+        error.response.status !== PRECONDITION_REQUIRED_CODE &&
+        error.response.status !== UNAVAILABLE_FOR_LEGAL_REASONS_CODE
       ) {
         Toaster.error(error?.response?.data?.error?.Message);
       }
@@ -30,7 +29,6 @@ export const logout = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      localStorage.removeItem("fitnee_user");
       Toaster.success("Logged out successfully");
       return response.data;
     } catch (error) {
@@ -99,7 +97,6 @@ export const deleteAccount = createAsyncThunk(
   async ({ apiEndpoint }, thunkAPI) => {
     try {
       const response = await axiosInstance.delete(apiEndpoint);
-      localStorage.removeItem("fitnee_user");
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.detail);

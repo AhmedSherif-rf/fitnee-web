@@ -46,7 +46,6 @@ export const TRAINER_NUTRITIONIST_ROLE = "Trainer And Nutritionist";
 export const ADMIN_INITIAL_URL = "/admin/dashboard";
 export const TRAINEE_PROFILE_URL = "/trainee/profile";
 export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
-export const SERVICE_PROVIDER_PROFILE_URL = "/serviceProvider/profile";
 export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";

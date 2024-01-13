@@ -4,6 +4,7 @@ import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
+import DocumentCard from "../DocumentCard";
 import MultiSelector from "../MultiSelector";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
@@ -49,8 +50,7 @@ import {
   NUTRITIONIST_TYPE,
   GET_SPECIALITIES_URL,
   TRAINER_NUTRITIONIST_TYPE,
-  NUTRITIONIST_ROLE,
-  TRAINER_NUTRITIONIST_ROLE,
+  TRAINEE_ROLE,
 } from "../../utils/constants";
 import {
   Container,
@@ -195,7 +195,7 @@ const SignUpForm = () => {
       };
       dispatch(editProfile(data)).then((res) => {
         if (res.type === "editProfile/fulfilled") {
-          navigate(functions.getInitialProfileUrl(user?.role));
+          navigate(functions.getInitialUrl(user?.role));
         }
       });
     }
@@ -404,6 +404,7 @@ const SignUpForm = () => {
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.email}
+                    disabled={user ? true : false}
                   />
                   <p className="errorField">
                     {errors.email && touched.email && errors.email}
@@ -474,6 +475,7 @@ const SignUpForm = () => {
                     defaultCountry={"sa"}
                     value={values.phone_number}
                     setFieldValue={setFieldValue}
+                    disabled={user ? true : false}
                   />
                   <p className="errorField">
                     {errors.phone_number &&
@@ -710,6 +712,31 @@ const SignUpForm = () => {
                   </Col>
                 </>
               )}
+
+              {user &&
+                user?.role !== TRAINEE_ROLE &&
+                user?.ServiceProvider_Certification && (
+                  <>
+                    <Col md={12}>
+                      <h6 className="fw-bold">
+                        {"Certificates"}
+                        {user === null && "*"}
+                      </h6>
+                    </Col>
+                    <Col>
+                      {user?.ServiceProvider_Certification?.map(
+                        (certificate, index) => (
+                          <DocumentCard
+                            key={index}
+                            className="BorderYellow"
+                            documentTitle={certificate?.title}
+                            documentImg={certificate?.certificate_image}
+                          />
+                        )
+                      )}
+                    </Col>
+                  </>
+                )}
 
               {filterFields.includes("certification") && (
                 <>
@@ -1039,6 +1066,7 @@ const SignUpForm = () => {
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.saudireps_number}
+                    disabled={user ? true : false}
                   />
                   <p className="errorField">
                     {errors.saudireps_number &&
@@ -1048,44 +1076,26 @@ const SignUpForm = () => {
                 </Col>
               )}
 
-              {filterFields.includes("license_number") &&
-                (values.role === NUTRITIONIST_ROLE ||
-                  values.role === TRAINER_NUTRITIONIST_ROLE) && (
-                  <Col md={6}>
-                    <h6 className="mb-2 fw-bold">
-                      {t("signup.enterYourProfessionalText")}{" "}
-                    </h6>
-                    <InputField
-                      className="py-3 px-4"
-                      type="number"
-                      placeholder={t("signup.enterYourProfessionalText")}
-                      name="license_number"
-                      onChangeHandle={handleChange}
-                      onBlurHandle={handleBlur}
-                      value={values.license_number}
-                    />
-                    <p className="errorField">
-                      {errors.license_number &&
-                        touched.license_number &&
-                        errors.license_number}
-                    </p>
-                  </Col>
-                )}
-
-              {filterFields.includes("saudiReps") && (
+              {filterFields.includes("license_number") && (
                 <Col md={6}>
                   <h6 className="mb-2 fw-bold">
-                    {t("signup.enterYourProfessionalText")}
+                    {t("signup.enterYourProfessionalText")}{" "}
                   </h6>
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder="001122"
-                    name="saudiReps"
+                    placeholder={t("signup.enterYourProfessionalText")}
+                    name="license_number"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
-                    value={values.saudiReps}
+                    value={values.license_number}
+                    disabled={user ? true : false}
                   />
+                  <p className="errorField">
+                    {errors.license_number &&
+                      touched.license_number &&
+                      errors.license_number}
+                  </p>
                 </Col>
               )}
 
@@ -1104,6 +1114,7 @@ const SignUpForm = () => {
                     defaultCountry={"sa"}
                     value={values.stc_pay}
                     setFieldValue={setFieldValue}
+                    disabled={user ? true : false}
                   />
                   <p className="errorField">
                     {errors.stc_pay && touched.stc_pay && errors.stc_pay}

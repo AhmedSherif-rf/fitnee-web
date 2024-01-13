@@ -406,34 +406,24 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           </Link>
                         </DropdownItem>
                         <DropdownItem className="p-0">
-                          {roleType === TRAINEE_TYPE && (
-                            <Link
-                              className="w-100 p-1"
-                              to={"/trainee/editProfile/trainee"}
-                            >
-                              <div className="d-flex align-items-center w-100 text-black-custom">
-                                <span className="me-2">
-                                  <FaUserEdit size={16} className="mb-1" />
-                                </span>
-                                <p className="mb-0">Edit Profile</p>
-                              </div>
-                            </Link>
-                          )}
-                          {(roleType === TRAINER_TYPE ||
-                            roleType === NUTRITIONIST_TYPE ||
-                            user?.role === TRAINER_NUTRITIONIST_ROLE) && (
-                            <Link
-                              className="w-100 p-1"
-                              to={"/serviceProvider/profile"}
-                            >
-                              <div className="d-flex align-items-center w-100 text-black-custom">
-                                <span className="me-2">
-                                  <FaUserEdit size={16} className="mb-1" />
-                                </span>
-                                <p className="mb-0">Profile</p>
-                              </div>
-                            </Link>
-                          )}
+                          <Link
+                            className="w-100 p-1"
+                            to={
+                              roleType === TRAINEE_TYPE
+                                ? "/trainee/editProfile/trainee"
+                                : roleType === TRAINER_TYPE ||
+                                  user?.role === TRAINER_NUTRITIONIST_ROLE
+                                ? "/serviceProvider/editProfile/trainer"
+                                : "/serviceProvider/editProfile/nutritionist"
+                            }
+                          >
+                            <div className="d-flex align-items-center w-100 text-black-custom">
+                              <span className="me-2">
+                                <FaUserEdit size={16} className="mb-1" />
+                              </span>
+                              <p className="mb-0">Edit Profile</p>
+                            </div>
+                          </Link>
                         </DropdownItem>
                         {roleType && roleType !== TRAINEE_TYPE && (
                           <>
@@ -596,24 +586,19 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                     </Link>
                   </NavItem>
                   <NavItem className={`${styles.NavItem} p-2`}>
-                    {roleType === TRAINEE_TYPE && (
-                      <Link
-                        className={`nav-link ${styles.NavLink}`}
-                        to={"/trainee/editProfile/trainee"}
-                      >
-                        {"Edit Profile"}
-                      </Link>
-                    )}
-                    {(roleType === TRAINER_TYPE ||
-                      roleType === NUTRITIONIST_TYPE ||
-                      user?.role === TRAINER_NUTRITIONIST_ROLE) && (
-                      <Link
-                        className={`nav-link ${styles.NavLink}`}
-                        to={"/serviceProvider/profile"}
-                      >
-                        {"Profile"}
-                      </Link>
-                    )}
+                    <Link
+                      className={`nav-link ${styles.NavLink}`}
+                      to={
+                        roleType === TRAINEE_TYPE
+                          ? "/trainee/editProfile/trainee"
+                          : roleType === TRAINER_TYPE ||
+                            user?.role === TRAINER_NUTRITIONIST_ROLE
+                          ? "/serviceProvider/editProfile/trainer"
+                          : "/serviceProvider/editProfile/nutritionist"
+                      }
+                    >
+                      {"Edit Profile"}
+                    </Link>
                   </NavItem>
                   {roleType && roleType !== TRAINEE_TYPE && (
                     <>

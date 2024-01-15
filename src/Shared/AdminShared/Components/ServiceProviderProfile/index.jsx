@@ -1,3 +1,5 @@
+import { FaCoins } from "react-icons/fa";
+import DashboardCard from "../DashboardCard/";
 import { useTranslation } from "react-i18next";
 import DocumentCard from "../../../DocumentCard";
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -29,6 +31,7 @@ const ServiceProviderProfileWrapper = (props) => {
   );
 
   const [serviceProviderProfile, setServiceProviderProfile] = useState(null);
+  console.log(serviceProviderProfile, "testdaTATTTATATATATA");
 
   const dispatch = useDispatch();
   const { t } = useTranslation("");
@@ -87,9 +90,9 @@ const ServiceProviderProfileWrapper = (props) => {
           <LoadingScreen />
         )}
         {serviceProviderProfile && (
-          <Col md={12} className="text-start">
+          <Col md={12} className="text-start mb-3">
             <Row>
-              <Col lg={3} md={4}>
+              <Col lg={3} md={4} className="mb-3">
                 <ProfileInformationCard
                   providerProfile={serviceProviderProfile}
                 />
@@ -100,8 +103,8 @@ const ServiceProviderProfileWrapper = (props) => {
                   />
                 </div>
               </Col>
-              <Col lg={9} md={8}>
-                <Card className="BorderRadius border-0 text-black-custom">
+              <Col lg={9} md={8} className="mb-3">
+                <Card className="BorderRadius text-black-custom border-0">
                   <CardBody>
                     <div className="d-flex justify-content-between align-items-center">
                       <div>
@@ -144,9 +147,8 @@ const ServiceProviderProfileWrapper = (props) => {
                     >
                       <p className="small">{serviceProviderProfile?.bio}</p>
                     </div>
-
                     <Row>
-                      <Col md={12}>
+                      <Col md={12} className="mb-3">
                         <h5 className="fw-bold my-2">
                           {t("guest.qualificationExperienceText")}
                         </h5>
@@ -164,23 +166,49 @@ const ServiceProviderProfileWrapper = (props) => {
                         )}
                     </Row>
                     <Row>
-                      <Col md={12}>
-                        <h5 className="fw-bold my-2">
-                          {t("guest.areaSpecialtyText")}
-                        </h5>
+                      <Col md={12} className="mb-3">
                         {serviceProviderProfile?.specialities &&
-                          serviceProviderProfile?.specialities?.map(
-                            (specialty, index) => (
-                              <Badge
-                                key={index}
-                                color="custom"
-                                className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
-                              >
-                                {specialty.name}
-                              </Badge>
-                            )
+                          serviceProviderProfile?.specialities.length > 0 && (
+                            <>
+                              <h5 className="fw-bold my-2">
+                                {t("guest.areaSpecialtyText")}
+                              </h5>
+                              {serviceProviderProfile?.specialities.map(
+                                (specialty, index) => (
+                                  <Badge
+                                    key={index}
+                                    color="custom"
+                                    className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
+                                  >
+                                    {specialty.name}
+                                  </Badge>
+                                )
+                              )}
+                            </>
                           )}
                       </Col>
+                    </Row>
+                    <Row>
+                      {serviceProviderProfile?.profile_subscriptions && (
+                        <>
+                          <Col md={12} className="mb-3">
+                            <h5 className="fw-bold my-2">
+                              {t("guest.subscriptionText")}
+                            </h5>
+                          </Col>
+                          {serviceProviderProfile.profile_subscriptions.map(
+                            (subscription, index) => (
+                              <Col lg={4} md={6} className="mb-3">
+                                <DashboardCard
+                                  cardIcon={<FaCoins size={40} />}
+                                  textOne={`${subscription.duration} Months`}
+                                  textTwo={`${subscription.duration} SAR`}
+                                />
+                              </Col>
+                            )
+                          )}
+                        </>
+                      )}
                     </Row>
                   </CardBody>
                 </Card>

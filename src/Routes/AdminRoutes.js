@@ -86,7 +86,9 @@ export const adminRoutes = [
   },
   {
     path: "/admin/walletSystem/walletOverview",
-    component: lazy(() => import("../Pages/AdminPages/WalletSystem/WalletOverview")),
+    component: lazy(() =>
+      import("../Pages/AdminPages/WalletSystem/WalletOverview")
+    ),
     path: "/admin/reviewRequestDetail/:uuid",
     component: lazy(() =>
       import("../Pages/AdminPages/ReviewRequest/ReviewRequestDetail")

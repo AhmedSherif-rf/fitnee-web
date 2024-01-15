@@ -8,28 +8,28 @@ const Dashboard = (props) => {
   return (
     <Container>
       <Row className="py-3">
-        <Col md={3}>
+        <Col xl={3} lg={4} md={6} className="mb-3">
           <DashboardCard
             cardIcon={<FaUser size={60} />}
             textOne="45"
             textTwo="Active User"
           />
         </Col>
-        <Col md={3}>
+        <Col xl={3} lg={4} md={6} className="mb-3">
           <DashboardCard
             cardIcon={<FaRegUser size={60} />}
             textOne="05"
             textTwo="Non-Active Users"
           />
         </Col>
-        <Col md={3}>
+        <Col xl={3} lg={4} md={6} className="mb-3">
           <DashboardCard
             cardIcon={<FaUsers size={65} />}
             textOne="04"
             textTwo="Subscribers"
           />
         </Col>
-        <Col md={3}>
+        <Col xl={3} lg={4} md={6} className="mb-3">
           <DashboardCard
             cardIcon={<AiOutlineUserSwitch size={65} />}
             textOne="02"

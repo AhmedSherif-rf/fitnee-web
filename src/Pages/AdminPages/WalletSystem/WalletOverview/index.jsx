@@ -52,7 +52,7 @@ const walletOverview = (props) => {
 
             <DropdownItem className={`p-0 DropdownItem`}>
               <div className="d-flex align-items-center px-2">
-                <FaRegEye className="me-2" />
+                <FaRegEye className="me-2" />np,
                 <span className="fs-6">View history</span>
               </div>
             </DropdownItem>

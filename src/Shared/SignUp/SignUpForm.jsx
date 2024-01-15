@@ -4,6 +4,7 @@ import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
+import DocumentCard from "../DocumentCard";
 import MultiSelector from "../MultiSelector";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
@@ -49,6 +50,7 @@ import {
   NUTRITIONIST_TYPE,
   GET_SPECIALITIES_URL,
   TRAINER_NUTRITIONIST_TYPE,
+  TRAINEE_ROLE,
 } from "../../utils/constants";
 import {
   Container,
@@ -248,10 +250,10 @@ const SignUpForm = () => {
           values,
           errors,
           touched,
-          handleChange,
-          setFieldValue,
           handleBlur,
+          handleChange,
           handleSubmit,
+          setFieldValue,
         }) => (
           <form onSubmit={handleSubmit}>
             <ConnectedFocusError />
@@ -402,6 +404,7 @@ const SignUpForm = () => {
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.email}
+                    disabled={user ? true : false}
                   />
                   <p className="errorField">
                     {errors.email && touched.email && errors.email}
@@ -472,6 +475,7 @@ const SignUpForm = () => {
                     defaultCountry={"sa"}
                     value={values.phone_number}
                     setFieldValue={setFieldValue}
+                    disabled={user ? true : false}
                   />
                   <p className="errorField">
                     {errors.phone_number &&
@@ -583,7 +587,7 @@ const SignUpForm = () => {
                 </Col>
               )}
 
-              {filterFields.includes("service") && (
+              {filterFields.includes("role") && (
                 <Col md={6}>
                   <Row className="training">
                     <Col md={12} className="mb-2">
@@ -596,14 +600,14 @@ const SignUpForm = () => {
                       <MyDropdown
                         className="shadow-0 py-3 px-4 border"
                         Options={roleOptions}
-                        name={"service"}
+                        name={"role"}
                         placeholder={"What you will provide to the end user"}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
-                        value={values.service}
+                        value={values.role}
                       />
                       <p className="errorField">
-                        {errors.service && touched.service && errors.service}
+                        {errors.role && touched.role && errors.role}
                       </p>
                     </Col>
                   </Row>
@@ -708,6 +712,31 @@ const SignUpForm = () => {
                   </Col>
                 </>
               )}
+
+              {user &&
+                user?.role !== TRAINEE_ROLE &&
+                user?.ServiceProvider_Certification && (
+                  <>
+                    <Col md={12}>
+                      <h6 className="fw-bold">
+                        {"Certificates"}
+                        {user === null && "*"}
+                      </h6>
+                    </Col>
+                    <Col>
+                      {user?.ServiceProvider_Certification?.map(
+                        (certificate, index) => (
+                          <DocumentCard
+                            key={index}
+                            className="BorderYellow"
+                            documentTitle={certificate?.title}
+                            documentImg={certificate?.certificate_image}
+                          />
+                        )
+                      )}
+                    </Col>
+                  </>
+                )}
 
               {filterFields.includes("certification") && (
                 <>
@@ -906,7 +935,7 @@ const SignUpForm = () => {
                     <Col md={12}>
                       <div className="form-group">
                         <h6 className="mb-2 fw-bold">
-                          {t("signup.selectAreaOfSpecialtyText")}{" "}
+                          {t("signup.selectAreaOfSpecialtyText")}
                           {user === null && "*"}
                         </h6>
                         <Field
@@ -1037,6 +1066,7 @@ const SignUpForm = () => {
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.saudireps_number}
+                    disabled={user ? true : false}
                   />
                   <p className="errorField">
                     {errors.saudireps_number &&
@@ -1059,29 +1089,13 @@ const SignUpForm = () => {
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.license_number}
+                    disabled={user ? true : false}
                   />
                   <p className="errorField">
                     {errors.license_number &&
                       touched.license_number &&
                       errors.license_number}
                   </p>
-                </Col>
-              )}
-
-              {filterFields.includes("saudiReps") && (
-                <Col md={6}>
-                  <h6 className="mb-2 fw-bold">
-                    {t("signup.enterYourProfessionalText")}
-                  </h6>
-                  <InputField
-                    className="py-3 px-4"
-                    type="number"
-                    placeholder="001122"
-                    name="saudiReps"
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.saudiReps}
-                  />
                 </Col>
               )}
 
@@ -1100,6 +1114,7 @@ const SignUpForm = () => {
                     defaultCountry={"sa"}
                     value={values.stc_pay}
                     setFieldValue={setFieldValue}
+                    disabled={user ? true : false}
                   />
                   <p className="errorField">
                     {errors.stc_pay && touched.stc_pay && errors.stc_pay}
@@ -1128,11 +1143,7 @@ const SignUpForm = () => {
                                 <Field
                                   as="select"
                                   name={`profile_availability.${index}.day`}
-                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4"
-                                  style={{
-                                    paddingTop: "12px",
-                                    paddingBottom: "12px",
-                                  }}
+                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4 h-100"
                                 >
                                   <option
                                     className="customDropDownOption text-black-custom"
@@ -1289,13 +1300,19 @@ const SignUpForm = () => {
                         <p className="mb-0 fs-6">
                           {t("signup.moneyTransferText")}
 
-                          <Link to={`/termAndCondition/serviceProvider/signUp`}>
+                          <Link
+                            target="blank"
+                            to={`/termAndCondition/serviceProvider/signUp`}
+                          >
                             <span className="textYellow">
                               {t("signup.termsAndConditionText")}
                             </span>
-                            &
                           </Link>
-                          <Link to={`/termAndCondition/general/home`}>
+                          <span> & </span>
+                          <Link
+                            target="blank"
+                            to={`/termAndCondition/general/home`}
+                          >
                             <span className="textYellow">
                               {t("signup.generalText")}
                             </span>
@@ -1305,9 +1322,21 @@ const SignUpForm = () => {
                         <p className="mb-0 fs-6">
                           {t("signup.acknowledgeText")}
 
-                          <Link to={`/termAndCondition/trainee/signUp`}>
+                          <Link
+                            target="blank"
+                            to={`/termAndCondition/trainee/signUp`}
+                          >
                             <span className="textYellow">
                               {t("signup.termsAndConditionText")}
+                            </span>
+                          </Link>
+                          <span> & </span>
+                          <Link
+                            target="blank"
+                            to={`/termAndCondition/general/home`}
+                          >
+                            <span className="textYellow">
+                              {t("signup.generalText")}
                             </span>
                           </Link>
                         </p>

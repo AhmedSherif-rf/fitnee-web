@@ -48,9 +48,7 @@ export const serviceProviderRoutes = [
   },
   {
     path: "/serviceProvider/editProfile/:roleType",
-    component: lazy(() =>
-      import("../Pages/ServiceProviderPages/EditProfile")
-    ),
+    component: lazy(() => import("../Pages/ServiceProviderPages/EditProfile")),
     exact: true,
     isPrivate: true,
     theme: "dark",

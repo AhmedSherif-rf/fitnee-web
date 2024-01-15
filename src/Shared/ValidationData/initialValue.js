@@ -26,14 +26,13 @@ export const TRAINEE_SIGNUP_INITIAL_VALUES = {
 
 export const TRAINER_SIGNUP_INITIAL_VALUES = {
   bio: "",
+  role: "",
   email: "",
   gender: "",
   stc_pay: "",
-  service: "",
   password: "",
   full_name: "",
   experience: "",
-  role: "Trainer",
   specialities: [],
   phone_number: "",
   profile_pic: null,

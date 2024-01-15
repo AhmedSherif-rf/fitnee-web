@@ -101,7 +101,7 @@ const Exercise = (props) => {
         className={"p-4"}
         isOpen={showSubscriptionInformatoinModal}
         onClose={handleSubscriptionInformationModalClose}
-        ModalTextOne="The rest of the exercises will be hidden. Subscribe for only 39 SAR per month to access all exercises."
+        ModalTextOne="The rest of the exercises will be hidden. Subscribe for 39 SAR per month to access all exercises."
         ButtonOne={
           <FillBtn
             text={"Subscribe"}

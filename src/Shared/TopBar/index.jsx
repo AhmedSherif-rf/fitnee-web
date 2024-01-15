@@ -27,7 +27,11 @@ import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, memo, useCallback } from "react";
-import { DELETE_ACCOUNT_URL, LOGOUT_URL } from "../../utils/constants";
+import {
+  DELETE_ACCOUNT_URL,
+  LOGOUT_URL,
+  TRAINER_NUTRITIONIST_ROLE,
+} from "../../utils/constants";
 import { logout, deleteAccount } from "../../Redux/features/User/userApi";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import {
@@ -371,7 +375,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             backgroundImage:
                               user?.profile_pic === null
                                 ? `url(${Images.USER_DUMMY_IMG})`
-                                : `url(${user?.profile_pic.replace("/api", "")})`,
+                                : `url(${user?.profile_pic.replace(
+                                    "/api",
+                                    ""
+                                  )})`,
                             width: "40px",
                             height: "40px",
                           }}
@@ -404,7 +411,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             to={
                               roleType === TRAINEE_TYPE
                                 ? "/trainee/editProfile/trainee"
-                                : roleType === TRAINER_TYPE
+                                : roleType === TRAINER_TYPE ||
+                                  user?.role === TRAINER_NUTRITIONIST_ROLE
                                 ? "/serviceProvider/editProfile/trainer"
                                 : "/serviceProvider/editProfile/nutritionist"
                             }
@@ -484,7 +492,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
           <Collapse
             isOpen={collapsed}
             className={`text-white w-100 ${styles.collapseScss}`}
-            // ref={collapseRef}
           >
             <Nav
               className={`pt-2 ${styles.togglerNav} customBgDark caret`}
@@ -584,7 +591,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       to={
                         roleType === TRAINEE_TYPE
                           ? "/trainee/editProfile/trainee"
-                          : roleType === TRAINER_TYPE
+                          : roleType === TRAINER_TYPE ||
+                            user?.role === TRAINER_NUTRITIONIST_ROLE
                           ? "/serviceProvider/editProfile/trainer"
                           : "/serviceProvider/editProfile/nutritionist"
                       }

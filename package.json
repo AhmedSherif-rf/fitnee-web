@@ -1,6 +1,7 @@
 {
   "name": "fitnee-web",
   "version": "0.1.0",
+  "proxy": "http://182.176.91.106:1241/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

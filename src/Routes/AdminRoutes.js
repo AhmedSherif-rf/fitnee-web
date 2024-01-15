@@ -55,10 +55,8 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
-    path: "/admin/reviewRequestDetail/:uuid",
-    component: lazy(() =>
-      import("../Pages/AdminPages/ReviewRequest/ReviewRequestDetail")
-    ),
+    path: "/admin/serviceProviderProfile/:uuid",
+    component: lazy(() => import("../Pages/AdminPages/ServiceProviderProfile")),
     exact: true,
     role: adminRole,
   },

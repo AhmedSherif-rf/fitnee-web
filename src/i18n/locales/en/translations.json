@@ -403,7 +403,9 @@
     "trainerNutritionistText" :"Trainers & Nutritionists" ,
     "nutritionistsText": "Nutritionists",
     "trainersText": "Trainers",
-    "bothText":"Both"
+    "bothText":"Both",
+    "deleteModalText" :"Are you sure to want to delete your account?",
+    "noText": "No"
   },
   "contactUs": {
     "firstNameText": "First Name",
@@ -429,7 +431,16 @@
     "myCurrentTraineeText": "My Current Trainees",
     "changePasswordText":"Change Password",
     "confirmText": "Confirm",
-    "submitText" :"Submit"
+    "submitText" :"Submit",
+    "nameText": "Name",
+    "durationText": "Duration",
+    "priceText": "Price",
+    "startDateText": "Start Date",
+    "endDateText": "End Date",
+    "monthText": "Month",
+    "editText":"Edit",
+    "addText": "Add"
+     
   },
 
   "paymentHistory": {

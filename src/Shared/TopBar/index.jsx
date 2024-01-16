@@ -751,7 +751,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         className={"p-4"}
         isOpen={showDeleteAccountModal}
         onClose={handleDeleteAccountModalClose}
-        ModalTextOne="Are you sure to want to delete your account?"
+        ModalTextOne={t("guest.deleteModalText")}
         ButtonOne={
           <FillBtn
             text={t("signup.yesText")}
@@ -762,7 +762,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         }
         ButtonTwo={
           <OutlineBtn
-            text={"No"}
+            text={t("guest.noText")}
             className="py-2 px-5"
             handleOnClick={handleDeleteAccountModalClose}
           />

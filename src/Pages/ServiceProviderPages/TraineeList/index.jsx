@@ -8,7 +8,7 @@ import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ServiceProvider from "../../../Shared/ServiceProviderListRow";
 
 const Index = () => {
-  const { t } = useTranslation("");
+  const { t ,i18n } = useTranslation("");
   const { user } = useSelector((state) => state.user);
 
   const TraineeList = [
@@ -60,7 +60,7 @@ const Index = () => {
   ];
   return (
     <Container fluid>
-      <Row>
+      <Row className={`${i18n.dir()}`}>
         <Col md={12}>
           <Card className="BorderRadius contentCard">
             <CardBody className="px-4">
@@ -69,7 +69,7 @@ const Index = () => {
                   <PageHeading
                     headingText={
                       user?.role === TRAINER_ROLE
-                        ? "My Current Trainees"
+                        ? t("trainer.myCurrentTraineeText")
                         : t("trainer.trainerSubscriberText")
                     }
                     categoryText=""
@@ -79,18 +79,18 @@ const Index = () => {
               <Row className="align-items-center text-black-custom justify-content-center   d-md-flex d-none border-bottom text-black-custom py-2 mb-2">
                 <Col md={3} className="mb-md-0 mb-2">
                   <div className="px-5">
-                    <h6 className="mb-0 fw-bold ">Name</h6>
+                    <h6 className="mb-0 fw-bold ">{t("trainer.nameText")}</h6>
                   </div>
                 </Col>
                 <Col md={2}>
                   <div className="fw-bold text-center p-2 rounded-3">
-                    <h6 className="mb-0 fw-bold ">Duration</h6>
+                    <h6 className="mb-0 fw-bold ">{t("trainer.durationText")}</h6>
                   </div>
                 </Col>
 
                 <Col md={2}>
                   <div className="fw-bold text-center p-2 rounded-3">
-                    <h6 className="mb-0 fw-bold ">Price</h6>
+                    <h6 className="mb-0 fw-bold ">{t("trainer.priceText")}</h6>
                   </div>
                 </Col>
                 <Col md={4}>
@@ -98,9 +98,9 @@ const Index = () => {
                     <Col md={12} xs={12} className="text-center">
                       <div className="p-2 rounded-3 d-md-flex d-block align-items-center justify-content-center">
                         <div className="d-flex align-items-center justify-content-center">
-                          <h6 className="mb-0 fw-bold">Start Date</h6>
+                          <h6 className="mb-0 fw-bold">{t("trainer.startDateText")}</h6>
                           <span className="mb-0 mx-1"> / </span>
-                          <h6 className="mb-0 fw-bold">End Date</h6>
+                          <h6 className="mb-0 fw-bold">{t("trainer.endDateText")}</h6>
                         </div>
                       </div>
                     </Col>

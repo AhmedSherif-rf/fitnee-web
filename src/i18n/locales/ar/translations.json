@@ -401,7 +401,9 @@
     "trainerNutritionistText" :"المدربين وأخصائيي التغذية",
     "nutritionistsText": "التغذية اخصائيي",
     "trainersText": "المدربين",
-    "bothText":"كلاهما"
+    "bothText":"كلاهما",
+    "deleteModalText" :"هل أنت متأكد أنك تريد حذف حسابك؟",
+    "noText": "ال"
   },
   "contactUs": {
     "firstNameText": " األسم االول",
@@ -427,7 +429,16 @@
     "myCurrentTraineeText": "المتدربين",
     "changePasswordText":"تغيير كلمة المرور",
     "confirmText": "يتأكد",
-    "submitText" :"يُقدِّم"
+    "submitText" :"يُقدِّم",
+    "nameText": "اسم",
+    "durationText": "مدة",
+    "priceText": "سعر",
+    "startDateText": "تاريخ البدء",
+    "endDateText": "تاريخ الانتهاء",
+    "monthText": "شهر",
+    "editText":"يحرر",
+    "addText": "يضيف"
+  
   },
   "paymentHistory": {
     "paymentHistoryTitleText": "الدفع عمليات تاريخ",

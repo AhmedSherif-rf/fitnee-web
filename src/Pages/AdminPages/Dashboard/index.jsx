@@ -10,6 +10,9 @@ const Dashboard = (props) => {
       <Row className="py-3">
         <Col xl={3} lg={4} md={6} className="mb-3">
           <DashboardCard
+            AdminClass="AdminCard"
+            CardBodyClass="AdminCardBody"
+            cardIconClass="cardIcon"
             cardIcon={<FaUser size={60} />}
             textOne="45"
             textTwo="Active User"
@@ -17,6 +20,9 @@ const Dashboard = (props) => {
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
           <DashboardCard
+            AdminClass="AdminCard"
+            CardBodyClass="AdminCardBody"
+            cardIconClass="cardIcon"
             cardIcon={<FaRegUser size={60} />}
             textOne="05"
             textTwo="Non-Active Users"
@@ -24,6 +30,9 @@ const Dashboard = (props) => {
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
           <DashboardCard
+            AdminClass="AdminCard"
+            CardBodyClass="AdminCardBody"
+            cardIconClass="cardIcon"
             cardIcon={<FaUsers size={65} />}
             textOne="04"
             textTwo="Subscribers"
@@ -31,6 +40,9 @@ const Dashboard = (props) => {
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
           <DashboardCard
+            AdminClass="AdminCard"
+            CardBodyClass="AdminCardBody"
+            cardIconClass="cardIcon"
             cardIcon={<AiOutlineUserSwitch size={65} />}
             textOne="02"
             textTwo="Re-Subscribers"

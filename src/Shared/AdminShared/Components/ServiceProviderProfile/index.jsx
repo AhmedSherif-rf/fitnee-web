@@ -200,6 +200,8 @@ const ServiceProviderProfileWrapper = (props) => {
                             (subscription, index) => (
                               <Col lg={4} md={6} className="mb-3">
                                 <DashboardCard
+                                CardBodyClass="AdminCardBody"
+                                cardIconClass="cardIcon"
                                   cardIcon={<FaCoins size={40} />}
                                   textOne={`${subscription.duration} Months`}
                                   textTwo={`${subscription.duration} SAR`}

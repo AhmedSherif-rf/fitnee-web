@@ -1,0 +1,13 @@
+.sideNav {
+  }
+  
+  @media (max-width: 900px) {
+    .sideNav {
+      position: fixed;
+      z-index: 9999;
+    }
+    body, html {
+      overflow: hidden;
+    }
+  }
+  

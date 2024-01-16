@@ -37,12 +37,13 @@ const Topbar = ({ toggleSidebar }) => {
   };
 
   return (
-    <Navbar className="navbar admin-navbar BorderRadius mb-3" expand="md">
+    <Navbar className="navbar admin-navbar BorderRadius mb-3 p-0">
       {loading === "pending" && <LoadingScreen />}
+
       <Button
         color="info"
         onClick={toggleSidebar}
-        className="border-0 admin-navbar-toggler"
+        className=" border-0 admin-navbar-toggler"
       >
         <CgMenuLeft color="black" />
       </Button>

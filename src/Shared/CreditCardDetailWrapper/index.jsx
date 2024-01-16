@@ -14,6 +14,7 @@ import SubHeading from "../Headings/SubHeading";
 import PageHeading from "../Headings/PageHeading";
 import { useDispatch, useSelector } from "react-redux";
 import React, { memo, useCallback, useState } from "react";
+import { PREPARE_CHECKOUT_URL } from "../../utils/constants";
 import { Card, Col, Container, Row, Form } from "reactstrap";
 import { CardBody, CardFooter, CardHeader } from "reactstrap";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
@@ -28,7 +29,9 @@ const CreditCardDetailWrapper = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation("");
   const { user } = useSelector((state) => state.user);
-  const { loading } = useSelector((state) => state.subscription);
+  const { loading, subscriptionPlan } = useSelector(
+    (state) => state.subscription
+  );
 
   const [countryData, setCountryData] = useState({
     countryId: "",
@@ -38,14 +41,22 @@ const CreditCardDetailWrapper = () => {
   const handlePayClick = useCallback(
     (values) => {
       const data = {
-        apiEndpoint: "/payment/hyperpay/",
-        requestData: JSON.stringify({ ...values, email: user?.email }),
+        apiEndpoint: PREPARE_CHECKOUT_URL,
+        requestData: JSON.stringify({
+          ...values,
+          amount: subscriptionPlan.price,
+          email: user?.email,
+          subscription_id: subscriptionPlan.id,
+        }),
+        entity: values.entity,
       };
       dispatch(getCheckoutId(data)).then((res) => {
-        navigate(`/trainee/subscription/addCard/${res.payload.data.id}`);
+        if (res.type === "getCheckoutId/fulfilled") {
+          navigate(`/trainee/subscription/addCard/${res.payload.id}`);
+        }
       });
     },
-    [dispatch, navigate, user?.email]
+    [dispatch, navigate, subscriptionPlan, user?.email]
   );
 
   return (

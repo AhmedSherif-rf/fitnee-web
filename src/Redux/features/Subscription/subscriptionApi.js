@@ -4,6 +4,19 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getCheckoutId = createAsyncThunk(
   "getCheckoutId",
+  async ({ apiEndpoint, requestData, entity }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      return { id: response.data.data.id, entity: entity };
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const checkPaymentStatus = createAsyncThunk(
+  "checkPaymentStatus",
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);

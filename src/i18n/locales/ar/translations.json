@@ -379,7 +379,7 @@
     "traineeText": "المتدرب",
     "trainerText": "مدرب",
     "nutritionistText": "اخصائي تغذيه",
-    "trainerNutritionistText": "Trainer and Nutritionist",
+    "trainerNutritionistText": "مدرب وأخصائي تغذية",
     "guestText": "ضيف",
     "alreadyAccountText": "لديك حساب بالفعل؟"
   },
@@ -397,7 +397,11 @@
     "bodyBuildingText": " كمال أجسام",
     "powerLiftingText": "رفع أثقال",
     "commentsText": " تعليقات",
-    "healthyLifeStyleText": "صحية حياة نمط"
+    "healthyLifeStyleText": "صحية حياة نمط",
+    "trainerNutritionistText" :"المدربين وأخصائيي التغذية",
+    "nutritionistsText": "التغذية اخصائيي",
+    "trainersText": "المدربين",
+    "bothText":"كلاهما"
   },
   "contactUs": {
     "firstNameText": " األسم االول",
@@ -418,8 +422,12 @@
     "trainerSubscriberText": " المشتركين",
     "trainerPaymentText": "الدفع عمليات تاريخ",
     "trainerPackageText": "الباقات",
+    "availableHoursText": "الساعات المتاحة",
     "trainerCommentContentText": "مدرب مثالي! أدت التدريبات المصممة بمهارة والتحفيز المستمر والخبرة إلى تقدم ملحوظ. موصى به للغاية لرحلات اللياقة البدنية التحويلية.",
-    "myCurrentTraineeText": "المتدربين"
+    "myCurrentTraineeText": "المتدربين",
+    "changePasswordText":"تغيير كلمة المرور",
+    "confirmText": "يتأكد",
+    "submitText" :"يُقدِّم"
   },
 
   "paymentHistory": {
@@ -441,12 +449,14 @@
     "mySubscriptionHistoryText": "اشتراكاتي تاريخ",
     "myProgressText": "تقدمي",
     "allServiceProvidersText": "التغذية واخصائي المدربين جميع",
+    "myWalletText": "محفظتى",
     "subsriptionDetailsText": "االشتراك تفاصيل",
     "cancelText": "إلغاء",
     "cancelledText": "اإللغاء تم",
     "addProgressText": "جديد تقدم إضافة",
     "viewHistoryText": "السابقة السجالت عرض",
-    "ProteinsText": "البروتين",
+    "ProteinText":"بروتين",
+    "addText": "يضيف",
     "bfmText": "BFM",
     "smmText": "SMM",
     "weightText": "الوزن",
@@ -571,14 +581,15 @@
     "getAppText": "GET APP"
   },
   "traineeServiceProviderList": {
-    "trainerText": "Trainer",
-    "twoMonthDurationText": "2 Months",
-    "myCurrentTrainerText": "My Current Trainers",
-    "nameText": "Name",
-    "durationText": "Duration",
-    "priceText": "Price",
-    "startDateText": "Start Date",
-    "endDateText": "End Date"
+    "trainerText": "مدرب",
+    "twoMonthDurationText": "2 أشهر",
+    "myCurrentTrainerText": "مدربي الحالي",
+    "myCurrentNutritionistText": "التغذية اخصائي",
+    "nameText": "اسم",
+    "durationText": "مدة",
+    "priceText": "سعر",
+    "startDateText": "تاريخ البدء",
+    "endDateText": "تاريخ الانتهاء"
   },
   "traineeSubscription": {
     "oneMonthDurationText": "1 Months",
@@ -586,14 +597,15 @@
     "threeMonthsDurationText": "3 Months",
     "subscribeText": "Subscribe"
   },
-  "traineeSubscriptionDetails": {
-    "cancelPlanText": "Cancel Plan",
-    "twoMonthsDurationText": "2 Months",
-    "cancelledText": "Cancelled",
-    "durationText": "Duration",
-    "feeText": "Fee",
-    "actionText": "Action",
-    "subscriptionDetailsText": "Subscription Details"
+  "traineeSubscriptionDetail": {
+    "nameText": "اسم",
+    "cancelPlanText": "إلغاء الخطة",
+    "twoMonthsDurationText": "2 أشهر",
+    "cancelledText": "ألغيت",
+    "durationText": "مدة",
+    "feeText": "مصاريف",
+    "actionText": "فعل",
+    "subscriptionDetailsText": "تفاصيل الاشتراك"
   },
 
   "validation": {

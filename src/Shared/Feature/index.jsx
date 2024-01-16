@@ -11,10 +11,9 @@ const Feature = (props) => {
   const cardSwiperRef = useRef(null);
 
   const handletextSlideChange = (swiper) => {
-    // const index = swiper.activeIndex - 1;
-    console.log(swiper, swiper.activeIndex);
     cardSwiperRef.current.slideTo(swiper.activeIndex);
   };
+
   return (
     <Row
       className={`p-4 ${styles.featureSectionWrapper} ${
@@ -56,8 +55,7 @@ const Feature = (props) => {
                   return (
                     <SwiperSlide
                       key={index}
-                      style={{ direction: i18n.dir() }}
-                      className="d-flex align-items-center justify-content-start justify-content-sm-center w-100 d-block text-white fs-5 text-justify customSpacing"
+                      className={`d-flex align-items-center justify-content-start justify-content-sm-center w-100 d-block  text-white fs-5 text-justify customSpacing ${i18n.dir()}`}
                     >
                       {item.text}
                     </SwiperSlide>

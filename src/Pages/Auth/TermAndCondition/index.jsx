@@ -1303,7 +1303,7 @@ const TermAndCondition = () => {
           </div>
 
           {type === "general" && (
-            <div style={{ direction: i18n.dir() }}>
+            <div  className={`${i18n.dir()}`}>
               <h6 className="fw-bold">
                 {t("termAndCondition.general.welcomeText")}
               </h6>
@@ -1742,7 +1742,7 @@ const TermAndCondition = () => {
             </div>
           )}
           {type === "trainee" && (
-            <div style={{ direction: i18n.dir() }}>
+            <div  className={`${i18n.dir()}`}>
               <div>
                 <h6 className="fw-bold">
                   {t("termAndCondition.trainee.sectionOneHeadingText")}

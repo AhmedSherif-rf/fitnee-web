@@ -62,7 +62,7 @@ const Exercise = (props) => {
 
   return (
     <Container fluid className="contentCardPadding">
-      <Row className="text-black-custom" style={{ direction: i18n.dir() }}>
+      <Row className={`text-black-custom ${i18n.dir()}`}>
         <Col md="12">
           <Card className="BorderRadius contentCard mt-0 px-3">
             <Col md={12}>

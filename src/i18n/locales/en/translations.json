@@ -399,7 +399,11 @@
     "bodyBuildingText": "Body Building ",
     "powerLiftingText": "Power Lifting",
     "commentsText": "Comments",
-    "healthyLifeStyleText": "Healthy Lifestyle"
+    "healthyLifeStyleText": "Healthy Lifestyle",
+    "trainerNutritionistText" :"Trainers & Nutritionists" ,
+    "nutritionistsText": "Nutritionists",
+    "trainersText": "Trainers",
+    "bothText":"Both"
   },
   "contactUs": {
     "firstNameText": "First Name",
@@ -420,8 +424,12 @@
     "trainerSubscriberText": "My Current Subscribers",
     "trainerPaymentText": "Payment History",
     "trainerPackageText": "My Packages",
+    "availableHoursText": "Available Hours",
     "trainerCommentContentText": "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-    "myCurrentTraineeText": "My Current Trainees"
+    "myCurrentTraineeText": "My Current Trainees",
+    "changePasswordText":"Change Password",
+    "confirmText": "Confirm",
+    "submitText" :"Submit"
   },
 
   "paymentHistory": {
@@ -580,7 +588,8 @@
   "traineeServiceProviderList": {
     "trainerText": "Trainer",
     "twoMonthDurationText": "2 Months",
-    "myCurrentTrainerText": "My Current Trainers",
+    "myCurrentTrainerText": "My Current Trainer",
+    "myCurrentNutritionistText": "My Current Nutritionists",
     "nameText": "Name",
     "durationText": "Duration",
     "priceText": "Price",
@@ -593,7 +602,8 @@
     "threeMonthsDurationText": "3 Months",
     "subscribeText": "Subscribe"
   },
-  "traineeSubscriptionDetails": {
+  "traineeSubscriptionDetail": {
+    "nameText": "Name",
     "cancelPlanText": "Cancel Plan",
     "twoMonthsDurationText": "2 Months",
     "cancelledText": "Cancelled",

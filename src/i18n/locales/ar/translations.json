@@ -429,7 +429,6 @@
     "confirmText": "يتأكد",
     "submitText" :"يُقدِّم"
   },
-
   "paymentHistory": {
     "paymentHistoryTitleText": "الدفع عمليات تاريخ",
     "availableBalanceText": "المتاح الرصيد",
@@ -607,7 +606,6 @@
     "actionText": "فعل",
     "subscriptionDetailsText": "تفاصيل الاشتراك"
   },
-
   "validation": {
     "invalidEmailText": "عنوان البريد الإلكتروني غير صالح",
     "requiredEmailText": "البريد الالكتروني مطلوب",

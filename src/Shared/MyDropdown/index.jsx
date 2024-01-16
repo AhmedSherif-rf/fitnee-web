@@ -15,7 +15,7 @@ const MyDropdown = (props) => {
   return (
     <div className="mb-0">
       <Input
-        className={`customDropDown customDropdownRadius form-control-lg w-100 ${className}`}
+        className={`customDropDown customDropdownRadius form-control-lg w-100 me-2 ${className}`}
         type="select"
         name={name}
         onChange={onChangeHandle}

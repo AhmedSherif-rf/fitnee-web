@@ -6,7 +6,10 @@ import { useTranslation } from "react-i18next";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import CommentCard from "../../../Shared/CommentCard";
 import DocumentCard from "../../../Shared/DocumentCard";
-import { TRAINER_ROLE } from "../../../utils/constants";
+import {
+  TRAINER_NUTRITIONIST_ROLE,
+  TRAINER_ROLE,
+} from "../../../utils/constants";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
 import AvailableHourListing from "../../../Shared/AvailableHourListing";
@@ -73,7 +76,8 @@ const Dashboard = () => {
                       handleOnClick={handleCurrentSubscribersClick}
                       className="w-100 mb-2 py-2"
                       text={
-                        user?.role === TRAINER_ROLE
+                        user?.role === TRAINER_ROLE ||
+                        user?.role === TRAINER_NUTRITIONIST_ROLE
                           ? t("trainer.myCurrentTraineeText")
                           : t("trainer.trainerSubscriberText")
                       }

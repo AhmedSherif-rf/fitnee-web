@@ -35,7 +35,7 @@ export const weekDaysOptions = [
   { value: "Saturday", label: "Saturday" },
   { value: "Sunday", label: "Sunday" },
 ];
-export const roleOptions = ["Trainer", "Both"];
+export const roleOptions = ["Trainer", "Trainer And Nutritionist"];
 //=====================Roles=====================
 export const ADMIN_ROLE = "Admin";
 export const TRAINEE_ROLE = "Trainee";
@@ -44,6 +44,7 @@ export const NUTRITIONIST_ROLE = "Nutritionist";
 export const TRAINER_NUTRITIONIST_ROLE = "Trainer And Nutritionist";
 //====================Routes====================
 export const ADMIN_INITIAL_URL = "/admin/dashboard";
+export const TRAINEE_PROFILE_URL = "/trainee/profile";
 export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
 export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
@@ -56,10 +57,12 @@ export const NEW_PASSWORD_URL = "/forget_password/";
 export const GET_SPECIALITIES_URL = "/specialities/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
+export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
+export const CHECK_PAYMENT_STATUS_URL = "/payment/hyperpay_status/";
 export const ADMIN_REVIEW_REQUEST_URL = "/service_provider_requests";
 export const GUEST_SUBSCRIPTION_PLAN_URL = "/guest/service_subscription";
 export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
@@ -85,4 +88,9 @@ export const category = [
   "Abdominal",
   "Quads",
   "Calves",
+];
+//=======================AdminPanel select duration=====================
+export const duration = [
+  "Weekly",
+  "monthly"
 ];

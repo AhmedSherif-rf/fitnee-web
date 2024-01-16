@@ -1,20 +1,31 @@
-import React from "react";
 import SubMenu from "./SubMenu";
+import React, { memo } from "react";
+import { Button } from "reactstrap";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { GiWallet } from "react-icons/gi";
+import styles from "./styles.module.scss";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import { BsPersonBoundingBox } from "react-icons/bs";
 import { MdOutlineSportsGymnastics } from "react-icons/md";
-import { GoPersonAdd, GoPaste, GoLog } from "react-icons/go";
 import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
+import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
 
 const SideBar = ({ isOpen, toggle }) => (
-  <div className={classNames("sidebar", { "is-open": isOpen })}>
+  <div
+    className={`${styles.sideNav} ${classNames("sidebar position-relative", {
+      "is-open": isOpen,
+    })}`}
+  >
     <div className="sidebar-header">
-      <span color="info" onClick={toggle} style={{ color: "#fff" }}>
+      <Button
+        onClick={toggle}
+        style={{ right: "0", color: "red" }}
+        className="admin-navbar-toggler position-absolute bg-transparent border-0 fs-3 d-lg-none d-block"
+      >
         &times;
-      </span>
+      </Button>
       <img className="py-5" src={Logo} alt={"website-logo"} />
     </div>
     <div
@@ -32,7 +43,6 @@ const SideBar = ({ isOpen, toggle }) => (
             Dashboard
           </NavLink>
         </NavItem>
-
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
@@ -43,12 +53,16 @@ const SideBar = ({ isOpen, toggle }) => (
             Review Requests
           </NavLink>
         </NavItem>
-
         <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[0]} />
         <SubMenu
           title="Exercises"
           icon={<MdOutlineSportsGymnastics />}
           items={submenus[1]}
+        />
+        <SubMenu
+          title="Wallet System"
+          icon={<GiWallet />}
+          items={submenus[2]}
         />
         <NavItem>
           <NavLink
@@ -68,6 +82,17 @@ const SideBar = ({ isOpen, toggle }) => (
           >
             <GoPaste />
             Feedback
+          </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/admin/Settings"}
+          >
+            <GoGear />
+            Settings
           </NavLink>
         </NavItem>
       </Nav>
@@ -96,6 +121,12 @@ const submenus = [
       target: "/admin/exercises/viewExercises",
     },
   ],
+  [
+    {
+      title: "Wallet Overview",
+      target: "/admin/walletSystem/walletOverview",
+    },
+  ],
 ];
 
-export default SideBar;
+export default memo(SideBar);

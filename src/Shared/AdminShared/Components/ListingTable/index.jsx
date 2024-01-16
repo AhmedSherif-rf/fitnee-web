@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Styles from "./style.module.scss";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
@@ -44,4 +45,4 @@ const ListingTable = ({ data, columns }) => {
   );
 };
 
-export default ListingTable;
+export default memo(ListingTable);

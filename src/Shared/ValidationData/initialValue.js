@@ -26,14 +26,13 @@ export const TRAINEE_SIGNUP_INITIAL_VALUES = {
 
 export const TRAINER_SIGNUP_INITIAL_VALUES = {
   bio: "",
+  role: "",
   email: "",
   gender: "",
   stc_pay: "",
-  service: "",
   password: "",
   full_name: "",
   experience: "",
-  role: "Trainer",
   specialities: [],
   phone_number: "",
   profile_pic: null,
@@ -116,6 +115,7 @@ export const NEW_PASSWORD_INITIAL_VALUES = {
 export const PAYMENT_METHOD_DETAIL_INITIAL_VALUES = {
   city: "",
   state: "",
+  amount: "",
   entity: "",
   country: "",
   street1: "",
@@ -124,7 +124,6 @@ export const PAYMENT_METHOD_DETAIL_INITIAL_VALUES = {
   givenName: "",
   promo_code: "",
   currency: "SAR",
-  amount: "100.00",
   paymentType: "DB",
   use_wallet: false,
 };

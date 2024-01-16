@@ -89,3 +89,8 @@ export const category = [
   "Quads",
   "Calves",
 ];
+//=======================AdminPanel select duration=====================
+export const duration = [
+  "Weekly",
+  "monthly"
+];

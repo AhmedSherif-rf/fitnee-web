@@ -239,7 +239,6 @@ const LandingPage = (props) => {
           heading={t("landing.feedbackText")}
         />
       </section>
-
       <Footer />
     </div>
   );

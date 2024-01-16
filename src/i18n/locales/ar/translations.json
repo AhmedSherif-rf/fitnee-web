@@ -421,7 +421,6 @@
     "trainerCommentContentText": "مدرب مثالي! أدت التدريبات المصممة بمهارة والتحفيز المستمر والخبرة إلى تقدم ملحوظ. موصى به للغاية لرحلات اللياقة البدنية التحويلية.",
     "myCurrentTraineeText": "المتدربين"
   },
-
   "paymentHistory": {
     "paymentHistoryTitleText": "الدفع عمليات تاريخ",
     "availableBalanceText": "المتاح الرصيد",
@@ -595,7 +594,6 @@
     "actionText": "Action",
     "subscriptionDetailsText": "Subscription Details"
   },
-
   "validation": {
     "invalidEmailText": "عنوان البريد الإلكتروني غير صالح",
     "requiredEmailText": "البريد الالكتروني مطلوب",

@@ -7,7 +7,7 @@ import PageHeading from "../../../Shared/Headings/PageHeading";
 import { Card, CardBody, Col, Container, Label, Row } from "reactstrap";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 
-const promoCode = (props) => {
+const PromoCode = (props) => {
   const tableData = [
     {
       id: <h6 className="text-secondary fw-bold mb-0">1</h6>,
@@ -138,4 +138,4 @@ const promoCode = (props) => {
     </React.Fragment>
   );
 };
-export default promoCode;
+export default PromoCode;

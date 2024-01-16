@@ -4,7 +4,7 @@ import InputField from "../../../Shared/InputField";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import CategoryCard from "../../../Shared/AdminShared/CategoryCard";
 
-const Settings = (props) => {
+const Category = (props) => {
   return (
     <React.Fragment>
       <Container>
@@ -27,17 +27,26 @@ const Settings = (props) => {
         </Row>
         <Row className="p-4">
           <Col md={4} className="mb-2">
-            <CategoryCard CategoryName="Text Category" LinkTo="/admin/settings/category/subCategory" />
+            <CategoryCard
+              CategoryName="Text Category"
+              LinkTo="/admin/settings/category/subCategory"
+            />
           </Col>
           <Col md={4} className="mb-2">
-            <CategoryCard CategoryName="Text Category One" LinkTo="/admin/settings/category/subCategory" />
+            <CategoryCard
+              CategoryName="Text Category One"
+              LinkTo="/admin/settings/category/subCategory"
+            />
           </Col>
           <Col md={4} className="mb-2">
-            <CategoryCard CategoryName="Text Category Two" LinkTo="/admin/settings/category/subCategory" />
+            <CategoryCard
+              CategoryName="Text Category Two"
+              LinkTo="/admin/settings/category/subCategory"
+            />
           </Col>
         </Row>
       </Container>
     </React.Fragment>
   );
 };
-export default Settings;
+export default Category;

@@ -4,7 +4,7 @@ import InputField from "../../../../Shared/InputField";
 import FillBtn from "../../../../Shared/Buttons/FillBtn";
 import CategoryCard from "../../../../Shared/AdminShared/CategoryCard";
 
-const Settings = (props) => {
+const SubCategory = (props) => {
   return (
     <React.Fragment>
       <Container>
@@ -40,4 +40,4 @@ const Settings = (props) => {
     </React.Fragment>
   );
 };
-export default Settings;
+export default SubCategory;

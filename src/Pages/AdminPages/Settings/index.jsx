@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { TbFlagDiscount } from "react-icons/tb";
 import { MdOutlineCategory } from "react-icons/md";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
-import { Link } from "react-router-dom";
 
 const Settings = (props) => {
   return (

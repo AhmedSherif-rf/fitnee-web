@@ -1,8 +1,9 @@
+import InputField from "../../InputField";
 import FillBtn from "../../Buttons/FillBtn";
 import OutlineBtn from "../../Buttons/OutlineBtn";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, memo } from "react";
 import InformationModal from "../../Modal/InformationModal";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaCaretDown, FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import {
   Card,
@@ -14,7 +15,6 @@ import {
   Row,
   UncontrolledDropdown,
 } from "reactstrap";
-import InputField from "../../InputField";
 
 const CategoryCard = (props) => {
   const { CategoryName, Actions, LinkTo } = props;
@@ -57,7 +57,9 @@ const CategoryCard = (props) => {
             <div
               className={`w-100 p-3 onlyBorderRadius  ${`CategoryCardHeader`}`}
             >
-              <h6 className="mb-0 text-start fw-bold textGrey">{CategoryName}</h6>
+              <h6 className="mb-0 text-start fw-bold textGrey">
+                {CategoryName}
+              </h6>
             </div>
           </Link>
           <div className="w-25">
@@ -67,7 +69,7 @@ const CategoryCard = (props) => {
                 nav
               >
                 <div className=" rounded-circle text-black-custom">
-                  <FaCaretDown className="fs-3"/>
+                  <FaCaretDown className="fs-3" />
                 </div>
               </DropdownToggle>
               <DropdownMenu
@@ -158,4 +160,4 @@ const CategoryCard = (props) => {
   );
 };
 
-export default CategoryCard;
+export default memo(CategoryCard);

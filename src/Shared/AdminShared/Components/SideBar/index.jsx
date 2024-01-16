@@ -1,11 +1,10 @@
-import React from "react";
 import SubMenu from "./SubMenu";
+import React, { memo } from "react";
 import { Button } from "reactstrap";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { GiWallet } from "react-icons/gi";
 import styles from "./styles.module.scss";
-import { CgMenuLeft } from "react-icons/cg";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import { BsPersonBoundingBox } from "react-icons/bs";
@@ -22,8 +21,8 @@ const SideBar = ({ isOpen, toggle }) => (
     <div className="sidebar-header">
       <Button
         onClick={toggle}
-        style={{right:"0",color:"red"}}
-        className=" admin-navbar-toggler position-absolute bg-transparent border-0 fs-3 d-lg-none d-block"
+        style={{ right: "0", color: "red" }}
+        className="admin-navbar-toggler position-absolute bg-transparent border-0 fs-3 d-lg-none d-block"
       >
         &times;
       </Button>
@@ -130,4 +129,4 @@ const submenus = [
   ],
 ];
 
-export default SideBar;
+export default memo(SideBar);

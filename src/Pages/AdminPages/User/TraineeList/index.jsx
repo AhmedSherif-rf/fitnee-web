@@ -14,6 +14,7 @@ const TraineeList = (props) => {
   const handleToggle = () => {
     setChecked(!checked);
   };
+
   const users = [
     {
       username: (

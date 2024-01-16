@@ -1,10 +1,9 @@
 import React from "react";
 import { GrCurrency } from "react-icons/gr";
-import duration from "../../../../utils/constants";
 import InputField from "../../../../Shared/InputField";
 import MyDropdown from "../../../../Shared/MyDropdown";
-import { FaCaretDown, FaMagnifyingGlass, FaRegEye } from "react-icons/fa6";
 import PageHeading from "../../../../Shared/Headings/PageHeading";
+import { FaCaretDown, FaMagnifyingGlass, FaRegEye } from "react-icons/fa6";
 import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
 import {
   Card,
@@ -18,7 +17,7 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 
-const walletOverview = (props) => {
+const WalletOverview = (props) => {
   const tableData = [
     {
       InvNo: "122",
@@ -121,4 +120,4 @@ const walletOverview = (props) => {
     </React.Fragment>
   );
 };
-export default walletOverview;
+export default WalletOverview;

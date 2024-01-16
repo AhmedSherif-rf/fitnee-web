@@ -31,7 +31,6 @@ const ServiceProviderProfileWrapper = (props) => {
   );
 
   const [serviceProviderProfile, setServiceProviderProfile] = useState(null);
-  console.log(serviceProviderProfile, "testdaTATTTATATATATA");
 
   const dispatch = useDispatch();
   const { t } = useTranslation("");
@@ -192,16 +191,14 @@ const ServiceProviderProfileWrapper = (props) => {
                       {serviceProviderProfile?.profile_subscriptions && (
                         <>
                           <Col md={12} className="mb-3">
-                            <h5 className="fw-bold my-2">
-                              {t("guest.subscriptionText")}
-                            </h5>
+                            <h5 className="fw-bold my-2">Subscription Plans</h5>
                           </Col>
                           {serviceProviderProfile.profile_subscriptions.map(
                             (subscription, index) => (
                               <Col lg={4} md={6} className="mb-3">
                                 <DashboardCard
-                                CardBodyClass="AdminCardBody"
-                                cardIconClass="cardIcon"
+                                  CardBodyClass="AdminCardBody"
+                                  cardIconClass="cardIcon"
                                   cardIcon={<FaCoins size={40} />}
                                   textOne={`${subscription.duration} Months`}
                                   textTwo={`${subscription.duration} SAR`}

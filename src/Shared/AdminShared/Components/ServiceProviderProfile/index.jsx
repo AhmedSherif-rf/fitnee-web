@@ -1,8 +1,6 @@
-import { FaCoins } from "react-icons/fa";
-import DashboardCard from "../DashboardCard/";
+import GoBack from "../GoBack";
 import { useTranslation } from "react-i18next";
 import DocumentCard from "../../../DocumentCard";
-import { IoIosArrowRoundBack } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
 import React, { memo, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -75,23 +73,15 @@ const ServiceProviderProfileWrapper = (props) => {
 
   return (
     <Container fluid className="p-2">
-      <div
-        className="d-flex align-items-center textYellow cursorPointer my-2"
-        onClick={() => navigate(-1)}
-      >
-        <IoIosArrowRoundBack size={25} />
-        <div>
-          <small>Go Back</small>
-        </div>
-      </div>
+      <GoBack />
       <Row>
         {(loading === "pending" || reviewRequestLoading === "pending") && (
           <LoadingScreen />
         )}
         {serviceProviderProfile && (
-          <Col md={12} className="text-start mb-3">
+          <Col md={12} className="text-start">
             <Row>
-              <Col lg={3} md={4} className="mb-3">
+              <Col lg={3} md={4}>
                 <ProfileInformationCard
                   providerProfile={serviceProviderProfile}
                 />
@@ -102,8 +92,8 @@ const ServiceProviderProfileWrapper = (props) => {
                   />
                 </div>
               </Col>
-              <Col lg={9} md={8} className="mb-3">
-                <Card className="BorderRadius text-black-custom border-0">
+              <Col lg={9} md={8}>
+                <Card className="BorderRadius border-0 text-black-custom">
                   <CardBody>
                     <div className="d-flex justify-content-between align-items-center">
                       <div>
@@ -146,8 +136,9 @@ const ServiceProviderProfileWrapper = (props) => {
                     >
                       <p className="small">{serviceProviderProfile?.bio}</p>
                     </div>
+
                     <Row>
-                      <Col md={12} className="mb-3">
+                      <Col md={12}>
                         <h5 className="fw-bold my-2">
                           {t("guest.qualificationExperienceText")}
                         </h5>
@@ -165,49 +156,23 @@ const ServiceProviderProfileWrapper = (props) => {
                         )}
                     </Row>
                     <Row>
-                      <Col md={12} className="mb-3">
+                      <Col md={12}>
+                        <h5 className="fw-bold my-2">
+                          {t("guest.areaSpecialtyText")}
+                        </h5>
                         {serviceProviderProfile?.specialities &&
-                          serviceProviderProfile?.specialities.length > 0 && (
-                            <>
-                              <h5 className="fw-bold my-2">
-                                {t("guest.areaSpecialtyText")}
-                              </h5>
-                              {serviceProviderProfile?.specialities.map(
-                                (specialty, index) => (
-                                  <Badge
-                                    key={index}
-                                    color="custom"
-                                    className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
-                                  >
-                                    {specialty.name}
-                                  </Badge>
-                                )
-                              )}
-                            </>
-                          )}
-                      </Col>
-                    </Row>
-                    <Row>
-                      {serviceProviderProfile?.profile_subscriptions && (
-                        <>
-                          <Col md={12} className="mb-3">
-                            <h5 className="fw-bold my-2">Subscription Plans</h5>
-                          </Col>
-                          {serviceProviderProfile.profile_subscriptions.map(
-                            (subscription, index) => (
-                              <Col lg={4} md={6} className="mb-3">
-                                <DashboardCard
-                                  CardBodyClass="AdminCardBody"
-                                  cardIconClass="cardIcon"
-                                  cardIcon={<FaCoins size={40} />}
-                                  textOne={`${subscription.duration} Months`}
-                                  textTwo={`${subscription.duration} SAR`}
-                                />
-                              </Col>
+                          serviceProviderProfile?.specialities?.map(
+                            (specialty, index) => (
+                              <Badge
+                                key={index}
+                                color="custom"
+                                className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
+                              >
+                                {specialty.name}
+                              </Badge>
                             )
                           )}
-                        </>
-                      )}
+                      </Col>
                     </Row>
                   </CardBody>
                 </Card>

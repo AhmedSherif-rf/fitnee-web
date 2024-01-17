@@ -4,6 +4,7 @@ import userSlice from "./features/User/userSlice.js";
 import guestSlice from "./features/Guest/guestSlice.js";
 import { persistStore, persistReducer } from "redux-persist";
 import languageSlice from "./features/Language/languageSlice.js";
+import exerciseSlice from "./features/Exercise/exerciseSlice.js";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactUsSlice from "./features/ContactUs/contactUsSlice.js";
 import subscriptionSlice from "./features/Subscription/subscriptionSlice.js";
@@ -20,6 +21,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userSlice,
   guest: guestSlice,
+  exercise: exerciseSlice,
   language: languageSlice,
   contactUs: contactUsSlice,
   subscription: subscriptionSlice,

@@ -8,7 +8,6 @@ import styles from "./styles.module.scss";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import { BsPersonBoundingBox } from "react-icons/bs";
-import { MdOutlineSportsGymnastics } from "react-icons/md";
 import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
 import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
 
@@ -54,15 +53,20 @@ const SideBar = ({ isOpen, toggle }) => (
           </NavLink>
         </NavItem>
         <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[0]} />
-        <SubMenu
-          title="Exercises"
-          icon={<MdOutlineSportsGymnastics />}
-          items={submenus[1]}
-        />
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/admin/exercises/viewExercises"}
+          >
+            <BsPersonBoundingBox />
+            Exercises
+          </NavLink>
+        </NavItem>
         <SubMenu
           title="Wallet System"
           icon={<GiWallet />}
-          items={submenus[2]}
+          items={submenus[1]}
         />
         <NavItem>
           <NavLink
@@ -89,7 +93,7 @@ const SideBar = ({ isOpen, toggle }) => (
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
-            to={"/admin/Settings"}
+            to={"/admin/settings"}
           >
             <GoGear />
             Settings
@@ -109,16 +113,6 @@ const submenus = [
     {
       title: "Trainee List",
       target: "/admin/user/traineeList",
-    },
-  ],
-  [
-    {
-      title: "Add Exercises",
-      target: "/admin/exercises/addExercises",
-    },
-    {
-      title: "View Exercises",
-      target: "/admin/exercises/viewExercises",
     },
   ],
   [

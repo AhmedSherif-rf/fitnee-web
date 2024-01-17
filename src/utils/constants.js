@@ -25,7 +25,7 @@ export const trainingGoalOptions = [
   "Lose Weight",
   "Power Lifting",
 ];
-export const activityLevelOptions = ["No active", "Active", "Super active"];
+export const activityLevelOptions = ["Not active", "Active", "Super active"];
 export const weekDaysOptions = [
   { value: "Monday", label: "Monday" },
   { value: "Tuesday", label: "Tuesday" },
@@ -60,6 +60,8 @@ export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
 export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
+export const ADMIN_EXERCISE_URL = "/admin/exercise/detail/";
+export const ADMIN_EXERCISE_CATEGORY_URL = "/admin/exercise/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
 export const CHECK_PAYMENT_STATUS_URL = "/payment/hyperpay_status/";
@@ -69,6 +71,7 @@ export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
 export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
+export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
   "/serviceprovider_logged_in";
 //=================StatusCodes===================
@@ -90,7 +93,4 @@ export const category = [
   "Calves",
 ];
 //=======================AdminPanel select duration=====================
-export const duration = [
-  "Weekly",
-  "monthly"
-];
+export const duration = ["Weekly", "monthly"];

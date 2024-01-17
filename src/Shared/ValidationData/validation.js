@@ -170,6 +170,14 @@ const termAndConditionCheckValidation = Yup.bool().oneOf(
   TranslationHelper("validation.requiredTermAndConditionCheck")
 );
 
+const exerciseTextValidation = Yup.array()
+  .of(Yup.string().required("Description is required"))
+  .min(1, "At least one description is required");
+
+const exerciseVideoValidation = Yup.mixed().required(
+  "Exercise video is required"
+);
+
 export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({
   email: emailValidation,
   gender: genderValidation,
@@ -296,4 +304,22 @@ export const PAYMENT_METHOD_DETAIL_SCHEMA = Yup.object().shape({
   surname: RequiredValidation,
   postcode: RequiredValidation,
   givenName: RequiredValidation,
+});
+
+export const ADD_CATEGORY_SCHEMA = Yup.object().shape({
+  title: RequiredValidation,
+  title_ar: RequiredValidation,
+});
+
+export const ADD_SUB_CATEGORY_SCHEMA = Yup.object().shape({
+  title: RequiredValidation,
+  title_ar: RequiredValidation,
+});
+
+export const ADD_EXERCISE_SCHEMA = Yup.object().shape({
+  title: RequiredValidation,
+  title_ar: RequiredValidation,
+  exercise_videos: exerciseVideoValidation,
+  exercise_part_text: exerciseTextValidation,
+  exercise_part_text_ar: exerciseTextValidation,
 });

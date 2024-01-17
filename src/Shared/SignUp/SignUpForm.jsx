@@ -38,7 +38,9 @@ import {
 import {
   TRAINEE_SIGNUP_INITIAL_VALUES,
   TRAINER_SIGNUP_INITIAL_VALUES,
+  TRAINER_EDIT_PROFILE_INITIAL_VALUES,
   NUTRITIONIST_SIGNUP_INITIAL_VALUES,
+  NUTRITIONIST_EDIT_PROFILE_INITIAL_VALUES,
   TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES,
 } from "../ValidationData/initialValue";
 import {
@@ -88,9 +90,10 @@ const SignUpForm = () => {
           let specialities = [];
           if (lang === "en") {
             specialities = res.payload.data.en;
-          } else {
-            specialities = res.payload.data.ar;
           }
+          // else {
+          //   specialities = res.payload.data.ar;
+          // }
           specialities = specialities.map(({ id, name }) => ({
             label: name,
             value: id,
@@ -111,12 +114,12 @@ const SignUpForm = () => {
           );
         case TRAINER_TYPE:
           return functions.setTrainerInitialValues(
-            TRAINER_SIGNUP_INITIAL_VALUES,
+            TRAINER_EDIT_PROFILE_INITIAL_VALUES,
             user
           );
         case NUTRITIONIST_TYPE:
           return functions.setNutritionistInitialValues(
-            NUTRITIONIST_SIGNUP_INITIAL_VALUES,
+            NUTRITIONIST_EDIT_PROFILE_INITIAL_VALUES,
             user
           );
         case TRAINER_NUTRITIONIST_TYPE:
@@ -723,7 +726,7 @@ const SignUpForm = () => {
                         {user === null && "*"}
                       </h6>
                     </Col>
-                    <Col>
+                    <Row>
                       {user?.ServiceProvider_Certification?.map(
                         (certificate, index) => (
                           <DocumentCard
@@ -734,7 +737,7 @@ const SignUpForm = () => {
                           />
                         )
                       )}
-                    </Col>
+                    </Row>
                   </>
                 )}
 

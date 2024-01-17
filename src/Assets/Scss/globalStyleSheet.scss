@@ -65,6 +65,14 @@
   padding-top: 12vh;
 }
 
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
 .cursorPointer {
   cursor: pointer;
 }
@@ -217,11 +225,7 @@ Input::-webkit-input-placeholder {
 }
 .CategoryCard {
   .CategoryCardHeader {
-    background-color: #fffaad !important;
-    &:hover {
-      background-color: #e0e0e0 !important;
-      cursor: pointer;
-    }
+    background-color: $light-yellow !important;
   }
 }
 .UncontrolledDropdown {

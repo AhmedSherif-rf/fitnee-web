@@ -50,6 +50,26 @@ export const TRAINER_SIGNUP_INITIAL_VALUES = {
   ],
 };
 
+export const TRAINER_EDIT_PROFILE_INITIAL_VALUES = {
+  bio: "",
+  role: "",
+  email: "",
+  gender: "",
+  stc_pay: "",
+  password: "",
+  full_name: "",
+  experience: "",
+  specialities: [],
+  phone_number: "",
+  profile_pic: null,
+  certification: [],
+  confirm_password: "",
+  saudireps_number: "",
+  certificate_title: [],
+  is_currently_working: "",
+  profile_availability: [{ day: "", starttime: "", endtime: "" }],
+};
+
 export const NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
   bio: "",
   email: "",
@@ -73,6 +93,25 @@ export const NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
     { price: "", membership_type: "Nutrition", duration: "2" },
     { price: "", membership_type: "Nutrition", duration: "3" },
   ],
+};
+
+export const NUTRITIONIST_EDIT_PROFILE_INITIAL_VALUES = {
+  bio: "",
+  email: "",
+  gender: "",
+  stc_pay: "",
+  password: "",
+  full_name: "",
+  experience: "",
+  phone_number: "",
+  profile_pic: null,
+  certification: [],
+  license_number: "",
+  role: "Nutritionist",
+  confirm_password: "",
+  certificate_title: [],
+  is_currently_working: "",
+  profile_availability: [{ day: "", starttime: "", endtime: "" }],
 };
 
 export const TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
@@ -126,4 +165,23 @@ export const PAYMENT_METHOD_DETAIL_INITIAL_VALUES = {
   currency: "SAR",
   paymentType: "DB",
   use_wallet: false,
+};
+
+export const ADD_CATEGORY_INITIAL_VALUES = {
+  title: "",
+  title_ar: "",
+};
+
+export const ADD_SUB_CATEGORY_INITIAL_VALUES = {
+  title: "",
+  title_ar: "",
+};
+
+export const ADD_EXERCISE_INITIAL_VALUES = {
+  title: "",
+  title_ar: "",
+  warm_up: false,
+  exercise_videos: null,
+  exercise_part_text: [""],
+  exercise_part_text_ar: [""],
 };

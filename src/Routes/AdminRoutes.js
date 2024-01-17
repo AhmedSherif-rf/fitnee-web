@@ -41,7 +41,7 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
-    path: "/admin/exercises/addExercises",
+    path: "/admin/exercises/addExercises/:subCategoryId",
     component: lazy(() => import("../Pages/AdminPages/Exercises/AddExercises")),
     exact: true,
     role: adminRole,
@@ -68,13 +68,15 @@ export const adminRoutes = [
   },
   {
     path: "/admin/settings/category",
-    component: lazy(() => import("../Pages/AdminPages/Category")),
+    component: lazy(() => import("../Pages/AdminPages/Settings/Category")),
     exact: true,
     role: adminRole,
   },
   {
-    path: "/admin/settings/category/subCategory",
-    component: lazy(() => import("../Pages/AdminPages/Category/SubCategory")),
+    path: "/admin/settings/category/:categoryUuid/:categoryId/subCategory",
+    component: lazy(() =>
+      import("../Pages/AdminPages/Settings/Category/SubCategory")
+    ),
     exact: true,
     role: adminRole,
   },
@@ -85,13 +87,17 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
-    path: "/admin/walletSystem/walletOverview",
-    component: lazy(() =>
-      import("../Pages/AdminPages/WalletSystem/WalletOverview")
-    ),
     path: "/admin/reviewRequestDetail/:uuid",
     component: lazy(() =>
       import("../Pages/AdminPages/ReviewRequest/ReviewRequestDetail")
+    ),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/walletSystem/walletOverview",
+    component: lazy(() =>
+      import("../Pages/AdminPages/WalletSystem/WalletOverview")
     ),
     exact: true,
     role: adminRole,

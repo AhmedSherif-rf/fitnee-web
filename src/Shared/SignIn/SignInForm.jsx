@@ -33,10 +33,8 @@ const SignInForm = () => {
   const { loading } = useSelector((state) => state.user);
 
   const [showAccountRequestModal, setShowAccountRequestModal] = useState(false);
-  const [
-    accountRequestModalErrorText,
-    setAccountRequestModalErrorText,
-  ] = useState("");
+  const [accountRequestModalErrorText, setAccountRequestModalErrorText] =
+    useState("");
 
   const handleAccountRequestModalClose = useCallback(() => {
     setShowAccountRequestModal(false);

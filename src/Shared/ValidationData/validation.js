@@ -27,23 +27,20 @@ const emailValidation = Yup.string()
   .required(TranslationHelper("validation.requiredEmailText"));
 
 const currentPasswordValidation = Yup.string()
-  .min(
-    8,
-    TranslationHelper("Previous password must be at least 8 characters long")
-  )
+  .min(8, TranslationHelper("validation.invalidPreviousPasswordText"))
   .matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-    "Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character"
+    TranslationHelper("validation.invalidPreviousPasswordTwoText")
   )
-  .required(TranslationHelper("Previous password is required"));
+  .required(TranslationHelper("validation.requiredPreviousPasswordText"));
 
 const newPasswordValidation = Yup.string()
-  .min(8, TranslationHelper("New password must be at least 8 characters long"))
+  .min(8, TranslationHelper("validation.requiredPasswordText"))
   .matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-    "Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character"
+    TranslationHelper("validation.invalidPasswordTwoText")
   )
-  .required(TranslationHelper("New password is required"));
+  .required(TranslationHelper("validation.requiredPasswordText"));
 
 const certificationValidation = Yup.array()
   .min(1, TranslationHelper("validation.requiredMinimumCertificateText"))
@@ -99,7 +96,7 @@ const passwordValidation = Yup.string()
   .min(8, TranslationHelper("validation.invalidPasswordText"))
   .matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-    "Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character"
+    TranslationHelper("validation.invalidPasswordTwoText")
   )
   .required(TranslationHelper("validation.requiredPasswordText"));
 

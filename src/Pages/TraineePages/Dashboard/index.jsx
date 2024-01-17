@@ -83,7 +83,7 @@ const Dashboard = () => {
   const [showHistory, setShowHistory] = useState(true);
   const [showAddProgressModal, setSowAddProgressModal] = useState(false);
 
-  const { t ,i18n } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const toggleHistory = useCallback(() => {
     setShowHistory(!showHistory);
   }, [showHistory]);

@@ -1,18 +1,20 @@
 import StarRating from "../Rating";
 import { Tooltip } from "reactstrap";
 import React, { memo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { TRAINEE_ROLE } from "../../utils/constants";
 import { Card, CardBody, CardFooter } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const ProfileInformationCard = (props) => {
+  const { i18n } = useTranslation("");
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggleTooltip = () => setTooltipOpen(!tooltipOpen);
 
   const { className, providerProfile } = props;
   return (
-    <Card className={`BorderRadius border-0 ${className}`}>
+    <Card className={`BorderRadius border-0 ${className} ${i18n.dir()}`}>
       <CardBody className="p-0">
         <div
           className="p-0 bgProperties ImgBorder"

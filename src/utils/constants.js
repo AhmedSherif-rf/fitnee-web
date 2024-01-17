@@ -61,6 +61,7 @@ export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const ADMIN_EXERCISE_URL = "/admin/exercise/detail/";
+export const ADMIN_TRAINEE_LISTING_URL = "/admin/trainees/";
 export const ADMIN_EXERCISE_CATEGORY_URL = "/admin/exercise/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
@@ -72,6 +73,7 @@ export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
 export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
+export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
   "/serviceprovider_logged_in";
 //=================StatusCodes===================

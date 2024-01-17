@@ -13,9 +13,11 @@ const Content = ({ children, sidebarIsOpen, toggleSidebar }) => (
   >
     <Row className="position-absolute px-2 w-100" style={{ zIndex: "2" }}>
       <Col md="12 ">
-        <Topbar toggleSidebar={toggleSidebar} />{" "}
-        <Card className="BorderRadius mb-3 p-3" style={{ height: "80vh" }}>
-          <div style={{ overflowY: "scroll", overflowX: "hidden" }}>
+        <Topbar toggleSidebar={toggleSidebar} />
+        <Card className="BorderRadius mb-3 px-3 pb-1" style={{ height: "80vh" }}>
+          <div className="h-100"
+          //  style={{ overflowY: "scroll", overflowX: "hidden" }}
+           >
             {children}
           </div>
         </Card>

@@ -1,6 +1,4 @@
-import { Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
-import styles from "./styles.module.scss";
 import Pagination from "../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../Shared/Headings/PageHeading";
@@ -9,6 +7,7 @@ import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { ADMIN_REVIEW_REQUEST_URL } from "../../../utils/constants";
 import { BsFillPersonXFill, BsPersonCheckFill } from "react-icons/bs";
+import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 import {
   getReviewRequestListing,
@@ -35,6 +34,7 @@ const ReviewRequest = () => {
 
   useEffect(() => {
     fetchReviewRequests();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, page]);
 
   const fetchReviewRequests = () => {
@@ -145,23 +145,27 @@ const ReviewRequest = () => {
   ];
 
   return (
-    <React.Fragment>
+    <Row className="h-100">
       {loading === "pending" && <LoadingScreen />}
-      <Row>
-        <Col
-          md="12"
-          className={`text-start ${styles.reviewRequestTableWrapper}`}
-        >
-          <PageHeading headingText="Review Requests" categoryText="" />
-          <ListingTable data={tableData} columns={columns} />
-        </Col>
-        {totalSize > PER_PAGE_COUNT && (
-          <Col md="12 mt-3">
-            <Pagination size={totalSize} handlePageChange={handlePageChange} />
-          </Col>
-        )}
-      </Row>
-    </React.Fragment>
+      <Col md={12}>
+        <Card className="border-0 h-100 text-start">
+          <CardHeader className="bg-transparent border-0 p-0">
+            <PageHeading headingText="Review Requests" categoryText="" />
+          </CardHeader>
+          <CardBody className="tableBodyWrapperPagination">
+            <ListingTable data={tableData} columns={columns} />
+          </CardBody>
+          <CardFooter className="bg-transparent text-end pb-0 pt-2">
+            {totalSize > PER_PAGE_COUNT && (
+              <Pagination
+                size={totalSize}
+                handlePageChange={handlePageChange}
+              />
+            )}
+          </CardFooter>
+        </Card>
+      </Col>
+    </Row>
   );
 };
 

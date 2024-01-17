@@ -251,6 +251,11 @@ Input::-webkit-input-placeholder {
   background-color: rgba(24, 24, 24, 0.99);
 }
 
+.tableBodyWrapperPagination {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
 .genderBtn {
   .selected {
     color: $parrot-green !important;

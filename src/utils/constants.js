@@ -59,6 +59,7 @@ export const CONTACT_US_URL = "/guest/contactusemail/";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
+export const ADMIN_TRAINEE_LISTING_URL = "/admin/trainees/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
 export const ADMIN_REVIEW_REQUEST_URL = "/service_provider_requests";
@@ -67,8 +68,8 @@ export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
 export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
-export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
-  "/serviceprovider_logged_in";
+export const ADMIN_SERVICE_PROVIDER_LISTING_URL ="/admin/service-providers/";
+export const TRAINEE_SERVICE_PROVIDER_LISTING_URL ="/serviceprovider_logged_in";
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
 export const FORBIDDEN_CODE = 403;

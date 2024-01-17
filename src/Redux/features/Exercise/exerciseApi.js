@@ -89,6 +89,7 @@ export const addExercise = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
+      Toaster.success("Exercise added successfully");
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.Message);

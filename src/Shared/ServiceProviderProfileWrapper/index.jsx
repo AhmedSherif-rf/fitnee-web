@@ -49,7 +49,7 @@ const ServiceProviderProfileWrapper = (props) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   useEffect(() => {
     const data = {
@@ -68,7 +68,7 @@ const ServiceProviderProfileWrapper = (props) => {
   }, [navigate, subscriptionLink, uuid]);
 
   return (
-    <Container fluid>
+    <Container fluid className={i18n.dir()}>
       {loading === "pending" && <LoadingScreen />}
       {serviceProviderProfile ? (
         <Row>
@@ -89,7 +89,9 @@ const ServiceProviderProfileWrapper = (props) => {
                     />
                   </div>
                   <div>
-                    <h6 className="fw-bold text-white">Available Hours</h6>
+                    <h6 className="fw-bold text-white">
+                      {t("guest.availableHoursText")}
+                    </h6>
                     <AvailableHourList
                       data={serviceProviderProfile?.profile_availability}
                     />
@@ -148,7 +150,7 @@ const ServiceProviderProfileWrapper = (props) => {
                       <Row>
                         <Col md={12}>
                           <h5 className="fw-bold mt-3 text-black-custom">
-                            Comments
+                            {t("guest.commentsText")}
                           </h5>
                           {commentsData.map((item) => {
                             return (

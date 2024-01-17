@@ -385,7 +385,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         ></div>
                       </DropdownToggle>
                       <DropdownMenu
-                        className="custom-dropdown-menu"
+                        className={`custom-dropdown-menu ${i18n.dir()}`}
                         style={{ right: 0, left: "auto" }}
                       >
                         <DropdownItem className="p-0">
@@ -401,7 +401,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               <span className="me-2">
                                 <RiDashboardFill size={16} className="mb-1" />
                               </span>
-                              <p className="mb-0">Dashboard</p>
+                              <p className="mb-0">
+                                {t("topBar.dashboardText")}
+                              </p>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -421,7 +423,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               <span className="me-2">
                                 <FaUserEdit size={16} className="mb-1" />
                               </span>
-                              <p className="mb-0">Edit Profile</p>
+                              <p className="mb-0">
+                                {t("topBar.editProfileText")}
+                              </p>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -436,7 +440,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                   <span className="me-2">
                                     <GiWallet size={16} className="mb-1" />
                                   </span>
-                                  <p className="mb-0">Wallet</p>
+                                  <p className="mb-0">
+                                    {t("topBar.walletText")}
+                                  </p>
                                 </div>
                               </Link>
                             </DropdownItem>
@@ -456,7 +462,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               <span className="me-2">
                                 <FaKey size={16} className="mb-1" />
                               </span>
-                              <p className="mb-0">Change Password</p>
+                              <p className="mb-0">
+                                {t("topBar.changePasswordText")}
+                              </p>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -468,7 +476,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             <span className="me-2 d-flex">
                               <FaTrashCan size={16} className="mb-1" />
                             </span>
-                            <p className="mb-0">Delete Account</p>
+                            <p className="mb-0">
+                              {t("topBar.deleteAccountText")}
+                            </p>
                           </div>
                         </DropdownItem>
                         <DropdownItem className="p-0">
@@ -479,7 +489,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             <span className="me-2 d-flex">
                               <FaArrowUp size={16} className="mb-1" />
                             </span>
-                            <p className="mb-0">Logout</p>
+                            <p className="mb-0">{t("topBar.logoutText")}</p>
                           </div>
                         </DropdownItem>
                       </DropdownMenu>
@@ -582,7 +592,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           : "/serviceProvider/dashboard"
                       }
                     >
-                      {"Dashboard"}
+                      {t("topBar.dashboardText")}
                     </Link>
                   </NavItem>
                   <NavItem className={`${styles.NavItem} p-2`}>
@@ -597,7 +607,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           : "/serviceProvider/editProfile/nutritionist"
                       }
                     >
-                      {"Edit Profile"}
+                      {t("topBar.editProfileText")}
                     </Link>
                   </NavItem>
                   {roleType && roleType !== TRAINEE_TYPE && (
@@ -607,7 +617,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           className={`nav-link ${styles.NavLink}`}
                           to="/serviceProvider/paymentHistory"
                         >
-                          {"Wallet"}
+                          {t("topBar.walletText")}
                         </Link>
                       </NavItem>
                     </>
@@ -622,7 +632,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           : "/serviceProvider/resetPassword"
                       }
                     >
-                      {"Change Password"}
+                      {t("topBar.changePasswordText")}
                     </Link>
                   </NavItem>
 
@@ -631,7 +641,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       className={`nav-link d-flex justify-content-center w-100 p-1`}
                       onClick={handleDeleteClick}
                     >
-                      {"Delete Account"}
+                      {t("topBar.deleteAccountText")}
                     </div>
                   </NavItem>
 
@@ -640,7 +650,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       className="d-flex justify-content-center w-100 p-1"
                       onClick={handleLogoutClick}
                     >
-                      {"Logout"}
+                      {t("topBar.logoutText")}
                     </div>
                   </NavItem>
                 </div>
@@ -751,7 +761,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         className={"p-4"}
         isOpen={showDeleteAccountModal}
         onClose={handleDeleteAccountModalClose}
-        ModalTextOne="Are you sure to want to delete your account?"
+        ModalTextOne={t("guest.deleteModalText")}
         ButtonOne={
           <FillBtn
             text={t("signup.yesText")}
@@ -762,7 +772,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         }
         ButtonTwo={
           <OutlineBtn
-            text={"No"}
+            text={t("guest.noText")}
             className="py-2 px-5"
             handleOnClick={handleDeleteAccountModalClose}
           />

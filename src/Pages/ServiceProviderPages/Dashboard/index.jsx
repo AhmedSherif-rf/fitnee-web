@@ -44,7 +44,7 @@ const commentMedia = [
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const { user } = useSelector((state) => state.user);
 
   const handleCurrentSubscribersClick = useCallback(() => {
@@ -61,7 +61,7 @@ const Dashboard = () => {
 
   return (
     <Container fluid>
-      <Row>
+      <Row className={i18n.dir()}>
         <Col md="12">
           <Card className="contentCard bg-transparent overflow-x-hidden">
             <Row>
@@ -70,15 +70,15 @@ const Dashboard = () => {
                   <ProfileInformationCard providerProfile={user} />
                 </div>
 
-                <Row className="mt-3">
+                <Row className={`mt-3`}>
                   <Col md={12}>
                     <FillBtn
                       handleOnClick={handleCurrentSubscribersClick}
                       className="w-100 mb-2 py-2"
                       text={
-                        (user?.role === TRAINER_ROLE ||
-                        user?.role === TRAINER_NUTRITIONIST_ROLE)
-                          ? "My Current Trainees"
+                        user?.role === TRAINER_ROLE ||
+                        user?.role === TRAINER_NUTRITIONIST_ROLE
+                          ? t("trainer.myCurrentTraineeText")
                           : t("trainer.trainerSubscriberText")
                       }
                     />
@@ -95,11 +95,13 @@ const Dashboard = () => {
                   </Col>
                 </Row>
                 <div>
-                  <h6 className="fw-bold text-white">Available Hours</h6>
+                  <h6 className="fw-bold text-white">
+                    {t("trainer.availableHoursText")}
+                  </h6>
                   <AvailableHourListing data={user?.profile_availability} />
                 </div>
               </Col>
-              <Col lg={9} md={8}>
+              <Col lg={9} md={8} className={`${i18n.dir()}`}>
                 <Card className="BorderRadius border-0 mb-3 text-black-custom">
                   <CardBody>
                     <div className="d-flex align-items-center justify-content-between mb-3">

@@ -399,7 +399,13 @@
     "bodyBuildingText": "Body Building ",
     "powerLiftingText": "Power Lifting",
     "commentsText": "Comments",
-    "healthyLifeStyleText": "Healthy Lifestyle"
+    "healthyLifeStyleText": "Healthy Lifestyle",
+    "trainerNutritionistText": "Trainers & Nutritionists",
+    "nutritionistsText": "Nutritionists",
+    "trainersText": "Trainers",
+    "bothText": "Both",
+    "deleteModalText": "Are you sure to want to delete your account?",
+    "noText": "No"
   },
   "contactUs": {
     "firstNameText": "First Name",
@@ -420,8 +426,20 @@
     "trainerSubscriberText": "My Current Subscribers",
     "trainerPaymentText": "Payment History",
     "trainerPackageText": "My Packages",
+    "availableHoursText": "Available Hours",
     "trainerCommentContentText": "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-    "myCurrentTraineeText": "My Current Trainees"
+    "myCurrentTraineeText": "My Current Trainees",
+    "changePasswordText": "Change Password",
+    "confirmText": "Confirm",
+    "submitText": "Submit",
+    "nameText": "Name",
+    "durationText": "Duration",
+    "priceText": "Price",
+    "startDateText": "Start Date",
+    "endDateText": "End Date",
+    "monthText": "Month",
+    "editText": "Edit",
+    "addText": "Add"
   },
 
   "paymentHistory": {
@@ -491,8 +509,8 @@
     "emailText": "Type your email",
     "passwordText": "Type your password",
     "confirmPasswordText": "Confirm Password",
-    "genderText":"Gender ",
-    "roleText":"Role ",
+    "genderText": "Gender ",
+    "roleText": "Role ",
     "maleText": "Male",
     "femaleText": "Female",
     "addBioText": "Add your bio here",
@@ -528,11 +546,11 @@
     "uploadImageText": "Upload Image",
     "attachCertificateText": "Attach Your Certificates",
     "moneyTransferText": "The money will be transferred to your STC Pay account, please read the  ",
-    "termsAndConditionText": "Terms and Conditions  ", 
-    "generalText": "General Terms and Conditions  ", 
-    "acknowledgeText": "I acknowledge that I have reviewed and accepted the "
+    "termsAndConditionText": "Terms and Conditions  ",
+    "generalText": "General Terms and Conditions  ",
+    "acknowledgeText": "I acknowledge that I have reviewed and accepted the ",
+    "cancellingSubscriptionModalText": "Are you sure about canceling your subscription?"
   },
-
   "login": {
     "loginText": "Sign In",
     "firstNameText": "First Name",
@@ -571,7 +589,10 @@
     "confirmPasswordText": "Confirm Password",
     "newPasswordText": "New Password",
     "confirmText": "Confirm",
-    "cancelText": "Cancel"
+    "cancelText": "Cancel",
+    "unlockYourPotentialText": "Unlock your potential",
+    "transformYourBodyText": "Transform your body",
+    "previousPasswordText": "Previous Password"
   },
   "appDownloadLink": {
     "congratulationsText": "Congratulations",
@@ -580,7 +601,8 @@
   "traineeServiceProviderList": {
     "trainerText": "Trainer",
     "twoMonthDurationText": "2 Months",
-    "myCurrentTrainerText": "My Current Trainers",
+    "myCurrentTrainerText": "My Current Trainer",
+    "myCurrentNutritionistText": "My Current Nutritionists",
     "nameText": "Name",
     "durationText": "Duration",
     "priceText": "Price",
@@ -593,7 +615,8 @@
     "threeMonthsDurationText": "3 Months",
     "subscribeText": "Subscribe"
   },
-  "traineeSubscriptionDetails": {
+  "traineeSubscriptionDetail": {
+    "nameText": "Name",
     "cancelPlanText": "Cancel Plan",
     "twoMonthsDurationText": "2 Months",
     "cancelledText": "Cancelled",
@@ -602,7 +625,23 @@
     "actionText": "Action",
     "subscriptionDetailsText": "Subscription Details"
   },
-
+  "appLink": {
+    "congratulationsText": "Congratulations",
+    "getAppText": "GET APP",
+    "youHaveSubscribedWithText": "You have subscribed with",
+    "downloadAppText": ", he/she will review your profile and get back to you shortly, please download FitNee app and enable the notification. Be informed that you have the right to cancel your subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer or nutrition specialist. Manage your profile and contact your trainer/nutrition by downloading the app"
+  },
+  "messages": {
+    "paymentFailedText": "Oops! Payment unsuccessful. It seems like there was an issue processing your payment. Please try again or check your payment details."
+  },
+  "topBar": {
+    "dashboardText": "Dashboard",
+    "editProfileText": "Edit Profile",
+    "changePasswordText": "Change Password",
+    "deleteAccountText": "Delete Account",
+    "logoutText": "Logout",
+    "walletText": "Wallet"
+  },
   "validation": {
     "invalidEmailText": "Invalid email address",
     "requiredEmailText": "Email is required",
@@ -640,6 +679,9 @@
     "requiredToDayText": "To Time is required",
     "requiredTermAndConditionCheck": "You must accept the terms and conditions.",
     "tooShortText": "Too Short!",
-    "tooLongText": "Too Long!"
+    "tooLongText": "Too Long!",
+    "invalidPreviousPasswordText": "Previous Password must be at least 8 characters long",
+    "invalidPreviousPasswordTwoText": "Previous Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character",
+    "requiredPreviousPasswordText": "Previous Password is required"
   }
 }

@@ -320,6 +320,14 @@ Input::-webkit-input-placeholder {
   color: $black !important;
 }
 
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
 .cursorPointer {
   cursor: pointer;
 }

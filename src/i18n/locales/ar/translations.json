@@ -379,7 +379,7 @@
     "traineeText": "المتدرب",
     "trainerText": "مدرب",
     "nutritionistText": "اخصائي تغذيه",
-    "trainerNutritionistText": "Trainer and Nutritionist",
+    "trainerNutritionistText": "مدرب وأخصائي تغذية",
     "guestText": "ضيف",
     "alreadyAccountText": "لديك حساب بالفعل؟"
   },
@@ -397,7 +397,13 @@
     "bodyBuildingText": " كمال أجسام",
     "powerLiftingText": "رفع أثقال",
     "commentsText": " تعليقات",
-    "healthyLifeStyleText": "صحية حياة نمط"
+    "healthyLifeStyleText": "صحية حياة نمط",
+    "trainerNutritionistText": "المدربين وأخصائيي التغذية",
+    "nutritionistsText": "التغذية اخصائيي",
+    "trainersText": "المدربين",
+    "bothText": "كلاهما",
+    "deleteModalText": "هل أنت متأكد أنك تريد حذف حسابك؟",
+    "noText": "ال"
   },
   "contactUs": {
     "firstNameText": " األسم االول",
@@ -418,8 +424,20 @@
     "trainerSubscriberText": " المشتركين",
     "trainerPaymentText": "الدفع عمليات تاريخ",
     "trainerPackageText": "الباقات",
+    "availableHoursText": "الساعات المتاحة",
     "trainerCommentContentText": "مدرب مثالي! أدت التدريبات المصممة بمهارة والتحفيز المستمر والخبرة إلى تقدم ملحوظ. موصى به للغاية لرحلات اللياقة البدنية التحويلية.",
-    "myCurrentTraineeText": "المتدربين"
+    "myCurrentTraineeText": "المتدربين",
+    "changePasswordText": "تغيير كلمة المرور",
+    "confirmText": "يتأكد",
+    "submitText": "يُقدِّم",
+    "nameText": "اسم",
+    "durationText": "مدة",
+    "priceText": "سعر",
+    "startDateText": "تاريخ البدء",
+    "endDateText": "تاريخ الانتهاء",
+    "monthText": "شهر",
+    "editText": "يحرر",
+    "addText": "يضيف"
   },
   "paymentHistory": {
     "paymentHistoryTitleText": "الدفع عمليات تاريخ",
@@ -440,12 +458,14 @@
     "mySubscriptionHistoryText": "اشتراكاتي تاريخ",
     "myProgressText": "تقدمي",
     "allServiceProvidersText": "التغذية واخصائي المدربين جميع",
+    "myWalletText": "محفظتى",
     "subsriptionDetailsText": "االشتراك تفاصيل",
     "cancelText": "إلغاء",
     "cancelledText": "اإللغاء تم",
     "addProgressText": "جديد تقدم إضافة",
     "viewHistoryText": "السابقة السجالت عرض",
-    "ProteinsText": "البروتين",
+    "ProteinText": "بروتين",
+    "addText": "يضيف",
     "bfmText": "BFM",
     "smmText": "SMM",
     "weightText": "الوزن",
@@ -478,14 +498,14 @@
   },
   "signup": {
     "yourInformationText": "الشخصية المعلومات",
-    "fullNameText": "Full Name",
+    "fullNameText": "الاسم الكامل",
     "firstNameText": "الاسم الأول",
     "lastNameText": "اسم العائلة",
     "emailText": "اكتب بريدك الإلكتروني",
     "passwordText": "اكتب كلمة المرور الخاصة بك",
     "confirmPasswordText": "تأكيد كلمة المرور",
-    "genderText":"جنس ",
-    "roleText":"وظيفة ",
+    "genderText": "جنس ",
+    "roleText": "وظيفة ",
     "maleText": "ذكر",
     "femaleText": "أنثى",
     "addBioText": "هنا الذاتية السيره اضف",
@@ -523,7 +543,8 @@
     "moneyWillTransferText": " ، STC Pay  في حسابك الى المبلغ تحويل سيتم",
     "termsAndConditionText": "الأحكام والشروط",
     "acknowledgeText": " أقر بأنني قمت بمراجعة وقبلت ",
-    "generalText": " الاحكام والشروط العامة  "
+    "generalText": " الاحكام والشروط العامة ",
+    "cancellingSubscriptionModalText": "هل أنت متأكد من إلغاء اشتراكك؟"
   },
   "login": {
     "loginText": "تسجيل الدخول",
@@ -542,57 +563,79 @@
     "transformYourBodyText": "لياقتك قرارك"
   },
   "forgotPassword": {
-    "emailText": "Type your email",
+    "emailText": " البريد االلكتروني",
     "forgotPasswordText": "السري الرقم نسيت",
     "knowMyPasswordText": " أعرف كلمة المرور الخاصة بي وأرجعني لتسجيل الدخول",
     "sendText": "إرسال",
     "cancelText": "إلغاء"
   },
   "otpVerification": {
-    "verificationText": "Verification",
-    "openYourEmailText": "Open your email and insert the code",
-    "didNotRecieveCodeText": "Didn't Receive a Code!",
-    "resendCodeInText": "Resend code in ",
-    "resendCodeText": "Resend Code",
-    "invalidOtpModalText": "You entered an Invalid OTP, please try again",
-    "nextText": "Next",
-    "okayText": "Okay"
+    "verificationText": "التحقق",
+    "openYourEmailText": "افتح بريدك الإلكتروني وأدخل الرمز",
+    "didNotRecieveCodeText": "لم تتلقى رمزًا!",
+    "resendCodeInText": "إعادة إرسال الرمز في ",
+    "resendCodeText": "إعادة إرسال الرمز",
+    "invalidOtpModalText": "لقد أدخلت رمز OTP غير صالح، يرجى المحاولة مرة أخرى",
+    "nextText": "التالي",
+    "okayText": "حسناً"
   },
   "changePassword": {
-    "currentPasswordText": "Current Password",
-    "confirmPasswordText": "Confirm Password",
-    "newPasswordText": "New Password",
-    "confirmText": "Confirm",
-    "cancelText": "Cancel"
+    "currentPasswordText": "كلمة المرور الحالية",
+    "confirmPasswordText": "تأكيد كلمة المرور",
+    "newPasswordText": "كلمة المرور الجديدة",
+    "confirmText": "تأكيد",
+    "cancelText": "إلغاء",
+    "unlockYourPotentialText": "إلمكانياتك العنان أطلق",
+    "transformYourBodyText": "لياقتك قرارك",
+    "previousPasswordText": "كلمة المرور السابقة"
   },
   "appDownloadLink": {
-    "congratulationsText": "Congratulations",
-    "getAppText": "GET APP"
+    "congratulationsText": "تهانينا",
+    "getAppText": "احصل على التطبيق"
   },
   "traineeServiceProviderList": {
-    "trainerText": "Trainer",
-    "twoMonthDurationText": "2 Months",
-    "myCurrentTrainerText": "My Current Trainers",
-    "nameText": "Name",
-    "durationText": "Duration",
-    "priceText": "Price",
-    "startDateText": "Start Date",
-    "endDateText": "End Date"
+    "trainerText": "مدرب",
+    "twoMonthDurationText": "2 أشهر",
+    "myCurrentTrainerText": "مدربي الحالي",
+    "myCurrentNutritionistText": "التغذية اخصائي",
+    "nameText": "اسم",
+    "durationText": "مدة",
+    "priceText": "سعر",
+    "startDateText": "تاريخ البدء",
+    "endDateText": "تاريخ الانتهاء"
   },
   "traineeSubscription": {
-    "oneMonthDurationText": "1 Months",
-    "twoMonthsDurationText": "2 Months",
-    "threeMonthsDurationText": "3 Months",
-    "subscribeText": "Subscribe"
+    "oneMonthDurationText": "شهر 1",
+    "twoMonthsDurationText": "2 أشهر",
+    "threeMonthsDurationText": "3 أشهر",
+    "subscribeText": "اشتراك"
   },
-  "traineeSubscriptionDetails": {
-    "cancelPlanText": "Cancel Plan",
-    "twoMonthsDurationText": "2 Months",
-    "cancelledText": "Cancelled",
-    "durationText": "Duration",
-    "feeText": "Fee",
-    "actionText": "Action",
-    "subscriptionDetailsText": "Subscription Details"
+  "traineeSubscriptionDetail": {
+    "nameText": "اسم",
+    "cancelPlanText": "إلغاء الخطة",
+    "twoMonthsDurationText": "2 أشهر",
+    "cancelledText": "ألغيت",
+    "durationText": "مدة",
+    "feeText": "مصاريف",
+    "actionText": "فعل",
+    "subscriptionDetailsText": "تفاصيل الاشتراك"
+  },
+  "appLink": {
+    "congratulationsText": "تهانينا",
+    "getAppText": "احصل على التطبيق",
+    "youHaveSubscribedWithText": "لقد اشتركت مع",
+    "downloadAppText": "، سيقوم/تقوم بمراجعة ملفك الشخصي وسيتواصل معك قريبًا، يرجى تحميل تطبيق FitNee وتفعيل الإشعارات. يُعلمك أن لديك الحق في إلغاء اشتراكك لأي سبب في غضون 72 ساعة، وسيتم إرجاع أموالك إلى محفظتك في التطبيق حتى تتمكن من إعادة الاشتراك مع مدرب آخر أو أخصائي تغذية. قم بإدارة ملفك الشخصي والتواصل مع مدربك/أخصائي التغذية من خلال تحميل التطبيق"
+  },
+  "messages": {
+    "paymentFailedText": "عذرًا! فشلت عملية الدفع. يبدو أن هناك مشكلة في معالجة الدفع الخاصة بك. يرجى المحاولة مرة أخرى أو التحقق من تفاصيل الدفع الخاصة بك."
+  },
+  "topBar": {
+    "dashboardText": "لوحة التحكم",
+    "editProfileText": "تعديل الملف الشخصي",
+    "changePasswordText": "تغيير كلمة المرور",
+    "deleteAccountText": "حذف الحساب",
+    "logoutText": "تسجيل الخروج",
+    "walletText": "المحفظة"
   },
   "validation": {
     "invalidEmailText": "عنوان البريد الإلكتروني غير صالح",
@@ -602,8 +645,8 @@
     "requiredPasswordText": "كلمة المرور مطلوبة",
     "invalidFirstNameText": "يجب أن يحتوي الاسم الأول على أحرف فقط",
     "requiredFirstNameText": "الإسم الأول مطلوب",
-    "invalidFullNameText": "Full Name should contain only letters",
-    "requiredFullNameText": "Full Name is Required",
+    "invalidFullNameText": "يجب أن يحتوي الاسم الكامل على أحرف فقط",
+    "requiredFullNameText": "الاسم الكامل مطلوب",
     "invalidLastNameText": "يجب أن يحتوي الاسم الأخير على أحرف فقط",
     "requiredLastNameText": "إسم العائلة مطلوب",
     "requiredMessageText": "الرسالة مطلوبة",
@@ -620,10 +663,10 @@
     "invalidFileCertificateText": "تنسيق ملف غير صالح. يُسمح فقط بالصور PNG وJPG وJPEG.",
     "requiredCertificateText": "الشهادة مطلوبة",
     "limitCertificateText": "يتجاوز حجم الملف الحد الأقصى (5 ميغابايت).",
-    "requiredMinimumBodyImageText": "At least one body image is required",
-    "invalidFileBodyImageText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
-    "requiredBodyImageText": "Body Image is required",
-    "limitBodyImageText": "File size exceeds the maximum limit (5 MB).",
+    "requiredMinimumBodyImageText": "مطلوب على الأقل صورة واحدة للجسم",
+    "invalidFileBodyImageText": "تنسيق الملف غير صالح. يُسمح فقط بصيغ PNG وJPG وJPEG.",
+    "requiredBodyImageText": "مطلوب صورة للجسم",
+    "limitBodyImageText": "تجاوز حجم الملف الحد الأقصى (5 ميجابايت).",
     "requiredText": "Required",
     "requiredRoleText": "الدور مطلوب",
     "requiredDayText": "اليوم مطلوب",
@@ -631,6 +674,9 @@
     "requiredToDayText": "مطلوب للوقت",
     "requiredTermAndConditionCheck": "يجب عليك قبول الأحكام والشروط.",
     "tooShortText": "قصير جدا!",
-    "tooLongText": "طويل جدا!"
+    "tooLongText": "طويل جدا!",
+    "invalidPreviousPasswordText": "يجب أن تكون كلمة المرور السابقة على الأقل 8 أحرف",
+    "invalidPreviousPasswordTwoText": "يجب أن تحتوي كلمة المرور السابقة على رقم واحد على الأقل وحرف صغير وحرف كبير وحرف خاص واحد على الأقل",
+    "requiredPreviousPasswordText": "كلمة المرور السابقة مطلوبة"
   }
 }

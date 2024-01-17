@@ -83,7 +83,7 @@ const Dashboard = () => {
   const [showHistory, setShowHistory] = useState(true);
   const [showAddProgressModal, setSowAddProgressModal] = useState(false);
 
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const toggleHistory = useCallback(() => {
     setShowHistory(!showHistory);
   }, [showHistory]);
@@ -221,7 +221,7 @@ const Dashboard = () => {
 
   return (
     <Container fluid>
-      <Row>
+      <Row className={`${i18n.dir()}`}>
         <Card className="px-3 contentCard bg-transparent">
           <Row>
             <Col lg={3} md={4} className="mb-2">
@@ -265,12 +265,12 @@ const Dashboard = () => {
                     <Col md={12}>
                       <div className="d-flex align-items-center justify-content-between">
                         <PageHeading
-                          headingText="My Progress"
+                          headingText={t("traineeDashboard.myProgressText")}
                           categoryText=""
                         />
                         <div className="">
                           <FillBtn
-                            text="Add"
+                            text={t("traineeDashboard.myWalletText")}
                             handleOnClick={handleAddProgressClick}
                           />
                         </div>
@@ -300,7 +300,7 @@ const Dashboard = () => {
                           </div>
                           <div className="text-center">
                             <FillBtn
-                              text="View History"
+                              text={t("traineeDashboard.viewHistoryText")}
                               handleOnClick={toggleHistory}
                             />
                           </div>
@@ -327,7 +327,7 @@ const Dashboard = () => {
                           </Row>
                           <div className="text-center pt-3">
                             <FillBtn
-                              text="View Graph"
+                              text={t("traineeDashboard.viewGraphText")}
                               handleOnClick={toggleHistory}
                             />
                           </div>
@@ -335,7 +335,7 @@ const Dashboard = () => {
                       )}
 
                       <InfoModal
-                        heading={"Add Your Progress"}
+                        heading={t("traineeDashboard.addYourProgressText")}
                         size={"md"}
                         TOneClassName={"fw-bold mb-4 fs-5"}
                         isOpen={showAddProgressModal}
@@ -345,7 +345,7 @@ const Dashboard = () => {
                         ModalText1={
                           <>
                             <Label className="mb-0 fw-normal small">
-                              Weight
+                              {t("traineeDashboard.weightText")}
                             </Label>
                             <InputField
                               className="mb-2"
@@ -354,7 +354,7 @@ const Dashboard = () => {
                             />
 
                             <Label className="mb-0 fw-normal small">
-                              Skeletal Muscle Mass
+                              {t("traineeDashboard.skeletalMuscleMassText")}
                             </Label>
                             <InputField
                               className="mb-2"
@@ -363,7 +363,7 @@ const Dashboard = () => {
                             />
 
                             <Label className="mb-0 fw-normal small">
-                              Body Fat Mass
+                              {t("traineeDashboard.bodyFatMassText")}
                             </Label>
                             <InputField
                               className="mb-2"
@@ -372,7 +372,7 @@ const Dashboard = () => {
                             />
 
                             <Label className="mb-0 fw-normal small">
-                              Protein
+                              {t("traineeDashboard.ProteinText")}
                             </Label>
                             <InputField
                               className="mb-2"
@@ -381,11 +381,16 @@ const Dashboard = () => {
                             />
                           </>
                         }
-                        ButtonOne={<FillBtn className="w-100" text={"Save"} />}
+                        ButtonOne={
+                          <FillBtn
+                            className="w-100"
+                            text={t("traineeDashboard.saveText")}
+                          />
+                        }
                         ButtonTwo={
                           <OutlineBtn
                             className="w-100"
-                            text={"Cancel"}
+                            text={t("traineeDashboard.cancelText")}
                             handleOnClick={useCallback(() => {
                               setSowAddProgressModal(false);
                             }, [])}

@@ -6,7 +6,7 @@ import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ContactUsWrapper from "../../../Shared/ContactUs/ContactUsWrapper";
 
 const ContactUs = () => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   const ContactUsData = [
     {
@@ -41,7 +41,7 @@ const ContactUs = () => {
   ];
 
   return (
-    <Container fluid className="vh-100">
+    <Container fluid className={`vh-100 ${i18n.dir()}`}>
       {ContactUsData?.map((item) => (
         <ContactUsWrapper
           CompStyle={item.CompStyle}

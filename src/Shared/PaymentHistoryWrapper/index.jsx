@@ -6,7 +6,7 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 import { CardBody, CardHeader, Card, Col, Row } from "reactstrap";
 
 const PaymentHistoryWrapper = () => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const Transactions = [
     {
       ArrowIcon: Images.ARROW_UP_IMG,
@@ -51,11 +51,11 @@ const PaymentHistoryWrapper = () => {
   ];
 
   return (
-    <Row className="text-black-custom">
+    <Row className={`text-black-custom ${i18n.dir()}`}>
       <Col md={12}>
         <CardHeader className="bg-transparent border-0 p-0">
           <PageHeading
-            headingText="Payment History"
+            headingText={t("paymentHistory.paymentHistoryTitleText")}
             className="mb-0"
             categoryText=""
           />

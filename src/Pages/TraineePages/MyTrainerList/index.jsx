@@ -6,7 +6,8 @@ import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ServiceProvider from "../../../Shared/ServiceProviderListRow";
 
 const Index = () => {
-  const { t } = useTranslation("");
+  const { t ,i18n } = useTranslation("");
+
   const ServiceProviders = [
     {
       useImages: `${Images.PROFILE4_IMG}`,
@@ -57,16 +58,14 @@ const Index = () => {
 
   return (
     <Container fluid>
-      <Row>
+      <Row  className={`${i18n.dir()}`}>
         <Col md={12}>
           <Card className="BorderRadius contentCard border-0">
             <CardBody className="px-4">
               <Row>
                 <Col md={12}>
                   <PageHeading
-                    headingText={t(
-                      "traineeServiceProviderList.myCurrentTrainerText"
-                    )}
+                    headingText=   {t("traineeServiceProviderList.myCurrentTrainerText")}
                     categoryText=""
                   />
                 </Col>

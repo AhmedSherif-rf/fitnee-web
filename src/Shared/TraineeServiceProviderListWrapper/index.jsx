@@ -48,7 +48,7 @@ const TraineeServiceProviderListWrapper = (props) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
@@ -89,11 +89,11 @@ const TraineeServiceProviderListWrapper = (props) => {
 
   const conditionalHeader = () => {
     if (listingRole === TRAINER_TYPE) {
-      return "Trainers";
+      return t("guest.trainersText");
     } else if (listingRole === NUTRITIONIST_TYPE) {
-      return "Nutritionists";
+      return t("guest.nutritionistsText");
     } else {
-      return "Trainers & Nutritionists";
+      return t("guest.trainerNutritionistText");
     }
   };
 
@@ -102,7 +102,7 @@ const TraineeServiceProviderListWrapper = (props) => {
       className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
     >
       <CardBody>
-        <Row className="align-items-center mb-2">
+        <Row className={`align-items-center mb-2 ${i18n.dir()}`}>
           {loading === "pending" && <LoadingScreen />}
           <Col xs={10} sm={6} className="text-left">
             <PageHeading
@@ -110,7 +110,7 @@ const TraineeServiceProviderListWrapper = (props) => {
               categoryText=""
             />
           </Col>
-          <Col xs={2} sm={6} className="text-end">
+          <Col xs={2} sm={6} className={`${i18n.dir()==="ltr" ?"text-end":"text-start px-3"}`}>
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle data-toggle="dropdown" tag="span">
                 <img
@@ -123,19 +123,19 @@ const TraineeServiceProviderListWrapper = (props) => {
                 <DropdownItem
                   onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
                 >
-                  Trainers
+                  {t("guest.nutritionistsText")}
                 </DropdownItem>
                 <DropdownItem
                   onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
                 >
-                  Nutritionists
+                  {t("guest.nutritionistsText")}
                 </DropdownItem>
                 <DropdownItem
                   onClick={() =>
                     handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
                   }
                 >
-                  Both
+                   {t("guest.bothText")}
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>

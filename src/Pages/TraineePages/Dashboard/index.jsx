@@ -270,7 +270,7 @@ const Dashboard = () => {
                         />
                         <div className="">
                           <FillBtn
-                            text={t("traineeDashboard.myWalletText")}
+                            text={t("traineeDashboard.addProgressText")}
                             handleOnClick={handleAddProgressClick}
                           />
                         </div>

@@ -497,6 +497,9 @@
     "appLinkText": "التطبيق رابط"
   },
   "signup": {
+    "certificatesText": "الشهادات",
+    "subscriptionPlansText": "خطط الاشتراك",
+    "monthsText": "أشهر",
     "yourInformationText": "الشخصية المعلومات",
     "fullNameText": "الاسم الكامل",
     "firstNameText": "الاسم الأول",
@@ -540,6 +543,7 @@
     "nextText": "التالي",
     "uploadImageText": "تحميل الصور",
     "attachCertificateText": "إرفاق الشهادات الخاصة بك",
+    "moneyTransferText": "سيتم تحويل المبلغ إلى حساب STC Pay الخاص بك، يرجى قراءة ",
     "moneyWillTransferText": " ، STC Pay  في حسابك الى المبلغ تحويل سيتم",
     "termsAndConditionText": "الأحكام والشروط",
     "acknowledgeText": " أقر بأنني قمت بمراجعة وقبلت ",
@@ -667,7 +671,7 @@
     "invalidFileBodyImageText": "تنسيق الملف غير صالح. يُسمح فقط بصيغ PNG وJPG وJPEG.",
     "requiredBodyImageText": "مطلوب صورة للجسم",
     "limitBodyImageText": "تجاوز حجم الملف الحد الأقصى (5 ميجابايت).",
-    "requiredText": "Required",
+    "requiredText": "مطلوب",
     "requiredRoleText": "الدور مطلوب",
     "requiredDayText": "اليوم مطلوب",
     "requiredFromDayText": "من الوقت مطلوب",
@@ -677,6 +681,9 @@
     "tooLongText": "طويل جدا!",
     "invalidPreviousPasswordText": "يجب أن تكون كلمة المرور السابقة على الأقل 8 أحرف",
     "invalidPreviousPasswordTwoText": "يجب أن تحتوي كلمة المرور السابقة على رقم واحد على الأقل وحرف صغير وحرف كبير وحرف خاص واحد على الأقل",
-    "requiredPreviousPasswordText": "كلمة المرور السابقة مطلوبة"
+    "requiredPreviousPasswordText": "كلمة المرور السابقة مطلوبة",
+    "requiredDescriptionText": "الوصف مطلوب",
+    "invalidDescriptionText": "يجب أن يكون هناك وصف واحد على الأقل",
+    "requiredExerciseVideoText": "مطلوب فيديو التمرين"
   }
 }

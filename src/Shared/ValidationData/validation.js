@@ -3,20 +3,20 @@ import TranslationHelper from "../TranslationHelper";
 
 const firstNameValidation = Yup.string()
   .matches(/^[A-Za-z ]+$/, TranslationHelper("validation.invalidFirstNameText"))
-  .min(2, "Too Short!")
-  .max(50, "Too Long!")
-  .required(TranslationHelper("validation.requiredFirstNameText"));
+  .min(2, TranslationHelper("validation.tooShortText"))
+  .max(50, TranslationHelper("validation.tooLongText"))
 
+  .required(TranslationHelper("validation.requiredFirstNameText"));
 const fullNameValidation = Yup.string()
   .matches(/^[A-Za-z ]+$/, TranslationHelper("validation.invalidFullNameText"))
-  .min(2, "Too Short!")
-  .max(50, "Too Long!")
+  .min(2, TranslationHelper("validation.tooShortText"))
+  .max(50, TranslationHelper("validation.tooLongText"))
   .required(TranslationHelper("validation.requiredFullNameText"));
 
 const lastNameValidation = Yup.string()
   .matches(/^[A-Za-z ]+$/, TranslationHelper("validation.invalidLastNameText"))
-  .min(2, "Too Short!")
-  .max(50, "Too Long!")
+  .min(2, TranslationHelper("validation.tooShortText"))
+  .max(50, TranslationHelper("validation.tooLongText"))
   .required(TranslationHelper("validation.requiredLastNameText"));
 
 const emailValidation = Yup.string()
@@ -73,7 +73,7 @@ const certificationValidation = Yup.array()
 
 const certificateTitleValidation = Yup.array().test(
   "certificateTitleLength",
-  "Certificate title is required",
+  TranslationHelper("validation.requiredCertificateText"),
   function (value) {
     const { certification } = this.parent;
 
@@ -168,11 +168,11 @@ const termAndConditionCheckValidation = Yup.bool().oneOf(
 );
 
 const exerciseTextValidation = Yup.array()
-  .of(Yup.string().required("Description is required"))
-  .min(1, "At least one description is required");
+  .of(Yup.string().required(TranslationHelper("requiredDescriptionText")))
+  .min(1, TranslationHelper("invalidDescriptionText"));
 
 const exerciseVideoValidation = Yup.mixed().required(
-  "Exercise video is required"
+  TranslationHelper("requiredExerciseVideoText")
 );
 
 export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({

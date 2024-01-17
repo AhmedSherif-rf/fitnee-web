@@ -500,8 +500,10 @@
     "googleLinkText": "Google Link",
     "appLinkText": "App Link"
   },
-
   "signup": {
+    "certificatesText": "Certificates",
+    "subscriptionPlansText": "Subscription Plans",
+    "monthsText": "Months",
     "yourInformationText": "Your information",
     "fullNameText": "Full Name",
     "firstNameText": "First Name",
@@ -682,6 +684,9 @@
     "tooLongText": "Too Long!",
     "invalidPreviousPasswordText": "Previous Password must be at least 8 characters long",
     "invalidPreviousPasswordTwoText": "Previous Password must contain at least one number, one lowercase letter, one uppercase letter, and one special character",
-    "requiredPreviousPasswordText": "Previous Password is required"
+    "requiredPreviousPasswordText": "Previous Password is required",
+    "requiredDescriptionText": "Description is required",
+    "invalidDescriptionText": "At least one description is required",
+    "requiredExerciseVideoText": "Exercise video is required"
   }
 }

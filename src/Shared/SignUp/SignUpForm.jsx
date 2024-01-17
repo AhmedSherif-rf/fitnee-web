@@ -72,9 +72,8 @@ import {
 const SignUpForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const { roleType } = useParams();
-  const { lang } = useSelector((state) => state.language);
   const { loading, user } = useSelector((state) => state.user);
   const filterFields = functions.filterSignUpFields(roleType, user);
 
@@ -88,9 +87,9 @@ const SignUpForm = () => {
       dispatch(getSpecialities(data)).then((res) => {
         if (res.type === "getSpecialities/fulfilled") {
           let specialities = [];
-          if (lang === "en") {
-            specialities = res.payload.data.en;
-          }
+          // if (lang === "en") {
+          specialities = res.payload.data.en;
+          // }
           // else {
           //   specialities = res.payload.data.ar;
           // }
@@ -102,7 +101,8 @@ const SignUpForm = () => {
         }
       });
     }
-  }, [dispatch, lang, roleType]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getInitialValues = () => {
     if (user) {
@@ -205,7 +205,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <Container>
+    <Container className={i18n.dir()}>
       {loading === "pending" && <LoadingScreen />}
       <Formik
         initialValues={getInitialValues()}
@@ -522,7 +522,7 @@ const SignUpForm = () => {
               )}
 
               {filterFields.includes("date_of_birth") && (
-                <Col md={6} lg={6} className="mb-2">
+                <Col md={6} lg={6} className="mb-2 ltr">
                   {user === null && (
                     <div className="text-end" style={{ marginBottom: "-15px" }}>
                       *
@@ -722,7 +722,7 @@ const SignUpForm = () => {
                   <>
                     <Col md={12}>
                       <h6 className="fw-bold">
-                        {"Certificates"}
+                        {t("signup.certificatesText")}
                         {user === null && "*"}
                       </h6>
                     </Col>
@@ -1226,16 +1226,20 @@ const SignUpForm = () => {
             <Row className="my-3">
               {filterFields.includes("subscription_plans") && (
                 <>
-                  <h5 className="mb-2 fw-bold">Subscription Plans</h5>
+                  <h5 className="mb-2 fw-bold">
+                    {t("signup.subscriptionPlansText")}
+                  </h5>
                   <FieldArray
                     name="subscription_plans"
                     className="d-flex"
                     render={(arrayHelpers) => (
                       <>
-                        {values.subscription_plans.map(
+                        {values?.subscription_plans?.map(
                           (subscription_plan, index) => (
                             <Col md={4}>
-                              <p className="mb-0">{`${index + 1} Months`}</p>
+                              <p className="mb-0">{`${index + 1} ${t(
+                                "signup.monthsText"
+                              )}`}</p>
                               <Field
                                 name={`subscription_plans.${index}.price`}
                                 type="number"

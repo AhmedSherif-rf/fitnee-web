@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import SubHeading from "../Headings/SubHeading";
+import { CURRENCY } from "../../utils/constants";
 import PageHeading from "../Headings/PageHeading";
 import { useDispatch, useSelector } from "react-redux";
 import React, { memo, useCallback, useState } from "react";
@@ -331,7 +332,7 @@ const CreditCardDetailWrapper = () => {
                   <h6>{t("cardDetails.fitneeWalletText")}</h6>
                 </div>
                 <div style={{ width: "20%" }}>
-                  <h6>SAR 500</h6>
+                  <h6>SAR 0</h6>
                 </div>
               </div>
             </CardBody>
@@ -343,7 +344,9 @@ const CreditCardDetailWrapper = () => {
                   </h6>
                 </div>
                 <div style={{ width: "20%" }}>
-                  <h6 className="mb-0">SAR 500</h6>
+                  <h6 className="mb-0">
+                    {CURRENCY} {subscriptionPlan.price}
+                  </h6>
                 </div>
               </div>
             </CardFooter>

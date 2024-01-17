@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ForgotPasswordWrapper from "../../../Shared/ForgotPassword/ForgotPasswordWrapper";
 
@@ -23,8 +24,10 @@ const ForgotPasswordData = {
 };
 
 const ForgotPassword = () => {
+  const { i18n } = useTranslation("");
+
   return (
-    <Container fluid className="vh-100">
+    <Container fluid className={`vh-100 ${i18n.dir()}`}>
       <ForgotPasswordWrapper
         CompStyle={ForgotPasswordData.CompStyle}
         text1={ForgotPasswordData.text1}

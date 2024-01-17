@@ -47,7 +47,7 @@ const NewPasswordForm = () => {
           <Formik
             initialValues={{ ...NEW_PASSWORD_INITIAL_VALUES }}
             validationSchema={NEW_PASSWORD_SCHEMA}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
+            onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               handleNewPasswordSubmit(values);
             }}
@@ -64,7 +64,7 @@ const NewPasswordForm = () => {
                 <InputField
                   type="password"
                   name="new_password"
-                  placeholder={"New Password"}
+                  placeholder={t("changePassword.newPasswordText")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.new_password}
@@ -84,7 +84,7 @@ const NewPasswordForm = () => {
                 <InputField
                   type="password"
                   name="confirm_password"
-                  placeholder={"Confirm Password"}
+                  placeholder={t("changePassword.confirmPasswordText")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.confirm_password}
@@ -103,14 +103,14 @@ const NewPasswordForm = () => {
 
                 <FillBtn
                   className="w-100 py-3 mb-3 mt-5"
-                  text={"Confirm"}
+                  text={t("changePassword.confirmText")}
                   type={"submit"}
                   handleOnClick={handleSubmit}
                   disabled={loading === "pending" ? true : false}
                 />
                 <OutlineBtn
                   className="w-100 py-3"
-                  text={"Cancel"}
+                  text={t("changePassword.cancelText")}
                   handleOnClick={handleCancelClick}
                 />
               </Form>

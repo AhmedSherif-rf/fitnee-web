@@ -3,6 +3,7 @@ import InputField from "../InputField";
 import styles from "./style.module.scss";
 import FillBtn from "../Buttons/FillBtn";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { Card, CardBody, CardFooter } from "reactstrap";
 import React, { memo, useCallback, useState } from "react";
 import { CURRENCY, TRAINER_TYPE } from "../../utils/constants";
@@ -11,7 +12,7 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 const EditSubscriptionCard = (props) => {
   const { user } = useSelector((state) => state.user);
   const { id, duration, price, isDummy, handleOnEdit, handleOnAdd } = props;
-
+  const { t , i18n } = useTranslation("");
   const [packagePrice, setPackagePrice] = useState(price);
 
   const handleSubmit = () => {
@@ -44,11 +45,11 @@ const EditSubscriptionCard = (props) => {
 
   return (
     <Card
-      className={`text-center BorderRadius text-black-custom p-0 h-100 mb-5 ${styles.cardHeaderDesign}`}
+      className={`text-center BorderRadius text-black-custom p-0 h-100 mb-5 ${styles.cardHeaderDesign} ${i18n.dir()}`}
     >
       <div className="text-center d-flex justify-content-center">
         <div className={`${styles.headerCard} BorderRadius shadow-sm`}>
-          {duration} {"Month"}
+          {duration} {t("trainer.monthText")}
         </div>
       </div>
 
@@ -69,14 +70,14 @@ const EditSubscriptionCard = (props) => {
         {isDummy && (
           <FillBtn
             className={"px-5"}
-            text={"Add"}
+            text={t("trainer.addText")}
             handleOnClick={handleSubmit}
           />
         )}
         {!isDummy && (
           <FillBtn
             className={"px-5"}
-            text={"Edit"}
+            text=  {t("trainer.editText")}
             disabled={packagePrice === price ? true : false}
             handleOnClick={handleSubmit}
           />

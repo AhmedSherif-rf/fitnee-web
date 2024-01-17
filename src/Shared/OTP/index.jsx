@@ -23,7 +23,7 @@ const OTPVerification = () => {
   const { type } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const [otp, setOtp] = useState("");
   const [requestId, setRequestId] = useState("");
   const [timer, setTimer] = useState({ minutes: 1, seconds: 59 });
@@ -109,7 +109,11 @@ const OTPVerification = () => {
   }, [navigate, requestId]);
 
   return (
-    <Container className={`vh-100 text-black-custom ${styles.otpContainer}`}>
+    <Container
+      className={`vh-100 text-black-custom ${
+        styles.otpContainer
+      } ${i18n.dir()}`}
+    >
       <Row className={`h-100 justify-content-center ${styles.otpWrapper}`}>
         {loading === "pending" && <LoadingScreen />}
         <Col md={4} className={`text-center py-3 ${styles.otpCol}`}>

@@ -1,5 +1,6 @@
 import styles from "./style.module.scss";
 import FillBtn from "../Buttons/FillBtn";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { CURRENCY } from "../../utils/constants";
 import React, { memo, useCallback } from "react";
@@ -11,6 +12,7 @@ import { setSubscriptionPlan } from "../../Redux/features/Subscription/subscript
 const SubscriptionCard = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation("");
   const { duration, price, id } = props;
   const { user } = useSelector((state) => state.user);
 
@@ -42,7 +44,7 @@ const SubscriptionCard = (props) => {
       <CardFooter className="bg-transparent border-0 py-3">
         <FillBtn
           className={"px-5"}
-          text={"Subscribe"}
+          text={t("guest.subscribeText")}
           handleOnClick={handleSubscribeClick}
         />
       </CardFooter>

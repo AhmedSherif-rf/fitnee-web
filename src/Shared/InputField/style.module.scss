@@ -2,14 +2,14 @@
 
 .inputWrapper {
   position: relative;
-  .iconWrapper {
+  .leftIconWrapper {
     position: absolute;
     top: 48%;
     left: 15px;
     transform: translateY(-50%);
     cursor: pointer;
   }
-  .passwordIconWrapper {
+  .rightIconWrapper {
     position: absolute;
     top: 48%;
     right: 15px;

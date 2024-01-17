@@ -6,7 +6,7 @@ import SignInWrapper from "../../../Shared/SignIn/SignInWrapper";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const SignIn = () => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   const SingInData = [
     {
@@ -40,7 +40,7 @@ const SignIn = () => {
     },
   ];
   return (
-    <Container fluid className="vh-100">
+    <Container fluid className={`${i18n.dir()} vh-100`}>
       {SingInData?.map((item) => (
         <SignInWrapper
           CompStyle={item.CompStyle}

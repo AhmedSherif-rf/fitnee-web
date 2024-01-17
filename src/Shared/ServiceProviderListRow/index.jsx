@@ -113,7 +113,7 @@ const Index = (props) => {
         className={"p-4"}
         isOpen={showCancelSubscriptionModal}
         onClose={handleCloseSubscriptionModal}
-        ModalTextOne="Are you sure about canceling your subscription?"
+        ModalTextOne={t("signup.cancellingSubscriptionModalText")}
         ButtonOne={
           <FillBtn
             text={t("signup.yesText")}
@@ -123,7 +123,7 @@ const Index = (props) => {
         }
         ButtonTwo={
           <OutlineBtn
-            text={"No"}
+            text={t("signup.noText")}
             className="py-2 px-5"
             handleOnClick={handleNoClick}
           />

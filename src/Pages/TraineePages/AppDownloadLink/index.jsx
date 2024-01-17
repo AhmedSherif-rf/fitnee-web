@@ -10,7 +10,7 @@ import { CHECK_PAYMENT_STATUS_URL } from "../../../utils/constants";
 import { checkPaymentStatus } from "../../../Redux/features/Subscription/subscriptionApi";
 
 const AppDownloadLink = () => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const dispatch = useDispatch();
   const { entity, checkoutId, loading } = useSelector(
     (state) => state.subscription
@@ -26,7 +26,6 @@ const AppDownloadLink = () => {
       }),
     };
     dispatch(checkPaymentStatus(data)).then((res) => {
-      console.log(res);
       if (res.type === "checkPaymentStatus/fulfilled") {
         setIsPaymentSucceed(true);
       } else if (res.type === "checkPaymentStatus/rejected") {
@@ -37,7 +36,7 @@ const AppDownloadLink = () => {
   }, []);
 
   return (
-    <Container fluid>
+    <Container fluid className={i18n.dir()}>
       {loading === "pending" && (
         <LoadingScreen text="Checking Payment Status" />
       )}
@@ -49,22 +48,11 @@ const AppDownloadLink = () => {
                 <Col md="6" className="text-center">
                   <div className=" pt-3">
                     <h3 className="py-3 fw-bold">
-                      {t("appDownloadLink.congratulationsText")}
+                      {t("appLink.congratulationsText")}
                     </h3>
                     <p className="px-5">
-                      You have subscribed with XXX . XXX, he/she will review
-                      your profile and get back to you shortly, please download
-                      FitNee app and enable the notification.
-                    </p>
-                    <p className="px-5 mb-0">
-                      Be informed that you have the right to cancel your
-                      subscription for any reason within 72 hours and your money
-                      will be in your wallet in the app so you can re-subscribe
-                      with other trainer or nutrition specialist.
-                    </p>
-                    <p className="px-5">
-                      Manage your profile and contact your trainer/nutrition by
-                      downloading the app
+                      {t("appLink.youHaveSubscribedWithText")} XXX . XXX
+                      {t("appLink.downloadAppText")}
                     </p>
                   </div>
                   <div className="text-center">
@@ -81,7 +69,7 @@ const AppDownloadLink = () => {
                         alt=""
                       />
                       <h6 className="text-black-custom fw-bold text-center">
-                        {t("appDownloadLink.getAppText")}
+                        {t("appLink.getAppText")}
                       </h6>
                     </div>
                   </div>
@@ -112,11 +100,7 @@ const AppDownloadLink = () => {
               <Row className="h-100 justify-content-center align-items-center text-center mx-5">
                 <div className="w-50">
                   <RxCrossCircled className="mb-2" color="red" size={70} />
-                  <p className="fw-bold">
-                    Oops! Payment unsuccessful. It seems like there was an issue
-                    processing your payment. Please try again or check your
-                    payment details.
-                  </p>
+                  <p className="fw-bold">{t("messages.paymentFailedText")}</p>
                 </div>
               </Row>
             )}

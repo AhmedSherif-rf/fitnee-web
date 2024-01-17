@@ -27,7 +27,7 @@ import { PAYMENT_METHOD_DETAIL_INITIAL_VALUES } from "../ValidationData/initialV
 const CreditCardDetailWrapper = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const { user } = useSelector((state) => state.user);
   const { loading, subscriptionPlan } = useSelector(
     (state) => state.subscription
@@ -60,7 +60,7 @@ const CreditCardDetailWrapper = () => {
   );
 
   return (
-    <Container fluid className="h-100">
+    <Container fluid className={`h-100 ${i18n.dir()}`}>
       {loading === "pending" && <LoadingScreen />}
       <Row className="h-100 CardDetails">
         <Col md={12}>
@@ -282,7 +282,7 @@ const CreditCardDetailWrapper = () => {
                           <InputField
                             type="number"
                             name="promo_code"
-                            placeholder={"Promo Code"}
+                            placeholder={t("cardDetails.promoCodeText")}
                             onChangeHandle={handleChange}
                             onBlurHandle={handleBlur}
                             value={values.promo_code}

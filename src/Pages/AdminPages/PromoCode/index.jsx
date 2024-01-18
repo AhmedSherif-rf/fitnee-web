@@ -33,7 +33,7 @@ const PromoCode = (props) => {
   ];
   return (
     <React.Fragment>
-      <Row className="h-100">
+      <Row>
         <div className="text-start w-100">
           <PageHeading headingText="Add Promo Code" categoryText="" />
         </div>

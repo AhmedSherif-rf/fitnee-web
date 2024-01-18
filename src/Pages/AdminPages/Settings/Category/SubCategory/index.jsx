@@ -6,6 +6,7 @@ import { Col, Container, Row, Form } from "reactstrap";
 import InputField from "../../../../../Shared/InputField";
 import FillBtn from "../../../../../Shared/Buttons/FillBtn";
 import React, { useEffect, useState, useCallback } from "react";
+import PageHeading from "../../../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../../../HelperMethods/LoadingScreen";
 import GoBack from "../../../../../Shared/AdminShared/Components/GoBack";
 import { ADMIN_EXERCISE_SUBCATEGORY_URL } from "../../../../../utils/constants";
@@ -100,6 +101,9 @@ const SubCategory = () => {
         }) => (
           <Form onSubmit={handleSubmit}>
             <Row>
+              <div className="w-100 text-start">
+                <PageHeading headingText="Sub Categories" categoryText="" />
+              </div>
               <Col md={4} className="mb-2">
                 <InputField
                   type="text"

@@ -2,13 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TbFlagDiscount } from "react-icons/tb";
 import { MdOutlineCategory } from "react-icons/md";
+import PageHeading from "../../../Shared/Headings/PageHeading";
 import { Card, CardBody, Col, Container, Row } from "reactstrap";
 
 const Settings = (props) => {
   return (
     <React.Fragment>
       <Container>
-        <Row className="p-4">
+        <Row className="p-2">
+          <div className="w-100 text-start">
+            <PageHeading headingText="Settings" categoryText="" />
+          </div>
           <Col md={4} className="mb-2">
             <Card className="BorderRadius h-100">
               <CardBody className="p-0">

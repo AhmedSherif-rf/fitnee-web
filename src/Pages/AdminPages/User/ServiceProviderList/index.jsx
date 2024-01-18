@@ -84,11 +84,7 @@ const ServiceProviders = (props) => {
                 style={{ minWidth: "8px", minHeight: "8px" }}
               ></div>
               <span>
-                {serviceProvider?.is_approved
-                  ? "Approved"
-                  : serviceProvider?.is_blocked
-                  ? "Rejected"
-                  : "Pending"}
+                {serviceProvider?.is_approved? "Approved" : serviceProvider?.is_blocked? "Blocked"  : serviceProvider?.is_deleted? "Rejected" : "Pending"}
               </span>
             </div>
           ),

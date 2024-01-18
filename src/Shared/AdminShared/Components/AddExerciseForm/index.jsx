@@ -56,7 +56,7 @@ const AddExerciseForm = () => {
   };
 
   return (
-    <>
+    <div className="tableBodyWrapperPagination">
       {loading === "pending" && <LoadingScreen />}
       <Formik
         initialValues={ADD_EXERCISE_INITIAL_VALUES}
@@ -283,7 +283,7 @@ const AddExerciseForm = () => {
           </Form>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 

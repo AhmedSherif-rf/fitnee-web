@@ -4,6 +4,7 @@ import { Col, Container, Row, Form } from "reactstrap";
 import InputField from "../../../../Shared/InputField";
 import FillBtn from "../../../../Shared/Buttons/FillBtn";
 import React, { useCallback, useEffect, useState } from "react";
+import PageHeading from "../../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import GoBack from "../../../../Shared/AdminShared/Components/GoBack";
 import { ADMIN_EXERCISE_CATEGORY_URL } from "../../../../utils/constants";
@@ -97,6 +98,9 @@ const Category = () => {
         }) => (
           <Form onSubmit={handleSubmit}>
             <Row className=" justify-content-center pb-2">
+              <div className="w-100 text-start">
+                <PageHeading headingText="Categories" categoryText="" />
+              </div>
               <Col md={4} className="mb-2">
                 <InputField
                   type="text"
@@ -140,7 +144,7 @@ const Category = () => {
       {categroiesData && categroiesData.length > 0 && (
         <Row className="tableBodyWrapperPagination">
           {categroiesData.map((category, index) => (
-            <Col lg={4} md={6}  className="mb-2" key={index}>
+            <Col lg={4} md={6} className="mb-2" key={index}>
               <CategoryCard category={category} onEditClick={handleEditClick} />
             </Col>
           ))}

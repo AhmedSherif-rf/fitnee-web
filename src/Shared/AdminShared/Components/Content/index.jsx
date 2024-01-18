@@ -16,7 +16,7 @@ const Content = ({ children, sidebarIsOpen, toggleSidebar }) => (
         <Topbar toggleSidebar={toggleSidebar} />
         <Card
           className="BorderRadius px-3 pb-1"
-          style={{ height: "80vh",overflowY:"hidden" }}
+          style={{ height: "84vh",overflowY:"hidden" }}
         >
           <div className="h-100">{children}</div>
         </Card>

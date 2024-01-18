@@ -75,7 +75,7 @@ const ServiceProviders = (props) => {
                 } rounded-circle`}
                 style={{ minWidth: "8px", minHeight: "8px" }}
               ></div>
-              <span>{trainee?.is_active ? "Approved" : "Not Approve"}</span>
+              <span>{trainee?.is_active ? "Active" : "Inactive"}</span>
             </div>
           ),
           action: (
@@ -121,7 +121,7 @@ const ServiceProviders = (props) => {
       <Col md={12}>
         <Card className="border-0 h-100 text-start">
           <CardHeader className="bg-transparent border-0 p-0">
-            <PageHeading headingText="Service Provider List" categoryText="" />
+            <PageHeading headingText="Trainee List" categoryText="" />
           </CardHeader>
           <CardBody className="tableBodyWrapperPagination">
             {loading === "pending" && <LoadingScreen />}

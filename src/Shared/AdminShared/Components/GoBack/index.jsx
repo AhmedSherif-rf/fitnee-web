@@ -6,15 +6,15 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div
-      className="d-flex align-items-center textYellow py-2 cursorPointer"
+    <button
+      className="d-flex align-items-center border-0 BorderRadius p-2 mt-1 textYellow py-2 shadow-none bg-transparent"
       onClick={() => navigate(-1)}
     >
-      <FaAngleDoubleLeft size={25} /> 
+      <FaAngleDoubleLeft size={25} />
       <div>
-        <small className="fw-bold ms-2">Back</small>
+        <small className="fw-bold ms-1">Back</small>
       </div>
-    </div>
+    </button>
   );
 };
 

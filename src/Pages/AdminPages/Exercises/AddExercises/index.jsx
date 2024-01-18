@@ -9,7 +9,7 @@ const AddExercises = () => {
     <Container>
       <Row>
         <GoBack />
-        <Col md="12" className="text-start">
+        <Col md={12} className="text-start pt-0">
           <PageHeading headingText="Add Exercises" categoryText="" />
         </Col>
         <Col md={12}>

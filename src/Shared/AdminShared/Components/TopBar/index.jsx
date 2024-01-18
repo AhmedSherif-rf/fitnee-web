@@ -49,7 +49,7 @@ const Topbar = ({ toggleSidebar }) => {
       </Button>
       <div className="d-flex gap-3 align-items-center">
         <GoBellFill size={24} />
-        <Nav className={`d-lg-flex d-none text-black-custom`}>
+        <Nav className={`d-md-flex d-none text-black-custom`}>
           <UncontrolledDropdown>
             <DropdownToggle className="p-0" nav>
               <div

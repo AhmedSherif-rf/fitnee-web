@@ -54,11 +54,12 @@
   color: $parrot-green;
 }
 
+
 .contentCard {
   margin-top: 12vh;
   overflow-y: scroll;
   height: 88vh !important;
-  border: none !important;
+  border:none !important;
 }
 
 .contentCardPadding {
@@ -226,6 +227,7 @@ Input::-webkit-input-placeholder {
 .CategoryCard {
   .CategoryCardHeader {
     background-color: $light-yellow !important;
+    height: 100% !important;
   }
 }
 .UncontrolledDropdown {

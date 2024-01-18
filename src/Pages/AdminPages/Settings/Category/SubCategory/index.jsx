@@ -130,7 +130,7 @@ const SubCategory = () => {
               </Col>
               <Col md={2} className="mb-2">
                 <FillBtn
-                  className="w-100 py-3 mb-3"
+                  className="w-100 py-3 mb-2"
                   text={type}
                   disabled={loading === "pending" ? true : false}
                   type={"submit"}
@@ -141,9 +141,9 @@ const SubCategory = () => {
         )}
       </Formik>
       {subCategoriesData.length > 0 && (
-        <Row className="p-4">
+        <Row className="tableBodyWrapperPagination">
           {subCategoriesData.map((subCategory, index) => (
-            <Col md={4} className="mb-2" key={index}>
+            <Col lg={4} md={6} className="mb-2" key={index}>
               <SubCategoryCard
                 subCategory={subCategory}
                 onEditClick={handleEditClick}

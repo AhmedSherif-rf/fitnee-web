@@ -8,26 +8,28 @@ const CategoryCard = (props) => {
 
   return (
     <>
-      <Card className={`border-0 p-0 CategoryCard`}>
+      <Card className={`p-0 CategoryCard h-100 border-0`}>
         <CardHeader
-          className={`p-0 onlyBorderRadius d-flex align-items-center justify-content-between border-0`}
+          className={`p-0 onlyBorderRadius d-flex align-items-center justify-content-between border-0 h-100`}
         >
-          <Link
-            className="w-100"
-            to={`/admin/settings/category/${category.uuid}/${category.id}/subCategory`}
+          <div
+            className={`p-3 h-100 onlyBorderRadius CategoryCardHeader`}
+            style={{ minWidth: "280px", maxWidth: "280px" }}
           >
-            <div
-              className={`w-100 p-3 onlyBorderRadius  ${`CategoryCardHeader`}`}
+            <Link
+              className="w-100 h-100"
+              to={`/admin/settings/category/${category.uuid}/${category.id}/subCategory`}
             >
-              <h6 className="mb-0 text-start fw-bold textGrey">
+              <h6 className="mb-0 h-100 text-start fw-bold textGrey">
                 {category.title} / {category.title_ar}
               </h6>
-            </div>
-          </Link>
+            </Link>
+          </div>
+
           <div className="w-25">
             <div className="rounded-circle text-black-custom">
               <FaEdit
-                className="cursorPointer"
+                className="cursorPointer mb-1"
                 onClick={() =>
                   onEditClick({
                     id: category.id,

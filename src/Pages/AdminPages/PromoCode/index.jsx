@@ -33,108 +33,102 @@ const PromoCode = (props) => {
   ];
   return (
     <React.Fragment>
-      <Container>
-        <Row>
-          <Col md="12" className={`text-start mb-2 b`}>
-            <PageHeading headingText="Add Promo Code" categoryText="" />
-          </Col>
-          <Col md={12} className="mb-3">
-            <Card className="shadow-sm border-0">
-              <CardBody>
-                <Row>
-                  <Col md={6} className="mb-2">
-                    <Label className="w-100 text-start mb-0">Code *</Label>
-                    <InputField
-                      placeholder="DISCOUNT10%"
-                      type="text"
-                      name="code"
-                      className="py-3 mt-1"
-                    />
-                  </Col>
+      <Row className="h-100">
+        <div className="text-start w-100">
+          <PageHeading headingText="Add Promo Code" categoryText="" />
+        </div>
+        <Col md={12} className="tableBodyWrapperPagination">
+          <Card className="shadow-sm mb-2">
+            <CardBody>
+              <Row>
+                <Col md={6} className="mb-2">
+                  <Label className="w-100 text-start mb-0">Code *</Label>
+                  <InputField
+                    placeholder="DISCOUNT10%"
+                    type="text"
+                    name="code"
+                    className="py-3 mt-1"
+                  />
+                </Col>
 
-                  <Col md={6} className="mb-2">
-                    <Label className="w-100 text-start mb-0">
-                      Description *
-                    </Label>
-                    <InputField
-                      placeholder="A discount for first subscription."
-                      type="text"
-                      name="description"
-                      className="py-3 mt-1"
-                    />
-                  </Col>
+                <Col md={6} className="mb-2">
+                  <Label className="w-100 text-start mb-0">Description *</Label>
+                  <InputField
+                    placeholder="A discount for first subscription."
+                    type="text"
+                    name="description"
+                    className="py-3 mt-1"
+                  />
+                </Col>
 
-                  <Col md={6} className="mb-2">
-                    <Label className="w-100 text-start mb-0">
-                      Enter Discount Percentage *
-                    </Label>
+                <Col md={6} className="mb-2">
+                  <Label className="w-100 text-start mb-0">
+                    Enter Discount Percentage *
+                  </Label>
+                  <InputField
+                    icon={<FaGift />}
+                    placeholder="10 %"
+                    type="number"
+                    name="percentage"
+                    className="p-3  text-end mt-1"
+                  />
+                </Col>
+
+                <Col md={6} className="mb-2">
+                  <div className="d-flex align-items-center h-100 mt-2 pt-2">
+                    <Checkbox
+                      label={<p className="mb-0 fs-6">Unlimited Users</p>}
+                      name={"term_and_condition"}
+                    />
+                  </div>
+                </Col>
+
+                <Col md={6} className="mb-2">
+                  <div className="d-flex align-items-center justify-content-between h-100 mt-2 pt-2">
+                    <div className="">
+                      <Checkbox
+                        label={<p className="mb-0 fs-6">User Limit: *</p>}
+                        name={"term_and_condition"}
+                      />
+                    </div>
                     <InputField
-                      icon={<FaGift />}
+                      icon={<FaUsers className="fs-4" />}
                       placeholder="10 %"
                       type="number"
                       name="percentage"
                       className="p-3  text-end mt-1"
                     />
-                  </Col>
+                  </div>
+                </Col>
 
-                  <Col md={6} className="mb-2">
-                    <div className="d-flex align-items-center h-100 mt-2 pt-2">
-                      <Checkbox
-                        label={<p className="mb-0 fs-6">Unlimited Users</p>}
-                        name={"term_and_condition"}
-                      />
+                <Col md={6} className="mb-2">
+                  <div className="d-flex align-items-center justify-content-between h-100 mt-2 pt-2">
+                    <div className="">
+                      <p className="mb-0">Expiry Date: *</p>
                     </div>
+                    <InputField
+                      placeholder="30 /09 / 2023"
+                      type="date"
+                      name="date"
+                      className="p-3 w-100"
+                    />
+                  </div>
+                </Col>
+                <Row className="justify-content-center mt-2">
+                  <Col md={5} className="text-end">
+                    <FillBtn
+                      type={"submit"}
+                      text={"Submit Code"}
+                      className=" w-100 py-3"
+                    />
                   </Col>
-
-                  <Col md={6} className="mb-2">
-                    <div className="d-flex align-items-center justify-content-between h-100 mt-2 pt-2">
-                      <div className="">
-                        <Checkbox
-                          label={<p className="mb-0 fs-6">User Limit: *</p>}
-                          name={"term_and_condition"}
-                        />
-                      </div>
-                      <InputField
-                        icon={<FaUsers className="fs-4" />}
-                        placeholder="10 %"
-                        type="number"
-                        name="percentage"
-                        className="p-3  text-end mt-1"
-                      />
-                    </div>
-                  </Col>
-
-                  <Col md={6} className="mb-2">
-                    <div className="d-flex align-items-center justify-content-between h-100 mt-2 pt-2">
-                      <div className="">
-                        <p className="mb-0">Expiry Date: *</p>
-                      </div>
-                      <InputField
-                        placeholder="30 /09 / 2023"
-                        type="date"
-                        name="date"
-                        className="p-3 w-100"
-                      />
-                    </div>
-                  </Col>
-                  <Row className="justify-content-center mt-2">
-                    <Col md={5} className="mb-2 text-end">
-                      <FillBtn
-                        type={"submit"}
-                        text={"Submit Code"}
-                        className=" w-100 py-3"
-                      />
-                    </Col>
-                  </Row>
                 </Row>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col md={12} className="mb-2">
-            <ListingTable data={tableData} columns={columns} />
-          </Col>
-        </Row>
-      </Container>
+              </Row>
+            </CardBody>
+          </Card>
+          <ListingTable data={tableData} columns={columns} />
+        </Col>
+      </Row>
     </React.Fragment>
   );
 };

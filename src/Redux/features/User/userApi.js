@@ -32,7 +32,9 @@ export const logout = createAsyncThunk(
       Toaster.success("Logged out successfully");
       return response.data;
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.Message);
+      if (error?.response?.data?.error?.Message !== "") {
+        Toaster.error(error?.response?.data?.error?.Message);
+      }
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

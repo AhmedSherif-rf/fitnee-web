@@ -168,11 +168,11 @@ const termAndConditionCheckValidation = Yup.bool().oneOf(
 );
 
 const exerciseTextValidation = Yup.array()
-  .of(Yup.string().required(TranslationHelper("requiredDescriptionText")))
-  .min(1, TranslationHelper("invalidDescriptionText"));
+  .of(Yup.string().required(TranslationHelper("validation.requiredDescriptionText")))
+  .min(1, TranslationHelper("validation.invalidDescriptionText"));
 
 const exerciseVideoValidation = Yup.mixed().required(
-  TranslationHelper("requiredExerciseVideoText")
+  TranslationHelper("validation.requiredExerciseVideoText")
 );
 
 export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({

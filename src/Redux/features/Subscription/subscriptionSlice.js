@@ -8,11 +8,13 @@ export const subscriptionSlice = createSlice({
     error: null,
     success: null,
     loading: "idle",
-    checkoutId: "",
+    checkoutId: null,
     subscriptionPlan: "",
   },
   reducers: {
     setSubscriptionPlan: (state, action) => {
+      state.entity = "";
+      state.checkoutId = "";
       state.subscriptionPlan = action.payload;
     },
   },

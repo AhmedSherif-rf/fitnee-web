@@ -65,15 +65,16 @@ let Images = {
     .default,
   VISA_ICON: require("../../Assets/Images/ConstImgs/visaIcon.png"),
   MADA_ICON: require("../../Assets/Images/ConstImgs/madaIcon.png"),
+  STC_PAY_ICON: require("../../Assets/Images/ConstImgs/stcPayIcon.png"),
   APPLE_PAY_ICON: require("../../Assets/Images/ConstImgs/applePayIcon.png"),
   //==============================ConstImgs====================================
   ARROW_DOWN_IMG: require("../../Assets/Images/ConstImgs/ArrowDown.svg")
     .default,
+  CAMERA_IMG: require("../../Assets/Images/ConstImgs/Frame.svg").default,
   ARROW_UP_IMG: require("../../Assets/Images/ConstImgs/ArrowUp.svg").default,
-  CARD_ICON_IMG: require("../../Assets/Images/ConstImgs/CardIcon.svg").default,
   CREDIT_CARD_IMG: require("../../Assets/Images/ConstImgs/CreditCardImg.svg")
     .default,
-  CAMERA_IMG: require("../../Assets/Images/ConstImgs/Frame.svg").default,
+  CARD_ICON_IMG: require("../../Assets/Images/ConstImgs/CardIcon.svg").default,
   GREEN_CIRCLE_IMG: require("../../Assets/Images/ConstImgs/greenCircle.png")
     .default,
   YELLOW_CIRCLE_IMG: require("../../Assets/Images/ConstImgs/yellowCircle.png")
@@ -93,8 +94,8 @@ let Images = {
     .default,
   //==============================appStore and Google btn Images====================================
   APP_STORE_IMG: require("../../Assets/Images/appStore.svg").default,
-  GOOGLE_PLAY_IMG: require("../../Assets/Images/googlePlay.svg").default,
   CVV_IMG: require("../../Assets/Images/ConstImgs/Hint.svg").default,
+  GOOGLE_PLAY_IMG: require("../../Assets/Images/googlePlay.svg").default,
 };
 
 export default Images;

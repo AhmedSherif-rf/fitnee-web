@@ -1,18 +1,18 @@
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
-import { IoIosArrowRoundBack } from "react-icons/io";
+import { FaAngleDoubleLeft } from "react-icons/fa";
 
 const Index = () => {
   const navigate = useNavigate();
 
   return (
     <div
-      className="d-flex align-items-center textYellow cursorPointer my-2"
+      className="d-flex align-items-center textYellow py-2 cursorPointer"
       onClick={() => navigate(-1)}
     >
-      <IoIosArrowRoundBack size={25} />
+      <FaAngleDoubleLeft size={25} /> 
       <div>
-        <small>Go Back</small>
+        <small className="fw-bold ms-2">Back</small>
       </div>
     </div>
   );

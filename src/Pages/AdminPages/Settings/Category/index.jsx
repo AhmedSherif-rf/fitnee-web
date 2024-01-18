@@ -96,7 +96,7 @@ const Category = () => {
           handleSubmit,
         }) => (
           <Form onSubmit={handleSubmit}>
-            <Row>
+            <Row className=" justify-content-center pb-2">
               <Col md={4} className="mb-2">
                 <InputField
                   type="text"
@@ -107,7 +107,7 @@ const Category = () => {
                   value={values.title}
                   className={"form-control-lg BorderRadiusInput py-3 px-3"}
                 />
-                <p className="errorField text-start">
+                <p className="errorField text-start mb-0">
                   {errors.title && touched.title && errors.title}
                 </p>
               </Col>
@@ -121,13 +121,13 @@ const Category = () => {
                   value={values.title_ar}
                   className={"form-control-lg BorderRadiusInput py-3 px-3 rtl"}
                 />
-                <p className="errorField text-start">
+                <p className="errorField text-start mb-0">
                   {errors.title_ar && touched.title_ar && errors.title_ar}
                 </p>
               </Col>
-              <Col md={2} className="mb-2">
+              <Col md={2} className="mt-1">
                 <FillBtn
-                  className="w-100 py-3 mb-3"
+                  className="w-100 py-2 mb-2"
                   text={type}
                   disabled={loading === "pending" ? true : false}
                   type={"submit"}
@@ -138,9 +138,9 @@ const Category = () => {
         )}
       </Formik>
       {categroiesData && categroiesData.length > 0 && (
-        <Row className="p-4">
+        <Row className="tableBodyWrapperPagination">
           {categroiesData.map((category, index) => (
-            <Col md={4} className="mb-2" key={index}>
+            <Col lg={4} md={6}  className="mb-2" key={index}>
               <CategoryCard category={category} onEditClick={handleEditClick} />
             </Col>
           ))}

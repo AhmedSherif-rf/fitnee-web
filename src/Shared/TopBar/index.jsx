@@ -231,7 +231,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                   <FaBars />
                 </NavbarToggler>
                 {roleType === null && (
-                  <Nav className={"d-lg-flex d-none"} navbar>
+                  <Nav className={`d-lg-flex d-none ${i18n.dir()}`} navbar>
                     <NavItem>
                       <Link
                         className={`nav-link ${styles.navLink} ${textClass} px-2`}

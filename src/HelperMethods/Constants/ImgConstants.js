@@ -57,12 +57,18 @@ let Images = {
   DOCUMENT_IMG: require("../../Assets/Images/serviceProviderListScreen/DocumentImg.svg")
     .default,
   //==============================SubscriptionImgs=============================
-  ONE_MONTH_IMG: require("../../Assets/Images/subscription/oneMonthSubscription.svg")
-    .default,
-  TWO_MONTH_IMG: require("../../Assets/Images/subscription/twoMonthSubscription.svg")
-    .default,
-  THREE_MONTH_IMG: require("../../Assets/Images/subscription/threeMonthSubscription.svg")
-    .default,
+  TRAINER_ONE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/trainerOneMonth.svg").default,
+  TRAINER_TWO_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/trainerTwoMonth.svg").default,
+  TRAINER_THREE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/trainerThreeMonth.svg").default,
+
+  NUTRITIONIST_ONE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/nutritionistOneMonth.svg").default,
+  NUTRITIONIST_TWO_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/nutritionistTwoMonth.svg").default,
+  NUTRITIONIST_THREE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/nutritionistThreeMonth.svg").default,
+
+  BOTH_T_AND_N_ONE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/bothOneMonth.svg").default,
+  BOTH_T_AND_N_TWO_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/bothTwoMonth.svg").default,
+  BOTH_T_AND_N_THREE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/bothThreeMonth.svg").default,
+  
   VISA_ICON: require("../../Assets/Images/ConstImgs/visaIcon.png"),
   MADA_ICON: require("../../Assets/Images/ConstImgs/madaIcon.png"),
   STC_PAY_ICON: require("../../Assets/Images/ConstImgs/stcPayIcon.png"),

@@ -83,13 +83,13 @@ const ServiceProviders = (props) => {
               <span className={`iconBadge me-1`}>
                 <MdOutlinePersonOff
                   size={22}
-                  className="rejectUser cursorPointer"
+                  className={`rejectUser cursorPointer ${trainee.is_blocked ? "" : "text-danger"}`}
                 />
               </span>
               <span className={`iconBadge me-1`}>
                 <MdOutlinePersonOutline
                   size={22}
-                  className="approveUser cursorPointer"
+                  className={`approveUser cursorPointer ${trainee.is_blocked ? "text-success" : ""}`}
                 />
               </span>
             </div>

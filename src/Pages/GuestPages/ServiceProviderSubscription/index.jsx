@@ -55,6 +55,7 @@ const ServiceProviderSubscription = () => {
                         id={item?.id}
                         price={item?.price}
                         duration={item?.duration}
+                        type={item?.membership_type}
                       />
                     </Col>
                   );

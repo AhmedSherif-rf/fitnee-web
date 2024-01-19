@@ -6,6 +6,7 @@ import {
   signUp,
   deleteAccount,
   editProfile,
+  getMyServiceProviders,
 } from "./userApi";
 
 export const userSlice = createSlice({
@@ -91,6 +92,16 @@ export const userSlice = createSlice({
       })
       .addCase(editProfile.rejected, (state) => {
         state.loading = "failed";
+      })
+      .addCase(getMyServiceProviders.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getMyServiceProviders.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getMyServiceProviders.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
       });
   },
 });

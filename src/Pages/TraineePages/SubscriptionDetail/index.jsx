@@ -1,80 +1,48 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
-import FillBtn from "../../../Shared/Buttons/FillBtn";
-import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
+import Pagination from "../../../Shared/Pagination";
+import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../Shared/Headings/PageHeading";
-import { Card, CardBody, Col, Container, Row } from "reactstrap";
-import Images from "../../../HelperMethods/Constants/ImgConstants";
-import ServiceProvider from "../../../Shared/ServiceProviderListRow";
+import React, { useState, useCallback, useEffect } from "react";
+import LoadingScreen from "../../../HelperMethods/LoadingScreen";
+import SubscriptionDetailRow from "../../../Shared/SubscriptionDetailRow";
+import { PER_PAGE_COUNT, MEMBERSHIP_URL } from "../../../utils/constants";
+import { getMyServiceProviders } from "../../../Redux/features/User/userApi";
+import { Card, CardBody, CardFooter, Col, Container, Row } from "reactstrap";
 
-const SubscriptionDetail = () => {
+const Index = () => {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
+  const { loading } = useSelector((state) => state.user);
 
-  const ServiceProviders = [
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      duration: t("traineeSubscriptionDetail.twoMonthsDurationText"),
-      fee: "SAR 1000",
-      CancelButton: (
-        <FillBtn
-          className="w-50 py-2"
-          text={t("traineeSubscriptionDetail.cancelPlanText")}
-        />
-      ),
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      duration: t("traineeSubscriptionDetail.twoMonthsDurationText"),
-      fee: "SAR 1000",
-      CancelButton: (
-        <OutlineBtn
-          className="w-50 disabled py-2 "
-          text={t("traineeSubscriptionDetail.cancelledText")}
-        />
-      ),
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      duration: t("traineeSubscriptionDetail.twoMonthsDurationText"),
-      fee: "SAR 1000",
-      CancelButton: (
-        <FillBtn
-          className="w-50 py-2"
-          text={t("traineeSubscriptionDetail.cancelPlanText")}
-        />
-      ),
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      duration: t("traineeSubscriptionDetail.twoMonthsDurationText"),
-      fee: "SAR 1000",
-      CancelButton: (
-        <OutlineBtn
-          className="w-50 disabled py-2"
-          text={t("traineeSubscriptionDetail.cancelledText")}
-        />
-      ),
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      duration: "Expiry Date:12/11/2023",
-      fee: "SAR 1000",
-      CancelButton: (
-        <FillBtn
-          className="w-50 py-2"
-          text={t("traineeSubscriptionDetail.cancelPlanText")}
-        />
-      ),
-    },
-  ];
+  const [page, setPage] = useState(1);
+  const [totalSize, setSizePages] = useState(0);
+  const [subscriptionData, setSubscriptionData] = useState([]);
+
+  const handlePageChange = useCallback((page) => {
+    setPage(page.selected + 1);
+  }, []);
+
+  useEffect(() => {
+    fetchSubscriptionsData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, page]);
+
+  const fetchSubscriptionsData = () => {
+    const data = {
+      apiEndpoint: MEMBERSHIP_URL,
+    };
+
+    dispatch(getMyServiceProviders(data)).then((res) => {
+      if (res.type === "getMyServiceProviders/fulfilled") {
+        setSizePages(res.payload.data.count);
+        setSubscriptionData(res.payload.data.results);
+      }
+    });
+  };
 
   return (
     <Container fluid className="">
+      {loading === "pending" && <LoadingScreen />}
       <Row className={`${i18n.dir()}`}>
         <Col md={12}>
           <Card className="BorderRadius contentCard px-3">
@@ -92,7 +60,7 @@ const SubscriptionDetail = () => {
               <Row className="align-items-center justify-content-center d-md-flex d-none text-black-custom border-bottom py-2 mb-2">
                 <Col md={2} className="mb-md-0 mb-2">
                   <div className="">
-                    <h6 className="mb-0 w-100 fs-5 fw-bold text-end">
+                    <h6 className="mb-0 w-100 fs-5 fw-bold text-start">
                       {t("traineeSubscriptionDetail.nameText")}
                     </h6>
                   </div>
@@ -112,25 +80,25 @@ const SubscriptionDetail = () => {
                 </Col>
 
                 <Col md={3}>
-                  <div className=" text-end pe-4">
-                    <h6 className="mb-0 w-100 fs-5 fw-bold  ">
+                  <div className=" text-center pe-4">
+                    <h6 className="mb-0 w-100 fs-5 fw-bold">
                       {t("traineeSubscriptionDetail.actionText")}
                     </h6>
                   </div>
                 </Col>
               </Row>
-              {ServiceProviders.map((item) => {
-                return (
-                  <ServiceProvider
-                    useImages={item.useImages}
-                    userName={item.userName}
-                    duration={item.duration}
-                    fee={item.fee}
-                    CancelButton={item.CancelButton}
-                  />
-                );
+              {subscriptionData?.map((data) => {
+                return <SubscriptionDetailRow data={data} />;
               })}
             </CardBody>
+            <CardFooter>
+              {totalSize > PER_PAGE_COUNT && (
+                <Pagination
+                  size={totalSize}
+                  handlePageChange={handlePageChange}
+                />
+              )}
+            </CardFooter>
           </Card>
         </Col>
       </Row>
@@ -138,4 +106,4 @@ const SubscriptionDetail = () => {
   );
 };
 
-export default SubscriptionDetail;
+export default Index;

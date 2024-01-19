@@ -603,13 +603,19 @@
   "traineeServiceProviderList": {
     "trainerText": "Trainer",
     "twoMonthDurationText": "2 Months",
-    "myCurrentTrainerText": "My Current Trainer",
+    "myCurrentTrainerText": "My Current Trainers",
     "myCurrentNutritionistText": "My Current Nutritionists",
     "nameText": "Name",
     "durationText": "Duration",
     "priceText": "Price",
     "startDateText": "Start Date",
-    "endDateText": "End Date"
+    "endDateText": "End Date",
+    "expiredOnText": "Expired on",
+    "refundedText": "Refunded",
+    "cancelledText": "Cancelled",
+    "cancelText": "Cancel",
+    "cannotCancelText": "Cannot Cancel",
+    "expiredText": "Expired"
   },
   "traineeSubscription": {
     "oneMonthDurationText": "1 Months",

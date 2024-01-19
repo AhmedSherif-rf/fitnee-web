@@ -57,6 +57,16 @@ const createFormData = (data) => {
           data[key].forEach((certification, index) => {
             formData.append(`certification`, certification);
           });
+        } else if (key === "subscription_plans") {
+          const updated_subscription_plans = data[key].map(
+            (subscription_plan) => {
+              return { ...subscription_plan, membership_type: data["role"] };
+            }
+          );
+          formData.append(
+            "subscription_plans",
+            JSON.stringify(updated_subscription_plans)
+          );
         } else {
           formData.append(key, JSON.stringify(data[key]));
         }

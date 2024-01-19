@@ -3,7 +3,7 @@
     "homeText": "الرئيسية",
     "servicesText": "خدماتنا",
     "fitneeCommunityText": "مجتمع فتني",
-    "contactUsText": "تواصل معنا" ,
+    "contactUsText": "تواصل معنا",
     "trainersText": "المدربين",
     "traineesText": "المتدربين",
     "nutritionistsText": "اخصائيي التغذية",
@@ -556,7 +556,7 @@
     "lastNameText": "األسم األخير",
     "emailText": "البريد اإللكتروني",
     "passwordText": "الرقم السري",
-    "forgotPasswordText": "نسيت الرقم السري" ,
+    "forgotPasswordText": "نسيت الرقم السري",
     "agreeOnFitneeText": "أوافق على",
     "termsAndConditionsText": "جميع شروط وأحكام فتني",
     "signInText": "تسجيل الدخول",
@@ -606,7 +606,13 @@
     "durationText": "مدة",
     "priceText": "سعر",
     "startDateText": "تاريخ البدء",
-    "endDateText": "تاريخ الانتهاء"
+    "endDateText": "تاريخ الانتهاء",
+    "expiredOnText": "انتهت في",
+    "refundedText": "تمت استردادها",
+    "cancelledText": "تم الإلغاء",
+    "cancelText": "إلغاء",
+    "cannotCancelText": "لا يمكن الإلغاء",
+    "expiredText": "انتهت"
   },
   "traineeSubscription": {
     "oneMonthDurationText": "شهر 1",

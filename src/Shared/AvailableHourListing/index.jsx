@@ -5,7 +5,7 @@ import AvailableHourCard from "../AvailableHourCard";
 
 const AvailableHourList = (props) => {
   const { data: hoursData } = props;
-  const { t, i18n } = useTranslation("");
+  const { i18n } = useTranslation("");
 
   return (
     <>

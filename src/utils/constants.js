@@ -50,6 +50,7 @@ export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
 export const LOGOUT_URL = "/logout/";
+export const MEMBERSHIP_URL = "/membership/";
 export const REGISTER_URL = "/registeruser/";
 export const EDIT_PROFILE_URL = "/User/userId/";
 export const DELETE_ACCOUNT_URL = "/delete/userId/";

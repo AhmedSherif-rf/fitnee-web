@@ -123,7 +123,7 @@ const TraineeServiceProviderListWrapper = (props) => {
                 <DropdownItem
                   onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
                 >
-                  {t("guest.nutritionistsText")}
+                  {t("guest.trainersText")}
                 </DropdownItem>
                 <DropdownItem
                   onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}

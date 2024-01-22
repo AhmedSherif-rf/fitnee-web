@@ -14,8 +14,10 @@
   }
 }
 .togglerNav {
+  height: 60vh !important;
   .navItem,
-  a, div {
+  a,
+  div {
     padding: 6px;
     text-align: center;
     width: 100% !important;
@@ -38,8 +40,8 @@
     justify-content: center;
   }
 }
-.collapseScss{
+.collapseScss {
   z-index: 999;
   margin-top: 57px;
-  position:fixed;
+  position: fixed;
 }

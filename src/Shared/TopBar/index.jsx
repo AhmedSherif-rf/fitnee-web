@@ -508,10 +508,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
               navbar
             >
               {!isPrivate && roleType === null && (
-                <>
+                <div className="mt-3">
                   <NavItem className={`${styles.navItem}`}>
                     <Link to="/">
-                      {" "}
                       <span className={`px-1`}>{t("landing.homeText")}</span>
                     </Link>
                   </NavItem>
@@ -579,7 +578,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       </span>
                     </Link>
                   </NavItem>
-                </>
+                </div>
               )}
               {!isGuest && roleType !== null && (
                 <div>

@@ -7,7 +7,7 @@ const Index = () => {
 
   return (
     <button
-      className="d-flex align-items-center border-0 BorderRadius p-2 mt-1 textYellow py-2 shadow-none bg-transparent"
+      className="d-flex align-items-center border-0 p-2 mt-1 textYellow py-2 bg-transparent"
       onClick={() => navigate(-1)}
     >
       <FaAngleDoubleLeft size={25} />

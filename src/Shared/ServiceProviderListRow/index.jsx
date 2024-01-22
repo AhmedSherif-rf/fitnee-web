@@ -7,13 +7,16 @@ import { CURRENCY } from "../../utils/constants";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const Index = (props) => {
-  const { data } = props;
+  const { data, index } = props;
 
   const { t } = useTranslation("");
 
   return (
     <>
-      <Row className="align-items-center justify-content-center text-black-custom border-bottom text-black-custom py-2 mb-2">
+      <Row
+        className="align-items-center justify-content-center text-black-custom border-bottom text-black-custom py-2 mb-2"
+        key={index}
+      >
         <Col md={3} className="mb-md-0 mb-2">
           <div className="d-flex align-items-center">
             <Link
@@ -68,10 +71,12 @@ const Index = (props) => {
           <div className="BorderYellow p-2 rounded-3 d-md-flex d-block align-items-center justify-content-center">
             <div className="d-flex align-items-center justify-content-center">
               <p className="mb-0 small">
-                {moment(data?.created_at).format("YYYY-MM-DD")}
+                {moment(data?.created_at).format("DD/MM/YYYY")}
               </p>
               <span className="mb-0 mx-1">/</span>
-              <p className="mb-0 small">{data?.expire_date}</p>
+              <p className="mb-0 small">
+                {moment(data?.expire_date).format("DD/MM/YYYY")}
+              </p>
             </div>
             <span className="d-md-none d-block textDark text-center">
               {data?.subscription?.duration} {t("signup.monthsText")}

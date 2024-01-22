@@ -127,7 +127,7 @@ const Dashboard = () => {
                           (certificate, index) => {
                             return (
                               <DocumentCard
-                                key={index}
+                                index={index}
                                 className="BorderRadius"
                                 documentTitle={certificate.title}
                                 documentImg={certificate.certificate_image.replace(
@@ -162,9 +162,10 @@ const Dashboard = () => {
                       <h5 className="fw-bold my-2">
                         {t("trainer.commentText")}
                       </h5>
-                      {commentMedia?.map((item) => {
+                      {commentMedia?.map((item, index) => {
                         return (
                           <CommentCard
+                            index={index}
                             commentTitle={item.commentTitle}
                             commentImg={item.imgSrc}
                             commentContent={t(

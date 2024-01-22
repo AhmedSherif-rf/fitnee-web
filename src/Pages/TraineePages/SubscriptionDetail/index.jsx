@@ -87,8 +87,8 @@ const Index = () => {
                   </div>
                 </Col>
               </Row>
-              {subscriptionData?.map((data) => {
-                return <SubscriptionDetailRow data={data} />;
+              {subscriptionData?.map((data, index) => {
+                return <SubscriptionDetailRow data={data} index={index} />;
               })}
             </CardBody>
             <CardFooter>

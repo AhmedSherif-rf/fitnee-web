@@ -10,7 +10,7 @@ import InformationModal from "../Modal/InformationModal";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const Index = (props) => {
-  const { data } = props;
+  const { data, index } = props;
 
   const { t } = useTranslation("");
   const [
@@ -49,7 +49,10 @@ const Index = (props) => {
 
   return (
     <>
-      <Row className="align-items-center justify-content-center text-black-custom border-bottom text-black-custom py-2 mb-2">
+      <Row
+        className="align-items-center justify-content-center text-black-custom border-bottom text-black-custom py-2 mb-2"
+        key={index}
+      >
         <Col md={3} className="mb-md-0 mb-2">
           <div className="d-flex align-items-center">
             <Link
@@ -93,7 +96,7 @@ const Index = (props) => {
             <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
               <span>{`${t(
                 "traineeServiceProviderList.startDateText"
-              )} : ${moment(data?.created_at).format("YYYY-MM-DD")}`}</span>
+              )} : ${moment(data?.created_at).format("DD/MM/YYYY")}`}</span>
               <br />
               <span>{`${t("traineeServiceProviderList.endDateText")} : ${
                 data?.expire_date

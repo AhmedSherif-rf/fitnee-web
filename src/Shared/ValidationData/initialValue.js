@@ -185,3 +185,10 @@ export const ADD_EXERCISE_INITIAL_VALUES = {
   exercise_part_text: [""],
   exercise_part_text_ar: [""],
 };
+
+export const ADD_PROGRESS_INITIAL_VALUES = {
+  weight: "",
+  protien: "",
+  body_fat_mass: "",
+  skeletal_muscel_mass: "",
+};

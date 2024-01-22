@@ -20,7 +20,7 @@ const Index = () => {
 
   const [page, setPage] = useState(1);
   const [totalSize, setSizePages] = useState(0);
-  const [trainersData, setTrainersData] = useState([]);
+  const [nutritionistsData, setNutritionistsData] = useState([]);
 
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
@@ -39,7 +39,7 @@ const Index = () => {
     dispatch(getMyServiceProviders(data)).then((res) => {
       if (res.type === "getMyServiceProviders/fulfilled") {
         setSizePages(res.payload.data.count);
-        setTrainersData(res.payload.data.results);
+        setNutritionistsData(res.payload.data.results);
       }
     });
   };
@@ -102,9 +102,14 @@ const Index = () => {
                   </Row>
                 </Col>
               </Row>
-              {trainersData?.map((data) => {
-                return <ServiceProvider data={data} />;
+              {nutritionistsData?.map((data, index) => {
+                return <ServiceProvider data={data} index={index} />;
               })}
+              {nutritionistsData.length <= 0 && (
+                <div className="d-flex justify-content-center py-4 text-black-custom">
+                  {t("messages.noDataFoundText")}
+                </div>
+              )}
             </CardBody>
             <CardFooter>
               {totalSize > PER_PAGE_COUNT && (

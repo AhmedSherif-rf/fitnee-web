@@ -120,7 +120,7 @@ const ServiceProviderProfileWrapper = (props) => {
                           serviceProviderProfile?.ServiceProvider_Certification?.map(
                             (certificate, index) => (
                               <DocumentCard
-                                key={index}
+                                index={index}
                                 className="BorderYellow"
                                 documentTitle={certificate?.title}
                                 documentImg={certificate?.certificate_image}
@@ -152,9 +152,10 @@ const ServiceProviderProfileWrapper = (props) => {
                           <h5 className="fw-bold mt-3 text-black-custom">
                             {t("guest.commentsText")}
                           </h5>
-                          {commentsData.map((item) => {
+                          {commentsData.map((item, index) => {
                             return (
                               <CommentCard
+                                index={index}
                                 commentTitle={item.commentTitle}
                                 commentImg={item.imgSrc}
                                 commentContent={item.commentContent}

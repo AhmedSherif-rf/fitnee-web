@@ -42,12 +42,13 @@ const ContactUs = () => {
 
   return (
     <Container fluid className={`vh-100 ${i18n.dir()}`}>
-      {ContactUsData?.map((item) => (
+      {ContactUsData?.map((item, index) => (
         <ContactUsWrapper
           CompStyle={item.CompStyle}
           text1={item.text1}
           text2={item.text2}
           text3={item.text3}
+          index={index}
         />
       ))}
     </Container>

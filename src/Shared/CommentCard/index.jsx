@@ -3,10 +3,10 @@ import StarRating from "../Rating";
 import React, { memo } from "react";
 
 const CommentsCard = (props) => {
-  const { commentImg, commentTitle, commentContent } = props;
+  const { commentImg, commentTitle, commentContent, index } = props;
 
   return (
-    <Col md={12}>
+    <Col md={12} index={index}>
       <div class="d-flex align-items-center px-2">
         <div>
           {" "}
@@ -23,7 +23,7 @@ const CommentsCard = (props) => {
         <div className="ms-3">
           <span className="d-flex align-items-end mb-2 gap-2">
             <h6 className="mb-0 fw-bold">{commentTitle}</h6>
-            <StarRating/>
+            <StarRating />
           </span>
           <p className="mb-0 small lh-1"> {commentContent}</p>
         </div>

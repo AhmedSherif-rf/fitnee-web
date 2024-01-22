@@ -109,11 +109,12 @@ const Subscription = () => {
                   >
                     <EditSubscriptionCard
                       id={item.id}
-                      duration={item.duration}
                       price={item.price}
+                      isDummy={item?.isDummy}
+                      duration={item.duration}
                       handleOnAdd={handleOnAdd}
                       handleOnEdit={handleOnEdit}
-                      isDummy={item?.isDummy}
+                      type={item?.membership_type}
                     />
                   </Col>
                 );

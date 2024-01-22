@@ -471,7 +471,7 @@
     "ProteinText": "Protein",
     "bfmText": "BFM",
     "smmText": "SMM",
-    "weightText": "Weight :",
+    "weightText": "Weight",
     "bodyFatMassText": "Body Fat Mass",
     "skeletalMuscleMassText": "Skeletal Muscle Mass",
     "addYourProgressText": "Add Your Progress",
@@ -640,7 +640,8 @@
     "downloadAppText": ", he/she will review your profile and get back to you shortly, please download FitNee app and enable the notification. Be informed that you have the right to cancel your subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer or nutrition specialist. Manage your profile and contact your trainer/nutrition by downloading the app"
   },
   "messages": {
-    "paymentFailedText": "Oops! Payment unsuccessful. It seems like there was an issue processing your payment. Please try again or check your payment details."
+    "paymentFailedText": "Oops! Payment unsuccessful. It seems like there was an issue processing your payment. Please try again or check your payment details.",
+    "noDataFoundText": "No Data Found"
   },
   "topBar": {
     "dashboardText": "Dashboard",

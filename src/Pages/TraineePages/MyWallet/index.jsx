@@ -1,5 +1,5 @@
 import { Container, Row, Col, Card } from "reactstrap";
-import PaymentHistoryWrapper from "../../../Shared/PaymentHistoryWrapper";
+import TraineeWalletWrapper from "../../../Shared/TraineeWalletWrapper";
 
 const MyWallet = () => {
   return (
@@ -7,7 +7,7 @@ const MyWallet = () => {
       <Row className="justify-content-center">
         <Col md={12}>
           <Card className="BorderRadius contentCard overflow-x-hidden">
-            <PaymentHistoryWrapper />
+            <TraineeWalletWrapper />
           </Card>
         </Col>
       </Row>

@@ -9,8 +9,7 @@ import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../../../ProfileInformationCard";
 import { BsFillPersonXFill, BsPersonCheckFill } from "react-icons/bs";
 import { Row, Container, Col, Card, CardBody, Badge } from "reactstrap";
-import { GUEST_SERVICE_PROVIDER_PROFILE_URL } from "../../../../utils/constants";
-import { getServiceProviderProfile } from "../../../../Redux/features/Guest/guestApi";
+import { ADMIN_SERVICE_PROVIDER_PROFILE_URL } from "../../../../utils/constants";
 import {
   ADMIN_APPROVE_REVIEW_REQUEST_URL,
   ADMIN_REJECT_REVIEW_REQUEST_URL,
@@ -18,15 +17,13 @@ import {
 import {
   approveReviewRequest,
   rejectReviewRequest,
+  getServiceProviderDetail,
 } from "../../../../Redux/features/Admin/ReviewRequest/ReviewRequestApi";
 
 const ServiceProviderProfileWrapper = (props) => {
-  const { uuid } = useParams();
+  const { userId } = useParams();
   const navigate = useNavigate();
-  const { loading } = useSelector((state) => state.guest);
-  const { loading: reviewRequestLoading } = useSelector(
-    (state) => state.reviewRequest
-  );
+  const { loading } = useSelector((state) => state.reviewRequest);
 
   const [serviceProviderProfile, setServiceProviderProfile] = useState(null);
 
@@ -35,15 +32,15 @@ const ServiceProviderProfileWrapper = (props) => {
 
   useEffect(() => {
     const data = {
-      apiEndpoint: `${GUEST_SERVICE_PROVIDER_PROFILE_URL}?uuid=${uuid}`,
+      apiEndpoint: ADMIN_SERVICE_PROVIDER_PROFILE_URL.replace("userId", userId),
     };
 
-    dispatch(getServiceProviderProfile(data)).then((res) => {
-      if (res.type === "getServiceProviderProfile/fulfilled") {
-        setServiceProviderProfile(res.payload.data[0]);
+    dispatch(getServiceProviderDetail(data)).then((res) => {
+      if (res.type === "getServiceProviderDetail/fulfilled") {
+        setServiceProviderProfile(res.payload.data);
       }
     });
-  }, [dispatch, uuid]);
+  }, [dispatch, userId]);
 
   const handleApproveRequestClick = (email) => {
     const data = {
@@ -75,9 +72,7 @@ const ServiceProviderProfileWrapper = (props) => {
     <Container fluid className="p-2">
       <GoBack />
       <Row>
-        {(loading === "pending" || reviewRequestLoading === "pending") && (
-          <LoadingScreen />
-        )}
+        {loading === "pending" && <LoadingScreen />}
         {serviceProviderProfile && (
           <Col md={12} className="text-start">
             <Row>
@@ -147,7 +142,7 @@ const ServiceProviderProfileWrapper = (props) => {
                         serviceProviderProfile?.ServiceProvider_Certification?.map(
                           (certificate, index) => (
                             <DocumentCard
-                              key={index}
+                              index={index}
                               className="BorderYellow"
                               documentTitle={certificate?.title}
                               documentImg={certificate?.certificate_image}

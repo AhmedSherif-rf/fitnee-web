@@ -730,7 +730,7 @@ const SignUpForm = () => {
                       {user?.ServiceProvider_Certification?.map(
                         (certificate, index) => (
                           <DocumentCard
-                            key={index}
+                            index={index}
                             className="BorderYellow"
                             documentTitle={certificate?.title}
                             documentImg={certificate?.certificate_image}
@@ -1236,7 +1236,7 @@ const SignUpForm = () => {
                       <>
                         {values?.subscription_plans?.map(
                           (subscription_plan, index) => (
-                            <Col md={4}>
+                            <Col md={4} key={index}>
                               <p className="mb-0">{`${index + 1} ${t(
                                 "signup.monthsText"
                               )}`}</p>

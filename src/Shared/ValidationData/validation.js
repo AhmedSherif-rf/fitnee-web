@@ -168,7 +168,11 @@ const termAndConditionCheckValidation = Yup.bool().oneOf(
 );
 
 const exerciseTextValidation = Yup.array()
-  .of(Yup.string().required(TranslationHelper("validation.requiredDescriptionText")))
+  .of(
+    Yup.string().required(
+      TranslationHelper("validation.requiredDescriptionText")
+    )
+  )
   .min(1, TranslationHelper("validation.invalidDescriptionText"));
 
 const exerciseVideoValidation = Yup.mixed().required(
@@ -320,10 +324,19 @@ export const ADD_EXERCISE_SCHEMA = Yup.object().shape({
   exercise_part_text: exerciseTextValidation,
   exercise_part_text_ar: exerciseTextValidation,
 });
+
 export const SCHEMA_PROMO_CODE = Yup.object().shape({
   code: RequiredValidation,
   type: RequiredValidation,
   value: RequiredValidation,
   user_limit: RequiredValidation,
   expiry_date: RequiredValidation,
+
+
+// export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
+//   weight: RequiredValidation,
+//   protien: RequiredValidation,
+//   body_fat_mass: RequiredValidation,
+//   skeletal_muscel_mass: RequiredValidation,
+// >>>>>>> 8ec4aeeb512432ee92093521916aecbbfd7223fc
 });

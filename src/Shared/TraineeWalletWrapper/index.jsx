@@ -1,7 +1,7 @@
+import WalletDetail from "../WalletDetail";
 import { useTranslation } from "react-i18next";
 import { memo, useEffect, useState } from "react";
 import PageHeading from "../Headings/PageHeading";
-import TransactionDetail from "../TransactionDetail";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { TRANSACTION_HISTORY_URL } from "../../utils/constants";
@@ -64,7 +64,7 @@ const PaymentHistoryWrapper = () => {
               {transactionHistoryData &&
                 transactionHistoryData.map((item, index) => {
                   return (
-                    <TransactionDetail key={index} data={item?.transactions} />
+                    <WalletDetail index={index} data={item?.transactions} />
                   );
                 })}
               {transactionHistoryData && transactionHistoryData.length <= 0 && (

@@ -31,7 +31,6 @@ const SubscriptionCard = (props) => {
   }, [dispatch, duration, id, navigate, price, user]);
 
   const getSubscriptionCardImage = (duration, type) => {
-    console.log(duration, type);
     if (type === TRAINER_ROLE) {
       if (duration === 1) {
         return Images.TRAINER_ONE_MONTH_IMG;

@@ -59,6 +59,7 @@ export const GET_SPECIALITIES_URL = "/specialities/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
 export const PROMO_CODE_LIST_URL = "/admin/promo-codes";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
+export const TRAINEE_PROGRESS_URL = "/trainee/progress/";
 export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
@@ -69,6 +70,7 @@ export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
 export const CHECK_PAYMENT_STATUS_URL = "/payment/hyperpay_status/";
 export const ADMIN_REVIEW_REQUEST_URL = "/service_provider_requests";
+export const TRANSACTION_HISTORY_URL = "/wallet/wallet_transitions/";
 export const GUEST_SUBSCRIPTION_PLAN_URL = "/guest/service_subscription";
 export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
@@ -76,7 +78,14 @@ export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
+<<<<<<< HEAD
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL = "/serviceprovider_logged_in";
+=======
+export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
+  "/admin/service-providers/userId/";
+export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
+  "/serviceprovider_logged_in";
+>>>>>>> 8ec4aeeb512432ee92093521916aecbbfd7223fc
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
 export const FORBIDDEN_CODE = 403;

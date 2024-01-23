@@ -41,12 +41,13 @@ const SignIn = () => {
   ];
   return (
     <Container fluid className={`${i18n.dir()} vh-100`}>
-      {SingInData?.map((item) => (
+      {SingInData?.map((item, index) => (
         <SignInWrapper
           CompStyle={item.CompStyle}
           text1={item.text1}
           text2={item.text2}
           text3={item.text3}
+          index={index}
         />
       ))}
     </Container>

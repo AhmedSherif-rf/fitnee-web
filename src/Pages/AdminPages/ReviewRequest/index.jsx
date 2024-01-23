@@ -34,7 +34,7 @@ const ReviewRequest = () => {
 
   useEffect(() => {
     fetchReviewRequests();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, page]);
 
   const fetchReviewRequests = () => {
@@ -84,7 +84,7 @@ const ReviewRequest = () => {
       reviewRequests.forEach((request) =>
         requestArray.push({
           full_name: (
-            <Link to={`/admin/reviewRequestDetail/${request?.uuid}`}>
+            <Link to={`/admin/reviewRequestDetail/${request?.id}`}>
               <div className="d-flex align-items-center">
                 <div
                   className="bgProperties rounded-circle me-2"

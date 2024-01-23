@@ -27,7 +27,7 @@ export const exerciseSlice = createSlice({
       })
       .addCase(addCategory.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action.payload?.error;
       })
       .addCase(getAllCategory.pending, (state) => {
         state.loading = "pending";
@@ -38,7 +38,7 @@ export const exerciseSlice = createSlice({
       })
       .addCase(getAllCategory.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action.payload?.error;
       })
       .addCase(updateCategory.pending, (state) => {
         state.loading = "pending";
@@ -49,7 +49,7 @@ export const exerciseSlice = createSlice({
       })
       .addCase(updateCategory.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action.payload?.error;
       })
       .addCase(getAllSubCategory.pending, (state) => {
         state.loading = "pending";
@@ -60,7 +60,7 @@ export const exerciseSlice = createSlice({
       })
       .addCase(getAllSubCategory.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action.payload?.error;
       })
       .addCase(addSubCategory.pending, (state) => {
         state.loading = "pending";
@@ -71,7 +71,7 @@ export const exerciseSlice = createSlice({
       })
       .addCase(addSubCategory.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action.payload?.error;
       })
       .addCase(updateSubCategory.pending, (state) => {
         state.loading = "pending";
@@ -82,7 +82,7 @@ export const exerciseSlice = createSlice({
       })
       .addCase(updateSubCategory.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action.payload?.error;
       })
       .addCase(addExercise.pending, (state) => {
         state.loading = "pending";
@@ -93,7 +93,7 @@ export const exerciseSlice = createSlice({
       })
       .addCase(addExercise.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action.payload?.error;
       });
   },
 });

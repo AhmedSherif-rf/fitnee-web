@@ -102,9 +102,14 @@ const Index = () => {
                   </Row>
                 </Col>
               </Row>
-              {trainersData?.map((data) => {
-                return <ServiceProvider data={data} />;
+              {trainersData?.map((data, index) => {
+                return <ServiceProvider data={data} index={index} />;
               })}
+              {trainersData.length <= 0 && (
+                <div className="d-flex justify-content-center py-4 text-black-custom">
+                  {t("messages.noDataFoundText")}
+                </div>
+              )}
             </CardBody>
             <CardFooter>
               {totalSize > PER_PAGE_COUNT && (

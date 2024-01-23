@@ -8,6 +8,7 @@ import {
   CountrySelect,
   StateSelect,
 } from "react-country-state-city";
+import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import SubHeading from "../Headings/SubHeading";
 import { CURRENCY } from "../../utils/constants";
@@ -31,6 +32,11 @@ const CreditCardDetailWrapper = () => {
   const { loading, subscriptionPlan, checkoutId, entity } = useSelector(
     (state) => state.subscription
   );
+  const [summaryData, setSummaryData] = useState({
+    grandTotal: subscriptionPlan.price,
+    discount: 0,
+    walletAmount: 0,
+  });
 
   useEffect(() => {
     if (checkoutId) {
@@ -397,7 +403,12 @@ const CreditCardDetailWrapper = () => {
                 </div>
                 <div style={{ width: "20%" }}>
                   <h6 className="mb-0">
-                    {CURRENCY} {subscriptionPlan.price}
+                    {CURRENCY}{" "}
+                    {functions.getSummary(
+                      summaryData.discount,
+                      summaryData.walletAmount,
+                      subscriptionPlan.price
+                    )}
                   </h6>
                 </div>
               </div>

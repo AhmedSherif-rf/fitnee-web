@@ -84,7 +84,7 @@ const ReviewRequest = () => {
       reviewRequests.forEach((request) =>
         requestArray.push({
           full_name: (
-            <Link to={`/admin/reviewRequestDetail/${request?.id}`}>
+            <Link to={`/admin/reviewRequestDetail/${request?.uuid}`}>
               <div className="d-flex align-items-center">
                 <div
                   className="bgProperties rounded-circle me-2"

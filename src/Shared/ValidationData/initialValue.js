@@ -185,19 +185,16 @@ export const ADD_EXERCISE_INITIAL_VALUES = {
   exercise_part_text: [""],
   exercise_part_text_ar: [""],
 };
-<<<<<<< HEAD
 export const INITIAL_VALUES_PROMO_CODE = {
   code: "",
   type: "",
   value: "",
   user_limit: "",
   expiry_date: "",
-=======
-
+}
 export const ADD_PROGRESS_INITIAL_VALUES = {
   weight: "",
   protien: "",
   body_fat_mass: "",
   skeletal_muscel_mass: "",
->>>>>>> 8ec4aeeb512432ee92093521916aecbbfd7223fc
 };

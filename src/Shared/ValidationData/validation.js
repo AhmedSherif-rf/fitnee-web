@@ -332,11 +332,10 @@ export const SCHEMA_PROMO_CODE = Yup.object().shape({
   user_limit: RequiredValidation,
   expiry_date: RequiredValidation,
 
-
-// export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
-//   weight: RequiredValidation,
-//   protien: RequiredValidation,
-//   body_fat_mass: RequiredValidation,
-//   skeletal_muscel_mass: RequiredValidation,
-// >>>>>>> 8ec4aeeb512432ee92093521916aecbbfd7223fc
+});
+export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
+  weight: RequiredValidation,
+  protien: RequiredValidation,
+  body_fat_mass: RequiredValidation,
+  skeletal_muscel_mass: RequiredValidation,
 });

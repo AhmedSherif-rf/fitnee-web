@@ -78,14 +78,9 @@ export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
-<<<<<<< HEAD
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL = "/serviceprovider_logged_in";
-=======
 export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
   "/admin/service-providers/userId/";
-export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
-  "/serviceprovider_logged_in";
->>>>>>> 8ec4aeeb512432ee92093521916aecbbfd7223fc
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
 export const FORBIDDEN_CODE = 403;

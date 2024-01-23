@@ -7,6 +7,7 @@ import languageSlice from "./features/Language/languageSlice.js";
 import exerciseSlice from "./features/Exercise/exerciseSlice.js";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactUsSlice from "./features/ContactUs/contactUsSlice.js";
+import promoCode from "./features/Admin/PromoCode/promoCodeSlice.js";
 import subscriptionSlice from "./features/Subscription/subscriptionSlice.js";
 import userListingSlice from "./features/Admin/UserListing/userListingSlice.js";
 import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.js";
@@ -22,6 +23,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userSlice,
   guest: guestSlice,
+  promoCode: promoCode,
   exercise: exerciseSlice,
   language: languageSlice,
   contactUs: contactUsSlice,

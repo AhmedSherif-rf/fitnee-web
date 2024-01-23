@@ -57,6 +57,7 @@ export const DELETE_ACCOUNT_URL = "/delete/userId/";
 export const NEW_PASSWORD_URL = "/forget_password/";
 export const GET_SPECIALITIES_URL = "/specialities/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
+export const PROMO_CODE_LIST_URL = "/admin/promo-codes";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
 export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
@@ -75,8 +76,7 @@ export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
-export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
-  "/serviceprovider_logged_in";
+export const TRAINEE_SERVICE_PROVIDER_LISTING_URL = "/serviceprovider_logged_in";
 //=================StatusCodes===================
 export const SUCCESS_CODES = [200, 201];
 export const FORBIDDEN_CODE = 403;
@@ -97,3 +97,5 @@ export const category = [
 ];
 //=======================AdminPanel select duration=====================
 export const duration = ["Weekly", "monthly"];
+//=======================AdminPanel select promotion type=====================
+export const promoType = ["flat", "Percentage"];

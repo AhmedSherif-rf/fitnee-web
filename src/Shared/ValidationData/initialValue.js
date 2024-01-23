@@ -185,3 +185,10 @@ export const ADD_EXERCISE_INITIAL_VALUES = {
   exercise_part_text: [""],
   exercise_part_text_ar: [""],
 };
+export const INITIAL_VALUES_PROMO_CODE = {
+  code: "",
+  type: "",
+  value: "",
+  user_limit: "",
+  expiry_date: "",
+};

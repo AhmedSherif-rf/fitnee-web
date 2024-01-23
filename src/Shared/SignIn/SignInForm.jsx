@@ -98,7 +98,6 @@ const SignInForm = () => {
         {loading === "pending" && <LoadingScreen />}
         <Col lg={7} md={12} sm={10}>
           <h1 className="text-center mb-5 fs-1 fw-bold">
-            {" "}
             {t("login.loginText")}
           </h1>
           <Formik

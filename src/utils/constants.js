@@ -57,8 +57,8 @@ export const DELETE_ACCOUNT_URL = "/delete/userId/";
 export const NEW_PASSWORD_URL = "/forget_password/";
 export const GET_SPECIALITIES_URL = "/specialities/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
-export const PROMO_CODE_LIST_URL = "/admin/promo-codes";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
+export const ADMIN_PROMO_CODE_URL = "/admin/promo-codes";
 export const TRAINEE_PROGRESS_URL = "/trainee/progress/";
 export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
@@ -68,6 +68,7 @@ export const ADMIN_TRAINEE_LISTING_URL = "/admin/trainees/";
 export const ADMIN_EXERCISE_CATEGORY_URL = "/admin/exercise/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
+export const ADMIN_CREATE_PROMO_CODE_URL = "/admin/promo-codes/";
 export const CHECK_PAYMENT_STATUS_URL = "/payment/hyperpay_status/";
 export const ADMIN_REVIEW_REQUEST_URL = "/service_provider_requests";
 export const TRANSACTION_HISTORY_URL = "/wallet/wallet_transitions/";
@@ -78,7 +79,8 @@ export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
-export const TRAINEE_SERVICE_PROVIDER_LISTING_URL = "/serviceprovider_logged_in";
+export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
+  "/serviceprovider_logged_in";
 export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
   "/admin/service-providers/userId/";
 //=================StatusCodes===================
@@ -102,4 +104,4 @@ export const category = [
 //=======================AdminPanel select duration=====================
 export const duration = ["Weekly", "monthly"];
 //=======================AdminPanel select promotion type=====================
-export const promoType = ["flat", "Percentage"];
+export const promoCodeTypeOptions = ["flat", "percentage"];

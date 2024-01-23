@@ -8,24 +8,46 @@ import React, { memo, useEffect, useState } from "react";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import { Card, CardBody, Col, Row, Label, Form } from "reactstrap";
-import { PROMO_CODE_LIST_URL, promoType } from "../../../utils/constants";
-import { SCHEMA_PROMO_CODE } from "../../../Shared/ValidationData/validation";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
-import { INITIAL_VALUES_PROMO_CODE } from "../../../Shared/ValidationData/initialValue";
-import { getPromoCodeList } from "../../../Redux/features/Admin/PromoCode/promoCodeApi";
+import { ADD_PROMO_CODE_SCHEMA } from "../../../Shared/ValidationData/validation";
+import { ADD_PROMO_CODE_INITIAL_VALUES } from "../../../Shared/ValidationData/initialValue";
+import {
+  ADMIN_PROMO_CODE_URL,
+  promoCodeTypeOptions,
+  ADMIN_CREATE_PROMO_CODE_URL,
+} from "../../../utils/constants";
+import {
+  getPromoCodeList,
+  createPromoCodeList,
+} from "../../../Redux/features/Admin/PromoCode/promoCodeApi";
 
 const PromoCode = (props) => {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.userListing);
+  const { loading } = useSelector((state) => state.promoCode);
 
   const [tableData, setTableData] = useState([]);
   const [promoCodeData, setPromoCodeData] = useState(null);
 
-  const handleLoginSubmit = (values) => {};
+  const handleAddPromoCodeSubmit = (values) => {
+    const data = {
+      apiEndpoint: ADMIN_CREATE_PROMO_CODE_URL,
+      requestData: JSON.stringify(values),
+    };
+    dispatch(createPromoCodeList(data)).then((res) => {
+      if (res.type === "createPromoCodeList/fulfilled") {
+        setPromoCodeData(res.payload.data);
+        fetchPromoCodeListing();
+      }
+    });
+  };
 
   useEffect(() => {
+    fetchPromoCodeListing();
+  }, [dispatch]);
+
+  const fetchPromoCodeListing = () => {
     const data = {
-      apiEndpoint: `${PROMO_CODE_LIST_URL}`,
+      apiEndpoint: `${ADMIN_PROMO_CODE_URL}`,
     };
 
     dispatch(getPromoCodeList(data)).then((res) => {
@@ -33,19 +55,19 @@ const PromoCode = (props) => {
         setPromoCodeData(res.payload.data);
       }
     });
-  }, [dispatch]);
+  };
 
   useEffect(() => {
     if (promoCodeData && promoCodeData.length > 0) {
       let promoCodeArray = [];
-      promoCodeData.forEach((promoCode, index) => {
+      promoCodeData.forEach((promoCode) => {
         promoCodeArray.push({
           id: <h6 className="text-secondary fw-bold mb-0">{promoCode.id}</h6>,
           code: promoCode.code,
           type: promoCode.type,
           limited_users: promoCode.limited_users,
           value: promoCode.value,
-          expiry_date: promoCode.expire_date,
+          expire_date: promoCode.expire_date,
         });
       });
       setTableData(promoCodeArray);
@@ -53,13 +75,12 @@ const PromoCode = (props) => {
       setTableData([]);
     }
   }, [promoCodeData]);
-
   const columns = [
     { label: "ID", dataKey: "id", align: "center" },
     { label: "Code", dataKey: "code" },
     { label: "Type", dataKey: "type" },
     { label: "User Limit", dataKey: "limited_users", align: "center" },
-    { label: "Expiry Date", dataKey: "expiry_date", align: "center" },
+    { label: "Expire Date", dataKey: "expire_date", align: "center" },
   ];
 
   return (
@@ -73,11 +94,11 @@ const PromoCode = (props) => {
           <Card className="shadow-sm mb-2">
             <CardBody>
               <Formik
-                initialValues={{ ...INITIAL_VALUES_PROMO_CODE }}
-                validationSchema={SCHEMA_PROMO_CODE}
+                initialValues={{ ...ADD_PROMO_CODE_INITIAL_VALUES }}
+                validationSchema={ADD_PROMO_CODE_SCHEMA}
                 onSubmit={(values, { setSubmitting }) => {
                   setSubmitting(true);
-                  handleLoginSubmit(values);
+                  handleAddPromoCodeSubmit(values);
                 }}
               >
                 {({
@@ -93,13 +114,15 @@ const PromoCode = (props) => {
                       <Col md={6} className="mb-2">
                         <Label className="w-100 text-start mb-0">Code *</Label>
                         <InputField
-                          placeholder="free200"
                           type="text"
                           name="code"
-                          className="py-3 mt-1"
+                          className="py-3"
+                          placeholder="Free200"
                           value={values.code}
+                          onBlurHandle={handleBlur}
+                          onChangeHandle={handleChange}
                         />
-                        <p className="errorField text-end">
+                        <p className="errorField text-start">
                           {errors.code && touched.code && errors.code}
                         </p>
                       </Col>
@@ -107,15 +130,15 @@ const PromoCode = (props) => {
                       <Col md={6}>
                         <label className="mb-0 w-100 text-start">Type *</label>
                         <MyDropdown
-                          className="py-3 px-4 mb-0"
-                          Options={promoType}
                           name="type"
-                          placeholder="Select Type"
-                          // onChangeHandle={handleChange}
-                          // onBlurHandle={handleBlur}
                           value={values.type}
+                          placeholder="Select Type"
+                          className="py-3 px-4 mb-0"
+                          onBlurHandle={handleBlur}
+                          onChangeHandle={handleChange}
+                          Options={promoCodeTypeOptions}
                         />
-                        <p className="errorField text-end">
+                        <p className="errorField text-start">
                           {errors.type && touched.type && errors.type}
                         </p>
                       </Col>
@@ -126,16 +149,16 @@ const PromoCode = (props) => {
                         </Label>
                         <InputField
                           icon={<FaGift />}
-                          placeholder="10"
                           type="number"
-                          name="promoValue"
-                          className="p-3 px-5 mt-1"
-                          value={values.promoValue}
+                          name="value"
+                          placeholder="10"
+                          className="p-3 px-5"
+                          value={values.value}
+                          onBlurHandle={handleBlur}
+                          onChangeHandle={handleChange}
                         />
-                        <p className="errorField text-end">
-                          {errors.promoValue &&
-                            touched.promoValue &&
-                            errors.promoValue}
+                        <p className="errorField text-start">
+                          {errors.value && touched.value && errors.value}
                         </p>
                       </Col>
 
@@ -147,14 +170,16 @@ const PromoCode = (props) => {
                           icon={<FaUsers />}
                           placeholder="5"
                           type="number"
-                          name="user_limit"
-                          className="p-3 px-5 mt-1"
-                          value={values.user_limit}
-                        />{" "}
-                        <p className="errorField text-end">
-                          {errors.user_limit &&
-                            touched.user_limit &&
-                            errors.user_limit}
+                          name="limited_users"
+                          className="p-3 px-5"
+                          value={values.limited_users}
+                          onBlurHandle={handleBlur}
+                          onChangeHandle={handleChange}
+                        />
+                        <p className="errorField text-start">
+                          {errors.limited_users &&
+                            touched.limited_users &&
+                            errors.limited_users}
                         </p>
                       </Col>
 
@@ -163,16 +188,17 @@ const PromoCode = (props) => {
                           Expiry Date: *
                         </Label>
                         <InputField
-                          placeholder="30 /09 / 2023"
                           type="date"
-                          name="expiry_date"
+                          name="expire_date"
                           className="p-3 w-100"
-                          value={values.expiry_date}
+                          value={values.expire_date}
+                          onBlurHandle={handleBlur}
+                          onChangeHandle={handleChange}
                         />
-                        <p className="errorField text-end">
-                          {errors.expiry_date &&
-                            touched.expiry_date &&
-                            errors.expiry_date}
+                        <p className="errorField text-start">
+                          {errors.expire_date &&
+                            touched.expire_date &&
+                            errors.expire_date}
                         </p>
                       </Col>
                       <Row className="justify-content-center mt-2">

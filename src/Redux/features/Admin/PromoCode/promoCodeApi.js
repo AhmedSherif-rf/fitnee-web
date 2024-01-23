@@ -13,6 +13,16 @@ export const getPromoCodeList = createAsyncThunk(
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }
-  
 );
-
+export const createPromoCodeList = createAsyncThunk(
+  "createPromoCodeList",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);

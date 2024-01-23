@@ -325,13 +325,12 @@ export const ADD_EXERCISE_SCHEMA = Yup.object().shape({
   exercise_part_text_ar: exerciseTextValidation,
 });
 
-export const SCHEMA_PROMO_CODE = Yup.object().shape({
+export const ADD_PROMO_CODE_SCHEMA = Yup.object().shape({
   code: RequiredValidation,
   type: RequiredValidation,
   value: RequiredValidation,
-  user_limit: RequiredValidation,
-  expiry_date: RequiredValidation,
-
+  expire_date: RequiredValidation,
+  limited_users: RequiredValidation,
 });
 export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
   weight: RequiredValidation,

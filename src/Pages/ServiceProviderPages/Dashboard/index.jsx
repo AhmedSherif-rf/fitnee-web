@@ -130,10 +130,7 @@ const Dashboard = () => {
                                 index={index}
                                 className="BorderRadius"
                                 documentTitle={certificate.title}
-                                documentImg={certificate.certificate_image.replace(
-                                  "/api",
-                                  ""
-                                )}
+                                documentImg={certificate.certificate_image}
                               />
                             );
                           }

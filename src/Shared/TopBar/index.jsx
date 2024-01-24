@@ -375,10 +375,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             backgroundImage:
                               user?.profile_pic === null
                                 ? `url(${Images.USER_DUMMY_IMG})`
-                                : `url(${user?.profile_pic.replace(
-                                    "/api",
-                                    ""
-                                  )})`,
+                                : `url(${user?.profile_pic})`,
                             width: "40px",
                             height: "40px",
                           }}

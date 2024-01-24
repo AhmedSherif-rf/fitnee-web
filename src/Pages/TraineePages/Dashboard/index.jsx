@@ -1,4 +1,5 @@
 import "./style.scss";
+import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
@@ -15,69 +16,6 @@ import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import { getTraineeProgressHistory } from "../../../Redux/features/User/userApi";
 
-export const myProgressGrapghOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "bottom",
-    },
-    title: {
-      display: true,
-      text: "Trainee Progress Graph",
-    },
-  },
-  maintainAspectRatio: window.innerWidth > 500,
-  redraw: true,
-  interaction: {
-    intersect: false,
-  },
-};
-
-const labels = ["1 Nov", "15 Nov", "30 Nov", "15 Dec", "30 Dec"];
-
-export const myProgressGrapghData = {
-  labels,
-  datasets: [
-    {
-      label: "Weight",
-      borderDash: [5, 5],
-      data: [100, 200, 150, 250, 200],
-      borderColor: "#67165A",
-      backgroundColor: "rgba(103, 22, 90, 0.40)",
-      pointStyle: "circle",
-      pointRadius: 5,
-      pointHoverRadius: 6,
-    },
-    {
-      label: "SMM",
-      data: [80, 150, 190, 300, 200],
-      borderColor: "#F67109",
-      backgroundColor: "rgba(246, 113, 9, 0.40)",
-      pointStyle: "circle",
-      pointRadius: 5,
-      pointHoverRadius: 6,
-    },
-    {
-      label: "BFM",
-      data: [105, 100, 200, 300, 100],
-      borderColor: "#F6E709",
-      backgroundColor: "rgba(246, 231, 9, 0.40)",
-      pointStyle: "circle",
-      pointRadius: 5,
-      pointHoverRadius: 6,
-    },
-    {
-      label: "Proteins",
-      data: [105, 170, 245, 198, 200],
-      borderColor: "#8EF609",
-      backgroundColor: "rgba(142, 246, 9, 0.40)",
-      pointStyle: "circle",
-      pointRadius: 5,
-      pointHoverRadius: 6,
-    },
-  ],
-};
-
 const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -86,6 +24,28 @@ const Dashboard = () => {
   const [showHistory, setShowHistory] = useState(true);
   const [progressHistoryData, setProgressHistoryData] = useState([]);
   const [showAddProgressModal, setShowAddProgressModal] = useState(false);
+  const [myProgressGrapghData, setMyProgressGrapghData] = useState({
+    labels: [],
+    datasets: [],
+  });
+
+  const myProgressGrapghOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "bottom",
+      },
+      title: {
+        display: true,
+        text: "Trainee Progress Graph",
+      },
+    },
+    maintainAspectRatio: window.innerWidth > 500,
+    redraw: true,
+    interaction: {
+      intersect: false,
+    },
+  };
 
   useEffect(() => {
     fetchTraineeProgressHistory();
@@ -100,7 +60,61 @@ const Dashboard = () => {
     dispatch(getTraineeProgressHistory(data)).then((res) => {
       if (res.type === "getTraineeProgressHistory/fulfilled") {
         setProgressHistoryData(res.payload.data);
+        populateGraphData(res.payload.data);
       }
+    });
+  };
+
+  const populateGraphData = (history) => {
+    const labels = history.map((item) =>
+      moment(item.date_recorded).format("DD MMM")
+    );
+    const weightData = history.map((item) => item.weight);
+    const bfmData = history.map((item) => item.body_fat_mass);
+    const smmData = history.map((item) => item.skeletal_muscel_mass);
+    const protienData = history.map((item) => item.protien);
+
+    setMyProgressGrapghData({
+      labels,
+      datasets: [
+        {
+          label: "Weight",
+          borderDash: [5, 5],
+          data: weightData,
+          borderColor: "#67165A",
+          backgroundColor: "rgba(103, 22, 90, 0.40)",
+          pointStyle: "circle",
+          pointRadius: 5,
+          pointHoverRadius: 6,
+        },
+        {
+          label: "SMM",
+          data: smmData,
+          borderColor: "#F67109",
+          backgroundColor: "rgba(246, 113, 9, 0.40)",
+          pointStyle: "circle",
+          pointRadius: 5,
+          pointHoverRadius: 6,
+        },
+        {
+          label: "BFM",
+          data: bfmData,
+          borderColor: "#F6E709",
+          backgroundColor: "rgba(246, 231, 9, 0.40)",
+          pointStyle: "circle",
+          pointRadius: 5,
+          pointHoverRadius: 6,
+        },
+        {
+          label: "Proteins",
+          data: protienData,
+          borderColor: "#8EF609",
+          backgroundColor: "rgba(142, 246, 9, 0.40)",
+          pointStyle: "circle",
+          pointRadius: 5,
+          pointHoverRadius: 6,
+        },
+      ],
     });
   };
 

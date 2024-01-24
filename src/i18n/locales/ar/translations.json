@@ -486,6 +486,8 @@
     "useFitNeeWalletText": "استخدم محفظة فتني",
     "applyText": "تطبيق",
     "payText": "ادفع",
+    "priceText": "سعر",
+    "vatText": "Vat",
     "paymentSummaryText": "ملخص العملية",
     "discountText": "الخصم",
     "fitneeWalletText": "استخدم محفظة فتني",
@@ -638,7 +640,8 @@
   },
   "messages": {
     "paymentFailedText": "عذرًا! فشلت عملية الدفع. يبدو أن هناك مشكلة في معالجة الدفع الخاصة بك. يرجى المحاولة مرة أخرى أو التحقق من تفاصيل الدفع الخاصة بك.",
-    "noDataFoundText": "لاتوجد بيانات"
+    "noDataFoundText": "لاتوجد بيانات",
+    "cannotUserPromoCode": "Cannot use this Promo Code"
   },
   "topBar": {
     "dashboardText": "لوحة التحكم",

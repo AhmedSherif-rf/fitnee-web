@@ -272,7 +272,7 @@ const SignUpForm = () => {
                             values?.profile_pic
                               ? URL.createObjectURL(values?.profile_pic)
                               : user?.profile_pic
-                              ? user?.profile_pic.replace("/api", "")
+                              ? user?.profile_pic
                               : ""
                           }
                           className="rounded-circle bgProperties position-relative"

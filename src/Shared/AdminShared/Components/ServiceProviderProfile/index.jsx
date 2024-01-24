@@ -9,7 +9,10 @@ import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../../../ProfileInformationCard";
 import { BsFillPersonXFill, BsPersonCheckFill } from "react-icons/bs";
 import { Row, Container, Col, Card, CardBody, Badge } from "reactstrap";
-import { ADMIN_SERVICE_PROVIDER_PROFILE_URL } from "../../../../utils/constants";
+import {
+  ADMIN_SERVICE_PROVIDER_PROFILE_URL,
+  CURRENCY,
+} from "../../../../utils/constants";
 import {
   ADMIN_APPROVE_REVIEW_REQUEST_URL,
   ADMIN_REJECT_REVIEW_REQUEST_URL,
@@ -21,7 +24,7 @@ import {
 } from "../../../../Redux/features/Admin/ReviewRequest/ReviewRequestApi";
 
 const ServiceProviderProfileWrapper = (props) => {
-  const { userId } = useParams();
+  const { uuid } = useParams();
   const navigate = useNavigate();
   const { loading } = useSelector((state) => state.reviewRequest);
 
@@ -32,7 +35,7 @@ const ServiceProviderProfileWrapper = (props) => {
 
   useEffect(() => {
     const data = {
-      apiEndpoint: ADMIN_SERVICE_PROVIDER_PROFILE_URL.replace("userId", userId),
+      apiEndpoint: ADMIN_SERVICE_PROVIDER_PROFILE_URL.replace("userId", uuid),
     };
 
     dispatch(getServiceProviderDetail(data)).then((res) => {
@@ -40,7 +43,7 @@ const ServiceProviderProfileWrapper = (props) => {
         setServiceProviderProfile(res.payload.data);
       }
     });
-  }, [dispatch, userId]);
+  }, [dispatch, uuid]);
 
   const handleApproveRequestClick = (email) => {
     const data = {
@@ -71,7 +74,7 @@ const ServiceProviderProfileWrapper = (props) => {
   return (
     <Container fluid className="p-2">
       <GoBack />
-      <Row>
+      <Row className="tableBodyWrapperPagination py-2">
         {loading === "pending" && <LoadingScreen />}
         {serviceProviderProfile && (
           <Col md={12} className="text-start">
@@ -169,6 +172,27 @@ const ServiceProviderProfileWrapper = (props) => {
                           )}
                       </Col>
                     </Row>
+                    {serviceProviderProfile?.profile_subscriptions && (
+                      <Row>
+                        <h5 className="fw-bold my-2">Subscription Plans</h5>
+                        {serviceProviderProfile?.profile_subscriptions?.map(
+                          (plan, index) => (
+                            <Col md={4} key={index}>
+                              <Card className="border-0">
+                                <div className="d-flex justify-content-between align-items-center p-4 BorderRadius shadow-sm">
+                                  <p className="mb-0">
+                                    {plan?.duration} Months
+                                  </p>
+                                  <p className="mb-0 fw-bold">
+                                    {CURRENCY} {plan?.price}
+                                  </p>
+                                </div>
+                              </Card>
+                            </Col>
+                          )
+                        )}
+                      </Row>
+                    )}
                   </CardBody>
                 </Card>
               </Col>

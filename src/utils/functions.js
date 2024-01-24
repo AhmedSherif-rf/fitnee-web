@@ -88,6 +88,12 @@ const copyToClipboard = (text) => {
   document.body.removeChild(textField);
 };
 
+const getSummary = (discount, walletAmount, totalAmount) => {
+  const sum =
+    parseFloat(discount) + parseFloat(walletAmount) + parseFloat(totalAmount);
+  return sum.toFixed(2);
+};
+
 const setTraineeInitialValues = (initalValues, user) => {
   return {
     ...initalValues,
@@ -324,6 +330,7 @@ const getListingRole = (listingType) => {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  getSummary,
   getInitialUrl,
   createFormData,
   getListingRole,

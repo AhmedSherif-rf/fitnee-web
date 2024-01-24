@@ -30,7 +30,7 @@ const routes = [
     path: "/signIn",
     component: lazy(() => import("../Pages/Auth/SignIn")),
     isPublic: true,
-    theme: "light",
+    theme: "dark",
     exact: true,
   },
   {
@@ -38,7 +38,7 @@ const routes = [
     component: lazy(() => import("../Pages/Auth/VerifyOtp")),
     isPublic: true,
     isAuth: true,
-    theme: "light",
+    theme: "dark",
     exact: true,
   },
   {
@@ -59,14 +59,14 @@ const routes = [
     path: "/forgotPassword",
     component: lazy(() => import("../Pages/Auth/ForgotPassword")),
     isPublic: true,
-    theme: "light",
+    theme: "dark",
     exact: true,
   },
   {
     path: "/changePassword",
     component: lazy(() => import("../Pages/Auth/ChangePassword")),
     isPublic: true,
-    theme: "light",
+    theme: "dark",
     exact: true,
   },
   {

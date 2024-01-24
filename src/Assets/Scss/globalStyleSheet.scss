@@ -368,3 +368,14 @@ Input::-webkit-input-placeholder {
   height: 38vh !important;
   border-radius: 14px;
 }
+
+.signInCol {
+  background-color: white;
+  }
+  
+  @media (max-width: 767px) {
+    /* Apply background image only when the screen size is less than md (767px) */
+    .signInCol {
+    background: transparent !important;;
+    }
+  }

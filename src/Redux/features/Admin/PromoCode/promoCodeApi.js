@@ -14,6 +14,7 @@ export const getPromoCodeList = createAsyncThunk(
     }
   }
 );
+
 export const createPromoCodeList = createAsyncThunk(
   "createPromoCodeList",
   async ({ apiEndpoint, requestData }, thunkAPI) => {

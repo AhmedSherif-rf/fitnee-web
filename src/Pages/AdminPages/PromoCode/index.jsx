@@ -1,10 +1,10 @@
 import { Formik } from "formik";
 import { FaGift, FaUsers } from "react-icons/fa6";
+import React, { useEffect, useState } from "react";
 import MyDropdown from "../../../Shared/MyDropdown";
 import InputField from "../../../Shared/InputField";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import { useDispatch, useSelector } from "react-redux";
-import React, { memo, useEffect, useState } from "react";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import { Card, CardBody, Col, Row, Label, Form } from "reactstrap";
@@ -14,7 +14,6 @@ import { ADD_PROMO_CODE_INITIAL_VALUES } from "../../../Shared/ValidationData/in
 import {
   ADMIN_PROMO_CODE_URL,
   promoCodeTypeOptions,
-  ADMIN_CREATE_PROMO_CODE_URL,
 } from "../../../utils/constants";
 import {
   getPromoCodeList,
@@ -30,7 +29,7 @@ const PromoCode = (props) => {
 
   const handleAddPromoCodeSubmit = (values) => {
     const data = {
-      apiEndpoint: ADMIN_CREATE_PROMO_CODE_URL,
+      apiEndpoint: ADMIN_PROMO_CODE_URL,
       requestData: JSON.stringify(values),
     };
     dispatch(createPromoCodeList(data)).then((res) => {
@@ -222,4 +221,4 @@ const PromoCode = (props) => {
     </React.Fragment>
   );
 };
-export default memo(PromoCode);
+export default PromoCode;

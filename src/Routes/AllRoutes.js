@@ -52,7 +52,7 @@ const routes = [
     path: "/contactUs",
     component: lazy(() => import("../Pages/Auth/ContactUs")),
     isPublic: true,
-    theme: "light",
+    theme: "dark",
     exact: true,
   },
   {

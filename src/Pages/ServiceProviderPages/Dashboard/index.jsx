@@ -95,7 +95,7 @@ const Dashboard = () => {
                   </Col>
                 </Row>
                 <div>
-                  <h6 className="fw-bold text-white">
+                  <h6 className="fw-bold text-white py-2">
                     {t("trainer.availableHoursText")}
                   </h6>
                   <AvailableHourListing data={user?.profile_availability} />
@@ -118,7 +118,7 @@ const Dashboard = () => {
 
                     <Row>
                       <Col md={12}>
-                        <h5 className="fw-bold my-2">
+                        <h5 className="fw-bold my-2 py-2">
                           {t("trainer.trainerHeadingText")}
                         </h5>
                       </Col>
@@ -139,7 +139,7 @@ const Dashboard = () => {
 
                     <Row>
                       <Col md={12}>
-                        <h5 className="fw-bold my-2">
+                        <h5 className="fw-bold my-2 py-2">
                           {t("guest.areaSpecialtyText")}
                         </h5>
                         {user?.specialities &&

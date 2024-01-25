@@ -125,7 +125,7 @@ const OTPVerification = () => {
           className={`text-center d-flex align-items-center justify-content-center`}
         >
           <Card className="px-4 py-5 mb-2 onlyBorderRadius d-flex align-items-center justify-content-center w-100">
-            <CardHeader className="bg-transparent border-0 p-0 my-4">
+            <CardHeader className="bg-transparent border-0 p-0 my-3">
               <h1 className="mb-4 fw-400 fw-bold">
                 {t("otpVerification.verificationText")}
               </h1>

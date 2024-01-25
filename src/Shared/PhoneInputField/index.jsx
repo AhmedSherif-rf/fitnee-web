@@ -18,7 +18,7 @@ const PhoneInputField = (props) => {
       }}
       country={defaultCountry}
       value={value}
-      className={`${className} ltr`}
+      className={`${className} border ltr`}
       onChange={(value) => setFieldValue(inputProps.name, value)}
       disabled={disabled}
     />

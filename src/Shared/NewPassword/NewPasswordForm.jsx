@@ -10,9 +10,17 @@ import { NEW_PASSWORD_URL } from "../../utils/constants";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { NEW_PASSWORD_SCHEMA } from "../ValidationData/validation";
-import { Card, CardHeader, Col, Container, Form, Row } from "reactstrap";
 import { NEW_PASSWORD_INITIAL_VALUES } from "../ValidationData/initialValue";
 import { newPassword } from "../../Redux/features/ForgotPassword/forgotPasswordApi";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  Container,
+  Form,
+  Row,
+} from "reactstrap";
 
 const NewPasswordForm = () => {
   const navigate = useNavigate();
@@ -58,62 +66,70 @@ const NewPasswordForm = () => {
               handleSubmit,
             }) => (
               <Form onSubmit={handleSubmit}>
-                <Card className="px-3 py-3 border-0 bg-white onlyBorderRadius ">
+                <Card className="px-3 py-5 border-0 bg-white onlyBorderRadius ">
                   <CardHeader className="border-0 bg-transparent mb-4">
                     <h1 className="text-center fs-1 fw-bold">
                       {t("changePassword.newPasswordText")}
                     </h1>
-                  </CardHeader>{" "}
-                  <InputField
-                    type="password"
-                    name="new_password"
-                    placeholder={t("changePassword.newPasswordText")}
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.new_password}
-                    icon={
-                      <img src={Images.PASSWORD_ICON_IMG} alt="password-icon" />
-                    }
-                    className={
-                      "form-control-lg BorderRadiusInput py-3 px-5 mb-1 mt-1"
-                    }
-                  />
-                  <p className="errorField">
-                    {errors.new_password &&
-                      touched.new_password &&
-                      errors.new_password}
-                  </p>
-                  <InputField
-                    type="password"
-                    name="confirm_password"
-                    placeholder={t("changePassword.confirmPasswordText")}
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.confirm_password}
-                    icon={
-                      <img src={Images.PASSWORD_ICON_IMG} alt="password-icon" />
-                    }
-                    className={
-                      "form-control-lg BorderRadiusInput py-3 px-5 mb-1 mt-1"
-                    }
-                  />
-                  <p className="errorField">
-                    {errors.confirm_password &&
-                      touched.confirm_password &&
-                      errors.confirm_password}
-                  </p>
-                  <FillBtn
-                    className="w-100 py-3 mb-3 mt-5"
-                    text={t("changePassword.confirmText")}
-                    type={"submit"}
-                    handleOnClick={handleSubmit}
-                    disabled={loading === "pending" ? true : false}
-                  />
-                  <OutlineBtn
-                    className="w-100 py-3"
-                    text={t("changePassword.cancelText")}
-                    handleOnClick={handleCancelClick}
-                  />
+                  </CardHeader>
+                  <CardBody className="customPadding">
+                    <InputField
+                      type="password"
+                      name="new_password"
+                      placeholder={t("changePassword.newPasswordText")}
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.new_password}
+                      icon={
+                        <img
+                          src={Images.PASSWORD_ICON_IMG}
+                          alt="password-icon"
+                        />
+                      }
+                      className={
+                        "form-control-lg BorderRadiusInput py-3 px-5 mb-1 mt-1"
+                      }
+                    />
+                    <p className="errorField">
+                      {errors.new_password &&
+                        touched.new_password &&
+                        errors.new_password}
+                    </p>
+                    <InputField
+                      type="password"
+                      name="confirm_password"
+                      placeholder={t("changePassword.confirmPasswordText")}
+                      onChangeHandle={handleChange}
+                      onBlurHandle={handleBlur}
+                      value={values.confirm_password}
+                      icon={
+                        <img
+                          src={Images.PASSWORD_ICON_IMG}
+                          alt="password-icon"
+                        />
+                      }
+                      className={
+                        "form-control-lg BorderRadiusInput py-3 px-5 mb-1 mt-1"
+                      }
+                    />
+                    <p className="errorField">
+                      {errors.confirm_password &&
+                        touched.confirm_password &&
+                        errors.confirm_password}
+                    </p>
+                    <FillBtn
+                      className="w-100 py-3 mb-3 mt-5"
+                      text={t("changePassword.confirmText")}
+                      type={"submit"}
+                      handleOnClick={handleSubmit}
+                      disabled={loading === "pending" ? true : false}
+                    />
+                    <OutlineBtn
+                      className="w-100 py-3"
+                      text={t("changePassword.cancelText")}
+                      handleOnClick={handleCancelClick}
+                    />
+                  </CardBody>
                 </Card>
               </Form>
             )}

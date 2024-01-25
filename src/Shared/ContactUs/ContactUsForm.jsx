@@ -10,6 +10,11 @@ import PhoneInputField from "../PhoneInputField";
 import { INITIAL_VALUES } from "./data/initialValue";
 import { CONTACT_US_SCHEMA } from "./data/validation";
 import { CONTACT_US_URL } from "../../utils/constants";
+import InformationModal from "../Modal/InformationModal";
+import React, { memo, useCallback, useState } from "react";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
+import Images from "../../HelperMethods/Constants/ImgConstants";
+import { contactUs } from "../../Redux/features/ContactUs/contactUsApi";
 import {
   Card,
   CardBody,
@@ -19,11 +24,6 @@ import {
   Form,
   Row,
 } from "reactstrap";
-import InformationModal from "../Modal/InformationModal";
-import React, { memo, useCallback, useState } from "react";
-import LoadingScreen from "../../HelperMethods/LoadingScreen";
-import Images from "../../HelperMethods/Constants/ImgConstants";
-import { contactUs } from "../../Redux/features/ContactUs/contactUsApi";
 
 const ContactUsForm = () => {
   const navigate = useNavigate();
@@ -87,7 +87,7 @@ const ContactUsForm = () => {
                           {t("contactUs.contactUsText")}
                         </h1>
                       </CardHeader>
-                      <CardBody className="p-3">
+                      <CardBody className="py-4 px-3">
                         <Row>
                           <Col md={6} className="mb-2">
                             <InputField

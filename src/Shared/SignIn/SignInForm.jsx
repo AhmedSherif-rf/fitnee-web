@@ -41,8 +41,10 @@ const SignInForm = () => {
   const { loading } = useSelector((state) => state.user);
 
   const [showAccountRequestModal, setShowAccountRequestModal] = useState(false);
-  const [accountRequestModalErrorText, setAccountRequestModalErrorText] =
-    useState("");
+  const [
+    accountRequestModalErrorText,
+    setAccountRequestModalErrorText,
+  ] = useState("");
 
   const handleAccountRequestModalClose = useCallback(() => {
     setShowAccountRequestModal(false);
@@ -172,7 +174,7 @@ const SignInForm = () => {
                       <Checkbox
                         label={
                           <p className="mb-0 fs-6">
-                            {t("login.agreeOnFitneeText")}
+                            {t("login.agreeOnFitneeText")}{" "}
                             <Link to={`/termAndCondition/general${pathname}`}>
                               <span className="textYellow">
                                 {t("login.termsAndConditionsText")}

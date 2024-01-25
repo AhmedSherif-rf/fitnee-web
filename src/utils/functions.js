@@ -88,10 +88,21 @@ const copyToClipboard = (text) => {
   document.body.removeChild(textField);
 };
 
-const getSummary = (discount, walletAmount, totalAmount) => {
-  const sum =
-    parseFloat(discount) + parseFloat(walletAmount) + parseFloat(totalAmount);
-  return sum.toFixed(2);
+const getSummary = (discount, walletAmount, totalAmount, vat) => {
+  const summary =
+    parseFloat(totalAmount) -
+    parseFloat(discount) -
+    parseFloat(walletAmount) +
+    parseFloat(vat);
+  return summary.toFixed(2);
+};
+
+const calculateVat = (amount) => {
+  return ((parseFloat(amount) * 15) / 100).toFixed(2);
+};
+
+const calculatePercentage = (amount, percentage) => {
+  return ((parseFloat(amount) * percentage) / 100).toFixed(2);
 };
 
 const setTraineeInitialValues = (initalValues, user) => {
@@ -331,11 +342,13 @@ const getListingRole = (listingType) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getSummary,
+  calculateVat,
   getInitialUrl,
   createFormData,
   getListingRole,
   copyToClipboard,
   filterSignUpFields,
+  calculatePercentage,
   setLanguageInStorage,
   getLanguageFromStorage,
   setTraineeInitialValues,

@@ -54,9 +54,9 @@ const ServiceProviders = (props) => {
                   width: "40px",
                   height: "40px",
                   backgroundImage:
-                    trainee?.profile_pic === "" || trainee?.profile_pic === null
+                    trainee?.profile_pic === null
                       ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${trainee?.profile_pic.replace("/api", "")})`,
+                      : `url(${trainee?.profile_pic})`,
                 }}
               ></div>
               <h6 className="text-secondary fw-bold mb-0">

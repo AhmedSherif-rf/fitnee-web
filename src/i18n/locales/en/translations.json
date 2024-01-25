@@ -490,8 +490,10 @@
     "useFitNeeWalletText": "Use FitNee wallet",
     "applyText": "Apply",
     "payText": "Pay",
+    "priceText": "Price",
+    "vatText": "Vat",
     "paymentSummaryText": "Payment Summary",
-    "discountText": "Discount %",
+    "discountText": "Discount",
     "fitneeWalletText": "FitNee Wallet",
     "totalPayText": "Total Pay",
     "congratulationsText": "Congratulations",
@@ -641,7 +643,8 @@
   },
   "messages": {
     "paymentFailedText": "Oops! Payment unsuccessful. It seems like there was an issue processing your payment. Please try again or check your payment details.",
-    "noDataFoundText": "No Data Found"
+    "noDataFoundText": "No Data Found",
+    "cannotUserPromoCode": "Cannot use this Promo Code"
   },
   "topBar": {
     "dashboardText": "Dashboard",

@@ -61,6 +61,7 @@ export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
 export const ADMIN_PROMO_CODE_URL = "/admin/promo-codes/";
 export const TRAINEE_PROGRESS_URL = "/trainee/progress/";
 export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
+export const USE_PROMO_CODE_URL = "/payment/promo-code/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const ADMIN_EXERCISE_URL = "/admin/exercise/detail/";
@@ -83,8 +84,8 @@ export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
 export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
   "/admin/service-providers/userId/";
 //=================StatusCodes===================
-export const SUCCESS_CODES = [200, 201];
 export const FORBIDDEN_CODE = 403;
+export const SUCCESS_CODES = [200, 201];
 export const PRECONDITION_REQUIRED_CODE = 428;
 export const UNAVAILABLE_FOR_LEGAL_REASONS_CODE = 451;
 //=================Exercise======================

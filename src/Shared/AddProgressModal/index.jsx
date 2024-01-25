@@ -41,7 +41,7 @@ const AddProgressModal = (props) => {
       toggle={onClose}
       className={className}
     >
-      <ModalHeader className="border-0 ">
+      <ModalHeader className="border-0">
         <b>{t("traineeDashboard.addYourProgressText")}</b>
       </ModalHeader>
       <ModalBody className="p-4">
@@ -64,7 +64,7 @@ const AddProgressModal = (props) => {
             <Form onSubmit={handleSubmit}>
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
-                  {t("traineeDashboard.weightText")}
+                  {`${t("traineeDashboard.weightText")} (kg)`}
                 </Label>
                 <InputField
                   type="number"
@@ -81,7 +81,7 @@ const AddProgressModal = (props) => {
               </div>
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
-                  {t("traineeDashboard.skeletalMuscleMassText")}
+                  {`${t("traineeDashboard.skeletalMuscleMassText")} (kg)`}
                 </Label>
                 <InputField
                   type="number"
@@ -100,7 +100,7 @@ const AddProgressModal = (props) => {
               </div>
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
-                  {t("traineeDashboard.bodyFatMassText")}
+                  {`${t("traineeDashboard.bodyFatMassText")} (kg)`}
                 </Label>
                 <InputField
                   type="number"
@@ -119,7 +119,7 @@ const AddProgressModal = (props) => {
               </div>
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
-                  {t("traineeDashboard.ProteinText")}
+                  {`${t("traineeDashboard.ProteinText")}  (g / kg)`}
                 </Label>
                 <InputField
                   type="number"

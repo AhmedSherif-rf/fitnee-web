@@ -29,10 +29,7 @@ const Index = (props) => {
                   backgroundImage:
                     data?.profile_pic === "" || data?.profile_pic === null
                       ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${data?.serviceprovider?.profile_pic.replace(
-                          "/api",
-                          ""
-                        )})`,
+                      : `url(${data?.serviceprovider?.profile_pic})`,
                   border: "1px solid transparent",
                 }}
               ></div>

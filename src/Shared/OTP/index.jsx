@@ -9,7 +9,7 @@ import InformationModal from "../Modal/InformationModal";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { setEmail } from "../../Redux/features/User/userSlice";
 import React, { useState, useEffect, useCallback } from "react";
-import { Card, CardHeader, Col, Container, Row } from "reactstrap";
+import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap";
 import {
   resendOtp,
   verifyOtp,
@@ -133,44 +133,47 @@ const OTPVerification = () => {
                 {t("otpVerification.openYourEmailText")}
               </p>
             </CardHeader>
-            <div
-              className={`d-flex align-items-center justify-content-center ${styles.otpDiv}`}>
-              <OTPInput
-                className={`${styles.otpInputs}`}
-                value={otp}
-                onChange={setOtp}
-                autoFocus={true}
-                OTPLength={6}
-                otpType="number"
-                disabled={false}
+            <CardBody className="customPadding">
+              <div
+                className={`d-flex align-items-center justify-content-center ${styles.otpDiv}`}
+              >
+                <OTPInput
+                  className={`${styles.otpInputs}`}
+                  value={otp}
+                  onChange={setOtp}
+                  autoFocus={true}
+                  OTPLength={6}
+                  otpType="number"
+                  disabled={false}
+                />
+              </div>
+              <p className="mb-0 fw-bold mb-3">
+                {t("otpVerification.didNotRecieveCodeText")}
+              </p>
+              <p className="text-black-custom mb-3">
+                {t("otpVerification.resendCodeInText")}{" "}
+                <span className="textYellow fw-bold">
+                  {timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes}:
+                  {timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
+                </span>
+              </p>
+              <p
+                className={`pb-2 fw-bold mb-3 ${
+                  timer.seconds !== 0 || timer.minutes !== 0
+                    ? "text-muted"
+                    : "cursorPointer textYellow"
+                }`}
+                onClick={() => handleResendClick()}
+              >
+                {t("otpVerification.resendCodeText")}
+              </p>
+              <FillBtn
+                text={t("otpVerification.nextText")}
+                className="w-100 py-2 my-3"
+                disabled={otp.length < 6 ? true : false}
+                handleOnClick={handleNextClick}
               />
-            </div>
-            <p className="mb-0 fw-bold mb-3">
-              {t("otpVerification.didNotRecieveCodeText")}
-            </p>
-            <p className="text-black-custom mb-3">
-              {t("otpVerification.resendCodeInText")}{" "}
-              <span className="textYellow fw-bold">
-                {timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes}:
-                {timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds}
-              </span>
-            </p>
-            <p
-              className={`pb-2 fw-bold mb-3 ${
-                timer.seconds !== 0 || timer.minutes !== 0
-                  ? "text-muted"
-                  : "cursorPointer textYellow"
-              }`}
-              onClick={() => handleResendClick()}
-            >
-              {t("otpVerification.resendCodeText")}
-            </p>
-            <FillBtn
-              text={t("otpVerification.nextText")}
-              className="w-100 py-2 my-3"
-              disabled={otp.length < 6 ? true : false}
-              handleOnClick={handleNextClick}
-            />
+            </CardBody>
           </Card>
         </Col>
         <InformationModal

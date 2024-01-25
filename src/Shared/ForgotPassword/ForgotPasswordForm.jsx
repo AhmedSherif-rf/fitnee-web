@@ -67,13 +67,13 @@ const ForgotPasswordForm = () => {
               handleSubmit,
             }) => (
               <Form onSubmit={handleSubmit}>
-                <Card className="p-5 border-0 bg-white onlyBorderRadius mb-2 ">
-                  <CardHeader className="border-0 bg-transparent">
+                <Card className="py-5 px-3 border-0 bg-white onlyBorderRadius mb-2 ">
+                  <CardHeader className="border-0 bg-transparent my-3">
                     <h1 className="text-center fs-1 fw-bold">
                       {t("forgotPassword.forgotPasswordText")}
                     </h1>
                   </CardHeader>
-                  <CardBody className="px-0 py-4 mt-5 mb-5">
+                  <CardBody className="customPadding">
                     <InputField
                       type="email"
                       name="email"
@@ -87,7 +87,7 @@ const ForgotPasswordForm = () => {
                     <p className="errorField">
                       {errors.email && touched.email && errors.email}
                     </p>
-                    <div className="mt-3">
+                    <div className="my-3">
                       <Link to="/signIn" className="textYellow">
                         {t("forgotPassword.knowMyPasswordText")}
                       </Link>
@@ -99,7 +99,7 @@ const ForgotPasswordForm = () => {
                       text={t("forgotPassword.sendText")}
                     />
                     <OutlineBtn
-                      className="w-100 py-3 mb-3"
+                      className="w-100 py-3 mb-5"
                       text={t("forgotPassword.cancelText")}
                       handleOnClick={handleCancelClick}
                     />

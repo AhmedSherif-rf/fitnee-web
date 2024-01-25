@@ -178,7 +178,9 @@ const ServiceProviderProfileWrapper = (props) => {
         </Row>
       ) : (
         <div className="d-flex vh-100 justify-content-center align-items-center">
-          <img src={Images.NO_DATA_FOUND_IMG} alt="no-data-found" />
+          {loading !== "pending" && (
+            <img img-fluid src={Images.NO_DATA_FOUND_IMG} alt="no-data-found" />
+          )}
         </div>
       )}
     </Container>

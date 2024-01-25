@@ -124,9 +124,9 @@ const phoneNumberValidaton = Yup.string().required(
   TranslationHelper("validation.requiredContactText")
 );
 
-const dobValidation = Yup.string().required(
-  TranslationHelper("validation.requiredDOBText")
-);
+const dobValidation = Yup.date()
+  .max(new Date(), "Date of Birth cannot be in the future")
+  .required(TranslationHelper("validation.requiredDOBText"));
 
 const genderValidation = Yup.string().required(
   TranslationHelper("validation.requiredGenderText")

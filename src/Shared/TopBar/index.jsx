@@ -396,7 +396,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 : "/serviceProvider/dashboard"
                             }
                           >
-                            <div className="d-flex align-items-center text-black-custom">
+                            <div className="d-flex gap-1 align-items-center text-black-custom">
                               <span className="me-2">
                                 <RiDashboardFill size={16} className="mb-1" />
                               </span>
@@ -418,7 +418,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 : "/serviceProvider/editProfile/nutritionist"
                             }
                           >
-                            <div className="d-flex align-items-center w-100 text-black-custom">
+                            <div className="d-flex gap-1 align-items-center w-100 text-black-custom">
                               <span className="me-2">
                                 <FaUserEdit size={16} className="mb-1" />
                               </span>
@@ -435,7 +435,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 className="w-100 p-1"
                                 to="/serviceProvider/paymentHistory"
                               >
-                                <div className="d-flex align-items-center text-black-custom">
+                                <div className="d-flex gap-1 align-items-center text-black-custom">
                                   <span className="me-2">
                                     <GiWallet size={16} className="mb-1" />
                                   </span>
@@ -457,7 +457,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 : "/serviceProvider/resetPassword"
                             }
                           >
-                            <div className="d-flex align-items-center text-black-custom">
+                            <div className="d-flex gap-1 align-items-center text-black-custom">
                               <span className="me-2">
                                 <FaKey size={16} className="mb-1" />
                               </span>
@@ -469,7 +469,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         </DropdownItem>
                         <DropdownItem className="p-0">
                           <div
-                            className="d-flex align-items-center w-100 p-1 text-black-custom"
+                            className="d-flex gap-1 align-items-center w-100 p-1 text-black-custom"
                             onClick={handleDeleteClick}
                           >
                             <span className="me-2 d-flex">
@@ -482,7 +482,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         </DropdownItem>
                         <DropdownItem className="p-0">
                           <div
-                            className="d-flex align-items-center w-100 p-1 text-black-custom"
+                            className="d-flex gap-1 align-items-center w-100 p-1 text-black-custom"
                             onClick={handleLogoutClick}
                           >
                             <span className="me-2 d-flex">

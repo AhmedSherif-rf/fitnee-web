@@ -549,7 +549,6 @@ const SignUpForm = () => {
                         borderBottomRightRadius: "14px",
                       }}
                       name="date_of_birth"
-                      placeholder="Date of Birthday"
                       className="form-control-lg px-4"
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -1227,7 +1226,7 @@ const SignUpForm = () => {
               {filterFields.includes("subscription_plans") && (
                 <>
                   <h5 className="mb-2 fw-bold">
-                    {t("signup.subscriptionPlansText")}
+                    {t("signup.subscriptionPlansText")}*
                   </h5>
                   <FieldArray
                     name="subscription_plans"

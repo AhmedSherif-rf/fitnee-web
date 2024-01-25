@@ -1,7 +1,8 @@
 @import "../../Assets/Scss/globalStyleSheet.scss";
 
 .CustomProgress {
-  background-color: $yellow !important;
+  background-color: $white !important;
+  border: 1px solid $yellow;
   height: 10px !important;
   .progress-bar-striped {
     background-image: linear-gradient(

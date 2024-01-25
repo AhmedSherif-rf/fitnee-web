@@ -74,13 +74,13 @@ const Index = (props) => {
               ></div>
             </Link>
             <div>
-              <h6 className="mb-0 fw-bold ">
+              <h6 className="mb-0 fw-bold px-1">
                 {data?.serviceprovider?.full_name}
               </h6>
-              <span className="text-black-custom">
+              <span className="text-black-custom px-1">
                 {data?.serviceprovider?.role}
               </span>
-              <div className="mb-md-0 d-md-none d-block py-2">
+              <div className="mb-md-0 d-md-none d-block py-2 px-1">
                 <h6 className="mb-0 w-100 small fw-bold ">
                   {CURRENCY} {data?.transition?.current_price}
                 </h6>
@@ -96,14 +96,14 @@ const Index = (props) => {
               )} : ${moment(data?.created_at).format("DD/MM/YYYY")}`}</span>
               <br />
               <span>{`${t("traineeServiceProviderList.endDateText")} : ${
-                data?.expire_date
+                moment(data?.expire_date).format("DD/MM/YYYY")
               }`}</span>
             </div>
           )}
           {data?.is_expired && !data?.is_refund && (
             <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
               {`${t("traineeServiceProviderList.expiredOnText")} : ${
-                data?.expire_date
+                moment(data?.expire_date).format("DD/MM/YYYY")
               }`}
             </div>
           )}
@@ -131,13 +131,13 @@ const Index = (props) => {
           {!data?.is_refund && !data?.is_expired && (
             <FillBtn
               text={
-                checkIfRefundDatePassed()
+                checkIfRefundDatePassed(data?.created_at)
                   ? t("traineeServiceProviderList.cannotCancelText")
                   : t("traineeServiceProviderList.cancelText")
               }
               className="py-2 px-5 w-100"
               handleOnClick={handleCancelButtonClick}
-              disabled={checkIfRefundDatePassed() ? true : false}
+              disabled={checkIfRefundDatePassed(data?.created_at) ? true : false}
             />
           )}
           {data?.is_expired && (

@@ -17,7 +17,7 @@ const AddProgressModal = (props) => {
   const { loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   const handleAddProgressSubmit = (values) => {
     const data = {
@@ -39,7 +39,7 @@ const AddProgressModal = (props) => {
       isOpen={isOpen}
       onClosed={onClose}
       toggle={onClose}
-      className={className}
+      className={`${className} ${i18n.dir()}`}
     >
       <ModalHeader className="border-0">
         <b>{t("traineeDashboard.addYourProgressText")}</b>

@@ -64,7 +64,7 @@ const SubscriptionCard = (props) => {
     >
       <div className="text-center d-flex justify-content-center">
         <div className={`${styles.headerCard} BorderRadius shadow-sm`}>
-          {duration} {"Month"}
+          {duration} {t("trainerPackages.monthText")}
         </div>
       </div>
 

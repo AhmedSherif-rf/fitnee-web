@@ -35,7 +35,7 @@
   },
   "termAndCondition": {
     "termAndConditionHeadingText": "الشروط والأحكام",
-    "doneButtonText": "منتهي",
+    "doneButtonText": "إنهاء",
     "backButtonText": "خلف",
     "termAndConditionServiceProvidersHeadingText": "شروط وأحكام مقدمي الخدمات",
     "termAndConditionTrainerHeadingText": "شروط وأحكام العملاء",
@@ -377,7 +377,7 @@
   "registerAs": {
     "registerAsText": "سجل الان",
     "traineeText": "المتدرب",
-    "trainerText": "متدرب",
+    "trainerText": "المدرب",
     "nutritionistText": "اخصائي تغذيه",
     "trainerNutritionistText": "مدرب وأخصائي تغذية",
     "guestText": "ضيف",
@@ -458,7 +458,7 @@
     "mySubscriptionHistoryText": "تاريخ اشتراكاتي",
     "myProgressText": "تقدمي",
     "allServiceProvidersText": "جميع المدربين واخصائي التغذية",
-    "myWalletText": "محفظتى",
+    "myWalletText": "ﻣﺤﻔﻈﺘﻲ",
     "subsriptionDetailsText": "ﺗﻔﺎﺻﻳﻝ ﺍﻻﺷﺗﺭﺍﻙ ",
     "cancelText": "إلغاء",
     "cancelledText": "ﺗﻡ ﺍﻹﻟﻐﺎء",
@@ -522,7 +522,7 @@
     "heightText": "الطول (cm / feet)",
     "skeletonMuscleText": "الكتلة العضلية",
     "bodyFatText": "نسبة الدهون بالجسم",
-    "inBodyText": " في الجسم",
+    "inBodyText": "InBody",
     "totalBodyText": "نسبة الماء بالجسم",
     "protienText": "البروتين",
     "selectAreaOfSpecialtyText": "اختيار التخصص",
@@ -600,7 +600,7 @@
     "getAppText": "ﺍﻟﻮﺻﻮﻝ ﻟﻠﺘﻄﺒﻴﻖ"
   },
   "traineeServiceProviderList": {
-    "trainerText": "مدرب",
+    "trainerText": "المدرب",
     "twoMonthDurationText": "ﺷﻬﺮﻳﻦ",
     "myCurrentTrainerText": "المدرب الخاص بي",
     "myCurrentNutritionistText": "اخصائي التغذية الخاص بي",

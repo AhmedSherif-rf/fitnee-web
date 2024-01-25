@@ -166,7 +166,9 @@ const GuestServiceProviderListWrapper = (props) => {
               {serviceProviderData.length <= 0 && (
                 <Row className="justify-content-center align-items-center mt-5 pt-4">
                   <Col className="text-center" md={4}>
-                    <img img-fluid src={Images.NO_DATA_FOUND_IMG} alt="" />
+                    {loading !== "pending" && (
+                      <img img-fluid src={Images.NO_DATA_FOUND_IMG} alt="" />
+                    )}
                   </Col>
                 </Row>
               )}

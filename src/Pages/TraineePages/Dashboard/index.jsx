@@ -207,8 +207,10 @@ const Dashboard = () => {
                   </Row>
                   <Row>
                     <Col md={12} className="mb-2">
-                      <div className="p-2">
-                        <ProfileProgressBar />
+                      <div className="p-2 ltr">
+                        <ProfileProgressBar
+                          value={user?.get_trainee_progress}
+                        />
                       </div>
                     </Col>
                   </Row>

@@ -55,6 +55,7 @@ const Subscription = () => {
                         id={item?.id}
                         price={item?.price}
                         duration={item?.duration}
+                        type={item?.membership_type}
                       />
                     </Col>
                   );
@@ -65,7 +66,9 @@ const Subscription = () => {
         </Row>
       ) : (
         <div className="d-flex vh-100 justify-content-center align-items-center">
-          <img src={Images.NO_DATA_FOUND_IMG} alt="no-data-found" />
+          {loading !== "pending" && (
+            <img src={Images.NO_DATA_FOUND_IMG} alt="no-data-found" />
+          )}
         </div>
       )}
     </Container>

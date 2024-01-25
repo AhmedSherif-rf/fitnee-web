@@ -81,7 +81,7 @@ const ContactUsForm = () => {
               <Form onSubmit={handleSubmit} className="h-100">
                 <Row className="justify-content-center text-black-custom align-items-md-center align-items-end h-100">
                   <Col md={12} sm={10}>
-                    <Card className="bg-white onlyBorderRadius border-0">
+                    <Card className="bg-white onlyBorderRadius border-0 py-5 mb-2">
                       <CardHeader className="border-0 bg-transparent">
                         <h1 className="text-center fs-1 fw-bold mt-2">
                           {t("contactUs.contactUsText")}

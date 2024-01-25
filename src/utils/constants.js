@@ -58,6 +58,7 @@ export const NEW_PASSWORD_URL = "/forget_password/";
 export const GET_SPECIALITIES_URL = "/specialities/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
+export const ADMIN_PROMO_CODE_URL = "/admin/promo-codes/";
 export const TRAINEE_PROGRESS_URL = "/trainee/progress/";
 export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const USE_PROMO_CODE_URL = "/payment/promo-code/";
@@ -78,10 +79,10 @@ export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
-export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
-  "/admin/service-providers/userId/";
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
   "/serviceprovider_logged_in";
+export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
+  "/admin/service-providers/userId/";
 //=================StatusCodes===================
 export const FORBIDDEN_CODE = 403;
 export const SUCCESS_CODES = [200, 201];
@@ -102,3 +103,5 @@ export const category = [
 ];
 //=======================AdminPanel select duration=====================
 export const duration = ["Weekly", "monthly"];
+//=======================AdminPanel select promotion type=====================
+export const promoCodeTypeOptions = ["flat", "percentage"];

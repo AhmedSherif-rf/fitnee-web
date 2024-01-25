@@ -18,7 +18,7 @@ const SignInWrapper = (props) => {
         </div>
       </Col>
 
-      <Col md={6} xs={12} className="p-0">
+      <Col md={6} xs={12} className={`p-0 signInCol`}>
         <SignInForm />
       </Col>
     </Row>

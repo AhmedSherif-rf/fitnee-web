@@ -45,11 +45,6 @@ const ServiceProviders = (props) => {
       let ServiceProviderListArray = [];
 
       serviceProvidersData.forEach((serviceProvider, index) => {
-        console.log(
-          serviceProvider,
-          "serviceProviderserviceProviderserviceProvider"
-        );
-
         ServiceProviderListArray.push({
           full_name: (
             <div className="d-flex align-items-center">

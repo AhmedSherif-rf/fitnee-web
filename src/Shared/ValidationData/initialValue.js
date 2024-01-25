@@ -185,7 +185,13 @@ export const ADD_EXERCISE_INITIAL_VALUES = {
   exercise_part_text: [""],
   exercise_part_text_ar: [""],
 };
-
+export const ADD_PROMO_CODE_INITIAL_VALUES = {
+  code: "",
+  type: "",
+  value: "",
+  expire_date: "",
+  limited_users: "",
+};
 export const ADD_PROGRESS_INITIAL_VALUES = {
   weight: "",
   protien: "",

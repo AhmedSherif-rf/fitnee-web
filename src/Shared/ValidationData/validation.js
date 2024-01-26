@@ -179,6 +179,12 @@ const exerciseVideoValidation = Yup.mixed().required(
   TranslationHelper("validation.requiredExerciseVideoText")
 );
 
+export const SIGNIN_SCHEMA = Yup.object().shape({
+  email: emailValidation,
+  password: RequiredValidation,
+  termAndConditionCheck: termAndConditionCheckValidation,
+});
+
 export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({
   email: emailValidation,
   gender: genderValidation,

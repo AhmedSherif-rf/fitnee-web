@@ -33,7 +33,7 @@ const Index = () => {
 
   const fetchTrainersData = () => {
     const data = {
-      apiEndpoint: `${MEMBERSHIP_URL}?role=${TRAINER_ROLE}`,
+      apiEndpoint: `${MEMBERSHIP_URL}?role=${TRAINER_ROLE}&page=${page}`,
     };
 
     dispatch(getMyServiceProviders(data)).then((res) => {
@@ -47,10 +47,10 @@ const Index = () => {
   return (
     <Container fluid>
       {loading === "pending" && <LoadingScreen />}
-      <Row className={`${i18n.dir()}`}>
+      <Row>
         <Col md={12}>
           <Card className="BorderRadius contentCard border-0">
-            <CardBody className="px-4">
+            <CardBody className={`${i18n.dir()} px-4`}>
               <Row>
                 <Col md={12}>
                   <PageHeading
@@ -92,7 +92,7 @@ const Index = () => {
                           <h6 className="mb-0 fw-bold">
                             {t("traineeServiceProviderList.startDateText")}
                           </h6>
-                          <span className="mb-0 mx-1"> / </span>
+                          <span className="mb-0 mx-1"> - </span>
                           <h6 className="mb-0 fw-bold">
                             {t("traineeServiceProviderList.endDateText")}
                           </h6>

@@ -133,6 +133,25 @@ export const getMyServiceProviders = createAsyncThunk(
   }
 );
 
+export const cancelSubscription = createAsyncThunk(
+  "cancelSubscription",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      Toaster.success("Subscription cancelled successfully");
+      return response.data;
+    } catch (error) {
+      if (error?.response?.data?.error?.Error) {
+        Toaster.error(error?.response?.data?.error?.Error);
+      } else if (error?.response?.data?.error?.Message) {
+        Toaster.error(error?.response?.data?.error?.Message);
+      }
+
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const getMyTrainees = createAsyncThunk(
   "getMyTrainees",
   async ({ apiEndpoint }, thunkAPI) => {

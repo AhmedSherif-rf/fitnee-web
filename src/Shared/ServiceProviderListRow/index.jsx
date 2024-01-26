@@ -70,7 +70,7 @@ const Index = (props) => {
               <p className="mb-0 small">
                 {moment(data?.created_at).format("DD/MM/YYYY")}
               </p>
-              <span className="mb-0 mx-1">/</span>
+              <span className="mb-0 mx-1">-</span>
               <p className="mb-0 small">
                 {moment(data?.expire_date).format("DD/MM/YYYY")}
               </p>

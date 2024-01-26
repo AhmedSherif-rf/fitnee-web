@@ -8,41 +8,38 @@ const WalletDetail = (props) => {
   const { index, data } = props;
 
   return (
-    <>
-      {data?.map((transaction) => (
-        <Row className="mb-2" key={index}>
-          <Col md={12}>
-            <div className="d-flex align-items-center border-bottom py-2">
-              <div className="me-2">
-                <img
-                  src={
-                    transaction?.type === "debit"
-                      ? Images.ARROW_UP_IMG
-                      : Images.ARROW_DOWN_IMG
-                  }
-                  alt="paymentTypeImg"
-                />
-              </div>
-              <div className="d-flex align-items-center justify-content-between w-100">
-                <div className="">
-                  <h6 className="fw-bold">{transaction?.type}</h6>
-                  <span className="small text-black-custom">
-                    {moment(data?.date_created).format("MM/DD/YYYY hh:mm A")}
-                  </span>
-                </div>
-                <div>
-                  {transaction?.status === "debit" ? (
-                    <h4 className="mb-0">{`- ${CURRENCY} ${data?.amount}`}</h4>
-                  ) : (
-                    <h4 className="mb-0">{`+ ${CURRENCY} ${data?.amount}`}</h4>
-                  )}
-                </div>
-              </div>
+    <Row className="mb-2" key={index}>
+      <Col md={12}>
+        <div className="d-flex align-items-center border-bottom py-2">
+          <div className="me-2">
+            <img
+              src={
+                data?.Transaction_status === "debit"
+                  ? Images.ARROW_UP_IMG
+                  : Images.ARROW_DOWN_IMG
+              }
+              height={58}
+              alt="paymentTypeImg"
+            />
+          </div>
+          <div className="d-flex align-items-center justify-content-between w-100">
+            <div className="px-2">
+              <h6 className="fw-bold">{data?.description}</h6>
+              <span className="small text-black-custom">
+                {moment(data?.date_created).format("MM/DD/YYYY hh:mm A")}
+              </span>
             </div>
-          </Col>
-        </Row>
-      ))}
-    </>
+            <div>
+              {data?.Transaction_status === "debit" ? (
+                <h4 className="mb-0">{`- ${CURRENCY} ${data?.total_amount}`}</h4>
+              ) : (
+                <h4 className="mb-0 textYellow">{`+ ${CURRENCY} ${data?.total_amount}`}</h4>
+              )}
+            </div>
+          </div>
+        </div>
+      </Col>
+    </Row>
   );
 };
 

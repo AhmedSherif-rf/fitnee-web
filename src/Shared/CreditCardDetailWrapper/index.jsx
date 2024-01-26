@@ -30,6 +30,7 @@ import { PAYMENT_METHOD_DETAIL_INITIAL_VALUES } from "../ValidationData/initialV
 import {
   getCheckoutId,
   applyPromoCode,
+  getWalletAmount
 } from "../../Redux/features/Subscription/subscriptionApi";
 
 const CreditCardDetailWrapper = () => {
@@ -44,6 +45,10 @@ const CreditCardDetailWrapper = () => {
     grandTotal: 0,
     walletAmount: 0,
     vat: functions.calculateVat(subscriptionPlan.price),
+  });
+  const [countryData, setCountryData] = useState({
+    countryId: "",
+    stateId: "",
   });
 
   useEffect(() => {
@@ -62,10 +67,33 @@ const CreditCardDetailWrapper = () => {
     }
   }, [checkoutId]);
 
-  const [countryData, setCountryData] = useState({
-    countryId: "",
-    stateId: "",
-  });
+  useEffect(() => {
+    const data = {
+      apiEndpoint: `/balance/`,
+    };
+    dispatch(getWalletAmount(data)).then((res) => {
+      if (res.type === "getWalletAmount/fulfilled") {
+        console.log(res.payload.data)
+          // const updatedGrandPrice = functions.getSummary(
+          //   res.payload.data.value,
+          //   summaryData.walletAmount,
+          //   subscriptionPlan.price,
+          //   summaryData.vat
+          // );
+
+          // if (updatedGrandPrice >= 0) {
+          //   setSummaryData({
+          //     ...summaryData,
+          //     discount: res.payload.data.value,
+          //   });
+          // } else {
+          //   Toaster.error(t("messages.cannotUserPromoCode"));
+          // }
+      }
+    });
+  }, []);
+
+  
 
   const handleApplePromoCodeClick = useCallback(
     (promoCode) => {
@@ -386,6 +414,7 @@ const CreditCardDetailWrapper = () => {
                               isOn={values.use_wallet}
                               handleToggle={() => {
                                 setFieldValue("use_wallet", !values.use_wallet);
+                                // useFitneeWallet();
                               }}
                             />
                           </div>

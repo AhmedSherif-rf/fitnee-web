@@ -14,7 +14,7 @@ const TransactionDetail = (props) => {
           <Col md={12}>
             <div className="d-flex align-items-center border-bottom py-2">
               <div className="me-2">
-                <img src={Images.ARROW_UP_IMG} alt="paymentTypeImg" />
+                <img src={Images.ARROW_UP_IMG} height={58} alt="paymentTypeImg" />
               </div>
               <div className="d-flex align-items-center justify-content-between w-100">
                 <div className="">

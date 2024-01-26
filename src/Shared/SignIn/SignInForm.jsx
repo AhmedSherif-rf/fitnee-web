@@ -5,16 +5,16 @@ import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
-import { SIGNIN_SCHEMA } from "./data/validation";
-import { INITIAL_VALUES } from "./data/initialValue";
 import { useDispatch, useSelector } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import { login } from "../../Redux/features/User/userApi";
 import React, { memo, useCallback, useState } from "react";
+import { SIGNIN_SCHEMA } from "../ValidationData/validation";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { setEmail } from "../../Redux/features/User/userSlice";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { SIGNIN_INITIAL_VALUES } from "../ValidationData/initialValue";
 import {
   Card,
   CardBody,
@@ -108,7 +108,7 @@ const SignInForm = () => {
         {loading === "pending" && <LoadingScreen />}
         <Col lg={9} md={12} sm={10}>
           <Formik
-            initialValues={{ ...INITIAL_VALUES }}
+            initialValues={{ ...SIGNIN_INITIAL_VALUES }}
             validationSchema={SIGNIN_SCHEMA}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
@@ -173,7 +173,7 @@ const SignInForm = () => {
                     <div className="d-flex mb-1">
                       <Checkbox
                         label={
-                          <p className="mb-0 fs-6">
+                          <p className="mb-0 fs-6 px-2">
                             {t("login.agreeOnFitneeText")}{" "}
                             <Link to={`/termAndCondition/general${pathname}`}>
                               <span className="textYellow">
@@ -205,7 +205,7 @@ const SignInForm = () => {
                       handleOnClick={handleCancelClick}
                     />
                     <p className="pt-3 text-center">
-                      {t("login.newHereText")}
+                      {t("login.newHereText")}{" "}
                       <Link to="/registerAs" className="textYellow">
                         {t("login.createAccountText")}
                       </Link>
@@ -219,7 +219,7 @@ const SignInForm = () => {
       </Row>
       <InformationModal
         size={"md"}
-        TOneClassName={"fw-bold mb-2 fs-5 text-center"}
+        TOneClassName={"mb-2 fs-5 text-center"}
         className={"p-4"}
         isOpen={showAccountRequestModal}
         onClose={handleAccountRequestModalClose}

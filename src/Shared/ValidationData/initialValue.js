@@ -1,3 +1,9 @@
+export const SIGNIN_INITIAL_VALUES = {
+  email: "",
+  password: "",
+  termAndConditionCheck: false,
+};
+
 export const TRAINEE_SIGNUP_INITIAL_VALUES = {
   goal: "",
   level: "",

@@ -22,6 +22,12 @@ const Index = () => {
     setPage(page.selected + 1);
   }, []);
 
+  const handleRefreshData = useCallback(() => {
+    setPage(1);
+    fetchSubscriptionsData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     fetchSubscriptionsData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -29,7 +35,7 @@ const Index = () => {
 
   const fetchSubscriptionsData = () => {
     const data = {
-      apiEndpoint: MEMBERSHIP_URL,
+      apiEndpoint: `${MEMBERSHIP_URL}?page=${page}`,
     };
 
     dispatch(getMyServiceProviders(data)).then((res) => {
@@ -43,10 +49,10 @@ const Index = () => {
   return (
     <Container fluid className="">
       {loading === "pending" && <LoadingScreen />}
-      <Row className={`${i18n.dir()}`}>
+      <Row>
         <Col md={12}>
           <Card className="BorderRadius contentCard px-3">
-            <CardBody className="px-md-4">
+            <CardBody className={`px-md-4 ${i18n.dir()}`}>
               <Row>
                 <Col md={12}>
                   <PageHeading
@@ -59,8 +65,12 @@ const Index = () => {
               </Row>
               <Row className="align-items-center justify-content-center d-md-flex d-none text-black-custom border-bottom py-2 mb-2">
                 <Col md={2} className="mb-md-0 mb-2">
-                  <div className="">
-                    <h6 className="mb-0 w-100 fs-5 fw-bold text-start">
+                  <div>
+                    <h6
+                      className={`mb-0 w-100 fs-5 fw-bold ${
+                        i18n.dir() === "ltr" ? "text-start" : "text-end"
+                      }`}
+                    >
                       {t("traineeSubscriptionDetail.nameText")}
                     </h6>
                   </div>
@@ -88,7 +98,13 @@ const Index = () => {
                 </Col>
               </Row>
               {subscriptionData?.map((data, index) => {
-                return <SubscriptionDetailRow data={data} index={index} />;
+                return (
+                  <SubscriptionDetailRow
+                    data={data}
+                    index={index}
+                    handleRefreshData={handleRefreshData}
+                  />
+                );
               })}
             </CardBody>
             <CardFooter>

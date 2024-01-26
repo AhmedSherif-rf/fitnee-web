@@ -20,7 +20,7 @@ const CommentsCard = (props) => {
             }}
           ></div>
         </div>
-        <div className="ms-3">
+        <div className="ms-3 px-2">
           <span className="d-flex align-items-end mb-2 gap-2">
             <h6 className="mb-0 fw-bold">{commentTitle}</h6>
             <StarRating />

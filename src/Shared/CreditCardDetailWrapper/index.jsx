@@ -12,7 +12,6 @@ import {
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import SubHeading from "../Headings/SubHeading";
-import { CURRENCY } from "../../utils/constants";
 import PageHeading from "../Headings/PageHeading";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Col, Container, Row, Form } from "reactstrap";
@@ -20,6 +19,7 @@ import { CardBody, CardFooter, CardHeader } from "reactstrap";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import "react-country-state-city/dist/react-country-state-city.css";
+import { CURRENCY, WALLET_AMOUNT_URL } from "../../utils/constants";
 import React, { memo, useCallback, useState, useEffect } from "react";
 import { PAYMENT_METHOD_DETAIL_SCHEMA } from "../ValidationData/validation";
 import {
@@ -30,7 +30,7 @@ import { PAYMENT_METHOD_DETAIL_INITIAL_VALUES } from "../ValidationData/initialV
 import {
   getCheckoutId,
   applyPromoCode,
-  getWalletAmount
+  getWalletAmount,
 } from "../../Redux/features/Subscription/subscriptionApi";
 
 const CreditCardDetailWrapper = () => {
@@ -46,6 +46,7 @@ const CreditCardDetailWrapper = () => {
     walletAmount: 0,
     vat: functions.calculateVat(subscriptionPlan.price),
   });
+  const [walletBalance, setWalletBalance] = useState(0);
   const [countryData, setCountryData] = useState({
     countryId: "",
     stateId: "",
@@ -69,31 +70,15 @@ const CreditCardDetailWrapper = () => {
 
   useEffect(() => {
     const data = {
-      apiEndpoint: `/balance/`,
+      apiEndpoint: WALLET_AMOUNT_URL,
     };
     dispatch(getWalletAmount(data)).then((res) => {
       if (res.type === "getWalletAmount/fulfilled") {
-        console.log(res.payload.data)
-          // const updatedGrandPrice = functions.getSummary(
-          //   res.payload.data.value,
-          //   summaryData.walletAmount,
-          //   subscriptionPlan.price,
-          //   summaryData.vat
-          // );
-
-          // if (updatedGrandPrice >= 0) {
-          //   setSummaryData({
-          //     ...summaryData,
-          //     discount: res.payload.data.value,
-          //   });
-          // } else {
-          //   Toaster.error(t("messages.cannotUserPromoCode"));
-          // }
+        setWalletBalance(res.payload.data.balance);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  
 
   const handleApplePromoCodeClick = useCallback(
     (promoCode) => {
@@ -169,6 +154,25 @@ const CreditCardDetailWrapper = () => {
     [dispatch, subscriptionPlan, summaryData, user]
   );
 
+  const calculateWalletAmountUsed = () => {
+    if (
+      walletBalance >=
+      (
+        parseFloat(subscriptionPlan.price) +
+        parseFloat(summaryData.vat) -
+        parseFloat(summaryData.discount)
+      ).toFixed(2)
+    ) {
+      return (
+        parseFloat(subscriptionPlan.price) +
+        parseFloat(summaryData.vat) -
+        parseFloat(summaryData.discount)
+      ).toFixed(2);
+    } else {
+      return walletBalance;
+    }
+  };
+
   return (
     <Container fluid className={`h-100 ${i18n.dir()}`}>
       {loading === "pending" && <LoadingScreen />}
@@ -229,7 +233,9 @@ const CreditCardDetailWrapper = () => {
                           }`}
                           onClick={() => setFieldValue("entity", "VISA")}
                         >
-                          <h6 className="mb-0 font14">VISA/Master</h6>
+                          <h6 className="mb-0 font14">
+                            {t("cardDetails.visaMasterText")}
+                          </h6>
                           <img src={Images.VISA_ICON} alt="visa-icon" />
                         </div>
                       </Col>
@@ -240,7 +246,9 @@ const CreditCardDetailWrapper = () => {
                           }`}
                           onClick={() => setFieldValue("entity", "MADA")}
                         >
-                          <h6 className="mb-0 font14">Mada</h6>
+                          <h6 className="mb-0 font14">
+                            {t("cardDetails.madaText")}
+                          </h6>
                           <img src={Images.MADA_ICON} alt="mada-icon" />
                         </div>
                       </Col>
@@ -251,7 +259,9 @@ const CreditCardDetailWrapper = () => {
                           }`}
                           onClick={() => setFieldValue("entity", "APPLE_PAY")}
                         >
-                          <h6 className="mb-0 font14">Apple pay</h6>
+                          <h6 className="mb-0 font14">
+                            {t("cardDetails.applePayText")}
+                          </h6>
                           <img src={Images.APPLE_PAY_ICON} alt="mada-icon" />
                         </div>
                       </Col>
@@ -262,7 +272,9 @@ const CreditCardDetailWrapper = () => {
                           }`}
                           onClick={() => setFieldValue("entity", "STC_PAY")}
                         >
-                          <h6 className="mb-0 font14">STC pay</h6>
+                          <h6 className="mb-0 font14">
+                            {t("cardDetails.stcPayText")}
+                          </h6>
                           <img src={Images.STC_PAY_ICON} alt="mada-icon" />
                         </div>
                       </Col>
@@ -273,7 +285,7 @@ const CreditCardDetailWrapper = () => {
                     <Row>
                       <Col md={12}>
                         <SubHeading
-                          headingText={"Billing Address"}
+                          headingText={t("cardDetails.billingAddressText")}
                           className="mb-0"
                           categoryText=""
                         />
@@ -282,7 +294,7 @@ const CreditCardDetailWrapper = () => {
                         <InputField
                           type="text"
                           name="surname"
-                          placeholder={"Surname"}
+                          placeholder={t("cardDetails.surnameText")}
                           onChangeHandle={handleChange}
                           onBlurHandle={handleBlur}
                           value={values.surname}
@@ -301,7 +313,7 @@ const CreditCardDetailWrapper = () => {
                         <InputField
                           type="text"
                           name="givenName"
-                          placeholder={"Given name"}
+                          placeholder={t("cardDetails.givenNameText")}
                           onChangeHandle={handleChange}
                           onBlurHandle={handleBlur}
                           value={values.givenName}
@@ -322,7 +334,7 @@ const CreditCardDetailWrapper = () => {
                         <InputField
                           type="text"
                           name="postcode"
-                          placeholder={"Postcode"}
+                          placeholder={t("cardDetails.postCodeText")}
                           onChangeHandle={handleChange}
                           onBlurHandle={handleBlur}
                           value={values.postcode}
@@ -347,7 +359,7 @@ const CreditCardDetailWrapper = () => {
                             setFieldValue("country", e.iso2);
                           }}
                           containerClassName={"countryContainerClass"}
-                          placeHolder="Select Country"
+                          placeHolder={t("cardDetails.selectCountryText")}
                         />
                         <p className="errorField">
                           {errors.country && touched.country && errors.country}
@@ -362,7 +374,7 @@ const CreditCardDetailWrapper = () => {
                             setFieldValue("state", e.name);
                           }}
                           containerClassName={"countryContainerClass"}
-                          placeHolder="Select State"
+                          placeHolder={t("cardDetails.selectStateText")}
                         />
                         <p className="errorField">
                           {errors.state && touched.state && errors.state}
@@ -376,7 +388,7 @@ const CreditCardDetailWrapper = () => {
                           }}
                           containerClassName={"countryContainerClass"}
                           stateid={countryData.stateId}
-                          placeHolder="Select City"
+                          placeHolder={t("cardDetails.selectCityText")}
                         />
                         <p className="errorField">
                           {errors.city && touched.city && errors.city}
@@ -386,7 +398,7 @@ const CreditCardDetailWrapper = () => {
                         <InputField
                           type="text"
                           name="street1"
-                          placeholder={"Address"}
+                          placeholder={t("cardDetails.addressText")}
                           onChangeHandle={handleChange}
                           onBlurHandle={handleBlur}
                           value={values.street1}
@@ -414,7 +426,33 @@ const CreditCardDetailWrapper = () => {
                               isOn={values.use_wallet}
                               handleToggle={() => {
                                 setFieldValue("use_wallet", !values.use_wallet);
-                                // useFitneeWallet();
+                                if (!values.use_wallet === true) {
+                                  const updatedGrandPrice = functions.getSummary(
+                                    summaryData.discount,
+                                    walletBalance,
+                                    subscriptionPlan.price,
+                                    summaryData.vat
+                                  );
+
+                                  setSummaryData({
+                                    ...summaryData,
+                                    grandTotal: updatedGrandPrice,
+                                    walletAmount: walletBalance,
+                                  });
+                                } else {
+                                  const updatedGrandPrice = functions.getSummary(
+                                    summaryData.discount,
+                                    0,
+                                    subscriptionPlan.price,
+                                    summaryData.vat
+                                  );
+
+                                  setSummaryData({
+                                    ...summaryData,
+                                    grandTotal: updatedGrandPrice,
+                                    walletAmount: 0,
+                                  });
+                                }
                               }}
                             />
                           </div>
@@ -511,7 +549,9 @@ const CreditCardDetailWrapper = () => {
                   <h6>{t("cardDetails.fitneeWalletText")}</h6>
                 </div>
                 <div style={{ width: "25%" }}>
-                  <h6>SAR 0</h6>
+                  <h6>
+                    {CURRENCY} {calculateWalletAmountUsed()}
+                  </h6>
                 </div>
               </div>
             </CardBody>

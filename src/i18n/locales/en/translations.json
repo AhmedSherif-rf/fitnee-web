@@ -501,7 +501,19 @@
     "appDownloadDescriptionOneText": "You have subscribed with XXX . XXX, he will review your profile and get back to you shortly, please download FitNee app and enable the notification.",
     "appDownloadDescriptionTwoText": "Be informed that you have the right to cancel your Subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer or nitration specialist. You can now manage your profile and contact your Trainer/Nutrition by downloading the app",
     "googleLinkText": "Google Link",
-    "appLinkText": "App Link"
+    "appLinkText": "App Link",
+    "visaMasterText": "VISA/MASTER",
+    "madaText": "Mada",
+    "applePayText": "Apple pay",
+    "stcPayText": "STC pay",
+    "billingAddressText": "Billing Address",
+    "surnameText": "Surname",
+    "givenNameText": "Given Name",
+    "postCodeText": "Postcode",
+    "selectCountryText": "Select Country",
+    "selectStateText": "Select State",
+    "selectCityText": "Select City",
+    "addressText": "Address"
   },
   "signup": {
     "traineesText": "Trainees",

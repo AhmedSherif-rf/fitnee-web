@@ -53,6 +53,7 @@ export const LOGOUT_URL = "/logout/";
 export const MEMBERSHIP_URL = "/membership/";
 export const REGISTER_URL = "/registeruser/";
 export const EDIT_PROFILE_URL = "/User/userId/";
+export const WALLET_AMOUNT_URL = "/wallet/balance/";
 export const DELETE_ACCOUNT_URL = "/delete/userId/";
 export const NEW_PASSWORD_URL = "/forget_password/";
 export const GET_SPECIALITIES_URL = "/specialities/";

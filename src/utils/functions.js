@@ -89,12 +89,21 @@ const copyToClipboard = (text) => {
 };
 
 const getSummary = (discount, walletAmount, totalAmount, vat) => {
-  const summary =
-    parseFloat(totalAmount) -
-    parseFloat(discount) -
-    parseFloat(walletAmount) +
-    parseFloat(vat);
-  return summary.toFixed(2);
+  if (
+    walletAmount >=
+    (parseFloat(totalAmount) + parseFloat(vat) - parseFloat(discount)).toFixed(
+      2
+    )
+  ) {
+    return 0;
+  } else {
+    const summary =
+      parseFloat(totalAmount) -
+      parseFloat(discount) -
+      parseFloat(walletAmount) +
+      parseFloat(vat);
+    return summary.toFixed(2);
+  }
 };
 
 const calculateVat = (amount) => {

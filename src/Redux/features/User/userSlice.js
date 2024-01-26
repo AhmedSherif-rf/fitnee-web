@@ -8,6 +8,7 @@ import {
   getMyTrainees,
   changePassword,
   addTraineeProgress,
+  cancelSubscription,
   getMyServiceProviders,
   getTransactionHistory,
   getTraineeProgressHistory,
@@ -144,6 +145,16 @@ export const userSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(getTransactionHistory.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(cancelSubscription.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(cancelSubscription.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(cancelSubscription.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

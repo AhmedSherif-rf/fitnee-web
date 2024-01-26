@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   getCheckoutId,
-  checkPaymentStatus,
   applyPromoCode,
+  getWalletAmount,
+  checkPaymentStatus,
 } from "./subscriptionApi";
 
 export const subscriptionSlice = createSlice({
@@ -59,6 +60,16 @@ export const subscriptionSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(applyPromoCode.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getWalletAmount.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getWalletAmount.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getWalletAmount.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

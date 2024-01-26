@@ -41,7 +41,7 @@ export const guestRoutes = [
     isGuest: true,
   },
   {
-    path: "/guest/exercises",
+    path: "/guest/exercises/:uuid",
     component: lazy(() => import("../Pages/GuestPages/Exercise")),
     exact: true,
     isPublic: true,

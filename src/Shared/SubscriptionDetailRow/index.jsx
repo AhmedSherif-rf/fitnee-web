@@ -1,22 +1,27 @@
 import moment from "moment";
 import { Col, Row } from "reactstrap";
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
+import React, { useState, memo } from "react";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
-import { CURRENCY } from "../../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import { cancelSubscription } from "../../Redux/features/User/userApi";
+import { CURRENCY, CANCEL_SUBSCRIPTION_URL } from "../../utils/constants";
 
 const Index = (props) => {
-  const { data, index } = props;
+  const dispatch = useDispatch();
+  const { data, index, handleRefreshData } = props;
+  const { loading } = useSelector((state) => state.user);
 
   const { t } = useTranslation("");
   const [
     showCancelSubscriptionModal,
     setShowCancelSubscriptionModal,
   ] = useState(false);
+  const [subscriptionId, setSubscriptionId] = useState("");
 
   const checkIfRefundDatePassed = (startDateString) => {
     const startDate = moment(startDateString).startOf("day");
@@ -36,14 +41,26 @@ const Index = (props) => {
   };
 
   const handleCancelSubscriptionClick = () => {
-    setShowCancelSubscriptionModal(false);
+    const data = {
+      apiEndpoint: CANCEL_SUBSCRIPTION_URL,
+      requestData: JSON.stringify({ Transition_id: subscriptionId }),
+    };
+
+    dispatch(cancelSubscription(data)).then((res) => {
+      if (res.type === "cancelSubscription/fulfilled") {
+        handleRefreshData();
+        setSubscriptionId("");
+        setShowCancelSubscriptionModal(false);
+      }
+    });
   };
 
   const handleNoClick = () => {
     setShowCancelSubscriptionModal(false);
   };
 
-  const handleCancelButtonClick = () => {
+  const handleCancelButtonClick = (subscriptionId) => {
+    setSubscriptionId(subscriptionId);
     setShowCancelSubscriptionModal(true);
   };
 
@@ -74,13 +91,13 @@ const Index = (props) => {
               ></div>
             </Link>
             <div>
-              <h6 className="mb-0 fw-bold px-1">
+              <h6 className="mb-0 fw-bold px-2">
                 {data?.serviceprovider?.full_name}
               </h6>
-              <span className="text-black-custom px-1">
+              <span className="text-black-custom px-2">
                 {data?.serviceprovider?.role}
               </span>
-              <div className="mb-md-0 d-md-none d-block py-2 px-1">
+              <div className="mb-md-0 d-md-none d-block py-2 px-2">
                 <h6 className="mb-0 w-100 small fw-bold ">
                   {CURRENCY} {data?.transition?.current_price}
                 </h6>
@@ -89,22 +106,22 @@ const Index = (props) => {
           </div>
         </Col>
         <Col md={2} className="d-block">
-          {!data?.is_expired && (
+          {!data?.is_expired && !data?.is_refund && (
             <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
               <span>{`${t(
                 "traineeServiceProviderList.startDateText"
               )} : ${moment(data?.created_at).format("DD/MM/YYYY")}`}</span>
               <br />
-              <span>{`${t("traineeServiceProviderList.endDateText")} : ${
-                moment(data?.expire_date).format("DD/MM/YYYY")
-              }`}</span>
+              <span>{`${t("traineeServiceProviderList.endDateText")} : ${moment(
+                data?.expire_date
+              ).format("DD/MM/YYYY")}`}</span>
             </div>
           )}
           {data?.is_expired && !data?.is_refund && (
             <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
-              {`${t("traineeServiceProviderList.expiredOnText")} : ${
-                moment(data?.expire_date).format("DD/MM/YYYY")
-              }`}
+              {`${t("traineeServiceProviderList.expiredOnText")} : ${moment(
+                data?.expire_date
+              ).format("DD/MM/YYYY")}`}
             </div>
           )}
           {data?.is_refund && (
@@ -120,11 +137,11 @@ const Index = (props) => {
             </h6>
           </div>
         </Col>
-        <Col md={4}>
+        <Col md={4} className="text-center">
           {data?.is_refund && (
             <OutlineBtn
               text={t("traineeServiceProviderList.cancelledText")}
-              className="py-2 px-5 w-100"
+              className="py-2 px-5 w-md-50 w-100"
               disabled={true}
             />
           )}
@@ -136,19 +153,27 @@ const Index = (props) => {
                   : t("traineeServiceProviderList.cancelText")
               }
               className="py-2 px-5 w-100"
-              handleOnClick={handleCancelButtonClick}
-              disabled={checkIfRefundDatePassed(data?.created_at) ? true : false}
+              handleOnClick={() =>
+                handleCancelButtonClick(data?.transition?.id)
+              }
+              disabled={
+                checkIfRefundDatePassed(data?.created_at) ? true : false
+              }
             />
           )}
           {data?.is_expired && (
-            <span>{t("traineeServiceProviderList.expiredText")}</span>
+            <OutlineBtn
+              text={t("traineeServiceProviderList.expiredText")}
+              className="py-2 px-5 w-100"
+              disabled={true}
+            />
           )}
         </Col>
       </Row>
 
       <InformationModal
         size={"md"}
-        TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+        TOneClassName={"mb-4 fs-5 text-center"}
         className={"p-4"}
         isOpen={showCancelSubscriptionModal}
         onClose={handleCloseSubscriptionModal}
@@ -158,6 +183,7 @@ const Index = (props) => {
             text={t("signup.yesText")}
             className="py-2 px-5"
             handleOnClick={handleCancelSubscriptionClick}
+            disabled={loading === "pending" ? true : false}
           />
         }
         ButtonTwo={
@@ -165,6 +191,7 @@ const Index = (props) => {
             text={t("signup.noText")}
             className="py-2 px-5"
             handleOnClick={handleNoClick}
+            disabled={loading === "pending" ? true : false}
           />
         }
       />
@@ -172,4 +199,4 @@ const Index = (props) => {
   );
 };
 
-export default Index;
+export default memo(Index);

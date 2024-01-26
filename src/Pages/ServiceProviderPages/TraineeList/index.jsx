@@ -31,7 +31,7 @@ const Index = () => {
 
   const fetchTraineesData = () => {
     const data = {
-      apiEndpoint: `${MEMBERSHIP_URL}`,
+      apiEndpoint: `${MEMBERSHIP_URL}?page=${page}`,
     };
 
     dispatch(getMyTrainees(data)).then((res) => {
@@ -45,10 +45,10 @@ const Index = () => {
   return (
     <Container fluid>
       {loading === "loading" && <LoadingScreen />}
-      <Row className={`${i18n.dir()}`}>
+      <Row>
         <Col md={12}>
           <Card className="BorderRadius contentCard">
-            <CardBody className="px-4">
+            <CardBody className={`${i18n.dir()} px-4`}>
               <Row>
                 <Col md={12}>
                   <PageHeading

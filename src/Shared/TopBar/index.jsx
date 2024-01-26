@@ -741,7 +741,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
       <InformationModal
         size={"md"}
-        TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+        TOneClassName={"mb-4 fs-5 text-center"}
         className={"p-4"}
         isOpen={showSubscriptionInformationModal}
         onClose={handleSubscriptionInformationModalClose}
@@ -764,7 +764,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
       <InformationModal
         size={"md"}
-        TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+        TOneClassName={"mb-4 fs-5 text-center"}
         className={"p-4"}
         isOpen={showDeleteAccountModal}
         onClose={handleDeleteAccountModalClose}

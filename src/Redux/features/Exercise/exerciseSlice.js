@@ -7,6 +7,8 @@ import {
   addSubCategory,
   getAllSubCategory,
   updateSubCategory,
+  getExercisesForGuest,
+  getAllCategoryForGuest,
 } from "./exerciseApi";
 
 export const exerciseSlice = createSlice({
@@ -92,6 +94,28 @@ export const exerciseSlice = createSlice({
         state.success = true;
       })
       .addCase(addExercise.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload?.error;
+      })
+      .addCase(getAllCategoryForGuest.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getAllCategoryForGuest.fulfilled, (state) => {
+        state.loading = "succeeded";
+        state.success = true;
+      })
+      .addCase(getAllCategoryForGuest.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload?.error;
+      })
+      .addCase(getExercisesForGuest.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getExercisesForGuest.fulfilled, (state) => {
+        state.loading = "succeeded";
+        state.success = true;
+      })
+      .addCase(getExercisesForGuest.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload?.error;
       });

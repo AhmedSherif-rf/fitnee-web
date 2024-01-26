@@ -1303,8 +1303,8 @@ const SignUpForm = () => {
                   <Checkbox
                     label={
                       roleType !== TRAINEE_TYPE ? (
-                        <p className="mb-0 fs-6">
-                          {t("signup.moneyTransferText")}
+                        <p className="mb-0 fs-6 px-2">
+                          {t("signup.moneyTransferText")}{" "}
 
                           <Link
                             target="blank"
@@ -1325,8 +1325,8 @@ const SignUpForm = () => {
                           </Link>
                         </p>
                       ) : (
-                        <p className="mb-0 fs-6">
-                          {t("signup.acknowledgeText")}
+                        <p className="mb-0 fs-6 px-2">
+                          {t("signup.acknowledgeText")}{" "}
 
                           <Link
                             target="blank"

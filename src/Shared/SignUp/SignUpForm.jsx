@@ -1129,10 +1129,13 @@ const SignUpForm = () => {
               {filterFields.includes("profile_availability") && (
                 <Col lg={12} md={12}>
                   <h6 className="mb-2 fw-bold">
-                    {`   ${t("signup.availableToRespondTraineeText")} ${
-                      roleType === NUTRITIONIST_TYPE ? "subscriber" : "trainee"
-                    } ${user === null && "*"}`}
+                    {`${t("signup.availableToRespondTraineeText")} ${
+                      roleType === NUTRITIONIST_TYPE
+                        ? t("signup.subscriberText")
+                        : t("signup.traineeText")
+                    } ${user === null ? "*" : ""}`}
                   </h6>
+
                   <FieldArray
                     name="profile_availability"
                     className="d-flex"
@@ -1305,7 +1308,6 @@ const SignUpForm = () => {
                       roleType !== TRAINEE_TYPE ? (
                         <p className="mb-0 fs-6 px-2">
                           {t("signup.moneyTransferText")}{" "}
-
                           <Link
                             target="blank"
                             to={`/termAndCondition/serviceProvider/signUp`}
@@ -1327,7 +1329,6 @@ const SignUpForm = () => {
                       ) : (
                         <p className="mb-0 fs-6 px-2">
                           {t("signup.acknowledgeText")}{" "}
-
                           <Link
                             target="blank"
                             to={`/termAndCondition/trainee/signUp`}

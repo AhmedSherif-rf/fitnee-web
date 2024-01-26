@@ -2,6 +2,7 @@ import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Col, Container, Row, Form } from "reactstrap";
 import InputField from "../../../../../Shared/InputField";
 import FillBtn from "../../../../../Shared/Buttons/FillBtn";
@@ -21,6 +22,7 @@ import {
 
 const SubCategory = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation("");
   const { categoryUuid, categoryId } = useParams();
   const { loading } = useSelector((state) => state.exercise);
 
@@ -115,7 +117,7 @@ const SubCategory = () => {
                   className={"form-control-lg BorderRadiusInput py-3 px-3"}
                 />
                 <p className="errorField text-start">
-                  {errors.title && touched.title && errors.title}
+                  {t(errors.title) && touched.title && t(errors.title)}
                 </p>
               </Col>
               <Col md={4} className="mb-2">
@@ -129,7 +131,7 @@ const SubCategory = () => {
                   className={"form-control-lg BorderRadiusInput py-3 px-3 rtl"}
                 />
                 <p className="errorField text-start">
-                  {errors.title_ar && touched.title_ar && errors.title_ar}
+                  {t(errors.title_ar) && touched.title_ar && t(errors.title_ar)}
                 </p>
               </Col>
               <Col md={2} className="mb-2">

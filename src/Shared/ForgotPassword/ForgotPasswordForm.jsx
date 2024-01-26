@@ -85,7 +85,7 @@ const ForgotPasswordForm = () => {
                       className={"form-control-lg BorderRadiusInput py-3 px-5"}
                     />
                     <p className="errorField">
-                      {errors.email && touched.email && errors.email}
+                      {t(errors.email) && touched.email && t(errors.email)}
                     </p>
                     <div className="my-3">
                       <Link to="/signIn" className="textYellow">

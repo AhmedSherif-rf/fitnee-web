@@ -1,4 +1,5 @@
 import { Formik } from "formik";
+import { useTranslation } from "react-i18next";
 import { FaGift, FaUsers } from "react-icons/fa6";
 import React, { useEffect, useState } from "react";
 import MyDropdown from "../../../Shared/MyDropdown";
@@ -22,6 +23,7 @@ import {
 
 const PromoCode = (props) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation("");
   const { loading } = useSelector((state) => state.promoCode);
 
   const [tableData, setTableData] = useState([]);
@@ -42,6 +44,7 @@ const PromoCode = (props) => {
 
   useEffect(() => {
     fetchPromoCodeListing();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const fetchPromoCodeListing = () => {
@@ -122,7 +125,7 @@ const PromoCode = (props) => {
                           onChangeHandle={handleChange}
                         />
                         <p className="errorField text-start">
-                          {errors.code && touched.code && errors.code}
+                          {t(errors.code) && touched.code && t(errors.code)}
                         </p>
                       </Col>
 
@@ -138,7 +141,7 @@ const PromoCode = (props) => {
                           Options={promoCodeTypeOptions}
                         />
                         <p className="errorField text-start">
-                          {errors.type && touched.type && errors.type}
+                          {t(errors.type) && touched.type && t(errors.type)}
                         </p>
                       </Col>
 
@@ -157,7 +160,7 @@ const PromoCode = (props) => {
                           onChangeHandle={handleChange}
                         />
                         <p className="errorField text-start">
-                          {errors.value && touched.value && errors.value}
+                          {t(errors.value) && touched.value && t(errors.value)}
                         </p>
                       </Col>
 
@@ -176,9 +179,9 @@ const PromoCode = (props) => {
                           onChangeHandle={handleChange}
                         />
                         <p className="errorField text-start">
-                          {errors.limited_users &&
+                          {t(errors.limited_users) &&
                             touched.limited_users &&
-                            errors.limited_users}
+                            t(errors.limited_users)}
                         </p>
                       </Col>
 
@@ -195,9 +198,9 @@ const PromoCode = (props) => {
                           onChangeHandle={handleChange}
                         />
                         <p className="errorField text-start">
-                          {errors.expire_date &&
+                          {t(errors.expire_date) &&
                             touched.expire_date &&
-                            errors.expire_date}
+                            t(errors.expire_date)}
                         </p>
                       </Col>
                       <Row className="justify-content-center mt-2">

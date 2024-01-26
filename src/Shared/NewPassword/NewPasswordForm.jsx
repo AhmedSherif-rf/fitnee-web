@@ -91,9 +91,9 @@ const NewPasswordForm = () => {
                       }
                     />
                     <p className="errorField">
-                      {errors.new_password &&
+                      {t(errors.new_password) &&
                         touched.new_password &&
-                        errors.new_password}
+                        t(errors.new_password)}
                     </p>
                     <InputField
                       type="password"
@@ -113,9 +113,9 @@ const NewPasswordForm = () => {
                       }
                     />
                     <p className="errorField">
-                      {errors.confirm_password &&
+                      {t(errors.confirm_password) &&
                         touched.confirm_password &&
-                        errors.confirm_password}
+                        t(errors.confirm_password)}
                     </p>
                     <FillBtn
                       className="w-100 py-3 mb-3 mt-5"

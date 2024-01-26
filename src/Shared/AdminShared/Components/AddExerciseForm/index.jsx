@@ -4,6 +4,7 @@ import classnames from "classnames";
 import { useParams } from "react-router-dom";
 import React, { useState, memo } from "react";
 import FillBtn from "../../../Buttons/FillBtn";
+import { useTranslation } from "react-i18next";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import functions from "../../../../utils/functions";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,6 +28,7 @@ import {
 
 const AddExerciseForm = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation("");
   const { subCategoryId } = useParams();
   const { loading } = useSelector((state) => state.exercise);
 
@@ -121,7 +123,9 @@ const AddExerciseForm = () => {
                         }
                       />
                       <p className="errorField text-end">
-                        {errors.title_ar && touched.title_ar && errors.title_ar}
+                        {t(errors.title_ar) &&
+                          touched.title_ar &&
+                          t(errors.title_ar)}
                       </p>
                     </Col>
                     <Col md="12" className="mb-2">
@@ -183,7 +187,7 @@ const AddExerciseForm = () => {
                         }
                       />
                       <p className="errorField text-start">
-                        {errors.title && touched.title && errors.title}
+                        {t(errors.title) && touched.title && t(errors.title)}
                       </p>
                     </Col>
                     <Col md="12" className="mb-2">
@@ -253,9 +257,9 @@ const AddExerciseForm = () => {
                   onBlurHandle={handleBlur}
                 />
                 <p className="errorField text-start">
-                  {errors.exercise_videos &&
+                  {t(errors.exercise_videos) &&
                     touched.exercise_videos &&
-                    errors.exercise_videos}
+                    t(errors.exercise_videos)}
                 </p>
               </Col>
               <Col md={6}>

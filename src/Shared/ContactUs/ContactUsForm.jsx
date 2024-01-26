@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
 import PhoneInputField from "../PhoneInputField";
-import { INITIAL_VALUES } from "./data/initialValue";
-import { CONTACT_US_SCHEMA } from "./data/validation";
 import { CONTACT_US_URL } from "../../utils/constants";
 import InformationModal from "../Modal/InformationModal";
 import React, { memo, useCallback, useState } from "react";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import { CONTACT_US_SCHEMA } from "../ValidationData/validation";
 import { contactUs } from "../../Redux/features/ContactUs/contactUsApi";
+import { CONTACT_US_INITIAL_VALUES } from "../ValidationData/initialValue";
 import {
   Card,
   CardBody,
@@ -31,8 +31,9 @@ const ContactUsForm = () => {
   const { t } = useTranslation("");
   const { loading } = useSelector((state) => state?.contactUs);
 
-  const [showContactUsConfirmModal, setShowContactUsConfirmModal] =
-    useState(false);
+  const [showContactUsConfirmModal, setShowContactUsConfirmModal] = useState(
+    false
+  );
 
   const handleCancelClick = useCallback(() => {
     navigate("/");
@@ -62,7 +63,7 @@ const ContactUsForm = () => {
         {loading === "pending" && <LoadingScreen />}
         <Col md={10} sm={10} className="h-100">
           <Formik
-            initialValues={{ ...INITIAL_VALUES }}
+            initialValues={{ ...CONTACT_US_INITIAL_VALUES }}
             validationSchema={CONTACT_US_SCHEMA}
             onSubmit={(values, { setSubmitting, resetForm }) => {
               setSubmitting(true);
@@ -101,9 +102,9 @@ const ContactUsForm = () => {
                               icon={<img src={Images.PERSON_ICON} alt="" />}
                             />
                             <p className="errorField">
-                              {errors.first_name &&
+                              {t(errors.first_name) &&
                                 touched.first_name &&
-                                errors.first_name}
+                                t(errors.first_name)}
                             </p>
                           </Col>
                           <Col md={6} className="mb-2">
@@ -118,9 +119,9 @@ const ContactUsForm = () => {
                               icon={<img src={Images.PERSON_ICON} alt="" />}
                             />
                             <p className="errorField">
-                              {errors.last_name &&
+                              {t(errors.last_name) &&
                                 touched.last_name &&
-                                errors.last_name}
+                                t(errors.last_name)}
                             </p>
                           </Col>
                           <Col md={12} className="mb-2">
@@ -137,7 +138,9 @@ const ContactUsForm = () => {
                               className={"py-3 px-5"}
                             />
                             <p className="errorField">
-                              {errors.email && touched.email && errors.email}
+                              {t(errors.email) &&
+                                touched.email &&
+                                t(errors.email)}
                             </p>
                           </Col>
                           <Col md={12} className="mb-2">
@@ -152,7 +155,9 @@ const ContactUsForm = () => {
                               setFieldValue={setFieldValue}
                             />
                             <p className="errorField">
-                              {errors.phone && touched.phone && errors.phone}
+                              {t(errors.phone) &&
+                                touched.phone &&
+                                t(errors.phone)}
                             </p>
                           </Col>
                           <Col md={12} className="mb-2">
@@ -167,9 +172,9 @@ const ContactUsForm = () => {
                               rows={"2"}
                             />
                             <p className="errorField">
-                              {errors.message &&
+                              {t(errors.message) &&
                                 touched.message &&
-                                errors.message}
+                                t(errors.message)}
                             </p>
                           </Col>
                           <Col md={12} sm={6} className="mb-2">

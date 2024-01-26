@@ -135,7 +135,7 @@ const OTPVerification = () => {
             </CardHeader>
             <CardBody className="customPadding">
               <div
-                className={`d-flex align-items-center justify-content-center ${styles.otpDiv}`}
+                className={`d-flex align-items-center justify-content-center ltr ${styles.otpDiv}`}
               >
                 <OTPInput
                   className={`${styles.otpInputs}`}
@@ -147,9 +147,6 @@ const OTPVerification = () => {
                   disabled={false}
                 />
               </div>
-              <p className="mb-0 fw-bold mb-3">
-                {t("otpVerification.didNotRecieveCodeText")}
-              </p>
               <p className="text-black-custom mb-3">
                 {t("otpVerification.resendCodeInText")}{" "}
                 <span className="textYellow fw-bold">

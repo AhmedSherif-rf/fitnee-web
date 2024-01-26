@@ -1,0 +1,2 @@
+:root{--yellow:#f5e74c}.pagination{align-items:center;display:flex;justify-content:flex-end;list-style:none}.pagination .activePageLink{color:#91f533;font-size:20px;font-weight:bolder}.pagination li{border-radius:5px;margin-left:10px}.pagination li a{border-radius:5px;cursor:pointer;margin-left:5px;padding:0 10px;width:100%}@media(max-width:500px){.heading{font-size:18px}}
+/*# sourceMappingURL=9050.4c0c2b22.chunk.css.map*/

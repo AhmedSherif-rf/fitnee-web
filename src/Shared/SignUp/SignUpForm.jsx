@@ -341,9 +341,9 @@ const SignUpForm = () => {
                     value={values.first_name}
                   />
                   <p className="errorField">
-                    {errors.first_name &&
+                    {t(errors.first_name) &&
                       touched.first_name &&
-                      errors.first_name}
+                      t(errors.first_name)}
                   </p>
                 </Col>
               )}
@@ -365,7 +365,9 @@ const SignUpForm = () => {
                     value={values.full_name}
                   />
                   <p className="errorField">
-                    {errors.full_name && touched.full_name && errors.full_name}
+                    {t(errors.full_name) &&
+                      touched.full_name &&
+                      t(errors.full_name)}
                   </p>
                 </Col>
               )}
@@ -387,7 +389,9 @@ const SignUpForm = () => {
                     value={values.last_name}
                   />
                   <p className="errorField">
-                    {errors.last_name && touched.last_name && errors.last_name}
+                    {t(errors.last_name) &&
+                      touched.last_name &&
+                      t(errors.last_name)}
                   </p>
                 </Col>
               )}
@@ -410,7 +414,7 @@ const SignUpForm = () => {
                     disabled={user ? true : false}
                   />
                   <p className="errorField">
-                    {errors.email && touched.email && errors.email}
+                    {t(errors.email) && touched.email && t(errors.email)}
                   </p>
                 </Col>
               )}
@@ -432,7 +436,9 @@ const SignUpForm = () => {
                     value={values.password}
                   />
                   <p className="errorField">
-                    {errors.password && touched.password && errors.password}
+                    {t(errors.password) &&
+                      touched.password &&
+                      t(errors.password)}
                   </p>
                 </Col>
               )}
@@ -454,9 +460,9 @@ const SignUpForm = () => {
                     value={values.confirm_password}
                   />
                   <p className="errorField">
-                    {errors.confirm_password &&
+                    {t(errors.confirm_password) &&
                       touched.confirm_password &&
-                      errors.confirm_password}
+                      t(errors.confirm_password)}
                   </p>
                 </Col>
               )}
@@ -481,9 +487,9 @@ const SignUpForm = () => {
                     disabled={user ? true : false}
                   />
                   <p className="errorField">
-                    {errors.phone_number &&
+                    {t(errors.phone_number) &&
                       touched.phone_number &&
-                      errors.phone_number}
+                      t(errors.phone_number)}
                   </p>
                 </Col>
               )}
@@ -516,7 +522,7 @@ const SignUpForm = () => {
                     </div>
                   </div>
                   <p className="errorField">
-                    {errors.gender && touched.gender && errors.gender}
+                    {t(errors.gender) && touched.gender && t(errors.gender)}
                   </p>
                 </Col>
               )}
@@ -556,9 +562,9 @@ const SignUpForm = () => {
                     />
                   </InputGroup>
                   <p className="errorField">
-                    {errors.date_of_birth &&
+                    {t(errors.date_of_birth) &&
                       touched.date_of_birth &&
-                      errors.date_of_birth}
+                      t(errors.date_of_birth)}
                   </p>
                 </Col>
               )}
@@ -582,9 +588,9 @@ const SignUpForm = () => {
                   />
 
                   <p className="errorField">
-                    {errors.experience &&
+                    {t(errors.experience) &&
                       touched.experience &&
-                      errors.experience}
+                      t(errors.experience)}
                   </p>
                 </Col>
               )}
@@ -609,7 +615,7 @@ const SignUpForm = () => {
                         value={values.role}
                       />
                       <p className="errorField">
-                        {errors.role && touched.role && errors.role}
+                        {t(errors.role) && touched.role && t(errors.role)}
                       </p>
                     </Col>
                   </Row>
@@ -634,7 +640,7 @@ const SignUpForm = () => {
                     value={values.bio}
                   />
                   <p className="errorField">
-                    {errors.bio && touched.bio && errors.bio}
+                    {t(errors.bio) && touched.bio && t(errors.bio)}
                   </p>
                 </Col>
               )}
@@ -826,14 +832,14 @@ const SignUpForm = () => {
                 </>
               )}
               <p className="errorField">
-                {errors.certification &&
+                {t(errors.certification) &&
                   touched.certification &&
-                  errors.certification}
+                  t(errors.certification)}
               </p>
               <p className="errorField">
-                {errors.certificate_title &&
+                {t(errors.certificate_title) &&
                   touched.certificate_title &&
-                  errors.certificate_title}
+                  t(errors.certificate_title)}
               </p>
             </Row>
 
@@ -950,9 +956,9 @@ const SignUpForm = () => {
                       </div>
                     </Col>
                     <p className="errorField">
-                      {errors.specialities &&
+                      {t(errors.specialities) &&
                         touched.specialities &&
-                        errors.specialities}
+                        t(errors.specialities)}
                     </p>
                   </>
                 )}
@@ -1071,9 +1077,9 @@ const SignUpForm = () => {
                     disabled={user ? true : false}
                   />
                   <p className="errorField">
-                    {errors.saudireps_number &&
+                    {t(errors.saudireps_number) &&
                       touched.saudireps_number &&
-                      errors.saudireps_number}
+                      t(errors.saudireps_number)}
                   </p>
                 </Col>
               )}
@@ -1094,9 +1100,9 @@ const SignUpForm = () => {
                     disabled={user ? true : false}
                   />
                   <p className="errorField">
-                    {errors.license_number &&
+                    {t(errors.license_number) &&
                       touched.license_number &&
-                      errors.license_number}
+                      t(errors.license_number)}
                   </p>
                 </Col>
               )}
@@ -1119,7 +1125,7 @@ const SignUpForm = () => {
                     disabled={user ? true : false}
                   />
                   <p className="errorField">
-                    {errors.stc_pay && touched.stc_pay && errors.stc_pay}
+                    {t(errors.stc_pay) && touched.stc_pay && t(errors.stc_pay)}
                   </p>
                 </Col>
               )}
@@ -1135,7 +1141,6 @@ const SignUpForm = () => {
                         : t("signup.traineeText")
                     } ${user === null ? "*" : ""}`}
                   </h6>
-
                   <FieldArray
                     name="profile_availability"
                     className="d-flex"
@@ -1292,9 +1297,9 @@ const SignUpForm = () => {
                     </div>
                   </div>
                   <p className="errorField">
-                    {errors.is_currently_working &&
+                    {t(errors.is_currently_working) &&
                       touched.is_currently_working &&
-                      errors.is_currently_working}
+                      t(errors.is_currently_working)}
                   </p>
                 </Col>
               </Row>
@@ -1356,9 +1361,9 @@ const SignUpForm = () => {
                   />
                 </div>
                 <p className="errorField">
-                  {errors.term_and_condition &&
+                  {t(errors.term_and_condition) &&
                     touched.term_and_condition &&
-                    errors.term_and_condition}
+                    t(errors.term_and_condition)}
                 </p>
               </Row>
             )}
@@ -1367,7 +1372,7 @@ const SignUpForm = () => {
               <Col md={12}>
                 <FillBtn
                   type={"submit"}
-                  text={t("signup.nextText")}
+                  text={user ? t("signup.saveText") : t("signup.nextText")}
                   className="w-100 py-2"
                   disabled={loading === "pending" ? true : false}
                 />

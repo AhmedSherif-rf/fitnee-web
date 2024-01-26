@@ -404,7 +404,7 @@
     "nutritionistsText": "Nutritionists",
     "trainersText": "Trainers",
     "bothText": "Both",
-    "deleteModalText": "Are you sure to want to delete your account?",
+    "deleteModalText": "Are you sure you want to delete your account?",
     "noText": "No"
   },
   "contactUs": {
@@ -596,7 +596,6 @@
   "otpVerification": {
     "verificationText": "Verification",
     "openYourEmailText": "Open your email and insert the code",
-    "didNotRecieveCodeText": "Didn't Receive a Code!",
     "resendCodeInText": "Resend code in ",
     "resendCodeText": "Resend Code",
     "invalidOtpModalText": "You entered an Invalid OTP, please try again",

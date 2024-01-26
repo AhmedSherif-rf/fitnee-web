@@ -142,7 +142,7 @@ const SignInForm = () => {
                       className={"form-control-lg BorderRadiusInput py-3 px-5"}
                     />
                     <p className="errorField">
-                      {errors.email && touched.email && errors.email}
+                      {t(errors.email) && touched.email && t(errors.email)}
                     </p>
                     <InputField
                       type="password"
@@ -162,7 +162,9 @@ const SignInForm = () => {
                       }
                     />
                     <p className="errorField">
-                      {errors.password && touched.password && errors.password}
+                      {t(errors.password) &&
+                        touched.password &&
+                        t(errors.password)}
                     </p>
 
                     <Link to="/forgotPassword">
@@ -189,9 +191,9 @@ const SignInForm = () => {
                       />
                     </div>
                     <p className="errorField mb-2">
-                      {errors.termAndConditionCheck &&
+                      {t(errors.termAndConditionCheck) &&
                         touched.termAndConditionCheck &&
-                        errors.termAndConditionCheck}
+                        t(errors.termAndConditionCheck)}
                     </p>
                     <FillBtn
                       className="w-100 py-3 mb-2"

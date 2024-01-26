@@ -4,6 +4,14 @@ export const SIGNIN_INITIAL_VALUES = {
   termAndConditionCheck: false,
 };
 
+export const CONTACT_US_INITIAL_VALUES = {
+  email: "",
+  phone: "",
+  message: "",
+  last_name: "",
+  first_name: "",
+};
+
 export const TRAINEE_SIGNUP_INITIAL_VALUES = {
   goal: "",
   level: "",

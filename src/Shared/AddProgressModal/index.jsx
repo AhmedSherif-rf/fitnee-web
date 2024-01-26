@@ -76,7 +76,7 @@ const AddProgressModal = (props) => {
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">
-                  {errors.weight && touched.weight && errors.weight}
+                  {t(errors.weight) && touched.weight && t(errors.weight)}
                 </p>
               </div>
               <div className="mb-2">
@@ -93,9 +93,9 @@ const AddProgressModal = (props) => {
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">
-                  {errors.skeletal_muscel_mass &&
+                  {t(errors.skeletal_muscel_mass) &&
                     touched.skeletal_muscel_mass &&
-                    errors.skeletal_muscel_mass}
+                    t(errors.skeletal_muscel_mass)}
                 </p>
               </div>
               <div className="mb-2">
@@ -112,9 +112,9 @@ const AddProgressModal = (props) => {
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">
-                  {errors.body_fat_mass &&
+                  {t(errors.body_fat_mass) &&
                     touched.body_fat_mass &&
-                    errors.body_fat_mass}
+                    t(errors.body_fat_mass)}
                 </p>
               </div>
               <div className="mb-2">
@@ -131,7 +131,7 @@ const AddProgressModal = (props) => {
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">
-                  {errors.protien && touched.protien && errors.protien}
+                  {t(errors.protien) && touched.protien && t(errors.protien)}
                 </p>
               </div>
               <div className="w-100 d-flex align-items-center justify-content-center gap-3">

@@ -74,9 +74,9 @@ const ResetPasswordForm = () => {
                   }
                 />
                 <p className="errorField">
-                  {errors.previous_password &&
+                  {t(errors.previous_password) &&
                     touched.previous_password &&
-                    errors.previous_password}
+                    t(errors.previous_password)}
                 </p>
 
                 <InputField
@@ -94,9 +94,9 @@ const ResetPasswordForm = () => {
                   }
                 />
                 <p className="errorField">
-                  {errors.new_password &&
+                  {t(errors.new_password) &&
                     touched.new_password &&
-                    errors.new_password}
+                    t(errors.new_password)}
                 </p>
 
                 <InputField
@@ -114,9 +114,9 @@ const ResetPasswordForm = () => {
                   }
                 />
                 <p className="errorField">
-                  {errors.confirm_password &&
+                  {t(errors.confirm_password) &&
                     touched.confirm_password &&
-                    errors.confirm_password}
+                    t(errors.confirm_password)}
                 </p>
 
                 <FillBtn

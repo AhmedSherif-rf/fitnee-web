@@ -1,59 +1,58 @@
 import * as Yup from "yup";
-import TranslationHelper from "../TranslationHelper";
 
 const firstNameValidation = Yup.string()
-  .matches(/^[A-Za-z ]+$/, TranslationHelper("validation.invalidFirstNameText"))
-  .min(2, TranslationHelper("validation.tooShortText"))
-  .max(50, TranslationHelper("validation.tooLongText"))
+  .matches(/^[A-Za-z ]+$/, "validation.invalidFirstNameText")
+  .min(2, "validation.tooShortText")
+  .max(50, "validation.tooLongText")
 
-  .required(TranslationHelper("validation.requiredFirstNameText"));
+  .required("validation.requiredFirstNameText");
 const fullNameValidation = Yup.string()
-  .matches(/^[A-Za-z ]+$/, TranslationHelper("validation.invalidFullNameText"))
-  .min(2, TranslationHelper("validation.tooShortText"))
-  .max(50, TranslationHelper("validation.tooLongText"))
-  .required(TranslationHelper("validation.requiredFullNameText"));
+  .matches(/^[A-Za-z ]+$/, "validation.invalidFullNameText")
+  .min(2, "validation.tooShortText")
+  .max(50, "validation.tooLongText")
+  .required("validation.requiredFullNameText");
 
 const lastNameValidation = Yup.string()
-  .matches(/^[A-Za-z ]+$/, TranslationHelper("validation.invalidLastNameText"))
-  .min(2, TranslationHelper("validation.tooShortText"))
-  .max(50, TranslationHelper("validation.tooLongText"))
-  .required(TranslationHelper("validation.requiredLastNameText"));
+  .matches(/^[A-Za-z ]+$/, "validation.invalidLastNameText")
+  .min(2, "validation.tooShortText")
+  .max(50, "validation.tooLongText")
+  .required("validation.requiredLastNameText");
 
 const emailValidation = Yup.string()
   .matches(
     /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-    TranslationHelper("validation.invalidEmailText")
+    "validation.invalidEmailText"
   )
-  .required(TranslationHelper("validation.requiredEmailText"));
+  .required("validation.requiredEmailText");
 
 const currentPasswordValidation = Yup.string()
-  .min(8, TranslationHelper("validation.invalidPreviousPasswordText"))
+  .min(8, "validation.invalidPreviousPasswordText")
   .matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-    TranslationHelper("validation.invalidPreviousPasswordTwoText")
+    "validation.invalidPreviousPasswordTwoText"
   )
-  .required(TranslationHelper("validation.requiredPreviousPasswordText"));
+  .required("validation.requiredPreviousPasswordText");
 
 const newPasswordValidation = Yup.string()
-  .min(8, TranslationHelper("validation.requiredPasswordText"))
+  .min(8, "validation.requiredPasswordText")
   .matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-    TranslationHelper("validation.invalidPasswordTwoText")
+    "validation.invalidPasswordTwoText"
   )
-  .required(TranslationHelper("validation.requiredPasswordText"));
+  .required("validation.requiredPasswordText");
 
 const certificationValidation = Yup.array()
-  .min(1, TranslationHelper("validation.requiredMinimumCertificateText"))
+  .min(1, "validation.requiredMinimumCertificateText")
   .test(
     "certificatesRequired",
-    TranslationHelper("validation.requiredCertificateText"),
+    "validation.requiredCertificateText",
     (value) => {
       return value && value.every((file) => file);
     }
   )
   .test(
     "certificateFormat",
-    TranslationHelper("validation.invalidFileCertificateText"),
+    "validation.invalidFileCertificateText",
     (value) => {
       return (
         value &&
@@ -63,17 +62,13 @@ const certificationValidation = Yup.array()
       );
     }
   )
-  .test(
-    "certificateSize",
-    TranslationHelper("validation.limitCertificateText"),
-    (value) => {
-      return value && value.every((file) => file.size <= 5 * 1024 * 1024);
-    }
-  );
+  .test("certificateSize", "validation.limitCertificateText", (value) => {
+    return value && value.every((file) => file.size <= 5 * 1024 * 1024);
+  });
 
 const certificateTitleValidation = Yup.array().test(
   "certificateTitleLength",
-  TranslationHelper("validation.requiredCertificateText"),
+  "validation.requiredCertificateText",
   function (value) {
     const { certification } = this.parent;
 
@@ -88,96 +83,79 @@ const certificateTitleValidation = Yup.array().test(
 const confirmNewPasswordValidation = Yup.string()
   .oneOf(
     [Yup.ref("new_password"), null],
-    TranslationHelper("validation.invalidConfirmPasswordText")
+    "validation.invalidConfirmPasswordText"
   )
-  .required(TranslationHelper("validation.requiredConfirmPasswordText"));
+  .required("validation.requiredConfirmPasswordText");
 
 const passwordValidation = Yup.string()
-  .min(8, TranslationHelper("validation.invalidPasswordText"))
+  .min(8, "validation.invalidPasswordText")
   .matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-    TranslationHelper("validation.invalidPasswordTwoText")
+    "validation.invalidPasswordTwoText"
   )
-  .required(TranslationHelper("validation.requiredPasswordText"));
+  .required("validation.requiredPasswordText");
 
 const confirmPasswordValidation = Yup.string()
-  .oneOf(
-    [Yup.ref("password"), null],
-    TranslationHelper("validation.invalidConfirmPasswordText")
-  )
-  .required(TranslationHelper("validation.requiredConfirmPasswordText"));
+  .oneOf([Yup.ref("password"), null], "validation.invalidConfirmPasswordText")
+  .required("validation.requiredConfirmPasswordText");
 
-const bioValidation = Yup.string().required(
-  TranslationHelper("validation.requiredBioText")
-);
+const bioValidation = Yup.string().required("validation.requiredBioText");
 
-const roleValidation = Yup.string().required(
-  TranslationHelper("validation.requiredText")
-);
+const roleValidation = Yup.string().required("validation.requiredText");
 
-const specialitiesValidation = Yup.array().min(
-  1,
-  TranslationHelper("validation.requiredText")
-);
+const specialitiesValidation = Yup.array().min(1, "validation.requiredText");
 
 const phoneNumberValidaton = Yup.string().required(
-  TranslationHelper("validation.requiredContactText")
+  "validation.requiredContactText"
 );
 
 const dobValidation = Yup.date()
   .max(new Date(), "Date of Birth cannot be in the future")
-  .required(TranslationHelper("validation.requiredDOBText"));
+  .required("validation.requiredDOBText");
 
-const genderValidation = Yup.string().required(
-  TranslationHelper("validation.requiredGenderText")
-);
+const genderValidation = Yup.string().required("validation.requiredGenderText");
 
 const experienceValidation = Yup.string().required(
-  TranslationHelper("validation.requiredYearsOfExperienceText")
+  "validation.requiredYearsOfExperienceText"
 );
 
 const currentlyWorkingValidation = Yup.string().required(
   "validation.RequiredText"
 );
 
-const RequiredValidation = Yup.string().required(
-  TranslationHelper("validation.requiredText")
-);
+const RequiredValidation = Yup.string().required("validation.requiredText");
 
 const profileAvailabilityValidation = Yup.array().of(
   Yup.object().shape({
-    day: Yup.string().required(TranslationHelper("validation.requiredDayText")),
-    starttime: Yup.string().required(
-      TranslationHelper("validation.requiredFromDayText")
-    ),
-    endtime: Yup.string().required(
-      TranslationHelper("validation.requiredToDayText")
-    ),
+    day: Yup.string().required("validation.requiredDayText"),
+    starttime: Yup.string().required("validation.requiredFromDayText"),
+    endtime: Yup.string().required("validation.requiredToDayText"),
   })
 );
 
 const subscriptionPlanValidation = Yup.array().of(
   Yup.object().shape({
-    price: Yup.string().required(TranslationHelper("validation.requiredText")),
+    price: Yup.string().required("validation.requiredText"),
   })
 );
 
 const termAndConditionCheckValidation = Yup.bool().oneOf(
   [true],
-  TranslationHelper("validation.requiredTermAndConditionCheck")
+  "validation.requiredTermAndConditionCheck"
 );
 
 const exerciseTextValidation = Yup.array()
-  .of(
-    Yup.string().required(
-      TranslationHelper("validation.requiredDescriptionText")
-    )
-  )
-  .min(1, TranslationHelper("validation.invalidDescriptionText"));
+  .of(Yup.string().required("validation.requiredDescriptionText"))
+  .min(1, "validation.invalidDescriptionText");
 
 const exerciseVideoValidation = Yup.mixed().required(
-  TranslationHelper("validation.requiredExerciseVideoText")
+  "validation.requiredExerciseVideoText"
 );
+
+const messageValidation = Yup.string()
+  .min(5, "validation.tooShortText")
+  .max(500, "validation.tooLongText")
+  .required("validation.requiredMessageText");
 
 export const SIGNIN_SCHEMA = Yup.object().shape({
   email: emailValidation,
@@ -338,9 +316,18 @@ export const ADD_PROMO_CODE_SCHEMA = Yup.object().shape({
   expire_date: RequiredValidation,
   limited_users: RequiredValidation,
 });
+
 export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
   weight: RequiredValidation,
   protien: RequiredValidation,
   body_fat_mass: RequiredValidation,
   skeletal_muscel_mass: RequiredValidation,
+});
+
+export const CONTACT_US_SCHEMA = Yup.object().shape({
+  email: emailValidation,
+  message: messageValidation,
+  phone: phoneNumberValidaton,
+  last_name: lastNameValidation,
+  first_name: firstNameValidation,
 });

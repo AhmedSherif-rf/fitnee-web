@@ -7,7 +7,11 @@ import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { memo, useEffect, useState, useCallback } from "react";
 import { getTransactionHistory } from "../../Redux/features/User/userApi";
 import { CardBody, CardHeader, CardFooter, Card, Col, Row } from "reactstrap";
-import { TRANSACTION_HISTORY_URL, PER_PAGE_COUNT, CURRENCY } from "../../utils/constants";
+import {
+  TRANSACTION_HISTORY_URL,
+  PER_PAGE_COUNT,
+  CURRENCY,
+} from "../../utils/constants";
 
 const PaymentHistoryWrapper = () => {
   const dispatch = useDispatch();
@@ -62,7 +66,9 @@ const PaymentHistoryWrapper = () => {
                     </h3>
                   </div>
                   <div className="w-100 text-center">
-                    <h1 className="fw-bold mb-0">{CURRENCY} {transactionHistoryData?.balance}</h1>
+                    <h1 className="fw-bold mb-0">
+                      {CURRENCY} {transactionHistoryData?.balance}
+                    </h1>
                   </div>
                 </CardBody>
               </Card>

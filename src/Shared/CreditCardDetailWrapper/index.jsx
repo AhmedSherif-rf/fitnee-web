@@ -279,7 +279,7 @@ const CreditCardDetailWrapper = () => {
                         </div>
                       </Col>
                       <p className="errorField">
-                        {errors.entity && touched.entity && errors.entity}
+                        {t(errors.entity) && touched.entity && t(errors.entity)}
                       </p>
                     </Row>
                     <Row>
@@ -306,7 +306,9 @@ const CreditCardDetailWrapper = () => {
                           }
                         />
                         <p className="errorField">
-                          {errors.surname && touched.surname && errors.surname}
+                          {t(errors.surname) &&
+                            touched.surname &&
+                            t(errors.surname)}
                         </p>
                       </Col>
                       <Col md={6} className="mb-2">
@@ -325,9 +327,9 @@ const CreditCardDetailWrapper = () => {
                           }
                         />
                         <p className="errorField">
-                          {errors.givenName &&
+                          {t(errors.givenName) &&
                             touched.givenName &&
-                            errors.givenName}
+                            t(errors.givenName)}
                         </p>
                       </Col>
                       <Col md={6} className="mb-2">
@@ -346,9 +348,9 @@ const CreditCardDetailWrapper = () => {
                           }
                         />
                         <p className="errorField">
-                          {errors.postcode &&
+                          {t(errors.postcode) &&
                             touched.postcode &&
-                            errors.postcode}
+                            t(errors.postcode)}
                         </p>
                       </Col>
                       <Col md={6} className="mb-2">
@@ -362,7 +364,9 @@ const CreditCardDetailWrapper = () => {
                           placeHolder={t("cardDetails.selectCountryText")}
                         />
                         <p className="errorField">
-                          {errors.country && touched.country && errors.country}
+                          {t(errors.country) &&
+                            touched.country &&
+                            t(errors.country)}
                         </p>
                       </Col>
 
@@ -377,7 +381,7 @@ const CreditCardDetailWrapper = () => {
                           placeHolder={t("cardDetails.selectStateText")}
                         />
                         <p className="errorField">
-                          {errors.state && touched.state && errors.state}
+                          {t(errors.state) && touched.state && t(errors.state)}
                         </p>
                       </Col>
                       <Col md={6} className="mb-2">
@@ -391,7 +395,7 @@ const CreditCardDetailWrapper = () => {
                           placeHolder={t("cardDetails.selectCityText")}
                         />
                         <p className="errorField">
-                          {errors.city && touched.city && errors.city}
+                          {t(errors.city) && touched.city && t(errors.city)}
                         </p>
                       </Col>
                       <Col md={12} className="mb-2">
@@ -410,7 +414,9 @@ const CreditCardDetailWrapper = () => {
                           }
                         />
                         <p className="errorField">
-                          {errors.street1 && touched.street1 && errors.street1}
+                          {t(errors.street1) &&
+                            touched.street1 &&
+                            t(errors.street1)}
                         </p>
                       </Col>
                       <Col md={12}>

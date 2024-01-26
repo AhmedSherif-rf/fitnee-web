@@ -378,7 +378,7 @@
     "registerAsText": "سجل الان",
     "traineeText": "المتدرب",
     "trainerText": "المدرب",
-    "nutritionistText": "اخصائي تغذيه",
+    "nutritionistText": "اخصائي التغذية",
     "trainerNutritionistText": "مدرب وأخصائي تغذية",
     "guestText": "ضيف",
     "alreadyAccountText": "ﻟﺪﻳﻚ ﺣﺴﺎﺏ؟"
@@ -427,7 +427,7 @@
     "availableHoursText": "ﺍﻷﻭﻗﺎﺕ ﺍﻟﻤﺘﺎﺣﺔ",
     "trainerCommentContentText": "مدرب مثالي! أدت التدريبات المصممة بمهارة والتحفيز المستمر والخبرة إلى تقدم ملحوظ. موصى به للغاية لرحلات اللياقة البدنية التحويلية.",
     "myCurrentTraineeText": "المتدربين",
-    "changePasswordText": "ﺗﻐﻴﻴﺮ ﺍﻟﺭﻗﻡ ﺍﻟﺳﺭﻱ",
+    "changePasswordText": "تغيير الرقم السري",
     "confirmText": "ﺗﺄﻛﻴﺪ",
     "submitText": "ﺇﺭﺳﺎﻝ",
     "nameText": "ﺍﻻﺳﻢ",
@@ -512,7 +512,7 @@
     "addressText": "العنوان"
   },
   "signup": {
-    "subscriberText":"مشترك",
+    "subscriberText": "مشترك",
     "traineeText": "المتدرب",
     "certificatesText": "الشهادات",
     "subscriptionPlansText": "ﺧﻄﺔ ﺍﻻﺷﺘﺮﺍﻙ",
@@ -557,7 +557,8 @@
     "areYouCurrentlyWorkingText": "هل انت على رأس العمل حاليا ",
     "yesText": "نعم",
     "noText": "ﻻ",
-    "nextText": "ﺍﻟﻨﺺ",
+    "nextText": "التالي",
+    "saveText": "حفظ",
     "uploadImageText": "ﺃﺩﺭﺝ ﺻﻮﺭﺓ",
     "attachCertificateText": "ﺃﺩﺭﺍﺝ ﺷﻬﺎﺩﺍﺗﻚ",
     "moneyTransferText": "ﺳﻳﺗﻡ ﺗﺣﻭﻳﻝ ﺍﻟﻣﺑﻠﻎ ﺍﻟﻰ ﺣﺳﺎﺑﻙ ﻓﻲ  STC PAY",
@@ -593,11 +594,10 @@
   "otpVerification": {
     "verificationText": "ﺍﻟﺘﺤﻘﻖ",
     "openYourEmailText": "ﺍﻟﺮﺟﺎء ﺇﺩﺧﺎﻝ ﺍﻟﺮﻣﺰ ﺍﻟﻤﺮﺳﻞ ﻟﺒﺮﻳﺪﻙ ﺍﻹﻟﻜﺘﺮﻭﻧﻲ",
-    "didNotRecieveCodeText": "ﻟﻢ ﻳﺼﻞ ﺍﻟﺮﻣﺰ",
     "resendCodeInText": "ﺇﻋﺎﺩﺓ ﺇﺭﺳﺎﻝ ﺍﻟﺮﻣﺰ",
     "resendCodeText": "ﺇﻋﺎﺩﺓ ﺇﺭﺳﺎﻝ ﺍﻟﺮﻣﺰ",
     "invalidOtpModalText": "ﺍﻟﺮﻣﺰ ﺍﻟﻤﺪﺧﻞ ﻏﻴﺮ ﺻﺤﻴﺢ، ﺍﻟﺮﺟﺎء ﺍﻟﻤﺤﺎﻭﻟﺔ ﻣﺮﻩ ﺃﺧﺮﻯ",
-    "nextText": "ﻧﺺ",
+    "nextText": "التالي",
     "okayText": "حسناً"
   },
   "changePassword": {

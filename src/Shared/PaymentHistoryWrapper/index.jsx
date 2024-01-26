@@ -1,57 +1,39 @@
-import { memo } from "react";
 import { useTranslation } from "react-i18next";
+import { memo, useEffect, useState } from "react";
 import PageHeading from "../Headings/PageHeading";
 import TransactionDetail from "../TransactionDetail";
-import Images from "../../HelperMethods/Constants/ImgConstants";
+import { useDispatch, useSelector } from "react-redux";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
+import { TRANSACTION_HISTORY_URL } from "../../utils/constants";
 import { CardBody, CardHeader, Card, Col, Row } from "reactstrap";
+import { getTransactionHistory } from "../../Redux/features/User/userApi";
 
 const PaymentHistoryWrapper = () => {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
-  const Transactions = [
-    {
-      ArrowIcon: Images.ARROW_UP_IMG,
-      Dr_or_Cr: "-",
-      Currency: "SAR",
-      Amount: "500",
-      AmountTitle: t("paymentHistory.amountReleasedText"),
-      TransactionTime: "11:40 am",
-    },
-    {
-      ArrowIcon: Images.ARROW_UP_IMG,
-      Dr_or_Cr: "-",
-      Currency: "SAR",
-      Amount: "500",
-      AmountTitle: t("paymentHistory.amountReleasedText"),
-      TransactionTime: "11:40 am",
-    },
-    {
-      ArrowIcon: Images.ARROW_UP_IMG,
-      Dr_or_Cr: "-",
-      Currency: "SAR",
-      Amount: "500",
-      AmountTitle: t("paymentHistory.amountReleasedText"),
-      TransactionTime: "11:40 am",
-    },
-    {
-      ArrowIcon: Images.ARROW_UP_IMG,
-      Dr_or_Cr: "-",
-      Currency: "SAR",
-      Amount: "500",
-      AmountTitle: t("paymentHistory.amountReleasedText"),
-      TransactionTime: "11:40 am",
-    },
-    {
-      ArrowIcon: Images.ARROW_UP_IMG,
-      Dr_or_Cr: "-",
-      Currency: "SAR",
-      Amount: "500",
-      AmountTitle: t("paymentHistory.amountReleasedText"),
-      TransactionTime: "11:40 am",
-    },
-  ];
+  const { loading } = useSelector((state) => state.user);
+  const [transactionHistoryData, setTransactionHistoryData] = useState([]);
+
+  useEffect(() => {
+    fetchTransactionHistory();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchTransactionHistory = () => {
+    const data = {
+      apiEndpoint: TRANSACTION_HISTORY_URL,
+    };
+
+    dispatch(getTransactionHistory(data)).then((res) => {
+      if (res.type === "getTransactionHistory/fulfilled") {
+        setTransactionHistoryData(res?.payload?.data?.results);
+      }
+    });
+  };
 
   return (
     <Row className={`text-black-custom ${i18n.dir()}`}>
+      {loading === "pending" && <LoadingScreen />}
       <Col md={12}>
         <CardHeader className="bg-transparent border-0 p-0">
           <PageHeading
@@ -79,38 +61,17 @@ const PaymentHistoryWrapper = () => {
           </Row>
           <Row className="my-2 text-black-custom">
             <Col md={12}>
-              <h5 className="my-3">{t("paymentHistory.todayText")}</h5>
-              {Transactions.map((item, index) => {
-                return (
-                  <TransactionDetail
-                    key={index}
-                    ArrowIcon={item.ArrowIcon}
-                    Dr_or_Cr={item.Dr_or_Cr}
-                    Currency={item.Currency}
-                    Amount={item.Amount}
-                    AmountTitle={item.AmountTitle}
-                    TransactionTime={item.TransactionTime}
-                  />
-                );
-              })}
-            </Col>
-          </Row>
-          <Row className="my-2 text-black-custom">
-            <Col md={12}>
-              <h5>Aug / 23 / 23</h5>
-              {Transactions.map((item, index) => {
-                return (
-                  <TransactionDetail
-                    key={index}
-                    ArrowIcon={item.ArrowIcon}
-                    Dr_or_Cr={item.Dr_or_Cr}
-                    Currency={item.Currency}
-                    Amount={item.Amount}
-                    AmountTitle={item.AmountTitle}
-                    TransactionTime={item.TransactionTime}
-                  />
-                );
-              })}
+              {transactionHistoryData &&
+                transactionHistoryData.map((item, index) => {
+                  return (
+                    <TransactionDetail key={index} data={item?.transactions} />
+                  );
+                })}
+              {transactionHistoryData && transactionHistoryData.length <= 0 && (
+                <div className="d-flex justify-content-center py-4 text-black-custom">
+                  {t("messages.noDataFoundText")}
+                </div>
+              )}
             </Col>
           </Row>
         </CardBody>

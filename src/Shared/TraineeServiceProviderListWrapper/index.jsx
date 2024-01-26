@@ -41,7 +41,7 @@ const TraineeServiceProviderListWrapper = (props) => {
   const { loading } = useSelector((state) => state.guest);
 
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalSize, setTotalSize] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [listingRole, setListingRole] = useState(roleType);
   const [serviceProviderData, setServiceProviderData] = useState([]);
@@ -63,7 +63,7 @@ const TraineeServiceProviderListWrapper = (props) => {
 
     dispatch(getServiceProviderGuestMode(data)).then((res) => {
       if (res.type === "getServiceProviderGuestMode/fulfilled") {
-        setTotalPages(res.payload.data.results.count);
+        setTotalSize(res.payload.data.count);
         setServiceProviderData(res.payload.data.results);
       }
     });
@@ -71,6 +71,7 @@ const TraineeServiceProviderListWrapper = (props) => {
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const handleDropdownItemClick = (role) => {
+    setPage(1);
     setListingRole(role);
   };
 
@@ -110,7 +111,13 @@ const TraineeServiceProviderListWrapper = (props) => {
               categoryText=""
             />
           </Col>
-          <Col xs={2} sm={6} className={`${i18n.dir()==="ltr" ?"text-end":"text-start px-3"}`}>
+          <Col
+            xs={2}
+            sm={6}
+            className={`${
+              i18n.dir() === "ltr" ? "text-end" : "text-start px-3"
+            }`}
+          >
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle data-toggle="dropdown" tag="span">
                 <img
@@ -123,7 +130,7 @@ const TraineeServiceProviderListWrapper = (props) => {
                 <DropdownItem
                   onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
                 >
-                  {t("guest.nutritionistsText")}
+                  {t("guest.trainersText")}
                 </DropdownItem>
                 <DropdownItem
                   onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
@@ -135,7 +142,7 @@ const TraineeServiceProviderListWrapper = (props) => {
                     handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
                   }
                 >
-                   {t("guest.bothText")}
+                  {t("guest.bothText")}
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -161,7 +168,13 @@ const TraineeServiceProviderListWrapper = (props) => {
           {serviceProviderData.length <= 0 && (
             <Row className="justify-content-center align-items-center mt-5 pt-4">
               <Col className="text-center" md={4}>
-                <img img-fluid src={Images.NO_DATA_FOUND_IMG} alt="" />
+                {loading !== "pending" && (
+                  <img
+                    img-fluid
+                    src={Images.NO_DATA_FOUND_IMG}
+                    alt="no-data-found"
+                  />
+                )}
               </Col>
             </Row>
           )}
@@ -190,8 +203,8 @@ const TraineeServiceProviderListWrapper = (props) => {
           />
         </Row>
       </CardBody>
-      {serviceProviderData.length > PER_PAGE_COUNT && (
-        <Pagination size={totalPages} handlePageChange={handlePageChange} />
+      {totalSize > PER_PAGE_COUNT && (
+        <Pagination size={totalSize} handlePageChange={handlePageChange} />
       )}
     </Card>
   );

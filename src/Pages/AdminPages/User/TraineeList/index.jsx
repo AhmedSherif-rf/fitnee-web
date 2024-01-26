@@ -54,9 +54,9 @@ const ServiceProviders = (props) => {
                   width: "40px",
                   height: "40px",
                   backgroundImage:
-                    trainee?.profile_pic === "" || trainee?.profile_pic === null
+                    trainee?.profile_pic === null
                       ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${trainee?.profile_pic.replace("/api", "")})`,
+                      : `url(${trainee?.profile_pic})`,
                 }}
               ></div>
               <h6 className="text-secondary fw-bold mb-0">
@@ -83,13 +83,13 @@ const ServiceProviders = (props) => {
               <span className={`iconBadge me-1`}>
                 <MdOutlinePersonOff
                   size={22}
-                  className="rejectUser cursorPointer"
+                  className={`rejectUser cursorPointer ${trainee.is_blocked ? "" : "text-danger"}`}
                 />
               </span>
               <span className={`iconBadge me-1`}>
                 <MdOutlinePersonOutline
                   size={22}
-                  className="approveUser cursorPointer"
+                  className={`approveUser cursorPointer ${trainee.is_blocked ? "text-success" : ""}`}
                 />
               </span>
             </div>

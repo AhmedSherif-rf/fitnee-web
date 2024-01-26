@@ -54,13 +54,9 @@ const ServiceProviders = (props) => {
                   width: "40px",
                   height: "40px",
                   backgroundImage:
-                    serviceProvider?.profile_pic === "" ||
                     serviceProvider?.profile_pic === null
                       ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${serviceProvider?.profile_pic.replace(
-                          "/api",
-                          ""
-                        )})`,
+                      : `url(${serviceProvider?.profile_pic})`,
                 }}
               ></div>
               <h6 className="text-secondary fw-bold mb-0">
@@ -75,16 +71,24 @@ const ServiceProviders = (props) => {
             <div className="d-flex align-items-center justify-content-center">
               <div
                 className={`me-2 ${
-                  serviceProvider?.is_approved
-                    ? "bg-success"
+                  serviceProvider?.is_deleted
+                    ? "bg-danger"
                     : serviceProvider?.is_blocked
                     ? "bg-danger"
+                    : serviceProvider?.is_approved
+                    ? "bg-success"
                     : "bg-warning"
                 } rounded-circle`}
                 style={{ minWidth: "8px", minHeight: "8px" }}
               ></div>
               <span>
-                {serviceProvider?.is_approved? "Approved" : serviceProvider?.is_blocked? "Blocked"  : serviceProvider?.is_deleted? "Rejected" : "Pending"}
+                {serviceProvider?.is_deleted
+                  ? "Deleted"
+                  : serviceProvider?.is_blocked
+                  ? "Blocked"
+                  : serviceProvider?.is_approved
+                  ? "Approved"
+                  : "Pending"}
               </span>
             </div>
           ),
@@ -93,13 +97,17 @@ const ServiceProviders = (props) => {
               <span className={`iconBadge me-1`}>
                 <MdOutlinePersonOff
                   size={22}
-                  className="rejectUser cursorPointer"
+                  className={`rejectUser cursorPointer ${
+                    serviceProvider.is_blocked ? "" : "text-danger"
+                  }`}
                 />
               </span>
               <span className={`iconBadge me-1`}>
                 <MdOutlinePersonOutline
                   size={22}
-                  className="approveUser cursorPointer"
+                  className={`approveUser cursorPointer ${
+                    serviceProvider.is_blocked ? "text-success" : ""
+                  }`}
                 />
               </span>
             </div>

@@ -17,7 +17,7 @@ const TrainerListCard = (props) => {
         backgroundImage: `${
           serviceProvider?.profile_pic === null
             ? `url(${Images.USER_DUMMY_IMG})`
-            : `url(${serviceProvider?.profile_pic.replace("/api", "")})`
+            : `url(${serviceProvider?.profile_pic})`
         }`,
         height: `38vh`,
       }}

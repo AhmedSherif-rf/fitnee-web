@@ -1,9 +1,13 @@
 import { memo } from "react";
 import Styles from "./style.module.scss";
+import { useTranslation } from "react-i18next";
+
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 
 const ListingTable = ({ data, columns }) => {
+  const { t } = useTranslation("");
+
   return (
     <>
       <Table className={`${Styles.stripedTable}`}>
@@ -38,7 +42,7 @@ const ListingTable = ({ data, columns }) => {
       </Table>
       {data.length <= 0 && (
         <div className="d-flex justify-content-center py-4 text-black-custom">
-          No Data Found
+          {t("messages.noDataFoundText")}
         </div>
       )}
     </>

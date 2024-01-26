@@ -74,6 +74,7 @@ const Exercise = (props) => {
                   <MyDropdown
                     className="border py-3 my-2"
                     Options={category}
+                    placeholder={"Select category"}
                     name={"categories"}
                   />
                 </div>

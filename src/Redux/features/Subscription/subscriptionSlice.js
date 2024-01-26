@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCheckoutId, checkPaymentStatus } from "./subscriptionApi";
+import {
+  getCheckoutId,
+  checkPaymentStatus,
+  applyPromoCode,
+} from "./subscriptionApi";
 
 export const subscriptionSlice = createSlice({
   name: "subscription",
@@ -46,6 +50,16 @@ export const subscriptionSlice = createSlice({
         state.loading = "failed";
         state.checkoutId = "";
         state.entity = "";
+        state.error = action.payload.error;
+      })
+      .addCase(applyPromoCode.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(applyPromoCode.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(applyPromoCode.rejected, (state, action) => {
+        state.loading = "failed";
         state.error = action.payload.error;
       });
   },

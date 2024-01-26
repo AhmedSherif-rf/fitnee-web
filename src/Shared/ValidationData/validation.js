@@ -124,9 +124,9 @@ const phoneNumberValidaton = Yup.string().required(
   TranslationHelper("validation.requiredContactText")
 );
 
-const dobValidation = Yup.string().required(
-  TranslationHelper("validation.requiredDOBText")
-);
+const dobValidation = Yup.date()
+  .max(new Date(), "Date of Birth cannot be in the future")
+  .required(TranslationHelper("validation.requiredDOBText"));
 
 const genderValidation = Yup.string().required(
   TranslationHelper("validation.requiredGenderText")
@@ -168,7 +168,11 @@ const termAndConditionCheckValidation = Yup.bool().oneOf(
 );
 
 const exerciseTextValidation = Yup.array()
-  .of(Yup.string().required(TranslationHelper("validation.requiredDescriptionText")))
+  .of(
+    Yup.string().required(
+      TranslationHelper("validation.requiredDescriptionText")
+    )
+  )
   .min(1, TranslationHelper("validation.invalidDescriptionText"));
 
 const exerciseVideoValidation = Yup.mixed().required(
@@ -319,4 +323,18 @@ export const ADD_EXERCISE_SCHEMA = Yup.object().shape({
   exercise_videos: exerciseVideoValidation,
   exercise_part_text: exerciseTextValidation,
   exercise_part_text_ar: exerciseTextValidation,
+});
+
+export const ADD_PROMO_CODE_SCHEMA = Yup.object().shape({
+  code: RequiredValidation,
+  type: RequiredValidation,
+  value: RequiredValidation,
+  expire_date: RequiredValidation,
+  limited_users: RequiredValidation,
+});
+export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
+  weight: RequiredValidation,
+  protien: RequiredValidation,
+  body_fat_mass: RequiredValidation,
+  skeletal_muscel_mass: RequiredValidation,
 });

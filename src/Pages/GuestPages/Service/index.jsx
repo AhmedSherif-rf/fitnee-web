@@ -149,6 +149,7 @@ const Services = (props) => {
                               : styles.inActiveBodyMuscle
                             : ""
                         }`}
+                        key={index}
                         onClick={() => {
                           if (muscle.id === "maleBackArm") {
                             navigate("/guest/exercises");
@@ -194,6 +195,7 @@ const Services = (props) => {
                               : styles.inActiveBodyMuscle
                             : ""
                         }`}
+                        key={index}
                         onClick={() => {
                           if (muscle.id === "femaleAbdominal") {
                             navigate("/guest/exercises");
@@ -235,6 +237,7 @@ const Services = (props) => {
                               : styles.inActiveBodyMuscle
                             : ""
                         }`}
+                        key={index}
                         onClick={() => {
                           if (muscle.id === "femaleBackThigh") {
                             navigate("/guest/exercises");

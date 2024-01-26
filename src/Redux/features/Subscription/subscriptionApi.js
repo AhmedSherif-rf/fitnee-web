@@ -9,7 +9,11 @@ export const getCheckoutId = createAsyncThunk(
       const response = await axiosInstance.post(apiEndpoint, requestData);
       return { id: response.data.data.id, entity: entity };
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.Message);
+      if (error?.response?.data?.error?.Message) {
+        Toaster.error(error?.response?.data?.error?.Message);
+      } else {
+        Toaster.error(error?.response?.data?.error?.Error);
+      }
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }
@@ -23,6 +27,19 @@ export const checkPaymentStatus = createAsyncThunk(
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const applyPromoCode = createAsyncThunk(
+  "applyPromoCode",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

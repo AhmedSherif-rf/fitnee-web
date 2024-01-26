@@ -1,63 +1,52 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
+import Pagination from "../../../Shared/Pagination";
+import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../Shared/Headings/PageHeading";
-import { Card, CardBody, Col, Container, Row } from "reactstrap";
-import Images from "../../../HelperMethods/Constants/ImgConstants";
+import React, { useState, useCallback, useEffect } from "react";
+import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import ServiceProvider from "../../../Shared/ServiceProviderListRow";
+import {
+  PER_PAGE_COUNT,
+  MEMBERSHIP_URL,
+  NUTRITIONIST_ROLE,
+} from "../../../utils/constants";
+import { getMyServiceProviders } from "../../../Redux/features/User/userApi";
+import { Card, CardBody, CardFooter, Col, Container, Row } from "reactstrap";
 
 const Index = () => {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
+  const { loading } = useSelector((state) => state.user);
 
-  const ServiceProviders = [
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: "Nutritionist",
-      duration: "2 Months",
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: "Nutritionist",
-      duration: "1 Months",
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: "Nutritionist",
-      duration: "1 Months",
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: "Nutritionist",
-      duration: "2 Months",
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: "Nutritionist",
-      duration: "2 Months",
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-  ];
+  const [page, setPage] = useState(1);
+  const [totalSize, setSizePages] = useState(0);
+  const [nutritionistsData, setNutritionistsData] = useState([]);
+
+  const handlePageChange = useCallback((page) => {
+    setPage(page.selected + 1);
+  }, []);
+
+  useEffect(() => {
+    fetchNutritionistsData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, page]);
+
+  const fetchNutritionistsData = () => {
+    const data = {
+      apiEndpoint: `${MEMBERSHIP_URL}?role=${NUTRITIONIST_ROLE}`,
+    };
+
+    dispatch(getMyServiceProviders(data)).then((res) => {
+      if (res.type === "getMyServiceProviders/fulfilled") {
+        setSizePages(res.payload.data.count);
+        setNutritionistsData(res.payload.data.results);
+      }
+    });
+  };
 
   return (
     <Container fluid>
+      {loading === "pending" && <LoadingScreen />}
       <Row className={`${i18n.dir()}`}>
         <Col md={12}>
           <Card className="BorderRadius contentCard border-0">
@@ -113,20 +102,23 @@ const Index = () => {
                   </Row>
                 </Col>
               </Row>
-              {ServiceProviders.map((item) => {
-                return (
-                  <ServiceProvider
-                    useImages={item.useImages}
-                    userName={item.userName}
-                    serviceProvider={item.serviceProvider}
-                    duration={item.duration}
-                    fee={item.fee}
-                    startDate={item.startDate}
-                    endDate={item.endDate}
-                  />
-                );
+              {nutritionistsData?.map((data, index) => {
+                return <ServiceProvider data={data} index={index} />;
               })}
+              {nutritionistsData.length <= 0 && (
+                <div className="d-flex justify-content-center py-4 text-black-custom">
+                  {t("messages.noDataFoundText")}
+                </div>
+              )}
             </CardBody>
+            <CardFooter>
+              {totalSize > PER_PAGE_COUNT && (
+                <Pagination
+                  size={totalSize}
+                  handlePageChange={handlePageChange}
+                />
+              )}
+            </CardFooter>
           </Card>
         </Col>
       </Row>

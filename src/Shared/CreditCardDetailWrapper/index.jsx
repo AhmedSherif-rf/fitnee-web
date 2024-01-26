@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import "./CreditCardStyle.scss";
+import Toaster from "../Toaster";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import ToggleSwitch from "../ToggleSwitch";
@@ -8,12 +9,12 @@ import {
   CountrySelect,
   StateSelect,
 } from "react-country-state-city";
+import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import SubHeading from "../Headings/SubHeading";
 import { CURRENCY } from "../../utils/constants";
 import PageHeading from "../Headings/PageHeading";
 import { useDispatch, useSelector } from "react-redux";
-import { PREPARE_CHECKOUT_URL } from "../../utils/constants";
 import { Card, Col, Container, Row, Form } from "reactstrap";
 import { CardBody, CardFooter, CardHeader } from "reactstrap";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
@@ -21,8 +22,15 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 import "react-country-state-city/dist/react-country-state-city.css";
 import React, { memo, useCallback, useState, useEffect } from "react";
 import { PAYMENT_METHOD_DETAIL_SCHEMA } from "../ValidationData/validation";
-import { getCheckoutId } from "../../Redux/features/Subscription/subscriptionApi";
+import {
+  PREPARE_CHECKOUT_URL,
+  USE_PROMO_CODE_URL,
+} from "../../utils/constants";
 import { PAYMENT_METHOD_DETAIL_INITIAL_VALUES } from "../ValidationData/initialValue";
+import {
+  getCheckoutId,
+  applyPromoCode,
+} from "../../Redux/features/Subscription/subscriptionApi";
 
 const CreditCardDetailWrapper = () => {
   const dispatch = useDispatch();
@@ -31,6 +39,12 @@ const CreditCardDetailWrapper = () => {
   const { loading, subscriptionPlan, checkoutId, entity } = useSelector(
     (state) => state.subscription
   );
+  const [summaryData, setSummaryData] = useState({
+    discount: 0,
+    grandTotal: 0,
+    walletAmount: 0,
+    vat: functions.calculateVat(subscriptionPlan.price),
+  });
 
   useEffect(() => {
     if (checkoutId) {
@@ -53,13 +67,70 @@ const CreditCardDetailWrapper = () => {
     stateId: "",
   });
 
+  const handleApplePromoCodeClick = useCallback(
+    (promoCode) => {
+      const data = {
+        apiEndpoint: `${USE_PROMO_CODE_URL}?code=${promoCode}`,
+      };
+      dispatch(applyPromoCode(data)).then((res) => {
+        if (res.type === "applyPromoCode/fulfilled") {
+          if (res.payload.data.type === "flat") {
+            const updatedGrandPrice = functions.getSummary(
+              res.payload.data.value,
+              summaryData.walletAmount,
+              subscriptionPlan.price,
+              summaryData.vat
+            );
+
+            if (updatedGrandPrice >= 0) {
+              setSummaryData({
+                ...summaryData,
+                discount: res.payload.data.value,
+              });
+            } else {
+              Toaster.error(t("messages.cannotUserPromoCode"));
+            }
+          } else {
+            const updatedGrandPrice = functions.getSummary(
+              res.payload.data.value,
+              summaryData.walletAmount,
+              subscriptionPlan.price,
+              summaryData.vat
+            );
+
+            if (updatedGrandPrice >= 0) {
+              setSummaryData({
+                ...summaryData,
+                discount: functions.calculatePercentage(
+                  subscriptionPlan.price,
+                  res.payload.data.value
+                ),
+              });
+            } else {
+              Toaster.error(t("messages.cannotUserPromoCode"));
+            }
+          }
+        }
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dispatch, subscriptionPlan, summaryData]
+  );
+
   const handlePayClick = useCallback(
     (values) => {
       const data = {
         apiEndpoint: PREPARE_CHECKOUT_URL,
         requestData: JSON.stringify({
           ...values,
-          amount: subscriptionPlan.price,
+          amount: functions.getSummary(
+            summaryData.discount,
+            summaryData.walletAmount,
+            subscriptionPlan.price,
+            summaryData.vat
+          ),
+          subscription_amount: subscriptionPlan.price,
+          vat: summaryData.vat,
           email: user?.email,
           subscription_id: subscriptionPlan.id,
         }),
@@ -67,7 +138,7 @@ const CreditCardDetailWrapper = () => {
       };
       dispatch(getCheckoutId(data));
     },
-    [dispatch, subscriptionPlan, user?.email]
+    [dispatch, subscriptionPlan, summaryData, user]
   );
 
   return (
@@ -332,7 +403,7 @@ const CreditCardDetailWrapper = () => {
                             className="d-flex gap-2 justify-content-end"
                           >
                             <InputField
-                              type="number"
+                              type="text"
                               name="promo_code"
                               placeholder={t("cardDetails.promoCodeText")}
                               onChangeHandle={handleChange}
@@ -345,6 +416,11 @@ const CreditCardDetailWrapper = () => {
                             <FillBtn
                               text={t("cardDetails.applyText")}
                               className="px-4 py-3 customDropdownRadius"
+                              handleOnClick={() => {
+                                if (values.promo_code !== "") {
+                                  handleApplePromoCodeClick(values.promo_code);
+                                }
+                              }}
                             />
                           </Col>
                         </Row>
@@ -353,7 +429,7 @@ const CreditCardDetailWrapper = () => {
                         <FillBtn
                           type="submit"
                           text={t("cardDetails.payText")}
-                          className="w-100 py-3"
+                          className="w-100 py-3 mb-4"
                         />
                       </div>
                     </Row>
@@ -373,17 +449,39 @@ const CreditCardDetailWrapper = () => {
             <CardBody>
               <div className="d-flex align-items-center justify-content-between">
                 <div className="">
+                  <h6>{t("cardDetails.priceText")}</h6>
+                </div>
+                <div style={{ width: "25%" }}>
+                  <h6>
+                    {CURRENCY} {subscriptionPlan.price}
+                  </h6>
+                </div>
+              </div>
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="">
+                  <h6>{t("cardDetails.vatText")}</h6>
+                </div>
+                <div style={{ width: "25%" }}>
+                  <h6>
+                    {CURRENCY} {summaryData.vat}
+                  </h6>
+                </div>
+              </div>
+              <div className="d-flex align-items-center justify-content-between">
+                <div className="">
                   <h6>{t("cardDetails.discountText")}</h6>
                 </div>
-                <div style={{ width: "20%" }}>
-                  <h6>SAR 0</h6>
+                <div style={{ width: "25%" }}>
+                  <h6>
+                    {CURRENCY} {summaryData.discount}
+                  </h6>
                 </div>
               </div>
               <div className="d-flex align-items-center justify-content-between">
                 <div className="">
                   <h6>{t("cardDetails.fitneeWalletText")}</h6>
                 </div>
-                <div style={{ width: "20%" }}>
+                <div style={{ width: "25%" }}>
                   <h6>SAR 0</h6>
                 </div>
               </div>
@@ -395,9 +493,15 @@ const CreditCardDetailWrapper = () => {
                     {t("cardDetails.totalPayText")}
                   </h6>
                 </div>
-                <div style={{ width: "20%" }}>
+                <div style={{ width: "25%" }}>
                   <h6 className="mb-0">
-                    {CURRENCY} {subscriptionPlan.price}
+                    {CURRENCY}{" "}
+                    {functions.getSummary(
+                      summaryData.discount,
+                      summaryData.walletAmount,
+                      subscriptionPlan.price,
+                      summaryData.vat
+                    )}
                   </h6>
                 </div>
               </div>

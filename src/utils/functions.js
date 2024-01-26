@@ -57,6 +57,16 @@ const createFormData = (data) => {
           data[key].forEach((certification, index) => {
             formData.append(`certification`, certification);
           });
+        } else if (key === "subscription_plans") {
+          const updated_subscription_plans = data[key].map(
+            (subscription_plan) => {
+              return { ...subscription_plan, membership_type: data["role"] };
+            }
+          );
+          formData.append(
+            "subscription_plans",
+            JSON.stringify(updated_subscription_plans)
+          );
         } else {
           formData.append(key, JSON.stringify(data[key]));
         }
@@ -76,6 +86,23 @@ const copyToClipboard = (text) => {
   textField.select();
   document.execCommand("copy");
   document.body.removeChild(textField);
+};
+
+const getSummary = (discount, walletAmount, totalAmount, vat) => {
+  const summary =
+    parseFloat(totalAmount) -
+    parseFloat(discount) -
+    parseFloat(walletAmount) +
+    parseFloat(vat);
+  return summary.toFixed(2);
+};
+
+const calculateVat = (amount) => {
+  return ((parseFloat(amount) * 15) / 100).toFixed(2);
+};
+
+const calculatePercentage = (amount, percentage) => {
+  return ((parseFloat(amount) * percentage) / 100).toFixed(2);
 };
 
 const setTraineeInitialValues = (initalValues, user) => {
@@ -314,11 +341,14 @@ const getListingRole = (listingType) => {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  getSummary,
+  calculateVat,
   getInitialUrl,
   createFormData,
   getListingRole,
   copyToClipboard,
   filterSignUpFields,
+  calculatePercentage,
   setLanguageInStorage,
   getLanguageFromStorage,
   setTraineeInitialValues,

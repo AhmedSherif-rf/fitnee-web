@@ -153,7 +153,7 @@ Input::-webkit-input-placeholder {
   border-radius: 14px;
   .form-control-lg {
     border-radius: 14px !important;
-    border: 1px solid $white;
+    border: 1px solid #DEE2E6;
     padding-left: 50px !important;
     &:focus {
       outline: none !important;
@@ -368,3 +368,18 @@ Input::-webkit-input-placeholder {
   height: 38vh !important;
   border-radius: 14px;
 }
+
+.signInCol {
+  background-color: white;
+  }
+  
+  @media (max-width: 767px) {
+    /* Apply background image only when the screen size is less than md (767px) */
+    .signInCol {
+    background: transparent !important;;
+    }
+    .customPadding{
+      padding-top: 58px !important;
+      padding-bottom: 58px !important;
+    }
+  }

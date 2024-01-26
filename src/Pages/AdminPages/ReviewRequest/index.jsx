@@ -34,7 +34,7 @@ const ReviewRequest = () => {
 
   useEffect(() => {
     fetchReviewRequests();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, page]);
 
   const fetchReviewRequests = () => {
@@ -92,10 +92,9 @@ const ReviewRequest = () => {
                     width: "40px",
                     height: "40px",
                     backgroundImage:
-                      request?.profile_pic === "" ||
                       request?.profile_pic === null
                         ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${request?.profile_pic.replace("/api", "")})`,
+                        : `url(${request?.profile_pic})`,
                   }}
                 ></div>
                 <h6 className="text-secondary fw-bold mb-0">

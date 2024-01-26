@@ -272,7 +272,7 @@ const SignUpForm = () => {
                             values?.profile_pic
                               ? URL.createObjectURL(values?.profile_pic)
                               : user?.profile_pic
-                              ? user?.profile_pic.replace("/api", "")
+                              ? user?.profile_pic
                               : ""
                           }
                           className="rounded-circle bgProperties position-relative"
@@ -549,7 +549,6 @@ const SignUpForm = () => {
                         borderBottomRightRadius: "14px",
                       }}
                       name="date_of_birth"
-                      placeholder="Date of Birthday"
                       className="form-control-lg px-4"
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -730,7 +729,7 @@ const SignUpForm = () => {
                       {user?.ServiceProvider_Certification?.map(
                         (certificate, index) => (
                           <DocumentCard
-                            key={index}
+                            index={index}
                             className="BorderYellow"
                             documentTitle={certificate?.title}
                             documentImg={certificate?.certificate_image}
@@ -1227,7 +1226,7 @@ const SignUpForm = () => {
               {filterFields.includes("subscription_plans") && (
                 <>
                   <h5 className="mb-2 fw-bold">
-                    {t("signup.subscriptionPlansText")}
+                    {t("signup.subscriptionPlansText")}*
                   </h5>
                   <FieldArray
                     name="subscription_plans"
@@ -1236,7 +1235,7 @@ const SignUpForm = () => {
                       <>
                         {values?.subscription_plans?.map(
                           (subscription_plan, index) => (
-                            <Col md={4}>
+                            <Col md={4} key={index}>
                               <p className="mb-0">{`${index + 1} ${t(
                                 "signup.monthsText"
                               )}`}</p>

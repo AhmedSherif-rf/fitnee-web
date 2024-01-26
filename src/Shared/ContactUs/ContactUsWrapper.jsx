@@ -3,10 +3,10 @@ import { Col, Row } from "reactstrap";
 import ContactUsForm from "./ContactUsForm";
 
 const ContactUsWrapper = (props) => {
-  const { CompStyle, text1, text2, text3 } = props;
+  const { CompStyle, text1, text2, text3, index } = props;
 
   return (
-    <Row className="h-100">
+    <Row className="h-100" key={index}>
       <Col md={6} xs={12} className="p-0 d-md-block d-none">
         <div
           className="d-flex flex-column justify-content-between bgProperties h-100 py-4"
@@ -18,7 +18,7 @@ const ContactUsWrapper = (props) => {
         </div>
       </Col>
 
-      <Col md={6} xs={12} className="p-0">
+      <Col md={6} xs={12} className="p-0 signInCol">
         <ContactUsForm />
       </Col>
     </Row>

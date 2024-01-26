@@ -35,10 +35,10 @@ const ResetPasswordForm = () => {
   return (
     <Container>
       <Row
-        className={`justify-content-center align-items-center vh-100 ${i18n.dir()}`}
+        className={`justify-content-center text-black-custom align-items-md-center align-items-end ${i18n.dir()}`}
       >
         {loading === "pending" && <LoadingScreen />}
-        <Col lg={7} md={12} sm={10}>
+        <Col lg={5} md={12} sm={10}>
           <h1 className="text-center mb-5">
             {t("trainer.changePasswordText")}
           </h1>

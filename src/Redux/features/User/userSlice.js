@@ -2,10 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   login,
   logout,
-  changePassword,
   signUp,
-  deleteAccount,
   editProfile,
+  deleteAccount,
+  getMyTrainees,
+  changePassword,
+  addTraineeProgress,
+  getMyServiceProviders,
+  getTransactionHistory,
+  getTraineeProgressHistory,
 } from "./userApi";
 
 export const userSlice = createSlice({
@@ -91,6 +96,56 @@ export const userSlice = createSlice({
       })
       .addCase(editProfile.rejected, (state) => {
         state.loading = "failed";
+      })
+      .addCase(getMyServiceProviders.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getMyServiceProviders.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getMyServiceProviders.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getMyTrainees.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getMyTrainees.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getMyTrainees.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getTraineeProgressHistory.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getTraineeProgressHistory.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getTraineeProgressHistory.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(addTraineeProgress.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(addTraineeProgress.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(addTraineeProgress.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getTransactionHistory.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getTransactionHistory.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getTransactionHistory.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
       });
   },
 });

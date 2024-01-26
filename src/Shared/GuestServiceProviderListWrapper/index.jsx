@@ -1,4 +1,3 @@
-import ShimmerScreen from "./Skeleton";
 import styles from "./style.module.scss";
 import {
   Card,
@@ -15,6 +14,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import PageHeading from "../Headings/PageHeading";
 import FillBtn from "../../Shared/Buttons/FillBtn";
+import GalleryEffect from "../Skeleton/GalleryEffect";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
@@ -97,7 +97,7 @@ const GuestServiceProviderListWrapper = (props) => {
     >
       <CardBody>
         {loading === "pending" ? (
-          <ShimmerScreen />
+          <GalleryEffect />
         ) : (
           <>
             <Row className={`align-items-center mb-2  ${i18n.dir()}`}>

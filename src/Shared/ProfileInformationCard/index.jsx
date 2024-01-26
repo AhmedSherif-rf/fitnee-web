@@ -56,10 +56,16 @@ const ProfileInformationCard = (props) => {
                 src={Images.SHORTLOGO_IMG}
                 alt="info logo"
               />
-              <p className="ms-2 fw-bold mb-0 no-Wrap text-secondary">
-                {providerProfile?.experience} Year
+              <p className="ms-2 fw-bold mb-0 no-Wrap text-secondary px-2">
+                {providerProfile?.experience}
+                {i18n.dir() === "rtl"
+                  ? providerProfile?.experience === 1
+                    ? " سنة"
+                    : providerProfile?.experience === 2
+                    ? " سنتين"
+                    : " سنوات"
+                  : "Year"}
               </p>
-
               <Tooltip
                 placement="top"
                 isOpen={tooltipOpen}

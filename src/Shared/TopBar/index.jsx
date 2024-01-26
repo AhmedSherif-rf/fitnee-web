@@ -102,6 +102,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   ] = useState(false);
 
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [stopScrolling, setStopScrolling] = useState(false);
 
   const [backgroundClass, setBackgroundClass] = useState(
     isPublic
@@ -110,6 +112,14 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         : "bg-transparent"
       : "bg-transparent"
   );
+
+  
+
+  const handleMouseOver = () => {
+    setStopScrolling(true);
+    document.body.style.overflow = 'hidden';
+  };
+
 
   const textClass = "text-white";
 
@@ -131,7 +141,12 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     navigate("/registerAs");
   }, [navigate]);
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
+  const toggleNavbar = () =>
+  {
+    setCollapsed(!collapsed);
+    setStopScrolling(false);
+    document.body.style.overflow = 'auto';
+  } 
 
   const handleSignInClick = useCallback(() => {
     navigate("/signIn");
@@ -225,9 +240,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             {showNavItems && (
               <>
                 <NavbarToggler
-                  className={
-                    "textYellow d-md-none d-block pb-2"
-                  }
+                  className={"textYellow d-md-none d-block pb-2"}
                   onClick={toggleNavbar}
                 >
                   <FaBars />
@@ -503,15 +516,16 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             className={`text-white w-100 ${styles.collapseScss}`}
           >
             <div
-              className="vh-100"
-              onClick={toggleNavbar}
+              className={`vh-100 bg-transparent ${stopScrolling ? 'no-scroll' : 'activeScroll'}`}
+              // onClick={toggleNavbar}
+              onMouseOver={handleMouseOver}
             >
               <Nav
                 className={`pt-2 ${styles.togglerNav} customBgDark caret`}
                 navbar
               >
                 {!isPrivate && roleType === null && (
-                  <div className="mt-3">
+                  <div className="mt-2">
                     <NavItem className={`${styles.navItem}`}>
                       <Link to="/">
                         <span className={`px-1`}>{t("landing.homeText")}</span>
@@ -574,7 +588,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                       <Link to="#" onClick={handleFitneeCommunityClick}>
                         <span className={`px-1`}>
                           {t("landing.fitneeCommunityText")}
-                        </span>{" "}
+                        </span>
                       </Link>
                     </NavItem>
 
@@ -585,6 +599,84 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         </span>
                       </Link>
                     </NavItem>
+                    {!isPrivate && roleType === null && (
+                      <>
+                        <Nav
+                          className={`ml-auto d-lg-none d-block customBgDark ${styles.togglerNav}`}
+                        >
+                          <NavItem
+                            className={`${styles.navItem}`}
+                            onClick={() =>
+                              setCollapsedLangList(!collapsedLangList)
+                            }
+                          >
+                            <span className={`px-1`}>
+                              <img
+                                src={
+                                  currentLanguage === ENGLISH_LANGUAGE
+                                    ? Images.AMERICAN_FLAG_IMG
+                                    : Images.ARABIA_FLAG_IMG
+                                }
+                                alt="Flag_Image"
+                              />
+                              <PiCaretDownBold />
+                            </span>
+
+                            <Collapse
+                              isOpen={collapsedLangList}
+                              className="text-center bg-dark"
+                            >
+                              <Nav navbar>
+                                <NavItem>
+                                  <div
+                                    className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
+                                    onClick={() =>
+                                      selectLanguage(ARABIC_LANGUAGE)
+                                    }
+                                  >
+                                    <span>
+                                      <img
+                                        src={Images.ARABIA_FLAG_IMG}
+                                        alt="Arabia_Flag_Image"
+                                      />
+                                    </span>
+                                    <span>{"العربية"}</span>
+                                  </div>
+                                </NavItem>
+                                <NavItem>
+                                  <div
+                                    className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
+                                    onClick={() =>
+                                      selectLanguage(ENGLISH_LANGUAGE)
+                                    }
+                                  >
+                                    <span>
+                                      <img
+                                        src={Images.AMERICAN_FLAG_IMG}
+                                        alt="America_Flag_Image"
+                                      />
+                                    </span>
+                                    <span>{"English (US)"}</span>
+                                  </div>
+                                </NavItem>
+                              </Nav>
+                            </Collapse>
+                          </NavItem>
+                          <div className="d-flex align-items-center flex-column">
+                            <FillBtn
+                              className="w-50 px-3 mb-2"
+                              text={t("landing.signUpText")}
+                              handleOnClick={handleSignUpClick}
+                            />
+                            <OutlineBtn
+                              className="w-50 px-3"
+                              text={t("landing.signInText")}
+                              handleOnClick={handleSignInClick}
+                            />
+                          </div>
+                        </Nav>
+                      </>
+                    )}
                   </div>
                 )}
                 {!isGuest && roleType !== null && (
@@ -662,78 +754,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                   </div>
                 )}
               </Nav>
-              {!isPrivate && roleType === null && (
-                <>
-                  <Nav
-                    className={`ml-auto pb-4 d-lg-none d-block customBgDark ${styles.togglerNav}`}
-                  >
-                    <NavItem
-                      className={`${styles.navItem}`}
-                      onClick={() => setCollapsedLangList(!collapsedLangList)}
-                    >
-                      <span className={`px-1`}>
-                        <img
-                          src={
-                            currentLanguage === ENGLISH_LANGUAGE
-                              ? Images.AMERICAN_FLAG_IMG
-                              : Images.ARABIA_FLAG_IMG
-                          }
-                          alt="Flag_Image"
-                        />
-                        <PiCaretDownBold />
-                      </span>
-
-                      <Collapse
-                        isOpen={collapsedLangList}
-                        className="text-center bg-dark"
-                      >
-                        <Nav navbar>
-                          <NavItem>
-                            <div
-                              className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
-                              onClick={() => selectLanguage(ARABIC_LANGUAGE)}
-                            >
-                              <span>
-                                <img
-                                  src={Images.ARABIA_FLAG_IMG}
-                                  alt="Arabia_Flag_Image"
-                                />
-                              </span>
-                              <span>{"العربية"}</span>
-                            </div>
-                          </NavItem>
-                          <NavItem>
-                            <div
-                              className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
-                              onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
-                            >
-                              <span>
-                                <img
-                                  src={Images.AMERICAN_FLAG_IMG}
-                                  alt="America_Flag_Image"
-                                />
-                              </span>
-                              <span>{"English (US)"}</span>
-                            </div>
-                          </NavItem>
-                        </Nav>
-                      </Collapse>
-                    </NavItem>
-                    <div className="d-flex align-items-center flex-column">
-                      <FillBtn
-                        className="w-50 px-3 mb-2"
-                        text={t("landing.signUpText")}
-                        handleOnClick={handleSignUpClick}
-                      />
-                      <OutlineBtn
-                        className="w-50 px-3"
-                        text={t("landing.signInText")}
-                        handleOnClick={handleSignInClick}
-                      />
-                    </div>
-                  </Nav>
-                </>
-              )}
             </div>
           </Collapse>
         </div>

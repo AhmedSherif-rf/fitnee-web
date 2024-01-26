@@ -7,7 +7,7 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const TrainerListCard = (props) => {
   const { serviceProvider, className, handleOnClick } = props;
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   return (
     <Card
@@ -44,7 +44,14 @@ const TrainerListCard = (props) => {
               alt="info logo"
             />
             <p className="ms-2 fw-bold mb-0 no-Wrap text-white">
-              {serviceProvider?.experience} {t("guest.yearsText")}
+              {serviceProvider?.experience}
+              {i18n.dir() === "rtl"
+                ? serviceProvider?.experience === 1
+                  ? " سنة"
+                  : serviceProvider?.experience === 2
+                  ? " سنتين"
+                  : " سنوات"
+                : "Year"}
             </p>
           </div>
           <div className="d-flex align-items-center justify-content-center">

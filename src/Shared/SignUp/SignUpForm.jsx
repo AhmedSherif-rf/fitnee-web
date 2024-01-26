@@ -1129,10 +1129,13 @@ const SignUpForm = () => {
               {filterFields.includes("profile_availability") && (
                 <Col lg={12} md={12}>
                   <h6 className="mb-2 fw-bold">
-                    {`   ${t("signup.availableToRespondTraineeText")} ${
-                      roleType === NUTRITIONIST_TYPE ? "subscriber" : "trainee"
+                    {`${t("signup.availableToRespondTraineeText")} ${
+                      roleType === NUTRITIONIST_TYPE
+                        ? t("signup.subscriberText")
+                        : t("signup.traineeText")
                     } ${user === null ? "*" : ""}`}
                   </h6>
+
                   <FieldArray
                     name="profile_availability"
                     className="d-flex"

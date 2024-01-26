@@ -456,6 +456,7 @@
     "amountReleasedText": "Amount Released"
   },
   "traineeDashboard": {
+    "traineeProgressGraph":"Trainee Progress Graph",
     "myCurrentTrainerText": "My Current Trainers",
     "myCurrentNutritionistText": "My Current Nutritionists",
     "mySubscriptionHistoryText": "My Subscription History",
@@ -515,6 +516,8 @@
     "addressText": "Address"
   },
   "signup": {
+    "traineesText": "Trainees",
+    "subscriberText":"Subscriber",
     "certificatesText": "Certificates",
     "subscriptionPlansText": "Subscription plans",
     "monthsText": "Months",

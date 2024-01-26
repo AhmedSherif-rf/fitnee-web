@@ -453,6 +453,7 @@
     "amountReleasedText": "المبلغ المدفوع"
   },
   "traineeDashboard": {
+    "traineeProgressGraph": "رسم بياني تقدم المتدرب",
     "myCurrentTrainerText": "المدرب الخاص بي",
     "myCurrentNutritionistText": "اخصائي التغذية الخاص بي",
     "mySubscriptionHistoryText": "تاريخ اشتراكاتي",
@@ -511,6 +512,8 @@
     "addressText": "العنوان"
   },
   "signup": {
+    "subscriberText":"مشترك",
+    "traineeText": "المتدرب",
     "certificatesText": "الشهادات",
     "subscriptionPlansText": "ﺧﻄﺔ ﺍﻻﺷﺘﺮﺍﻙ",
     "monthsText": "ﺍﻷﺷﻬﺮ",

@@ -9,7 +9,6 @@ const CommentsCard = (props) => {
     <Col md={12} index={index}>
       <div class="d-flex align-items-center px-2">
         <div>
-          {" "}
           <div
             className="bgProperties"
             style={{

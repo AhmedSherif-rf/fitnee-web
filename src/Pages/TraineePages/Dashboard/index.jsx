@@ -37,7 +37,7 @@ const Dashboard = () => {
       },
       title: {
         display: true,
-        text: "Trainee Progress Graph",
+        text:(t("traineeDashboard.traineeProgressGraph")),
       },
     },
     maintainAspectRatio: window.innerWidth > 500,

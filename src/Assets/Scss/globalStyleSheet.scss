@@ -54,12 +54,11 @@
   color: $parrot-green;
 }
 
-
 .contentCard {
   margin-top: 12vh;
   overflow-y: scroll;
   height: 88vh !important;
-  border:none !important;
+  border: none !important;
 }
 
 .contentCardPadding {
@@ -153,7 +152,7 @@ Input::-webkit-input-placeholder {
   border-radius: 14px;
   .form-control-lg {
     border-radius: 14px !important;
-    border: 1px solid #DEE2E6;
+    border: 1px solid #dee2e6;
     padding-left: 50px !important;
     &:focus {
       outline: none !important;
@@ -371,15 +370,21 @@ Input::-webkit-input-placeholder {
 
 .signInCol {
   background-color: white;
+}
+
+.menu-open {
+  overflow: hidden !important; 
+}
+.activeScroll{
+  overflow: scroll !important; 
+}
+
+@media (max-width: 767px) {
+  .signInCol {
+    background: transparent !important;
   }
-  
-  @media (max-width: 767px) {
-    /* Apply background image only when the screen size is less than md (767px) */
-    .signInCol {
-    background: transparent !important;;
-    }
-    .customPadding{
-      padding-top: 58px !important;
-      padding-bottom: 58px !important;
-    }
+  .customPadding {
+    padding-top: 58px !important;
+    padding-bottom: 58px !important;
   }
+}

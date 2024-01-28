@@ -55,9 +55,16 @@ const Feature = (props) => {
                   return (
                     <SwiperSlide
                       key={index}
-                      className={`d-flex align-items-center justify-content-start justify-content-sm-center w-100 d-block  text-white fs-5 text-justify customSpacing ${i18n.dir()}`}
+                      className={`d-flex align-items-center justify-content-start justify-content-sm-center w-100 d-block  text-white fs-5 text-justify ${
+                        i18n.dir() === "ltr" ? "customSpacing" : ""
+                      } ${i18n.dir()}`}
                     >
-                      {item.text}
+                      <p className="mb-0">
+                        <span className="textYellow fw-bolder outline-dark">
+                          {item.heading}
+                        </span>{" "}
+                        {item.text}
+                      </p>
                     </SwiperSlide>
                   );
                 })}

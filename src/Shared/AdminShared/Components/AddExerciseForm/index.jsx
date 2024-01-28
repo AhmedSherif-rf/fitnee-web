@@ -6,12 +6,12 @@ import React, { useState, memo } from "react";
 import FillBtn from "../../../Buttons/FillBtn";
 import { useTranslation } from "react-i18next";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Formik, FieldArray, Field } from "formik";
 import functions from "../../../../utils/functions";
 import { useDispatch, useSelector } from "react-redux";
 import InputField from "../../../../Shared/InputField";
 import ToggleSwitch from "../../../../Shared/ToggleSwitch";
 import { ADMIN_EXERCISE_URL } from "../../../../utils/constants";
-import { Formik, FieldArray, ErrorMessage, Field } from "formik";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import { ADD_EXERCISE_SCHEMA } from "../../../ValidationData/validation";
 import { addExercise } from "../../../../Redux/features/Exercise/exerciseApi";
@@ -142,11 +142,11 @@ const AddExerciseForm = () => {
                                     placeholder="Add exercise text"
                                     className="customDropdownRadius form-control select-field py-3 px-4 border"
                                   />
-                                  <ErrorMessage
-                                    name={`exercise_part_text_ar.${index}`}
-                                    component="p"
-                                    className="errorField text-end"
-                                  />
+                                  <p className="errorField">
+                                    {t(errors.exercise_part_text_ar?.[index]) &&
+                                      touched.exercise_part_text_ar?.[index] &&
+                                      t(errors.exercise_part_text_ar?.[index])}
+                                  </p>
                                 </Col>
 
                                 <Col md={1} className="mb-2">
@@ -204,11 +204,11 @@ const AddExerciseForm = () => {
                                     placeholder="Add exercise text"
                                     className="customDropdownRadius form-control select-field py-3 px-4 border"
                                   />
-                                  <ErrorMessage
-                                    name={`exercise_part_text.${index}`}
-                                    component="p"
-                                    className="errorField text-start"
-                                  />
+                                  <p className="errorField">
+                                    {t(errors.exercise_part_text?.[index]) &&
+                                      touched.exercise_part_text?.[index] &&
+                                      t(errors.exercise_part_text?.[index])}
+                                  </p>
                                 </Col>
 
                                 <Col md={1} className="mb-2">

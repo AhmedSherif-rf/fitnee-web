@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { FaDeleteLeft } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
 import { SIGNUP_SCHEMA } from "./data/validation";
+import { Formik, Field, FieldArray } from "formik";
 import { INITIAL_VALUES } from "./data/initialValue";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +20,6 @@ import React, { memo, useState, useEffect } from "react";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
-import { Formik, Field, FieldArray, ErrorMessage } from "formik";
 import {
   signUp,
   editProfile,
@@ -1138,7 +1138,7 @@ const SignUpForm = () => {
                     {`${t("signup.availableToRespondTraineeText")} ${
                       roleType === NUTRITIONIST_TYPE
                         ? t("signup.subscriberText")
-                        : t("signup.traineeText")
+                        : t("signup.traineesText")
                     } ${user === null ? "*" : ""}`}
                   </h6>
                   <FieldArray
@@ -1169,11 +1169,16 @@ const SignUpForm = () => {
                                     />
                                   ))}
                                 </Field>
-                                <ErrorMessage
-                                  name={`profile_availability.${index}.day`}
-                                  component="p"
-                                  className="errorField"
-                                />
+                                <p className="errorField">
+                                  {t(
+                                    errors.profile_availability?.[index]?.day
+                                  ) &&
+                                    touched.profile_availability?.[index]
+                                      ?.day &&
+                                    t(
+                                      errors.profile_availability?.[index]?.day
+                                    )}
+                                </p>
                               </Col>
                               <Col md={3} className="mb-2">
                                 <Field
@@ -1181,11 +1186,18 @@ const SignUpForm = () => {
                                   type="time"
                                   className="customDropdownRadius form-control select-field py-3 px-4 border"
                                 />
-                                <ErrorMessage
-                                  name={`profile_availability.${index}.starttime`}
-                                  component="p"
-                                  className="errorField"
-                                />
+                                <p className="errorField">
+                                  {t(
+                                    errors.profile_availability?.[index]
+                                      ?.starttime
+                                  ) &&
+                                    touched.profile_availability?.[index]
+                                      ?.starttime &&
+                                    t(
+                                      errors.profile_availability?.[index]
+                                        ?.starttime
+                                    )}
+                                </p>
                               </Col>
                               <Col md={3} className="mb-2">
                                 <Field
@@ -1193,11 +1205,18 @@ const SignUpForm = () => {
                                   type="time"
                                   className="customDropdownRadius form-control select-field py-3 px-4 border"
                                 />
-                                <ErrorMessage
-                                  name={`profile_availability.${index}.endtime`}
-                                  component="p"
-                                  className="errorField"
-                                />
+                                <p className="errorField">
+                                  {t(
+                                    errors.profile_availability?.[index]
+                                      ?.endtime
+                                  ) &&
+                                    touched.profile_availability?.[index]
+                                      ?.endtime &&
+                                    t(
+                                      errors.profile_availability?.[index]
+                                        ?.endtime
+                                    )}
+                                </p>
                               </Col>
                               <Col md={1} className="mb-2">
                                 <div className="d-flex align-items-center justify-content-end h-100">
@@ -1252,11 +1271,11 @@ const SignUpForm = () => {
                                 type="number"
                                 className="customDropdownRadius form-control select-field py-3 px-4 border"
                               />
-                              <ErrorMessage
-                                name={`subscription_plans.${index}.price`}
-                                component="p"
-                                className="errorField"
-                              />
+                              <p className="errorField">
+                                {t(errors.subscription_plans?.[index]?.price) &&
+                                  touched.subscription_plans?.[index]?.price &&
+                                  t(errors.subscription_plans?.[index]?.price)}
+                              </p>
                             </Col>
                           )
                         )}
@@ -1317,7 +1336,7 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/serviceProvider/signUp`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.termsAndConditionText")}
                             </span>
                           </Link>
@@ -1326,7 +1345,7 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/general/home`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.generalText")}
                             </span>
                           </Link>
@@ -1338,7 +1357,7 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/trainee/signUp`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.termsAndConditionText")}
                             </span>
                           </Link>
@@ -1347,7 +1366,7 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/general/home`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.generalText")}
                             </span>
                           </Link>

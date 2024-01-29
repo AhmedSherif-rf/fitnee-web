@@ -387,4 +387,9 @@ Input::-webkit-input-placeholder {
     padding-top: 58px !important;
     padding-bottom: 58px !important;
   }
+  .customSpacing {
+    letter-spacing: 1px;
+    line-height: 33px;
+    text-align: center;
+  }
 }

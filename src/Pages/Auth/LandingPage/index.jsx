@@ -209,13 +209,13 @@ const LandingPage = (props) => {
       </section>
 
       <section id="featureSection" className="100-vh">
-        <Container fluid>
+ 
           <Feature
             textData={FeaturesTextData()}
             imageData={FeaturesImageData()}
             type={"textRight"}
           />
-        </Container>
+
       </section>
 
       <section id="heroSection" style={{ direction: i18n.dir() }}>

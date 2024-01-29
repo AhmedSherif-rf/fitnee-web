@@ -24,7 +24,7 @@ function App() {
   const dispatch = useDispatch();
   const [fcmToken, setFcmToken] = useState(null);
   const [notification, setNotification] = useState(null);
-  const [showNotification, setShowNotification] = useState(true);
+  const [showNotification, setShowNotification] = useState(false);
 
   getNotificationToken(setFcmToken);
 

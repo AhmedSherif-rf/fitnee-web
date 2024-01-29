@@ -23,26 +23,47 @@ const Index = (props) => {
               className="text-decoration-none"
               to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}`}
             >
-              <div
-                className="me-2 bgProperties rounded-circle"
-                style={{
-                  width: "60px",
-                  height: "60px",
-                  cursor: "pointer",
-                  backgroundImage:
-                    data?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${data?.serviceprovider?.profile_pic})`,
-                  border: "1px solid transparent",
-                }}
-              ></div>
+              {data?.serviceprovider && (
+                <div
+                  className="me-2 bgProperties rounded-circle"
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    cursor: "pointer",
+                    backgroundImage:
+                      data?.serviceprovider?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${data?.serviceprovider?.profile_pic})`,
+                    border: "1px solid transparent",
+                  }}
+                ></div>
+              )}
+              {data?.trainee && (
+                <div
+                  className="me-2 bgProperties rounded-circle"
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    cursor: "pointer",
+                    backgroundImage:
+                      data?.trainee?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${data?.trainee?.profile_pic})`,
+                    border: "1px solid transparent",
+                  }}
+                ></div>
+              )}
             </Link>
             <div>
               <h6 className="mb-0 fw-bold ">
-                {data?.serviceprovider?.full_name}
+                {data?.serviceprovider
+                  ? data?.serviceprovider?.full_name
+                  : `${data?.trainee?.first_name} ${data?.trainee?.last_name}`}
               </h6>
               <span className="text-black-custom">
-                {data?.serviceprovider?.role}
+                {data?.serviceprovider
+                  ? data?.serviceprovider?.role
+                  : data?.trainee?.role}
               </span>
               <div className="mb-md-0 d-md-none d-block py-2">
                 <h6 className="mb-0 w-100 small fw-bold ">

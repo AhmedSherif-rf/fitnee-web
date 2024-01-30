@@ -37,7 +37,7 @@ const Dashboard = () => {
       },
       title: {
         display: true,
-        text:(t("traineeDashboard.traineeProgressGraph")),
+        text: t("traineeDashboard.traineeProgressGraph"),
       },
     },
     maintainAspectRatio: window.innerWidth > 500,
@@ -78,7 +78,7 @@ const Dashboard = () => {
       labels,
       datasets: [
         {
-          label: "Weight",
+          label: t("traineeDashboard.weightText"),
           borderDash: [5, 5],
           data: weightData,
           borderColor: "#67165A",
@@ -88,7 +88,7 @@ const Dashboard = () => {
           pointHoverRadius: 6,
         },
         {
-          label: "SMM",
+          label: t("traineeDashboard.smmText"),
           data: smmData,
           borderColor: "#F67109",
           backgroundColor: "rgba(246, 113, 9, 0.40)",
@@ -97,7 +97,7 @@ const Dashboard = () => {
           pointHoverRadius: 6,
         },
         {
-          label: "BFM",
+          label: t("traineeDashboard.bfmText"),
           data: bfmData,
           borderColor: "#F6E709",
           backgroundColor: "rgba(246, 231, 9, 0.40)",
@@ -106,7 +106,7 @@ const Dashboard = () => {
           pointHoverRadius: 6,
         },
         {
-          label: "Proteins",
+          label: t("traineeDashboard.proteinText"),
           data: protienData,
           borderColor: "#8EF609",
           backgroundColor: "rgba(142, 246, 9, 0.40)",
@@ -239,7 +239,11 @@ const Dashboard = () => {
                           >
                             {progressHistoryData.map((item, index) => {
                               return (
-                                <Col md={3} className="mb-2" key={index}>
+                                <Col
+                                  md={3}
+                                  className={`mb-2 ${i18n.dir()}`}
+                                  key={index}
+                                >
                                   <ProgressHistoryWrapper data={item} />
                                 </Col>
                               );

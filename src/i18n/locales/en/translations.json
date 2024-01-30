@@ -474,7 +474,7 @@
     "cancelledText": "Cancelled",
     "addProgressText": "Add Progress",
     "viewHistoryText": "View History",
-    "ProteinText": "Protein",
+    "proteinText": "Protein",
     "bfmText": "BFM",
     "smmText": "SMM",
     "weightText": "Weight",
@@ -574,7 +574,10 @@
     "termsAndConditionText": "Terms and conditions  ",
     "generalText": "General terms and conditions  ",
     "acknowledgeText": "I acknowledge that I have reviewed and accepted the ",
-    "cancellingSubscriptionModalText": "Are you sure about canceling your subscription?"
+    "cancellingSubscriptionModalText": "Are you sure about canceling your subscription?",
+    "dayText": "Day",
+    "fromTimeText": "From time",
+    "toTimeText": "To time"
   },
   "login": {
     "loginText": "Sign In",

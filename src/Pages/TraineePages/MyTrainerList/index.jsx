@@ -103,7 +103,12 @@ const Index = () => {
                 </Col>
               </Row>
               {trainersData?.map((data, index) => {
-                return <ServiceProvider data={data} index={index} />;
+                if (!data?.is_expired && !data?.is_refund) {
+                  return (
+                    <ServiceProvider key={index} data={data} index={index} />
+                  );
+                }
+                return null;
               })}
               {trainersData.length <= 0 && (
                 <div className="d-flex justify-content-center py-4 text-black-custom">

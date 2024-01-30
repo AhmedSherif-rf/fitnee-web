@@ -33,7 +33,7 @@ const WalletDetail = (props) => {
               {data?.Transaction_status === "debit" ? (
                 <h4 className="mb-0">{`- ${CURRENCY} ${data?.total_amount}`}</h4>
               ) : (
-                <h4 className="mb-0 textYellow">{`+ ${CURRENCY} ${data?.total_amount}`}</h4>
+                <h4 className="mb-0">{`+ ${CURRENCY} ${data?.total_amount}`}</h4>
               )}
             </div>
           </div>

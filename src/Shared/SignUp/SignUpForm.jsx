@@ -8,7 +8,7 @@ import DocumentCard from "../DocumentCard";
 import MultiSelector from "../MultiSelector";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
-import { FaDeleteLeft } from "react-icons/fa6";
+import { FaCircleXmark } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
 import { SIGNUP_SCHEMA } from "./data/validation";
 import { Formik, Field, FieldArray } from "formik";
@@ -1150,25 +1150,18 @@ const SignUpForm = () => {
                           (daySchedule, index) => (
                             <Row key={index} className="mb-1">
                               <Col lg={5} md={5} className="mb-2">
-                                <Field
-                                  as="select"
+                                <p className="mb-0">{t("signup.dayText")}</p>
+                                <MyDropdown
+                                  className=" shadow-0 py-3 px-4 border"
+                                  Options={weekDaysOptions}
                                   name={`profile_availability.${index}.day`}
-                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4 h-100"
-                                >
-                                  <option
-                                    className="customDropDownOption text-black-custom"
-                                    value=""
-                                    label="Select"
-                                  />
-                                  {weekDaysOptions?.map((option, index) => (
-                                    <option
-                                      className="customDropDownOption text-black-custom border"
-                                      value={option.value}
-                                      key={index}
-                                      label={option.label}
-                                    />
-                                  ))}
-                                </Field>
+                                  placeholder={t("signup.selectText")}
+                                  onChangeHandle={handleChange}
+                                  onBlurHandle={handleBlur}
+                                  value={
+                                    values.profile_availability?.[index].day
+                                  }
+                                />
                                 <p className="errorField">
                                   {t(
                                     errors.profile_availability?.[index]?.day
@@ -1181,10 +1174,20 @@ const SignUpForm = () => {
                                 </p>
                               </Col>
                               <Col md={3} className="mb-2">
-                                <Field
-                                  name={`profile_availability.${index}.starttime`}
+                                <p className="mb-0">
+                                  {t("signup.fromTimeText")}
+                                </p>
+                                <InputField
+                                  className="py-3 px-4"
                                   type="time"
-                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
+                                  placeholder="awdawdaw"
+                                  name={`profile_availability.${index}.starttime`}
+                                  onChangeHandle={handleChange}
+                                  onBlurHandle={handleBlur}
+                                  value={
+                                    values.profile_availability?.[index]
+                                      .starttime
+                                  }
                                 />
                                 <p className="errorField">
                                   {t(
@@ -1200,10 +1203,16 @@ const SignUpForm = () => {
                                 </p>
                               </Col>
                               <Col md={3} className="mb-2">
-                                <Field
-                                  name={`profile_availability.${index}.endtime`}
+                                <p className="mb-0">{t("signup.toTimeText")}</p>
+                                <InputField
+                                  className="py-3 px-4"
                                   type="time"
-                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
+                                  name={`profile_availability.${index}.endtime`}
+                                  onChangeHandle={handleChange}
+                                  onBlurHandle={handleBlur}
+                                  value={
+                                    values.profile_availability?.[index].endtime
+                                  }
                                 />
                                 <p className="errorField">
                                   {t(
@@ -1220,7 +1229,7 @@ const SignUpForm = () => {
                               </Col>
                               <Col md={1} className="mb-2">
                                 <div className="d-flex align-items-center justify-content-end h-100">
-                                  <FaDeleteLeft
+                                  <FaCircleXmark
                                     className="cursorPointer"
                                     size={22}
                                     onClick={() => arrayHelpers.remove(index)}

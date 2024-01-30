@@ -470,7 +470,7 @@
     "cancelledText": "ﺗﻡ ﺍﻹﻟﻐﺎء",
     "addProgressText": "إضافة تقدم جديد",
     "viewHistoryText": "ﻋﺭﺽ ﺍﻟﺳﺟﻼﺕ ﺍﻟﺳﺎﺑﻘﺔ",
-    "ProteinText": "ﺍﻟﺒﺮﻭﺗﻴﻦ",
+    "proteinText": "ﺍﻟﺒﺮﻭﺗﻴﻦ",
     "addText": "ﺃﺿﺎﻓﻪ",
     "bfmText": "BFM",
     "smmText": "SMM",
@@ -571,7 +571,10 @@
     "termsAndConditionText": "ﺍﻟﺸﺮﻭﻁ ﻭﺍﻷﺣﻜﺎﻡ",
     "acknowledgeText": "ﺍﻗﺮ ﺑﺄﻧﻲ ﻗﺮﺃﺕ ﻭﻗﺒﻠﺖ ﺟﻤﻴﻊ ﺍﻟﺸﺮﻭﻁ ﻭﺍﻷﺣﻜﺎﻡ",
     "generalText": "ﺍﻟﺸﺮﻁ ﻭﺍﻷﺣﻜﺎﻡ ﺍﻟﻌﺎﻣﺔ",
-    "cancellingSubscriptionModalText": "ﻫﻞ ﺃﻧﺖ ﻣﺘﺄﻛﺪ ﻣﻦ ﺇﻟﻐﺎء ﺍﻻﺷﺘﺮﺍﻙ"
+    "cancellingSubscriptionModalText": "ﻫﻞ ﺃﻧﺖ ﻣﺘﺄﻛﺪ ﻣﻦ ﺇﻟﻐﺎء ﺍﻻﺷﺘﺮﺍﻙ",
+    "dayText": "اليوم",
+    "fromTimeText": "الوقت من",
+    "toTimeText": "الوقت الى"
   },
   "login": {
     "loginText": "تسجيل الدخول",

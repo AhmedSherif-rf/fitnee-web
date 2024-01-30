@@ -64,7 +64,7 @@ const InputField = (props) => {
               : styles.leftIconWrapper
           }
         >
-          {isPasswordVisible ? <GoEye /> : <GoEyeClosed />}
+          {isPasswordVisible ? <GoEyeClosed /> : <GoEye />}
         </div>
       )}
     </div>

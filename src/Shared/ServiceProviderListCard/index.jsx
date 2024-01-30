@@ -43,15 +43,19 @@ const TrainerListCard = (props) => {
               src={Images.SHORTLOGO_IMG}
               alt="info logo"
             />
-            <p className="ms-2 fw-bold mb-0 no-Wrap text-white">
-              {serviceProvider?.experience}
+            <p className={`ms-2 fw-bold mb-0 no-Wrap text-white ${i18n.dir()}`}>
+              {i18n.dir() === "ltr" &&
+                `${serviceProvider?.experience} ${t("guest.yearsText")}`}
               {i18n.dir() === "rtl"
                 ? serviceProvider?.experience === 1
-                  ? " سنة"
+                  ? "سنة"
                   : serviceProvider?.experience === 2
-                  ? " سنتين"
-                  : " سنوات"
-                : "Year"}
+                  ? "سنتين"
+                  : serviceProvider?.experience >= 3 &&
+                    serviceProvider?.experience <= 10
+                  ? `${serviceProvider?.experience} سنوات`
+                  : `${serviceProvider?.experience} سنة`
+                : ""}
             </p>
           </div>
           <div className="d-flex align-items-center justify-content-center">

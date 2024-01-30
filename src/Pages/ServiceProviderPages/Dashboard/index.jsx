@@ -85,7 +85,7 @@ const Dashboard = () => {
                     <FillBtn
                       handleOnClick={handlePaymentClick}
                       className="w-100 mb-2 py-2"
-                      text={t("trainer.trainerPaymentText")}
+                      text={t("trainer.walletText")}
                     />
                     <FillBtn
                       handleOnClick={handleSubscriptionsClick}

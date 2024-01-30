@@ -6,7 +6,7 @@ import { TRAINEE_ROLE } from "../../utils/constants";
 import { Card, CardBody, CardFooter } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 const ProfileInformationCard = (props) => {
-  const { i18n } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggleTooltip = () => setTooltipOpen(!tooltipOpen);
@@ -55,15 +55,19 @@ const ProfileInformationCard = (props) => {
                 src={Images.SHORTLOGO_IMG}
                 alt="info logo"
               />
-              <p className="ms-2 fw-bold mb-0 no-Wrap text-secondary px-2">
-                {providerProfile?.experience}
+              <p className={`ms-2 fw-bold mb-0 no-Wrap text-secondary px-2 ${i18n.dir()}`}>
+                {i18n.dir() === "ltr" &&
+                  `${providerProfile?.experience} ${t("guest.yearsText")}`}
                 {i18n.dir() === "rtl"
                   ? providerProfile?.experience === 1
-                    ? " سنة"
+                    ? "سنة"
                     : providerProfile?.experience === 2
-                    ? " سنتين"
-                    : " سنوات"
-                  : "Year"}
+                    ? "سنتين"
+                    : (providerProfile?.experience >= 3 &&
+                      providerProfile?.experience <= 10)
+                    ? `${providerProfile?.experience} سنوات`
+                    : `${providerProfile?.experience} سنة`
+                  : ""}
               </p>
               <Tooltip
                 placement="top"

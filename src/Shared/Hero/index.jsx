@@ -59,7 +59,7 @@ const Hero = (props) => {
                 className="w-100"
               >
                 <div
-                  className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
+                  className={`mb-md-5 mb-2 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
                 >
                   {heading}
                 </div>
@@ -82,7 +82,7 @@ const Hero = (props) => {
                 className="w-100"
               >
                 <div
-                  className={`mb-5 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
+                  className={`mb-md-5 mb-2 pb-4 ${styles.heroHeading} hoverWrapper text-center`}
                 >
                   {heading}
                 </div>

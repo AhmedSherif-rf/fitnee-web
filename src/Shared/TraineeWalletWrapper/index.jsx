@@ -39,7 +39,7 @@ const PaymentHistoryWrapper = () => {
     dispatch(getTransactionHistory(data)).then((res) => {
       if (res.type === "getTransactionHistory/fulfilled") {
         setSizePages(res?.payload?.data?.count);
-        setTransactionHistoryData(res?.payload?.data?.results[0]);
+        setTransactionHistoryData(res?.payload?.data?.results);
       }
     });
   };
@@ -67,7 +67,8 @@ const PaymentHistoryWrapper = () => {
                   </div>
                   <div className="w-100 text-center">
                     <h1 className="fw-bold mb-0">
-                      {CURRENCY} {transactionHistoryData?.balance}
+                      {CURRENCY}{" "}
+                      {transactionHistoryData[0]?.account?.balance ?? "0.00"}
                     </h1>
                   </div>
                 </CardBody>
@@ -77,7 +78,7 @@ const PaymentHistoryWrapper = () => {
           <Row className="mt-4 text-black-custom">
             <Col md={12}>
               {transactionHistoryData &&
-                transactionHistoryData?.wallet?.map((item, index) => {
+                transactionHistoryData?.map((item, index) => {
                   return <WalletDetail index={index} data={item} />;
                 })}
               {transactionHistoryData && transactionHistoryData.length <= 0 && (

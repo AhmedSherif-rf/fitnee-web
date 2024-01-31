@@ -119,12 +119,12 @@ const AddProgressModal = (props) => {
               </div>
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
-                  {`${t("traineeDashboard.ProteinText")}  (g / kg)`}
+                  {`${t("traineeDashboard.proteinText")}  (g / kg)`}
                 </Label>
                 <InputField
                   type="number"
                   name="protien"
-                  placeholder={t("traineeDashboard.ProteinText")}
+                  placeholder={t("traineeDashboard.proteinText")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.protien}

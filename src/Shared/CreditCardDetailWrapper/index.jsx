@@ -192,13 +192,13 @@ const CreditCardDetailWrapper = () => {
                   action={process.env.REACT_APP_HYPERPAY_REDIRECT_URL}
                   className="paymentWidgets"
                   data-brands={
-                    entity === "VISA"
-                      ? "MASTER VISA"
+                    entity === "VISA" || entity === "STC_PAY"
+                      ? "MASTER VISA STC_PAY"
                       : entity === "MADA"
                       ? "MADA"
                       : entity === "APPLE_PAY"
                       ? "APPLEPAY"
-                      : "STC_PAY"
+                      : ""
                   }
                 ></form>
               )}

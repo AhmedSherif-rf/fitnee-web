@@ -38,7 +38,7 @@ const Index = (props) => {
                   }}
                 ></div>
               )}
-              {data?.trainee && (
+              {data?.trainee?.profile_pic && (
                 <div
                   className="me-2 bgProperties rounded-circle"
                   style={{

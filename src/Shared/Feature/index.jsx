@@ -17,7 +17,7 @@ const Feature = (props) => {
   return (
     <Container fluid>
       <Row
-        className={`p-4 ${styles.featureSectionWrapper} ${
+        className={`p-2 ${styles.featureSectionWrapper} ${
           type === "textRight" ? "flex-row-reverse" : ""
         }`}
       >
@@ -30,6 +30,7 @@ const Feature = (props) => {
             <div className="">
               <div>
                 <Swiper
+                className="p-0"
                   speed={1000}
                   spaceBetween={500}
                   grabCursor={true}
@@ -49,33 +50,25 @@ const Feature = (props) => {
                     return (
                       <SwiperSlide
                         key={index}
-                        className={`w-100 d-block  text-white fs-5 text-justify ${
+                        className={`w-100 d-block  text-white fs-5 text-justify p-0 ${
                           i18n.dir() === "ltr" ? "customSpacing" : ""
                         } ${i18n.dir()}`}
                       >
                         <div
-                          className={`fw-bold textYellow mb-0 display-5 mb-5 p-0 text-md-start text-center w-100 ${styles.featureHeading}`}
+                          className={`fw-bold textYellow mb-0 display-5 mb-3 p-0 w-100 ${styles.featureHeading}`}
                         >
                           <span className="arabicBorderHover p-0">
                             {t("landing.featuresText")}
                           </span>
                         </div>
-                        <p className="mb-0">
-                          <span
-                            className="fw-bolder fs-3 outline-yellow text-md-start text-center"
-                            style={{
-                              color: "transparent",
-                              WebkitTextStroke: "0.6px yellow",
-                              textShadow: "0 0 10px rgba(255, 255, 0, 0.5)",
-                            }}
-                          >
+                        <div className="text-md-start text-center">
+                          <span className="textYellow fw-bolder fs-4 outline-yellow mb-2">
                             {item.heading}
                           </span>
-
-                          <br />
-                          <br />
-                          {item.text}
-                        </p>
+                          <p className="mb-0 text-start">
+                            {item.text}
+                          </p>
+                        </div>
                       </SwiperSlide>
                     );
                   })}

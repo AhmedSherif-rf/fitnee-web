@@ -1,6 +1,6 @@
 import "./style.scss";
 import React, { memo } from "react";
-import RatingCard from "../FeedbackCard";
+import FeedbackCard from "../FeedbackCard";
 import { Container, Row, Col } from "reactstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
@@ -70,7 +70,7 @@ const CardSwiper = (props) => {
                   key={"_" + index}
                   className={"feedbackSwiperSlider"}
                 >
-                  <RatingCard
+                  <FeedbackCard
                     header={card.title}
                     image={card.sliderImg}
                     des={card.description}

@@ -30,7 +30,7 @@ const Feature = (props) => {
             <div className="">
               <div>
                 <Swiper
-                className="p-0"
+                  className="p-0"
                   speed={1000}
                   spaceBetween={500}
                   grabCursor={true}
@@ -61,13 +61,17 @@ const Feature = (props) => {
                             {t("landing.featuresText")}
                           </span>
                         </div>
-                        <div className="text-md-start text-center">
+                        <div
+                          className={`${
+                            i18n.dir() === "ltr"
+                              ? "text-md-start"
+                              : "text-md-end"
+                          } text-center pt-md-5 pt-0`}
+                        >
                           <span className="textYellow fw-bolder fs-4 outline-yellow mb-2">
                             {item.heading}
                           </span>
-                          <p className="mb-0 text-start">
-                            {item.text}
-                          </p>
+                          <p className="mb-0 pt-md-3 pt-0">{item.text}</p>
                         </div>
                       </SwiperSlide>
                     );

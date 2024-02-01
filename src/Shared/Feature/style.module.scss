@@ -15,7 +15,7 @@
     width: 45vw;
     padding: 10px;
     align-items: center;
-
+border:red solid 3px;
     div {
       font-size: 20px;
       letter-spacing: 1px;
@@ -44,7 +44,7 @@
 @media (max-width: 480px) {
   .featureSectionWrapper {
     .featureTextSlider {
-      width: 92vw;
+      width: 90vw;
       align-items: center;
 
       div {

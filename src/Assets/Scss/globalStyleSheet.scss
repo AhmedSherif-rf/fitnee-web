@@ -305,7 +305,9 @@ Input::-webkit-input-placeholder {
 .borderHover:hover::before {
   width: 100%;
 }
-
+.swiper-pagination-bullet{
+  display: none !important;
+}
 .currentlyWorkingBtn {
   .selected {
     color: $parrot-green !important;

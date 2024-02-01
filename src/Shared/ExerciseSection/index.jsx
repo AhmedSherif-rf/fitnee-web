@@ -44,9 +44,7 @@ const ExerciseSection = (props) => {
                       autoPlay="yes"
                       loop="yes"
                       className={styles.workoutVideos}
-                      src={
-                        subCategory?.exercise[0]?.exercise_media[0].file
-                      }
+                      src={subCategory?.exercise[0]?.exercise_media[0].file}
                     ></video>
                   </Col>
                   <Col md={12} className="mb-2">

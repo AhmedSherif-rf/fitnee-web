@@ -10,7 +10,7 @@ const ForgotPasswordData = {
   text1: (
     <div className="text-center">
       <Link to="/">
-        <img className="img-fluid w-25 m-3" src={Images.LOGO_IMG} alt={""} />
+        <img className="img-fluid m-3" src={Images.SMALL_LOGO_IMG} alt={""} />
       </Link>
     </div>
   ),

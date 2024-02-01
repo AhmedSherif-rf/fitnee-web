@@ -50,13 +50,14 @@ const RegisterAs = (props) => {
               handleOnClick={handleAsTrainerClick}
             />
             <FillBtn
-              className="w-100 mb-3 customPaddingY"
+              className="w-100 customPaddingY"
               text={t("registerAs.nutritionistText")}
               handleOnClick={handleAsNutritionistClick}
             />
             <div>
-              <Link className="text-white" to="/signIn">
-                {t("registerAs.alreadyAccountText")}
+              <span className="text-white">{t("registerAs.alreadyAccountText")}</span>
+              <Link className="textYellow" to="/signIn">
+                Sign in
               </Link>
             </div>
           </div>

@@ -27,13 +27,13 @@ export const trainingGoalOptions = [
 ];
 export const activityLevelOptions = ["Not active", "Active", "Super active"];
 export const weekDaysOptions = [
-  { value: "Monday", label: "Monday" },
-  { value: "Tuesday", label: "Tuesday" },
-  { value: "Wednesday", label: "Wednesday" },
-  { value: "Thursday", label: "Thursday" },
-  { value: "Friday", label: "Friday" },
-  { value: "Saturday", label: "Saturday" },
-  { value: "Sunday", label: "Sunday" },
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
 ];
 export const roleOptions = ["Trainer", "Trainer And Nutritionist"];
 //=====================Roles=====================

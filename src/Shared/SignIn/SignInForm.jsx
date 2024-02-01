@@ -178,7 +178,7 @@ const SignInForm = () => {
                           <p className="mb-0 fs-6 px-2">
                             {t("login.agreeOnFitneeText")}{" "}
                             <Link to={`/termAndCondition/general${pathname}`}>
-                              <span className="textYellow">
+                              <span className="text-dark fw-bolder">
                                 {t("login.termsAndConditionsText")}
                               </span>
                             </Link>

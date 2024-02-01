@@ -21,7 +21,7 @@ const LandingPage = (props) => {
         </span>
       ),
       text: (
-        <p className={"fs-5 text-white text-center customSpacing"}>
+        <p className={"fs-5 text-white text-center customSpacing pb-4"}>
           {t("landing.firstHeroSectionText")}
         </p>
       ),
@@ -40,15 +40,19 @@ const LandingPage = (props) => {
   const FeaturesTextData = useCallback(() => {
     return [
       {
+        heading: t("landing.firstFeaturesHeadingText"),
         text: t("landing.firstFeaturesText"),
       },
       {
+        heading: t("landing.secondFeaturesHeadingText"),
         text: t("landing.secondFeaturesText"),
       },
       {
+        heading: t("landing.thirdFeaturesHeadingText"),
         text: t("landing.thirdFeaturesText"),
       },
       {
+        heading: t("landing.fourthFeaturesHeadingText"),
         text: t("landing.fourthFeaturesText"),
       },
     ];
@@ -80,7 +84,7 @@ const LandingPage = (props) => {
         </span>
       ),
       text: (
-        <div className="customSpacing text-center">
+        <div className="customSpacing text-center pb-4">
           <p className={"fs-5 lh-1 text-white"}>
             {t("landing.secondHeroSectionTextOne")}
           </p>
@@ -108,7 +112,7 @@ const LandingPage = (props) => {
         </span>
       ),
       text: (
-        <p className="text-white fs-5 text-center customSpacing">
+        <p className="text-white fs-5 text-center customSpacing pb-4">
           {t("landing.thirdHeroSectionTextOne")}
         </p>
       ),
@@ -126,7 +130,6 @@ const LandingPage = (props) => {
 
   const SwiperCardsData = useCallback(() => {
     return [
-     
       {
         sliderImg: Images.GOAL_IMG,
         description: t("landing.swiperText"),
@@ -209,13 +212,11 @@ const LandingPage = (props) => {
       </section>
 
       <section id="featureSection" className="100-vh">
-        <Container fluid>
-          <Feature
-            textData={FeaturesTextData()}
-            imageData={FeaturesImageData()}
-            type={"textRight"}
-          />
-        </Container>
+        <Feature
+          textData={FeaturesTextData()}
+          imageData={FeaturesImageData()}
+          type={"textRight"}
+        />
       </section>
 
       <section id="heroSection" style={{ direction: i18n.dir() }}>

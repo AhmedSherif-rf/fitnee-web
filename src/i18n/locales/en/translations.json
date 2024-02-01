@@ -15,10 +15,14 @@
     "firstHeroSectionText": "Provide a comprehensive platform to be a one-stop destination for individuals seeking fitness guidance and resources.",
     "featuresText": "Features",
     "fitneeText": "FitNee",
-    "firstFeaturesText": "Comprehensive Exercise Library: we will feature an extensive collection of exercises, including detailed instructions, videos, and variations to provide you with a diverse range of exercises that target different muscle groups and fitness levels. We aim to cater to both beginners and advanced fitness enthusiasts, ensuring that our exercise library offers something for everyone.",
-    "secondFeaturesText": "FitNee's Community: FitNee strives to create a vibrant and supportive community where users can connect with like-minded individuals, share their fitness journeys, and seek motivation and encouragement.",
-    "thirdFeaturesText": "Connect Users with Qualified Trainers: FitNee will maintain a directory of certified and experienced fitness trainers. You will be connecting with trainers who can provide personalized workout plans, tailored to their specific needs and goals.",
-    "fourthFeaturesText": "Facilitate Nutritional Guidance: we recognizes the importance of nutrition in achieving fitness goals. We aim to provide a comprehensive list of nutrition specialists who can offer personalized meal plans, dietary advice, and guidance on healthy eating habits.",
+    "firstFeaturesHeadingText": "Comprehensive Exercise Library",
+    "firstFeaturesText": "we will feature an extensive collection of exercises, including detailed instructions, videos, and variations to provide you with a diverse range of exercises that target different muscle groups and fitness levels. We aim to cater to both beginners and advanced fitness enthusiasts, ensuring that our exercise library offers something for everyone.",
+    "secondFeaturesHeadingText": "FitNee's Community",
+    "secondFeaturesText": "FitNee strives to create a vibrant and supportive community where users can connect with like-minded individuals, share their fitness journeys, and seek motivation and encouragement.",
+    "thirdFeaturesHeadingText": "Connect Users with Qualified Trainers",
+    "thirdFeaturesText": "FitNee will maintain a directory of certified and experienced fitness trainers. You will be connecting with trainers who can provide personalized workout plans, tailored to their specific needs and goals.",
+    "fourthFeaturesHeadingText": "Facilitate Nutritional Guidance",
+    "fourthFeaturesText": "we recognizes the importance of nutrition in achieving fitness goals. We aim to provide a comprehensive list of nutrition specialists who can offer personalized meal plans, dietary advice, and guidance on healthy eating habits.",
     "ourText": "Our",
     "whatIsText": " What Is",
     "feedbackText": "Feedbacks",
@@ -383,7 +387,7 @@
     "nutritionistText": "Nutritionist",
     "trainerNutritionistText": "Trainer and Nutritionist",
     "guestText": "Guest",
-    "alreadyAccountText": "Already have account?"
+    "alreadyAccountText": "Already have account? "
   },
   "guest": {
     "listOfText": "List of",
@@ -420,6 +424,7 @@
     "modalOneText": "Your email has been sent. Our representative will reach out to you within 72 hours."
   },
   "trainer": {
+    "walletText": "Wallet",
     "bioText": "Bio",
     "trainerHeadingText": "Qualification and Experience",
     "commentText": "Comments",
@@ -469,7 +474,7 @@
     "cancelledText": "Cancelled",
     "addProgressText": "Add Progress",
     "viewHistoryText": "View History",
-    "ProteinText": "Protein",
+    "proteinText": "Protein",
     "bfmText": "BFM",
     "smmText": "SMM",
     "weightText": "Weight",
@@ -562,13 +567,17 @@
     "yesText": "Yes",
     "noText": "No",
     "nextText": "Next",
+    "saveText": "Save",
     "uploadImageText": "Upload image",
     "attachCertificateText": "Attach your certificates",
     "moneyTransferText": "The money will be transferred to your STC pay account, please read the  ",
     "termsAndConditionText": "Terms and conditions  ",
     "generalText": "General terms and conditions  ",
     "acknowledgeText": "I acknowledge that I have reviewed and accepted the ",
-    "cancellingSubscriptionModalText": "Are you sure about canceling your subscription?"
+    "cancellingSubscriptionModalText": "Are you sure about canceling your subscription?",
+    "dayText": "Day",
+    "fromTimeText": "From time",
+    "toTimeText": "To time"
   },
   "login": {
     "loginText": "Sign In",
@@ -665,8 +674,7 @@
     "editProfileText": "Edit Profile",
     "changePasswordText": "Change Password",
     "deleteAccountText": "Delete Account",
-    "logoutText": "Logout",
-    "walletText": "Wallet"
+    "logoutText": "Logout"
   },
   "validation": {
     "invalidEmailText": "Invalid email address",

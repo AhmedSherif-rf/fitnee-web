@@ -53,14 +53,16 @@
 .textParrotGreen {
   color: $parrot-green;
 }
-
+.contactUsCard,
 .contentCard {
   margin-top: 12vh;
   overflow-y: scroll;
   height: 88vh !important;
   border: none !important;
 }
-
+.contactUsCard {
+  margin-top: 0px !important;
+}
 .contentCardPadding {
   padding-top: 12vh;
 }
@@ -305,7 +307,9 @@ Input::-webkit-input-placeholder {
 .borderHover:hover::before {
   width: 100%;
 }
-
+.swiper-pagination-bullet {
+  display: none !important;
+}
 .currentlyWorkingBtn {
   .selected {
     color: $parrot-green !important;
@@ -373,10 +377,10 @@ Input::-webkit-input-placeholder {
 }
 
 .menu-open {
-  overflow: hidden !important; 
+  overflow: hidden !important;
 }
-.activeScroll{
-  overflow: scroll !important; 
+.activeScroll {
+  overflow: scroll !important;
 }
 
 @media (max-width: 767px) {
@@ -386,5 +390,10 @@ Input::-webkit-input-placeholder {
   .customPadding {
     padding-top: 58px !important;
     padding-bottom: 58px !important;
+  }
+  .customSpacing {
+    letter-spacing: 1px;
+    line-height: 33px;
+    text-align: center;
   }
 }

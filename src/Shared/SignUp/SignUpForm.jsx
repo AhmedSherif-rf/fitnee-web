@@ -8,9 +8,10 @@ import DocumentCard from "../DocumentCard";
 import MultiSelector from "../MultiSelector";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
-import { FaDeleteLeft } from "react-icons/fa6";
+import { FaCircleXmark } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
 import { SIGNUP_SCHEMA } from "./data/validation";
+import { Formik, Field, FieldArray } from "formik";
 import { INITIAL_VALUES } from "./data/initialValue";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +20,6 @@ import React, { memo, useState, useEffect } from "react";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
-import { Formik, Field, FieldArray, ErrorMessage } from "formik";
 import {
   signUp,
   editProfile,
@@ -758,12 +758,13 @@ const SignUpForm = () => {
                       {values.certification.map((image, index) => (
                         <div
                           key={index}
-                          className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border"
+                          className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-3 position-relative BorderRadius mb-2 "
                         >
                           <Field
                             name={`certificate_title.${index}`}
                             type="text"
                             className="form-control-lg certificatioTitle bgBlur"
+                            style={{width:"200px"}}
                             placeholder="Add title"
                           />
                           <img
@@ -771,7 +772,7 @@ const SignUpForm = () => {
                             alt={`${index + 1}`}
                             className="uploaded-image BorderRadius"
                             style={{
-                              width: "100%",
+                              width: "200px",
                               height: "170px",
                               backgroundSize: "cover",
                               backgroundPosition: "center",
@@ -801,14 +802,15 @@ const SignUpForm = () => {
                       ))}
                       <Label
                         id="UploadImgLabel"
-                        className="BorderRadius text-center mb-0"
+                        className="BorderRadius text-center mb-0 mx-3"
                         style={{
-                          minWidth: "220px",
-                          maxHeight: "170px",
+                          width: "200px",
+                          height: "170px",
                         }}
                       >
                         <img src={Images.UPLOAD_ICON} alt="" />
                         <input
+                        className=""
                           id="file-upload"
                           type="file"
                           accept=".png, .jpg, .jpeg"
@@ -1138,7 +1140,7 @@ const SignUpForm = () => {
                     {`${t("signup.availableToRespondTraineeText")} ${
                       roleType === NUTRITIONIST_TYPE
                         ? t("signup.subscriberText")
-                        : t("signup.traineeText")
+                        : t("signup.traineesText")
                     } ${user === null ? "*" : ""}`}
                   </h6>
                   <FieldArray
@@ -1150,58 +1152,86 @@ const SignUpForm = () => {
                           (daySchedule, index) => (
                             <Row key={index} className="mb-1">
                               <Col lg={5} md={5} className="mb-2">
-                                <Field
-                                  as="select"
+                                <p className="mb-0">{t("signup.dayText")}</p>
+                                <MyDropdown
+                                  className=" shadow-0 py-3 px-4 border"
+                                  Options={weekDaysOptions}
                                   name={`profile_availability.${index}.day`}
-                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4 h-100"
-                                >
-                                  <option
-                                    className="customDropDownOption text-black-custom"
-                                    value=""
-                                    label="Select"
-                                  />
-                                  {weekDaysOptions?.map((option, index) => (
-                                    <option
-                                      className="customDropDownOption text-black-custom border"
-                                      value={option.value}
-                                      key={index}
-                                      label={option.label}
-                                    />
-                                  ))}
-                                </Field>
-                                <ErrorMessage
-                                  name={`profile_availability.${index}.day`}
-                                  component="p"
-                                  className="errorField"
+                                  placeholder={t("signup.selectText")}
+                                  onChangeHandle={handleChange}
+                                  onBlurHandle={handleBlur}
+                                  value={
+                                    values.profile_availability?.[index].day
+                                  }
                                 />
+                                <p className="errorField">
+                                  {t(
+                                    errors.profile_availability?.[index]?.day
+                                  ) &&
+                                    touched.profile_availability?.[index]
+                                      ?.day &&
+                                    t(
+                                      errors.profile_availability?.[index]?.day
+                                    )}
+                                </p>
                               </Col>
                               <Col md={3} className="mb-2">
-                                <Field
-                                  name={`profile_availability.${index}.starttime`}
+                                <p className="mb-0">
+                                  {t("signup.fromTimeText")}
+                                </p>
+                                <InputField
+                                  className="py-3 px-4"
                                   type="time"
-                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
-                                />
-                                <ErrorMessage
+                                  placeholder="awdawdaw"
                                   name={`profile_availability.${index}.starttime`}
-                                  component="p"
-                                  className="errorField"
+                                  onChangeHandle={handleChange}
+                                  onBlurHandle={handleBlur}
+                                  value={
+                                    values.profile_availability?.[index]
+                                      .starttime
+                                  }
                                 />
+                                <p className="errorField">
+                                  {t(
+                                    errors.profile_availability?.[index]
+                                      ?.starttime
+                                  ) &&
+                                    touched.profile_availability?.[index]
+                                      ?.starttime &&
+                                    t(
+                                      errors.profile_availability?.[index]
+                                        ?.starttime
+                                    )}
+                                </p>
                               </Col>
                               <Col md={3} className="mb-2">
-                                <Field
-                                  name={`profile_availability.${index}.endtime`}
+                                <p className="mb-0">{t("signup.toTimeText")}</p>
+                                <InputField
+                                  className="py-3 px-4"
                                   type="time"
-                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
-                                />
-                                <ErrorMessage
                                   name={`profile_availability.${index}.endtime`}
-                                  component="p"
-                                  className="errorField"
+                                  onChangeHandle={handleChange}
+                                  onBlurHandle={handleBlur}
+                                  value={
+                                    values.profile_availability?.[index].endtime
+                                  }
                                 />
+                                <p className="errorField">
+                                  {t(
+                                    errors.profile_availability?.[index]
+                                      ?.endtime
+                                  ) &&
+                                    touched.profile_availability?.[index]
+                                      ?.endtime &&
+                                    t(
+                                      errors.profile_availability?.[index]
+                                        ?.endtime
+                                    )}
+                                </p>
                               </Col>
                               <Col md={1} className="mb-2">
                                 <div className="d-flex align-items-center justify-content-end h-100">
-                                  <FaDeleteLeft
+                                  <FaCircleXmark
                                     className="cursorPointer"
                                     size={22}
                                     onClick={() => arrayHelpers.remove(index)}
@@ -1252,11 +1282,11 @@ const SignUpForm = () => {
                                 type="number"
                                 className="customDropdownRadius form-control select-field py-3 px-4 border"
                               />
-                              <ErrorMessage
-                                name={`subscription_plans.${index}.price`}
-                                component="p"
-                                className="errorField"
-                              />
+                              <p className="errorField">
+                                {t(errors.subscription_plans?.[index]?.price) &&
+                                  touched.subscription_plans?.[index]?.price &&
+                                  t(errors.subscription_plans?.[index]?.price)}
+                              </p>
                             </Col>
                           )
                         )}
@@ -1317,7 +1347,7 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/serviceProvider/signUp`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.termsAndConditionText")}
                             </span>
                           </Link>
@@ -1326,7 +1356,7 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/general/home`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.generalText")}
                             </span>
                           </Link>
@@ -1338,7 +1368,7 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/trainee/signUp`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.termsAndConditionText")}
                             </span>
                           </Link>
@@ -1347,7 +1377,7 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/general/home`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.generalText")}
                             </span>
                           </Link>

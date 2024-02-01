@@ -12,7 +12,6 @@ import {
 import Toaster from "../Toaster";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
-import { GiWallet } from "react-icons/gi";
 import { FaArrowUp } from "react-icons/fa6";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
@@ -102,7 +101,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   ] = useState(false);
 
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [stopScrolling, setStopScrolling] = useState(false);
 
   const [backgroundClass, setBackgroundClass] = useState(
@@ -441,26 +439,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             </div>
                           </Link>
                         </DropdownItem>
-                        {roleType && roleType !== TRAINEE_TYPE && (
-                          <>
-                            <DropdownItem className="p-0">
-                              <Link
-                                className="w-100 p-1"
-                                to="/serviceProvider/paymentHistory"
-                              >
-                                <div className="d-flex gap-1 align-items-center text-black-custom">
-                                  <span className="me-2">
-                                    <GiWallet size={16} className="mb-1" />
-                                  </span>
-                                  <p className="mb-0">
-                                    {t("topBar.walletText")}
-                                  </p>
-                                </div>
-                              </Link>
-                            </DropdownItem>
-                          </>
-                        )}
-
                         <DropdownItem className="p-0">
                           <Link
                             className="w-100 p-1"

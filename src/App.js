@@ -1,5 +1,6 @@
 import "./App.css";
 import "swiper/css";
+import "./firebase.js";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import routes from "./Routes/AllRoutes";
@@ -7,18 +8,38 @@ import functions from "./utils/functions";
 import { useDispatch } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { adminRole } from "./Routes/routeConfig";
-import React, { Suspense, useEffect } from "react";
 import { PublicRoute } from "./Routes/PublicRoutes";
 import { DEFAULT_LANGUAGE } from "./utils/constants";
 import AdminLayout from "./Pages/Layout/AdminLayout";
 import { PrivateRoute } from "./Routes/PrivateRoutes";
 import GeneralLayout from "./Pages/Layout/GeneralLayout";
 import LoadingScreen from "./HelperMethods/LoadingScreen";
+import React, { Suspense, useEffect, useState } from "react";
 import { setLanguage } from "./Redux/features/Language/languageSlice";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { getNotificationToken, onMessageListener } from "./firebase.js";
+import NotificationToaster from "./Shared/NotificationToaster/index.jsx";
 
 function App() {
   const dispatch = useDispatch();
+  const [fcmToken, setFcmToken] = useState(null);
+  const [notification, setNotification] = useState(null);
+  const [showNotification, setShowNotification] = useState(false);
+
+  getNotificationToken(setFcmToken);
+
+  onMessageListener()
+    .then((payload) => {
+      setNotification({
+        title: payload.notification.title,
+        body: payload.notification.body,
+      });
+      setShowNotification(true);
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 5000);
+    })
+    .catch((err) => console.log("failed: ", err));
 
   useEffect(() => {
     if (localStorage.getItem("Website_Language__fitnee") === null) {
@@ -32,6 +53,11 @@ function App() {
   return (
     <React.Fragment>
       <Toaster />
+      <NotificationToaster
+        showNotification={showNotification}
+        setShowNotification={setShowNotification}
+        notificationData={notification}
+      />
       <Router>
         <Routes>
           {routes.map((route, index) => {

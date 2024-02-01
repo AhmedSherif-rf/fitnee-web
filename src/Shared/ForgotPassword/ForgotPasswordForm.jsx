@@ -88,7 +88,7 @@ const ForgotPasswordForm = () => {
                       {t(errors.email) && touched.email && t(errors.email)}
                     </p>
                     <div className="my-3">
-                      <Link to="/signIn" className="textYellow">
+                      <Link to="/signIn" className="text-black-custom fw-bolder">
                         {t("forgotPassword.knowMyPasswordText")}
                       </Link>
                     </div>

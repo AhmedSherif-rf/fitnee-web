@@ -65,7 +65,6 @@ const AddExerciseForm = () => {
         validationSchema={ADD_EXERCISE_SCHEMA}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          console.log(values);
           handleAddExercise(values, resetForm);
         }}
       >

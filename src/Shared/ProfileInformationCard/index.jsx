@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { TRAINEE_ROLE } from "../../utils/constants";
 import { Card, CardBody, CardFooter } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
-
 const ProfileInformationCard = (props) => {
   const { t, i18n } = useTranslation("");
   const [tooltipOpen, setTooltipOpen] = useState(false);

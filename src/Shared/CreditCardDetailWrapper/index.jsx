@@ -223,7 +223,6 @@ const CreditCardDetailWrapper = () => {
                 setFieldValue,
               }) => (
                 <Form onSubmit={handleSubmit}>
-                  {console.log(errors)}
                   <Container>
                     <Row className="paymentMethodBtn py-4">
                       <Col md={4} className="mb-1">

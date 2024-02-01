@@ -5,8 +5,8 @@ import FillBtn from "../Buttons/FillBtn";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody, CardFooter } from "reactstrap";
-import React, { memo, useCallback, useState } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import React, { memo, useCallback, useState, useEffect } from "react";
 import {
   CURRENCY,
   TRAINER_TYPE,
@@ -28,6 +28,10 @@ const EditSubscriptionCard = (props) => {
   } = props;
   const { t, i18n } = useTranslation("");
   const [packagePrice, setPackagePrice] = useState(price);
+
+  useEffect(() => {
+    setPackagePrice(price);
+  }, [price]);
 
   const handleSubmit = () => {
     if (packagePrice === "") {
@@ -58,7 +62,6 @@ const EditSubscriptionCard = (props) => {
   }, []);
 
   const getSubscriptionCardImage = (duration, type) => {
-    console.log(duration, type);
     if (type === TRAINER_ROLE) {
       if (duration === 1) {
         return Images.TRAINER_ONE_MONTH_IMG;

@@ -24,7 +24,11 @@ export const editSubscriptionPlan = createAsyncThunk(
       Toaster.success("Plan updated successfully");
       return response;
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.non_field_errors[0]);
+      if (error?.response?.data?.error?.non_field_errors) {
+        Toaster.error(error?.response?.data?.error?.non_field_errors[0]);
+      } else if (error?.response?.data?.error?.price) {
+        Toaster.error(error?.response?.data?.error?.price[0]);
+      }
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

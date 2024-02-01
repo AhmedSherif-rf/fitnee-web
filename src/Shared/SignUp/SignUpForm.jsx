@@ -777,12 +777,13 @@ const SignUpForm = () => {
                           {values.certification.map((image, index) => (
                             <div
                               key={index}
-                              className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border"
+                              className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-3 position-relative BorderRadius mb-2 "
                             >
                               <Field
                                 name={`certificate_title.${index}`}
                                 type="text"
                                 className="form-control-lg certificatioTitle bgBlur"
+                            style={{width:"200px"}}
                                 placeholder="Add title"
                               />
                               <img
@@ -790,7 +791,7 @@ const SignUpForm = () => {
                                 alt={`${index + 1}`}
                                 className="uploaded-image BorderRadius"
                                 style={{
-                                  width: "100%",
+                                  width: "200px",
                                   height: "170px",
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
@@ -822,15 +823,16 @@ const SignUpForm = () => {
                           ))}
                           <Label
                             id="UploadImgLabel"
-                            className="BorderRadius text-center mb-0"
+                            className="BorderRadius text-center mb-0 mx-3"
                             style={{
-                              minWidth: "220px",
-                              maxHeight: "170px",
+                              width: "200px",
+                              height: "170px",
                             }}
                           >
                             <img src={Images.UPLOAD_ICON} alt="" />
                             <input
-                              id="file-upload"
+                            className=""
+                          id="file-upload"
                               type="file"
                               accept=".png, .jpg, .jpeg"
                               onChange={(event) => {

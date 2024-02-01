@@ -46,6 +46,10 @@ const GuestServiceProviderListWrapper = (props) => {
   const { t, i18n } = useTranslation("");
 
   useEffect(() => {
+    setListingRole(roleType);
+  }, [roleType]);
+
+  useEffect(() => {
     const data = {
       apiEndpoint: `${GUEST_SERVICE_PROVIDER_LISTING_URL}?role=${functions.getListingRole(
         listingRole

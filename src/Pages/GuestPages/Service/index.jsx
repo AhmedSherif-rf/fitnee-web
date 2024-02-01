@@ -5,20 +5,28 @@ import {
   femaleBodyFrontMuscles,
   femaleBodyBackMuscles,
 } from "./BodyMap";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import { Container, Row, Col, Card } from "reactstrap";
+import { useDispatch, useSelector } from "react-redux";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import React, { useState, useCallback, useEffect } from "react";
 import { IoFemaleOutline, IoMaleOutline } from "react-icons/io5";
-import { MALE_BODY, FEMALE_BODY } from "../../../utils/constants";
+import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import InformationModal from "../../../Shared/Modal/InformationModal";
 import { getAllCategoryForGuest } from "../../../Redux/features/Exercise/exerciseApi";
+import {
+  MALE_BODY,
+  FEMALE_BODY,
+  EXERCISE_CATEGORIES_URL,
+} from "../../../utils/constants";
 
 const Services = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation("");
+  const { loading } = useSelector((state) => state.exercise);
 
   const [categoriesData, setCategoriesData] = useState([]);
   const [currentBody, setCurrentBody] = useState(MALE_BODY);
@@ -41,7 +49,7 @@ const Services = (props) => {
 
   const fetchExerciseCategories = () => {
     const data = {
-      apiEndpoint: "/guest/exercisedata/",
+      apiEndpoint: EXERCISE_CATEGORIES_URL,
     };
 
     dispatch(getAllCategoryForGuest(data)).then((res) => {
@@ -79,7 +87,8 @@ const Services = (props) => {
   };
 
   return (
-    <Container fluid className={`pt-2 ${styles.servicesWrapper}`}>
+    <Container fluid className={`pt-4 ${styles.servicesWrapper} ${i18n.dir()}`}>
+      {loading === "pending" && <LoadingScreen />}
       <Card className="bg-transparent contentCard mt-5 px-3 pt-1">
         <Row>
           <Col md={2} sm={6} xs={6}>
@@ -90,7 +99,7 @@ const Services = (props) => {
               onClick={() => handleChangeBodyClick(MALE_BODY)}
             >
               <IoMaleOutline />
-              <div className="checkbox-text">{MALE_BODY}</div>
+              <div className="checkbox-text">{t("guest.maleText")}</div>
             </div>
           </Col>
           <Col md={2} sm={6} xs={6}>
@@ -101,7 +110,7 @@ const Services = (props) => {
               onClick={() => handleChangeBodyClick(FEMALE_BODY)}
             >
               <IoFemaleOutline />
-              <div className="checkbox-text">{FEMALE_BODY}</div>
+              <div className="checkbox-text">{t("guest.femaleText")}</div>
             </div>
           </Col>
         </Row>
@@ -132,14 +141,21 @@ const Services = (props) => {
                         key={index}
                         onClick={() => {
                           if (muscle.id === "maleChest") {
-                            var filterCategory = categoriesData.filter(
-                              (data) => {
-                                return data.title.includes("chest");
-                              }
-                            );
-                            navigate(
-                              `/guest/exercises/${filterCategory[2].uuid}`
-                            );
+                            var filterCategory = categoriesData
+                              .filter((data) => {
+                                return data.title
+                                  .toLowerCase()
+                                  .includes("chest");
+                              })
+                              .reduce((acc, curr) => {
+                                acc = curr;
+                                return acc;
+                              }, {});
+                            if (filterCategory?.uuid) {
+                              navigate(
+                                `/guest/exercises/${filterCategory.uuid}`
+                              );
+                            }
                           } else {
                             setShowSubscriptionInformationModal(true);
                           }
@@ -181,12 +197,21 @@ const Services = (props) => {
                         key={index}
                         onClick={() => {
                           if (muscle.id === "maleBackArm") {
-                            var filterCategory = categoriesData.filter(
-                              (data) => {
-                                return data.title.includes("chest");
-                              }
-                            );
-                            // navigate(`/guest/exercises/${filterCategory.uuid}`);
+                            var filterCategory = categoriesData
+                              .filter((data) => {
+                                return data.title
+                                  .toLowerCase()
+                                  .includes("forearm");
+                              })
+                              .reduce((acc, curr) => {
+                                acc = curr;
+                                return acc;
+                              }, {});
+                            if (filterCategory?.uuid) {
+                              navigate(
+                                `/guest/exercises/${filterCategory.uuid}`
+                              );
+                            }
                           } else {
                             setShowSubscriptionInformationModal(true);
                           }
@@ -232,12 +257,19 @@ const Services = (props) => {
                         key={index}
                         onClick={() => {
                           if (muscle.id === "femaleAbdominal") {
-                            var filterCategory = categoriesData.filter(
-                              (data) => {
-                                return data.title.includes("chest");
-                              }
-                            );
-                            // navigate(`/guest/exercises/${filterCategory.uuid}`);
+                            var filterCategory = categoriesData
+                              .filter((data) => {
+                                return data.title.toLowerCase().includes("abs");
+                              })
+                              .reduce((acc, curr) => {
+                                acc = curr;
+                                return acc;
+                              }, {});
+                            if (filterCategory?.uuid) {
+                              navigate(
+                                `/guest/exercises/${filterCategory.uuid}`
+                              );
+                            }
                           } else {
                             setShowSubscriptionInformationModal(true);
                           }
@@ -279,12 +311,21 @@ const Services = (props) => {
                         key={index}
                         onClick={() => {
                           if (muscle.id === "femaleBackThigh") {
-                            var filterCategory = categoriesData.filter(
-                              (data) => {
-                                return data.title.includes("chest");
-                              }
-                            );
-                            // navigate(`/guest/exercises/${filterCategory.uuid}`);
+                            var filterCategory = categoriesData
+                              .filter((data) => {
+                                return data.title
+                                  .toLowerCase()
+                                  .includes("thigh");
+                              })
+                              .reduce((acc, curr) => {
+                                acc = curr;
+                                return acc;
+                              }, {});
+                            if (filterCategory?.uuid) {
+                              navigate(
+                                `/guest/exercises/${filterCategory.uuid}`
+                              );
+                            }
                           } else {
                             setShowSubscriptionInformationModal(true);
                           }
@@ -313,17 +354,17 @@ const Services = (props) => {
           className={"p-4"}
           isOpen={showSubscriptionInformationModal}
           onClose={handleSubscriptionInformationModalClose}
-          ModalTextOne="The rest of the exercises will be hidden. Subscribe for 39 SAR per month to access all exercises."
+          ModalTextOne={t("guest.exerciseSubscriptionModalText")}
           ButtonOne={
             <FillBtn
-              text={"Subscribe"}
+              text={t("guest.subscribeText")}
               className="py-2 px-5"
               handleOnClick={handleRegisterClick}
             />
           }
           ButtonTwo={
             <OutlineBtn
-              text={"Not now"}
+              text={t("guest.notNowText")}
               className="py-2 px-5"
               handleOnClick={handleNotNowClick}
             />

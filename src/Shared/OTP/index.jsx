@@ -4,11 +4,10 @@ import styles from "./style.module.scss";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import InformationModal from "../Modal/InformationModal";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { setEmail } from "../../Redux/features/User/userSlice";
-import React, { useState, useEffect, useCallback } from "react";
 import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap";
 import {
   resendOtp,
@@ -23,11 +22,9 @@ const OTPVerification = () => {
   const { type } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { t, i18n } = useTranslation("");
   const [otp, setOtp] = useState("");
-  const [requestId, setRequestId] = useState("");
+  const { t, i18n } = useTranslation("");
   const [timer, setTimer] = useState({ minutes: 1, seconds: 59 });
-  const [showReviewRequestModal, setShowReviewRequestModal] = useState(false);
   const { email: userEmail } = useSelector((state) => state.user);
   const { email: forgotPasswordEmail, loading } = useSelector(
     (state) => state.forgotPassword
@@ -68,8 +65,9 @@ const OTPVerification = () => {
         } else {
           dispatch(setEmail(""));
           if (res?.payload?.data?.request_id) {
-            setRequestId(res.payload.data.request_id);
-            setShowReviewRequestModal(true);
+            navigate(
+              `/serviceProvider/appDownloadLink/${res.payload.data.request_id}`
+            );
           } else {
             navigate("/signIn");
           }
@@ -98,15 +96,6 @@ const OTPVerification = () => {
       }
     }
   };
-
-  const handleReviewRequestModalClose = useCallback(() => {
-    setShowReviewRequestModal(false);
-  }, []);
-
-  const handleReviewRequestOkayClick = useCallback(() => {
-    setShowReviewRequestModal(false);
-    navigate(`/serviceProvider/appDownloadLink/${requestId}`);
-  }, [navigate, requestId]);
 
   return (
     <Container
@@ -173,28 +162,6 @@ const OTPVerification = () => {
             </CardBody>
           </Card>
         </Col>
-        <InformationModal
-          size={"md"}
-          className={"p-4"}
-          TTwoClassName={"mb-2 text-center"}
-          TOneClassName={"mb-2 text-center"}
-          isOpen={showReviewRequestModal}
-          onClose={handleReviewRequestModalClose}
-          requestId={requestId}
-          ModalTextOne={
-            "Welcome to FitNee. Your account is currently undergoing thorough review, and a personalized ticket has been generated for this process. We anticipate completing the approval within the next 48 hours."
-          }
-          ModalTextTwo={
-            "Your patience is valued as we work to ensure the highest standards for the FitNee community."
-          }
-          ButtonOne={
-            <FillBtn
-              text={t("otpVerification.okayText")}
-              className="py-2 px-5"
-              handleOnClick={handleReviewRequestOkayClick}
-            />
-          }
-        />
       </Row>
     </Container>
   );

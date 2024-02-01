@@ -54,8 +54,12 @@ const createFormData = (data) => {
     if (data.hasOwnProperty(key) && data[key] !== "" && data[key] !== null) {
       if (Array.isArray(data[key]) && data[key].length > 0) {
         if (key === "certification") {
-          data[key].forEach((certification, index) => {
+          data[key].forEach((certification) => {
             formData.append(`certification`, certification);
+          });
+        } else if (key === "certificate_files") {
+          data[key].forEach((certificate_files) => {
+            formData.append(`certificate_files`, certificate_files);
           });
         } else if (key === "subscription_plans") {
           const updated_subscription_plans = data[key].map(
@@ -154,6 +158,22 @@ const setTrainerInitialValues = (initalValues, user) => {
     saudireps_number: user?.saudireps_number,
     profile_availability: user?.profile_availability,
     is_currently_working: user?.is_currently_working,
+  };
+};
+
+const setTrainerEditRequestInitialValues = (initalValues, user) => {
+  return {
+    ...initalValues,
+    stc_pay: user?.stc_pay,
+    saudireps_number: user?.saudireps_number,
+  };
+};
+
+const setNutritionistEditRequestInitialValues = (initalValues, user) => {
+  return {
+    ...initalValues,
+    stc_pay: user?.stc_pay,
+    license_number: user?.license_number,
   };
 };
 
@@ -363,5 +383,7 @@ export default {
   setTraineeInitialValues,
   setTrainerInitialValues,
   setNutritionistInitialValues,
+  setTrainerEditRequestInitialValues,
   setTrainerNutritionistInitialValues,
+  setNutritionistEditRequestInitialValues,
 };

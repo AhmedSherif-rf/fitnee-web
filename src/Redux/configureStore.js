@@ -5,6 +5,7 @@ import guestSlice from "./features/Guest/guestSlice.js";
 import { persistStore, persistReducer } from "redux-persist";
 import languageSlice from "./features/Language/languageSlice.js";
 import exerciseSlice from "./features/Exercise/exerciseSlice.js";
+import walletSlice from "./features/Admin/Wallet/walletSlice.js";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactUsSlice from "./features/ContactUs/contactUsSlice.js";
 import promoCode from "./features/Admin/PromoCode/promoCodeSlice.js";
@@ -23,6 +24,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userSlice,
   guest: guestSlice,
+  wallet: walletSlice,
   promoCode: promoCode,
   exercise: exerciseSlice,
   language: languageSlice,

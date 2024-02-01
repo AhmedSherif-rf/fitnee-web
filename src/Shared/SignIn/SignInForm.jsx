@@ -84,14 +84,12 @@ const SignInForm = () => {
           dispatch(setEmail(values.email));
           navigate("/verifyOtp/signUp");
         } else if (res?.payload?.statusCode === PRECONDITION_REQUIRED_CODE) {
-          setAccountRequestModalErrorText("Your request is under Process");
+          setAccountRequestModalErrorText(t("login.requestUnderProcessText"));
           setShowAccountRequestModal(true);
         } else if (
           res?.payload?.statusCode === UNAVAILABLE_FOR_LEGAL_REASONS_CODE
         ) {
-          setAccountRequestModalErrorText(
-            "Your request has been rejected by FitNee Admin, Please check your email."
-          );
+          setAccountRequestModalErrorText(t("login.accountRejectText"));
           setShowAccountRequestModal(true);
         }
       }

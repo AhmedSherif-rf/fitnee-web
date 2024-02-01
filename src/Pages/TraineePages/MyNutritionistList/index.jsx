@@ -103,7 +103,10 @@ const Index = () => {
                 </Col>
               </Row>
               {nutritionistsData?.map((data, index) => {
-                return <ServiceProvider data={data} index={index} />;
+                if (!data?.is_expired && !data?.is_refund) {
+                  return <ServiceProvider data={data} index={index} />;
+                }
+                return null;
               })}
               {nutritionistsData.length <= 0 && (
                 <div className="d-flex justify-content-center py-4 text-black-custom">

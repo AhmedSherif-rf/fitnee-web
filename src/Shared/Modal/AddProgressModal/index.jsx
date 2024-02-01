@@ -1,16 +1,16 @@
 import { Formik } from "formik";
 import PropTypes from "prop-types";
 import React, { memo } from "react";
-import InputField from "../InputField";
-import FillBtn from "../Buttons/FillBtn";
-import OutlineBtn from "../Buttons/OutlineBtn";
+import InputField from "../../InputField";
+import FillBtn from "../../Buttons/FillBtn";
+import OutlineBtn from "../../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { TRAINEE_PROGRESS_URL } from "../../utils/constants";
-import { ADD_PROGRESS_SCHEMA } from "../ValidationData/validation";
-import { addTraineeProgress } from "../../Redux/features/User/userApi";
+import { TRAINEE_PROGRESS_URL } from "../../../utils/constants";
+import { ADD_PROGRESS_SCHEMA } from "../../ValidationData/validation";
+import { addTraineeProgress } from "../../../Redux/features/User/userApi";
 import { Modal, ModalBody, ModalHeader, Label, Form } from "reactstrap";
-import { ADD_PROGRESS_INITIAL_VALUES } from "../ValidationData/initialValue";
+import { ADD_PROGRESS_INITIAL_VALUES } from "../../ValidationData/initialValue";
 
 const AddProgressModal = (props) => {
   const { onClose, isOpen, className, size, handleRefetchHistory } = props;

@@ -9,24 +9,32 @@ const TransactionDetail = (props) => {
 
   return (
     <>
-      {data?.Transaction_split?.map((transaction) => (
+      {data?.transactions?.map((transaction) => (
         <Row className="mb-2" key={index}>
           <Col md={12}>
             <div className="d-flex align-items-center border-bottom py-2">
               <div className="me-2">
-                <img src={Images.ARROW_UP_IMG} height={58} alt="paymentTypeImg" />
+                <img
+                  src={Images.ARROW_UP_IMG}
+                  height={58}
+                  alt="paymentTypeImg"
+                />
               </div>
               <div className="d-flex align-items-center justify-content-between w-100">
                 <div className="">
                   <h6 className="fw-bold">{transaction?.status}</h6>
                   <span className="small text-black-custom">
                     {transaction?.status === "released"
-                      ? moment(data?.payment_date).format("MM/DD/YYYY hh:mm A")
-                      : moment(data?.date_created).format("MM/DD/YYYY hh:mm A")}
+                      ? moment(transaction?.payment_date).format(
+                          "MM/DD/YYYY hh:mm A"
+                        )
+                      : moment(transaction?.date_created).format(
+                          "MM/DD/YYYY hh:mm A"
+                        )}
                   </span>
                 </div>
                 <div>
-                  <h4 className="mb-0">{`${CURRENCY} ${data?.amount}`}</h4>
+                  <h4 className="mb-0">{`${CURRENCY} ${transaction?.amount}`}</h4>
                 </div>
               </div>
             </div>

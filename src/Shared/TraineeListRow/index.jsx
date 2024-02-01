@@ -52,7 +52,11 @@ const Index = (props) => {
         </Col>
         <Col md={2} className="d-md-block d-none">
           <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
-            {data?.subscription?.duration} {t("signup.monthsText")}
+            {data?.subscription?.duration === 1
+              ? t("trainerPackages.monthText")
+              : data?.subscription?.duration === 2
+              ? t("trainerPackages.twoMonthText")
+              : t("trainerPackages.threeMonthText")}
           </div>
         </Col>
         <Col md={2} className="d-md-block d-none">
@@ -72,7 +76,11 @@ const Index = (props) => {
               <p className="mb-0 small">{data?.expire_date}</p>
             </div>
             <span className="d-md-none d-block textDark text-center">
-              {data?.subscription?.duration} {t("signup.monthsText")}
+              {data?.subscription?.duration === 1
+                ? t("trainerPackages.monthText")
+                : data?.subscription?.duration === 2
+                ? t("trainerPackages.twoMonthText")
+                : t("trainerPackages.threeMonthText")}
             </span>
           </div>
         </Col>

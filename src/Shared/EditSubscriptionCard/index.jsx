@@ -94,7 +94,11 @@ const EditSubscriptionCard = (props) => {
     >
       <div className="text-center d-flex justify-content-center">
         <div className={`${styles.headerCard} BorderRadius shadow-sm`}>
-          {duration} {t("trainer.monthText")}
+          {duration === 1
+            ? t("trainerPackages.monthText")
+            : duration === 2
+            ? t("trainerPackages.twoMonthText")
+            : t("trainerPackages.threeMonthText")}
         </div>
       </div>
 

@@ -407,7 +407,10 @@
     "trainersText": "المدربين",
     "bothText": "ﺍﻟﺠﻤﻴﻊ",
     "deleteModalText": "ﻫﻞ ﺃﻧﺖ ﻣﺘﺄﻛﺪ ﻣﻦ ﺭﻏﺒﺘﻚ ﻓﻲ ﺣﺬﻑ ﺍﻟﺤﺴﺎﺏ؟",
-    "noText": "ﻻ"
+    "noText": "ﻻ",
+    "maleText": "ذكر",
+    "femaleText": "أنثى",
+    "exerciseSubscriptionModalText": ".اشترك بقيمة 29 ريال شهرياً لعرض جميع التمارين بتعليمات واضحة  تمكنك من اداء التمارين بطريقة صحيحه"
   },
   "contactUs": {
     "firstNameText": "ﺍﻷﺳﻡ ﺍﻻﻭﻝ",
@@ -453,6 +456,8 @@
   },
   "trainerPackages": {
     "monthText": "شهر",
+    "twoMonthText": "ﺷﻬﺮﻳﻦ",
+    "threeMonthText": "ﺛﻼﺛﺔ ﺃﺷﻬﺮ",
     "subscribeText": "اشترك",
     "todayText": "اليوم",
     "amountReleasedText": "المبلغ المدفوع"
@@ -555,7 +560,7 @@
     "anyInjuryText": "لديك أي أصابات",
     "describeInjuryText": "اضف اصابتك هنا",
     "saudiRepsNumberText": "رقم SAUDIREPS الخاص بك",
-    "enterStcPayAccountText": "STC Pay ادخل رقم هاتفك المربوط ب",
+    "enterStcPayAccountText": "ادخل رقم هاتفك المربوط ب STC Pay",
     "enterYourProfessionalText": "ﺍﻟﺮﺟﺎء ﺇﺩﺧﺎﻝ ﺭﻗﻢ ﺗﺮﺧﻴﺺ ﻣﺰﺍﻭﻟﺔ ﺍﻟﻤﻬﻨﺔ ﻟﻠﻤﻤﺎﺭﺳﻴﻦ ﺍﻟﺼﺤﻴﻴﻦ",
     "availableToRespondTraineeText": "متاح للرد على مشتركينك",
     "addMoreText": "+إضافة المزيد",
@@ -590,7 +595,9 @@
     "newHereText": "ﺟﺪﻳﺪ ﻫﻨﺎ؟",
     "cancelText": "إلغاء",
     "unlockYourPotentialText": "ﺃﻁﻠﻖ ﺍﻟﻌﻧﺎﻥ ﻹﻣﻛﺎﻧﻳﺎﺗﻙ",
-    "transformYourBodyText": "ﻟﻴﺎﻗﺘﻚ ﻗﺮﺍﺭﻙ"
+    "transformYourBodyText": "ﻟﻴﺎﻗﺘﻚ ﻗﺮﺍﺭﻙ",
+    "requestUnderProcessText": "Your request is under process",
+    "accountRejectText": "Your request has been rejected by FitNee Admin, Please check your email"
   },
   "forgotPassword": {
     "emailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ",
@@ -602,7 +609,7 @@
   "otpVerification": {
     "verificationText": "ﺍﻟﺘﺤﻘﻖ",
     "openYourEmailText": "ﺍﻟﺮﺟﺎء ﺇﺩﺧﺎﻝ ﺍﻟﺮﻣﺰ ﺍﻟﻤﺮﺳﻞ ﻟﺒﺮﻳﺪﻙ ﺍﻹﻟﻜﺘﺮﻭﻧﻲ",
-    "resendCodeInText": "ﺇﻋﺎﺩﺓ ﺇﺭﺳﺎﻝ ﺍﻟﺮﻣﺰ",
+    "resendCodeInText": "الوقت المتبقي",
     "resendCodeText": "ﺇﻋﺎﺩﺓ ﺇﺭﺳﺎﻝ ﺍﻟﺮﻣﺰ",
     "invalidOtpModalText": "ﺍﻟﺮﻣﺰ ﺍﻟﻤﺪﺧﻞ ﻏﻴﺮ ﺻﺤﻴﺢ، ﺍﻟﺮﺟﺎء ﺍﻟﻤﺤﺎﻭﻟﺔ ﻣﺮﻩ ﺃﺧﺮﻯ",
     "nextText": "التالي",
@@ -680,11 +687,11 @@
     "invalidPasswordTwoText": "ﻳﺠﺐ ﺃﻥ ﻳﺤﺘﻮﻱ الرقم السري ﻋﻠﻰ ﺭﻗﻡ واحد، ﺣﺭﻑ ﺻﻐﻳﺭ واحد، ﺣﺭﻑ كبير واحد ﻭ ﺭﻣﺯ واحد ﻋﻠﻰ ﺍﻷﻗﻝ",
     "requiredPasswordText": "الرقم السري مطلوب",
     "invalidFirstNameText": "ﻳﺠﺐ ﺃﻥ ﻳﺤﺘﻮﻱ ﺍﻷﺳﻡﺍﻷﻭﻝ ﻋﻠﻰ ﺃﺣﺮﻑ ﻓﻘﻁ",
-    "requiredFirstNameText": "ﺍﻷﺳﻡ األول مطلوب",
+    "requiredFirstNameText": "ﺍﻷﺳﻡ ﺍﻷﻭﻝ مطلوب",
     "invalidFullNameText": "ﻳﺠﺐ ﺃﻥ ﻳﺤﺘﻮﻱ ﺍﻻﺳﻢ ﻛﺎﻣﻼ ﻋﻠﻰ ﺃﺣﺮﻑ ﻓﻘﻂ",
     "requiredFullNameText": "ﺍﻻﺳﻢ ﻛﺎﻣﻼ ﻣﻄﻠﻮﺏ",
-    "invalidLastNameText": " يجب أن يحتوي ﺍﻷﺳﻡ األخير على أحرف فقط",
-    "requiredLastNameText": " ﺍﻷﺳﻡ األخير مطلوب",
+    "invalidLastNameText": " يجب أن يحتوي ﺍﻷﺳﻡ الأخير على أحرف فقط",
+    "requiredLastNameText": " ﺍﻷﺳﻡ الأخير مطلوب",
     "requiredMessageText": "الرسالة مطلوبة",
     "invalidFamilyNameText": "يجب أن يحتوي اسم العائلة على أحرف فقط",
     "requiredFamilyNameText": "اسم العائلة مطلوب",

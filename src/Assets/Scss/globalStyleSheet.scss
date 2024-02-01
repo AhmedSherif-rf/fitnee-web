@@ -215,8 +215,9 @@ Input::-webkit-input-placeholder {
 }
 
 .customSpacing {
-  letter-spacing: 1px;
+  letter-spacing: -0.8px;
   line-height: 24px;
+  word-spacing: 2px;
 }
 
 .customDropDown {
@@ -373,10 +374,10 @@ Input::-webkit-input-placeholder {
 }
 
 .menu-open {
-  overflow: hidden !important; 
+  overflow: hidden !important;
 }
-.activeScroll{
-  overflow: scroll !important; 
+.activeScroll {
+  overflow: scroll !important;
 }
 
 @media (max-width: 767px) {

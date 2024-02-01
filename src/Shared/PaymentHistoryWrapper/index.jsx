@@ -7,7 +7,7 @@ import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { memo, useEffect, useState, useCallback } from "react";
 import { getTransactionHistory } from "../../Redux/features/User/userApi";
 import { CardBody, CardHeader, Card, Col, Row, CardFooter } from "reactstrap";
-import { TRANSACTION_HISTORY_URL, PER_PAGE_COUNT } from "../../utils/constants";
+import { TRANSACTION_HISTORY_URL, PER_PAGE_COUNT, CURRENCY } from "../../utils/constants";
 
 const PaymentHistoryWrapper = () => {
   const dispatch = useDispatch();
@@ -41,54 +41,55 @@ const PaymentHistoryWrapper = () => {
   };
 
   return (
-    <Row className={`text-black-custom`}>
+    <>
       {loading === "pending" && <LoadingScreen />}
-      <Col md={12}>
-        <CardHeader className={`bg-transparent border-0 p-0 ${i18n.dir()}`}>
-          <PageHeading
-            headingText={t("paymentHistory.paymentHistoryTitleText")}
-            className="mb-0"
-            categoryText=""
-          />
-        </CardHeader>
-        <CardBody>
-          <Row>
-            <Col md={12}>
-              <Card className="BorderYellow text-black-custom BorderRadius px-2">
-                <CardBody className="">
-                  <div className="w-100 text-center">
-                    <h3 className="fw-bold">
-                      {t("paymentHistory.availableBalanceText")}
-                    </h3>
-                  </div>
-                  <div className="w-100 text-center">
-                    <h1 className="fw-bold mb-0">SAR 500</h1>
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row className="my-2 text-black-custom">
-            <Col md={12}>
-              {transactionHistoryData &&
-                transactionHistoryData.map((item, index) => {
-                  return <TransactionDetail key={index} data={item} />;
-                })}
-              {transactionHistoryData && transactionHistoryData.length <= 0 && (
-                <div className="d-flex justify-content-center py-4 text-black-custom">
-                  {t("messages.noDataFoundText")}
+      <CardHeader className={`bg-transparent border-0 p-0 ${i18n.dir()}`}>
+        <PageHeading
+          headingText={t("paymentHistory.paymentHistoryTitleText")}
+          className="mb-0"
+          categoryText=""
+        />
+      </CardHeader>
+      <CardBody>
+        <Row>
+          <Col md={12}>
+            <Card className="BorderYellow text-black-custom BorderRadius px-2">
+              <CardBody className="">
+                <div className="w-100 text-center">
+                  <h3 className="fw-bold">
+                    {t("paymentHistory.availableBalanceText")}
+                  </h3>
                 </div>
-              )}
-            </Col>
-          </Row>
-        </CardBody>
-        <CardFooter>
-          {totalSize > PER_PAGE_COUNT && (
-            <Pagination size={totalSize} handlePageChange={handlePageChange} />
-          )}
-        </CardFooter>
-      </Col>
-    </Row>
+                <div className="w-100 text-center">
+                  <h1 className="fw-bold mb-0">
+                    {CURRENCY}{" "}
+                    {transactionHistoryData[0]?.account?.balance ?? "0.00"}
+                  </h1>
+                </div>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        <Row className="my-2 text-black-custom">
+          <Col md={12}>
+            {transactionHistoryData &&
+              transactionHistoryData.map((item, index) => {
+                return <TransactionDetail key={index} data={item} />;
+              })}
+            {transactionHistoryData && transactionHistoryData.length <= 0 && (
+              <div className="d-flex justify-content-center py-4 text-black-custom">
+                {t("messages.noDataFoundText")}
+              </div>
+            )}
+          </Col>
+        </Row>
+      </CardBody>
+      <CardFooter>
+        {totalSize > PER_PAGE_COUNT && (
+          <Pagination size={totalSize} handlePageChange={handlePageChange} />
+        )}
+      </CardFooter>
+    </>
   );
 };
 

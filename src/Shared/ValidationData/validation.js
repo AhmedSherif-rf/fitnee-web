@@ -123,7 +123,7 @@ const currentlyWorkingValidation = Yup.string().required(
   "validation.RequiredText"
 );
 
-const RequiredValidation = Yup.string().required("validation.requiredText");
+const requiredValidation = Yup.string().required("validation.requiredText");
 
 const profileAvailabilityValidation = Yup.array().of(
   Yup.object().shape({
@@ -159,7 +159,7 @@ const messageValidation = Yup.string()
 
 export const SIGNIN_SCHEMA = Yup.object().shape({
   email: emailValidation,
-  password: RequiredValidation,
+  password: requiredValidation,
   termAndConditionCheck: termAndConditionCheckValidation,
 });
 
@@ -246,6 +246,20 @@ export const TRAINER_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   is_currently_working: Yup.string(),
 });
 
+export const TRAINER_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
+  certificates: Yup.array(),
+  stc_pay: phoneNumberValidaton,
+  certificate_files: Yup.array(),
+  saudireps_number: requiredValidation,
+});
+
+export const NUTRITIONIST_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
+  certificates: Yup.array(),
+  stc_pay: phoneNumberValidaton,
+  certificate_files: Yup.array(),
+  license_number: requiredValidation,
+});
+
 export const NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   bio: Yup.string(),
   gender: Yup.string(),
@@ -281,47 +295,47 @@ export const NEW_PASSWORD_SCHEMA = Yup.object().shape({
 });
 
 export const PAYMENT_METHOD_DETAIL_SCHEMA = Yup.object().shape({
-  city: RequiredValidation,
-  state: RequiredValidation,
-  entity: RequiredValidation,
-  country: RequiredValidation,
-  street1: RequiredValidation,
-  surname: RequiredValidation,
-  postcode: RequiredValidation,
-  givenName: RequiredValidation,
+  city: requiredValidation,
+  state: requiredValidation,
+  entity: requiredValidation,
+  country: requiredValidation,
+  street1: requiredValidation,
+  surname: requiredValidation,
+  postcode: requiredValidation,
+  givenName: requiredValidation,
 });
 
 export const ADD_CATEGORY_SCHEMA = Yup.object().shape({
-  title: RequiredValidation,
-  title_ar: RequiredValidation,
+  title: requiredValidation,
+  title_ar: requiredValidation,
 });
 
 export const ADD_SUB_CATEGORY_SCHEMA = Yup.object().shape({
-  title: RequiredValidation,
-  title_ar: RequiredValidation,
+  title: requiredValidation,
+  title_ar: requiredValidation,
 });
 
 export const ADD_EXERCISE_SCHEMA = Yup.object().shape({
-  title: RequiredValidation,
-  title_ar: RequiredValidation,
+  title: requiredValidation,
+  title_ar: requiredValidation,
   exercise_videos: exerciseVideoValidation,
   exercise_part_text: exerciseTextValidation,
   exercise_part_text_ar: exerciseTextValidation,
 });
 
 export const ADD_PROMO_CODE_SCHEMA = Yup.object().shape({
-  code: RequiredValidation,
-  type: RequiredValidation,
-  value: RequiredValidation,
-  expire_date: RequiredValidation,
-  limited_users: RequiredValidation,
+  code: requiredValidation,
+  type: requiredValidation,
+  value: requiredValidation,
+  expire_date: requiredValidation,
+  limited_users: requiredValidation,
 });
 
 export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
-  weight: RequiredValidation,
-  protien: RequiredValidation,
-  body_fat_mass: RequiredValidation,
-  skeletal_muscel_mass: RequiredValidation,
+  weight: requiredValidation,
+  protien: requiredValidation,
+  body_fat_mass: requiredValidation,
+  skeletal_muscel_mass: requiredValidation,
 });
 
 export const CONTACT_US_SCHEMA = Yup.object().shape({

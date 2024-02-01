@@ -1,11 +1,15 @@
-import React from "react";
 import "./DownloadLinkStyle.scss";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { MdContentCopy } from "react-icons/md";
+import functions from "../../../utils/functions";
 import { Col, Container, Row, Card } from "reactstrap";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const AppDownloadLink = () => {
   const { requestId } = useParams();
+  const [isRequestIdCopied, setIsRequestIdCopied] = useState(false);
 
   return (
     <Container fluid>
@@ -22,7 +26,29 @@ const AppDownloadLink = () => {
                     Meanwhile, you can download the app with by accessing the
                     below link.
                   </p>
-                  <p className="py-4 fw-bold">Ticket ID : {requestId}</p>
+                  <p className="py-4 fw-bold">
+                    Ticket ID
+                    <div
+                      className="text-center fw-bold mb-3 fs-4 cursorPointer"
+                      onClick={() => {
+                        functions.copyToClipboard(requestId);
+                        setIsRequestIdCopied(true);
+                        setTimeout(() => {
+                          setIsRequestIdCopied(false);
+                        }, 500);
+                      }}
+                    >
+                      {requestId}
+                      {"  "}
+                      <span>
+                        {isRequestIdCopied ? (
+                          <IoMdCheckmarkCircleOutline color="#F6E709" />
+                        ) : (
+                          <MdContentCopy />
+                        )}
+                      </span>
+                    </div>
+                  </p>
                 </div>
                 <div className="text-center">
                   <img className="w-75" src={Images.CREDIT_CARD_IMG} alt="" />

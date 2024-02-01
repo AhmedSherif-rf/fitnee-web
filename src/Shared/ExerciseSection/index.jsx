@@ -9,24 +9,14 @@ const ExerciseSection = (props) => {
   const { exercisesData } = props;
   const { i18n } = useTranslation("");
 
-  console.log(exercisesData);
-
   return (
     <Row>
       <Col md={12} className="mb-3 text-black-custom px-md-5">
         <div className="mt-3">
-          <h5>
-            <span className="fw-bold">
-              {i18n.dir() === "ltr"
-                ? exercisesData?.title
-                : exercisesData?.title_ar}
-            </span>
-          </h5>
-
           <Row>
             {exercisesData?.sub_categories?.map((subCategory) => {
               return (
-                <>
+                <div className="mb-3 px-md-5">
                   <Col md={12}>
                     <div
                       className={`py-2 px-4 fw-bold fs-2 ${styles.workoutVideosHeader}`}
@@ -89,7 +79,7 @@ const ExerciseSection = (props) => {
                       </CardBody>
                     </Card>
                   </Col>
-                </>
+                </div>
               );
             })}
           </Row>

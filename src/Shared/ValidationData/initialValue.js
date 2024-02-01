@@ -195,10 +195,12 @@ export const ADD_EXERCISE_INITIAL_VALUES = {
   title: "",
   title_ar: "",
   warm_up: false,
+  stretching: false,
   exercise_videos: null,
   exercise_part_text: [""],
   exercise_part_text_ar: [""],
 };
+
 export const ADD_PROMO_CODE_INITIAL_VALUES = {
   code: "",
   type: "",
@@ -206,9 +208,24 @@ export const ADD_PROMO_CODE_INITIAL_VALUES = {
   expire_date: "",
   limited_users: "",
 };
+
 export const ADD_PROGRESS_INITIAL_VALUES = {
   weight: "",
   protien: "",
   body_fat_mass: "",
   skeletal_muscel_mass: "",
+};
+
+export const TRAINER_EDIT_PROFILE_REQUEST_INITIAL_VALUES = {
+  stc_pay: "",
+  certificates: [],
+  saudireps_number: "",
+  certificate_files: [],
+};
+
+export const NUTRITIONIST_EDIT_PROFILE_REQUEST_INITIAL_VALUES = {
+  stc_pay: "",
+  certificates: [],
+  license_number: "",
+  certificate_files: [],
 };

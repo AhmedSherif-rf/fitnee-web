@@ -277,6 +277,20 @@ const AddExerciseForm = () => {
                     />
                   </div>
                 </div>
+                <div className="CreditCard d-flex justify-content-between align-items-center">
+                  <div className=" me-2">
+                    <p className="mb-0 fw-bold">Stretching</p>
+                  </div>
+                  <div className="d-flex align-items-center">
+                    <ToggleSwitch
+                      id="stretching"
+                      isOn={values.stretching}
+                      handleToggle={() => {
+                        setFieldValue("stretching", !values.stretching);
+                      }}
+                    />
+                  </div>
+                </div>
               </Col>
             </Row>
             <Row className="my-4 justify-content-center">

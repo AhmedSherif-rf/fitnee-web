@@ -204,3 +204,16 @@ export const getTransactionHistory = createAsyncThunk(
     }
   }
 );
+
+export const sendEditProfileRequest = createAsyncThunk(
+  "sendEditProfileRequest",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);

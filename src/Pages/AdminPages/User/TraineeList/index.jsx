@@ -44,7 +44,7 @@ const ServiceProviders = (props) => {
     if (traineesData && traineesData.length > 0) {
       let traineeListArray = [];
 
-      traineesData.forEach((trainee, index) => {
+      traineesData.forEach((trainee) => {
         traineeListArray.push({
           name: (
             <div className="d-flex align-items-center">

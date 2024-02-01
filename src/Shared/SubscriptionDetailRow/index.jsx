@@ -83,7 +83,7 @@ const Index = (props) => {
                   height: "60px",
                   cursor: "pointer",
                   backgroundImage:
-                    data?.profile_pic === null
+                    data?.serviceprovider?.profile_pic === null
                       ? `url(${Images.USER_DUMMY_IMG})`
                       : `url(${data?.serviceprovider?.profile_pic})`,
                   border: "1px solid transparent",

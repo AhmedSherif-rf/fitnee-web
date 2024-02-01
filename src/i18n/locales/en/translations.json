@@ -409,7 +409,10 @@
     "trainersText": "Trainers",
     "bothText": "Both",
     "deleteModalText": "Are you sure you want to delete your account?",
-    "noText": "No"
+    "noText": "No",
+    "maleText": "Male",
+    "femaleText": "Female",
+    "exerciseSubscriptionModalText": "The rest of the exercises will be hidden. Subscribe for 29 SAR per month to access all exercises."
   },
   "contactUs": {
     "firstNameText": "First Name",
@@ -455,13 +458,15 @@
     "SARText": "SAR"
   },
   "trainerPackages": {
-    "monthText": "Month",
+    "monthText": "1 Month",
+    "twoMonthText": "2 Months",
+    "threeMonthText": "3 Months",
     "subscribeText": "Subscribe",
     "todayText": "Today",
     "amountReleasedText": "Amount Released"
   },
   "traineeDashboard": {
-    "traineeProgressGraph":"Trainee Progress Graph",
+    "traineeProgressGraph": "Trainee Progress Graph",
     "myCurrentTrainerText": "My Current Trainers",
     "myCurrentNutritionistText": "My Current Nutritionists",
     "mySubscriptionHistoryText": "My Subscription History",
@@ -522,7 +527,7 @@
   },
   "signup": {
     "traineesText": "Trainees",
-    "subscriberText":"Subscriber",
+    "subscriberText": "Subscriber",
     "certificatesText": "Certificates",
     "subscriptionPlansText": "Subscription plans",
     "monthsText": "Months",
@@ -593,7 +598,9 @@
     "newHereText": "New Here?",
     "cancelText": "Cancel",
     "unlockYourPotentialText": "Unlock your potential",
-    "transformYourBodyText": "Transform your body"
+    "transformYourBodyText": "Transform your body",
+    "requestUnderProcessText": "Your request is under process",
+    "accountRejectText": "Your request has been rejected by FitNee Admin, Please check your email"
   },
   "forgotPassword": {
     "emailText": "Type your email",
@@ -605,7 +612,7 @@
   "otpVerification": {
     "verificationText": "Verification",
     "openYourEmailText": "Open your email and insert the code",
-    "resendCodeInText": "Resend code in ",
+    "resendCodeInText": "The remaining time ",
     "resendCodeText": "Resend Code",
     "invalidOtpModalText": "You entered an Invalid OTP, please try again",
     "nextText": "Next",

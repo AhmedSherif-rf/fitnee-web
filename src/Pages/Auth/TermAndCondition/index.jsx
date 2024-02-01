@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
-import { IoIosArrowRoundBack } from "react-icons/io";
 import { useParams, useNavigate} from "react-router-dom";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 
@@ -1289,18 +1288,6 @@ const TermAndCondition = () => {
               ? t("termAndCondition.termAndConditionTrainerHeadingText")
               : t("termAndCondition.termAndConditionHeadingText")}
           </h1>
-
-          <div
-            className="d-flex align-items-end my-2 textYellow cursorPointer"
-            onClick={goBack}
-          >
-            <div>
-              <IoIosArrowRoundBack size={42} />
-            </div>
-            <div>
-              <h5> {t("termAndCondition.backButtonText")}</h5>
-            </div>
-          </div>
 
           {type === "general" && (
             <div  className={`${i18n.dir()}`}>

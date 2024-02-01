@@ -11,6 +11,7 @@ import {
   cancelSubscription,
   getMyServiceProviders,
   getTransactionHistory,
+  sendEditProfileRequest,
   getTraineeProgressHistory,
 } from "./userApi";
 
@@ -155,6 +156,16 @@ export const userSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(cancelSubscription.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(sendEditProfileRequest.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(sendEditProfileRequest.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(sendEditProfileRequest.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

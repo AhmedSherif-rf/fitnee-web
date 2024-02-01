@@ -98,8 +98,11 @@ const Index = () => {
                   </Row>
                 </Col>
               </Row>
-              {traineesData.map((item, index) => {
-                return <TraineeListRow data={item} key={index} />;
+              {traineesData?.map((data, index) => {
+                if (!data?.is_expired && !data?.is_refund) {
+                  return <TraineeListRow data={data} key={index} />;
+                }
+                return null;
               })}
               {traineesData.length <= 0 && (
                 <div className="d-flex justify-content-center py-4 text-black-custom">

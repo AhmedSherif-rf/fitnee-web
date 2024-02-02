@@ -2,16 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDlaqzq4yUz-ZxWHCn6Yw24uEfwQgvjW9c",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "fitnee-frontend.firebaseapp.com",
   projectId: "fitnee-frontend",
   storageBucket: "fitnee-frontend.appspot.com",
-  messagingSenderId: "49244377688",
-  appId: "1:49244377688:web:518d04e752da697cf5302d",
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: "G-TBSC6GBZ7V",
 };
 
-// Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const messaging = getMessaging(firebaseApp);
 

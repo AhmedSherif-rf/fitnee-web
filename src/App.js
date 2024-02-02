@@ -16,9 +16,9 @@ import GeneralLayout from "./Pages/Layout/GeneralLayout";
 import LoadingScreen from "./HelperMethods/LoadingScreen";
 import React, { Suspense, useEffect, useState } from "react";
 import { setLanguage } from "./Redux/features/Language/languageSlice";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { getNotificationToken, onMessageListener } from "./firebase.js";
 import NotificationToaster from "./Shared/NotificationToaster/index.jsx";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,20 +26,22 @@ function App() {
   const [notification, setNotification] = useState(null);
   const [showNotification, setShowNotification] = useState(false);
 
-  getNotificationToken(setFcmToken);
+  useEffect(() => {
+    getNotificationToken(setFcmToken);
 
-  onMessageListener()
-    .then((payload) => {
-      setNotification({
-        title: payload.notification.title,
-        body: payload.notification.body,
-      });
-      setShowNotification(true);
-      setTimeout(() => {
-        setShowNotification(false);
-      }, 5000);
-    })
-    .catch((err) => console.log("failed: ", err));
+    onMessageListener()
+      .then((payload) => {
+        setNotification({
+          title: payload.notification.title,
+          body: payload.notification.body,
+        });
+        setShowNotification(true);
+        setTimeout(() => {
+          setShowNotification(false);
+        }, 5000);
+      })
+      .catch((err) => console.log("failed: ", err));
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("Website_Language__fitnee") === null) {

@@ -410,7 +410,7 @@
     "noText": "ﻻ",
     "maleText": "ذكر",
     "femaleText": "أنثى",
-    "exerciseSubscriptionModalText": ".اشترك بقيمة 29 ريال شهرياً لعرض جميع التمارين بتعليمات واضحة  تمكنك من اداء التمارين بطريقة صحيحه"
+    "exerciseSubscriptionModalText": "اشترك بقيمة 29 ريال شهرياً لعرض جميع التمارين بتعليمات واضحة  تمكنك من اداء التمارين بطريقة صحيحه"
   },
   "contactUs": {
     "firstNameText": "ﺍﻷﺳﻡ ﺍﻻﻭﻝ",
@@ -715,7 +715,7 @@
     "requiredDayText": "اليوم مطلوب",
     "requiredFromDayText": "الوقت من، مطلوب",
     "requiredToDayText": "الوقت الى، مطلوب",
-    "requiredTermAndConditionCheck": "يجب أن يكون الإبلاغ قبل جميع الشروط والأحكام",
+    "requiredTermAndConditionCheck": "يجب عليك قبول جميع الشروط والأحكام",
     "tooShortText": "قصير جدا!",
     "tooLongText": "طويل جدا!",
     "invalidPreviousPasswordText": "يجب أن تكون كلمة المرور السابقة على الأقل 8 أحرف",
@@ -723,6 +723,7 @@
     "requiredPreviousPasswordText": "كلمة المرور السابقة مطلوبة",
     "requiredDescriptionText": "الوصف مطلوب",
     "invalidDescriptionText": "يجب أن يكون هناك وصف واحد على الأقل",
-    "requiredExerciseVideoText": "مطلوب فيديو التمرين"
+    "requiredExerciseVideoText": "مطلوب فيديو التمرين",
+    "invalidEndTimeText": "وقت الانتهاء يجب أن يكون أكبر من وقت البدء"
   }
 }

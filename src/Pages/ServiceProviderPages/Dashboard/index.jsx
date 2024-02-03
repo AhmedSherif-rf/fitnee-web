@@ -1,19 +1,20 @@
-import React from "react";
-import { useCallback } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import React, { useEffect, useCallback } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import CommentCard from "../../../Shared/CommentCard";
+import { useSelector, useDispatch } from "react-redux";
 import DocumentCard from "../../../Shared/DocumentCard";
-import {
-  TRAINER_NUTRITIONIST_ROLE,
-  TRAINER_ROLE,
-} from "../../../utils/constants";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
+import { getUserProfile } from "../../../Redux/features/User/userApi";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
 import AvailableHourListing from "../../../Shared/AvailableHourListing";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
+import {
+  TRAINER_ROLE,
+  USER_PROFILE_URL,
+  TRAINER_NUTRITIONIST_ROLE,
+} from "../../../utils/constants";
 
 const commentMedia = [
   {
@@ -44,8 +45,22 @@ const commentMedia = [
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
   const { user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    fetchUserProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchUserProfile = () => {
+    const data = {
+      apiEndpoint: USER_PROFILE_URL,
+    };
+
+    dispatch(getUserProfile(data));
+  };
 
   const handleCurrentSubscribersClick = useCallback(() => {
     navigate("/serviceProvider/subscriber");
@@ -137,26 +152,28 @@ const Dashboard = () => {
                         )}
                     </Row>
 
-                    <Row>
-                      <Col md={12}>
-                        <h5 className="fw-bold my-2 py-2">
-                          {t("guest.areaSpecialtyText")}
-                        </h5>
-                        {user?.specialities &&
-                          user?.specialities?.map((specialty, index) => (
-                            <Badge
-                              key={index}
-                              color="custom"
-                              className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
-                            >
-                              {specialty.name}
-                            </Badge>
-                          ))}
-                      </Col>
-                    </Row>
+                    {user?.specialities && user?.specialities.length > 0 && (
+                      <Row>
+                        <Col md={12}>
+                          <h5 className="fw-bold my-2 py-2">
+                            {t("guest.areaSpecialtyText")}
+                          </h5>
+                          {user?.specialities &&
+                            user?.specialities?.map((specialty, index) => (
+                              <Badge
+                                key={index}
+                                color="custom"
+                                className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
+                              >
+                                {specialty.name}
+                              </Badge>
+                            ))}
+                        </Col>
+                      </Row>
+                    )}
 
                     <Row>
-                      <h5 className="fw-bold my-2">
+                      <h5 className="fw-bold my-3">
                         {t("trainer.commentText")}
                       </h5>
                       {commentMedia?.map((item, index) => {

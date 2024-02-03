@@ -46,6 +46,7 @@ const InputField = (props) => {
         placeholder={placeholder}
         name={name}
         style={style}
+        min={type === "number" ? 0 : ""}
         className={`form-control-lg w-100 ${styles.inputDesign} ${
           type === "number" ? "remove-arrow" : ""
         } ${className}`}

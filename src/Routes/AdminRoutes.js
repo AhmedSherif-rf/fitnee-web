@@ -15,6 +15,12 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
+    path: "/admin/editProfileRequest",
+    component: lazy(() => import("../Pages/AdminPages/EditProfileRequest")),
+    exact: true,
+    role: adminRole,
+  },
+  {
     path: "/admin/user/serviceProviderList",
     component: lazy(() =>
       import("../Pages/AdminPages/User/ServiceProviderList")

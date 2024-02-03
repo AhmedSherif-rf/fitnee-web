@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PhoneInput from "react-phone-input-2";
 import { useState, useCallback } from "react";
 import Pagination from "../../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +22,7 @@ const ServiceProviders = (props) => {
   const [page, setPage] = useState(1);
   const [totalSize, setSizePages] = useState(0);
   const [tableData, setTableData] = useState([]);
+  const [stcPayNumber, setStcPayNumber] = useState("");
   const [serviceProvidersData, setServiceProvidersData] = useState(null);
 
   const handlePageChange = useCallback((page) => {
@@ -29,7 +31,7 @@ const ServiceProviders = (props) => {
 
   useEffect(() => {
     const data = {
-      apiEndpoint: `${ADMIN_SERVICE_PROVIDER_LISTING_URL}?page=${page}`,
+      apiEndpoint: `${ADMIN_SERVICE_PROVIDER_LISTING_URL}?page=${page}&stc_pay=${stcPayNumber}`,
     };
 
     dispatch(getServiceProviderListing(data)).then((res) => {
@@ -38,7 +40,7 @@ const ServiceProviders = (props) => {
         setServiceProvidersData(res.payload.data.results);
       }
     });
-  }, [dispatch, page]);
+  }, [dispatch, page, stcPayNumber]);
 
   useEffect(() => {
     if (serviceProvidersData && serviceProvidersData.length > 0) {
@@ -136,13 +138,32 @@ const ServiceProviders = (props) => {
 
   return (
     <Row className="h-100">
+      {loading === "pending" && <LoadingScreen />}
       <Col md={12}>
         <Card className="border-0 h-100 text-start">
           <CardHeader className="bg-transparent border-0 p-0">
             <PageHeading headingText="Service Provider List" categoryText="" />
           </CardHeader>
           <CardBody className="tableBodyWrapperPagination">
-            {loading === "pending" && <LoadingScreen />}
+            <Row className="justify-content-end py-1">
+              <Col md={4}>
+                <PhoneInput
+                  inputProps={{
+                    name: "stc_pay",
+                    required: true,
+                    className:
+                      "form-control-lg w-100 py-1 px-4 customPhoneInput border",
+                  }}
+                  country={"sa"}
+                  value={stcPayNumber}
+                  className="border ltr"
+                  onChange={(value) => {
+                    setPage(1);
+                    setStcPayNumber(value);
+                  }}
+                />
+              </Col>
+            </Row>
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

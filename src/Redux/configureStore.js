@@ -14,6 +14,7 @@ import userListingSlice from "./features/Admin/UserListing/userListingSlice.js";
 import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.js";
 import reviewRequestSlice from "./features/Admin/ReviewRequest/ReviewRequestSlice.js";
 import subscriptionPlanSlice from "./features/SubscriptionPlan/subscriptionPlanSlice.js";
+import EditProfileRequestSlice from "./features/Admin/EditProfileRequest/EditProfileRequestSlice.js";
 
 const persistConfig = {
   key: "root",
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   reviewRequest: reviewRequestSlice,
   forgotPassword: forgotPasswordSlice,
   subscriptionPlan: subscriptionPlanSlice,
+  EditProfileRequest: EditProfileRequestSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -225,7 +225,7 @@ export const TRAINER_EDIT_PROFILE_REQUEST_INITIAL_VALUES = {
 
 export const NUTRITIONIST_EDIT_PROFILE_REQUEST_INITIAL_VALUES = {
   stc_pay: "",
+  license: "",
   certificates: [],
-  license_number: "",
   certificate_files: [],
 };

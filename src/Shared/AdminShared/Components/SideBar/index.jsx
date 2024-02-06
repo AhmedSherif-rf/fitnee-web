@@ -52,6 +52,16 @@ const SideBar = ({ isOpen, toggle }) => (
             Review Requests
           </NavLink>
         </NavItem>
+        {/* <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/admin/editProfileRequest"}
+          >
+            <BsPersonBoundingBox />
+            Edit Profile Requests
+          </NavLink>
+        </NavItem> */}
         <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[0]} />
         <NavItem>
           <NavLink

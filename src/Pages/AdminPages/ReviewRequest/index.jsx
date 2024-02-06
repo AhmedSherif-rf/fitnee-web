@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PhoneInput from "react-phone-input-2";
 import Pagination from "../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../Shared/Headings/PageHeading";
@@ -22,11 +23,12 @@ import {
 
 const ReviewRequest = () => {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.reviewRequest);
   const [page, setPage] = useState(1);
-  const [tableData, setTableData] = useState([]);
   const [totalSize, setSizePages] = useState(0);
+  const [tableData, setTableData] = useState([]);
+  const [stcPayNumber, setStcPayNumber] = useState("");
   const [reviewRequests, setReviewRequests] = useState([]);
+  const { loading } = useSelector((state) => state.reviewRequest);
 
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
@@ -35,11 +37,11 @@ const ReviewRequest = () => {
   useEffect(() => {
     fetchReviewRequests();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, page]);
+  }, [dispatch, page, stcPayNumber]);
 
   const fetchReviewRequests = () => {
     const data = {
-      apiEndpoint: `${ADMIN_REVIEW_REQUEST_URL}?page=${page}`,
+      apiEndpoint: `${ADMIN_REVIEW_REQUEST_URL}?page=${page}&stc_pay=${stcPayNumber}`,
     };
 
     dispatch(getReviewRequestListing(data)).then((res) => {
@@ -152,6 +154,25 @@ const ReviewRequest = () => {
             <PageHeading headingText="Review Requests" categoryText="" />
           </CardHeader>
           <CardBody className="tableBodyWrapperPagination">
+            <Row className="justify-content-end py-1">
+              <Col md={4}>
+                <PhoneInput
+                  inputProps={{
+                    name: "stc_pay",
+                    required: true,
+                    className:
+                      "form-control-lg w-100 py-1 px-4 customPhoneInput border",
+                  }}
+                  country={"sa"}
+                  value={stcPayNumber}
+                  className="border ltr"
+                  onChange={(value) => {
+                    setPage(1);
+                    setStcPayNumber(value);
+                  }}
+                />
+              </Col>
+            </Row>
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

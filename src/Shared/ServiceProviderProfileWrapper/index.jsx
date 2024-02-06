@@ -128,25 +128,29 @@ const ServiceProviderProfileWrapper = (props) => {
                             )
                           )}
                       </Row>
-                      <Row>
-                        <Col md={12}>
-                          <h5 className="fw-bold my-2">
-                            {t("guest.areaSpecialtyText")}
-                          </h5>
-                          {serviceProviderProfile?.specialities &&
-                            serviceProviderProfile?.specialities?.map(
-                              (specialty, index) => (
-                                <Badge
-                                  key={index}
-                                  color="custom"
-                                  className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
-                                >
-                                  {specialty.name}
-                                </Badge>
-                              )
-                            )}
-                        </Col>
-                      </Row>
+                      {serviceProviderProfile?.specialities &&
+                        serviceProviderProfile?.specialities.length > 0 && (
+                          <Row>
+                            <Col md={12}>
+                              <h5 className="fw-bold my-2">
+                                {t("guest.areaSpecialtyText")}
+                              </h5>
+                              {serviceProviderProfile?.specialities &&
+                                serviceProviderProfile?.specialities?.map(
+                                  (specialty, index) => (
+                                    <Badge
+                                      key={index}
+                                      color="custom"
+                                      className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
+                                    >
+                                      {specialty.name}
+                                    </Badge>
+                                  )
+                                )}
+                            </Col>
+                          </Row>
+                        )}
+
                       <Row>
                         <Col md={12}>
                           <h5 className="fw-bold mt-3 text-black-custom">
@@ -165,7 +169,10 @@ const ServiceProviderProfileWrapper = (props) => {
                         </Col>
                         <Col md={12}>
                           <div className="text-center">
-                            <FillBtn className=" py-2" text={t("guest.seeMoreText")}/>
+                            <FillBtn
+                              className=" py-2"
+                              text={t("guest.seeMoreText")}
+                            />
                           </div>
                         </Col>
                       </Row>

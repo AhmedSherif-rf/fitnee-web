@@ -50,6 +50,7 @@ export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
 export const LOGOUT_URL = "/logout/";
+export const USER_PROFILE_URL = "/User/";
 export const MEMBERSHIP_URL = "/membership/";
 export const REGISTER_URL = "/registeruser/";
 export const EDIT_PROFILE_URL = "/User/userId/";
@@ -74,6 +75,7 @@ export const EXERCISE_CATEGORIES_URL = "/guest/exercisedata/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
 export const CANCEL_SUBSCRIPTION_URL = "wallet/refund_amount/";
+export const SEND_UPDATE_PROFILE_URL = "/profile-update-request/";
 export const ADMIN_RELEASE_PAYMENT_URL = "/admin/release_payment/";
 export const CHECK_PAYMENT_STATUS_URL = "/payment/hyperpay_status/";
 export const ADMIN_REVIEW_REQUEST_URL = "/service_provider_requests";
@@ -85,6 +87,7 @@ export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
+export const UPDATE_PROFILE_REQUEST_LISTING_URL = "/admin/profile-update-request/";
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
   "/serviceprovider_logged_in";
 export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =

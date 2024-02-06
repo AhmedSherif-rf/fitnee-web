@@ -29,13 +29,14 @@ const PromoCode = (props) => {
   const [tableData, setTableData] = useState([]);
   const [promoCodeData, setPromoCodeData] = useState(null);
 
-  const handleAddPromoCodeSubmit = (values) => {
+  const handleAddPromoCodeSubmit = (values, resetForm) => {
     const data = {
       apiEndpoint: ADMIN_PROMO_CODE_URL,
       requestData: JSON.stringify(values),
     };
     dispatch(createPromoCodeList(data)).then((res) => {
       if (res.type === "createPromoCodeList/fulfilled") {
+        resetForm();
         setPromoCodeData(res.payload.data);
         fetchPromoCodeListing();
       }
@@ -98,9 +99,9 @@ const PromoCode = (props) => {
               <Formik
                 initialValues={{ ...ADD_PROMO_CODE_INITIAL_VALUES }}
                 validationSchema={ADD_PROMO_CODE_SCHEMA}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={(values, { setSubmitting, resetForm }) => {
                   setSubmitting(true);
-                  handleAddPromoCodeSubmit(values);
+                  handleAddPromoCodeSubmit(values, resetForm);
                 }}
               >
                 {({

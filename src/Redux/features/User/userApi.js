@@ -210,6 +210,20 @@ export const sendEditProfileRequest = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
+      Toaster.success(response?.data?.data?.message);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const getUserProfile = createAsyncThunk(
+  "getUserProfile",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.detail);

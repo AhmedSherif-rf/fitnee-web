@@ -129,7 +129,14 @@ const profileAvailabilityValidation = Yup.array().of(
   Yup.object().shape({
     day: Yup.string().required("validation.requiredDayText"),
     starttime: Yup.string().required("validation.requiredFromDayText"),
-    endtime: Yup.string().required("validation.requiredToDayText"),
+    endtime: Yup.string()
+      .required("validation.requiredToDayText")
+      .test("is-greater", "validation.invalidEndTimeText", function (
+        endtime
+      ) {
+        const { starttime } = this.parent;
+        return starttime && endtime && starttime < endtime;
+      }),
   })
 );
 
@@ -255,9 +262,9 @@ export const TRAINER_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
 
 export const NUTRITIONIST_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
   certificates: Yup.array(),
+  license: requiredValidation,
   stc_pay: phoneNumberValidaton,
   certificate_files: Yup.array(),
-  license_number: requiredValidation,
 });
 
 export const NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({

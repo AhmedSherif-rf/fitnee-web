@@ -13,7 +13,10 @@ import ProfileProgressBar from "../../../Shared/ProfileProgressBar";
 import AddProgressModal from "../../../Shared/Modal/AddProgressModal";
 import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
-import { TRAINEE_PROGRESS_URL, USER_PROFILE_URL } from "../../../utils/constants";
+import {
+  TRAINEE_PROGRESS_URL,
+  USER_PROFILE_URL,
+} from "../../../utils/constants";
 import {
   getTraineeProgressHistory,
   getUserProfile,

@@ -1,8 +1,7 @@
-import React from "react";
-import ServiceProviderProfileWrapper from "../../../Shared/AdminShared/Components/ServiceProviderProfile";
+// import ServiceProviderProfileWrapper from "../../../Shared/AdminShared/Components/ServiceProviderProfile";
 
 const ServiceProviderProfile = () => {
-  return <ServiceProviderProfileWrapper />;
+  // return <ServiceProviderProfileWrapper />;
 };
 
 export default ServiceProviderProfile;

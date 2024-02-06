@@ -62,7 +62,6 @@ InformationModal.defaultProps = {
   className: "",
   size: "sm",
   isOpen: false,
-  requestId: null,
   onClose: () => {},
 };
 

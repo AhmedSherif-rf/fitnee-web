@@ -131,9 +131,7 @@ const profileAvailabilityValidation = Yup.array().of(
     starttime: Yup.string().required("validation.requiredFromDayText"),
     endtime: Yup.string()
       .required("validation.requiredToDayText")
-      .test("is-greater", "validation.invalidEndTimeText", function (
-        endtime
-      ) {
+      .test("is-greater", "validation.invalidEndTimeText", function (endtime) {
         const { starttime } = this.parent;
         return starttime && endtime && starttime < endtime;
       }),
@@ -351,4 +349,8 @@ export const CONTACT_US_SCHEMA = Yup.object().shape({
   phone: phoneNumberValidaton,
   last_name: lastNameValidation,
   first_name: firstNameValidation,
+});
+
+export const REVIEW_REQUEST_REJECTION_SCHEMA = Yup.object().shape({
+  reject_message: requiredValidation,
 });

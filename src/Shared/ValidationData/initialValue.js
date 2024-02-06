@@ -229,3 +229,7 @@ export const NUTRITIONIST_EDIT_PROFILE_REQUEST_INITIAL_VALUES = {
   certificates: [],
   certificate_files: [],
 };
+
+export const REVIEW_REQUEST_REJECTION_INITIAL_VALUES = {
+  reject_message: "",
+};

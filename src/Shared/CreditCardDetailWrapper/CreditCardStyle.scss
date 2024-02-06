@@ -36,7 +36,31 @@
     }
   }
 }
-
+.wpwl-container {
+  .wpwl-form-card {
+    text-align: left;
+    color: white;
+    border: 0px;
+    border-radius: 20px;
+    background-color: transparent;
+    background-image: url(../../Assets/Images/ConstImgs/PaymentMethod.png);
+  
+    .wpwl-wrapper {
+     
+    }
+    .wpwl-wrapper-submit{
+      display: flex;
+      justify-content: left;
+      .wpwl-button-pay{
+      background: $yellow;
+      border:none;
+      border-radius: 10px;
+      
+    }
+    }
+    
+  }
+}
 .countryContainerClass {
   .stdropdown-container {
     border-radius: 14px !important;

@@ -2,6 +2,7 @@
 @import "../../Assets/Scss/globalStyleSheet.scss";
 
 .featureSectionWrapper {
+  overflow: hidden;
   background-image: linear-gradient(
       0deg,
       rgba(108, 107, 107, 0.2) 0%,
@@ -15,6 +16,8 @@
     width: 45vw;
     padding: 10px;
     align-items: center;
+    height: 200px !important;
+
     div {
       font-size: 20px;
       letter-spacing: 1px;
@@ -23,7 +26,6 @@
   .featureSectionRightContent {
     .cardSwiper {
       width: 100%;
-
       .cardSwiperSlider {
         @include bgProperties;
         background-size: contain !important;
@@ -32,20 +34,18 @@
     }
   }
 
-  .featureSectionLeftContent {
-    .featureHeading {
-      width: 14rem;
-      margin-top: 10px;
-    }
-  }
+  // .featureSectionLeftContent {
+  //   .featureHeading {
+  //     width: 14rem;
+  //     margin-top: 10px;
+  //   }
+  // }
 }
 
 @media (max-width: 480px) {
   .featureSectionWrapper {
     .featureTextSlider {
       width: 90vw;
-      align-items: center;
-
       div {
         font-size: 16px;
       }

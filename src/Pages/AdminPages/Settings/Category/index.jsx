@@ -131,7 +131,7 @@ const Category = () => {
                   {t(errors.title_ar) && touched.title_ar && t(errors.title_ar)}
                 </p>
               </Col>
-              <Col md={2} className="mt-1">
+              <Col md={3} className="mt-1">
                 <FillBtn
                   className="w-100 py-2 mb-2"
                   text={type}
@@ -146,7 +146,7 @@ const Category = () => {
       {categroiesData && categroiesData.length > 0 && (
         <Row className="tableBodyWrapperPagination">
           {categroiesData.map((category, index) => (
-            <Col lg={4} md={6} className="mb-2" key={index}>
+            <Col lg={4} className="mb-2" key={index}>
               <CategoryCard category={category} onEditClick={handleEditClick} />
             </Col>
           ))}

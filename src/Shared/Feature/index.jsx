@@ -24,13 +24,20 @@ const Feature = (props) => {
         <Col
           xs={12}
           md={6}
-          className={`p-0 mb-md-0 mb-3 ${styles.featureSectionLeftContent}`}
+          className={`mb-md-0 mb-3 ${styles.featureSectionLeftContent}`}
         >
-          <div className={`d-flex align-items-center h-100`}>
-            <div className="">
+          <div className={`d-flex align-items-center`}>
+            <div className="" style={{ height: "300px" }}>
+              <div
+                className={`fw-bold textYellow mb-0 display-5 mb-3 p-0 w-100 ${styles.featureHeading}`}
+              >
+                <span className="arabicBorderHover p-0">
+                  {t("landing.featuresText")}
+                </span>
+              </div>
               <div>
                 <Swiper
-                  className="p-0"
+                  className="mt-4"
                   speed={1000}
                   spaceBetween={500}
                   grabCursor={true}
@@ -48,32 +55,27 @@ const Feature = (props) => {
                 >
                   {textData?.map((item, index) => {
                     return (
-                      <SwiperSlide
-                        key={index}
-                        className={`w-100 d-block  text-white fs-5 text-justify p-0 ${
-                          i18n.dir() === "ltr" ? "customSpacing" : ""
-                        } ${i18n.dir()}`}
-                      >
-                        <div
-                          className={`fw-bold textYellow mb-0 display-5 mb-3 p-0 w-100 ${styles.featureHeading}`}
+                      <>
+                        <SwiperSlide
+                          key={index}
+                          className={`w-100  text-white fs-5 text-justify p-0 ${
+                            i18n.dir() === "ltr" ? "customSpacing" : ""
+                          } ${i18n.dir()}`}
                         >
-                          <span className="arabicBorderHover p-0">
-                            {t("landing.featuresText")}
-                          </span>
-                        </div>
-                        <div
-                          className={`${
-                            i18n.dir() === "ltr"
-                              ? "text-md-start"
-                              : "text-md-end"
-                          } text-center pt-md-5 pt-0`}
-                        >
-                          <span className="textYellow fw-bolder fs-4 outline-yellow mb-2">
-                            {item.heading}
-                          </span>
-                          <p className="mb-0 pt-md-3 pt-0">{item.text}</p>
-                        </div>
-                      </SwiperSlide>
+                          <div
+                            className={`${styles.featureTextSlider} ${
+                              i18n.dir() === "ltr"
+                                ? "text-md-start"
+                                : "text-md-end"
+                            } pt-0`}
+                          >
+                            <span className="textYellow fw-bolder fs-4 outline-yellow mb-2">
+                              {item.heading}
+                            </span>
+                            <p className="mb-0 pt-md-3 pt-0">{item.text}</p>
+                          </div>
+                        </SwiperSlide>
+                      </>
                     );
                   })}
                 </Swiper>

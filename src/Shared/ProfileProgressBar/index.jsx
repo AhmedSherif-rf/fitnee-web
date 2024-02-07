@@ -25,10 +25,6 @@ const ProfileProgressBar = ({ value = 100 }) => {
 
   return (
     <div style={{ position: "relative" }}>
-      <div className="startingPointStyle">
-        <FaCheck />
-      </div>
-      <div className="endingPointStyle"></div>
       <Progress
         animated
         color="warning"

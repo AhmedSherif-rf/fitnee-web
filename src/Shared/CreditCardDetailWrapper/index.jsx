@@ -4,11 +4,6 @@ import Toaster from "../Toaster";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import ToggleSwitch from "../ToggleSwitch";
-import {
-  CitySelect,
-  CountrySelect,
-  StateSelect,
-} from "react-country-state-city";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import SubHeading from "../Headings/SubHeading";
@@ -22,6 +17,11 @@ import "react-country-state-city/dist/react-country-state-city.css";
 import { CURRENCY, WALLET_AMOUNT_URL } from "../../utils/constants";
 import React, { memo, useCallback, useState, useEffect } from "react";
 import { PAYMENT_METHOD_DETAIL_SCHEMA } from "../ValidationData/validation";
+import {
+  CitySelect,
+  CountrySelect,
+  StateSelect,
+} from "react-country-state-city";
 import {
   PREPARE_CHECKOUT_URL,
   USE_PROMO_CODE_URL,
@@ -432,12 +432,13 @@ const CreditCardDetailWrapper = () => {
                               handleToggle={() => {
                                 setFieldValue("use_wallet", !values.use_wallet);
                                 if (!values.use_wallet === true) {
-                                  const updatedGrandPrice = functions.getSummary(
-                                    summaryData.discount,
-                                    walletBalance,
-                                    subscriptionPlan.price,
-                                    summaryData.vat
-                                  );
+                                  const updatedGrandPrice =
+                                    functions.getSummary(
+                                      summaryData.discount,
+                                      walletBalance,
+                                      subscriptionPlan.price,
+                                      summaryData.vat
+                                    );
 
                                   setSummaryData({
                                     ...summaryData,
@@ -445,12 +446,13 @@ const CreditCardDetailWrapper = () => {
                                     walletAmount: walletBalance,
                                   });
                                 } else {
-                                  const updatedGrandPrice = functions.getSummary(
-                                    summaryData.discount,
-                                    0,
-                                    subscriptionPlan.price,
-                                    summaryData.vat
-                                  );
+                                  const updatedGrandPrice =
+                                    functions.getSummary(
+                                      summaryData.discount,
+                                      0,
+                                      subscriptionPlan.price,
+                                      summaryData.vat
+                                    );
 
                                   setSummaryData({
                                     ...summaryData,

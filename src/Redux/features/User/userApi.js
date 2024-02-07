@@ -231,3 +231,17 @@ export const getUserProfile = createAsyncThunk(
     }
   }
 );
+
+export const setAvailability = createAsyncThunk(
+  "setAvailability",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.put(apiEndpoint, requestData);
+      Toaster.success("Availability set successfully")
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);

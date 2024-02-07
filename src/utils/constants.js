@@ -59,6 +59,7 @@ export const WALLET_AMOUNT_URL = "/wallet/balance/";
 export const DELETE_ACCOUNT_URL = "/delete/userId/";
 export const NEW_PASSWORD_URL = "/forget_password/";
 export const GET_SPECIALITIES_URL = "/specialities/";
+export const SET_AVAILABILITY_URL = "/fully_booked/";
 export const CONTACT_US_URL = "/guest/contactusemail/";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
 export const ADMIN_PROMO_CODE_URL = "/admin/promo-codes/";
@@ -87,7 +88,8 @@ export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
-export const UPDATE_PROFILE_REQUEST_LISTING_URL = "/admin/profile-update-request/";
+export const UPDATE_PROFILE_REQUEST_LISTING_URL =
+  "/admin/profile-update-request/";
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
   "/serviceprovider_logged_in";
 export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =

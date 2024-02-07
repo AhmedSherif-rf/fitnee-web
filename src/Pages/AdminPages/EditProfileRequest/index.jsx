@@ -46,19 +46,19 @@ const EditProfileRequest = () => {
     });
   };
 
-  // const handleApproveRequestClick = (email) => {
-  //   const data = {
-  //     apiEndpoint: ADMIN_APPROVE_REVIEW_REQUEST_URL,
-  //     requestData: JSON.stringify({ email }),
-  //   };
+  const handleChangeStatus = (id, status) => {
+    const data = {
+      apiEndpoint: `/admin/profile-update-request/${id}/change_status/`,
+      requestData: JSON.stringify({ request_status: status }),
+    };
 
-  //   dispatch(approveReviewRequest(data)).then((res) => {
-  //     if (res.type === "approveReviewRequest/fulfilled") {
-  //       setPage(1);
-  //       fetchReviewRequests();
-  //     }
-  //   });
-  // };
+    // dispatch(approveReviewRequest(data)).then((res) => {
+    //   if (res.type === "approveReviewRequest/fulfilled") {
+    //     setPage(1);
+    //     fetchReviewRequests();
+    //   }
+    // });
+  };
 
   // const handleRejectRequestClick = (email) => {
   //   const data = {
@@ -99,18 +99,18 @@ const EditProfileRequest = () => {
           ),
           action: (
             <div className="d-flex align-items-center justify-content-md-center">
-              {/* <span
+              <span
                 className={`iconBadge px-2 cursorPointer`}
-                onClick={() => handleRejectRequestClick(request?.email)}
+                onClick={() => handleChangeStatus(request?.id)}
               >
                 <BsFillPersonXFill size={22} className="rejectUser mb-1" />
               </span>
               <span
                 className={`iconBadge px-2 cursorPointer`}
-                onClick={() => handleApproveRequestClick(request?.email)}
+                onClick={() => handleChangeStatus(request?.id)}
               >
                 <BsPersonCheckFill size={22} className="approveUser mb-1" />
-              </span> */}
+              </span>
             </div>
           ),
         })
@@ -136,7 +136,7 @@ const EditProfileRequest = () => {
       <Col md={12}>
         <Card className="border-0 h-100 text-start">
           <CardHeader className="bg-transparent border-0 p-0">
-            <PageHeading headingText="Review Requests" categoryText="" />
+            <PageHeading headingText="Edit Profile Requests" categoryText="" />
           </CardHeader>
           <CardBody className="tableBodyWrapperPagination">
             <ListingTable data={tableData} columns={columns} />

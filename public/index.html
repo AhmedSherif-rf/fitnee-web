@@ -53,6 +53,16 @@
           countryCode: "SA",
         },
       };
+
+      wpwlOptions.onError = function (error) {
+        if (error.name === "InvalidCheckoutIdError") {
+          console.log(error);
+        } else if (error.name === "WidgetError") {
+          console.log("here we have extra properties: ");
+          console.log(error.brand + " and " + error.event);
+        }
+        console.log(error.message);
+      };
     </script>
   </body>
 </html>

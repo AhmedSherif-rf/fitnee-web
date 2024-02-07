@@ -445,7 +445,8 @@
     "endDateText": "ﺍﻟﻰ ﺗﺎﺭﻳﺦ",
     "monthText": "شهر",
     "editText": "ﺗﻌﺪﻳﻞ",
-    "addText": "ﺃﺿﺎﻓﻪ"
+    "addText": "ﺃﺿﺎﻓﻪ",
+    "fullyBookedText": "Fully Booked"
   },
   "paymentHistory": {
     "paymentHistoryTitleText": "تاريخ عمليات الدفع",

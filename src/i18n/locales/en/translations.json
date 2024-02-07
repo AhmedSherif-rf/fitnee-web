@@ -447,7 +447,8 @@
     "endDateText": "End Date",
     "monthText": "Month",
     "editText": "Edit",
-    "addText": "Add"
+    "addText": "Add",
+    "fullyBookedText": "Fully Booked"
   },
 
   "paymentHistory": {

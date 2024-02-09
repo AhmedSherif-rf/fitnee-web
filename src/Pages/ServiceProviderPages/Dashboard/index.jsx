@@ -1,18 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import React, { useEffect, useCallback } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
 import CommentCard from "../../../Shared/CommentCard";
 import { useSelector, useDispatch } from "react-redux";
 import DocumentCard from "../../../Shared/DocumentCard";
+import ToggleSwitch from "../../../Shared/ToggleSwitch";
+import React, { useEffect, useCallback, useState } from "react";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import { getUserProfile } from "../../../Redux/features/User/userApi";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
 import AvailableHourListing from "../../../Shared/AvailableHourListing";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import {
+  getUserProfile,
+  setAvailability,
+} from "../../../Redux/features/User/userApi";
+import {
   TRAINER_ROLE,
   USER_PROFILE_URL,
+  SET_AVAILABILITY_URL,
   TRAINER_NUTRITIONIST_ROLE,
 } from "../../../utils/constants";
 
@@ -49,10 +54,12 @@ const Dashboard = () => {
   const { t, i18n } = useTranslation("");
   const { user } = useSelector((state) => state.user);
 
+  const [isFullyBooked, setIsFullyBooked] = useState(user?.is_fully_booked);
+
   useEffect(() => {
     fetchUserProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isFullyBooked]);
 
   const fetchUserProfile = () => {
     const data = {
@@ -60,6 +67,19 @@ const Dashboard = () => {
     };
 
     dispatch(getUserProfile(data));
+  };
+
+  const setUserAvailability = (isFullyBooked) => {
+    const data = {
+      apiEndpoint: SET_AVAILABILITY_URL,
+      requestData: { fully_booked: isFullyBooked },
+    };
+
+    dispatch(setAvailability(data)).then((res) => {
+      if (res.type === "setAvailability/fulfilled") {
+        setIsFullyBooked(isFullyBooked);
+      }
+    });
   };
 
   const handleCurrentSubscribersClick = useCallback(() => {
@@ -85,7 +105,24 @@ const Dashboard = () => {
                   <ProfileInformationCard providerProfile={user} />
                 </div>
 
-                <Row className={`mt-3`}>
+                <div className="CreditCard d-flex justify-content-between align-items-center mb-2 text-white">
+                  <div className="me-2">
+                    <p className="mb-0 fw-bold">
+                      {t("trainer.fullyBookedText")}
+                    </p>
+                  </div>
+                  <div className="d-flex align-items-center">
+                    <ToggleSwitch
+                      id="isFullyBooked"
+                      isOn={isFullyBooked}
+                      handleToggle={() => {
+                        setUserAvailability(!isFullyBooked);
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <Row>
                   <Col md={12}>
                     <FillBtn
                       handleOnClick={handleCurrentSubscribersClick}
@@ -165,7 +202,9 @@ const Dashboard = () => {
                                 color="custom"
                                 className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
                               >
-                                {specialty.name}
+                                {i18n.dir() === "ltr"
+                                  ? specialty.name
+                                  : specialty.arabic_name}
                               </Badge>
                             ))}
                         </Col>

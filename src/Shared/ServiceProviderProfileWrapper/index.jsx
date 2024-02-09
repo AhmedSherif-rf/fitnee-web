@@ -1,5 +1,6 @@
 import CommentCard from "../CommentCard";
 import DocumentCard from "../DocumentCard";
+import OutlineBtn from "../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
 import FillBtn from "../../Shared/Buttons/FillBtn";
 import { useSelector, useDispatch } from "react-redux";
@@ -82,11 +83,18 @@ const ServiceProviderProfileWrapper = (props) => {
                     />
                   </div>
                   <div className="mb-3">
-                    <FillBtn
-                      className="w-100 py-2"
-                      text={t("guest.subscribeText")}
-                      handleOnClick={handleSubscribeClick}
-                    />
+                    {serviceProviderProfile?.is_fully_booked ? (
+                      <OutlineBtn
+                        className="w-100 py-2"
+                        text={t("trainer.fullyBookedText")}
+                      />
+                    ) : (
+                      <FillBtn
+                        className="w-100 py-2"
+                        text={t("guest.subscribeText")}
+                        handleOnClick={handleSubscribeClick}
+                      />
+                    )}
                   </div>
                   <div>
                     <h6 className="fw-bold text-white">
@@ -143,7 +151,9 @@ const ServiceProviderProfileWrapper = (props) => {
                                       color="custom"
                                       className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
                                     >
-                                      {specialty.name}
+                                      {i18n.dir() === "ltr"
+                                        ? specialty.name
+                                        : specialty.arabic_name}
                                     </Badge>
                                   )
                                 )}

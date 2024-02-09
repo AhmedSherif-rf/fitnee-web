@@ -8,6 +8,7 @@ import {
   getMyTrainees,
   changePassword,
   getUserProfile,
+  setAvailability,
   addTraineeProgress,
   cancelSubscription,
   getMyServiceProviders,
@@ -178,6 +179,15 @@ export const userSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(getUserProfile.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(setAvailability.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(setAvailability.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(setAvailability.rejected, (state) => {
         state.loading = "failed";
       });
   },

@@ -131,9 +131,7 @@ const profileAvailabilityValidation = Yup.array().of(
     starttime: Yup.string().required("validation.requiredFromDayText"),
     endtime: Yup.string()
       .required("validation.requiredToDayText")
-      .test("is-greater", "validation.invalidEndTimeText", function (
-        endtime
-      ) {
+      .test("is-greater", "validation.invalidEndTimeText", function (endtime) {
         const { starttime } = this.parent;
         return starttime && endtime && starttime < endtime;
       }),
@@ -323,11 +321,11 @@ export const ADD_SUB_CATEGORY_SCHEMA = Yup.object().shape({
 });
 
 export const ADD_EXERCISE_SCHEMA = Yup.object().shape({
-  title: requiredValidation,
-  title_ar: requiredValidation,
+  // title: requiredValidation,
+  // title_ar: requiredValidation,
   exercise_videos: exerciseVideoValidation,
-  exercise_part_text: exerciseTextValidation,
-  exercise_part_text_ar: exerciseTextValidation,
+  // exercise_part_text: exerciseTextValidation,
+  // exercise_part_text_ar: exerciseTextValidation,
 });
 
 export const ADD_PROMO_CODE_SCHEMA = Yup.object().shape({
@@ -351,4 +349,8 @@ export const CONTACT_US_SCHEMA = Yup.object().shape({
   phone: phoneNumberValidaton,
   last_name: lastNameValidation,
   first_name: firstNameValidation,
+});
+
+export const REVIEW_REQUEST_REJECTION_SCHEMA = Yup.object().shape({
+  reject_message: requiredValidation,
 });

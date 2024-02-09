@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getEditProfileRequestListing } from "./EditProfileRequestApi";
+import {
+  getEditProfileRequestListing,
+  changeProfileUpdateRequestStatus,
+} from "./EditProfileRequestApi";
 
 export const editProfileRequestSlice = createSlice({
   name: "editProfileRequest",
@@ -18,6 +21,17 @@ export const editProfileRequestSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(getEditProfileRequestListing.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(changeProfileUpdateRequestStatus.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(changeProfileUpdateRequestStatus.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(changeProfileUpdateRequestStatus.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

@@ -1,20 +1,20 @@
-import { Link } from "react-router-dom";
 import Pagination from "../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
+import { PER_PAGE_COUNT } from "../../../utils/constants";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import React, { useState, useEffect, useCallback } from "react";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
-import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { BsFillPersonXFill, BsPersonCheckFill } from "react-icons/bs";
-import { UPDATE_PROFILE_REQUEST_LISTING_URL } from "../../../utils/constants";
 import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
-import { getEditProfileRequestListing } from "../../../Redux/features/Admin/EditProfileRequest/EditProfileRequestApi";
 import {
-  ADMIN_APPROVE_REVIEW_REQUEST_URL,
-  PER_PAGE_COUNT,
-  ADMIN_REJECT_REVIEW_REQUEST_URL,
+  UPDATE_PROFILE_REQUEST_LISTING_URL,
+  UPDATE_PROFILE_REQUEST_CHANGE_STATUS_URL,
 } from "../../../utils/constants";
+import {
+  getEditProfileRequestListing,
+  changeProfileUpdateRequestStatus,
+} from "../../../Redux/features/Admin/EditProfileRequest/EditProfileRequestApi";
 
 const EditProfileRequest = () => {
   const dispatch = useDispatch();
@@ -29,11 +29,11 @@ const EditProfileRequest = () => {
   }, []);
 
   useEffect(() => {
-    fetchReviewRequests();
+    fetchProfileUpdateRequests();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, page]);
 
-  const fetchReviewRequests = () => {
+  const fetchProfileUpdateRequests = () => {
     const data = {
       apiEndpoint: `${UPDATE_PROFILE_REQUEST_LISTING_URL}?page=${page}`,
     };
@@ -48,31 +48,20 @@ const EditProfileRequest = () => {
 
   const handleChangeStatus = (id, status) => {
     const data = {
-      apiEndpoint: `/admin/profile-update-request/${id}/change_status/`,
+      apiEndpoint: UPDATE_PROFILE_REQUEST_CHANGE_STATUS_URL.replace(
+        "requestId",
+        id
+      ),
       requestData: JSON.stringify({ request_status: status }),
     };
 
-    // dispatch(approveReviewRequest(data)).then((res) => {
-    //   if (res.type === "approveReviewRequest/fulfilled") {
-    //     setPage(1);
-    //     fetchReviewRequests();
-    //   }
-    // });
+    dispatch(changeProfileUpdateRequestStatus(data)).then((res) => {
+      if (res.type === "changeProfileUpdateRequestStatus/fulfilled") {
+        setPage(1);
+        fetchProfileUpdateRequests();
+      }
+    });
   };
-
-  // const handleRejectRequestClick = (email) => {
-  //   const data = {
-  //     apiEndpoint: ADMIN_REJECT_REVIEW_REQUEST_URL,
-  //     requestData: JSON.stringify({ email }),
-  //   };
-
-  //   dispatch(rejectReviewRequest(data)).then((res) => {
-  //     if (res.type === "rejectReviewRequest/fulfilled") {
-  //       setPage(1);
-  //       fetchReviewRequests();
-  //     }
-  //   });
-  // };
 
   useEffect(() => {
     if (editProfileRequests.length > 0) {
@@ -82,6 +71,11 @@ const EditProfileRequest = () => {
           license: request?.license,
           stc_pay: request?.stc_pay,
           saudireps_number: request?.saudireps_number,
+          certificate:
+            request?.certificate &&
+            request?.certificate?.map((certificate, index) => (
+              <p key={index}>{certificate?.title}</p>
+            )),
           request_status: (
             <div className="d-flex align-items-center justify-content-center">
               <div
@@ -101,13 +95,13 @@ const EditProfileRequest = () => {
             <div className="d-flex align-items-center justify-content-md-center">
               <span
                 className={`iconBadge px-2 cursorPointer`}
-                onClick={() => handleChangeStatus(request?.id)}
+                onClick={() => handleChangeStatus(request?.id, "Declined")}
               >
                 <BsFillPersonXFill size={22} className="rejectUser mb-1" />
               </span>
               <span
                 className={`iconBadge px-2 cursorPointer`}
-                onClick={() => handleChangeStatus(request?.id)}
+                onClick={() => handleChangeStatus(request?.id, "Approved")}
               >
                 <BsPersonCheckFill size={22} className="approveUser mb-1" />
               </span>
@@ -126,6 +120,7 @@ const EditProfileRequest = () => {
     { label: "License Number", dataKey: "license" },
     { label: "STC Phone No", dataKey: "stc_pay" },
     { label: "Saudireps Number", dataKey: "saudireps_number" },
+    { label: "Certificates", dataKey: "certificate" },
     { label: "Status", dataKey: "request_status", align: "center" },
     { label: "Action", dataKey: "action", align: "center" },
   ];

@@ -321,11 +321,11 @@ export const ADD_SUB_CATEGORY_SCHEMA = Yup.object().shape({
 });
 
 export const ADD_EXERCISE_SCHEMA = Yup.object().shape({
-  title: requiredValidation,
-  title_ar: requiredValidation,
+  // title: requiredValidation,
+  // title_ar: requiredValidation,
   exercise_videos: exerciseVideoValidation,
-  exercise_part_text: exerciseTextValidation,
-  exercise_part_text_ar: exerciseTextValidation,
+  // exercise_part_text: exerciseTextValidation,
+  // exercise_part_text_ar: exerciseTextValidation,
 });
 
 export const ADD_PROMO_CODE_SCHEMA = Yup.object().shape({

@@ -36,7 +36,7 @@ const ReviewRequestWrapper = (props) => {
   );
 
   const dispatch = useDispatch();
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   useEffect(() => {
     const data = {
@@ -171,7 +171,9 @@ const ReviewRequestWrapper = (props) => {
                                 color="custom"
                                 className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
                               >
-                                {specialty.name}
+                                {i18n.dir() === "ltr"
+                                  ? specialty.name
+                                  : specialty.arabic_name}
                               </Badge>
                             )
                           )}

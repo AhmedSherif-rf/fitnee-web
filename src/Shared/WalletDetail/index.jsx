@@ -14,7 +14,7 @@ const WalletDetail = (props) => {
           <div className="me-2">
             <img
               src={
-                data?.transaction_status === "debit"
+                data?.Transaction_status === "debit"
                   ? Images.ARROW_UP_IMG
                   : Images.ARROW_DOWN_IMG
               }
@@ -30,7 +30,7 @@ const WalletDetail = (props) => {
               </span>
             </div>
             <div>
-              {data?.transaction_status === "debit" ? (
+              {data?.Transaction_status === "debit" ? (
                 <h4 className="mb-0">{`- ${CURRENCY} ${data?.total_amount}`}</h4>
               ) : (
                 <h4 className="mb-0">{`+ ${CURRENCY} ${data?.total_amount}`}</h4>

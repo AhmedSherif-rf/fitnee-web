@@ -27,8 +27,12 @@ const MyDropdown = (props) => {
         </option>
         {Options &&
           Options?.map((item, index) => (
-            <option key={index} value={item} className="customDropDownOption">
-              {item}
+            <option
+              key={index}
+              value={item?.value}
+              className="customDropDownOption"
+            >
+              {item.label}
             </option>
           ))}
       </Input>

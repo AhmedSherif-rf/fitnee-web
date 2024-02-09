@@ -184,7 +184,7 @@ export const userSlice = createSlice({
       .addCase(setAvailability.pending, (state) => {
         state.loading = "pending";
       })
-      .addCase(setAvailability.fulfilled, (state, action) => {
+      .addCase(setAvailability.fulfilled, (state) => {
         state.loading = "succeeded";
       })
       .addCase(setAvailability.rejected, (state) => {

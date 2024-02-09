@@ -120,6 +120,19 @@ export const getSpecialities = createAsyncThunk(
   }
 );
 
+export const getPreferences = createAsyncThunk(
+  "getPreferences",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const getMyServiceProviders = createAsyncThunk(
   "getMyServiceProviders",
   async ({ apiEndpoint }, thunkAPI) => {
@@ -237,7 +250,7 @@ export const setAvailability = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.put(apiEndpoint, requestData);
-      Toaster.success("Availability set successfully")
+      Toaster.success("Availability set successfully");
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.detail);

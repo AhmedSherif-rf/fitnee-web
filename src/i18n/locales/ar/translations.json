@@ -446,11 +446,11 @@
     "monthText": "شهر",
     "editText": "ﺗﻌﺪﻳﻞ",
     "addText": "ﺃﺿﺎﻓﻪ",
-    "fullyBookedText": "Fully Booked"
+    "fullyBookedText": "ليس متاح"
   },
   "paymentHistory": {
     "paymentHistoryTitleText": "تاريخ عمليات الدفع",
-    "availableBalanceText": "الرصيد المتاح",
+    "availableBalanceText": "الرصيدالمتاح",
     "todayText": "اليوم",
     "amountReleasedText": "المبلغ المدفوع",
     "SARText": "ريال"
@@ -580,7 +580,11 @@
     "cancellingSubscriptionModalText": "ﻫﻞ ﺃﻧﺖ ﻣﺘﺄﻛﺪ ﻣﻦ ﺇﻟﻐﺎء ﺍﻻﺷﺘﺮﺍﻙ",
     "dayText": "اليوم",
     "fromTimeText": "الوقت من",
-    "toTimeText": "الوقت الى"
+    "toTimeText": "الوقت الى",
+    "whatYouWillProvideText": "ماذا سوف تقدم للمشترك",
+    "selectTrainingGoalText": "الهدف التدريبي",
+    "selectLevelText": "مستوى النشاط",
+    "addTitleText": "اضف عنوان"
   },
   "login": {
     "loginText": "تسجيل الدخول",
@@ -597,8 +601,8 @@
     "cancelText": "إلغاء",
     "unlockYourPotentialText": "ﺃﻁﻠﻖ ﺍﻟﻌﻧﺎﻥ ﻹﻣﻛﺎﻧﻳﺎﺗﻙ",
     "transformYourBodyText": "ﻟﻴﺎﻗﺘﻚ ﻗﺮﺍﺭﻙ",
-    "requestUnderProcessText": "Your request is under process",
-    "accountRejectText": "Your request has been rejected by FitNee Admin, Please check your email"
+    "requestUnderProcessText": "طلبك قيد المراجعة",
+    "accountRejectText": "بعد مراجعة طلبك، تم رفضه من قِبل فريق فتني، الرجاء تفقد البريد الإلكتروني الخاص بك لمعرفه السبب"
   },
   "forgotPassword": {
     "emailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ",
@@ -672,7 +676,7 @@
   "messages": {
     "paymentFailedText": "ﺣﺪﺛﺖ ﻣﺸﻜﻠﻪ ﻓﻲ ﻋﻤﻠﻴﻪ ﺍﻟﺪﻓﻊ، ﺍﻟﺮﺟﺎء ﺍﻟﺘﺄﻛﺪ ﻣﻦ ﺍﻟﺒﻴﺎﻧﺎﺕ ﺍﻟﻤﺪﺧﻠﺔ",
     "noDataFoundText": "لاتوجد بيانات",
-    "cannotUserPromoCode": "Cannot use this Promo Code"
+    "cannotUserPromoCode": "الرمز الترويجي غير صالح"
   },
   "topBar": {
     "dashboardText": "ﺍﻟﺮﺋﻴﺴﻴﺔ",

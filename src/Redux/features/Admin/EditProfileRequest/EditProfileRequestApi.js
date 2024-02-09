@@ -15,43 +15,16 @@ export const getEditProfileRequestListing = createAsyncThunk(
   }
 );
 
-// export const getServiceProviderDetail = createAsyncThunk(
-//   "getServiceProviderDetail",
-//   async ({ apiEndpoint }, thunkAPI) => {
-//     try {
-//       const response = await axiosInstance.get(apiEndpoint);
-//       return response?.data;
-//     } catch (error) {
-//       Toaster.error(error?.response?.data?.error?.Message);
-//       return thunkAPI.rejectWithValue(error?.response?.data);
-//     }
-//   }
-// );
-
-// export const approveReviewRequest = createAsyncThunk(
-//   "approveReviewRequest",
-//   async ({ apiEndpoint, requestData }, thunkAPI) => {
-//     try {
-//       const response = await axiosInstance.post(apiEndpoint, requestData);
-//       Toaster.success(response.data.data.message);
-//       return response.data;
-//     } catch (error) {
-//       Toaster.error(error?.response?.data?.error?.Message);
-//       return thunkAPI.rejectWithValue(error?.response?.data);
-//     }
-//   }
-// );
-
-// export const rejectReviewRequest = createAsyncThunk(
-//   "rejectReviewRequest",
-//   async ({ apiEndpoint, requestData }, thunkAPI) => {
-//     try {
-//       const response = await axiosInstance.post(apiEndpoint, requestData);
-//       Toaster.success(response.data.data.message);
-//       return response.data;
-//     } catch (error) {
-//       Toaster.error(error?.response?.data?.error?.Message);
-//       return thunkAPI.rejectWithValue(error?.response?.data);
-//     }
-//   }
-// );
+export const changeProfileUpdateRequestStatus = createAsyncThunk(
+  "changeProfileUpdateRequestStatus",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.patch(apiEndpoint, requestData);
+      Toaster.success("Status changed successfully");
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);

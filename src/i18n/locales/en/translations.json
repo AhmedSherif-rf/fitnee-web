@@ -583,7 +583,11 @@
     "cancellingSubscriptionModalText": "Are you sure about canceling your subscription?",
     "dayText": "Day",
     "fromTimeText": "From time",
-    "toTimeText": "To time"
+    "toTimeText": "To time",
+    "whatYouWillProvideText": "What you will provide to the end user",
+    "selectTrainingGoalText": "Select training goal",
+    "selectLevelText": "Select activity level",
+    "addTitleText": "Add Title"
   },
   "login": {
     "loginText": "Sign In",

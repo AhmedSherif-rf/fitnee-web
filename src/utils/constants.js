@@ -18,24 +18,38 @@ export const TRAINER_NUTRITIONIST_TYPE = "both";
 export const MALE_BODY = "Male";
 export const FEMALE_BODY = "Female";
 //=====================signUpForm==================
-export const trainingGoalOptions = [
-  "Body Building",
-  "Gain Weight",
-  "Healthy Lifestyle",
-  "Lose Weight",
-  "Power Lifting",
-];
-export const activityLevelOptions = ["Not active", "Active", "Super active"];
 export const weekDaysOptions = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  { label: "Monday", value: "Monday" },
+  { label: "Tuesday", value: "Tuesday" },
+  { label: "Wednesday", value: "Wednesday" },
+  { label: "Thursday", value: "Thursday" },
+  { label: "Friday", value: "Friday" },
+  { label: "Saturday", value: "Saturday" },
+  { label: "Sunday", value: "Sunday" },
 ];
-export const roleOptions = ["Trainer", "Trainer And Nutritionist"];
+export const weekDaysOptionsArabic = [
+  { label: "الإثنين", value: "Monday" },
+  { label: "الثلاثاء", value: "Tuesday" },
+  { label: "الأربعاء", value: "Wednesday" },
+  { label: "الخميس", value: "Thursday" },
+  { label: "الجمعة", value: "Friday" },
+  { label: "السبت", value: "Saturday" },
+  { label: "الأحد", value: "Sunday" },
+];
+export const roleOptions = [
+  { label: "Trainer", value: "Trainer" },
+  {
+    label: "Trainer And Nutritionist",
+    value: "Trainer And Nutritionist",
+  },
+];
+export const roleOptionsArabic = [
+  { label: "المدرب", value: "Trainer" },
+  {
+    label: "مدرب وأخصائي تغذية",
+    value: "Trainer And Nutritionist",
+  },
+];
 //=====================Roles=====================
 export const ADMIN_ROLE = "Admin";
 export const TRAINEE_ROLE = "Trainee";
@@ -88,6 +102,12 @@ export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
+export const GET_TRAINING_GOAL_PREFERENCES_URL =
+  "/profile_preference?profile_type=training_goal";
+export const GET_LEVEL_PREFERENCES_URL =
+  "/profile_preference?profile_type=level";
+export const UPDATE_PROFILE_REQUEST_CHANGE_STATUS_URL =
+  "/admin/profile-update-request/requestId/change_status/";
 export const UPDATE_PROFILE_REQUEST_LISTING_URL =
   "/admin/profile-update-request/";
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =

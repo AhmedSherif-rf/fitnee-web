@@ -1,8 +1,8 @@
 import React from "react";
-import ServiceProviderProfileWrapper from "../../../../Shared/AdminShared/Components/ServiceProviderProfile";
+import ReviewRequestWrapper from "../../../../Shared/AdminShared/Components/ReviewRequestWrapper";
 
 const ReviewRequestDetail = () => {
-  return <ServiceProviderProfileWrapper />;
+  return <ReviewRequestWrapper />;
 };
 
 export default ReviewRequestDetail;

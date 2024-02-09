@@ -23,8 +23,8 @@ let Images = {
   YOUTUBE_IMG: require("../../Assets/Images/homeScreen/socialMedia/Youtube.svg")
     .default,
   HERO_TEXT_BACKGROUND_IMG: require("../../Assets/Images/homeScreen/HeroTextBgImage.png"),
-  HERO_BACKGROUND_IMG: require("../../Assets/Images/homeScreen/HeroBackground.svg")
-    .default,
+  HERO_BACKGROUND_IMG:
+    require("../../Assets/Images/homeScreen/HeroBackground.svg").default,
   // =============================sliderImgs===================================
   MIRROR_IMG: require("../../Assets/Images/homeScreen/sliderImgs/mirror.svg")
     .default,
@@ -37,8 +37,9 @@ let Images = {
   PHONE_ICON: require("../../Assets/Images/InputField/phoneLogo.svg").default,
   PERSON_ICON: require("../../Assets/Images/InputField/personLogo.svg").default,
   //==============================registerAsImgs===============================
-  REGISTER_AS_BG: require("../../Assets/Images/registerAsScreen/RegisterAsBackground.svg")
-    .default,
+  REGISTER_AS_BG:
+    require("../../Assets/Images/registerAsScreen/RegisterAsBackground.svg")
+      .default,
   //==============================GuestServiceProviderListImgs=================
   PROFILE1_IMG: require("../../Assets/tempImages/profile1.svg").default,
   PROFILE2_IMG: require("../../Assets/tempImages/profile1.svg").default,
@@ -49,26 +50,47 @@ let Images = {
     .default,
   SEE_MORE_BG_IMG: require("../../Assets/Images/ConstImgs/SeeMoreBg.svg")
     .default,
-  SHORTLOGO_IMG: require("../../Assets/Images/serviceProviderListScreen/DumbleLogo.svg")
-    .default,
+  SHORTLOGO_IMG:
+    require("../../Assets/Images/serviceProviderListScreen/DumbleLogo.svg")
+      .default,
   //==============================GuestServiceProviderProviderImgs=============
-  COMMENT_IMG: require("../../Assets/Images/serviceProviderListScreen/TrainerImg.svg")
-    .default,
-  DOCUMENT_IMG: require("../../Assets/Images/serviceProviderListScreen/DocumentImg.svg")
-    .default,
+  COMMENT_IMG:
+    require("../../Assets/Images/serviceProviderListScreen/TrainerImg.svg")
+      .default,
+  DOCUMENT_IMG:
+    require("../../Assets/Images/serviceProviderListScreen/DocumentImg.svg")
+      .default,
   //==============================SubscriptionImgs=============================
-  TRAINER_ONE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/trainerOneMonth.svg").default,
-  TRAINER_TWO_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/trainerTwoMonth.svg").default,
-  TRAINER_THREE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/trainerThreeMonth.svg").default,
+  TRAINER_ONE_MONTH_IMG:
+    require("../../Assets/Images/ConstImgs/subscription/trainerOneMonth.svg")
+      .default,
+  TRAINER_TWO_MONTH_IMG:
+    require("../../Assets/Images/ConstImgs/subscription/trainerTwoMonth.svg")
+      .default,
+  TRAINER_THREE_MONTH_IMG:
+    require("../../Assets/Images/ConstImgs/subscription/trainerThreeMonth.svg")
+      .default,
 
-  NUTRITIONIST_ONE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/nutritionistOneMonth.svg").default,
-  NUTRITIONIST_TWO_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/nutritionistTwoMonth.svg").default,
-  NUTRITIONIST_THREE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/nutritionistThreeMonth.svg").default,
+  NUTRITIONIST_ONE_MONTH_IMG:
+    require("../../Assets/Images/ConstImgs/subscription/nutritionistOneMonth.svg")
+      .default,
+  NUTRITIONIST_TWO_MONTH_IMG:
+    require("../../Assets/Images/ConstImgs/subscription/nutritionistTwoMonth.svg")
+      .default,
+  NUTRITIONIST_THREE_MONTH_IMG:
+    require("../../Assets/Images/ConstImgs/subscription/nutritionistThreeMonth.svg")
+      .default,
 
-  BOTH_T_AND_N_ONE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/bothOneMonth.svg").default,
-  BOTH_T_AND_N_TWO_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/bothTwoMonth.svg").default,
-  BOTH_T_AND_N_THREE_MONTH_IMG: require("../../Assets/Images/ConstImgs/subscription/bothThreeMonth.svg").default,
-  
+  BOTH_T_AND_N_ONE_MONTH_IMG:
+    require("../../Assets/Images/ConstImgs/subscription/bothOneMonth.svg")
+      .default,
+  BOTH_T_AND_N_TWO_MONTH_IMG:
+    require("../../Assets/Images/ConstImgs/subscription/bothTwoMonth.svg")
+      .default,
+  BOTH_T_AND_N_THREE_MONTH_IMG:
+    require("../../Assets/Images/ConstImgs/subscription/bothThreeMonth.svg")
+      .default,
+
   VISA_ICON: require("../../Assets/Images/ConstImgs/visaIcon.png"),
   MADA_ICON: require("../../Assets/Images/ConstImgs/madaIcon.png"),
   STC_PAY_ICON: require("../../Assets/Images/ConstImgs/stcPayIcon.png"),
@@ -79,6 +101,8 @@ let Images = {
   CAMERA_IMG: require("../../Assets/Images/ConstImgs/Frame.svg").default,
   ARROW_UP_IMG: require("../../Assets/Images/ConstImgs/ArrowUp.svg").default,
   CREDIT_CARD_IMG: require("../../Assets/Images/ConstImgs/CreditCardImg.svg")
+    .default,
+  PAYMENT_METHOD_IMG: require("../../Assets/Images/ConstImgs/PaymentMethod.png")
     .default,
   CARD_ICON_IMG: require("../../Assets/Images/ConstImgs/CardIcon.svg").default,
   GREEN_CIRCLE_IMG: require("../../Assets/Images/ConstImgs/greenCircle.png")

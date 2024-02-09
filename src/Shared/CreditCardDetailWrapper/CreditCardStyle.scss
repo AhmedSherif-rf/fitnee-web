@@ -36,7 +36,55 @@
     }
   }
 }
+.wpwl-container {
+  .wpwl-form-card {
+    text-align: left;
+    color: white;
+    border: 0px;
+    border-radius: 20px;
+    background-color: transparent;
+    @include bgProperties;
+    background-image: url(../../Assets/Images/ConstImgs/PaymentMethod.png);
 
+    .wpwl-wrapper {
+      select {
+        background: #282828;
+        padding-top: 0px !important;
+        color: white;
+      }
+    }
+  }
+}
+.wpwl-form-virtualAccount {
+  background-color: transparent;
+  @include bgProperties;
+  background-image: url(../../Assets/Images/ConstImgs/StcPayImg.png);
+  .wpwl-label {
+    display: flex;
+    justify-content: left;
+    color: white;
+  }
+  .wpwl-group-brand {
+    .wpwl-brand-STC_PAY {
+      margin-right: 0;
+    }
+    .wpwl-brand {
+      left: 0px !important;
+    }
+  }
+}
+.wpwl-wrapper-submit {
+  display: flex;
+  justify-content: left;
+  .wpwl-button {
+    background: $yellow;
+    border: none;
+    border-radius: 10px;
+  }
+}
+.wpwl-label{
+  content:" " !important;
+}
 .countryContainerClass {
   .stdropdown-container {
     border-radius: 14px !important;

@@ -13,6 +13,7 @@ import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 import { ADD_PROMO_CODE_SCHEMA } from "../../../Shared/ValidationData/validation";
 import { ADD_PROMO_CODE_INITIAL_VALUES } from "../../../Shared/ValidationData/initialValue";
 import {
+  CURRENCY,
   ADMIN_PROMO_CODE_URL,
   promoCodeTypeOptions,
 } from "../../../utils/constants";
@@ -29,13 +30,14 @@ const PromoCode = (props) => {
   const [tableData, setTableData] = useState([]);
   const [promoCodeData, setPromoCodeData] = useState(null);
 
-  const handleAddPromoCodeSubmit = (values) => {
+  const handleAddPromoCodeSubmit = (values, resetForm) => {
     const data = {
       apiEndpoint: ADMIN_PROMO_CODE_URL,
       requestData: JSON.stringify(values),
     };
     dispatch(createPromoCodeList(data)).then((res) => {
       if (res.type === "createPromoCodeList/fulfilled") {
+        resetForm();
         setPromoCodeData(res.payload.data);
         fetchPromoCodeListing();
       }
@@ -67,8 +69,14 @@ const PromoCode = (props) => {
           id: <h6 className="text-secondary fw-bold mb-0">{promoCode.id}</h6>,
           code: promoCode.code,
           type: promoCode.type,
+          value: (
+            <p>
+              {promoCode.type === "flat"
+                ? `${CURRENCY} ${promoCode.value}`
+                : `${promoCode.value}%`}
+            </p>
+          ),
           limited_users: promoCode.limited_users,
-          value: promoCode.value,
           expire_date: promoCode.expire_date,
         });
       });
@@ -81,6 +89,7 @@ const PromoCode = (props) => {
     { label: "ID", dataKey: "id", align: "center" },
     { label: "Code", dataKey: "code" },
     { label: "Type", dataKey: "type" },
+    { label: "Value", dataKey: "value" },
     { label: "User Limit", dataKey: "limited_users", align: "center" },
     { label: "Expire Date", dataKey: "expire_date", align: "center" },
   ];
@@ -98,9 +107,9 @@ const PromoCode = (props) => {
               <Formik
                 initialValues={{ ...ADD_PROMO_CODE_INITIAL_VALUES }}
                 validationSchema={ADD_PROMO_CODE_SCHEMA}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={(values, { setSubmitting, resetForm }) => {
                   setSubmitting(true);
-                  handleAddPromoCodeSubmit(values);
+                  handleAddPromoCodeSubmit(values, resetForm);
                 }}
               >
                 {({
@@ -208,7 +217,7 @@ const PromoCode = (props) => {
                           <FillBtn
                             type={"submit"}
                             text={"Submit Code"}
-                            className=" w-100 py-3"
+                            className=" w-100 py-2"
                           />
                         </Col>
                       </Row>

@@ -141,7 +141,7 @@ const setTraineeInitialValues = (initalValues, user) => {
   };
 };
 
-const setTrainerInitialValues = (initalValues, user) => {
+const setTrainerInitialValues = (initalValues, user, dir) => {
   return {
     ...initalValues,
     bio: user?.bio,
@@ -151,8 +151,8 @@ const setTrainerInitialValues = (initalValues, user) => {
     full_name: user?.full_name,
     experience: user?.experience,
     phone_number: user?.phone_number,
-    specialities: user?.specialities.map(({ id, name }) => ({
-      label: name,
+    specialities: user?.specialities.map(({ id, name, arabic_name }) => ({
+      label: dir === "ltr" ? name : arabic_name,
       value: id,
     })),
     saudireps_number: user?.saudireps_number,

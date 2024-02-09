@@ -447,7 +447,8 @@
     "endDateText": "End Date",
     "monthText": "Month",
     "editText": "Edit",
-    "addText": "Add"
+    "addText": "Add",
+    "fullyBookedText": "Fully Booked"
   },
 
   "paymentHistory": {
@@ -582,7 +583,11 @@
     "cancellingSubscriptionModalText": "Are you sure about canceling your subscription?",
     "dayText": "Day",
     "fromTimeText": "From time",
-    "toTimeText": "To time"
+    "toTimeText": "To time",
+    "whatYouWillProvideText": "What you will provide to the end user",
+    "selectTrainingGoalText": "Select training goal",
+    "selectLevelText": "Select activity level",
+    "addTitleText": "Add Title"
   },
   "login": {
     "loginText": "Sign In",
@@ -726,6 +731,7 @@
     "requiredPreviousPasswordText": "Previous Password is required",
     "requiredDescriptionText": "Description is required",
     "invalidDescriptionText": "At least one description is required",
-    "requiredExerciseVideoText": "Exercise video is required"
+    "requiredExerciseVideoText": "Exercise video is required",
+    "invalidEndTimeText": "End time must be greater than start time"
   }
 }

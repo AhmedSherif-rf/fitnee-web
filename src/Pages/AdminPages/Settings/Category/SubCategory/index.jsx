@@ -134,7 +134,7 @@ const SubCategory = () => {
                   {t(errors.title_ar) && touched.title_ar && t(errors.title_ar)}
                 </p>
               </Col>
-              <Col md={2} className="mb-2">
+              <Col md={3} className="mb-2">
                 <FillBtn
                   className="w-100 py-3 mb-2"
                   text={type}
@@ -149,7 +149,7 @@ const SubCategory = () => {
       {subCategoriesData.length > 0 && (
         <Row className="tableBodyWrapperPagination">
           {subCategoriesData.map((subCategory, index) => (
-            <Col lg={4} md={6} className="mb-2" key={index}>
+            <Col lg={4} className="mb-2" key={index}>
               <SubCategoryCard
                 subCategory={subCategory}
                 onEditClick={handleEditClick}

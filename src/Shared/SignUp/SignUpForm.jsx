@@ -10,9 +10,7 @@ import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import { FaCircleXmark } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
-import { SIGNUP_SCHEMA } from "./data/validation";
 import { Formik, Field, FieldArray } from "formik";
-import { INITIAL_VALUES } from "./data/initialValue";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { ConnectedFocusError } from "focus-formik-error";
@@ -24,6 +22,7 @@ import { FaBirthdayCake, FaVenus, FaMars, FaEdit } from "react-icons/fa";
 import {
   signUp,
   editProfile,
+  getPreferences,
   getSpecialities,
 } from "../../Redux/features/User/userApi";
 import {
@@ -49,11 +48,16 @@ import {
   REGISTER_URL,
   TRAINEE_TYPE,
   TRAINER_TYPE,
+  TRAINEE_ROLE,
+  weekDaysOptions,
   EDIT_PROFILE_URL,
   NUTRITIONIST_TYPE,
+  roleOptionsArabic,
   GET_SPECIALITIES_URL,
+  weekDaysOptionsArabic,
   TRAINER_NUTRITIONIST_TYPE,
-  TRAINEE_ROLE,
+  GET_LEVEL_PREFERENCES_URL,
+  GET_TRAINING_GOAL_PREFERENCES_URL,
 } from "../../utils/constants";
 import {
   Container,
@@ -64,11 +68,6 @@ import {
   Input,
   Label,
 } from "reactstrap";
-import {
-  trainingGoalOptions,
-  activityLevelOptions,
-  weekDaysOptions,
-} from "../../utils/constants";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -78,7 +77,9 @@ const SignUpForm = () => {
   const { loading, user } = useSelector((state) => state.user);
   const filterFields = functions.filterSignUpFields(roleType, user);
 
+  const [levelOptions, setLevelOptions] = useState([]);
   const [specialityOptions, setSpecialityOptions] = useState([]);
+  const [trainingGoalOptions, setTrainingGoalOptions] = useState([]);
   const [showEditProfileModal, setShowEditProfileModal] = useState(false);
 
   useEffect(() => {
@@ -89,12 +90,11 @@ const SignUpForm = () => {
       dispatch(getSpecialities(data)).then((res) => {
         if (res.type === "getSpecialities/fulfilled") {
           let specialities = [];
-          // if (lang === "en") {
-          specialities = res.payload.data.en;
-          // }
-          // else {
-          //   specialities = res.payload.data.ar;
-          // }
+          if (i18n.dir() === "ltr") {
+            specialities = res.payload.data.en;
+          } else {
+            specialities = res.payload.data.ar;
+          }
           specialities = specialities.map(({ id, name }) => ({
             label: name,
             value: id,
@@ -102,7 +102,46 @@ const SignUpForm = () => {
           setSpecialityOptions(specialities);
         }
       });
+    } else if (roleType === TRAINEE_TYPE) {
+      const data = {
+        apiEndpoint: GET_TRAINING_GOAL_PREFERENCES_URL,
+      };
+      dispatch(getPreferences(data)).then((res) => {
+        if (res.type === "getPreferences/fulfilled") {
+          let trainingGoals = [];
+          if (i18n.dir() === "ltr") {
+            trainingGoals = res.payload.data.en;
+          } else {
+            trainingGoals = res.payload.data.ar;
+          }
+          trainingGoals = trainingGoals.map(({ id, name }) => ({
+            label: name,
+            value: id,
+          }));
+          setTrainingGoalOptions(trainingGoals);
+        }
+      });
+
+      const payload = {
+        apiEndpoint: GET_LEVEL_PREFERENCES_URL,
+      };
+      dispatch(getPreferences(payload)).then((res) => {
+        if (res.type === "getPreferences/fulfilled") {
+          let levels = [];
+          if (i18n.dir() === "ltr") {
+            levels = res.payload.data.en;
+          } else {
+            levels = res.payload.data.ar;
+          }
+          levels = levels.map(({ id, name }) => ({
+            label: name,
+            value: id,
+          }));
+          setLevelOptions(levels);
+        }
+      });
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -117,7 +156,8 @@ const SignUpForm = () => {
         case TRAINER_TYPE:
           return functions.setTrainerInitialValues(
             TRAINER_EDIT_PROFILE_INITIAL_VALUES,
-            user
+            user,
+            i18n.dir()
           );
         case NUTRITIONIST_TYPE:
           return functions.setNutritionistInitialValues(
@@ -131,7 +171,7 @@ const SignUpForm = () => {
           );
 
         default:
-          return INITIAL_VALUES;
+          return [];
       }
     } else {
       switch (roleType) {
@@ -145,7 +185,7 @@ const SignUpForm = () => {
           return TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES;
 
         default:
-          return INITIAL_VALUES;
+          return [];
       }
     }
   };
@@ -162,7 +202,7 @@ const SignUpForm = () => {
         case TRAINER_NUTRITIONIST_TYPE:
           return TRAINER_NUTRITIONIST_EDIT_PROFILE_SCHEMA;
         default:
-          return SIGNUP_SCHEMA;
+          return [];
       }
     } else {
       switch (roleType) {
@@ -176,14 +216,14 @@ const SignUpForm = () => {
           return TRAINER_NUTRITIONIST_SIGNUP_SCHEMA;
 
         default:
-        // return INITIAL_VALUES;
+          return [];
       }
     }
   };
 
   const handleSignUpSubmit = (values) => {
-    const formData = functions.createFormData(values);
     if (user === null) {
+      let formData = functions.createFormData(values);
       const data = {
         apiEndpoint: REGISTER_URL,
         requestData: formData,
@@ -194,6 +234,16 @@ const SignUpForm = () => {
         }
       });
     } else {
+      values.profile_availability = values.profile_availability.map(
+        ({ id, day, starttime, endtime }) => ({
+          id,
+          day,
+          starttime,
+          endtime,
+        })
+      );
+
+      let formData = functions.createFormData(values);
       const data = {
         apiEndpoint: EDIT_PROFILE_URL.replace("userId", user?.id),
         requestData: formData,
@@ -214,41 +264,6 @@ const SignUpForm = () => {
         validationSchema={getSchemaValidation()}
         onSubmit={(values) => {
           handleSignUpSubmit(values);
-          // setTimeout(() => {
-          //   setSubmitting(false);
-          //   if (roleType === TRAINEE_TYPE) {
-          //     localStorage.setItem("role", TRAINEE_TYPE);
-          //     navigate("/trainee/dashboard");
-          //   } else if (
-          //     roleType === TRAINER_TYPE ||
-          //     roleType === NUTRITIONIST_TYPE
-          //   ) {
-          //     localStorage.setItem("role", TRAINER_TYPE);
-          //     navigate("/serviceProvider/dashboard");
-          //   }
-          //   // navigate("/verifyOtp");
-          // }, 400);
-
-          // initialValues={{ ...INITIAL_VALUES }}
-          // // validationSchema={SIGNUP_SCHEMA}
-          // onSubmit={(values, { setSubmitting }) => {
-          //   console.log(values);
-          //   setTimeout(() => {
-          //     // alert(JSON.stringify(values));
-          //     setSubmitting(false);
-          //     if (roleType === TRAINEE_TYPE) {
-          //       localStorage.setItem("role", TRAINEE_TYPE);
-          //       navigate("/trainee/dashboard");
-          //     } else if (roleType === TRAINER_TYPE) {
-          //       localStorage.setItem("role", TRAINER_TYPE);
-          //       // navigate("/serviceProvider/dashboard");
-          //       navigate("/serviceProvider/appDownloadLink");
-          //     } else if (roleType === NUTRITIONIST_TYPE) {
-          //       localStorage.setItem("role", NUTRITIONIST_TYPE);
-          //       // navigate("/serviceProvider/dashboard");
-          //       navigate("/serviceProvider/appDownloadLink");
-          //     }
-          //   }, 400);
         }}
       >
         {({
@@ -616,10 +631,12 @@ const SignUpForm = () => {
                         *
                       </div>
                       <MyDropdown
-                        className="shadow-0 py-3 px-4 border"
-                        Options={roleOptions}
+                        className="shadow-0 py-3 px-5 border"
+                        Options={
+                          i18n.dir() === "ltr" ? roleOptions : roleOptionsArabic
+                        }
                         name={"role"}
-                        placeholder={"What you will provide to the end user"}
+                        placeholder={t("signup.whatYouWillProvideText")}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
                         value={values.role}
@@ -783,8 +800,8 @@ const SignUpForm = () => {
                                 name={`certificate_title.${index}`}
                                 type="text"
                                 className="form-control-lg certificatioTitle bgBlur"
-                            style={{width:"200px"}}
-                                placeholder="Add title"
+                                style={{ width: "200px" }}
+                                placeholder={t("signup.addTitleText")}
                               />
                               <img
                                 src={URL.createObjectURL(image)}
@@ -831,8 +848,8 @@ const SignUpForm = () => {
                           >
                             <img src={Images.UPLOAD_ICON} alt="" />
                             <input
-                            className=""
-                          id="file-upload"
+                              className=""
+                              id="file-upload"
                               type="file"
                               accept=".png, .jpg, .jpeg"
                               onChange={(event) => {
@@ -868,7 +885,7 @@ const SignUpForm = () => {
                   <Row>
                     {filterFields.includes("saudireps_number") && (
                       <Col md={6}>
-                        <h6 className="mb-2 fw-bold">
+                        <h6 className="mb-2 fw-bold mt-2">
                           {t("signup.saudiRepsNumberText")}{" "}
                         </h6>
                         <InputField
@@ -891,7 +908,7 @@ const SignUpForm = () => {
 
                     {filterFields.includes("license_number") && (
                       <Col md={6}>
-                        <h6 className="mb-2 fw-bold">
+                        <h6 className="mb-2 fw-bold mt-2">
                           {t("signup.enterYourProfessionalText")}{" "}
                         </h6>
                         <InputField
@@ -913,7 +930,7 @@ const SignUpForm = () => {
                     )}
 
                     {filterFields.includes("stc_pay") && (
-                      <Col lg={6} md={6} className="mb-2">
+                      <Col lg={6} md={6} className="mb-2 mt-2">
                         <h6 className="mb-2 fw-bold">
                           {t("signup.enterStcPayAccountText")}{" "}
                           {user === null && "*"}
@@ -1057,7 +1074,7 @@ const SignUpForm = () => {
                           name="specialities"
                           component={MultiSelector}
                           options={specialityOptions}
-                          placeholder="Select options"
+                          placeholder={t("signup.selectText")}
                           className="border-0 customMultiSelector"
                         />
                       </div>
@@ -1098,7 +1115,7 @@ const SignUpForm = () => {
                         className=" shadow-0 py-3 px-5 border"
                         Options={trainingGoalOptions}
                         name={"training_goal"}
-                        placeholder={"Select training goal"}
+                        placeholder={t("signup.selectTrainingGoalText")}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
                         value={values.training_goal}
@@ -1134,9 +1151,9 @@ const SignUpForm = () => {
                     <Col md={12} className="mb-2">
                       <MyDropdown
                         className=" shadow-0 py-3 px-5 border"
-                        Options={activityLevelOptions}
+                        Options={levelOptions}
                         name={"level"}
-                        placeholder={"Select activity level"}
+                        placeholder={t("signup.selectLevelText")}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
                         value={values.level}
@@ -1187,7 +1204,11 @@ const SignUpForm = () => {
                                 <p className="mb-0">{t("signup.dayText")}</p>
                                 <MyDropdown
                                   className=" shadow-0 py-3 px-5 border"
-                                  Options={weekDaysOptions}
+                                  Options={
+                                    i18n.dir() === "ltr"
+                                      ? weekDaysOptions
+                                      : weekDaysOptionsArabic
+                                  }
                                   name={`profile_availability.${index}.day`}
                                   placeholder={t("signup.selectText")}
                                   onChangeHandle={handleChange}
@@ -1316,6 +1337,7 @@ const SignUpForm = () => {
                               <Field
                                 name={`subscription_plans.${index}.price`}
                                 type="number"
+                                min={0}
                                 className="customDropdownRadius form-control select-field py-3 px-4 border"
                               />
                               <p className="errorField">
@@ -1454,11 +1476,6 @@ const SignUpForm = () => {
         onClose={useCallback(() => {
           setShowEditProfileModal(false);
         }, [])}
-        // handleRefetchHistory={useCallback(() => {
-        //   fetchTraineeProgressHistory();
-        //   setShowAddProgressModal(false);
-        //   // eslint-disable-next-line react-hooks/exhaustive-deps
-        // }, [])}
       />
     </Container>
   );

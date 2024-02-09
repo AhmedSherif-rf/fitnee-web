@@ -14,9 +14,12 @@ const SubCategoryCard = (props) => {
         >
           <div
             className={`h-100 p-3 onlyBorderRadius CategoryCardHeader`}
-            style={{minWidth:"280px", maxWidth:"280px"}}
+            style={{ minWidth: "85%", maxWidth: "85%" }}
           >
-            <Link className="h-100" to={`/admin/exercises/addExercises/${subCategory.id}`}>
+            <Link
+              className="h-100"
+              to={`/admin/exercises/addExercises/${subCategory.id}`}
+            >
               <h6 className="mb-0 text-start fw-bold textGrey">
                 {subCategory.title} / {subCategory.title_ar}
               </h6>

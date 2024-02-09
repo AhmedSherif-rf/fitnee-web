@@ -7,14 +7,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { LineChart } from "../../../Shared/Chart/LineChart";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import React, { useCallback, useEffect, useState } from "react";
-import { TRAINEE_PROGRESS_URL } from "../../../utils/constants";
 import { Row, Col, Container, Card, CardBody } from "reactstrap";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import ProfileProgressBar from "../../../Shared/ProfileProgressBar";
 import AddProgressModal from "../../../Shared/Modal/AddProgressModal";
 import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
-import { getTraineeProgressHistory } from "../../../Redux/features/User/userApi";
+import {
+  TRAINEE_PROGRESS_URL,
+  USER_PROFILE_URL,
+} from "../../../utils/constants";
+import {
+  getTraineeProgressHistory,
+  getUserProfile,
+} from "../../../Redux/features/User/userApi";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -49,8 +55,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchTraineeProgressHistory();
+    fetchUserProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const fetchUserProfile = () => {
+    const data = {
+      apiEndpoint: USER_PROFILE_URL,
+    };
+
+    dispatch(getUserProfile(data));
+  };
 
   const fetchTraineeProgressHistory = () => {
     const data = {

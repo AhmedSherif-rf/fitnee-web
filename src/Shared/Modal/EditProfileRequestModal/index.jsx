@@ -1,62 +1,56 @@
-import { Formik } from "formik";
 import PropTypes from "prop-types";
 import React, { memo } from "react";
+import { Formik, Field } from "formik";
 import InputField from "../../InputField";
 import FillBtn from "../../Buttons/FillBtn";
-import OutlineBtn from "../../Buttons/OutlineBtn";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { TRAINEE_PROGRESS_URL } from "../../../utils/constants";
-import { Field } from "formik";
+import { useNavigate } from "react-router-dom";
+import functions from "../../../utils/functions";
 import PhoneInputField from "../../PhoneInputField";
+import { useDispatch, useSelector } from "react-redux";
+import Images from "../../../HelperMethods/Constants/ImgConstants";
+import { Modal, ModalBody, ModalHeader, Label, Row, Col } from "reactstrap";
+import { sendEditProfileRequest } from "../../../Redux/features/User/userApi";
+import {
+  TRAINER_TYPE,
+  NUTRITIONIST_TYPE,
+  SEND_UPDATE_PROFILE_URL,
+} from "../../../utils/constants";
 import {
   TRAINER_EDIT_PROFILE_REQUEST_SCHEMA,
   NUTRITIONIST_EDIT_PROFILE_REQUEST_SCHEMA,
 } from "../../ValidationData/validation";
-import { sendEditProfileRequest } from "../../../Redux/features/User/userApi";
-import {
-  Modal,
-  ModalBody,
-  ModalHeader,
-  Label,
-  Form,
-  Row,
-  Col,
-} from "reactstrap";
-import Images from "../../../HelperMethods/Constants/ImgConstants";
-import { useParams } from "react-router-dom";
-import { TRAINER_TYPE, NUTRITIONIST_TYPE } from "../../../utils/constants";
 import {
   TRAINER_EDIT_PROFILE_REQUEST_INITIAL_VALUES,
   NUTRITIONIST_EDIT_PROFILE_REQUEST_INITIAL_VALUES,
 } from "../../ValidationData/initialValue";
-import functions from "../../../utils/functions";
 
 const EditProfileRequestModal = (props) => {
-  const {
-    onClose,
-    isOpen,
-    className,
-    size,
-    handleRefetchHistory,
-    heading,
-  } = props;
-  const { user, loading } = useSelector((state) => state.user);
+  const { onClose, isOpen, className, size, heading } = props;
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { roleType } = useParams();
   const { t, i18n } = useTranslation("");
+  const { user, loading } = useSelector((state) => state.user);
 
   const handleEditRequestSubmit = (values) => {
+    values.certificates = values.certificates.map((item) => ({
+      title: item,
+      is_image_compressed: false,
+    }));
+
     const formData = functions.createFormData(values);
 
     const data = {
-      apiEndpoint: "/profile-update-request/",
+      apiEndpoint: SEND_UPDATE_PROFILE_URL,
       requestData: formData,
     };
     dispatch(sendEditProfileRequest(data)).then((res) => {
-      console.log(res);
       if (res.type === "sendEditProfileRequest/fulfilled") {
-        console.log(res);
+        onClose();
+        navigate("/");
       }
     });
   };
@@ -110,41 +104,6 @@ const EditProfileRequestModal = (props) => {
           onSubmit={(values) => {
             console.log(values);
             handleEditRequestSubmit(values);
-            // setTimeout(() => {
-            //   setSubmitting(false);
-            //   if (roleType === TRAINEE_TYPE) {
-            //     localStorage.setItem("role", TRAINEE_TYPE);
-            //     navigate("/trainee/dashboard");
-            //   } else if (
-            //     roleType === TRAINER_TYPE ||
-            //     roleType === NUTRITIONIST_TYPE
-            //   ) {
-            //     localStorage.setItem("role", TRAINER_TYPE);
-            //     navigate("/serviceProvider/dashboard");
-            //   }
-            //   // navigate("/verifyOtp");
-            // }, 400);
-
-            // initialValues={{ ...INITIAL_VALUES }}
-            // // validationSchema={SIGNUP_SCHEMA}
-            // onSubmit={(values, { setSubmitting }) => {
-            //   console.log(values);
-            //   setTimeout(() => {
-            //     // alert(JSON.stringify(values));
-            //     setSubmitting(false);
-            //     if (roleType === TRAINEE_TYPE) {
-            //       localStorage.setItem("role", TRAINEE_TYPE);
-            //       navigate("/trainee/dashboard");
-            //     } else if (roleType === TRAINER_TYPE) {
-            //       localStorage.setItem("role", TRAINER_TYPE);
-            //       // navigate("/serviceProvider/dashboard");
-            //       navigate("/serviceProvider/appDownloadLink");
-            //     } else if (roleType === NUTRITIONIST_TYPE) {
-            //       localStorage.setItem("role", NUTRITIONIST_TYPE);
-            //       // navigate("/serviceProvider/dashboard");
-            //       navigate("/serviceProvider/appDownloadLink");
-            //     }
-            //   }, 400);
           }}
         >
           {({
@@ -158,7 +117,7 @@ const EditProfileRequestModal = (props) => {
           }) => (
             <form onSubmit={handleSubmit}>
               <Row className="mb-3">
-                <div className="editRequestWrapper py-2">
+                <div className="py-2">
                   <>
                     <Col md={12}>
                       <h6 className="fw-bold">
@@ -290,15 +249,15 @@ const EditProfileRequestModal = (props) => {
                           className="py-3 px-4"
                           type="number"
                           placeholder={t("signup.enterYourProfessionalText")}
-                          name="license_number"
+                          name="license"
                           onChangeHandle={handleChange}
                           onBlurHandle={handleBlur}
-                          value={values.license_number}
+                          value={values.license}
                         />
                         <p className="errorField">
-                          {t(errors.license_number) &&
-                            touched.license_number &&
-                            t(errors.license_number)}
+                          {t(errors.license) &&
+                            touched.license &&
+                            t(errors.license)}
                         </p>
                       </Col>
                     )}

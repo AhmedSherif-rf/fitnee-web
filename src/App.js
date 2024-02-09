@@ -28,20 +28,20 @@ function App() {
 
   useEffect(() => {
     getNotificationToken(setFcmToken);
-
-    onMessageListener()
-      .then((payload) => {
-        setNotification({
-          title: payload.notification.title,
-          body: payload.notification.body,
-        });
-        setShowNotification(true);
-        setTimeout(() => {
-          setShowNotification(false);
-        }, 5000);
-      })
-      .catch((err) => console.log("failed: ", err));
   }, []);
+
+  onMessageListener()
+    .then((payload) => {
+      setNotification({
+        title: payload.notification.title,
+        body: payload.notification.body,
+      });
+      setShowNotification(true);
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 5000);
+    })
+    .catch((err) => console.log("failed: ", err));
 
   useEffect(() => {
     if (localStorage.getItem("Website_Language__fitnee") === null) {

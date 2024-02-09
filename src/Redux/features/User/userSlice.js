@@ -7,6 +7,8 @@ import {
   deleteAccount,
   getMyTrainees,
   changePassword,
+  getUserProfile,
+  setAvailability,
   addTraineeProgress,
   cancelSubscription,
   getMyServiceProviders,
@@ -168,6 +170,25 @@ export const userSlice = createSlice({
       .addCase(sendEditProfileRequest.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
+      })
+      .addCase(getUserProfile.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getUserProfile.fulfilled, (state, action) => {
+        state.user = { ...action.payload.data[0], tokens: state.user.tokens };
+        state.loading = "succeeded";
+      })
+      .addCase(getUserProfile.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(setAvailability.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(setAvailability.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(setAvailability.rejected, (state) => {
+        state.loading = "failed";
       });
   },
 });

@@ -9,6 +9,7 @@ import walletSlice from "./features/Admin/Wallet/walletSlice.js";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactUsSlice from "./features/ContactUs/contactUsSlice.js";
 import promoCode from "./features/Admin/PromoCode/promoCodeSlice.js";
+import feedbackSlice from "./features/Admin/Feedback/FeedbackSlice.js";
 import subscriptionSlice from "./features/Subscription/subscriptionSlice.js";
 import userListingSlice from "./features/Admin/UserListing/userListingSlice.js";
 import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.js";
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   promoCode: promoCode,
   exercise: exerciseSlice,
   language: languageSlice,
+  feedback: feedbackSlice,
   contactUs: contactUsSlice,
   userListing: userListingSlice,
   subscription: subscriptionSlice,

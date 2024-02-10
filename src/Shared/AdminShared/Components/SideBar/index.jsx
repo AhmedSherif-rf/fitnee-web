@@ -88,17 +88,7 @@ const SideBar = ({ isOpen, toggle }) => (
             Reports
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink
-            className="py-3 d-flex align-items-center gap-2"
-            tag={Link}
-            to={"/admin/feedback"}
-          >
-            <GoPaste />
-            Feedback
-          </NavLink>
-        </NavItem>
-
+        <SubMenu title="Feedback" icon={<GoPaste />} items={submenus[2]} />
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
@@ -129,6 +119,16 @@ const submenus = [
     {
       title: "Wallet Overview",
       target: "/admin/walletSystem/walletOverview",
+    },
+  ],
+  [
+    {
+      title: "Platform Feedback",
+      target: "/admin/platformFeedback",
+    },
+    {
+      title: "Service Provider Feedback",
+      target: "/admin/serviceProviderFeedback",
     },
   ],
 ];

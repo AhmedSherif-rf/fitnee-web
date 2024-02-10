@@ -42,10 +42,15 @@ const Footer = () => {
               <img src={Image.TIKTOK_IMG} alt="logo" />
             </Link> */}
           </div>
-          <div className="d-flex mx-4 align-items-start justify-content-center">
+          <div className="d-flex mx-4 align-items-start justify-content-center gap-2">
             <Link to={`termAndCondition/general/home`}>
               <h6 className="text-white mb-0">
                 {t("landing.termsAndConditionsText")}
+              </h6>
+            </Link>
+            <Link to={`/privacyPolicy`}>
+              <h6 className="text-white mb-0">
+                {t("privacyPolicy.privacyPolicyHeadingText")}
               </h6>
             </Link>
           </div>

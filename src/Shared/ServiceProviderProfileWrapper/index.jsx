@@ -13,6 +13,7 @@ import React, { useCallback, memo, useState, useEffect } from "react";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
 import { GUEST_SERVICE_PROVIDER_PROFILE_URL } from "../../utils/constants";
 import { getServiceProviderProfile } from "../../Redux/features/Guest/guestApi";
+import { setServiceProvider } from "../../Redux/features/Subscription/subscriptionSlice";
 
 const commentsData = [
   {
@@ -65,8 +66,9 @@ const ServiceProviderProfileWrapper = (props) => {
   }, [dispatch, uuid]);
 
   const handleSubscribeClick = useCallback(() => {
+    dispatch(setServiceProvider(serviceProviderProfile));
     navigate(`${subscriptionLink}/${uuid}`);
-  }, [navigate, subscriptionLink, uuid]);
+  }, [dispatch, navigate, serviceProviderProfile, subscriptionLink, uuid]);
 
   return (
     <Container fluid className={i18n.dir()}>

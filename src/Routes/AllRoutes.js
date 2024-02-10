@@ -49,6 +49,13 @@ const routes = [
     exact: true,
   },
   {
+    path: "/privacyPolicy",
+    component: lazy(() => import("../Pages/Auth/PrivacyPolicy")),
+    isPublic: true,
+    theme: "light",
+    exact: true,
+  },
+  {
     path: "/contactUs",
     component: lazy(() => import("../Pages/Auth/ContactUs")),
     isPublic: true,

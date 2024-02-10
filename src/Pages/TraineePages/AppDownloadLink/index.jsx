@@ -12,7 +12,7 @@ import { checkPaymentStatus } from "../../../Redux/features/Subscription/subscri
 const AppDownloadLink = () => {
   const { t, i18n } = useTranslation("");
   const dispatch = useDispatch();
-  const { entity, checkoutId, loading } = useSelector(
+  const { entity, checkoutId, loading, serviceProvider } = useSelector(
     (state) => state.subscription
   );
   const [isPaymentSucceed, setIsPaymentSucceed] = useState("");
@@ -51,7 +51,10 @@ const AppDownloadLink = () => {
                       {t("appLink.congratulationsText")}
                     </h3>
                     <p className="px-5">
-                      {t("appLink.youHaveSubscribedWithText")} XXX . XXX
+                      {t("appLink.youHaveSubscribedWithText")}{" "}
+                      <span className="fw-bold">
+                        {serviceProvider?.full_name}
+                      </span>
                       {t("appLink.downloadAppText")}
                     </p>
                   </div>

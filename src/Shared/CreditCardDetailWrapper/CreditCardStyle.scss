@@ -38,8 +38,12 @@
 }
 .wpwl-container {
   .wpwl-form-card {
+    .wpwl-label{
+      color:$white;
+    }
+ 
     text-align: left;
-    color: white;
+    color:$dark-bg;
     border: 0px;
     border-radius: 20px;
     background-color: transparent;
@@ -47,6 +51,9 @@
     background-image: url(../../Assets/Images/ConstImgs/PaymentMethod.png);
 
     .wpwl-wrapper {
+      .wpwl-control-cardHolder{
+        color:$dark-bg;
+      }
       select {
         background: #282828;
         padding-top: 0px !important;

@@ -1,66 +1,26 @@
 @import "../../Assets/Scss/variables.scss";
 @import "../../Assets/Scss/globalStyleSheet.scss";
 .feedbackSwiperSlider {
-  position:relative;
-    &.swiper-slide {
-      opacity: 0.3;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  &.swiper-slide {
+    opacity: 0.3;
 
-      &.swiper-slide-active {
-        position: relative;
-        opacity: 0;
-        transition: all 0.45s linear 0.2s;
-        transform: scale(1.07);
-
-        &:after {
-          height: 85%;
-          background: $parrot-green;
-          z-index: -1;
-          border: none;
-        }
-
-        &:after {
-          content: "";
-          position: absolute;
-          left: 15px;
-          right: 15px;
-          top: 0;
-          bottom: 0;
-          margin: auto;
-          border-radius: 10px;
-          -webkit-transition: all 0.3s linear 0s;
-          -moz-transition: all 0.3s linear 0s;
-          -ms-transition: all 0.3s linear 0s;
-          -o-transition: all 0.3s linear 0s;
-          transition: all 0.2s;
-        }
-        &:hover {
-          .descriptionDiv {
-            display: block;
-            margin-bottom: 70px;
-          }
-          .divider {
-            width: 70px;
-            height: 3px;
-            text-align: center;
-            margin: 0 auto;
-            background-color: $parrot-green;
-          }
-          .customCardFooter {
-            height: 396px;
-            opacity: 1;
-          }
-          &:after {
-            left: 8px;
-            right: 8px;
-          }
-        }
+    &.swiper-slide-active {
+      position: relative;
+      opacity: 0;
+      transition: all 0.45s linear 0.2s;
+      transform: scale(1.07);
+      &:hover {
+        @include customCard;
       }
     }
-    &:not(.swiper-slide-duplicate) {
-      transition: transform 0.3s ease-in-out;
-    }
   }
-// }
+  &:not(.swiper-slide-duplicate) {
+    transition: transform 0.3s ease-in-out;
+  }
+}
 
 .feedbackSwiper {
   width: 100%;

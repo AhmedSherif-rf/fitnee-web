@@ -797,7 +797,7 @@
     "loggedInText": "Logged in successfully",
     "availabilitySetText": "Availability set successfully",
     "progressAddedText": "Progress added successfully",
-    "subscriptionCancelText": "Subscription cancelled successfully",
+    "subscriptionCancelText": "Subscription cancelled",
     "otpSendText": "OTP send successfully",
     "loggedOutText": "Logged out successfully",
     "planUpdateText": "Plan updated successfully",

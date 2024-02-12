@@ -103,7 +103,11 @@ const Index = () => {
                 </Col>
               </Row>
               {trainersData?.map((data, index) => {
-                if (!data?.is_expired && !data?.is_refund) {
+                if (
+                  !data?.is_expired &&
+                  !data?.is_refund &&
+                  !data?.have_exercise_subscription
+                ) {
                   return (
                     <ServiceProvider key={index} data={data} index={index} />
                   );

@@ -595,7 +595,8 @@
     "addYourProgressText": "Add Your Progress",
     "saveText": "Save",
     "dateText": "Date",
-    "viewGraphText": "View Graph"
+    "viewGraphText": "View Graph",
+    "subscribeForExerciseText": "Subscribe For Exercises"
   },
 
   "cardDetails": {
@@ -643,7 +644,11 @@
     "firstNameText": "First name",
     "lastNameText": "Last name",
     "emailText": "Type your email",
+    "emailLabelText": "Email",
     "passwordText": "Type your password",
+    "passwordLabelText": "Password",
+    "phoneNumberText": "Phone Number",
+    "dobText": "Date of Birth",
     "confirmPasswordText": "Confirm password",
     "genderText": "Gender ",
     "roleText": "Role ",
@@ -758,7 +763,8 @@
     "cancelledText": "Cancelled",
     "cancelText": "Cancel",
     "cannotCancelText": "Cannot Cancel",
-    "expiredText": "Expired"
+    "expiredText": "Expired",
+    "exerciseSubscriptionText": "Exercise Subscription"
   },
   "traineeSubscription": {
     "oneMonthDurationText": "1 Months",
@@ -780,12 +786,23 @@
     "congratulationsText": "Congratulations",
     "getAppText": "GET APP",
     "youHaveSubscribedWithText": "You have subscribed with",
-    "downloadAppText": ", your service provider will review your profile and get back to you shortly, please download FitNee app and enable the notification. Be informed that you have the right to cancel your subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer/nutrition specialist. Manage your profile and contact your trainer/nutrition by downloading the app"
+    "downloadAppText": ", your service provider will review your profile and get back to you shortly, please download \"FitNee\" app and enable the notification. Be informed that you have the right to cancel your subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer/nutrition specialist. Manage your profile and contact your trainer/nutrition by downloading the app",
+    "exerciseDownloadText": "Congratulations on your subscription. Download the FitNee app to access your workout exercises."
   },
   "messages": {
     "paymentFailedText": "Oops! Payment unsuccessful. It seems like there was an issue processing your payment. Please try again or check your payment details.",
     "noDataFoundText": "No Data Found",
-    "cannotUserPromoCode": "Cannot use this Promo Code"
+    "cannotUserPromoCode": "Cannot use this Promo Code",
+    "accountDeletedText": "Account is deleted successfully",
+    "loggedInText": "Logged in successfully",
+    "availabilitySetText": "Availability set successfully",
+    "progressAddedText": "Progress added successfully",
+    "subscriptionCancelText": "Subscription cancelled successfully",
+    "otpSendText": "OTP send successfully",
+    "loggedOutText": "Logged out successfully",
+    "planUpdateText": "Plan updated successfully",
+    "planCreatedText": "Plan created successfully",
+    "messageSentText": "Message sent successfully"
   },
   "topBar": {
     "dashboardText": "Dashboard",

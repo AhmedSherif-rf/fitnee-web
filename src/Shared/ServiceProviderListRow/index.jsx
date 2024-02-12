@@ -21,7 +21,7 @@ const Index = (props) => {
           <div className="d-flex align-items-center">
             <Link
               className="text-decoration-none"
-              to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}`}
+              to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}`}
             >
               {data?.serviceprovider && (
                 <div
@@ -55,12 +55,12 @@ const Index = (props) => {
               )}
             </Link>
             <div>
-              <h6 className="mb-0 fw-bold ">
+              <h6 className="mb-0 fw-bold mx-2">
                 {data?.serviceprovider
                   ? data?.serviceprovider?.full_name
                   : `${data?.trainee?.first_name} ${data?.trainee?.last_name}`}
               </h6>
-              <span className="text-black-custom">
+              <span className="text-black-custom mx-2">
                 {data?.serviceprovider
                   ? data?.serviceprovider?.role
                   : data?.trainee?.role}

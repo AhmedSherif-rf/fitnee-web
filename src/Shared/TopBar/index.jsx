@@ -161,13 +161,13 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     };
     dispatch(deleteAccount(data)).then((res) => {
       if (res.type === "deleteAccount/fulfilled") {
-        Toaster.success("Account is deleted successfully");
+        Toaster.success(t("messages.accountDeletedText"));
         navigate("/signIn");
       }
     });
 
     setShowDeleteAccountModal(false);
-  }, [dispatch, navigate, user]);
+  }, [dispatch, navigate, user, t]);
 
   const handleDeleteClick = () => {
     setShowDeleteAccountModal(true);

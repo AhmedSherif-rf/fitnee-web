@@ -11,42 +11,22 @@ import ProfileInformationCard from "../ProfileInformationCard";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { useCallback, memo, useState, useEffect } from "react";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
-import { GUEST_SERVICE_PROVIDER_PROFILE_URL } from "../../utils/constants";
 import { getServiceProviderProfile } from "../../Redux/features/Guest/guestApi";
+import { getServiceProviderFeedbacks } from "../../Redux/features/User/userApi";
 import { setServiceProvider } from "../../Redux/features/Subscription/subscriptionSlice";
-
-const commentsData = [
-  {
-    imgSrc: Images.COMMENT_IMG,
-    commentTitle: "Loki",
-    commentContent:
-      "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-  },
-  {
-    imgSrc: Images.COMMENT_IMG,
-    commentTitle: "Loki",
-    commentContent:
-      "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-  },
-  {
-    imgSrc: Images.COMMENT_IMG,
-    commentTitle: "Loki",
-    commentContent:
-      "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-  },
-  {
-    imgSrc: Images.COMMENT_IMG,
-    commentTitle: "Loki",
-    commentContent:
-      "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-  },
-];
+import {
+  GUEST_SERVICE_PROVIDER_PROFILE_URL,
+  GET_SERVICE_PROVIDER_COMMENTS_URL,
+} from "../../utils/constants";
 
 const ServiceProviderProfileWrapper = (props) => {
-  const { uuid } = useParams();
+  const { uuid, id } = useParams();
   const { subscriptionLink } = props;
   const { loading } = useSelector((state) => state.guest);
+  const { loading: userLoading } = useSelector((state) => state.user);
 
+  const [commentData, setCommentData] = useState([]);
+  const [hasNextComment, setHasNextComment] = useState(true);
   const [serviceProviderProfile, setServiceProviderProfile] = useState(null);
 
   const dispatch = useDispatch();
@@ -61,9 +41,29 @@ const ServiceProviderProfileWrapper = (props) => {
     dispatch(getServiceProviderProfile(data)).then((res) => {
       if (res.type === "getServiceProviderProfile/fulfilled") {
         setServiceProviderProfile(res.payload.data[0]);
+        fetchServiceProviderComments();
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, uuid]);
+
+  const fetchServiceProviderComments = useCallback(() => {
+    if (hasNextComment) {
+      const data = {
+        apiEndpoint: GET_SERVICE_PROVIDER_COMMENTS_URL.replace(
+          "serviceProviderId",
+          id
+        ),
+      };
+
+      dispatch(getServiceProviderFeedbacks(data)).then((res) => {
+        if (res.type === "getServiceProviderFeedbacks/fulfilled") {
+          setHasNextComment(res.payload.data.next);
+          setCommentData([...commentData, ...res.payload.data.results]);
+        }
+      });
+    }
+  }, [commentData, dispatch, hasNextComment, id]);
 
   const handleSubscribeClick = useCallback(() => {
     dispatch(setServiceProvider(serviceProviderProfile));
@@ -72,7 +72,9 @@ const ServiceProviderProfileWrapper = (props) => {
 
   return (
     <Container fluid className={i18n.dir()}>
-      {loading === "pending" && <LoadingScreen />}
+      {(loading === "pending" || userLoading === "pending") && (
+        <LoadingScreen />
+      )}
       {serviceProviderProfile ? (
         <Row>
           <Col md={12}>
@@ -164,29 +166,30 @@ const ServiceProviderProfileWrapper = (props) => {
                         )}
 
                       <Row>
-                        <Col md={12}>
-                          <h5 className="fw-bold mt-3 text-black-custom">
-                            {t("guest.commentsText")}
-                          </h5>
-                          {commentsData.map((item, index) => {
-                            return (
-                              <CommentCard
-                                index={index}
-                                commentTitle={item.commentTitle}
-                                commentImg={item.imgSrc}
-                                commentContent={item.commentContent}
-                              />
-                            );
-                          })}
-                        </Col>
-                        <Col md={12}>
-                          <div className="text-center">
-                            <FillBtn
-                              className=" py-2"
-                              text={t("guest.seeMoreText")}
-                            />
-                          </div>
-                        </Col>
+                        {commentData.length > 0 && (
+                          <>
+                            <Col md={12}>
+                              <h5 className="fw-bold mt-3 text-black-custom">
+                                {t("guest.commentsText")}
+                              </h5>
+                              {commentData.map((item, index) => {
+                                return (
+                                  <CommentCard index={index} data={item} />
+                                );
+                              })}
+                            </Col>
+                            <Col md={12}>
+                              <div className="text-center">
+                                <FillBtn
+                                  className=" py-2"
+                                  text={t("guest.seeMoreText")}
+                                  disabled={hasNextComment ? false : true}
+                                  handleOnClick={fetchServiceProviderComments}
+                                />
+                              </div>
+                            </Col>
+                          </>
+                        )}
                       </Row>
                     </CardBody>
                   </Card>

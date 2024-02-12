@@ -160,7 +160,7 @@ const GuestServiceProviderListWrapper = (props) => {
                         serviceProvider={serviceProvider}
                         handleOnClick={() =>
                           navigate(
-                            `/guest/serviceProviderProfile/${serviceProvider.uuid}`
+                            `/guest/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider.id}`
                           )
                         }
                       />

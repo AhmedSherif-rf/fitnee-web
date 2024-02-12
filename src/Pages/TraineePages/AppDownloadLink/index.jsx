@@ -12,9 +12,13 @@ import { checkPaymentStatus } from "../../../Redux/features/Subscription/subscri
 const AppDownloadLink = () => {
   const { t, i18n } = useTranslation("");
   const dispatch = useDispatch();
-  const { entity, checkoutId, loading, serviceProvider } = useSelector(
-    (state) => state.subscription
-  );
+  const {
+    entity,
+    checkoutId,
+    loading,
+    serviceProvider,
+    subscriptionPlan,
+  } = useSelector((state) => state.subscription);
   const [isPaymentSucceed, setIsPaymentSucceed] = useState("");
 
   useEffect(() => {
@@ -50,13 +54,20 @@ const AppDownloadLink = () => {
                     <h3 className="py-3 fw-bold">
                       {t("appLink.congratulationsText")}
                     </h3>
-                    <p className="px-5">
-                      {t("appLink.youHaveSubscribedWithText")}{" "}
-                      <span className="fw-bold">
-                        {serviceProvider?.full_name}
-                      </span>
-                      {t("appLink.downloadAppText")}
-                    </p>
+                    {subscriptionPlan?.type !== "Exercise" && (
+                      <p className="px-5">
+                        {t("appLink.youHaveSubscribedWithText")}{" "}
+                        <span className="fw-bold">
+                          {serviceProvider?.full_name}
+                        </span>
+                        {t("appLink.downloadAppText")}
+                      </p>
+                    )}
+                    {subscriptionPlan?.type === "Exercise" && (
+                      <p className="px-5">
+                        {t("appLink.exerciseDownloadText")}
+                      </p>
+                    )}
                   </div>
                   <div className="text-center">
                     <img className="w-75" src={Images.CREDIT_CARD_IMG} alt="" />

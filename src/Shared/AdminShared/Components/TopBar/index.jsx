@@ -27,7 +27,7 @@ const Topbar = ({ toggleSidebar }) => {
   const handleLogoutClick = () => {
     const data = {
       apiEndpoint: LOGOUT_URL,
-      requestData: { refresh: user?.tokens?.refresh },
+      requestData: { refresh: user?.tokens?.refresh, device: "web" },
     };
     dispatch(logout(data)).then((res) => {
       if (res.type === "logout/fullfiled") {

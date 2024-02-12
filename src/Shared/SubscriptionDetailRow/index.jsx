@@ -23,16 +23,20 @@ const Index = (props) => {
   ] = useState(false);
   const [subscriptionId, setSubscriptionId] = useState("");
 
-  const checkIfRefundDatePassed = (startDateString) => {
-    const startDate = moment(startDateString).startOf("day");
-    const currentDate = moment().startOf("day");
-    const daysDifference = currentDate.diff(startDate, "days");
-    const isThreeDaysOrMorePassed = daysDifference >= 3;
-
-    if (isThreeDaysOrMorePassed) {
+  const checkIfRefundDatePassed = (startDateString, isExerciseSubscription) => {
+    if (isExerciseSubscription) {
       return true;
     } else {
-      return false;
+      const startDate = moment(startDateString).startOf("day");
+      const currentDate = moment().startOf("day");
+      const daysDifference = currentDate.diff(startDate, "days");
+      const isThreeDaysOrMorePassed = daysDifference >= 3;
+
+      if (isThreeDaysOrMorePassed) {
+        return true;
+      } else {
+        return false;
+      }
     }
   };
 
@@ -74,7 +78,7 @@ const Index = (props) => {
           <div className="d-flex align-items-center">
             <Link
               className="text-decoration-none"
-              to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}`}
+              to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}`}
             >
               <div
                 className="me-2 bgProperties rounded-circle"
@@ -95,7 +99,9 @@ const Index = (props) => {
                 {data?.serviceprovider?.full_name}
               </h6>
               <span className="text-black-custom px-2">
-                {data?.serviceprovider?.role}
+                {data?.have_exercise_subscription
+                  ? t("traineeServiceProviderList.exerciseSubscriptionText")
+                  : data?.serviceprovider?.role}
               </span>
               <div className="mb-md-0 d-md-none d-block py-2 px-2">
                 <h6 className="mb-0 w-100 small fw-bold ">
@@ -148,7 +154,10 @@ const Index = (props) => {
           {!data?.is_refund && !data?.is_expired && (
             <FillBtn
               text={
-                checkIfRefundDatePassed(data?.created_at)
+                checkIfRefundDatePassed(
+                  data?.created_at,
+                  data?.have_exercise_subscription
+                )
                   ? t("traineeServiceProviderList.cannotCancelText")
                   : t("traineeServiceProviderList.cancelText")
               }
@@ -157,7 +166,12 @@ const Index = (props) => {
                 handleCancelButtonClick(data?.transition?.id)
               }
               disabled={
-                checkIfRefundDatePassed(data?.created_at) ? true : false
+                checkIfRefundDatePassed(
+                  data?.created_at,
+                  data?.have_exercise_subscription
+                )
+                  ? true
+                  : false
               }
             />
           )}

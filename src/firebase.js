@@ -14,7 +14,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const messaging = getMessaging(firebaseApp);
 
-export const getNotificationToken = async (setFcmToken) => {
+export const getNotificationToken = async () => {
   try {
     const currentToken = await getToken(messaging, {
       vapidKey: process.env.REACT_APP_FIREBASE_NOTIFICATION_VAPID_KEY,
@@ -22,7 +22,7 @@ export const getNotificationToken = async (setFcmToken) => {
 
     if (currentToken) {
       console.log("current token for client: ", currentToken);
-      setFcmToken(currentToken);
+      return currentToken;
     } else {
       console.log(
         "No registration token available. Request permission to generate one."

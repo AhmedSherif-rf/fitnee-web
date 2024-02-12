@@ -158,7 +158,7 @@ const TraineeServiceProviderListWrapper = (props) => {
                     serviceProvider={serviceProvider}
                     handleOnClick={() =>
                       navigate(
-                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}`
+                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}`
                       )
                     }
                   />

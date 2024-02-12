@@ -1,6 +1,7 @@
 import axiosInstance from "../../interceptor";
 import Toaster from "../../../Shared/Toaster";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import TranslationHelper from "../../../Shared/TranslationHelper";
 import {
   PRECONDITION_REQUIRED_CODE,
   UNAVAILABLE_FOR_LEGAL_REASONS_CODE,
@@ -29,7 +30,7 @@ export const logout = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      Toaster.success("Logged out successfully");
+      Toaster.success(TranslationHelper("messages.loggedOutText"));
       return response.data;
     } catch (error) {
       if (error?.response?.data?.error?.Message !== "") {
@@ -59,7 +60,7 @@ export const signUp = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      Toaster.success("OTP send successfully");
+      Toaster.success(TranslationHelper("messages.otpSendText"));
       return response.data.data.email;
     } catch (error) {
       if (error?.response?.data?.error?.email) {
@@ -85,7 +86,7 @@ export const editProfile = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.patch(apiEndpoint, requestData);
-      Toaster.success("Profile edit successfully");
+      Toaster.success(TranslationHelper("messages.subscriptionCancelText"));
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.message);
@@ -151,7 +152,7 @@ export const cancelSubscription = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      Toaster.success("Subscription cancelled successfully");
+      Toaster.success(TranslationHelper("messages.subscriptionCancelText"));
       return response.data;
     } catch (error) {
       if (error?.response?.data?.error?.Error) {
@@ -196,7 +197,7 @@ export const addTraineeProgress = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      Toaster.success("Progress added successfully");
+      Toaster.success(TranslationHelper("messages.progressAddedText"));
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.detail);
@@ -250,7 +251,20 @@ export const setAvailability = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.put(apiEndpoint, requestData);
-      Toaster.success("Availability set successfully");
+      Toaster.success(TranslationHelper("messages.availabilitySetText"));
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const getServiceProviderFeedbacks = createAsyncThunk(
+  "getServiceProviderFeedbacks",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.detail);

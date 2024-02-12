@@ -15,12 +15,14 @@ import {
   getTransactionHistory,
   sendEditProfileRequest,
   getTraineeProgressHistory,
+  getServiceProviderFeedbacks,
 } from "./userApi";
 
 export const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
+    fcmToken: null,
     isGuest: false,
     loading: "idle",
     error: null,
@@ -35,6 +37,9 @@ export const userSlice = createSlice({
     },
     customLogout: (state) => {
       state.user = null;
+    },
+    setFcmToken: (state, action) => {
+      state.fcmToken = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -189,10 +194,24 @@ export const userSlice = createSlice({
       })
       .addCase(setAvailability.rejected, (state) => {
         state.loading = "failed";
+      })
+      .addCase(getServiceProviderFeedbacks.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getServiceProviderFeedbacks.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getServiceProviderFeedbacks.rejected, (state) => {
+        state.loading = "failed";
       });
   },
 });
 
-export const { setGuest, setEmail, customLogout } = userSlice.actions;
+export const {
+  setGuest,
+  setEmail,
+  customLogout,
+  setFcmToken,
+} = userSlice.actions;
 
 export default userSlice.reducer;

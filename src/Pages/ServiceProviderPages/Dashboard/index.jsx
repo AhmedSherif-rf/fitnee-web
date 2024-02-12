@@ -6,47 +6,21 @@ import { useSelector, useDispatch } from "react-redux";
 import DocumentCard from "../../../Shared/DocumentCard";
 import ToggleSwitch from "../../../Shared/ToggleSwitch";
 import React, { useEffect, useCallback, useState } from "react";
-import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
 import AvailableHourListing from "../../../Shared/AvailableHourListing";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import {
   getUserProfile,
   setAvailability,
+  getServiceProviderFeedbacks,
 } from "../../../Redux/features/User/userApi";
 import {
   TRAINER_ROLE,
   USER_PROFILE_URL,
   SET_AVAILABILITY_URL,
   TRAINER_NUTRITIONIST_ROLE,
+  GET_SERVICE_PROVIDER_COMMENTS_URL,
 } from "../../../utils/constants";
-
-const commentMedia = [
-  {
-    imgSrc: Images.DOCUMENT_IMG,
-    commentTitle: "Loki",
-    commentContent:
-      "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-  },
-  {
-    imgSrc: Images.DOCUMENT_IMG,
-    commentTitle: "Loki",
-    commentContent:
-      "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-  },
-  {
-    imgSrc: Images.DOCUMENT_IMG,
-    commentTitle: "Loki",
-    commentContent:
-      "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-  },
-  {
-    imgSrc: Images.DOCUMENT_IMG,
-    commentTitle: "Loki",
-    commentContent:
-      "Exemplary trainer! Skillfully tailored workouts, constant motivation, and expertise led to remarkable progress. Highly recommended for transformative fitness journeys.",
-  },
-];
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -54,12 +28,19 @@ const Dashboard = () => {
   const { t, i18n } = useTranslation("");
   const { user } = useSelector((state) => state.user);
 
+  const [commentData, setCommentData] = useState([]);
+  const [hasNextComment, setHasNextComment] = useState(true);
   const [isFullyBooked, setIsFullyBooked] = useState(user?.is_fully_booked);
 
   useEffect(() => {
     fetchUserProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFullyBooked]);
+
+  useEffect(() => {
+    fetchServiceProviderComments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchUserProfile = () => {
     const data = {
@@ -68,6 +49,24 @@ const Dashboard = () => {
 
     dispatch(getUserProfile(data));
   };
+
+  const fetchServiceProviderComments = useCallback(() => {
+    if (hasNextComment) {
+      const data = {
+        apiEndpoint: GET_SERVICE_PROVIDER_COMMENTS_URL.replace(
+          "serviceProviderId",
+          user?.id
+        ),
+      };
+
+      dispatch(getServiceProviderFeedbacks(data)).then((res) => {
+        if (res.type === "getServiceProviderFeedbacks/fulfilled") {
+          setHasNextComment(res.payload.data.next);
+          setCommentData([...commentData, ...res.payload.data.results]);
+        }
+      });
+    }
+  }, [commentData, dispatch, hasNextComment, user?.id]);
 
   const setUserAvailability = (isFullyBooked) => {
     const data = {
@@ -212,21 +211,28 @@ const Dashboard = () => {
                     )}
 
                     <Row>
-                      <h5 className="fw-bold my-3">
-                        {t("trainer.commentText")}
-                      </h5>
-                      {commentMedia?.map((item, index) => {
-                        return (
-                          <CommentCard
-                            index={index}
-                            commentTitle={item.commentTitle}
-                            commentImg={item.imgSrc}
-                            commentContent={t(
-                              "trainer.trainerCommentContentText"
-                            )}
-                          />
-                        );
-                      })}
+                      {commentData.length > 0 && (
+                        <>
+                          <Col md={12}>
+                            <h5 className="fw-bold my-3">
+                              {t("trainer.commentText")}
+                            </h5>
+                            {commentData.map((item, index) => {
+                              return <CommentCard index={index} data={item} />;
+                            })}
+                          </Col>
+                          <Col md={12}>
+                            <div className="text-center">
+                              <FillBtn
+                                className=" py-2"
+                                text={t("guest.seeMoreText")}
+                                disabled={hasNextComment ? false : true}
+                                handleOnClick={fetchServiceProviderComments}
+                              />
+                            </div>
+                          </Col>
+                        </>
+                      )}
                     </Row>
                   </CardBody>
                 </Card>

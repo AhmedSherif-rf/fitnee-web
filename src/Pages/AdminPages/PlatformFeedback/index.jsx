@@ -88,23 +88,15 @@ const PlatformFeedback = () => {
                 style={{
                   width: "40px",
                   height: "40px",
-                  backgroundImage: `url(${Images.PROFILE3_IMG})`,
+                  backgroundImage:
+                    feedback?.reviewer?.profile_pic === null
+                      ? `url(${Images.USER_DUMMY_IMG})`
+                      : `url(${feedback?.reviewer?.profile_pic})`,
                 }}
               ></div>
-              <h6 className="text-secondary fw-bold mb-0">Nadeem Abbas</h6>
-            </div>
-          ),
-          serviceProvider: (
-            <div className="d-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage: `url(${Images.PROFILE3_IMG})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">Nadeem Abbas</h6>
+              <h6 className="text-secondary fw-bold mb-0">
+                {feedback?.reviewer?.first_name} {feedback?.reviewer?.last_name}
+              </h6>
             </div>
           ),
           rating: <Rating rating={feedback?.platform_rating} />,
@@ -141,7 +133,6 @@ const PlatformFeedback = () => {
 
   const columns = [
     { label: "Reviewer", dataKey: "reviewer" },
-    { label: "Service Provider", dataKey: "serviceProvider" },
     { label: "Rating", dataKey: "rating", align: "center" },
     {
       label: "Feedback Message",

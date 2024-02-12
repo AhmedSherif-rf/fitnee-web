@@ -24,7 +24,7 @@ const ContactUs = () => {
       ),
       text2: (
         <div className="text-center">
-          <h1 className="fw-bold text-white">
+          <h1 className="fw-bold text-white customLetterSpacing">
             {t("contactUs.unlockYourPotentialText")}
           </h1>
           <span className="fs-4 text-white fst-italic">

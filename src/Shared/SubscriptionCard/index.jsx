@@ -24,12 +24,12 @@ const SubscriptionCard = (props) => {
 
   const handleSubscribeClick = useCallback(() => {
     if (user) {
-      dispatch(setSubscriptionPlan({ id, duration, price }));
+      dispatch(setSubscriptionPlan({ id, duration, price, type }));
       navigate("/trainee/subscription/creditCardDetail");
     } else {
       navigate("/registerAs");
     }
-  }, [dispatch, duration, id, navigate, price, user]);
+  }, [dispatch, duration, id, navigate, price, type, user]);
 
   const getSubscriptionCardImage = (duration, type) => {
     if (type === TRAINER_ROLE) {
@@ -56,6 +56,8 @@ const SubscriptionCard = (props) => {
       } else {
         return Images.BOTH_T_AND_N_THREE_MONTH_IMG;
       }
+    } else {
+      return Images.BOTH_T_AND_N_ONE_MONTH_IMG;
     }
   };
 

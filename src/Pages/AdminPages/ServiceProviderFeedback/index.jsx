@@ -26,7 +26,7 @@ const ServiceProviderFeedback = () => {
   const [page, setPage] = useState(1);
   const [totalSize, setSizePages] = useState(0);
   const [tableData, setTableData] = useState([]);
-  const [platformFeedback, setPlatformFeedback] = useState([]);
+  const [spFeedback, setSpFeedback] = useState([]);
 
   const { loading } = useSelector((state) => state.feedback);
 
@@ -47,7 +47,7 @@ const ServiceProviderFeedback = () => {
     dispatch(getServiceProviderFeedbackListing(data)).then((res) => {
       if (res.type === "getServiceProviderFeedbackListing/fulfilled") {
         setSizePages(res.payload.data.count);
-        setPlatformFeedback(res.payload.data.results);
+        setSpFeedback(res.payload.data.results);
       }
     });
   };
@@ -77,9 +77,9 @@ const ServiceProviderFeedback = () => {
   );
 
   useEffect(() => {
-    if (platformFeedback.length > 0) {
+    if (spFeedback.length > 0) {
       let feedbackArray = [];
-      platformFeedback.forEach((feedback) =>
+      spFeedback.forEach((feedback) =>
         feedbackArray.push({
           reviewer: (
             <div className="d-flex align-items-center">
@@ -88,10 +88,15 @@ const ServiceProviderFeedback = () => {
                 style={{
                   width: "40px",
                   height: "40px",
-                  backgroundImage: `url(${Images.PROFILE3_IMG})`,
+                  backgroundImage:
+                    feedback?.reviewer?.profile_pic === null
+                      ? `url(${Images.USER_DUMMY_IMG})`
+                      : `url(${feedback?.reviewer?.profile_pic})`,
                 }}
               ></div>
-              <h6 className="text-secondary fw-bold mb-0">Nadeem Abbas</h6>
+              <h6 className="text-secondary fw-bold mb-0">
+                {feedback?.reviewer?.first_name} {feedback?.reviewer?.last_name}
+              </h6>
             </div>
           ),
           serviceProvider: (
@@ -101,10 +106,15 @@ const ServiceProviderFeedback = () => {
                 style={{
                   width: "40px",
                   height: "40px",
-                  backgroundImage: `url(${Images.PROFILE3_IMG})`,
+                  backgroundImage:
+                    feedback?.service_provider?.profile_pic === null
+                      ? `url(${Images.USER_DUMMY_IMG})`
+                      : `url(${feedback?.service_provider?.profile_pic})`,
                 }}
               ></div>
-              <h6 className="text-secondary fw-bold mb-0">Nadeem Abbas</h6>
+              <h6 className="text-secondary fw-bold mb-0">
+                {feedback?.service_provider?.full_name}
+              </h6>
             </div>
           ),
           rating: <Rating rating={feedback?.sp_rating} />,
@@ -163,7 +173,7 @@ const ServiceProviderFeedback = () => {
       setTableData([]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [platformFeedback]);
+  }, [spFeedback]);
 
   const columns = [
     { label: "Reviewer", dataKey: "reviewer" },

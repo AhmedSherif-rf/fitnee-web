@@ -26,7 +26,11 @@ export const checkPaymentStatus = createAsyncThunk(
       const response = await axiosInstance.post(apiEndpoint, requestData);
       return response.data;
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.Error);
+      if (error?.response?.data?.error?.Error) {
+        Toaster.error(error?.response?.data?.error?.Error);
+      } else if (error?.response?.data?.error?.Message) {
+        Toaster.error(error?.response?.data?.error?.Message);
+      }
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

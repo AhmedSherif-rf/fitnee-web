@@ -592,7 +592,8 @@
     "addYourProgressText": "أضف تقدمك",
     "saveText": "حفظ",
     "dateText": "التاريخ",
-    "viewGraphText": "ﻋﺭﺽ ﺍﻟﺭﺳﻡ ﺍﻟﺑﻳﺎﻧﻲ"
+    "viewGraphText": "ﻋﺭﺽ ﺍﻟﺭﺳﻡ ﺍﻟﺑﻳﺎﻧﻲ",
+    "subscribeForExerciseText": "Subscribe For Exercises"
   },
   "cardDetails": {
     "PaymentMethodText": "ﻁﺮﻳﻘﺔ ﺍﻟﺪﻓﻊ",
@@ -639,7 +640,11 @@
     "firstNameText": "ﺍﻷﺳﻡ ﺍﻷﻭﻝ",
     "lastNameText": "ﺍﻷﺳﻡ الأخير",
     "emailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ",
+    "emailLabelText": "ﺍﻹﻟﻜﺘﺮﻭﻧﻲ",
     "passwordText": "الرقم السري",
+    "passwordLabelText": "السري",
+    "phoneNumberText": "Phone Number",
+    "dobText": "تاريخ الميلاد",
     "confirmPasswordText": "تأكيد الرقم السري",
     "genderText": "جنس ",
     "roleText": "الدور",
@@ -755,7 +760,8 @@
     "cancelledText": "تم الإلغاء",
     "cancelText": "إلغاء",
     "cannotCancelText": "لا يمكن الإلغاء",
-    "expiredText": "انتهت"
+    "expiredText": "انتهت",
+    "exerciseSubscriptionText": "Exercise Subscription"
   },
   "traineeSubscription": {
     "oneMonthDurationText": "ﺷﻬﺮ",
@@ -777,12 +783,23 @@
     "congratulationsText": "تهانينا ",
     "getAppText": "احصل على التطبيق",
     "youHaveSubscribedWithText": "لقد اشتركت مع",
-    "downloadAppText": "، سيقوم/تقوم بمراجعة ملفك الشخصي وسيتواصل معك قريبًا، يرجى تحميل تطبيق FitNee وتفعيل الإشعارات. يُعلمك أن لديك الحق في إلغاء اشتراكك لأي سبب في غضون 72 ساعة، وسيتم إرجاع أموالك إلى محفظتك في التطبيق حتى تتمكن من إعادة الاشتراك مع مدرب آخر أو أخصائي تغذية. قم بإدارة ملفك الشخصي والتواصل مع مدربك/أخصائي التغذية من خلال تحميل التطبيق"
+    "downloadAppText": "سوف يراجع بياناتك المدخلة ويتواصل معك قريبا, الرجاء تنزيل تطبيق فتني وتفعيل الإشعارات. لتكن على علم بذلك، لديك الحق الكامل بإلغاء الاشتراك خلال 72 ساعة وسيتم تحويل المبلغ لمحفظتك في ”فتني“ لتتمكن من الاشتراك مجددا مع أي مدرب أو أخصائي تغذية. تستطيع الان إدارة حسابك والتحدث مباشره مع مدربك وأخصائي التغذية الخاص بك من خلال تنزيل التطبيق,",
+    "exerciseDownloadText": "تم اشتراكك بباقة التمارين. الرجاء تنزيل تطبيق فتني لتتمكن من الوصول لجميع التمارين"
   },
   "messages": {
     "paymentFailedText": "ﺣﺪﺛﺖ ﻣﺸﻜﻠﻪ ﻓﻲ ﻋﻤﻠﻴﻪ ﺍﻟﺪﻓﻊ، ﺍﻟﺮﺟﺎء ﺍﻟﺘﺄﻛﺪ ﻣﻦ ﺍﻟﺒﻴﺎﻧﺎﺕ ﺍﻟﻤﺪﺧﻠﺔ",
     "noDataFoundText": "لاتوجد بيانات",
-    "cannotUserPromoCode": "الرمز الترويجي غير صالح"
+    "cannotUserPromoCode": "الرمز الترويجي غير صالح",
+    "accountDeletedText": "Account is deleted successfully",
+    "loggedInText": "Logged in successfully",
+    "availabilitySetText": "Availability set successfully",
+    "progressAddedText": "Progress added successfully",
+    "subscriptionCancelText": "Subscription cancelled successfully",
+    "otpSendText": "OTP send successfully",
+    "loggedOutText": "Logged out successfully",
+    "planUpdateText": "Plan updated successfully",
+    "planCreatedText": "Plan created successfully",
+    "messageSentText": "Message sent successfully"
   },
   "topBar": {
     "dashboardText": "ﺍﻟﺮﺋﻴﺴﻴﺔ",

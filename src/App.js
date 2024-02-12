@@ -15,6 +15,7 @@ import { PrivateRoute } from "./Routes/PrivateRoutes";
 import GeneralLayout from "./Pages/Layout/GeneralLayout";
 import LoadingScreen from "./HelperMethods/LoadingScreen";
 import React, { Suspense, useEffect, useState } from "react";
+import { setFcmToken } from "./Redux/features/User/userSlice.js";
 import { setLanguage } from "./Redux/features/Language/languageSlice";
 import { getNotificationToken, onMessageListener } from "./firebase.js";
 import NotificationToaster from "./Shared/NotificationToaster/index.jsx";
@@ -22,13 +23,20 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
-  const [fcmToken, setFcmToken] = useState(null);
   const [notification, setNotification] = useState(null);
   const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
-    getNotificationToken(setFcmToken);
+    setToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const setToken = async () => {
+    const firebaseToken = await getNotificationToken();
+    if (firebaseToken) {
+      dispatch(setFcmToken(firebaseToken));
+    }
+  };
 
   onMessageListener()
     .then((payload) => {

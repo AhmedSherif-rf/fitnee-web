@@ -18,7 +18,7 @@ const Index = (props) => {
           <div className="d-flex align-items-center">
             <Link
               className="text-decoration-none"
-              to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}`}
+              to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}`}
             >
               <div
                 className="me-2 bgProperties rounded-circle"

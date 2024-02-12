@@ -38,7 +38,7 @@ const SignInForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation("");
-  const { loading } = useSelector((state) => state.user);
+  const { loading, fcmToken } = useSelector((state) => state.user);
 
   const [showAccountRequestModal, setShowAccountRequestModal] = useState(false);
   const [
@@ -53,7 +53,7 @@ const SignInForm = () => {
   const handleLoginSubmit = (values) => {
     const data = {
       apiEndpoint: LOGIN_URL,
-      requestData: JSON.stringify(values),
+      requestData: JSON.stringify({ ...values, fcm_web: fcmToken }),
     };
     dispatch(login(data)).then((res) => {
       if (res.type === "login/fulfilled") {
@@ -78,7 +78,7 @@ const SignInForm = () => {
             }
           });
         }
-        Toaster.success("Logged in successfully");
+        Toaster.success(t("messages.loggedInText"));
       } else if (res.type === "login/rejected") {
         if (res?.payload?.statusCode === FORBIDDEN_CODE) {
           dispatch(setEmail(values.email));

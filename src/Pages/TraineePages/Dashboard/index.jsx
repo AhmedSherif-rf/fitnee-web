@@ -137,6 +137,10 @@ const Dashboard = () => {
     setShowHistory(!showHistory);
   }, [showHistory]);
 
+  const handleExerciseSubscriptionClick = useCallback(() => {
+    navigate("/trainee/exerciseSubscription");
+  }, [navigate]);
+
   const handleCurrentTrainerClick = useCallback(() => {
     navigate("/trainee/trainerList");
   }, [navigate]);
@@ -173,6 +177,11 @@ const Dashboard = () => {
               </div>
               <Row className="my-3">
                 <Col md={12}>
+                  <FillBtn
+                    className="w-100 mb-2 py-2"
+                    text={t("traineeDashboard.subscribeForExerciseText")}
+                    handleOnClick={handleExerciseSubscriptionClick}
+                  />
                   <FillBtn
                     className="w-100 mb-2 py-2"
                     text={t("traineeDashboard.myCurrentTrainerText")}
@@ -242,6 +251,7 @@ const Dashboard = () => {
                           <div className="text-center my-4">
                             <FillBtn
                               text={t("traineeDashboard.viewHistoryText")}
+                              className="customLetterSpacing"
                               handleOnClick={toggleHistory}
                             />
                           </div>
@@ -267,6 +277,7 @@ const Dashboard = () => {
                           <div className="text-center pt-3">
                             <FillBtn
                               text={t("traineeDashboard.viewGraphText")}
+                              className="customLetterSpacing"
                               handleOnClick={toggleHistory}
                             />
                           </div>

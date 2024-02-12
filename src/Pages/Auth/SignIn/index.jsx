@@ -24,7 +24,7 @@ const SignIn = () => {
       ),
       text2: (
         <div className="text-center lh-1">
-          <h1 className="fw-bold fs-1 text-white">
+          <h1 className="fw-bold fs-1 text-white customLetterSpacing">
             {t("login.unlockYourPotentialText")}
           </h1>
           <span className="fs-2 text-white fst-italic">

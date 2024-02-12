@@ -234,14 +234,16 @@ const SignUpForm = () => {
         }
       });
     } else {
-      values.profile_availability = values.profile_availability.map(
-        ({ id, day, starttime, endtime }) => ({
-          id,
-          day,
-          starttime,
-          endtime,
-        })
-      );
+      if (values?.profile_availability) {
+        values.profile_availability = values.profile_availability.map(
+          ({ id, day, starttime, endtime }) => ({
+            id,
+            day,
+            starttime,
+            endtime,
+          })
+        );
+      }
 
       let formData = functions.createFormData(values);
       const data = {
@@ -343,11 +345,13 @@ const SignUpForm = () => {
               </Col>
               {filterFields.includes("first_name") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.firstNameText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -367,11 +371,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("full_name") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.fullNameText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -391,11 +397,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("last_name") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.lastNameText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -415,11 +423,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("email") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.emailLabelText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -438,11 +448,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("password") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.passwordLabelText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="password"
@@ -462,11 +474,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("confirm_password") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.confirmPasswordText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="password"
@@ -486,11 +500,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("phone_number") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.phoneNumberText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <PhoneInputField
                     inputProps={{
                       name: "phone_number",
@@ -513,11 +529,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("gender") && (
                 <Col md={6} lg={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.genderText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                     <div
                       className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropdownRadius border  bg-white ${
@@ -554,11 +572,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("date_of_birth") && (
                 <Col md={6} lg={6} className="mb-2 ltr">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.dobText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputGroup>
                     <InputGroupText
                       style={{
@@ -596,11 +616,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("experience") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.yearOfExperienceText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
@@ -625,10 +647,11 @@ const SignUpForm = () => {
                   <Row className="training">
                     <Col md={12} className="mb-2">
                       <div
-                        className="text-end"
-                        style={{ marginBottom: "-15px" }}
+                        className="d-flex justify-content-between"
+                        style={{ marginBottom: "-2px" }}
                       >
-                        *
+                        <div>{t("signup.roleText")}</div>
+                        {user === null && <div>*</div>}
                       </div>
                       <MyDropdown
                         className="shadow-0 py-3 px-5 border"
@@ -651,11 +674,13 @@ const SignUpForm = () => {
 
               {filterFields.includes("bio") && (
                 <Col md={6} lg={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.addBioText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="textarea"
@@ -976,6 +1001,12 @@ const SignUpForm = () => {
                     </h6>
                   </Col>
                   <Col md={6} className="mb-3">
+                    <div
+                      className="d-flex justify-content-between"
+                      style={{ marginBottom: "-2px" }}
+                    >
+                      <div>{t("signup.weightText")}</div>
+                    </div>
                     <InputField
                       className="py-3 px-4"
                       type="number"
@@ -991,6 +1022,12 @@ const SignUpForm = () => {
 
               {filterFields.includes("height") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.heightText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
@@ -1005,6 +1042,12 @@ const SignUpForm = () => {
 
               {filterFields.includes("skeletal_muscel_mass") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.skeletonMuscleText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
@@ -1019,6 +1062,12 @@ const SignUpForm = () => {
 
               {filterFields.includes("body_fat_mass") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.bodyFatText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
@@ -1033,6 +1082,12 @@ const SignUpForm = () => {
 
               {filterFields.includes("total_body_water") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.totalBodyText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
@@ -1047,6 +1102,12 @@ const SignUpForm = () => {
 
               {filterFields.includes("protien") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.protienText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"

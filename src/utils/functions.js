@@ -114,6 +114,10 @@ const calculateVat = (amount) => {
   return ((parseFloat(amount) * 15) / 100).toFixed(2);
 };
 
+const addVatPrice = (amount) => {
+  return ((parseFloat(amount) * 15) / 100 + parseFloat(amount)).toFixed(2);
+};
+
 const calculatePercentage = (amount, percentage) => {
   return ((parseFloat(amount) * percentage) / 100).toFixed(2);
 };
@@ -371,6 +375,7 @@ const getListingRole = (listingType) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getSummary,
+  addVatPrice,
   calculateVat,
   getInitialUrl,
   createFormData,

@@ -1,5 +1,6 @@
 import styles from "./style.module.scss";
 import FillBtn from "../Buttons/FillBtn";
+import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import React, { memo, useCallback } from "react";
@@ -76,7 +77,7 @@ const SubscriptionCard = (props) => {
 
       <CardBody className="mt-5">
         <h1 className="mb-3">
-          {CURRENCY} {price}
+          {CURRENCY} {functions.addVatPrice(price)}
         </h1>
         <img
           className="fluid w-50 my-2"

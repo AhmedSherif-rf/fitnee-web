@@ -378,6 +378,112 @@
       "sectionFourDescriptionOneText": "في حال قبول طلب الإلغاء الخاص بالعميل سوف تقوم المنصة برد المبالغ المستحقة للعميل في محفظته الإلكتروني بالمنصة، ويستطيع العميل إعادة استخدام المبلغ الموجود بمحفظته بالمنصة في شراء الخدمات من خلال المنصة، ولن يتمكن العميل من إعادة سحب المبلغ من المنصة، فالمنصة لا تدعم خيار استرداد المبالغ للبطاقات المصرفية أو البنكية."
     }
   },
+  "privacyPolicy": {
+    "privacyPolicyHeadingText": "Privacy Policy",
+    "lastUpdatedText": "Last Updated: 24 December 2023",
+    "doneButtonText": "Done",
+    "introductionHeadingText": "Introduction",
+    "introductionDescriptionOneText": "Thanks for your trust in FitNee platform in the Kingdom of Saudi Arabia.",
+    "introductionDescriptionTwoText": "One of the objectives of FitNee platform is to protect the rights of FitNee platform users in protecting their personal data, and a desirous of us to achieve a balance between the use of data for the purposes of services provision and protect the user's right to his data- privacy, so to implement and comply with the legal provisions applicable in this regard, we have formulated a privacy policy that elucidate the mechanisms of collecting data of FitNee platform users and the limits of the preservation and use of these data and all the practices that are likely to be performed on your data that FitNee platform is handle with.",
+    "introductionDescriptionThreeText": "Your use of FitNee platform, any of its services, websites or pages is subject to this privacy policy, and it will apply to the collection and use of your data, activities and transactions that you are doing through FitNee platform.",
+
+    "sectionOneBoldHeadingText": "The privacy policy includes the following main sections:",
+    "sectionOneHeadingText": "Section 1: Definitions",
+    "sectionOneDescriptionOneText": "The definitions explain the meanings of the terms most used in this document, and the definitions contained in the terms and conditions document are part of the privacy policy and apply to all terms contained therein. And besides, these terms, the terms below, unless where the context otherwise requires, refer to the meanings and interpretations referred to associated with each term:",
+    "sectionOneDescriptionTwoText": "“Document”, “Policy” or “Privacy Policy” refers to all provisions, explanations and interpretations contained herein that rule the collection and usage of your data. “Parties” refers to the parties of transaction done through FitNee platform which may include the client and service provider or all three.",
+    "sectionOneDescriptionThreeText": "“Third Parties” refers to all contractors and/or bodies that assist us in providing services, providing content or providing data whether directly or indirectly.",
+    "sectionOneDescriptionFourText": "“Data” refers to all the data collected and used by FitNee platform, or the data provided to us by the user, no matter how he\\her uses FitNee platform, which may be personal data, data related to services, activities, transactions, or other data that is provided, collected or processed and which its use is subject to the terms of the Privacy Policy.",
+
+    "sectionTwoHeadingText": "Section 2: Legal Competence",
+    "sectionTwoDescriptionOneText": "Providing data through FitNee platform shall be done by legally competent persons and in order to be legally competent, the person shall be at least 18 years old in order to provide the data to us and to give his\\her consent to its collection and processing.",
+    "sectionTwoDescriptionTwoText": "If the user is not 18 at least, he is not competent to provide his\\her data and give his\\her consent to process it through FitNee platform, in this case, the data shall be provided under one parent supervision or consent.",
+    "sectionTwoDescriptionThreeText": "In all cases, when you provide your data through FitNee platform, it means that you are 18 at least or that the data is provided by one of the parents if you are less than 18, and FitNee platform will not be responsible in any way if the user goes against this.",
+
+    "sectionThreeHeadingText": "Section 3: Consent",
+    "sectionThreeDescriptionOneText": "By your visiting to FitNee platform or registering your membership with us, this means that you have accessed to the terms and conditions of this privacy policy, and your continued use of FitNee platform is considered as an explicit consent and acknowledgement from you to consent to all the practices contained in this policy.",
+
+    "sectionFourHeadingText": "Section 4: Data we collect about you",
+    "sectionFourDescriptionOneText": "FitNee platform collects a certain set of the data of the users for the purposes advertised through this policy, and the categories of data we collect include the following:",
+
+    "sectionFourOneDescriptionBoldText": "Membership registration data:",
+    "sectionFourOneDescriptionOneText": "The data of registering the account of the client (Name, email, mobile number, age, gender, weight, goals, information about injuries and allergies to foods, and other data required in the platform registration form).",
+    "sectionFourOneDescriptionTwoText": "The data of registering the account of the client (Name, photo, email, years of experience, certificates, password, work, jurisdiction, package types, time available, subscription prices).",
+    "sectionFourOneDescriptionThreeText": "We require from you to create your account in FitNee platform for allocating your experience while using the services. You acknowledge that you shall be liable for the user name and password of your account as well as for the disclosure of data done via this account.",
+    "sectionFourOneDescriptionFourText": "We may not require the account in view of the promotional codes provided to the new users of the services.",
+    "sectionFourOneDescriptionFiveText": "All the data of the user shall be provided at his personal responsibility and therefore he bears the full responsibility in case these statements are false, misleading or fraudulent in accordance with terms, conditions and laws applicable.",
+
+    "sectionFourTwoDescriptionBoldText": "Services data:",
+    "sectionFourTwoDescriptionOneText": "FitNee platform collects the services data which the service providers and through FitNee platform, which includes the name of the service provider, the service he provides and the prices of the service. All users with platform accounts can see this data.",
+    "sectionFourTwoDescriptionTwoText": "FitNee platform collects the data of the service orders which the client provides through FitNee platform, which includes the client's name, the order's number, the service provider's name, the ordered service, the total cost of the service, the value added and other data that may be added to the order.",
+    "sectionFourTwoDescriptionThreeText": "Cancellation requests which the client or the service provider provide to the order, or the data which the parties provide to settle any dispute arising between them concerning the services requested by FitNee platform.",
+
+    "sectionFourThreeDescriptionBoldText": "Payment data:",
+    "sectionFourThreeDescriptionOneText": "FitNee platform provides electronic payment services, so the client can pay through the payment methods adopted by us which include (electronic payment methods, electronic wallet), and to secure the electronic payment process FitNee platform provides the electronic payment gateway through an electronic payment service provider, and therefore some conditions of the service provider may be applied to your use of the payment service.",
+    "sectionFourThreeDescriptionTwoText": "The client authorizes us to deal with the electronic payment service provider on his behalf about the provision of the payment service and enabling the client to pay through FitNee platform.",
+    "sectionFourThreeDescriptionThreeText": "FitNee platform does not keep the client's payment data, and therefore the client shall enter his payment data every time he wishes to pay through us.",
+    "sectionFourThreeDescriptionFourText": "The service provider's receivables are added to his electronic wallet in FitNee platform, and the service provider shall provide a bank account (STC Pay only) to receive his funds in the wallet. The client's dues arising from cancellation of the order are also added to his wallet which we provide to him at the platform.",
+
+    "sectionFourFourDescriptionBoldText": "Communications data:",
+    "sectionFourFourDescriptionOneText": "FitNee platform collects the communications data which the user provides us with so that we can communicate with him about the inquiries he provides to us or the problems in which the user is a party thereto, or during the order for the purpose of the service provider's communicating with the client.",
+    "sectionFourFourDescriptionTwoText": "We may communicate with the user for the purposes of opinion polling and to find out what problems that the users face regarding our services.",
+
+    "sectionFourFiveDescriptionBoldText": "Review data:",
+    "sectionFourFiveDescriptionOneText": "FitNee platform provides the review service for the service provider and the client, so the client can review the service provider and add a comment, and the service provider can review the client. The parties know that the content of the review is visible that any user of FitNee platform can see, so any communications data or personal information shall not be published through this service.",
+
+    "sectionFourSixDescriptionBoldText": "Content:",
+    "sectionFourSixDescriptionOneText": "The service provider can add content through the FitNee platform and this content is kept available and visible to users until deleted by the service provider. Users will be able to view service delivery and professional data on the platform before making a decision on purchasing services from the service provider.",
+
+    "sectionFourSevenDescriptionBoldText": "Data which is collected automatically:",
+    "sectionFourSevenDescriptionOneText": "FitNee platform collects some data of the users which does not determine the identity of the user or his communications data and these data is collected automatically which include for example (the data of the devices used in communication processes, communication time, its duration, the place of communication, IP address, the pages visited, the ads categories which the user target).",
+
+    "sectionFiveHeadingText": "Section 5: Cookies Policy",
+    "sectionFiveDescriptionOneText": "FitNee platform  adopts the technology of “cookies” which are small files stored within the storage space of your device, and when you visit specific web pages from our electronic platform, the cookies files identify your browser through a distinctive and random number without disclosing any personal information related to you, and the cookies files help us to optimize your experience in using our services, know the sections of platform that have the greatest visit rate and detect errors and develop our services. At FitNee, we only control FitNee platform's cookies, and therefore we have no control over the cookies of other bodies that share us in providing the services, such as electronic payment bodies, content publishing bodies and social media websites, so you must access to the policies of the use of cookies for these bodies and websites.",
+
+    "sectionSixHeadingText": "Section 6: Limits of our use of your data",
+    "sectionSixMainDescriptionText": "FitNee platform uses the data you provide to us or we collect for the following purposes:",
+    "sectionSixDescriptionOneText": "We use your data to enable you to register your account in FitNee platform, use our services optimally, and process your data that you provide to us in the registration form or in services booking orders such as verifying that your telephone number or email is active and useable.",
+    "sectionSixDescriptionTwoText": "We use your data to enable you to submit services purchasing orders and process them and to enable you to cancel or submit complaint about the order. Also, we use your data to provide a better service, by providing the full support to you, responding to all your questions or inquiries, or following up your comments or reviews.",
+    "sectionSixDescriptionThreeText": "We use your data to process all payments you make via online payment methods or any other payments authorized under the terms and conditions, we also process dues and fees cuts, contact you about the money you pay, owed to you or facilitate the payment process.",
+    "sectionSixDescriptionFourText": "We use your data to process the questionnaires and answers that you have provided us with. Also, we use your data to resolve the problems you face while using FitNee platform, or to respond to and resolve complaints you send to FitNee platform. We also use your data to provide you with the information or services you request, and we use your data to provide you with services that interest you.",
+    "sectionSixDescriptionFiveText": "We use your data for the internal work purposes in FitNee platform such as data analysis and service improvement, and to suggest content, recommendations, ads and services, whether specific to us or specific to the users via FitNee platform. Also, we use your data to manage offers and discounts on services available via FitNee platform.",
+    "sectionSixDescriptionSixText": "We use your data to contact you regarding government communications or the implementation of the privacy policy. Also, we use your personal data for any other purposes that you are informed in the future.",
+    "sectionSixDescriptionSevenText": "We use your information for the purposes shown in Section Four “Fourth” of this policy and to address the categorization of the information shown in this section.",
+    "sectionSixDescriptionEightText": "In all cases stipulated in this agreement, you grant us a non-exclusive, unlimited and delegable license to use your data as previously.",
+
+    "sectionSevenHeadingText": "Section 7: Agreeing on communications and notifications",
+    "sectionSevenDescriptionOneText": "You agree to receive communications and notifications from us by email or telephone that you have provided us with during the registration process of your account in FitNee platform. Also, we may communicate with you by publishing notifications via FitNee platform or through other FitNee platform services.",
+
+    "sectionEightHeadingText": "Section 8: Disclosure of your data",
+    "sectionEightDescriptionMainText": "For multiple considerations, FitNee platform may disclose your data fairly and legally, as follows:",
+    "sectionEightDescriptionOneText": "FitNee platform shall be bound to divulge and disclose the data in case of a reasoned order is issued from a competent judicial authority that obliges us to do so, this includes the personal data of any of FitNee platform users, or any data or information related to the accounts accessed to them by the user, persons or bodies they communicate with through FitNee platform.",
+    "sectionEightDescriptionTwoText": "You authorize us to provide your data to the agents, distributors approved by us and persons contracted with us regarding the provision of services. Also, we disclose your personal data to our partners, and in case we sell any of FitNee platform's assets we will allow the new buyer to access to your data and handle with them within this policy.",
+    "sectionEightDescriptionThreeText": "We disclose data in order to protect you, our platform, our employees and partners, the others, and protect property rights. Also, we disclose data in order to implement and apply our policies and the contracts you have concluded with us and to implement any other policies or agreements.",
+    "sectionEightDescriptionFourText": "We may disclose your data to the judiciary or government bodies, to implement any judicial decisions issued by the Saudi judiciary or issued by the foreign judiciary and they are enforceable in the Kingdom of Saudi Arabia, as well as to implement any decision issued by the security or sovereign agencies or any judicial body.",
+
+    "sectionNineHeadingText": "Section 9: Data storage",
+    "sectionNineDescriptionOneText": "We store all your data on fully protected and secure servers to protect your data from any breach or piracy, and the storage of your data may require its transfer outside the Kingdom of Saudi Arabia if FitNee platform has an external hosting service provider, so you authorize us to deal with others about your data as well as authorize it to transfer and store it on the servers we deal with.",
+    "sectionNineDescriptionTwoText": "We keep and store some data through the cloud storage service iCloud which is a service secured by the service provider and the Platform is not responsible for any legal liability that may arise from problems or actions caused by the Service Provider.",
+
+    "sectionTenHeadingText": "Section 10: Sharing data with parties",
+    "sectionTenDescriptionOneText": "Through FitNee platform, we deal with more than one party for the purposes of providing or buying services, and this requires FitNee platform to disclose some data to any of the parties to carry out the service, and you know and agree that we provide the parties with some of your data to carry out your service or transaction. Also, you authorize us to select the data that is shared with the parties and how and when it is disclosed.",
+
+    "sectionElevenHeadingText": "Section 11: Parties' obligations",
+    "sectionElevenMainDescriptionText": "Providing data by FitNee platform to one of the parties, or sharing data between the parties, requires that you read and accept the following terms:",
+    "sectionElevenDescriptionOneText": "Providing data by FitNee platform to one of the parties to carry out your transaction is done at your own risk, and FitNee platform is just a data transferor under the user's consent with no liability on FitNee platform.",
+    "sectionElevenDescriptionTwoText": "FitNee platform is not obliged, as a result of providing data, to oversight over the parties in relation to the use of this data, nor is it obliged to guarantee the confidentiality or privacy of this data.",
+    "sectionElevenDescriptionThreeText": "Any data you provide to any of the parties through FitNee platform is done at your own risk and FitNee platform will not be a broker or a transferor of this data and we cannot determine its importance for the services required.",
+    "sectionElevenDescriptionFourText": "In all cases, each party shall be bound to maintain the confidentiality and privacy of any data it receives from FitNee platform or from any other party to carry out the transactions agreed upon, and the violating party afford the full legal responsibility, compensation, fines and sanctions with no responsibility on FitNee platform.",
+
+    "sectionTwelveHeadingText": "Section 12: Updates",
+    "sectionTwelveDescriptionOneText": "FitNee platform reserves at any time with the right to modify this policy in compliance with the services provided or the policies followed by us or the applicable laws, and the modifications to this policy apply against the user since publishing of a notification about them via FitNee platform, and in all cases we will update the “last updated” at the top of this document, so you shall access this page to ascertain the date of the update of this document.",
+    "sectionTwelveDescriptionTwoText": "If you are not satisfied with the modifications we make to this policy, you should not continue to use FitNee platform or not to request or benefit from the services, and your continued use of FitNee platform or get into any new orders with us after publishing the modifications is considered as express consent by you and a legal acceptance to all what they contain.",
+    "sectionTwelveDescriptionThreeText": "We have the right at any time and without giving reasons to cancel this privacy policy, cancel any agreement with you about it, or replace it with another policy.",
+
+    "sectionThirteenHeadingText": "Section 13: Contact us.",
+    "sectionThirteenDescriptionOneText": "In case you wish to inquire about the items of the privacy policy, please contact us via:",
+    "emailText": "Email",
+    "whatsAppText": "WhatsApp only"
+  },
   "registerAs": {
     "registerAsText": "سجل الان",
     "traineeText": "المتدرب",

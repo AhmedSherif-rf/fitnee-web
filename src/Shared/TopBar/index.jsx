@@ -79,7 +79,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         location.pathname === "/signIn" ||
         location.pathname === "/contactUs" ||
         location.pathname === "/forgotPassword" ||
-        location.pathname === "/changePassword")
+        location.pathname === "/changePassword" ||
+        location.pathname === "/privacyPolicy")
     ) {
       setShowTopBar(false);
     } else {
@@ -111,13 +112,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       : "bg-transparent"
   );
 
-  
-
   const handleMouseOver = () => {
     setStopScrolling(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
-
 
   const textClass = "text-white";
 
@@ -139,12 +137,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     navigate("/registerAs");
   }, [navigate]);
 
-  const toggleNavbar = () =>
-  {
+  const toggleNavbar = () => {
     setCollapsed(!collapsed);
     setStopScrolling(false);
-    document.body.style.overflow = 'auto';
-  } 
+    document.body.style.overflow = "auto";
+  };
 
   const handleSignInClick = useCallback(() => {
     navigate("/signIn");
@@ -378,7 +375,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                 )}
                 {!isGuest && !isPublic && (
                   <Nav
-                    className={`d-lg-flex d-none ${styles.nav} text-black-custom`}
+                    className={`d-md-flex d-none ${styles.nav} text-black-custom`}
                   >
                     <UncontrolledDropdown>
                       <DropdownToggle className="p-0" nav>
@@ -494,7 +491,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             className={`text-white w-100 ${styles.collapseScss}`}
           >
             <div
-              className={`vh-100 bg-transparent ${stopScrolling ? 'no-scroll' : 'activeScroll'}`}
+              className={`vh-100 bg-transparent ${
+                stopScrolling ? "no-scroll" : "activeScroll"
+              }`}
               // onClick={toggleNavbar}
               onMouseOver={handleMouseOver}
             >

@@ -243,6 +243,7 @@ Input::-webkit-input-placeholder {
     }
   }
 }
+
 .CameraImg {
   position: absolute;
   width: 40px;
@@ -395,4 +396,87 @@ Input::-webkit-input-placeholder {
     padding-top: 58px !important;
     padding-bottom: 58px !important;
   }
+}
+@mixin customCard {
+  display: flex;
+  &:hover {
+    .descriptionDiv {
+      display: block;
+      margin-bottom: 70px;
+    }
+    .divider {
+      width: 70px;
+      height: 3px;
+      text-align: center;
+      margin: 0 auto;
+      background-color: $parrot-green;
+    }
+    .customCardFooter {
+      height: 396px;
+      opacity: 1;
+    }
+  }
+}
+.customCard {
+  color: $white;
+  margin: 0px 15px;
+  position: relative;
+  width: 90% !important;
+  background-size: cover;
+  background-position: center;
+  min-height: 400px !important;
+  border: $text-muted 2px solid;
+  border-radius: 14px !important;
+
+  .customCardFooter {
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px !important;
+    transition: all 0.4s linear 0.1s;
+    background-color: rgba(34, 29, 29, 0.8);
+
+    .descriptionDiv {
+      display: none;
+    }
+  }
+
+  &:after {
+    height: 85%;
+    background: $parrot-green;
+    z-index: -5;
+    content: " ";
+    position: absolute;
+    left: -12px;
+    right: -12px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 10px;
+    margin-left: 12px; // Initial margin-left
+    margin-right: 12px; // Initial margin-right
+    transition: margin-left 0.5s ease-in-out, margin-right 0.5s ease-in-out,
+      height 0.5s ease-in-out, background 0.5s ease-in-out;
+  }
+
+
+  &:hover {
+    &:after {
+      margin-left: 0; // Reset margin-left on hover
+      margin-right: 0; // Reset margin-right on hover
+      height: 85%;
+      background: $parrot-green;
+      z-index: -5;
+    }
+  }
+
+
+  transition: all 3s ease-in-out; // Apply ease-in-out timing function
 }

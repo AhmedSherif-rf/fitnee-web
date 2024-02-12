@@ -8,21 +8,21 @@ const FeedbackCard = (props) => {
   const { header, image, des } = props;
   return (
     <Card
-      className={`rounded-0 w-100 ${styles.customCard}`}
+      className={`rounded-0 w-100 customCard`}
       style={{
         backgroundImage: `url(${image})`,
       }}
     >
       <CardFooter
-        className={`text-center w-100 p-0 m-0 ${styles.customCardFooter}`}
+        className={`text-center w-100 p-0 m-0 customCardFooter`}
       >
         <div
-          className={`${styles.customCardFooterText} d-flex align-items-end justify-content-center`}
+          className={`customCardFooterText d-flex align-items-end justify-content-center`}
         >
           <div className="">
             <p className="fs-3 mb-0">{header}</p>
-            <div className={`${styles.descriptionDiv} px-3 pt-1`}>
-              <div className={`${styles.divider} px-3 my-2 `}></div>
+            <div className={`descriptionDiv px-3 pt-1`}>
+              <div className={`divider px-3 my-2`}></div>
               <small>{des}</small>
               <br />
               <br />

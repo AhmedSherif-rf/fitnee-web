@@ -15,12 +15,16 @@ export const subscriptionSlice = createSlice({
     loading: "idle",
     checkoutId: null,
     subscriptionPlan: "",
+    serviceProvider: null,
   },
   reducers: {
     setSubscriptionPlan: (state, action) => {
       state.entity = "";
       state.checkoutId = "";
       state.subscriptionPlan = action.payload;
+    },
+    setServiceProvider: (state, action) => {
+      state.serviceProvider = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -76,6 +80,9 @@ export const subscriptionSlice = createSlice({
   },
 });
 
-export const { setSubscriptionPlan } = subscriptionSlice.actions;
+export const {
+  setSubscriptionPlan,
+  setServiceProvider,
+} = subscriptionSlice.actions;
 
 export default subscriptionSlice.reducer;

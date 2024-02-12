@@ -41,8 +41,16 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
-    path: "/admin/feedback",
-    component: lazy(() => import("../Pages/AdminPages/Feedback")),
+    path: "/admin/platformFeedback",
+    component: lazy(() => import("../Pages/AdminPages/PlatformFeedback")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/serviceProviderFeedback",
+    component: lazy(() =>
+      import("../Pages/AdminPages/ServiceProviderFeedback")
+    ),
     exact: true,
     role: adminRole,
   },

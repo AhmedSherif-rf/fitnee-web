@@ -375,7 +375,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                 )}
                 {!isGuest && !isPublic && (
                   <Nav
-                    className={`d-lg-flex d-none ${styles.nav} text-black-custom`}
+                    className={`d-md-flex d-none ${styles.nav} text-black-custom`}
                   >
                     <UncontrolledDropdown>
                       <DropdownToggle className="p-0" nav>

@@ -593,7 +593,7 @@
     "saveText": "حفظ",
     "dateText": "التاريخ",
     "viewGraphText": "ﻋﺭﺽ ﺍﻟﺭﺳﻡ ﺍﻟﺑﻳﺎﻧﻲ",
-    "subscribeForExerciseText": "Subscribe For Exercises"
+    "subscribeForExerciseText": "اشترك للتمارين"
   },
   "cardDetails": {
     "PaymentMethodText": "ﻁﺮﻳﻘﺔ ﺍﻟﺪﻓﻊ",
@@ -761,7 +761,7 @@
     "cancelText": "إلغاء",
     "cannotCancelText": "لا يمكن الإلغاء",
     "expiredText": "انتهت",
-    "exerciseSubscriptionText": "Exercise Subscription"
+    "exerciseSubscriptionText": "باقة التمارين"
   },
   "traineeSubscription": {
     "oneMonthDurationText": "ﺷﻬﺮ",
@@ -790,14 +790,14 @@
     "paymentFailedText": "ﺣﺪﺛﺖ ﻣﺸﻜﻠﻪ ﻓﻲ ﻋﻤﻠﻴﻪ ﺍﻟﺪﻓﻊ، ﺍﻟﺮﺟﺎء ﺍﻟﺘﺄﻛﺪ ﻣﻦ ﺍﻟﺒﻴﺎﻧﺎﺕ ﺍﻟﻤﺪﺧﻠﺔ",
     "noDataFoundText": "لاتوجد بيانات",
     "cannotUserPromoCode": "الرمز الترويجي غير صالح",
-    "accountDeletedText": "Account is deleted successfully",
-    "loggedInText": "Logged in successfully",
-    "availabilitySetText": "Availability set successfully",
-    "progressAddedText": "Progress added successfully",
-    "subscriptionCancelText": "Subscription cancelled successfully",
-    "otpSendText": "OTP send successfully",
-    "loggedOutText": "Logged out successfully",
-    "planUpdateText": "Plan updated successfully",
+    "accountDeletedText": "تم حذف الحساب",
+    "loggedInText": "تم تسجيل الدخول",
+    "availabilitySetText": "تم تحديث الأوقات المتاحة",
+    "progressAddedText": "تم اضافة التقدم",
+    "subscriptionCancelText": "تم إلغاء الاشتراك",
+    "otpSendText": "تم إرسال الرمز",
+    "loggedOutText": "تم تسجيل الخروج",
+    "planUpdateText": "تم تحديث الخطة",
     "planCreatedText": "Plan created successfully",
     "messageSentText": "Message sent successfully"
   },

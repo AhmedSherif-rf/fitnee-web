@@ -593,7 +593,8 @@
     "saveText": "حفظ",
     "dateText": "التاريخ",
     "viewGraphText": "ﻋﺭﺽ ﺍﻟﺭﺳﻡ ﺍﻟﺑﻳﺎﻧﻲ",
-    "subscribeForExerciseText": "اشترك للتمارين"
+    "subscribeForExerciseText": "اشترك للتمارين",
+    "DownloadApp":"Download app to see your exercises and chat with your trainers"
   },
   "cardDetails": {
     "PaymentMethodText": "ﻁﺮﻳﻘﺔ ﺍﻟﺪﻓﻊ",

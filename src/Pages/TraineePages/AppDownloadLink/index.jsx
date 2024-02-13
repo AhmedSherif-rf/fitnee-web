@@ -12,13 +12,8 @@ import { checkPaymentStatus } from "../../../Redux/features/Subscription/subscri
 const AppDownloadLink = () => {
   const { t, i18n } = useTranslation("");
   const dispatch = useDispatch();
-  const {
-    entity,
-    checkoutId,
-    loading,
-    serviceProvider,
-    subscriptionPlan,
-  } = useSelector((state) => state.subscription);
+  const { entity, checkoutId, loading, serviceProvider, subscriptionPlan } =
+    useSelector((state) => state.subscription);
   const [isPaymentSucceed, setIsPaymentSucceed] = useState("");
 
   useEffect(() => {
@@ -75,11 +70,11 @@ const AppDownloadLink = () => {
                 </Col>
                 <Col md="6">
                   <div className="d-flex justify-content-center mb-md-4 mb-0">
-                    <div className="QRcodeDiv p-5 text-center">
+                    <div className="QRcodeDiv py-4 text-center">
                       <img
                         className="mb-3"
-                        style={{ width: "85%" }}
-                        src={Images.QR_CODE_IMG}
+                        style={{ width: "60%" }}
+                        src={Images.QR_CODE_IMG_IMG}
                         alt=""
                       />
                       <h6 className="text-black-custom fw-bold text-center">

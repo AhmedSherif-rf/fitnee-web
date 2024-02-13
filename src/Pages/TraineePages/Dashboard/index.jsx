@@ -9,8 +9,11 @@ import PageHeading from "../../../Shared/Headings/PageHeading";
 import React, { useCallback, useEffect, useState } from "react";
 import { Row, Col, Container, Card, CardBody } from "reactstrap";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
+import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ProfileProgressBar from "../../../Shared/ProfileProgressBar";
 import AddProgressModal from "../../../Shared/Modal/AddProgressModal";
+import InformationModal from "../../../Shared/Modal/InformationModal";
+import { setShownAppModal } from "../../../Redux/features/User/userSlice";
 import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import {
@@ -26,9 +29,12 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
-  const { user, loading } = useSelector((state) => state.user);
+
+  const { user, loading, shownAppModal } = useSelector((state) => state.user);
+
   const [showHistory, setShowHistory] = useState(true);
   const [progressHistoryData, setProgressHistoryData] = useState([]);
+  const [showDownloadAppPopup, setShowDownloadAppPopup] = useState(false);
   const [showAddProgressModal, setShowAddProgressModal] = useState(false);
   const [myProgressGrapghData, setMyProgressGrapghData] = useState({
     labels: [],
@@ -52,6 +58,13 @@ const Dashboard = () => {
       intersect: false,
     },
   };
+
+  useEffect(() => {
+    if (!shownAppModal) {
+      setShowDownloadAppPopup(true);
+      dispatch(setShownAppModal(true));
+    }
+  }, []);
 
   useEffect(() => {
     fetchTraineeProgressHistory();
@@ -79,6 +92,10 @@ const Dashboard = () => {
       }
     });
   };
+
+  const handleDownloadAppModalClose = useCallback(() => {
+    setShowDownloadAppPopup(false);
+  }, []);
 
   const populateGraphData = (history) => {
     const labels = history.map((item) =>
@@ -304,6 +321,53 @@ const Dashboard = () => {
             </Col>
           </Row>
         </Card>
+        <InformationModal
+          size={"md"}
+          TOneClassName={"s"}
+          isOpen={showDownloadAppPopup}
+          onClose={handleDownloadAppModalClose}
+          ModalTextOne={
+            <div className="w-100 text-center mt-1 mb-4">
+              <img
+                src={Images.QR_CODE_IMG_IMG}
+                className="w-50"
+                alt="qr-app-image"
+              />
+            </div>
+          }
+          ModalTextTwo={
+            <Row className=" justify-content-center align-content-center h-100 m-0">
+              <Col md={6} className="text-center">
+                <div className="w-100 mb-2">
+                  <img
+                    src={Images.APP_STORE_IMG}
+                    className="img-fluid"
+                    alt=""
+                  />
+                </div>
+              </Col>
+              <Col md={6} className="text-center mb-3">
+                <div className="w-100">
+                  <img
+                    src={Images.GOOGLE_PLAY_IMG}
+                    className="img-fluid"
+                    alt=""
+                  />
+                </div>
+              </Col>
+              <div className="text-center w-100 mb-2">
+                <p>{t("traineeDashboard.DownloadApp")}</p>
+              </div>
+            </Row>
+          }
+          ButtonThree={
+            <FillBtn
+              className="w-100"
+              text={t("otpVerification.okayText")}
+              handleOnClick={handleDownloadAppModalClose}
+            />
+          }
+        />
       </Row>
     </Container>
   );

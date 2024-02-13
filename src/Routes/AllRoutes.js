@@ -83,6 +83,13 @@ const routes = [
     theme: "dark",
     exact: true,
   },
+  {
+    path: "/appStoreLinks",
+    component: lazy(() => import("../Pages/Auth/AppStoreLink")),
+    isPublic: true,
+    theme: "dark",
+    exact: true,
+  },
 ]
   .concat(guestRoutes)
   .concat(adminRoutes)

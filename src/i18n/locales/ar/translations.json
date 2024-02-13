@@ -528,7 +528,7 @@
     "contactUsText": "تواصل معنا",
     "sendText": "إرسال",
     "cancelText": "إلغاء",
-    "modalOneText": "ﺳﺎﻋﺔ ۷۲ ﺗﻡ ﺇﺭﺳﺎﻝ استفسارك. ﺳﻳﺗﻡ التواصل ﻣﻌﻙ ﺧﻼﻝ"
+    "modalOneText": "تم الإرسال بنجاح. سيتواصل معك فريق فتني قريبًا"
   },
   "trainer": {
     "walletText": "المحفظة",
@@ -799,7 +799,7 @@
     "loggedOutText": "تم تسجيل الخروج",
     "planUpdateText": "تم تحديث الخطة",
     "planCreatedText": "Plan created successfully",
-    "messageSentText": "Message sent successfully"
+    "messageSentText": "تم إرسال الرسالة بنجاح"
   },
   "topBar": {
     "dashboardText": "ﺍﻟﺮﺋﻴﺴﻴﺔ",

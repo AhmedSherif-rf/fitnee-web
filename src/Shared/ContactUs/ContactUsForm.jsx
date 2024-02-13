@@ -18,7 +18,6 @@ import { CONTACT_US_INITIAL_VALUES } from "../ValidationData/initialValue";
 import {
   Card,
   CardBody,
-  CardHeader,
   Col,
   Container,
   Form,
@@ -207,7 +206,7 @@ const ContactUsForm = () => {
                       ButtonThree={
                         <FillBtn
                           className="w-50"
-                          text={"Ok"}
+                          text={t("otpVerification.okayText")}
                           handleOnClick={handleContactUsConfirmModalClose}
                         />
                       }

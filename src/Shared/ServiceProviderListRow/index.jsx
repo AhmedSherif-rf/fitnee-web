@@ -2,14 +2,16 @@ import moment from "moment";
 import React, { memo } from "react";
 import { Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { CURRENCY } from "../../utils/constants";
+import { CURRENCY, TRAINEE_ROLE } from "../../utils/constants";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const Index = (props) => {
   const { data, index } = props;
 
   const { t } = useTranslation("");
+  const { user } = useSelector((state) => state.user);
 
   return (
     <>
@@ -23,7 +25,7 @@ const Index = (props) => {
               className="text-decoration-none"
               to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}`}
             >
-              {data?.serviceprovider && (
+              {user?.role === TRAINEE_ROLE && data?.serviceprovider && (
                 <div
                   className="me-2 bgProperties rounded-circle"
                   style={{
@@ -38,7 +40,7 @@ const Index = (props) => {
                   }}
                 ></div>
               )}
-              {data?.trainee?.profile_pic && (
+              {user?.role !== TRAINEE_ROLE && data?.trainee?.profile_pic && (
                 <div
                   className="me-2 bgProperties rounded-circle"
                   style={{

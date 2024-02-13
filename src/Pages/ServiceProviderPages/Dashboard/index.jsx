@@ -6,8 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import DocumentCard from "../../../Shared/DocumentCard";
 import ToggleSwitch from "../../../Shared/ToggleSwitch";
 import React, { useEffect, useCallback, useState } from "react";
+import Images from "../../../HelperMethods/Constants/ImgConstants";
+import InformationModal from "../../../Shared/Modal/InformationModal";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
 import AvailableHourListing from "../../../Shared/AvailableHourListing";
+import { setShownAppModal } from "../../../Redux/features/User/userSlice";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import {
   getUserProfile,
@@ -26,11 +29,18 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
-  const { user } = useSelector((state) => state.user);
-
   const [commentData, setCommentData] = useState([]);
   const [hasNextComment, setHasNextComment] = useState(true);
+  const { user, shownAppModal } = useSelector((state) => state.user);
+  const [showDownloadAppPopup, setShowDownloadAppPopup] = useState(false);
   const [isFullyBooked, setIsFullyBooked] = useState(user?.is_fully_booked);
+
+  useEffect(() => {
+    if (!shownAppModal) {
+      setShowDownloadAppPopup(true);
+      dispatch(setShownAppModal(true));
+    }
+  }, []);
 
   useEffect(() => {
     fetchUserProfile();
@@ -67,6 +77,10 @@ const Dashboard = () => {
       });
     }
   }, [commentData, dispatch, hasNextComment, user?.id]);
+
+  const handleDownloadAppModalClose = useCallback(() => {
+    setShowDownloadAppPopup(false);
+  }, []);
 
   const setUserAvailability = (isFullyBooked) => {
     const data = {
@@ -238,6 +252,55 @@ const Dashboard = () => {
                 </Card>
               </Col>
             </Row>
+            <InformationModal
+              size={"md"}
+              TOneClassName={"s"}
+              isOpen={showDownloadAppPopup}
+              onClose={handleDownloadAppModalClose}
+              ModalTextOne={
+                <div className="w-100 text-center mt-1 mb-4">
+                  <img
+                    src={Images.QR_CODE_IMG_IMG}
+                    className="w-50"
+                    alt="qr-app-image"
+                  />
+                </div>
+              }
+              ModalTextTwo={
+                <Row className=" justify-content-center align-content-center h-100 m-0">
+                  <Col md={12} className="text-center"></Col>
+
+                  <Col md={6} className="text-center">
+                    <div className="w-100 mb-2">
+                      <img
+                        src={Images.APP_STORE_IMG}
+                        className="img-fluid"
+                        alt=""
+                      />
+                    </div>
+                  </Col>
+                  <Col md={6} className="text-center mb-3">
+                    <div className="w-100">
+                      <img
+                        src={Images.GOOGLE_PLAY_IMG}
+                        className="img-fluid"
+                        alt=""
+                      />
+                    </div>
+                  </Col>
+                  <div className="text-center w-100 mb-2">
+                    <p>{t("traineeDashboard.DownloadApp")}</p>
+                  </div>
+                </Row>
+              }
+              ButtonThree={
+                <FillBtn
+                  className="w-100"
+                  text={t("otpVerification.okayText")}
+                  handleOnClick={handleDownloadAppModalClose}
+                />
+              }
+            />
           </Card>
         </Col>
       </Row>

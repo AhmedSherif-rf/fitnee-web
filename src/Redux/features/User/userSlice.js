@@ -27,6 +27,7 @@ export const userSlice = createSlice({
     loading: "idle",
     error: null,
     email: "",
+    shownAppModal: false,
   },
   reducers: {
     setGuest: (state, action) => {
@@ -40,6 +41,9 @@ export const userSlice = createSlice({
     },
     setFcmToken: (state, action) => {
       state.fcmToken = action.payload;
+    },
+    setShownAppModal: (state, action) => {
+      state.shownAppModal = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -62,6 +66,7 @@ export const userSlice = createSlice({
       .addCase(logout.fulfilled, (state) => {
         state.loading = "succeeded";
         state.user = null;
+        state.shownAppModal = false;
       })
       .addCase(logout.rejected, (state) => {
         state.loading = "failed";
@@ -212,6 +217,7 @@ export const {
   setEmail,
   customLogout,
   setFcmToken,
+  setShownAppModal,
 } = userSlice.actions;
 
 export default userSlice.reducer;

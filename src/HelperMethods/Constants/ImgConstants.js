@@ -116,7 +116,6 @@ let Images = {
   USER_DUMMY_IMG: require("../../Assets/Images/ConstImgs/userDummyImg.png"),
   NO_DATA_FOUND_IMG: require("../../Assets/Images/ConstImgs/noDataFound.png"),
   //==============================Trainee Images====================================
-  QR_CODE_IMG: require("../../Assets/Images/QRCode.svg").default,
   TRAINEE_GRAPH_IMG: require("../../Assets/Images/TraineeGraph.svg").default,
   COUNTER_BG_IMG: require("../../Assets/Images/homeScreen/CountBgImage.jpg")
     .default,
@@ -126,6 +125,9 @@ let Images = {
   APP_STORE_IMG: require("../../Assets/Images/appStore.svg").default,
   CVV_IMG: require("../../Assets/Images/ConstImgs/Hint.svg").default,
   GOOGLE_PLAY_IMG: require("../../Assets/Images/googlePlay.svg").default,
+
+   //==============================QR Code Img====================================
+   QR_CODE_IMG_IMG: require("../../Assets/Images/QRcodeImg/QRImage.jpg"),
 };
 
 export default Images;

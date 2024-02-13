@@ -18,8 +18,9 @@ import {
   USER_PROFILE_URL,
 } from "../../../utils/constants";
 import {
-  getTraineeProgressHistory,
   getUserProfile,
+  getUserNotifications,
+  getTraineeProgressHistory,
 } from "../../../Redux/features/User/userApi";
 
 const Dashboard = () => {
@@ -56,6 +57,7 @@ const Dashboard = () => {
   useEffect(() => {
     fetchTraineeProgressHistory();
     fetchUserProfile();
+    fetchUserNotifications();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -65,6 +67,14 @@ const Dashboard = () => {
     };
 
     dispatch(getUserProfile(data));
+  };
+
+  const fetchUserNotifications = () => {
+    const data = {
+      apiEndpoint: "/user-notifications/",
+    };
+
+    dispatch(getUserNotifications(data));
   };
 
   const fetchTraineeProgressHistory = () => {

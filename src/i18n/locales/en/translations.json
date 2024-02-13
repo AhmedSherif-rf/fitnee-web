@@ -809,7 +809,8 @@
     "editProfileText": "Edit Profile",
     "changePasswordText": "Change Password",
     "deleteAccountText": "Delete Account",
-    "logoutText": "Logout"
+    "logoutText": "Logout",
+    "notificationsText": "Notifications"
   },
   "validation": {
     "invalidEmailText": "Invalid email address",

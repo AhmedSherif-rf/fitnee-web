@@ -806,7 +806,8 @@
     "editProfileText": "ﺗﻌﺪﻳﻞ ﺍﻟﻤﻠﻒ ﺍﻟﺸﺨﺼﻲ",
     "changePasswordText": "ﺗﻐﻴﻴﺮ الرقم ﺍﻟﺳﺭﻱ",
     "deleteAccountText": "حذف الحساب",
-    "logoutText": "تسجيل الخروج"
+    "logoutText": "تسجيل الخروج",
+    "notificationsText": "Notifications"
   },
   "validation": {
     "invalidEmailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ المدخل غير صحيح",

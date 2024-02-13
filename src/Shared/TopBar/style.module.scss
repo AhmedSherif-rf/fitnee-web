@@ -39,8 +39,14 @@
     justify-content: center;
   }
 }
+
 .collapseScss {
   z-index: 999;
   margin-top: 57px;
   position: fixed;
+}
+
+.notificationCount {
+  border-radius: 20px;
+  font-size: 10px;
 }

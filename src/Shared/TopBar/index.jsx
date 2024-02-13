@@ -18,10 +18,10 @@ import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { PiCaretDownBold } from "react-icons/pi";
 import { RiDashboardFill } from "react-icons/ri";
-import { FaBars, FaUserEdit } from "react-icons/fa";
 import { FaKey, FaTrashCan } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
+import { FaBars, FaUserEdit, FaBell } from "react-icons/fa";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
@@ -47,8 +47,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation("");
-  const { loading: userLoading, user } = useSelector((state) => state.user);
   const { lang: currentLanguage } = useSelector((state) => state.language);
+  const { loading: userLoading, user, notifications } = useSelector(
+    (state) => state.user
+  );
 
   const roleType = user?.role ? user?.role.toLowerCase() : null;
 
@@ -125,6 +127,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     } else {
       setBackgroundClass("bg-transparent");
     }
+  };
+
+  const getUnReadNotificationsLength = (notifications) => {
+    const unReadNotifications = notifications.filter((item) => !item?.is_read);
+    return unReadNotifications.length;
   };
 
   const selectLanguage = (language) => {
@@ -419,6 +426,30 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             className="w-100 p-1"
                             to={
                               roleType === TRAINEE_TYPE
+                                ? "/trainee/notifications"
+                                : "/serviceProvider/notifications"
+                            }
+                          >
+                            <div className="d-flex gap-1 align-items-center text-black-custom">
+                              <span className="me-2">
+                                <FaBell size={16} className="mb-1" />
+                              </span>
+                              <p className="mb-0">
+                                {t("topBar.notificationsText")}{" "}
+                                <span
+                                  className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
+                                >
+                                  {getUnReadNotificationsLength(notifications)}
+                                </span>
+                              </p>
+                            </div>
+                          </Link>
+                        </DropdownItem>
+                        <DropdownItem className="p-0">
+                          <Link
+                            className="w-100 p-1"
+                            to={
+                              roleType === TRAINEE_TYPE
                                 ? "/trainee/editProfile/trainee"
                                 : roleType === TRAINER_TYPE ||
                                   user?.role === TRAINER_NUTRITIONIST_ROLE
@@ -668,6 +699,23 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         }
                       >
                         {t("topBar.dashboardText")}
+                      </Link>
+                    </NavItem>
+                    <NavItem className={`${styles.NavItem} p-2`}>
+                      <Link
+                        className={`nav-link ${styles.NavLink}`}
+                        to={
+                          roleType === TRAINEE_TYPE
+                            ? "/trainee/notifications"
+                            : "/serviceProvider/notifications"
+                        }
+                      >
+                        {t("topBar.notificationsText")}{" "}
+                        <span
+                          className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
+                        >
+                          {getUnReadNotificationsLength(notifications)}
+                        </span>
                       </Link>
                     </NavItem>
                     <NavItem className={`${styles.NavItem} p-2`}>

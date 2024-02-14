@@ -17,8 +17,9 @@ import { setShownAppModal } from "../../../Redux/features/User/userSlice";
 import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
 import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import {
-  TRAINEE_PROGRESS_URL,
   USER_PROFILE_URL,
+  TRAINEE_PROGRESS_URL,
+  USER_NOTIFICATIONS_URL,
 } from "../../../utils/constants";
 import {
   getUserProfile,
@@ -65,7 +66,8 @@ const Dashboard = () => {
       setShowDownloadAppPopup(true);
       dispatch(setShownAppModal(true));
     }
-  }, [dispatch, shownAppModal]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     fetchTraineeProgressHistory();
@@ -84,7 +86,7 @@ const Dashboard = () => {
 
   const fetchUserNotifications = () => {
     const data = {
-      apiEndpoint: "/user-notifications/",
+      apiEndpoint: USER_NOTIFICATIONS_URL,
     };
 
     dispatch(getUserNotifications(data));
@@ -366,7 +368,7 @@ const Dashboard = () => {
                 </div>
               </Col>
               <div className="text-center w-100 mb-2">
-                <p>{t("traineeDashboard.DownloadApp")}</p>
+                <p>{t("traineeDashboard.DownloadAppTraineeText")}</p>
               </div>
             </Row>
           }

@@ -21,6 +21,7 @@ import {
 import {
   TRAINER_ROLE,
   USER_PROFILE_URL,
+  NUTRITIONIST_ROLE,
   SET_AVAILABILITY_URL,
   USER_NOTIFICATIONS_URL,
   TRAINER_NUTRITIONIST_ROLE,
@@ -302,7 +303,7 @@ const Dashboard = () => {
                   </Col>
                   <div className="text-center w-100 mb-2">
                     <p>
-                      {user?.role === TRAINER_ROLE
+                      {user?.role !== NUTRITIONIST_ROLE
                         ? t("traineeDashboard.DownloadAppTrainerText")
                         : t("traineeDashboard.DownloadAppNutritionistText")}
                     </p>

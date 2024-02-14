@@ -62,7 +62,11 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    if (!shownAppModal) {
+    if (
+      !shownAppModal &&
+      (user?.has_exercise_subscription ||
+        user?.has_service_provider_subscription)
+    ) {
       setShowDownloadAppPopup(true);
       dispatch(setShownAppModal(true));
     }
@@ -210,6 +214,9 @@ const Dashboard = () => {
                     className="w-100 mb-2 py-2"
                     text={t("traineeDashboard.subscribeForExerciseText")}
                     handleOnClick={handleExerciseSubscriptionClick}
+                    disabled={
+                      user?.has_service_provider_subscription ? true : false
+                    }
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
@@ -368,7 +375,11 @@ const Dashboard = () => {
                 </div>
               </Col>
               <div className="text-center w-100 mb-2">
-                <p>{t("traineeDashboard.DownloadAppTraineeText")}</p>
+                <p>
+                  {user?.has_service_provider_subscription
+                    ? t("traineeDashboard.DownloadAppTraineeText")
+                    : t("traineeDashboard.DownloadAppTraineeExerciseText")}
+                </p>
               </div>
             </Row>
           }

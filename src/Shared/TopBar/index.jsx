@@ -130,8 +130,14 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   };
 
   const getUnReadNotificationsLength = (notifications) => {
-    const unReadNotifications = notifications.filter((item) => !item?.is_read);
-    return unReadNotifications.length;
+    if (notifications) {
+      const unReadNotifications = notifications.filter(
+        (item) => !item?.is_read
+      );
+      return unReadNotifications.length;
+    } else {
+      return 0;
+    }
   };
 
   const selectLanguage = (language) => {

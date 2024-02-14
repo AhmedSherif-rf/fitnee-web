@@ -192,6 +192,19 @@ export const getTraineeProgressHistory = createAsyncThunk(
   }
 );
 
+export const getUserNotifications = createAsyncThunk(
+  "getUserNotifications",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const addTraineeProgress = createAsyncThunk(
   "addTraineeProgress",
   async ({ apiEndpoint, requestData }, thunkAPI) => {

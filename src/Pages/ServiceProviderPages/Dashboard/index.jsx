@@ -15,12 +15,14 @@ import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
 import {
   getUserProfile,
   setAvailability,
+  getUserNotifications,
   getServiceProviderFeedbacks,
 } from "../../../Redux/features/User/userApi";
 import {
   TRAINER_ROLE,
   USER_PROFILE_URL,
   SET_AVAILABILITY_URL,
+  USER_NOTIFICATIONS_URL,
   TRAINER_NUTRITIONIST_ROLE,
   GET_SERVICE_PROVIDER_COMMENTS_URL,
 } from "../../../utils/constants";
@@ -40,6 +42,7 @@ const Dashboard = () => {
       setShowDownloadAppPopup(true);
       dispatch(setShownAppModal(true));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -48,9 +51,18 @@ const Dashboard = () => {
   }, [isFullyBooked]);
 
   useEffect(() => {
+    fetchUserNotifications();
     fetchServiceProviderComments();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const fetchUserNotifications = () => {
+    const data = {
+      apiEndpoint: USER_NOTIFICATIONS_URL,
+    };
+
+    dispatch(getUserNotifications(data));
+  };
 
   const fetchUserProfile = () => {
     const data = {
@@ -262,7 +274,7 @@ const Dashboard = () => {
                   <img
                     src={Images.QR_CODE_IMG_IMG}
                     className="w-50"
-                    alt="qr-app-image"
+                    alt="qrAppImage"
                   />
                 </div>
               }
@@ -289,7 +301,11 @@ const Dashboard = () => {
                     </div>
                   </Col>
                   <div className="text-center w-100 mb-2">
-                    <p>{t("traineeDashboard.DownloadApp")}</p>
+                    <p>
+                      {user?.role === TRAINER_ROLE
+                        ? t("traineeDashboard.DownloadAppTrainerText")
+                        : t("traineeDashboard.DownloadAppNutritionistText")}
+                    </p>
                   </div>
                 </Row>
               }

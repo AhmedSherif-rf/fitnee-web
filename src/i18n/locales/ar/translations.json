@@ -594,7 +594,9 @@
     "dateText": "التاريخ",
     "viewGraphText": "ﻋﺭﺽ ﺍﻟﺭﺳﻡ ﺍﻟﺑﻳﺎﻧﻲ",
     "subscribeForExerciseText": "اشترك للتمارين",
-    "DownloadApp":"Download app to see your exercises and chat with your trainers"
+    "DownloadAppTraineeText": "Download app to see your exercises and chat with your trainers/nutritionists",
+    "DownloadAppTrainerText": "Download app to chat with your trainees",
+    "DownloadAppNutritionistText": "Download app to chat with your subscribers"
   },
   "cardDetails": {
     "PaymentMethodText": "ﻁﺮﻳﻘﺔ ﺍﻟﺪﻓﻊ",
@@ -696,7 +698,8 @@
     "whatYouWillProvideText": "ماذا سوف تقدم للمشترك",
     "selectTrainingGoalText": "الهدف التدريبي",
     "selectLevelText": "مستوى النشاط",
-    "addTitleText": "اضف عنوان"
+    "addTitleText": "اضف عنوان",
+    "profileUnderReviewText": "Note: Your profile will be updated after FitNee admin review. For more information please contact fitNee support."
   },
   "login": {
     "loginText": "تسجيل الدخول",
@@ -807,7 +810,9 @@
     "editProfileText": "ﺗﻌﺪﻳﻞ ﺍﻟﻤﻠﻒ ﺍﻟﺸﺨﺼﻲ",
     "changePasswordText": "ﺗﻐﻴﻴﺮ الرقم ﺍﻟﺳﺭﻱ",
     "deleteAccountText": "حذف الحساب",
-    "logoutText": "تسجيل الخروج"
+    "logoutText": "تسجيل الخروج",
+    "notificationsText": "Notifications",
+    "markAsRead":"Mark as Read"
   },
   "validation": {
     "invalidEmailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ المدخل غير صحيح",

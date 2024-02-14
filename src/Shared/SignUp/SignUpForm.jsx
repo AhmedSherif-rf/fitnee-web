@@ -983,9 +983,7 @@ const SignUpForm = () => {
 
                   {user && user?.change_request_status === "Pending" && (
                     <p className="mt-2 fw-bold">
-                      <span className="textYellow">Note: </span> Your profile
-                      will be updated after FitNee admin review. For more
-                      information please contact info@fitnee.fit
+                      {t("signup.profileUnderReviewText")}
                     </p>
                   )}
                 </div>

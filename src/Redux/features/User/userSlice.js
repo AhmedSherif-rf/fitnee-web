@@ -11,6 +11,7 @@ import {
   setAvailability,
   addTraineeProgress,
   cancelSubscription,
+  getUserNotifications,
   getMyServiceProviders,
   getTransactionHistory,
   sendEditProfileRequest,
@@ -27,6 +28,7 @@ export const userSlice = createSlice({
     loading: "idle",
     error: null,
     email: "",
+    notifications: [],
     shownAppModal: false,
   },
   reducers: {
@@ -65,6 +67,7 @@ export const userSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.loading = "succeeded";
+        state.notifications = [];
         state.user = null;
         state.shownAppModal = false;
       })
@@ -208,6 +211,9 @@ export const userSlice = createSlice({
       })
       .addCase(getServiceProviderFeedbacks.rejected, (state) => {
         state.loading = "failed";
+      })
+      .addCase(getUserNotifications.fulfilled, (state, action) => {
+        state.notifications = action.payload.data.results;
       });
   },
 });

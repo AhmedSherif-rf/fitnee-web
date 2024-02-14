@@ -597,7 +597,9 @@
     "dateText": "Date",
     "viewGraphText": "View Graph",
     "subscribeForExerciseText": "Subscribe For Exercises",
-    "DownloadApp": "Download app to see your exercises and chat with your trainers"
+    "DownloadAppTraineeText": "Download app to see your exercises and chat with your trainers/nutritionists",
+    "DownloadAppTrainerText": "Download app to chat with your trainees",
+    "DownloadAppNutritionistText": "Download app to chat with your subscribers"
   },
 
   "cardDetails": {
@@ -699,7 +701,8 @@
     "whatYouWillProvideText": "What you will provide to the end user",
     "selectTrainingGoalText": "Select training goal",
     "selectLevelText": "Select activity level",
-    "addTitleText": "Add Title"
+    "addTitleText": "Add Title",
+    "profileUnderReviewText": "Note: Your profile will be updated after FitNee admin review. For more information please contact fitNee support."
   },
   "login": {
     "loginText": "Sign In",
@@ -810,7 +813,9 @@
     "editProfileText": "Edit Profile",
     "changePasswordText": "Change Password",
     "deleteAccountText": "Delete Account",
-    "logoutText": "Logout"
+    "logoutText": "Logout",
+    "notificationsText": "Notifications",
+    "markAsRead":"Mark as Read"
   },
   "validation": {
     "invalidEmailText": "Invalid email address",

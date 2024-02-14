@@ -48,7 +48,29 @@ const Topbar = ({ toggleSidebar }) => {
         <CgMenuLeft color="black" />
       </Button>
       <div className="d-flex gap-3 align-items-center">
-        <GoBellFill size={24} />
+      
+        <UncontrolledDropdown>
+          <DropdownToggle className="p-0" nav>
+            <div><GoBellFill size={24} /></div>
+          </DropdownToggle>
+          <DropdownMenu
+            className="custom-dropdown-menu"
+            style={{ right: 0, left: "auto" }}
+          >
+            <DropdownItem className="p-0">
+              <div
+                className="d-flex align-items-center w-100 p-1 text-black-custom"
+                onClick={handleLogoutClick}
+              >
+                <span className="me-2 d-flex">
+                  <FaArrowUp size={16} className="mb-1" />
+                </span>
+                <p className="mb-0">Logout</p>
+              </div>
+            </DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+        
         <Nav className={`d-md-flex text-black-custom`}>
           <UncontrolledDropdown>
             <DropdownToggle className="p-0" nav>

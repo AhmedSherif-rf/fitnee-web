@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.74408352.css",
-    "main.js": "/static/js/main.94766850.js",
+    "main.js": "/static/js/main.c39af807.js",
     "static/css/8617.726d4b19.chunk.css": "/static/css/8617.726d4b19.chunk.css",
     "static/js/8617.9e589d70.chunk.js": "/static/js/8617.9e589d70.chunk.js",
     "static/css/2362.b3f5ab7e.chunk.css": "/static/css/2362.b3f5ab7e.chunk.css",
@@ -129,7 +129,6 @@
     "static/media/HOMEBANNER.png": "/static/media/HOMEBANNER.2277082ca91e279ac04c.png",
     "static/media/CreditCardImg.svg": "/static/media/CreditCardImg.5aeb099109a5aae0a3f4cc91e2f021bd.svg",
     "static/media/RegisterAsBackground.svg": "/static/media/RegisterAsBackground.06da41d0632b8e0ef13a0c939a7e72bd.svg",
-    "static/media/QRImage.jpg": "/static/media/QRImage.ac4913d402bab47bb4a2.jpg",
     "static/media/TraineeGraph.svg": "/static/media/TraineeGraph.7f303c49af2e831bc8e4e3529aae235b.svg",
     "static/media/AboutFitnee.png": "/static/media/AboutFitnee.7466bdd274e23f0c436c.png",
     "static/media/layoutBgImage.png": "/static/media/layoutBgImage.2c063df8c35a6f416996.png",
@@ -150,6 +149,7 @@
     "static/media/appStore.svg": "/static/media/appStore.f5ae63ddb8c3b891bb9824e7cc8531e4.svg",
     "static/media/googlePlay.svg": "/static/media/googlePlay.d8bf03dd639b980a5123acccaf5c7623.svg",
     "static/media/defaultImg.svg": "/static/media/defaultImg.26162c793b64cb504382903007815e2a.svg",
+    "static/media/QRImage.svg": "/static/media/QRImage.f2c73e71367c700924fe7679c503a8ec.svg",
     "static/media/Logo.svg": "/static/media/Logo.79f90a5cc62d9bb9838c309fabffc409.svg",
     "static/media/trainerOneMonth.svg": "/static/media/trainerOneMonth.14637e6fcd4aaba9059cec4ff65d3a9f.svg",
     "static/media/trainerTwoMonth.svg": "/static/media/trainerTwoMonth.ce4335151115a7ec768a091f896f698c.svg",
@@ -184,7 +184,7 @@
     "static/media/getFetch.cjs": "/static/media/getFetch.40f37ddea2378391108f.cjs",
     "static/media/HeroBackground.svg": "/static/media/HeroBackground.e8c84b79ccfc589b098997cca1297841.svg",
     "main.74408352.css.map": "/static/css/main.74408352.css.map",
-    "main.94766850.js.map": "/static/js/main.94766850.js.map",
+    "main.c39af807.js.map": "/static/js/main.c39af807.js.map",
     "8617.726d4b19.chunk.css.map": "/static/css/8617.726d4b19.chunk.css.map",
     "8617.9e589d70.chunk.js.map": "/static/js/8617.9e589d70.chunk.js.map",
     "2362.b3f5ab7e.chunk.css.map": "/static/css/2362.b3f5ab7e.chunk.css.map",
@@ -309,6 +309,6 @@
   },
   "entrypoints": [
     "static/css/main.74408352.css",
-    "static/js/main.94766850.js"
+    "static/js/main.c39af807.js"
   ]
 }

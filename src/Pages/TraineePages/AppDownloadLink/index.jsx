@@ -73,7 +73,7 @@ const AppDownloadLink = () => {
                     <div className="QRcodeDiv py-4 text-center">
                       <img
                         className="mb-3"
-                        style={{ width: "60%" }}
+                        style={{ width: "85%" }}
                         src={Images.QR_CODE_IMG_IMG}
                         alt=""
                       />

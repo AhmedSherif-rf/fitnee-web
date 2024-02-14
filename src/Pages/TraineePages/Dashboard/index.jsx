@@ -349,7 +349,6 @@ const Dashboard = () => {
             <div className="w-100 text-center mt-1 mb-4">
               <img
                 src={Images.QR_CODE_IMG_IMG}
-                className="w-50"
                 alt="qrAppImage"
               />
             </div>

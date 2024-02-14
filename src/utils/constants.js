@@ -85,6 +85,7 @@ export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const ADMIN_EXERCISE_URL = "/admin/exercise/detail/";
 export const ADMIN_TRAINEE_LISTING_URL = "/admin/trainees/";
 export const PENDING_PAYMENTS = "/admin/remaining_payments/";
+export const USER_NOTIFICATIONS_URL = "/user-notifications/";
 export const ADMIN_EXERCISE_CATEGORY_URL = "/admin/exercise/";
 export const EXERCISE_CATEGORIES_URL = "/guest/exercisedata/";
 export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";

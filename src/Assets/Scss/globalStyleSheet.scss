@@ -8,7 +8,12 @@
 .bgProperties {
   @include bgProperties;
 }
-
+.bgNotification{
+  background-color: $yellow-blur;
+}
+.small{
+  font-size: 10pt !important;
+}
 .bgBlur {
   background-color: $blur-color !important;
   border-bottom-left-radius: 14px !important;

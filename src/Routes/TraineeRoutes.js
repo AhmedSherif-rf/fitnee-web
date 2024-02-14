@@ -108,4 +108,12 @@ export const traineeRoutes = [
     theme: "dark",
     role: traineeRole,
   },
+  {
+    path: "trainee/notifications",
+    component: lazy(() => import("../Pages/TraineePages/Notifications")),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
+    role: traineeRole,
+  },
 ];

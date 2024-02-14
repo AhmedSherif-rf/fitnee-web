@@ -53,5 +53,13 @@ export const serviceProviderRoutes = [
     isPrivate: true,
     theme: "dark",
     role: serviceProviderRole,
+  }, 
+  {
+    path: "serviceProvider/notifications",
+    component: lazy(() => import("../Pages/ServiceProviderPages/Notifications")),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
+    role: serviceProviderRole,
   },
 ];

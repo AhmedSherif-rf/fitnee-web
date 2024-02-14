@@ -131,15 +131,15 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     }
   };
 
-  // const getUnReadNotificationsLength = (notifications) => {
-  //   const unReadNotifications = notifications.filter((item) => !item?.is_read);
-  //   return unReadNotifications.length;
-  // };
   const getUnReadNotificationsLength = (notifications) => {
-    // Check if notifications is defined and not null before applying filter
-    const unReadNotifications =
-      notifications?.filter((item) => !item?.is_read) || [];
-    return unReadNotifications.length;
+    if (notifications) {
+      const unReadNotifications = notifications.filter(
+        (item) => !item?.is_read
+      );
+      return unReadNotifications.length;
+    } else {
+      return 0;
+    }
   };
 
   const selectLanguage = (language) => {
@@ -256,7 +256,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                   <FaBars />
                 </NavbarToggler>
                 {roleType === null && (
-                  <Nav className={`d-lg-flex d-none border border-danger ${i18n.dir()}`} navbar>
+                  <Nav className={`d-lg-flex d-none ${i18n.dir()}`} navbar>
                     <NavItem>
                       <Link
                         className={`nav-link ${styles.navLink} ${textClass} px-2`}
@@ -442,16 +442,16 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               <span className="me-2">
                                 <FaBell size={16} className="mb-1" />
                               </span>
-                             <span className="d-flex gap-1 align-items-center justify-content-between w-100">
-                             <p className="mb-0">
-                                {t("topBar.notificationsText")}
-                              </p>
-                              <span
-                                className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
-                              >
-                                {getUnReadNotificationsLength(notifications)}
+                              <span className="d-flex gap-1 align-items-center justify-content-between w-100">
+                                <p className="mb-0">
+                                  {t("topBar.notificationsText")}
+                                </p>
+                                <span
+                                  className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
+                                >
+                                  {getUnReadNotificationsLength(notifications)}
+                                </span>
                               </span>
-                             </span>
                             </div>
                           </Link>
                         </DropdownItem>

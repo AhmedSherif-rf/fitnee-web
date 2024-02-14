@@ -814,7 +814,8 @@
     "changePasswordText": "Change Password",
     "deleteAccountText": "Delete Account",
     "logoutText": "Logout",
-    "notificationsText": "Notifications"
+    "notificationsText": "Notifications",
+    "markAsRead":"Mark as Read"
   },
   "validation": {
     "invalidEmailText": "Invalid email address",

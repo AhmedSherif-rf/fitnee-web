@@ -232,10 +232,19 @@ Input::-webkit-input-placeholder {
     height: 100% !important;
   }
 }
+.custom-dropdown-menu {
+  .dropdown-item {
+    padding: 8px;
+    &:hover,
+    &:active {
+      background: $yellow;
+    }
+  }
+}
 .UncontrolledDropdown {
   .DropdownMenu {
     .DropdownItem {
-      padding: 5px;
+      padding: 8px;
       &:hover,
       &:active {
         background: $yellow;
@@ -464,23 +473,21 @@ Input::-webkit-input-placeholder {
     bottom: 0;
     margin: auto;
     border-radius: 10px;
-    margin-left: 12px; // Initial margin-left
-    margin-right: 12px; // Initial margin-right
+    margin-left: 12px;
+    margin-right: 12px;
     transition: margin-left 0.5s ease-in-out, margin-right 0.5s ease-in-out,
       height 0.5s ease-in-out, background 0.5s ease-in-out;
   }
 
-
   &:hover {
     &:after {
-      margin-left: 0; // Reset margin-left on hover
-      margin-right: 0; // Reset margin-right on hover
+      margin-left: 0;
+      margin-right: 0;
       height: 85%;
       background: $parrot-green;
       z-index: -5;
     }
   }
 
-
-  transition: all 3s ease-in-out; // Apply ease-in-out timing function
+  transition: all 3s ease-in-out;
 }

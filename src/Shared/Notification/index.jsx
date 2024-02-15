@@ -9,10 +9,9 @@ const Notification = () => {
 
   return (
     <div className={`${i18n.dir()} w-100`}>
-      {" "}
       <h5 className="fw-bold my-2 p-4">{t("topBar.notificationsText")}</h5>
       {notifications.map((notification, index) => (
-        <Card key={index} className={` ms-1 border-0 px-2`}>
+        <Card key={index} className={` ms-1 border-0 px-2 mb-2`}>
           <div
             className={`BorderRadius p-3 ${
               !notification.is_read && "bgNotification"
@@ -29,7 +28,6 @@ const Notification = () => {
               )}
             </div>
           </div>
-          <br />
         </Card>
       ))}
     </div>

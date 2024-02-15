@@ -6,6 +6,7 @@ const firstNameValidation = Yup.string()
   .max(50, "validation.tooLongText")
 
   .required("validation.requiredFirstNameText");
+
 const fullNameValidation = Yup.string()
   .matches(/^[A-Za-z ]+$/, "validation.invalidFullNameText")
   .min(2, "validation.tooShortText")
@@ -99,7 +100,7 @@ const confirmPasswordValidation = Yup.string()
   .oneOf([Yup.ref("password"), null], "validation.invalidConfirmPasswordText")
   .required("validation.requiredConfirmPasswordText");
 
-const bioValidation = Yup.string().required("validation.requiredBioText");
+const bioValidation = Yup.string().required("validation.requiredBioText").max(500, "validation.tooLongText");
 
 const roleValidation = Yup.string().required("validation.requiredText");
 

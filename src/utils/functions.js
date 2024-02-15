@@ -94,7 +94,7 @@ const copyToClipboard = (text) => {
 
 const getSummary = (discount, walletAmount, totalAmount, vat) => {
   if (
-    walletAmount >=
+    parseFloat(walletAmount) >=
     (parseFloat(totalAmount) + parseFloat(vat) - parseFloat(discount)).toFixed(
       2
     )

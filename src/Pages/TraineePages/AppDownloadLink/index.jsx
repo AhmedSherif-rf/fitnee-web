@@ -70,7 +70,7 @@ const AppDownloadLink = () => {
                 </Col>
                 <Col md="6">
                   <div className="d-flex justify-content-center mb-md-4 mb-0">
-                    <div className="QRcodeDiv py-4 text-center">
+                    <div className="QRcodeDiv p-5 text-center">
                       <img
                         className="mb-3"
                         style={{ width: "85%" }}

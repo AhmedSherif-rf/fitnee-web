@@ -50,7 +50,11 @@ const Notification = () => {
               <p className="mb-0 small">{notification?.text}</p>
             </div>
 
-            <div className="mx-1 text-end">
+            <div
+              className={`mx-1 ${
+                i18n.dir() === "ltr" ? "text-end" : "text-start"
+              }`}
+            >
               {!notification?.is_read && (
                 <div onClick={() => markNotificationAsRead(notification?.id)}>
                   <p className="small fw-bold mb-0 cursorPointer">

@@ -812,7 +812,8 @@
     "changePasswordText": "ﺗﻐﻴﻴﺮ الرقم ﺍﻟﺳﺭﻱ",
     "deleteAccountText": "حذف الحساب",
     "logoutText": "تسجيل الخروج",
-    "notificationsText": "Notifications"
+    "notificationsText": "Notifications",
+    "markAsRead":"Mark as Read"
   },
   "validation": {
     "invalidEmailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ المدخل غير صحيح",

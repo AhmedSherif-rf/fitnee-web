@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import { FaUser, FaRegUser, FaUsers } from "react-icons/fa";
+import { USER_NOTIFICATIONS_URL } from "../../../utils/constants";
+import { getUserNotifications } from "../../../Redux/features/User/userApi";
 import DashboardCard from "../../../Shared/AdminShared/Components/DashboardCard";
 
 const Dashboard = (props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchUserNotifications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchUserNotifications = () => {
+    const data = {
+      apiEndpoint: USER_NOTIFICATIONS_URL,
+    };
+
+    dispatch(getUserNotifications(data));
+  };
+
   return (
     <Container>
       <Row className="py-3">

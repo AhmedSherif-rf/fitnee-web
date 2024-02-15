@@ -1,15 +1,11 @@
 import { Card } from "reactstrap";
 import React, { memo } from "react";
-import FillBtn from "../Buttons/FillBtn";
-import { useTranslation } from "react-i18next";
-import OutlineBtn from "../Buttons/OutlineBtn";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const Notification = () => {
   const { t, i18n } = useTranslation("");
   const { notifications } = useSelector((state) => state.user);
-
-  console.log(notifications);
 
   return (
     <div className={`${i18n.dir()} w-100`}>

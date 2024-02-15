@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import { AiOutlineUserSwitch } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
 import { FaUser, FaRegUser, FaUsers } from "react-icons/fa";
+import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import { USER_NOTIFICATIONS_URL } from "../../../utils/constants";
 import { getUserNotifications } from "../../../Redux/features/User/userApi";
 import DashboardCard from "../../../Shared/AdminShared/Components/DashboardCard";
 
 const Dashboard = (props) => {
   const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.user);
 
   useEffect(() => {
     fetchUserNotifications();
@@ -25,6 +27,7 @@ const Dashboard = (props) => {
 
   return (
     <Container>
+      {loading === "pending" && <LoadingScreen />}
       <Row className="py-3">
         <Col xl={3} lg={4} md={6} className="mb-3">
           <DashboardCard

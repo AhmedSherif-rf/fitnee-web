@@ -74,7 +74,7 @@ const AppDownloadLink = () => {
                       <img
                         className="mb-3"
                         style={{ width: "85%" }}
-                        src={Images.QR_CODE_IMG_IMG}
+                        src={Images.QR_CODE_IMG}
                         alt=""
                       />
                       <h6 className="text-black-custom fw-bold text-center">

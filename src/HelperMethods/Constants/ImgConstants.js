@@ -127,7 +127,7 @@ let Images = {
   GOOGLE_PLAY_IMG: require("../../Assets/Images/googlePlay.svg").default,
 
    //==============================QR Code Img====================================
-   QR_CODE_IMG_IMG: require("../../Assets/Images/QRcodeImg/QRImage.svg").default,
+   QR_CODE_IMG: require("../../Assets/Images/QRcodeImg/QRImage.svg").default,
 };
 
 export default Images;

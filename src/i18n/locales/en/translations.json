@@ -792,7 +792,9 @@
     "getAppText": "GET APP",
     "youHaveSubscribedWithText": "You have subscribed with",
     "downloadAppText": ", your service provider will review your profile and get back to you shortly, please download \"FitNee\" app and enable the notification. Be informed that you have the right to cancel your subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer/nutrition specialist. Manage your profile and contact your trainer/nutrition by downloading the app",
-    "exerciseDownloadText": "Congratulations on your subscription. Download the FitNee app to access your workout exercises."
+    "exerciseDownloadText": "Congratulations on your subscription. Download the FitNee app to access your workout exercises.",
+    "ticketIdText": "Ticket ID",
+    "adminReviewText": "The admin will review your profile and get back to you shortly by email, please keep checking your emails. Meanwhile, you can download the app with by accessing the below link."
   },
   "messages": {
     "paymentFailedText": "Oops! Payment unsuccessful. It seems like there was an issue processing your payment. Please try again or check your payment details.",
@@ -816,7 +818,7 @@
     "deleteAccountText": "Delete Account",
     "logoutText": "Logout",
     "notificationsText": "Notifications",
-    "markAsRead":"Mark as Read"
+    "markAsRead": "Mark as Read"
   },
   "validation": {
     "invalidEmailText": "Invalid email address",

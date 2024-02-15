@@ -348,7 +348,7 @@ const Dashboard = () => {
           ModalTextOne={
             <div className="w-100 text-center mt-1 mb-4">
               <img
-                src={Images.QR_CODE_IMG_IMG}
+                src={Images.QR_CODE_IMG}
                 alt="qrAppImage"
               />
             </div>

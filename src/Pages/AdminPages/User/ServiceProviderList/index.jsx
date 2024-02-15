@@ -87,10 +87,10 @@ const ServiceProviders = (props) => {
                 {serviceProvider?.is_deleted
                   ? "Deleted"
                   : serviceProvider?.is_blocked
-                  ? "Blocked"
+                  ? "Rejected"
                   : serviceProvider?.is_approved
                   ? "Approved"
-                  : "Pending"}
+                  : "Incomplete Profile"}
               </span>
             </div>
           ),

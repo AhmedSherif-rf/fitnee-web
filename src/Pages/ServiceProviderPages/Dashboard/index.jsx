@@ -21,6 +21,7 @@ import {
 import {
   TRAINER_ROLE,
   USER_PROFILE_URL,
+  NUTRITIONIST_ROLE,
   SET_AVAILABILITY_URL,
   USER_NOTIFICATIONS_URL,
   TRAINER_NUTRITIONIST_ROLE,
@@ -273,7 +274,6 @@ const Dashboard = () => {
                 <div className="w-100 text-center mt-1 mb-4">
                   <img
                     src={Images.QR_CODE_IMG_IMG}
-                    className="w-50"
                     alt="qrAppImage"
                   />
                 </div>
@@ -302,7 +302,7 @@ const Dashboard = () => {
                   </Col>
                   <div className="text-center w-100 mb-2">
                     <p>
-                      {user?.role === TRAINER_ROLE
+                      {user?.role !== NUTRITIONIST_ROLE
                         ? t("traineeDashboard.DownloadAppTrainerText")
                         : t("traineeDashboard.DownloadAppNutritionistText")}
                     </p>

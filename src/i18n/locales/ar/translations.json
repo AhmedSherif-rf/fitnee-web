@@ -17,7 +17,7 @@
     "firstFeaturesHeadingText": "تمارين",
     "firstFeaturesText": "يقدم فتني مجموعة واسعة من التمارين لكامل عضالت الجسم لمختلف مستويات اللياقة البدنية وبإرشادات تعليمية مفصلة. نهدف لتلبية احتياجات كل من عشاق اللياقة البدنية المبتدئين والمتقدمين",
     "secondFeaturesHeadingText": "مجتمع فتني",
-    "secondFeaturesText": " نسعى في فتني لخلق مجتمع صحي ورياضي من خالل مشاركة التجارب والخبرات والمعلومات وخلق بيئة محفزة وداعمة",
+    "secondFeaturesText": " نسعى في فتني لخلق مجتمع صحي ورياضي من خلال مشاركة التجارب والخبرات والمعلومات وخلق بيئة محفزة وداعمة",
     "thirdFeaturesHeadingText": "ربط المستخدمين بمدربين رياضيين ذو كفاءة عالية",
     "thirdFeaturesText": "تقدم فتني مجموعة واسعة ومختلفة من المدربين الرياضيين. ستتمكن في فتني من التواصل المباشر مع مدربك الذي سيقدم خطة مخصصة ألجلك لكي تصل الى هدفك",
     "fourthFeaturesHeadingText": "ربط المستخدمين بأخصائي تغذية ذو كفاءة عالية",
@@ -594,9 +594,10 @@
     "dateText": "التاريخ",
     "viewGraphText": "ﻋﺭﺽ ﺍﻟﺭﺳﻡ ﺍﻟﺑﻳﺎﻧﻲ",
     "subscribeForExerciseText": "اشترك للتمارين",
-    "DownloadAppTraineeText": "Download app to see your exercises and chat with your trainers/nutritionists",
-    "DownloadAppTrainerText": "Download app to chat with your trainees",
-    "DownloadAppNutritionistText": "Download app to chat with your subscribers"
+    "DownloadAppTraineeText": "قم بتنزيل التطبيق حتى تتمكن من التواصل مع مدربك /اخصائيي التغذية الخاص بك ولتتمكن من الوصول لجميع التمارين",
+    "DownloadAppTraineeExerciseText": "قم بتنزيل التطبيق حتى تتمكن من الوصول لجميع التمارين",
+    "DownloadAppTrainerText": "حمل التطبيق للتمكن من التواصل مع متدربينك",
+    "DownloadAppNutritionistText": "حمل التطبيق للتمكن من التواصل مع مشتركينك"
   },
   "cardDetails": {
     "PaymentMethodText": "ﻁﺮﻳﻘﺔ ﺍﻟﺪﻓﻊ",
@@ -699,7 +700,7 @@
     "selectTrainingGoalText": "الهدف التدريبي",
     "selectLevelText": "مستوى النشاط",
     "addTitleText": "اضف عنوان",
-    "profileUnderReviewText": "Note: Your profile will be updated after FitNee admin review. For more information please contact fitNee support."
+    "profileUnderReviewText": "سيتم تحديث ملفك الشخصي بعد المراجعة من قِبل فريق فتني. لمزيد من المعلومات الرجاء التواصل معنا عن طريق البريد الإلكتروني"
   },
   "login": {
     "loginText": "تسجيل الدخول",

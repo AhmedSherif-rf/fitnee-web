@@ -16,6 +16,7 @@ import {
   getTransactionHistory,
   sendEditProfileRequest,
   getTraineeProgressHistory,
+  markUserNotificationAsRead,
   getServiceProviderFeedbacks,
 } from "./userApi";
 
@@ -212,8 +213,24 @@ export const userSlice = createSlice({
       .addCase(getServiceProviderFeedbacks.rejected, (state) => {
         state.loading = "failed";
       })
+      .addCase(getUserNotifications.pending, (state) => {
+        state.loading = "pending";
+      })
       .addCase(getUserNotifications.fulfilled, (state, action) => {
+        state.loading = "succeeded";
         state.notifications = action.payload.data.results;
+      })
+      .addCase(getUserNotifications.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(markUserNotificationAsRead.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(markUserNotificationAsRead.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(markUserNotificationAsRead.rejected, (state) => {
+        state.loading = "failed";
       });
   },
 });

@@ -6,7 +6,7 @@
       rgba(0, 0, 0, 0.7) 0%,
       rgba(0, 0, 0, 0.7) 100%
     ),
-    url("../../../Assets/Images/homeScreen/featureBg.svg");
+    url("https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/featureBg.svg");
   @include bgProperties;
   height: 80vh;
   background-position: top center;

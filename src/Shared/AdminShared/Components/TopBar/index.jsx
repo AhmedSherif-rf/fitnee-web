@@ -15,16 +15,24 @@ import { CgMenuLeft } from "react-icons/cg";
 import { GoBellFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { LOGOUT_URL } from "../../../../utils/constants";
-import Notification from "../../../../Shared/Notification";
-import { logout } from "../../../../Redux/features/User/userApi";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
+import {
+  LOGOUT_URL,
+  USER_NOTIFICATIONS_URL,
+} from "../../../../utils/constants";
+import {
+  logout,
+  markUserNotificationAsRead,
+  getUserNotifications,
+} from "../../../../Redux/features/User/userApi";
+import { useTranslation } from "react-i18next";
 
 const Topbar = ({ toggleSidebar }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, loading } = useSelector((state) => state.user);
+  const { t } = useTranslation("");
+  const { user, loading, notifications } = useSelector((state) => state.user);
 
   const handleLogoutClick = () => {
     const data = {
@@ -36,6 +44,26 @@ const Topbar = ({ toggleSidebar }) => {
         navigate("/signIn");
       }
     });
+  };
+
+  const markNotificationAsRead = (id) => {
+    const data = {
+      apiEndpoint: `${USER_NOTIFICATIONS_URL}${id}/`,
+      requestData: JSON.stringify({ is_read: true }),
+    };
+    dispatch(markUserNotificationAsRead(data)).then((res) => {
+      if (res.type === "markUserNotificationAsRead/fulfilled") {
+        fetchUserNotifications();
+      }
+    });
+  };
+
+  const fetchUserNotifications = () => {
+    const data = {
+      apiEndpoint: USER_NOTIFICATIONS_URL,
+    };
+
+    dispatch(getUserNotifications(data));
   };
 
   return (
@@ -57,44 +85,44 @@ const Topbar = ({ toggleSidebar }) => {
             </div>
           </DropdownToggle>
           <DropdownMenu
-            className="custom-dropdown-menu bg-white mt-3 "
-            style={{ right: 0, left: "auto",width: "290px" }}
+            className="custom-dropdown-menu bg-white mt-1"
+            style={{ right: 0, left: "auto", width: "290px" }}
           >
             <div
-            className="w-100 pt-3"
+              className="w-100 pt-3"
               style={{
                 maxHeight: "520px",
                 overflowY: "scroll",
               }}
-            > 
-              <Card className={`w-100 ms-1 border-0 px-2 mb-2`}>
-                <div className={`BorderRadius p-3 ${"bgNotification"}`}>
-                  <div>
-                    <h6 className="fw-bold mb-0">fasdfa</h6>
-                    <p className="mb-0 small">fgdsfa afsdfa</p>
-                  </div>
+            >
+              {notifications.map((notification, index) => (
+                <Card key={index} className={`ms-1 border-0 px-2 mb-1`}>
+                  <div
+                    className={`BorderRadius p-3 ${
+                      !notification.is_read && "bgNotification"
+                    }`}
+                  >
+                    <div>
+                      <h6 className="fw-bold mb-0 small">{notification?.title}</h6>
+                      <p className="mb-0 small">{notification?.text}</p>
+                    </div>
 
-                  <div className="mx-1 text-end">
-                    <h6 className="small fw-bold mb-0">
-                      {/* {t("topBar.markAsRead")} */}Mark as read
-                    </h6>
+                    <div className="mx-1 text-end">
+                      {!notification?.is_read && (
+                        <div
+                          onClick={() =>
+                            markNotificationAsRead(notification?.id)
+                          }
+                        >
+                          <p className="small fw-bold mb-0 cursorPointer">
+                            {t("topBar.markAsRead")}
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Card>{" "}
-              <Card className={`w-100 ms-1 border-0 px-2 mb-2`}>
-                <div className={`BorderRadius p-3 ${"bgNotification"}`}>
-                  <div>
-                    <h6 className="fw-bold mb-0">fasdfa</h6>
-                    <p className="mb-0 small">fgdsfa afsdfa</p>
-                  </div>
-
-                  <div className="mx-1 text-end">
-                    <h6 className="small fw-bold mb-0">
-                      {/* {t("topBar.markAsRead")} */}Mark as read
-                    </h6>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              ))}
             </div>
           </DropdownMenu>
         </UncontrolledDropdown>

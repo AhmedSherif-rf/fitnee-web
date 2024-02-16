@@ -73,6 +73,8 @@ export const signUp = createAsyncThunk(
         Toaster.error(error?.response?.data?.error?.weight[0]);
       } else if (error?.response?.data?.error?.height) {
         Toaster.error(error?.response?.data?.error?.height[0]);
+      } else if (error?.response?.data?.error?.subscription_plans) {
+        Toaster.error(error?.response?.data?.error?.subscription_plans[0].price);
       } else {
         Toaster.error(error?.response?.data?.message);
       }
@@ -197,6 +199,19 @@ export const getUserNotifications = createAsyncThunk(
   async ({ apiEndpoint }, thunkAPI) => {
     try {
       const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const markUserNotificationAsRead = createAsyncThunk(
+  "markUserNotificationAsRead",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.put(apiEndpoint, requestData);
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.detail);

@@ -8,8 +8,8 @@ import styles from "./styles.module.scss";
 import { RxDashboard } from "react-icons/rx";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import { BsPersonBoundingBox } from "react-icons/bs";
-import Logo from "../../../../Assets/Images/homeScreen/Logo.svg";
 import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
+import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
 const SideBar = ({ isOpen, toggle }) => (
   <div
@@ -25,7 +25,7 @@ const SideBar = ({ isOpen, toggle }) => (
       >
         &times;
       </Button>
-      <img className="py-5" src={Logo} alt={"website-logo"} />
+      <img className="py-5" src={Images.LOGO_IMG} alt={"website-logo"} />
     </div>
     <div
       className="side-menu overflow-y-scroll"

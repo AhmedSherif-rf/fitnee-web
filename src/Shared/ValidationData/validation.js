@@ -6,6 +6,7 @@ const firstNameValidation = Yup.string()
   .max(50, "validation.tooLongText")
 
   .required("validation.requiredFirstNameText");
+
 const fullNameValidation = Yup.string()
   .matches(/^[A-Za-z ]+$/, "validation.invalidFullNameText")
   .min(2, "validation.tooShortText")
@@ -99,7 +100,19 @@ const confirmPasswordValidation = Yup.string()
   .oneOf([Yup.ref("password"), null], "validation.invalidConfirmPasswordText")
   .required("validation.requiredConfirmPasswordText");
 
-const bioValidation = Yup.string().required("validation.requiredBioText");
+const profilePicValidation = Yup.mixed()
+  .nullable()
+  .test("certificateSize", "validation.limitCertificateText", (value) => {
+    if (value) {
+      return value && value.size <= 5 * 1024 * 1024;
+    } else {
+      return true;
+    }
+  });
+
+const bioValidation = Yup.string()
+  .required("validation.requiredBioText")
+  .max(1000, "validation.tooLongText");
 
 const roleValidation = Yup.string().required("validation.requiredText");
 
@@ -175,6 +188,8 @@ export const TRAINEE_SIGNUP_SCHEMA = Yup.object().shape({
   date_of_birth: dobValidation,
   last_name: lastNameValidation,
   first_name: firstNameValidation,
+  profile_pic: profilePicValidation,
+  body_images: profilePicValidation,
   phone_number: phoneNumberValidaton,
   confirm_password: confirmPasswordValidation,
   term_and_condition: termAndConditionCheckValidation,
@@ -189,6 +204,7 @@ export const TRAINER_SIGNUP_SCHEMA = Yup.object().shape({
   stc_pay: phoneNumberValidaton,
   full_name: fullNameValidation,
   experience: experienceValidation,
+  profile_pic: profilePicValidation,
   phone_number: phoneNumberValidaton,
   specialities: specialitiesValidation,
   certification: certificationValidation,
@@ -207,6 +223,7 @@ export const NUTRITIONIST_SIGNUP_SCHEMA = Yup.object().shape({
   stc_pay: phoneNumberValidaton,
   full_name: fullNameValidation,
   experience: experienceValidation,
+  profile_pic: profilePicValidation,
   phone_number: phoneNumberValidaton,
   certification: certificationValidation,
   confirm_password: confirmPasswordValidation,
@@ -224,6 +241,7 @@ export const TRAINER_NUTRITIONIST_SIGNUP_SCHEMA = Yup.object().shape({
   stc_pay: phoneNumberValidaton,
   full_name: fullNameValidation,
   experience: experienceValidation,
+  profile_pic: profilePicValidation,
   phone_number: phoneNumberValidaton,
   specialities: specialitiesValidation,
   certification: certificationValidation,
@@ -240,6 +258,8 @@ export const TRAINEE_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   first_name: Yup.string(),
   phone_number: Yup.string(),
   date_of_birth: Yup.string(),
+  body_images: profilePicValidation,
+  profile_pic: profilePicValidation,
 });
 
 export const TRAINER_EDIT_PROFILE_SCHEMA = Yup.object().shape({
@@ -248,6 +268,7 @@ export const TRAINER_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   full_name: Yup.string(),
   experience: Yup.string(),
   saudireps_number: Yup.string(),
+  profile_pic: profilePicValidation,
   is_currently_working: Yup.string(),
 });
 
@@ -255,6 +276,7 @@ export const TRAINER_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
   certificates: Yup.array(),
   stc_pay: phoneNumberValidaton,
   certificate_files: Yup.array(),
+  profile_pic: profilePicValidation,
   saudireps_number: requiredValidation,
 });
 
@@ -263,6 +285,7 @@ export const NUTRITIONIST_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
   license: requiredValidation,
   stc_pay: phoneNumberValidaton,
   certificate_files: Yup.array(),
+  profile_pic: profilePicValidation,
 });
 
 export const NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
@@ -271,6 +294,7 @@ export const NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   full_name: Yup.string(),
   experience: Yup.string(),
   license_number: Yup.string(),
+  profile_pic: profilePicValidation,
   is_currently_working: Yup.string(),
 });
 
@@ -281,6 +305,7 @@ export const TRAINER_NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   experience: Yup.string(),
   license_number: Yup.string(),
   saudireps_number: Yup.string(),
+  profile_pic: profilePicValidation,
   is_currently_working: Yup.string(),
 });
 

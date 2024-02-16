@@ -335,6 +335,11 @@ const SignUpForm = () => {
                       </label>
                     </div>
                   </div>
+                  <p className="errorField">
+                    {t(errors.profile_pic) &&
+                      touched.profile_pic &&
+                      t(errors.profile_pic)}
+                  </p>
                 </Col>
               </Row>
             )}
@@ -769,6 +774,11 @@ const SignUpForm = () => {
                         </Label>
                       )}
                     </div>
+                    <p className="errorField">
+                      {t(errors.body_images) &&
+                        touched.body_images &&
+                        t(errors.body_images)}
+                    </p>
                   </Col>
                 </>
               )}

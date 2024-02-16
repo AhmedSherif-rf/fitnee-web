@@ -48,11 +48,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
   const { t, i18n } = useTranslation("");
   const { lang: currentLanguage } = useSelector((state) => state.language);
-  const {
-    loading: userLoading,
-    user,
-    notifications,
-  } = useSelector((state) => state.user);
+  const { loading: userLoading, user, notifications } = useSelector(
+    (state) => state.user
+  );
 
   const roleType = user?.role ? user?.role.toLowerCase() : null;
 
@@ -444,7 +442,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               </span>
                               <span className="d-flex gap-1 align-items-center justify-content-between w-100">
                                 <p className="mb-0">
-                                  {t("topBar.notificationsText")}
+                                  {t("topBar.notificationsText")}{" "}
                                 </p>
                                 <span
                                   className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
@@ -720,9 +718,9 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             : "/serviceProvider/notifications"
                         }
                       >
-                        {t("topBar.notificationsText")}{" "}
+                        {t("topBar.notificationsText")}
                         <span
-                          className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
+                          className={`text-white bg-danger px-2 py-0 fw-bold mx-1 ${styles.notificationCount}`}
                         >
                           {getUnReadNotificationsLength(notifications)}
                         </span>

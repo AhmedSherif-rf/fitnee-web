@@ -1,6 +1,10 @@
 @media (max-width: 900px) {
   .sideNav {
+    width: 100%;
     position: fixed;
-    z-index: 9999;
+    max-width: 260px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 999 !important;
   }
 }

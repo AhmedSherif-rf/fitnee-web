@@ -819,7 +819,7 @@ const SignUpForm = () => {
                           {values.certification.map((image, index) => (
                             <div
                               key={index}
-                              className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-3 position-relative BorderRadius mb-2 "
+                              className="col-sm-12 col-md-3 col-lg-2 col-xl-2 mx-3 position-relative BorderRadius mb-2 "
                             >
                               <Field
                                 name={`certificate_title.${index}`}

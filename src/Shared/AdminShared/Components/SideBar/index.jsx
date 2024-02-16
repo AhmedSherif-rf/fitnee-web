@@ -13,11 +13,11 @@ import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
 
 const SideBar = ({ isOpen, toggle }) => (
   <div
-    className={`${styles.sideNav} ${classNames("sidebar position-relative", {
+    className={`${styles.sideNav} ${classNames("sidebar", {
       "is-open": isOpen,
     })}`}
   >
-    <div className="sidebar-header">
+    <div className="sidebar-header ">
       <Button
         onClick={toggle}
         style={{ right: "0", color: "red" }}

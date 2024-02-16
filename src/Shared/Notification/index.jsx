@@ -47,7 +47,7 @@ const Notification = () => {
           >
             <div>
               <h6 className="fw-bold mb-0">{notification?.title}</h6>
-              <p className="mb-0 small">{notification?.text}</p>
+              <p className="mb-0 small">{notification?.body}</p>
             </div>
 
             <div

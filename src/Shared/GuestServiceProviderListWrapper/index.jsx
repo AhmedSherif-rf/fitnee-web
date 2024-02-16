@@ -22,7 +22,6 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { useState, useCallback, memo, useEffect } from "react";
 import ServiceProviderListCard from "../../Shared/ServiceProviderListCard";
 import { getServiceProviderGuestMode } from "../../Redux/features/Guest/guestApi";
-import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
 import {
   TRAINER_TYPE,
   NUTRITIONIST_TYPE,
@@ -124,7 +123,7 @@ const GuestServiceProviderListWrapper = (props) => {
                   <DropdownToggle data-toggle="dropdown" tag="span">
                     <img
                       className={`${styles.filterIcon}`}
-                      src={FilterIcon}
+                      src={Images.FILTER_ICON}
                       alt="filter-icon"
                     />
                   </DropdownToggle>

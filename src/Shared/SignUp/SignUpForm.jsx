@@ -835,7 +835,7 @@ const SignUpForm = () => {
                                 name={`certificate_title.${index}`}
                                 type="text"
                                 className="form-control-lg certificatioTitle bgBlur"
-                                style={{ width: "200px" }}
+                                style={{ width: "186px" }}
                                 placeholder={t("signup.addTitleText")}
                               />
                               <img
@@ -843,7 +843,7 @@ const SignUpForm = () => {
                                 alt={`${index + 1}`}
                                 className="uploaded-image BorderRadius"
                                 style={{
-                                  width: "200px",
+                                  width: "186px",
                                   height: "170px",
                                   backgroundSize: "cover",
                                   backgroundPosition: "center",
@@ -877,7 +877,7 @@ const SignUpForm = () => {
                             id="UploadImgLabel"
                             className="BorderRadius text-center mb-0 mx-3"
                             style={{
-                              width: "200px",
+                              width: "186px",
                               height: "170px",
                             }}
                           >

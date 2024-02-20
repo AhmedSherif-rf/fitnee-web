@@ -8,10 +8,10 @@
 .bgProperties {
   @include bgProperties;
 }
-.bgNotification{
+.bgNotification {
   background-color: $yellow-blur;
 }
-.small{
+.small {
   font-size: 10pt !important;
 }
 .bgBlur {
@@ -129,6 +129,12 @@ Input::-webkit-input-placeholder {
 }
 .dropdown-menu {
   padding: 3px 3px !important;
+}
+.dropdownActive {
+  background-color: $yellow !important;
+  color: $black !important;
+  outline: none !important;
+  border-radius: 6px !important;
 }
 .dropdown-item {
   &:active,

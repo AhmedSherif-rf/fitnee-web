@@ -46,6 +46,19 @@ const Topbar = ({ toggleSidebar }) => {
     });
   };
 
+  const getUnReadNotificationsLength = (notifications) => {
+    if (notifications) {
+      const unReadNotifications = notifications.filter(
+        (item) => !item?.is_read
+      );
+      return unReadNotifications.length > 10
+        ? "10+"
+        : unReadNotifications.length;
+    } else {
+      return 0;
+    }
+  };
+
   const markNotificationAsRead = (id) => {
     const data = {
       apiEndpoint: `${USER_NOTIFICATIONS_URL}${id}/`,
@@ -80,7 +93,25 @@ const Topbar = ({ toggleSidebar }) => {
       <div className="d-flex gap-3 align-items-center">
         <UncontrolledDropdown>
           <DropdownToggle className="p-0" nav>
-            <div>
+            <div className="position-relative">
+              {getUnReadNotificationsLength(notifications) > 0 ? (
+                <span
+                  className="position-absolute rounded-circle bg-danger text-white pt-1 fw-bold"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    marginTop: "-5px",
+                    marginLeft: "10px",
+                    fontSize: "11px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {getUnReadNotificationsLength(notifications)}
+                </span>
+              ) : null}
+
               <GoBellFill size={24} />
             </div>
           </DropdownToggle>
@@ -96,20 +127,22 @@ const Topbar = ({ toggleSidebar }) => {
               }}
             >
               {notifications.map((notification, index) => (
-                <Card key={index} className={`ms-1 px-2 mb-1 border border-danger`}>
+                <Card key={index} className={`ms-1 px-2 mb-1 border-0`}>
                   <div
                     className={`BorderRadius p-3 ${
                       !notification.is_read && "bgNotification"
                     }`}
                   >
                     <div>
-                      <h6 className="fw-bold mb-0 small">{notification?.title}</h6>
+                      <h6 className="fw-bold mb-0 small">
+                        {notification?.title}
+                      </h6>
                       <p className="mb-0 small">{notification?.body}</p>
                     </div>
 
                     <div className="mx-1 text-end">
                       {!notification?.is_read && (
-                        <div 
+                        <div
                           onClick={() =>
                             markNotificationAsRead(notification?.id)
                           }

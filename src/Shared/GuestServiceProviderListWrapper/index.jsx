@@ -129,16 +129,31 @@ const GuestServiceProviderListWrapper = (props) => {
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem
+                      className={
+                        listingRole === TRAINER_TYPE
+                          ? "dropdownActive"
+                          : ""
+                      }
                       onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
                     >
                       {t("guest.trainersText")}
                     </DropdownItem>
                     <DropdownItem
+                      className={
+                        listingRole === NUTRITIONIST_TYPE
+                          ? "dropdownActive"
+                          : ""
+                      }
                       onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
                     >
                       {t("guest.nutritionistsText")}
                     </DropdownItem>
                     <DropdownItem
+                      className={
+                        listingRole === TRAINER_NUTRITIONIST_TYPE
+                          ? "dropdownActive"
+                          : ""
+                      }
                       onClick={() =>
                         handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
                       }

@@ -108,7 +108,7 @@ let Images = {
   ARROW_UP_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/ArrowUp.svg",
   CREDIT_CARD_IMG:
-    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/CreditCardImg.svg",
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/CreditCardImage.svg",
   PAYMENT_METHOD_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/PaymentMethod.png",
   CARD_ICON_IMG:

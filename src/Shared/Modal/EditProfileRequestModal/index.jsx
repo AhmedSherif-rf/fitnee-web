@@ -94,7 +94,7 @@ const EditProfileRequestModal = (props) => {
       toggle={onClose}
       className={`${className} ${i18n.dir()}`}
     >
-      <ModalHeader toggle={() => onClose(false)} className="border-0">
+      <ModalHeader className="border-0">
         <b>{heading}</b>
       </ModalHeader>
       <ModalBody className="p-4">
@@ -102,7 +102,6 @@ const EditProfileRequestModal = (props) => {
           initialValues={getInitialValues()}
           validationSchema={getSchemaValidation()}
           onSubmit={(values) => {
-            console.log(values);
             handleEditRequestSubmit(values);
           }}
         >

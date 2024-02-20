@@ -108,7 +108,20 @@ const profilePicValidation = Yup.mixed()
     } else {
       return true;
     }
-  });
+  })
+  .test(
+    "certificateFormat",
+    "validation.invalidFileCertificateText",
+    (value) => {
+      if (value) {
+        return (
+          value && ["image/png", "image/jpeg", "image/jpg"].includes(value.type)
+        );
+      } else {
+        return true;
+      }
+    }
+  );
 
 const bioValidation = Yup.string()
   .required("validation.requiredBioText")
@@ -275,16 +288,22 @@ export const TRAINER_EDIT_PROFILE_SCHEMA = Yup.object().shape({
 export const TRAINER_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
   certificates: Yup.array(),
   stc_pay: phoneNumberValidaton,
-  certificate_files: Yup.array(),
+  certificate_files: Yup.mixed()
+    .nullable()
+    .test("certificateSize", "validation.limitCertificateText", (value) => {
+      return value && value.every((file) => file.size <= 5 * 1024 * 1024);
+    }),
   profile_pic: profilePicValidation,
-  saudireps_number: requiredValidation,
 });
 
 export const NUTRITIONIST_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
   certificates: Yup.array(),
-  license: requiredValidation,
   stc_pay: phoneNumberValidaton,
-  certificate_files: Yup.array(),
+  certificate_files: Yup.mixed()
+    .nullable()
+    .test("certificateSize", "validation.limitCertificateText", (value) => {
+      return value && value.every((file) => file.size <= 5 * 1024 * 1024);
+    }),
   profile_pic: profilePicValidation,
 });
 

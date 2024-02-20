@@ -58,7 +58,6 @@ const EditProfileRequest = () => {
     dispatch(changeProfileUpdateRequestStatus(data)).then((res) => {
       if (res.type === "changeProfileUpdateRequestStatus/fulfilled") {
         setPage(1);
-        fetchProfileUpdateRequests();
       }
     });
   };

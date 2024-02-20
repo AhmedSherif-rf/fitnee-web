@@ -223,6 +223,7 @@ const SignUpForm = () => {
 
   const handleSignUpSubmit = (values) => {
     if (user === null) {
+      values.lang = localStorage.getItem("Website_Language__fitnee");
       let formData = functions.createFormData(values);
       const data = {
         apiEndpoint: REGISTER_URL,
@@ -243,6 +244,7 @@ const SignUpForm = () => {
             endtime,
           })
         );
+        values.lang = localStorage.getItem("Website_Language__fitnee");
       }
 
       let formData = functions.createFormData(values);
@@ -317,7 +319,7 @@ const SignUpForm = () => {
                         id="profile_pic"
                         style={{ display: "none" }}
                         name="profile_pic"
-                        accept=".png, .jpg, .jpeg"
+                        accept="image/png, image/jpeg, image/jpg"
                         onChange={(event) => {
                           const selectedFile = event.currentTarget.files[0];
                           setFieldValue("profile_pic", selectedFile);
@@ -795,7 +797,12 @@ const SignUpForm = () => {
                             {user === null && "*"}
                           </h6>
                         </Col>
-                        <Col md={6} className="text-end">
+                        <Col
+                          md={6}
+                          className={`${
+                            i18n.dir() === "ltr" ? "text-end" : "text-start"
+                          }`}
+                        >
                           {user?.change_request_status !== "Pending" && (
                             <FaEdit
                               className="cursorPointer"
@@ -1407,6 +1414,7 @@ const SignUpForm = () => {
                                 name={`subscription_plans.${index}.price`}
                                 type="number"
                                 min={0}
+                                step={"any"}
                                 className="customDropdownRadius form-control select-field py-3 px-4 border"
                               />
                               <p className="errorField">
@@ -1539,7 +1547,7 @@ const SignUpForm = () => {
         )}
       </Formik>
       <EditProfileRequestModal
-        heading={"Edit Request"}
+        heading={t("signup.editRequestText")}
         size={"lg"}
         isOpen={showEditProfileModal}
         onClose={useCallback(() => {

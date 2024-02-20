@@ -96,7 +96,7 @@ const Topbar = ({ toggleSidebar }) => {
               }}
             >
               {notifications.map((notification, index) => (
-                <Card key={index} className={`ms-1 border-0 px-2 mb-1`}>
+                <Card key={index} className={`ms-1 px-2 mb-1 border border-danger`}>
                   <div
                     className={`BorderRadius p-3 ${
                       !notification.is_read && "bgNotification"
@@ -109,7 +109,7 @@ const Topbar = ({ toggleSidebar }) => {
 
                     <div className="mx-1 text-end">
                       {!notification?.is_read && (
-                        <div
+                        <div 
                           onClick={() =>
                             markNotificationAsRead(notification?.id)
                           }

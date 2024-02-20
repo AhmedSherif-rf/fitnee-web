@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 import { GiWallet } from "react-icons/gi";
 import styles from "./styles.module.scss";
 import { RxDashboard } from "react-icons/rx";
+import { MdOutlineReviews } from "react-icons/md";
 import { NavItem, NavLink, Nav } from "reactstrap";
-import { BsPersonBoundingBox } from "react-icons/bs";
+import { FaEdit, FaRunning } from "react-icons/fa";
 import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
@@ -48,7 +49,7 @@ const SideBar = ({ isOpen, toggle }) => (
             tag={Link}
             to={"/admin/reviewRequest"}
           >
-            <BsPersonBoundingBox />
+            <MdOutlineReviews />
             Review Requests
           </NavLink>
         </NavItem>
@@ -58,7 +59,7 @@ const SideBar = ({ isOpen, toggle }) => (
             tag={Link}
             to={"/admin/editProfileRequest"}
           >
-            <BsPersonBoundingBox />
+            <FaEdit />
             Edit Profile Requests
           </NavLink>
         </NavItem>
@@ -69,7 +70,7 @@ const SideBar = ({ isOpen, toggle }) => (
             tag={Link}
             to={"/admin/exercises/viewExercises"}
           >
-            <BsPersonBoundingBox />
+            <FaRunning />
             Exercises
           </NavLink>
         </NavItem>

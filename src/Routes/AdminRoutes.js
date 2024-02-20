@@ -116,4 +116,12 @@ export const adminRoutes = [
     exact: true,
     role: adminRole,
   },
+  {
+    path: "/admin/Notifications",
+    component: lazy(() =>
+      import("../Pages/AdminPages/WalletSystem/WalletOverview")
+    ),
+    exact: true,
+    role: adminRole,
+  },
 ];

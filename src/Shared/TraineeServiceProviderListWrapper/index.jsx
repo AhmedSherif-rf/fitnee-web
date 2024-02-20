@@ -18,9 +18,9 @@ import FillBtn from "../../Shared/Buttons/FillBtn";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
-import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { useState, useCallback, memo, useEffect } from "react";
+import ShimmerScreen from "../Skeleton/serviceProviderListingSkeleton";
 import ServiceProviderListCard from "../../Shared/ServiceProviderListCard";
 import { getServiceProviderGuestMode } from "../../Redux/features/Guest/guestApi";
 import {
@@ -103,7 +103,7 @@ const TraineeServiceProviderListWrapper = (props) => {
     >
       <CardBody>
         <Row className={`align-items-center mb-2 ${i18n.dir()}`}>
-          {loading === "pending" && <LoadingScreen />}
+          {loading === "pending" && <ShimmerScreen />}
           <Col xs={10} sm={6} className="text-left">
             <PageHeading
               headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}

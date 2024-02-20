@@ -839,6 +839,7 @@
     "requiredDescriptionText": "الوصف مطلوب",
     "invalidDescriptionText": "يجب أن يكون هناك وصف واحد على الأقل",
     "requiredExerciseVideoText": "مطلوب فيديو التمرين",
-    "invalidEndTimeText": "وقت الانتهاء يجب أن يكون أكبر من وقت البدء"
+    "invalidEndTimeText": "وقت الانتهاء يجب أن يكون أكبر من وقت البدء",
+    "invalidText": "غير صالح"
   }
 }

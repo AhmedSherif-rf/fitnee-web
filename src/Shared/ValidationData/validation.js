@@ -81,6 +81,20 @@ const certificateTitleValidation = Yup.array().test(
   }
 );
 
+const editProfilecertificateTitleValidation = Yup.array().test(
+  "certificateTitleLength",
+  "validation.requiredCertificateText",
+  function (value) {
+    const { certificate_files } = this.parent;
+
+    if (!certificate_files || certificate_files.length !== value.length) {
+      return false;
+    }
+
+    return true;
+  }
+);
+
 const confirmNewPasswordValidation = Yup.string()
   .oneOf(
     [Yup.ref("new_password"), null],
@@ -141,9 +155,9 @@ const dobValidation = Yup.date()
 
 const genderValidation = Yup.string().required("validation.requiredGenderText");
 
-const experienceValidation = Yup.string().required(
-  "validation.requiredYearsOfExperienceText"
-);
+const experienceValidation = Yup.number()
+  .required("validation.requiredYearsOfExperienceText")
+  .max(100, "validation.invalidText");
 
 const currentlyWorkingValidation = Yup.string().required(
   "validation.RequiredText"
@@ -286,7 +300,7 @@ export const TRAINER_EDIT_PROFILE_SCHEMA = Yup.object().shape({
 });
 
 export const TRAINER_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
-  certificates: Yup.array(),
+  certificates: editProfilecertificateTitleValidation,
   stc_pay: phoneNumberValidaton,
   certificate_files: Yup.mixed()
     .nullable()
@@ -297,7 +311,7 @@ export const TRAINER_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
 });
 
 export const NUTRITIONIST_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
-  certificates: Yup.array(),
+  certificates: editProfilecertificateTitleValidation,
   stc_pay: phoneNumberValidaton,
   certificate_files: Yup.mixed()
     .nullable()

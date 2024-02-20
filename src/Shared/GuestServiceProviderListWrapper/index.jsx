@@ -1,4 +1,3 @@
-import ShimmerScreen from "./Skeleton";
 import styles from "./style.module.scss";
 import {
   Card,
@@ -20,6 +19,7 @@ import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { useState, useCallback, memo, useEffect } from "react";
+import ShimmerScreen from "../Skeleton/serviceProviderListingSkeleton";
 import ServiceProviderListCard from "../../Shared/ServiceProviderListCard";
 import { getServiceProviderGuestMode } from "../../Redux/features/Guest/guestApi";
 import {

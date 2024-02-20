@@ -865,6 +865,7 @@
     "requiredDescriptionText": "Description is required",
     "invalidDescriptionText": "At least one description is required",
     "requiredExerciseVideoText": "Exercise video is required",
-    "invalidEndTimeText": "End time must be greater than start time"
+    "invalidEndTimeText": "End time must be greater than start time",
+    "invalidText": "Invalid"
   }
 }

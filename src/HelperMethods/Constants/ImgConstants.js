@@ -1,35 +1,55 @@
 let Images = {
   // =============================landingPageImgs===================================
-  LOGO_IMG: require("../../Assets/Images/LOGO.svg").default,
+  LOGO_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/LOGO.svg",
   SMALL_LOGO_IMG: require("../../Assets/Images/smallLogo.svg").default,
-  GOAL_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/OurGoal.png",
-  VISION_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/OurVision.png",
-  ABOUT_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/AboutFitnee.png",
-  DEFAULT_USER_IMG: require("../../Assets/Images/defaultImg.svg").default,
-  FEATURE_ONE: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/FeatureOneImg.png",
-  FEATURE_TWO: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/FeatureTwoImg.png",
-  FEATURE_THREE: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/FeatureThreeImg.png",
-  FEATURE_FOUR: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/FeatureFourImg.png",
-  ARABIA_FLAG_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/ArabiaFlag.svg",
-  INSTA_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Insta.svg",
-  TIKTOK_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Ticktok.svg",
-  AMERICAN_FLAG_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/AmericanFlag.svg",
-  TWITTER_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Twitter.svg",
-  YOUTUBE_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Youtube.svg",
-  HERO_TEXT_BACKGROUND_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/HeroTextBgImage.png",
-  HERO_BACKGROUND_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/HeroBackground.svg",
+  GOAL_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/OurGoal.png",
+  VISION_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/OurVision.png",
+  ABOUT_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/AboutFitnee.png",
+  DEFAULT_USER_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/defaultImg.svg",
+  FEATURE_ONE:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/FeatureOneImg.png",
+  FEATURE_TWO:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/FeatureTwoImg.png",
+  FEATURE_THREE:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/FeatureThreeImg.png",
+  FEATURE_FOUR:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/FeatureFourImg.png",
+  ARABIA_FLAG_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/ArabiaFlag.svg",
+  INSTA_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Insta.svg",
+  TIKTOK_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Ticktok.svg",
+  AMERICAN_FLAG_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/AmericanFlag.svg",
+  TWITTER_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Twitter.svg",
+  YOUTUBE_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Youtube.svg",
+  HERO_TEXT_BACKGROUND_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/HeroTextBgImage.png",
+  HERO_BACKGROUND_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/HeroBackground.svg",
   // =============================sliderImgs===================================
   SLIDER1_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/profile1.svg",
 
   //================================loginImgs==================================
-  LOGIN_BG_IMG: require("../../Assets/Images/login/loginBgImg.svg").default,
-  EMAIL_ICON: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/emailLogo.svg",
-  PHONE_ICON: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/phoneLogo.svg",
-  PERSON_ICON: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/personLogo.svg",
+  LOGIN_BG_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/loginBgImg.svg",
+  EMAIL_ICON:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/emailLogo.svg",
+  PHONE_ICON:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/phoneLogo.svg",
+  PERSON_ICON:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/personLogo.svg",
   //==============================registerAsImgs===============================
-  REGISTER_AS_BG: require("../../Assets/Images/registerAsScreen/RegisterAsBackground.svg")
-    .default,
+  REGISTER_AS_BG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/RegisterAsBackground.svg",
   //==============================GuestServiceProviderListImgs=================
   PROFILE2_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/profile1.svg",
@@ -43,13 +63,13 @@ let Images = {
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/RightArrow.svg",
   SEE_MORE_BG_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/SeeMoreBg.svg",
-  SHORTLOGO_IMG: require("../../Assets/Images/serviceProviderListScreen/DumbleLogo.svg")
-    .default,
+  SHORTLOGO_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/DumbleLogo.svg",
   //==============================GuestServiceProviderProviderImgs=============
-  COMMENT_IMG: require("../../Assets/Images/serviceProviderListScreen/TrainerImg.svg")
-    .default,
-  DOCUMENT_IMG: require("../../Assets/Images/serviceProviderListScreen/DocumentImg.svg")
-    .default,
+  COMMENT_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/TrainerImg.svg",
+  DOCUMENT_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/DocumentImg.svg",
+  FILTER_ICON:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/filterIcon.png",
   //==============================SubscriptionImgs=============================
   TRAINER_ONE_MONTH_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/trainerOneMonth.svg",
@@ -108,15 +128,17 @@ let Images = {
   NO_DATA_FOUND_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/noDataFound.png",
   //==============================Trainee Images====================================
-  FEATURE_BG_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/featureBg.svg",
+  FEATURE_BG_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/featureBg.svg",
   //==============================appStore and Google btn Images====================================
-  APP_STORE_IMG: require("../../Assets/Images/appStore.svg").default,
+  APP_STORE_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/appStore.svg",
   CVV_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Hint.svg",
-  GOOGLE_PLAY_IMG: require("../../Assets/Images/googlePlay.svg").default,
+  GOOGLE_PLAY_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/googlePlay.svg",
 
   //==============================QR Code Img====================================
-  QR_CODE_IMG: require("../../Assets/Images/QRcodeImg/QRImage.svg").default,
+  QR_CODE_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/QRImage.svg",
 };
 
 export default Images;

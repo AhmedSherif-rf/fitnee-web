@@ -104,7 +104,7 @@ const Topbar = ({ toggleSidebar }) => {
                   >
                     <div>
                       <h6 className="fw-bold mb-0 small">{notification?.title}</h6>
-                      <p className="mb-0 small">{notification?.text}</p>
+                      <p className="mb-0 small">{notification?.body}</p>
                     </div>
 
                     <div className="mx-1 text-end">

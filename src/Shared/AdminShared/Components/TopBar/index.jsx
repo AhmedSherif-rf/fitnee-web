@@ -10,10 +10,10 @@ import {
 } from "reactstrap";
 import { Card } from "reactstrap";
 import React, { memo } from "react";
-import { FaArrowUp } from "react-icons/fa6";
 import { CgMenuLeft } from "react-icons/cg";
 import { GoBellFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import { RiLogoutCircleLine } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
@@ -86,7 +86,7 @@ const Topbar = ({ toggleSidebar }) => {
       <Button
         color="info"
         onClick={toggleSidebar}
-        className=" border-0 admin-navbar-toggler"
+        className="border-0 admin-navbar-toggler"
       >
         <CgMenuLeft color="black" />
       </Button>
@@ -116,46 +116,52 @@ const Topbar = ({ toggleSidebar }) => {
             </div>
           </DropdownToggle>
           <DropdownMenu
-            className="custom-dropdown-menu bg-white mt-1"
-            style={{ right: 0, left: "auto", width: "290px" }}
+            className="custom-dropdown-menu bg-white mt-2"
+            style={{ width: "265px" }}
           >
             <div
               className="w-100 pt-3"
               style={{
-                maxHeight: "520px",
+                maxHeight: "510px",
                 overflowY: "scroll",
               }}
             >
-              {notifications.map((notification, index) => (
-                <Card key={index} className={`ms-1 px-2 mb-1 border-0`}>
-                  <div
-                    className={`BorderRadius p-3 ${
-                      !notification.is_read && "bgNotification"
-                    }`}
-                  >
-                    <div>
-                      <h6 className="fw-bold mb-0 small">
-                        {notification?.title}
-                      </h6>
-                      <p className="mb-0 small">{notification?.body}</p>
-                    </div>
+              {notifications.length > 0 ? (
+                notifications.map((notification, index) => (
+                  <Card key={index} className={`ms-1 px-2 mb-1 border-0`}>
+                    <div
+                      className={`BorderRadius p-3 ${
+                        !notification.is_read && "bgNotification"
+                      }`}
+                    >
+                      <div>
+                        <h6 className="fw-bold mb-0 small">
+                          {notification?.title}
+                        </h6>
+                        <p className="mb-0 small">{notification?.body}</p>
+                      </div>
 
-                    <div className="mx-1 text-end">
-                      {!notification?.is_read && (
-                        <div
-                          onClick={() =>
-                            markNotificationAsRead(notification?.id)
-                          }
-                        >
-                          <p className="small fw-bold mb-0 cursorPointer">
-                            {t("topBar.markAsRead")}
-                          </p>
-                        </div>
-                      )}
+                      <div className="mx-1 text-end">
+                        {!notification?.is_read && (
+                          <div
+                            onClick={() =>
+                              markNotificationAsRead(notification?.id)
+                            }
+                          >
+                            <p className="small fw-bold mb-0 cursorPointer">
+                              {t("topBar.markAsRead")}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              ))}
+                  </Card>
+                ))
+              ) : (
+                <div className="text-center">
+                  <p className="text-dark">No notifications</p>
+                </div>
+              )}
             </div>
           </DropdownMenu>
         </UncontrolledDropdown>
@@ -182,7 +188,7 @@ const Topbar = ({ toggleSidebar }) => {
                   onClick={handleLogoutClick}
                 >
                   <span className="me-2 d-flex">
-                    <FaArrowUp size={16} className="mb-1" />
+                    <RiLogoutCircleLine size={16} />
                   </span>
                   <p className="mb-0">Logout</p>
                 </div>

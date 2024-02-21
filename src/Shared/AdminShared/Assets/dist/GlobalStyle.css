@@ -1,0 +1,138 @@
+:root {
+  --yellow: #f5e74c;
+}
+
+.App {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+.parrot-green {
+  background-color: #91f533;
+}
+
+.textLightGray {
+  color: #8898aa;
+}
+
+.sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: linear-gradient(180deg, #212831 0%, #14181d 100%);
+  color: #fff;
+  margin-left: -250px;
+  transition: all 0.5s;
+}
+.sidebar .sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+.sidebar .dark-gray {
+  color: #606c89;
+}
+.sidebar .nav-item:hover {
+  background: transparent;
+}
+.sidebar li a.dropdown-toggle::after {
+  display: inline-flex;
+  color: #fff !important;
+  position: relative;
+  left: 15%;
+  font-size: small;
+}
+.sidebar .sidebar-header > span {
+  position: relative;
+  float: right;
+  margin: 0.5em;
+  font-size: 2rem;
+  cursor: pointer;
+  display: none;
+}
+.sidebar .side-menu {
+  height: calc(100vh - 130px);
+  padding: 15px 2px;
+}
+.sidebar .side-menu .nav .nav-item a {
+  color: #fff;
+}
+.sidebar .side-menu::-webkit-scrollbar {
+  width: 10px;
+}
+.sidebar .side-menu::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #212831 0%, #14181d 100%);
+  border-radius: 3px;
+}
+.sidebar .side-menu::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #212831 0%, #14181d 100%);
+}
+
+.sidebar.is-open {
+  margin-left: 0;
+  transition: 0.5s;
+}
+
+.content {
+  padding: 10px;
+  margin-left: 0;
+  height: 100vh;
+  background-color: #f8f9fe;
+}
+
+.iconBadge .GoPencil,
+.iconBadge .GoTrash,
+.iconBadge .approveUser,
+.iconBadge .rejectUser,
+.iconBadge .GoEye {
+  color: #606c89;
+}
+.iconBadge:hover .GoPencil {
+  color: rgba(68, 68, 68, 0.5) !important;
+}
+.iconBadge:hover .approveUser {
+  color: #00bb2c !important;
+}
+.iconBadge:hover .rejectUser {
+  color: red !important;
+}
+.iconBadge:hover .GoTrash {
+  color: #f67109 !important;
+}
+.iconBadge:hover .GoEye {
+  color: #f6e709 !important;
+}
+
+.AdminCard {
+  filter: drop-shadow(1px 2px 4px #8898aa);
+  border: none;
+}
+.AdminCard:hover {
+  filter: drop-shadow(1px 2px 4px #f6e709);
+}
+
+.AdminCardBody h4 {
+  color: #444444;
+}
+.AdminCardBody p {
+  color: #282828;
+}
+.AdminCardBody .cardIcon {
+  opacity: 0.4;
+}
+
+@media only screen and (max-width: 768px) {
+  .content.is-open {
+    margin-left: 100%;
+  }
+
+  .sidebar.is-open {
+    min-width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    transition: all 0.5s, height 0s;
+  }
+
+  .sidebar.is-open > .sidebar-header span {
+    display: unset;
+  }
+}

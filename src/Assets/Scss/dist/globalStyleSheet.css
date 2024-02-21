@@ -1,0 +1,473 @@
+@charset "UTF-8";
+:root {
+  --yellow: #f5e74c;
+}
+
+.bgProperties {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgNotification {
+  background-color: #ffed2583;
+}
+
+.small {
+  font-size: 10pt !important;
+}
+
+.bgBlur {
+  background-color: rgba(68, 68, 68, 0.5) !important;
+  border-bottom-left-radius: 14px !important;
+  border-bottom-right-radius: 14px !important;
+}
+
+.customBgDark {
+  background: #202327;
+}
+
+.font14 {
+  font-size: 14px !important;
+}
+
+.w-20 {
+  width: 20% !important;
+}
+
+.middle-subscription-card {
+  transition: transform 0.3s ease;
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.custom-badge {
+  font-size: 14px !important;
+  background-color: #f6e709 !important;
+  border-radius: 25px !important;
+}
+
+.textYellow {
+  color: #f6e709 !important;
+}
+
+.textOrange {
+  color: #f67109 !important;
+}
+
+.textGrey {
+  color: #6c757d !important;
+}
+
+.textParrotGreen {
+  color: #91f533;
+}
+
+.contactUsCard,
+.contentCard {
+  margin-top: 12vh;
+  overflow-y: scroll;
+  height: 88vh !important;
+  border: none !important;
+}
+
+.contactUsCard {
+  margin-top: 0px !important;
+}
+
+.contentCardPadding {
+  padding-top: 12vh;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.BorderRadius {
+  box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.2) !important;
+  border: none !important;
+}
+
+.customDropdownRadius,
+.BorderYellow,
+.onlyBorderRadius,
+.BorderRadius,
+.subscriptionDiv {
+  border-radius: 14px !important;
+}
+
+.ImgBorder {
+  border-top-right-radius: 14px;
+  border-top-left-radius: 14px;
+}
+
+.yellowBorder,
+.BorderYellow {
+  border: 1px solid #f6e709 !important;
+}
+
+a,
+.a {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+Input:focus {
+  border: 1px solid #f6e709 !important;
+  outline: 1px solid #f6e709 !important;
+}
+
+.profileEditIcon:hover {
+  fill: #f6e709;
+}
+
+Input::-webkit-input-placeholder {
+  color: #c0c0c0;
+}
+
+.dropdown-menu {
+  padding: 3px 3px !important;
+}
+
+.dropdownActive {
+  background-color: #f6e709 !important;
+  color: #444444 !important;
+  outline: none !important;
+  border-radius: 6px !important;
+}
+
+.dropdown-item:active, .dropdown-item:hover, .dropdown-item:focus, .dropdown-item::selection {
+  background-color: #f6e709;
+  color: #444444;
+  outline: none;
+  border-radius: 6px;
+}
+
+.react-tel-input:focus, .react-tel-input:focus-visible,
+.genderBtn:focus,
+.genderBtn:focus-visible,
+.paymentMethodBtn:focus,
+.paymentMethodBtn:focus-visible,
+.select:focus,
+.select:focus-visible,
+.form-control:focus,
+.form-control:focus-visible,
+.form-control-lg:focus,
+.form-control-lg:focus-visible {
+  border: 1px solid #91f533 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.react-tel-input {
+  border-radius: 14px;
+}
+.react-tel-input .form-control-lg {
+  border-radius: 14px !important;
+  border: 1px solid #dee2e6;
+  padding-left: 50px !important;
+}
+.react-tel-input .form-control-lg:focus {
+  outline: none !important;
+}
+.react-tel-input .flag-dropdown {
+  background-color: rgba(231, 231, 231, 0.85) !important !important;
+  border-top-left-radius: 14px !important;
+  border-bottom-left-radius: 14px !important;
+  border: none !important;
+}
+.react-tel-input .flag-dropdown .selected-flag {
+  border-top-left-radius: 14px !important;
+  border-bottom-left-radius: 14px !important;
+}
+.react-tel-input .flag-dropdown .selected-flag:hover {
+  border-top-left-radius: 14px !important;
+  border-bottom-left-radius: 14px !important;
+}
+
+.form-check-input:checked::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: "✓";
+  color: #91f533 !important;
+  font-weight: bold;
+  margin-top: -13px;
+  margin-left: 1px;
+}
+
+.form-check-input:checked {
+  background-color: #ffed2583 !important;
+  border: 1px solid #91f533 !important;
+  color: #91f533 !important;
+}
+.form-check-input:checkedfocus {
+  box-shadow: none !important;
+  background-color: #ffed2583 !important;
+  color: #91f533 !important;
+}
+
+.buttonBoxShadow {
+  box-shadow: 0px 2px 14px 0px rgba(240, 191, 54, 0.3);
+}
+
+.errorField {
+  margin-bottom: 0 !important;
+  color: #f67109;
+  font-size: 14px;
+}
+
+.customPhoneInput {
+  font-size: 14px !important;
+}
+
+.customPaddingY {
+  padding: 12px 0px !important;
+}
+
+.customSpacing {
+  letter-spacing: -0.8px;
+  line-height: 24px;
+  word-spacing: 2px;
+}
+
+.customDropDown {
+  font-size: 14px !important;
+  box-shadow: none !important;
+}
+
+.CategoryCard .CategoryCardHeader {
+  background-color: #fffaad !important;
+  height: 100% !important;
+}
+
+.custom-dropdown-menu .dropdown-item {
+  padding: 8px;
+}
+.custom-dropdown-menu .dropdown-item:hover, .custom-dropdown-menu .dropdown-item:active {
+  background: #f6e709;
+}
+
+.UncontrolledDropdown .DropdownMenu .DropdownItem {
+  padding: 8px;
+}
+.UncontrolledDropdown .DropdownMenu .DropdownItem:hover, .UncontrolledDropdown .DropdownMenu .DropdownItem:active {
+  background: #f6e709;
+}
+
+.CameraImg {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  z-index: 99;
+  border-radius: 100%;
+  right: 0;
+  bottom: 6px;
+  border: 2px solid white;
+  background-color: rgba(24, 24, 24, 0.99);
+}
+
+.tableBodyWrapperPagination {
+  max-height: 68vh;
+  overflow-y: scroll;
+}
+
+.genderBtn .selected {
+  color: #91f533 !important;
+  border: 2px solid #91f533 !important;
+}
+
+.paymentMethodBtn .selected {
+  color: #91f533 !important;
+  border: 2px solid #91f533 !important;
+}
+
+.rmsc .dropdown-container {
+  padding: 8px 10px !important;
+  border-radius: 14px !important;
+  font-size: 14px !important;
+}
+.rmsc .dropdown-container:focus-within {
+  border: 1px solid #91f533 !important;
+  box-shadow: none !important;
+}
+
+.arabicBorderHover,
+.borderHover {
+  position: relative;
+  overflow: hidden;
+}
+
+.arabicBorderHover::before,
+.borderHover::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #f6e709;
+  transition: width 0.3s ease;
+}
+
+.arabicBorderHover::before {
+  margin-bottom: 0px;
+}
+
+.arabicBorderHover:hover::before,
+.borderHover:hover::before {
+  width: 100%;
+}
+
+.swiper-pagination-bullet {
+  display: none !important;
+}
+
+.currentlyWorkingBtn .selected {
+  color: #91f533 !important;
+  border: 2px solid #91f533 !important;
+}
+
+.selectField {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.text-black-custom {
+  color: #444444 !important;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.remove-arrow {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.remove-arrow::-webkit-inner-spin-button,
+.remove-arrow::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.remove-arrow::-ms-clear {
+  display: none;
+}
+
+.shimmer-thumbnail {
+  height: 38vh !important;
+  border-radius: 14px;
+}
+
+.customLetterSpacing {
+  letter-spacing: -1px;
+}
+
+.signInCol {
+  background-color: white;
+}
+
+.menu-open {
+  overflow: hidden !important;
+}
+
+.activeScroll {
+  overflow: scroll !important;
+}
+
+@media (max-width: 767px) {
+  .signInCol {
+    background: transparent !important;
+  }
+
+  .customPadding {
+    padding-top: 58px !important;
+    padding-bottom: 58px !important;
+  }
+}
+.customCard {
+  color: #fff;
+  margin: 0px 15px;
+  position: relative;
+  width: 90% !important;
+  background-size: cover;
+  background-position: center;
+  min-height: 400px !important;
+  border: #6c757d 2px solid;
+  border-radius: 14px !important;
+  transition: all 3s ease-in-out;
+}
+.customCard .customCardFooter {
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px !important;
+  transition: all 0.4s linear 0.1s;
+  background-color: rgba(34, 29, 29, 0.8);
+}
+.customCard .customCardFooter .descriptionDiv {
+  display: none;
+}
+.customCard:after {
+  height: 85%;
+  background: #91f533;
+  z-index: -5;
+  content: " ";
+  position: absolute;
+  left: -12px;
+  right: -12px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 10px;
+  margin-left: 12px;
+  margin-right: 12px;
+  transition: margin-left 0.5s ease-in-out, margin-right 0.5s ease-in-out, height 0.5s ease-in-out, background 0.5s ease-in-out;
+}
+.customCard:hover:after {
+  margin-left: 0;
+  margin-right: 0;
+  height: 85%;
+  background: #91f533;
+  z-index: -5;
+}

@@ -12,13 +12,13 @@ import {
 import Toaster from "../Toaster";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
-import { FaArrowUp } from "react-icons/fa6";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { PiCaretDownBold } from "react-icons/pi";
 import { RiDashboardFill } from "react-icons/ri";
 import { FaKey, FaTrashCan } from "react-icons/fa6";
+import { RiLogoutCircleLine } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import { FaBars, FaUserEdit, FaBell } from "react-icons/fa";
@@ -515,7 +515,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             onClick={handleLogoutClick}
                           >
                             <span className="me-2 d-flex">
-                              <FaArrowUp size={16} className="mb-1" />
+                              <RiLogoutCircleLine size={16} />
                             </span>
                             <p className="mb-0">{t("topBar.logoutText")}</p>
                           </div>

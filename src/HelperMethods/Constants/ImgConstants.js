@@ -139,6 +139,10 @@ let Images = {
   //==============================QR Code Img====================================
   QR_CODE_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/QRImage.svg",
+
+    //============================================loading============================
+    
+    POSTER_LOADING_GIF: require("../../Assets/Images/WalkPoster.gif"),
 };
 
 export default Images;

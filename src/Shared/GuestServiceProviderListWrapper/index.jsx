@@ -202,8 +202,8 @@ const GuestServiceProviderListWrapper = (props) => {
                   >
                     <CardBody>
                       <div
-                        className="w-100 d-flex align-items-center justify-content-center"
-                        style={{ height: "30vh" }}
+                        className="w-100 d-flex align-items-center justify-content-center h-100"
+                        // style={{ height: "30vh" }}
                       >
                         <div className="">
                           <p className="mb-0 fs-4 fw-bold">

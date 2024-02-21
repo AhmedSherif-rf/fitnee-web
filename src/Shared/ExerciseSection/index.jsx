@@ -1,13 +1,15 @@
-import React, { memo } from "react";
 import { CardBody } from "reactstrap";
 import styles from "./style.module.scss";
 import { Card, Col, Row } from "reactstrap";
+import React, { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 
 const ExerciseSection = (props) => {
   const { exercisesData } = props;
   const { i18n } = useTranslation("");
+  const [hasPoster, setHasPoster] = useState(true);
 
   return (
     <Row>
@@ -27,15 +29,22 @@ const ExerciseSection = (props) => {
                     </div>
                   </Col>
                   <Col md={12} className="mb-2">
-                    <video
-                      playsInline
-                      preload="metadata"
-                      muted
-                      autoPlay="yes"
-                      loop="yes"
-                      className={styles.workoutVideos}
-                      src={subCategory?.exercise[0]?.exercise_media[0].file}
-                    ></video>
+                    <div className="d-flex justify-content-center">
+                      <div className="video-container">
+                        <video
+                          playsInline
+                          preload="metadata"
+                          muted
+                          autoPlay
+                          loop
+                          className={`workoutVideos w-100 ${
+                            hasPoster ? "with-poster" : ""
+                          }`}
+                          poster={hasPoster ? Images.POSTER_LOADING_GIF : null}
+                          src={subCategory?.exercise[0]?.exercise_media[0].file}
+                        ></video>
+                      </div>
+                    </div>
                   </Col>
                   <Col md={12} className="mb-2">
                     <Card className="BorderRadius">

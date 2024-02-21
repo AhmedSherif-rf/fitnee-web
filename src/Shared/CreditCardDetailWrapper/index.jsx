@@ -54,7 +54,7 @@ const CreditCardDetailWrapper = () => {
 
   useEffect(() => {
     if (checkoutId) {
-      const scriptUrl = `${process.env.HYPERPAY_LIVE_URL}/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
+      const scriptUrl = `https://eu-prod.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
 
       const script = document.createElement("script");
       script.src = scriptUrl;

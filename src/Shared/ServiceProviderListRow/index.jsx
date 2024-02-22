@@ -40,7 +40,7 @@ const Index = (props) => {
                   }}
                 ></div>
               )}
-              {user?.role !== TRAINEE_ROLE && data?.trainee?.profile_pic && (
+              {user?.role !== TRAINEE_ROLE && data?.trainee && (
                 <div
                   className="me-2 bgProperties rounded-circle"
                   style={{

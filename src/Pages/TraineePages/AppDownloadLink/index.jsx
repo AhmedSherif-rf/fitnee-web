@@ -1,4 +1,5 @@
 import "./DownloadLinkStyle.scss";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { RxCrossCircled } from "react-icons/rx";
 import React, { useEffect, useState } from "react";
@@ -10,27 +11,35 @@ import { CHECK_PAYMENT_STATUS_URL } from "../../../utils/constants";
 import { checkPaymentStatus } from "../../../Redux/features/Subscription/subscriptionApi";
 
 const AppDownloadLink = () => {
-  const { t, i18n } = useTranslation("");
   const dispatch = useDispatch();
-  const { entity, checkoutId, loading, serviceProvider, subscriptionPlan } =
-    useSelector((state) => state.subscription);
+  const { hyperPayStatus } = useParams();
+  const { t, i18n } = useTranslation("");
+  const {
+    entity,
+    checkoutId,
+    loading,
+    serviceProvider,
+    subscriptionPlan,
+  } = useSelector((state) => state.subscription);
   const [isPaymentSucceed, setIsPaymentSucceed] = useState("");
 
   useEffect(() => {
-    const data = {
-      apiEndpoint: CHECK_PAYMENT_STATUS_URL,
-      requestData: JSON.stringify({
-        id: checkoutId,
-        entity: entity,
-      }),
-    };
-    dispatch(checkPaymentStatus(data)).then((res) => {
-      if (res.type === "checkPaymentStatus/fulfilled") {
-        setIsPaymentSucceed(true);
-      } else if (res.type === "checkPaymentStatus/rejected") {
-        setIsPaymentSucceed(false);
-      }
-    });
+    if (!hyperPayStatus) {
+      const data = {
+        apiEndpoint: CHECK_PAYMENT_STATUS_URL,
+        requestData: JSON.stringify({
+          id: checkoutId,
+          entity: entity,
+        }),
+      };
+      dispatch(checkPaymentStatus(data)).then((res) => {
+        if (res.type === "checkPaymentStatus/fulfilled") {
+          setIsPaymentSucceed(true);
+        } else if (res.type === "checkPaymentStatus/rejected") {
+          setIsPaymentSucceed(false);
+        }
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -42,7 +51,7 @@ const AppDownloadLink = () => {
       <Row>
         <Col md="12">
           <Card className="BorderRadius contentCard px-3">
-            {isPaymentSucceed && (
+            {(isPaymentSucceed || hyperPayStatus) && (
               <Row>
                 <Col md="6" className="text-center">
                   <div className=" pt-3">

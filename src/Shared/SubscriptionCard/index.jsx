@@ -57,7 +57,7 @@ const SubscriptionCard = (props) => {
         return Images.BOTH_T_AND_N_THREE_MONTH_IMG;
       }
     } else {
-      return Images.BOTH_T_AND_N_ONE_MONTH_IMG;
+      return Images.EXERCISE_SUBSCRIPTION_IMG;
     }
   };
 

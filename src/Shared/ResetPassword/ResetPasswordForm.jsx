@@ -8,6 +8,7 @@ import { Col, Container, Form, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
+import { customLogout } from "../../Redux/features/User/userSlice";
 import { changePassword } from "../../Redux/features/User/userApi";
 import { TRAINEE_CHANGE_PASSWORD_URL } from "../../utils/constants";
 import { CHANGE_PASSWORD_SCHEMA } from "../ValidationData/validation";
@@ -28,6 +29,7 @@ const ResetPasswordForm = () => {
     dispatch(changePassword(data)).then((res) => {
       if (res.type === "changePassword/fulfilled") {
         resetForm();
+        dispatch(customLogout());
       }
     });
   };

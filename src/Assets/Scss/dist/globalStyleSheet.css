@@ -144,11 +144,31 @@ Input::-webkit-input-placeholder {
   border-radius: 6px !important;
 }
 
+.dropdown-item {
+  margin-bottom: 5px;
+}
 .dropdown-item:active, .dropdown-item:hover, .dropdown-item:focus, .dropdown-item::selection {
-  background-color: #f6e709;
+  background-color: #f6e709 !important;
   color: #444444;
   outline: none;
   border-radius: 6px;
+}
+
+.customSelect select {
+  color: #444444 !important;
+  font-size: 17px !important;
+}
+.customSelect select option:hover {
+  /* Add hover style for option */
+  background: #f6e709 !important;
+  color: #444444 !important;
+}
+
+.UncontrolledDropdown .DropdownMenu .DropdownItem {
+  padding: 8px;
+}
+.UncontrolledDropdown .DropdownMenu .DropdownItem:hover, .UncontrolledDropdown .DropdownMenu .DropdownItem:active {
+  background: #f6e709;
 }
 
 .react-tel-input:focus, .react-tel-input:focus-visible,
@@ -239,28 +259,9 @@ Input::-webkit-input-placeholder {
   word-spacing: 2px;
 }
 
-.customDropDown {
-  font-size: 14px !important;
-  box-shadow: none !important;
-}
-
 .CategoryCard .CategoryCardHeader {
   background-color: #fffaad !important;
   height: 100% !important;
-}
-
-.custom-dropdown-menu .dropdown-item {
-  padding: 8px;
-}
-.custom-dropdown-menu .dropdown-item:hover, .custom-dropdown-menu .dropdown-item:active {
-  background: #f6e709;
-}
-
-.UncontrolledDropdown .DropdownMenu .DropdownItem {
-  padding: 8px;
-}
-.UncontrolledDropdown .DropdownMenu .DropdownItem:hover, .UncontrolledDropdown .DropdownMenu .DropdownItem:active {
-  background: #f6e709;
 }
 
 .CameraImg {

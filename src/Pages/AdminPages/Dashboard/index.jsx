@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { FaUser, FaRegUser, FaUsers } from "react-icons/fa";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import { USER_NOTIFICATIONS_URL } from "../../../utils/constants";
+import { ADMIN_DASHBOARD_COUNTERS } from "../../../utils/constants";
 import { getUserNotifications } from "../../../Redux/features/User/userApi";
 import DashboardCard from "../../../Shared/AdminShared/Components/DashboardCard";
+import { getUserCounters } from "../../../Redux/features/Admin/Dashboard/UserCounterApi";
 
 const Dashboard = (props) => {
+  const [counterData, setCounterData] = useState("");
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.user);
 
@@ -21,10 +24,25 @@ const Dashboard = (props) => {
     const data = {
       apiEndpoint: USER_NOTIFICATIONS_URL,
     };
-
     dispatch(getUserNotifications(data));
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = {
+        apiEndpoint: ADMIN_DASHBOARD_COUNTERS,
+      };
+
+      const res = await dispatch(getUserCounters(data));
+
+      if (res.type === "getUserCounters/fulfilled") {
+        setCounterData(res.payload.data);
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
+  console.log(counterData, "alksdjfjakjsdlfkaljdskflasdjlkfk");
   return (
     <Container>
       {loading === "pending" && <LoadingScreen />}
@@ -35,7 +53,7 @@ const Dashboard = (props) => {
             CardBodyClass="AdminCardBody"
             cardIconClass="cardIcon"
             cardIcon={<FaUser size={60} />}
-            textOne="45"
+            textOne={counterData.active_users_count}
             textTwo="Active User"
           />
         </Col>
@@ -45,8 +63,8 @@ const Dashboard = (props) => {
             CardBodyClass="AdminCardBody"
             cardIconClass="cardIcon"
             cardIcon={<FaRegUser size={60} />}
-            textOne="05"
-            textTwo="Non-Active Users"
+            textOne={counterData.inactive_users_count}
+            textTwo="Inactive Users"
           />
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
@@ -55,7 +73,7 @@ const Dashboard = (props) => {
             CardBodyClass="AdminCardBody"
             cardIconClass="cardIcon"
             cardIcon={<FaUsers size={65} />}
-            textOne="04"
+            textOne={counterData.trainees_count}
             textTwo="Subscribers"
           />
         </Col>
@@ -65,7 +83,7 @@ const Dashboard = (props) => {
             CardBodyClass="AdminCardBody"
             cardIconClass="cardIcon"
             cardIcon={<AiOutlineUserSwitch size={65} />}
-            textOne="02"
+            textOne={counterData.resubscribers_count}
             textTwo="Re-Subscribers"
           />
         </Col>

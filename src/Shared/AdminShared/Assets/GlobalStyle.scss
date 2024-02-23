@@ -34,7 +34,7 @@
     display: inline-flex;
     color: $white !important;
     position: relative;
-    left: 60%;
+    left: 15%;
     font-size: small;
   }
 
@@ -128,7 +128,7 @@ color:$dark-bg;
       opacity: 0.4;
     }
   }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
   .content.is-open {
     margin-left: 100%;
   }
@@ -142,11 +142,5 @@ color:$dark-bg;
 
   .sidebar.is-open > .sidebar-header span {
     display: unset;
-  }
-
-  li a.dropdown-toggle::after {
-    display: inline-block;
-    position: relative;
-    left: 68%;
   }
 }

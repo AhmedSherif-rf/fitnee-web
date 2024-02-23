@@ -136,15 +136,44 @@ Input::-webkit-input-placeholder {
   outline: none !important;
   border-radius: 6px !important;
 }
+
 .dropdown-item {
+  margin-bottom: 5px;
   &:active,
   &:hover,
   &:focus,
   &::selection {
-    background-color: $yellow;
+    background-color: $yellow !important;
     color: $black;
     outline: none;
     border-radius: 6px;
+  }
+}
+.customSelect {
+  select {
+    color: $black !important;
+    font-size: 17px !important;
+    option {
+      // background: $yellow !important;
+      // color: $black !important;
+      &:hover {
+        /* Add hover style for option */
+        background: $yellow !important;
+        color: $black !important;
+      }
+    }
+  }
+}
+
+.UncontrolledDropdown {
+  .DropdownMenu {
+    .DropdownItem {
+      padding: 8px;
+      &:hover,
+      &:active {
+        background: $yellow;
+      }
+    }
   }
 }
 
@@ -233,34 +262,10 @@ Input::-webkit-input-placeholder {
   word-spacing: 2px;
 }
 
-.customDropDown {
-  font-size: $font-14 !important;
-  box-shadow: none !important;
-}
 .CategoryCard {
   .CategoryCardHeader {
     background-color: $light-yellow !important;
     height: 100% !important;
-  }
-}
-.custom-dropdown-menu {
-  .dropdown-item {
-    padding: 8px;
-    &:hover,
-    &:active {
-      background: $yellow;
-    }
-  }
-}
-.UncontrolledDropdown {
-  .DropdownMenu {
-    .DropdownItem {
-      padding: 8px;
-      &:hover,
-      &:active {
-        background: $yellow;
-      }
-    }
   }
 }
 

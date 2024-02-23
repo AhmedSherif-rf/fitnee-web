@@ -144,7 +144,7 @@ const PromoCode = (props) => {
                           name="type"
                           value={values.type}
                           placeholder="Select Type"
-                          className="py-3 px-4 mb-0"
+                          className="-2 mb-0 border"
                           onBlurHandle={handleBlur}
                           onChangeHandle={handleChange}
                           Options={promoCodeTypeOptions}

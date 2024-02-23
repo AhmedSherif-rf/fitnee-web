@@ -661,7 +661,7 @@ const SignUpForm = () => {
                         {user === null && <div>*</div>}
                       </div>
                       <MyDropdown
-                        className="shadow-0 py-3 px-5 border"
+                        className="shadow-0 p-2 border"
                         Options={
                           i18n.dir() === "ltr" ? roleOptions : roleOptionsArabic
                         }
@@ -1167,7 +1167,7 @@ const SignUpForm = () => {
             <Row className="mb-3">
               {filterFields.includes("goal") && (
                 <Col md={6}>
-                  <h6 className="mb-2 fw-bold">{t("signup.myGoalText")}</h6>
+                  <h6 className="fw-bold">{t("signup.myGoalText")}</h6>
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -1188,7 +1188,7 @@ const SignUpForm = () => {
                   <Row className="training">
                     <Col md={12} className="mb-2">
                       <MyDropdown
-                        className=" shadow-0 py-3 px-5 border"
+                        className=" shadow-0 p-2 border"
                         Options={trainingGoalOptions}
                         name={"training_goal"}
                         placeholder={t("signup.selectTrainingGoalText")}
@@ -1226,7 +1226,7 @@ const SignUpForm = () => {
                   <Row className="activity">
                     <Col md={12} className="mb-2">
                       <MyDropdown
-                        className=" shadow-0 py-3 px-5 border"
+                        className=" shadow-0 border p-2"
                         Options={levelOptions}
                         name={"level"}
                         placeholder={t("signup.selectLevelText")}
@@ -1279,7 +1279,7 @@ const SignUpForm = () => {
                               <Col lg={5} md={5} className="mb-2">
                                 <p className="mb-0">{t("signup.dayText")}</p>
                                 <MyDropdown
-                                  className=" shadow-0 py-3 px-5 border"
+                                  className="shadow-0 p-2 border"
                                   Options={
                                     i18n.dir() === "ltr"
                                       ? weekDaysOptions

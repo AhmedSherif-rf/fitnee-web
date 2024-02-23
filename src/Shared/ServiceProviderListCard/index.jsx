@@ -1,18 +1,35 @@
-import React, { memo } from "react";
 import styles from "./style.module.scss";
 import MyRatingComponent from "../Rating";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody, CardFooter } from "reactstrap";
+import React, { memo, useEffect, useState } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const TrainerListCard = (props) => {
   const { serviceProvider, className, handleOnClick } = props;
+  const [screenSize, setScreenSize] = useState(true);
   const { t, i18n } = useTranslation("");
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 768) {
+        setScreenSize(true);
+      } else {
+        setScreenSize(false);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <Card
       className={`BorderRadius bgProperties ${className} ${styles.Card}`}
-      onClick={() => handleOnClick()}
+      onClick={handleOnClick}
       style={{
         backgroundImage: `${
           serviceProvider?.profile_pic === null
@@ -27,9 +44,7 @@ const TrainerListCard = (props) => {
       </CardBody>
       <CardFooter
         className={`bgBlur ${styles.infoContainer}`}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
+        onClick={screenSize ? (e) => e.stopPropagation() : null}
       >
         <h6 className="fw-700 fs-4 mb-0 px-2 text-white">
           {serviceProvider?.full_name}

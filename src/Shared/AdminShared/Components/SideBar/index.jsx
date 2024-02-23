@@ -4,7 +4,6 @@ import { Button } from "reactstrap";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { GiWallet } from "react-icons/gi";
-import styles from "./styles.module.scss";
 import { RxDashboard } from "react-icons/rx";
 import { MdOutlineReviews } from "react-icons/md";
 import { NavItem, NavLink, Nav } from "reactstrap";
@@ -14,11 +13,11 @@ import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
 const SideBar = ({ isOpen, toggle }) => (
   <div
-    className={`${styles.sideNav} ${classNames("sidebar", {
+    className={`${classNames("sidebar", {
       "is-open": isOpen,
     })}`}
   >
-    <div className="sidebar-header ">
+    <div className="sidebar-header">
       <Button
         onClick={toggle}
         style={{ right: "0", color: "red" }}

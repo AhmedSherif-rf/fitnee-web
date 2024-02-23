@@ -1,5 +1,4 @@
 import React from "react";
-import { Input } from "reactstrap";
 
 const MyDropdown = (props) => {
   const {
@@ -13,16 +12,15 @@ const MyDropdown = (props) => {
   } = props;
 
   return (
-    <div className="mb-0">
-      <Input
-        className={`customDropDown customDropdownRadius form-control-lg w-100 me-2 ${className}`}
-        type="select"
+    <div className={`mb-0 customSelect`}>
+      <select
+        className={`customDropdownRadius w-100 form-control-lg ${className}`}
         name={name}
         onChange={onChangeHandle}
         onBlur={onBlurHandle}
         value={value}
       >
-        <option value="" className="customDropDownOption">
+        <option value="" className={``}>
           {placeholder}
         </option>
         {Options &&
@@ -30,12 +28,12 @@ const MyDropdown = (props) => {
             <option
               key={index}
               value={item?.value}
-              className="customDropDownOption"
+              className={``}
             >
               {item.label}
             </option>
           ))}
-      </Input>
+      </select>
     </div>
   );
 };

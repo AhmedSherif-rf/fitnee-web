@@ -1,8 +1,8 @@
+import { getUserStat } from "./dashboardApi";
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserCounters } from "./UserCounterApi";
 
-export const reviewRequestSlice = createSlice({
-  name: "DashboardUserCounters",
+export const dashboardSlice = createSlice({
+  name: "dashboard",
   initialState: {
     loading: "idle",
     error: null,
@@ -10,18 +10,18 @@ export const reviewRequestSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getUserCounters.pending, (state) => {
+      .addCase(getUserStat.pending, (state) => {
         state.loading = "pending";
       })
-      .addCase(getUserCounters.fulfilled, (state) => {
+      .addCase(getUserStat.fulfilled, (state) => {
         state.success = true;
         state.loading = "succeeded";
       })
-      .addCase(getUserCounters.rejected, (state, action) => {
+      .addCase(getUserStat.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });
   },
 });
 
-export default reviewRequestSlice.reducer;
+export default dashboardSlice.reducer;

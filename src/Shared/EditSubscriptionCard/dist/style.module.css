@@ -1,0 +1,27 @@
+:root {
+  --yellow: #f5e74c;
+}
+
+.cardHeaderDesign {
+  border: 1px solid #d1d1d1 !important;
+  transition: border-top 0.3s ease, transform 0.3s ease;
+  height: 90%;
+  margin-top: 12px;
+}
+.cardHeaderDesign .headerCard {
+  border-radius: 14px;
+  margin-top: -20px;
+  padding: 10px 50px;
+  text-align: center !important;
+  background-color: #fff !important;
+  border-top: 1px solid #d1d1d1 !important;
+  transition: border-top 0.3s ease, transform 0.3s ease;
+}
+.cardHeaderDesign:hover {
+  transform: scale(1.05);
+  border: 1px solid #f6e709 !important;
+}
+.cardHeaderDesign:hover .headerCard {
+  border-top: 1px solid #f6e709 !important;
+  transform: scale(1.05);
+}

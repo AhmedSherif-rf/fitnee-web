@@ -2,8 +2,8 @@ import axiosInstance from "../../../interceptor";
 import Toaster from "../../../../Shared/Toaster";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getUserCounters = createAsyncThunk(
-  "getUserCounters",
+export const getUserStat = createAsyncThunk(
+  "getUserStat",
   async ({ apiEndpoint }, thunkAPI) => {
     try {
       const response = await axiosInstance.get(apiEndpoint);

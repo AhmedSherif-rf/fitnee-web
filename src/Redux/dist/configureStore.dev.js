@@ -29,6 +29,8 @@ var _promoCodeSlice = _interopRequireDefault(require("./features/Admin/PromoCode
 
 var _FeedbackSlice = _interopRequireDefault(require("./features/Admin/Feedback/FeedbackSlice.js"));
 
+var _dashboardSlice = _interopRequireDefault(require("./features/Admin/Dashboard/dashboardSlice.js"));
+
 var _subscriptionSlice = _interopRequireDefault(require("./features/Subscription/subscriptionSlice.js"));
 
 var _userListingSlice = _interopRequireDefault(require("./features/Admin/UserListing/userListingSlice.js"));
@@ -36,8 +38,6 @@ var _userListingSlice = _interopRequireDefault(require("./features/Admin/UserLis
 var _forgotPasswordSlice = _interopRequireDefault(require("./features/ForgotPassword/forgotPasswordSlice.js"));
 
 var _ReviewRequestSlice = _interopRequireDefault(require("./features/Admin/ReviewRequest/ReviewRequestSlice.js"));
-
-var _UserCounterSlice = _interopRequireDefault(require("./features/Admin/Dashboard/UserCounterSlice.js"));
 
 var _subscriptionPlanSlice = _interopRequireDefault(require("./features/SubscriptionPlan/subscriptionPlanSlice.js"));
 
@@ -59,13 +59,13 @@ var rootReducer = (0, _toolkit.combineReducers)({
   language: _languageSlice["default"],
   feedback: _FeedbackSlice["default"],
   contactUs: _contactUsSlice["default"],
+  dashboard: _dashboardSlice["default"],
   userListing: _userListingSlice["default"],
   subscription: _subscriptionSlice["default"],
   reviewRequest: _ReviewRequestSlice["default"],
   forgotPassword: _forgotPasswordSlice["default"],
   subscriptionPlan: _subscriptionPlanSlice["default"],
-  EditProfileRequest: _EditProfileRequestSlice["default"],
-  dashboardUserCounters: _UserCounterSlice["default"]
+  EditProfileRequest: _EditProfileRequestSlice["default"]
 });
 var persistedReducer = (0, _reduxPersist.persistReducer)(persistConfig, rootReducer);
 var store = (0, _toolkit.configureStore)({

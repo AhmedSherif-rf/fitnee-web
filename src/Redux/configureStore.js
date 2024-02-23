@@ -10,11 +10,11 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import contactUsSlice from "./features/ContactUs/contactUsSlice.js";
 import promoCode from "./features/Admin/PromoCode/promoCodeSlice.js";
 import feedbackSlice from "./features/Admin/Feedback/FeedbackSlice.js";
+import dashboardSlice from "./features/Admin/Dashboard/dashboardSlice.js";
 import subscriptionSlice from "./features/Subscription/subscriptionSlice.js";
 import userListingSlice from "./features/Admin/UserListing/userListingSlice.js";
 import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.js";
 import reviewRequestSlice from "./features/Admin/ReviewRequest/ReviewRequestSlice.js";
-import dashboardUserCountersSlice from "./features/Admin/Dashboard/UserCounterSlice.js";
 import subscriptionPlanSlice from "./features/SubscriptionPlan/subscriptionPlanSlice.js";
 import EditProfileRequestSlice from "./features/Admin/EditProfileRequest/EditProfileRequestSlice.js";
 
@@ -33,13 +33,13 @@ const rootReducer = combineReducers({
   language: languageSlice,
   feedback: feedbackSlice,
   contactUs: contactUsSlice,
+  dashboard: dashboardSlice,
   userListing: userListingSlice,
   subscription: subscriptionSlice,
   reviewRequest: reviewRequestSlice,
   forgotPassword: forgotPasswordSlice,
   subscriptionPlan: subscriptionPlanSlice,
   EditProfileRequest: EditProfileRequestSlice,
-  dashboardUserCounters: dashboardUserCountersSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

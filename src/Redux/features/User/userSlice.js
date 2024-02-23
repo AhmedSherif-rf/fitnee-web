@@ -218,7 +218,7 @@ export const userSlice = createSlice({
       })
       .addCase(getUserNotifications.fulfilled, (state, action) => {
         state.loading = "succeeded";
-        state.notifications = action.payload.data.results;
+        state.notifications = action.payload;
       })
       .addCase(getUserNotifications.rejected, (state) => {
         state.loading = "failed";

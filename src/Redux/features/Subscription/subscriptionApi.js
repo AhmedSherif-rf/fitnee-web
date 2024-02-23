@@ -7,7 +7,11 @@ export const getCheckoutId = createAsyncThunk(
   async ({ apiEndpoint, requestData, entity }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      return { id: response.data.data.id, entity: entity };
+      return {
+        id: response.data.data.id,
+        entity: entity,
+        is_hyper_pay: response.data.data.is_hyper_pay ?? false,
+      };
     } catch (error) {
       if (error?.response?.data?.error?.Message) {
         Toaster.error(error?.response?.data?.error?.Message);

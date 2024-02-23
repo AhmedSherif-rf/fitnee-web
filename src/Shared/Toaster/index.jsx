@@ -34,28 +34,30 @@ class Toaster {
 
   static async error(message) {
     try {
-      if (localStorage.getItem("Website_Language__fitnee") === "ar") {
-        const response = await axios.post(
-          `${process.env.REACT_APP_GOOGLE_TRANSLATE_API_URL}?key=${process.env.REACT_APP_GOOGLE_TRANSLATE_API_KEY}`,
-          {
-            q: message,
-            target: localStorage.getItem("Website_Language__fitnee"),
-          }
-        );
+      if (message !== "") {
+        if (localStorage.getItem("Website_Language__fitnee") === "ar") {
+          const response = await axios.post(
+            `${process.env.REACT_APP_GOOGLE_TRANSLATE_API_URL}?key=${process.env.REACT_APP_GOOGLE_TRANSLATE_API_KEY}`,
+            {
+              q: message,
+              target: localStorage.getItem("Website_Language__fitnee"),
+            }
+          );
 
-        message = response.data.data.translations[0].translatedText;
+          message = response.data.data.translations[0].translatedText;
+        }
+
+        toast.error(message, {
+          position: "top-right",
+          icon: <FaXmark color="red" />,
+          style: {
+            borderRadius: "10px",
+            background:
+              "linear-gradient(90deg, #F6E709 -2.97%, #EDE809 21.19%, #D4EB09 61.98%, #ADF109 113.34%, #8EF609 148.08%)",
+            color: "#333",
+          },
+        });
       }
-
-      toast.error(message, {
-        position: "top-right",
-        icon: <FaXmark color="red" />,
-        style: {
-          borderRadius: "10px",
-          background:
-            "linear-gradient(90deg, #F6E709 -2.97%, #EDE809 21.19%, #D4EB09 61.98%, #ADF109 113.34%, #8EF609 148.08%)",
-          color: "#333",
-        },
-      });
     } catch (error) {
       console.error("Error translating text:", error);
     }

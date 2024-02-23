@@ -9,7 +9,8 @@ let Images = {
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/OurVision.png",
   ABOUT_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/AboutFitnee.png",
-  DEFAULT_USER_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/defaultImg.svg",
+  DEFAULT_USER_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/defaultImg.svg",
   FEATURE_ONE:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/FeatureOneImg.png",
   FEATURE_TWO:
@@ -66,8 +67,10 @@ let Images = {
   SHORTLOGO_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/DumbleLogo.svg",
   //==============================GuestServiceProviderProviderImgs=============
-  COMMENT_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/TrainerImg.svg",
-  DOCUMENT_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/DocumentImg.svg",
+  COMMENT_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/TrainerImg.svg",
+  DOCUMENT_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/DocumentImg.svg",
   FILTER_ICON:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/filterIcon.png",
   //==============================SubscriptionImgs=============================
@@ -91,6 +94,9 @@ let Images = {
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/bothTwoMonth.svg",
   BOTH_T_AND_N_THREE_MONTH_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/bothThreeMonth.svg",
+
+  EXERCISE_SUBSCRIPTION_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/exerciseFigure.svg",
 
   VISA_ICON:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/visaIcon.png",
@@ -131,10 +137,12 @@ let Images = {
   FEATURE_BG_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/featureBg.svg",
   //==============================appStore and Google btn Images====================================
-  APP_STORE_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/appStore.svg",
+  APP_STORE_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/appStore.svg",
   CVV_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Hint.svg",
-  GOOGLE_PLAY_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/googlePlay.svg",
+  GOOGLE_PLAY_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/googlePlay.svg",
 
   //==============================QR Code Img====================================
   QR_CODE_IMG:

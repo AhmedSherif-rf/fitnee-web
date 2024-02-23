@@ -6,6 +6,7 @@ import FillBtn from "../Buttons/FillBtn";
 import ToggleSwitch from "../ToggleSwitch";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import SubHeading from "../Headings/SubHeading";
 import PageHeading from "../Headings/PageHeading";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,6 +36,7 @@ import {
 
 const CreditCardDetailWrapper = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation("");
   const { user } = useSelector((state) => state.user);
   const { loading, subscriptionPlan, checkoutId, entity } = useSelector(
@@ -146,12 +148,19 @@ const CreditCardDetailWrapper = () => {
           vat: summaryData.vat,
           email: user?.email,
           subscription_id: subscriptionPlan.id,
-          wallet_amount: summaryData.walletAmount
+          wallet_amount: calculateWalletAmountUsed(),
         }),
         entity: values.entity,
       };
-      dispatch(getCheckoutId(data));
+      dispatch(getCheckoutId(data)).then((res) => {
+        if (res.type === "getCheckoutId/fulfilled") {
+          if (res.payload.is_hyper_pay) {
+            navigate("/trainee/appDownloadLink/true");
+          }
+        }
+      });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch, subscriptionPlan, summaryData, user]
   );
 
@@ -433,13 +442,12 @@ const CreditCardDetailWrapper = () => {
                               handleToggle={() => {
                                 setFieldValue("use_wallet", !values.use_wallet);
                                 if (!values.use_wallet === true) {
-                                  const updatedGrandPrice =
-                                    functions.getSummary(
-                                      summaryData.discount,
-                                      walletBalance,
-                                      subscriptionPlan.price,
-                                      summaryData.vat
-                                    );
+                                  const updatedGrandPrice = functions.getSummary(
+                                    summaryData.discount,
+                                    walletBalance,
+                                    subscriptionPlan.price,
+                                    summaryData.vat
+                                  );
 
                                   setSummaryData({
                                     ...summaryData,
@@ -447,13 +455,12 @@ const CreditCardDetailWrapper = () => {
                                     walletAmount: walletBalance,
                                   });
                                 } else {
-                                  const updatedGrandPrice =
-                                    functions.getSummary(
-                                      summaryData.discount,
-                                      0,
-                                      subscriptionPlan.price,
-                                      summaryData.vat
-                                    );
+                                  const updatedGrandPrice = functions.getSummary(
+                                    summaryData.discount,
+                                    0,
+                                    subscriptionPlan.price,
+                                    summaryData.vat
+                                  );
 
                                   setSummaryData({
                                     ...summaryData,

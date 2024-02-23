@@ -77,7 +77,7 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
-    path: "/trainee/appDownloadLink",
+    path: "/trainee/appDownloadLink/:hyperPayStatus",
     component: lazy(() => import("../Pages/TraineePages/AppDownloadLink")),
     exact: true,
     isPrivate: true,

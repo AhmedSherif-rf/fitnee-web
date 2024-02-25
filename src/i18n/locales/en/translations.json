@@ -810,7 +810,8 @@
     "loggedOutText": "Logged out successfully",
     "planUpdateText": "Plan updated successfully",
     "planCreatedText": "Plan created successfully",
-    "messageSentText": "Message sent successfully"
+    "messageSentText": "Message sent successfully",
+    "profileEditedText": "Profile edited successfully"
   },
   "topBar": {
     "dashboardText": "Dashboard",

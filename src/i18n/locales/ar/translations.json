@@ -784,7 +784,8 @@
     "loggedOutText": "تم تسجيل الخروج",
     "planUpdateText": "تم تحديث الخطة",
     "planCreatedText": "Plan created successfully",
-    "messageSentText": "تم إرسال الرسالة بنجاح"
+    "messageSentText": "تم إرسال الرسالة بنجاح",
+    "profileEditedText": "تم تعديل الملف الشخصي بنجاح"
   },
   "topBar": {
     "dashboardText": "ﺍﻟﺮﺋﻴﺴﻴﺔ",

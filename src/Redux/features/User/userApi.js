@@ -90,7 +90,7 @@ export const editProfile = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.patch(apiEndpoint, requestData);
-      Toaster.success(TranslationHelper("messages.subscriptionCancelText"));
+      Toaster.success(TranslationHelper("messages.profileEditedText"));
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.message);

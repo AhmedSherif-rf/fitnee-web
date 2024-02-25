@@ -820,7 +820,7 @@
     "logoutText": "Logout",
     "notificationsText": "Notifications",
     "noNotificationsText": "No notification",
-    "markAsRead": "Mark as Read"
+    "markAsRead": "Mark as Read",
     "walletText": "Wallet"
   },
   "validation": {

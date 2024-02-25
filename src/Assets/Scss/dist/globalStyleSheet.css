@@ -159,7 +159,6 @@ Input::-webkit-input-placeholder {
   font-size: 17px !important;
 }
 .customSelect select option:hover {
-  /* Add hover style for option */
   background: #f6e709 !important;
   color: #444444 !important;
 }

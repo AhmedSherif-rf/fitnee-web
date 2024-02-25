@@ -793,6 +793,7 @@
     "deleteAccountText": "حذف الحساب",
     "logoutText": "تسجيل الخروج",
     "notificationsText": "الاشعارات",
+    "noNotificationsText": "No notification",
     "markAsRead": "ضع إشارة مقروء",
     "walletText": "المحفظة"
   },

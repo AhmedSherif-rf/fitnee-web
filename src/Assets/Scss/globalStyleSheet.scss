@@ -154,10 +154,7 @@ Input::-webkit-input-placeholder {
     color: $black !important;
     font-size: 17px !important;
     option {
-      // background: $yellow !important;
-      // color: $black !important;
       &:hover {
-        /* Add hover style for option */
         background: $yellow !important;
         color: $black !important;
       }

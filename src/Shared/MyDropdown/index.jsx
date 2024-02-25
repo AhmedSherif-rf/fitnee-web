@@ -20,7 +20,7 @@ const MyDropdown = (props) => {
         onBlur={onBlurHandle}
         value={value}
       >
-        <option value="" className={``}>
+        <option value="">
           {placeholder}
         </option>
         {Options &&
@@ -28,7 +28,6 @@ const MyDropdown = (props) => {
             <option
               key={index}
               value={item?.value}
-              className={``}
             >
               {item.label}
             </option>

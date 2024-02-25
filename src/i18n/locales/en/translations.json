@@ -819,7 +819,8 @@
     "deleteAccountText": "Delete Account",
     "logoutText": "Logout",
     "notificationsText": "Notifications",
-    "markAsRead": "Mark as Read",
+    "noNotificationsText": "No notification",
+    "markAsRead": "Mark as Read"
     "walletText": "Wallet"
   },
   "validation": {

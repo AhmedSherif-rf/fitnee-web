@@ -102,7 +102,7 @@ const SignInForm = () => {
 
   return (
     <Container>
-      <Row className="justify-content-center text-black-custom align-items-md-center align-items-end vh-100">
+      <Row className="justify-content-center text-black-custom align-items-md-center align-items-end vh-100" style={{overflow:"hidden"}}>
         {loading === "pending" && <LoadingScreen />}
         <Col lg={9} md={12} sm={10}>
           <Formik

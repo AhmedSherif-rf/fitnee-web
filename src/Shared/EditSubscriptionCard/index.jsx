@@ -91,7 +91,7 @@ const EditSubscriptionCard = (props) => {
 
   return (
     <Card
-      className={`text-center BorderRadius text-black-custom p-0 h-100 mb-5 ${
+      className={`text-center BorderRadius text-black-custom p-0 mb-5 ${
         styles.cardHeaderDesign
       } ${i18n.dir()}`}
     >

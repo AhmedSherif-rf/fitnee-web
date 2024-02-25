@@ -95,7 +95,7 @@ const Subscription = () => {
       <Row className="justify-content-center align-items-center">
         <Col md={9} className="">
           <Card className="contentCard px-3 pt-5 bg-transparent">
-            <Row className="pt-2">
+            <Row className="">
               {subscriptionData?.map((item, index) => {
                 return (
                   <Col

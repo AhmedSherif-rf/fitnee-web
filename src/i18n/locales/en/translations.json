@@ -819,7 +819,8 @@
     "deleteAccountText": "Delete Account",
     "logoutText": "Logout",
     "notificationsText": "Notifications",
-    "markAsRead": "Mark as Read"
+    "markAsRead": "Mark as Read",
+    "walletText": "Wallet"
   },
   "validation": {
     "invalidEmailText": "Invalid email address",

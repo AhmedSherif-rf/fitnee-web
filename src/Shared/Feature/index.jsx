@@ -29,7 +29,7 @@ const Feature = (props) => {
           <div className={`d-flex align-items-center`}>
             <div className="" style={{ height: "300px" }}>
               <div
-                className={`fw-bold textYellow mb-0 display-5 mb-3 p-0 w-100 ${styles.featureHeading}`}
+                className={`fw-bold textYellow mb-0 display-5 mb-3 p-0 w-100 ${styles.featureHeading} ${i18n.dir()}`}
               >
                 <span className="arabicBorderHover p-0">
                   {t("landing.featuresText")}

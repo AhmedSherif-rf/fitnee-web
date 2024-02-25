@@ -15,6 +15,8 @@ export const getCheckoutId = createAsyncThunk(
     } catch (error) {
       if (error?.response?.data?.error?.Message) {
         Toaster.error(error?.response?.data?.error?.Message);
+      } else if (error?.response?.data?.error?.Messages) {
+        Toaster.error(error?.response?.data?.error?.Messages);
       } else {
         Toaster.error(error?.response?.data?.error?.Error);
       }
@@ -32,6 +34,8 @@ export const checkPaymentStatus = createAsyncThunk(
     } catch (error) {
       if (error?.response?.data?.error?.Error) {
         Toaster.error(error?.response?.data?.error?.Error);
+      } else if (error?.response?.data?.error?.Messages) {
+        Toaster.error(error?.response?.data?.error?.Messages);
       } else if (error?.response?.data?.error?.Message) {
         Toaster.error(error?.response?.data?.error?.Message);
       }

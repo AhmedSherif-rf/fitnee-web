@@ -1,20 +1,20 @@
 import * as Yup from "yup";
 
 const firstNameValidation = Yup.string()
-  .matches(/^[A-Za-z ]+$/, "validation.invalidFirstNameText")
+  // .matches(/^[A-Za-z ]+$/, "validation.invalidFirstNameText")
   .min(2, "validation.tooShortText")
   .max(50, "validation.tooLongText")
 
   .required("validation.requiredFirstNameText");
 
 const fullNameValidation = Yup.string()
-  .matches(/^[A-Za-z ]+$/, "validation.invalidFullNameText")
+  // .matches(/^[A-Za-z ]+$/, "validation.invalidFullNameText")
   .min(2, "validation.tooShortText")
   .max(50, "validation.tooLongText")
   .required("validation.requiredFullNameText");
 
 const lastNameValidation = Yup.string()
-  .matches(/^[A-Za-z ]+$/, "validation.invalidLastNameText")
+  // .matches(/^[A-Za-z ]+$/, "validation.invalidLastNameText")
   .min(2, "validation.tooShortText")
   .max(50, "validation.tooLongText")
   .required("validation.requiredLastNameText");

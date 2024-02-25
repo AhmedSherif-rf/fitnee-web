@@ -24,7 +24,7 @@ const AppDownloadLink = () => {
   const [isPaymentSucceed, setIsPaymentSucceed] = useState("");
 
   useEffect(() => {
-    if (!hyperPayStatus) {
+    if (hyperPayStatus === "false") {
       const data = {
         apiEndpoint: CHECK_PAYMENT_STATUS_URL,
         requestData: JSON.stringify({
@@ -51,7 +51,7 @@ const AppDownloadLink = () => {
       <Row>
         <Col md="12">
           <Card className="BorderRadius contentCard px-3">
-            {(isPaymentSucceed || hyperPayStatus) && (
+            {(isPaymentSucceed || hyperPayStatus === "true") && (
               <Row>
                 <Col md="6" className="text-center">
                   <div className=" pt-3">

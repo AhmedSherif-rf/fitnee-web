@@ -821,6 +821,7 @@
     "notificationsText": "Notifications",
     "noNotificationsText": "No notification",
     "markAsRead": "Mark as Read"
+    "walletText": "Wallet"
   },
   "validation": {
     "invalidEmailText": "Invalid email address",

@@ -362,7 +362,7 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="text"
-                    placeholder={t("signup.firstNameText")}
+                    // placeholder={t("signup.firstNameText")}
                     name="first_name"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -388,7 +388,7 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="text"
-                    placeholder={t("signup.fullNameText")}
+                    // placeholder={t("signup.fullNameText")}
                     name="full_name"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -414,7 +414,7 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="text"
-                    placeholder={t("signup.lastNameText")}
+                    // placeholder={t("signup.lastNameText")}
                     name="last_name"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -441,7 +441,7 @@ const SignUpForm = () => {
                     className="py-3 px-4"
                     type="text"
                     name="email"
-                    placeholder={t("signup.emailText")}
+                    // placeholder={t("signup.emailText")}
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.email}
@@ -466,7 +466,7 @@ const SignUpForm = () => {
                     className="py-3 px-4"
                     type="password"
                     name="password"
-                    placeholder={t("signup.passwordText")}
+                    // placeholder={t("signup.passwordText")}
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.password}
@@ -491,7 +491,7 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="password"
-                    placeholder={t("signup.confirmPasswordText")}
+                    // placeholder={t("signup.confirmPasswordText")}
                     name="confirm_password"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -692,7 +692,7 @@ const SignUpForm = () => {
                     className="py-3 px-4"
                     type="textarea"
                     style={{ minHeight: "115px" }}
-                    placeholder={t("signup.addBioText")}
+                    // placeholder={t("signup.addBioText")}
                     name="bio"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -933,7 +933,7 @@ const SignUpForm = () => {
                         <InputField
                           className="py-3 px-4"
                           type="number"
-                          placeholder={t("signup.saudiRepsNumberText")}
+                          // placeholder={t("signup.saudiRepsNumberText")}
                           name="saudireps_number"
                           onChangeHandle={handleChange}
                           onBlurHandle={handleBlur}
@@ -956,7 +956,7 @@ const SignUpForm = () => {
                         <InputField
                           className="py-3 px-4"
                           type="number"
-                          placeholder={t("signup.enterYourProfessionalText")}
+                          // placeholder={t("signup.enterYourProfessionalText")}
                           name="license_number"
                           onChangeHandle={handleChange}
                           onBlurHandle={handleBlur}
@@ -1025,7 +1025,7 @@ const SignUpForm = () => {
                     <InputField
                       className="py-3 px-4"
                       type="number"
-                      placeholder={t("signup.weightText")}
+                      // placeholder={t("signup.weightText")}
                       name="weight"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -1046,7 +1046,7 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.heightText")}
+                    // placeholder={t("signup.heightText")}
                     name="height"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -1066,7 +1066,7 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.skeletonMuscleText")}
+                    // placeholder={t("signup.skeletonMuscleText")}
                     name="skeletal_muscel_mass"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -1086,7 +1086,7 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.bodyFatText")}
+                    // placeholder={t("signup.bodyFatText")}
                     name="body_fat_mass"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -1106,7 +1106,7 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.totalBodyText")}
+                    // placeholder={t("signup.totalBodyText")}
                     name="total_body_water"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -1126,7 +1126,7 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.protienText")}
+                    // placeholder={t("signup.protienText")}
                     name="protien"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}

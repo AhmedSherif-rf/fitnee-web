@@ -34,7 +34,7 @@ class Toaster {
 
   static async error(message) {
     try {
-      if (message !== "") {
+      if (message !== "" && message !== undefined) {
         if (localStorage.getItem("Website_Language__fitnee") === "ar") {
           const response = await axios.post(
             `${process.env.REACT_APP_GOOGLE_TRANSLATE_API_URL}?key=${process.env.REACT_APP_GOOGLE_TRANSLATE_API_KEY}`,

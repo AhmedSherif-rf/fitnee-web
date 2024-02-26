@@ -578,7 +578,7 @@ const SignUpForm = () => {
               )}
 
               {filterFields.includes("date_of_birth") && (
-                <Col md={6} lg={6} className="mb-2 ltr">
+                <Col md={6} lg={6} className="mb-2">
                   <div
                     className="d-flex justify-content-between"
                     style={{ marginBottom: "-2px" }}
@@ -586,7 +586,7 @@ const SignUpForm = () => {
                     <div>{t("signup.dobText")}</div>
                     {user === null && <div>*</div>}
                   </div>
-                  <InputGroup>
+                  <InputGroup className="ltr">
                     <InputGroupText
                       style={{
                         borderTopLeftRadius: "14px",

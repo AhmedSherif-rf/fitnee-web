@@ -518,7 +518,7 @@
     "noText": "No",
     "maleText": "Male",
     "femaleText": "Female",
-    "exerciseSubscriptionModalText": "The rest of the exercises will be hidden. Subscribe for 29 SAR per month to access all exercises."
+    "exerciseSubscriptionModalText": "The rest of the exercises will be hidden. Subscribe for 33.35 SAR per month to access all exercises."
   },
   "contactUs": {
     "firstNameText": "First Name",
@@ -792,7 +792,8 @@
     "congratulationsText": "Congratulations",
     "getAppText": "GET APP",
     "youHaveSubscribedWithText": "You have subscribed with",
-    "downloadAppText": ", your service provider will review your profile and get back to you shortly, please download \"FitNee\" app and enable the notification. Be informed that you have the right to cancel your subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer/nutrition specialist. Manage your profile and contact your trainer/nutrition by downloading the app",
+    "downloadAppText": ", your service provider will review your profile and get back to you shortly, please download \"FitNee\" app and enable the notification.",
+    "downloadAppSecondText": "Be informed that you have the right to cancel your subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer/nutrition specialist. Manage your profile and contact your trainer/nutrition by downloading the app.",
     "exerciseDownloadText": "Congratulations on your subscription. Download the FitNee app to access your workout exercises.",
     "ticketIdText": "Ticket ID",
     "adminReviewText": "The admin will review your profile and get back to you shortly by email, please keep checking your emails. Meanwhile, you can download the app with by accessing the below link."

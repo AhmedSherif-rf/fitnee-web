@@ -59,13 +59,16 @@ const AppDownloadLink = () => {
                       {t("appLink.congratulationsText")}
                     </h3>
                     {subscriptionPlan?.type !== "Exercise" && (
-                      <p className="px-5">
-                        {t("appLink.youHaveSubscribedWithText")}{" "}
-                        <span className="fw-bold">
-                          {serviceProvider?.full_name}
-                        </span>
-                        {t("appLink.downloadAppText")}
-                      </p>
+                      <>
+                        <p className="px-5">
+                          {t("appLink.youHaveSubscribedWithText")}{" "}
+                          <span className="fw-bold">
+                            {serviceProvider?.full_name}
+                          </span>
+                          {t("appLink.downloadAppText")}
+                        </p>
+                        <p>{t("appLink.downloadAppSecondText")}</p>
+                      </>
                     )}
                     {subscriptionPlan?.type === "Exercise" && (
                       <p className="px-5">

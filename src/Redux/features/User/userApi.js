@@ -60,7 +60,7 @@ export const signUp = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      Toaster.success(TranslationHelper("messages.otpSendText"));
+      Toaster.success(TranslationHelper("messages.otpSendText", false));
       return response.data.data.email;
     } catch (error) {
       if (error?.response?.data?.error?.email) {

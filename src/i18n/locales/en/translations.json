@@ -850,6 +850,7 @@
     "requiredMinimumCertificateText": "At least one certificate is required",
     "invalidFileCertificateText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",
     "requiredCertificateText": "Certificate is required",
+    "requiredCertificateTitleText": "Certificate name is required",
     "limitCertificateText": "File size exceeds the maximum limit (5 MB).",
     "requiredMinimumBodyImageText": "At least one body image is required",
     "invalidFileBodyImageText": "Invalid file format. Only PNG, JPG, and JPEG images are allowed.",

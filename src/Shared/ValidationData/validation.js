@@ -69,7 +69,7 @@ const certificationValidation = Yup.array()
 
 const certificateTitleValidation = Yup.array().test(
   "certificateTitleLength",
-  "validation.requiredCertificateText",
+  "validation.requiredCertificateTitleText",
   function (value) {
     const { certification } = this.parent;
 

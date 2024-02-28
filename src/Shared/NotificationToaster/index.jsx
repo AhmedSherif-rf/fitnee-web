@@ -6,7 +6,7 @@ const NotificationToaster = (props) => {
   const { showNotification, setShowNotification, notificationData } = props;
 
   return (
-    <div className={`${styles.toaster}`} isOpen={showNotification}>
+    <div className={`${styles.toaster}`}>
       <Toast className={`${styles.toaster}`} isOpen={showNotification}>
         <ToastHeader
           className={`${styles.toasterHeader}`}

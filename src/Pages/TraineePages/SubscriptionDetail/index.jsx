@@ -102,6 +102,7 @@ const Index = () => {
                   <SubscriptionDetailRow
                     data={data}
                     index={index}
+                    key={index}
                     handleRefreshData={handleRefreshData}
                   />
                 );

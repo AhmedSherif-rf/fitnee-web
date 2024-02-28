@@ -5,11 +5,11 @@ import { CURRENCY } from "../../utils/constants";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const TransactionDetail = (props) => {
-  const { index, data } = props;
+  const { data } = props;
 
   return (
     <>
-      {data?.transactions?.map((transaction) => (
+      {data?.transactions?.map((transaction, index) => (
         <Row className="mb-2" key={index}>
           <Col md={12}>
             <div className="d-flex align-items-center border-bottom py-2">

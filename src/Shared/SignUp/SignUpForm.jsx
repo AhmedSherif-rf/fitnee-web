@@ -814,6 +814,7 @@ const SignUpForm = () => {
                           (certificate, index) => (
                             <DocumentCard
                               index={index}
+                              key={index}
                               className="BorderYellow"
                               documentTitle={certificate?.title}
                               documentImg={certificate?.certificate_image}

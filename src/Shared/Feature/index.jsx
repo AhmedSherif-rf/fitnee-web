@@ -29,7 +29,9 @@ const Feature = (props) => {
           <div className={`d-flex align-items-center`}>
             <div className="" style={{ height: "300px" }}>
               <div
-                className={`fw-bold textYellow mb-0 display-5 mb-3 p-0 w-100 ${styles.featureHeading} ${i18n.dir()}`}
+                className={`fw-bold textYellow mb-0 display-5 mb-3 p-0 w-100 ${
+                  styles.featureHeading
+                } ${i18n.dir()}`}
               >
                 <span className="arabicBorderHover p-0">
                   {t("landing.featuresText")}
@@ -55,27 +57,26 @@ const Feature = (props) => {
                 >
                   {textData?.map((item, index) => {
                     return (
-                      <>
-                        <SwiperSlide
-                          key={index}
-                          className={`w-100  text-white fs-5 text-justify p-0 ${
-                            i18n.dir() === "ltr" ? "customSpacing" : ""
-                          } ${i18n.dir()}`}
+                      <SwiperSlide
+                        key={item.heading}
+                        index={index}
+                        className={`w-100  text-white fs-5 text-justify p-0 ${
+                          i18n.dir() === "ltr" ? "customSpacing" : ""
+                        } ${i18n.dir()}`}
+                      >
+                        <div
+                          className={`${styles.featureTextSlider} ${
+                            i18n.dir() === "ltr"
+                              ? "text-md-start"
+                              : "text-md-end"
+                          } pt-0`}
                         >
-                          <div
-                            className={`${styles.featureTextSlider} ${
-                              i18n.dir() === "ltr"
-                                ? "text-md-start"
-                                : "text-md-end"
-                            } pt-0`}
-                          >
-                            <span className="textYellow fw-bolder fs-4 outline-yellow mb-2">
-                              {item.heading}
-                            </span>
-                            <p className="mb-0 pt-md-3 pt-0">{item.text}</p>
-                          </div>
-                        </SwiperSlide>
-                      </>
+                          <span className="textYellow fw-bolder fs-4 outline-yellow mb-2">
+                            {item.heading}
+                          </span>
+                          <p className="mb-0 pt-md-3 pt-0">{item.text}</p>
+                        </div>
+                      </SwiperSlide>
                     );
                   })}
                 </Swiper>
@@ -98,7 +99,8 @@ const Feature = (props) => {
             {imageData?.map((item, index) => {
               return (
                 <SwiperSlide
-                  key={index}
+                  key={item.image}
+                  index={index}
                   className={`${styles.cardSwiperSlider}`}
                   style={{ backgroundImage: `url(${item.image})` }}
                 ></SwiperSlide>

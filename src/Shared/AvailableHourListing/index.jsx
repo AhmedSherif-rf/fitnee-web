@@ -18,6 +18,7 @@ const AvailableHourList = (props) => {
               "h:mm a"
             )} - ${moment(item?.endtime, "HH:mm:ss").format("h:mm a")}`}
             index={index}
+            key={index}
           />
         );
       })}

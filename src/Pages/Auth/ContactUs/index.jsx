@@ -49,6 +49,7 @@ const ContactUs = () => {
           text2={item.text2}
           text3={item.text3}
           index={index}
+          key={index}
         />
       ))}
     </Container>

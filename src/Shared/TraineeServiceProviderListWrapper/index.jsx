@@ -184,7 +184,7 @@ const TraineeServiceProviderListWrapper = (props) => {
               <Col className="text-center" md={4}>
                 {loading !== "pending" && (
                   <img
-                    img-fluid
+                    className="img-fluid"
                     src={Images.NO_DATA_FOUND_IMG}
                     alt="no-data-found"
                   />

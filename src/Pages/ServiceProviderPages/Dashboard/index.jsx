@@ -206,6 +206,7 @@ const Dashboard = () => {
                             return (
                               <DocumentCard
                                 index={index}
+                                key={index}
                                 className="BorderRadius"
                                 documentTitle={certificate.title}
                                 documentImg={certificate.certificate_image}
@@ -245,7 +246,7 @@ const Dashboard = () => {
                               {t("trainer.commentText")}
                             </h5>
                             {commentData.map((item, index) => {
-                              return <CommentCard index={index} data={item} />;
+                              return <CommentCard key={index} index={index} data={item} />;
                             })}
                           </Col>
                           <Col md={12}>

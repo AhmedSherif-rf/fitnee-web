@@ -18,10 +18,7 @@ import {
   PENDING_PAYMENTS,
   ADMIN_RELEASE_PAYMENT_URL,
 } from "../../../../utils/constants";
-import {
-  FaEllipsisVertical,
-  FaMagnifyingGlass,
-} from "react-icons/fa6";
+import { FaEllipsisVertical, FaMagnifyingGlass } from "react-icons/fa6";
 import {
   Row,
   Col,
@@ -50,7 +47,7 @@ const WalletOverview = (props) => {
 
   useEffect(() => {
     getWalletHistory();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, page]);
 
   const getWalletHistory = () => {
@@ -137,7 +134,7 @@ const WalletOverview = (props) => {
     } else {
       setTableData([]);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [walletData]);
 
   const columns = [
@@ -173,13 +170,9 @@ const WalletOverview = (props) => {
                           <h6 className="w-50">Payment Duration:</h6>
                           <div className="w-50">
                             <MyDropdown
-                              className="py-3 px-4 mb-0"
-                              //   Options={duration}
+                              className="mb-0 border"
                               name={"role"}
                               placeholder="Select Duration"
-                              // onChangeHandle={handleChange}
-                              // onBlurHandle={handleBlur}
-                              // value={values.role}
                             />
                           </div>
                         </div>

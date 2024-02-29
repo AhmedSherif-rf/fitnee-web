@@ -133,6 +133,7 @@ const ServiceProviderProfileWrapper = (props) => {
                             (certificate, index) => (
                               <DocumentCard
                                 index={index}
+                                key={index}
                                 className="BorderYellow"
                                 documentTitle={certificate?.title}
                                 documentImg={certificate?.certificate_image}
@@ -174,7 +175,7 @@ const ServiceProviderProfileWrapper = (props) => {
                               </h5>
                               {commentData.map((item, index) => {
                                 return (
-                                  <CommentCard index={index} data={item} />
+                                  <CommentCard key={index} index={index} data={item} />
                                 );
                               })}
                             </Col>
@@ -201,7 +202,11 @@ const ServiceProviderProfileWrapper = (props) => {
       ) : (
         <div className="d-flex vh-100 justify-content-center align-items-center">
           {loading !== "pending" && (
-            <img img-fluid src={Images.NO_DATA_FOUND_IMG} alt="no-data-found" />
+            <img
+              className="img-fluid"
+              src={Images.NO_DATA_FOUND_IMG}
+              alt="no-data-found"
+            />
           )}
         </div>
       )}

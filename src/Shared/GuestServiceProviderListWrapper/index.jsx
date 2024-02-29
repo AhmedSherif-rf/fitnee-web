@@ -130,9 +130,7 @@ const GuestServiceProviderListWrapper = (props) => {
                   <DropdownMenu>
                     <DropdownItem
                       className={
-                        listingRole === TRAINER_TYPE
-                          ? "dropdownActive"
-                          : ""
+                        listingRole === TRAINER_TYPE ? "dropdownActive" : ""
                       }
                       onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
                     >
@@ -185,7 +183,11 @@ const GuestServiceProviderListWrapper = (props) => {
                 <Row className="justify-content-center align-items-center mt-5 pt-4">
                   <Col className="text-center" md={4}>
                     {loading !== "pending" && (
-                      <img img-fluid src={Images.NO_DATA_FOUND_IMG} alt="" />
+                      <img
+                        className="img-fluid"
+                        src={Images.NO_DATA_FOUND_IMG}
+                        alt=""
+                      />
                     )}
                   </Col>
                 </Row>
@@ -201,9 +203,7 @@ const GuestServiceProviderListWrapper = (props) => {
                     onClick={handleSeeMoreClick}
                   >
                     <CardBody>
-                      <div
-                        className="w-100 d-flex align-items-center justify-content-center h-100"
-                      >
+                      <div className="w-100 d-flex align-items-center justify-content-center h-100">
                         <div className="">
                           <p className="mb-0 fs-4 fw-bold">
                             {t("guest.seeMoreText")}

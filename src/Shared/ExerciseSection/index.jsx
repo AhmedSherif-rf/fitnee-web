@@ -16,9 +16,9 @@ const ExerciseSection = (props) => {
       <Col md={12} className="mb-3 text-black-custom px-md-5">
         <div className="mt-3">
           <Row>
-            {exercisesData?.sub_categories?.map((subCategory) => {
+            {exercisesData?.sub_categories?.map((subCategory, index) => {
               return (
-                <div className="mb-3 px-md-5">
+                <div className="mb-3 px-md-5" key={index}>
                   <Col md={12}>
                     <div
                       className={`py-2 px-4 fw-bold fs-2 ${styles.workoutVideosHeader}`}

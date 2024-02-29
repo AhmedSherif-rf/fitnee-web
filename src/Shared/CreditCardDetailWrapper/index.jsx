@@ -96,8 +96,7 @@ const CreditCardDetailWrapper = () => {
               subscriptionPlan.price,
               summaryData.vat
             );
-
-            if (updatedGrandPrice >= 0) {
+            if (updatedGrandPrice > 0) {
               setSummaryData({
                 ...summaryData,
                 discount: res.payload.data.value,
@@ -106,18 +105,30 @@ const CreditCardDetailWrapper = () => {
               Toaster.error(t("messages.cannotUserPromoCode"));
             }
           } else {
-            const updatedGrandPrice = functions.getSummary(
-              res.payload.data.value,
+            const totalAmount = functions.getSummary(
+              0,
               summaryData.walletAmount,
               subscriptionPlan.price,
               summaryData.vat
             );
 
-            if (updatedGrandPrice >= 0) {
+            const calculatedDiscount = functions.calculatePercentage(
+              totalAmount,
+              res.payload.data.value
+            );
+
+            const updatedGrandPrice = functions.getSummary(
+              calculatedDiscount,
+              summaryData.walletAmount,
+              subscriptionPlan.price,
+              summaryData.vat
+            );
+
+            if (updatedGrandPrice > 0) {
               setSummaryData({
                 ...summaryData,
                 discount: functions.calculatePercentage(
-                  subscriptionPlan.price,
+                  totalAmount,
                   res.payload.data.value
                 ),
               });

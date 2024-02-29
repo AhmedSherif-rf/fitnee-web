@@ -78,7 +78,7 @@ const PaymentHistoryWrapper = () => {
           <Col md={12}>
             {transactionHistoryData &&
               transactionHistoryData?.map((item, index) => {
-                return <WalletDetail index={index} data={item} />;
+                return <WalletDetail key={index} data={item} />;
               })}
             {transactionHistoryData && transactionHistoryData.length <= 0 && (
               <div className="d-flex justify-content-center py-4 text-black-custom">

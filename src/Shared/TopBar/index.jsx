@@ -743,18 +743,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         {t("topBar.editProfileText")}
                       </Link>
                     </NavItem>
-                    {roleType && roleType !== TRAINEE_TYPE && (
-                      <>
-                        <NavItem className={`${styles.NavItem} p-2`}>
-                          <Link
-                            className={`nav-link ${styles.NavLink}`}
-                            to="/serviceProvider/paymentHistory"
-                          >
-                            {t("topBar.walletText")}
-                          </Link>
-                        </NavItem>
-                      </>
-                    )}
 
                     <NavItem className={`${styles.NavItem} p-2`}>
                       <Link

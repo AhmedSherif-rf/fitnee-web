@@ -227,16 +227,15 @@ const PrivacyPolicy = () => {
               <h6 className="fw-bold">
                 {t("privacyPolicy.sectionOneHeadingText")}
               </h6>
-              <p align="justify">
+              <div align="justify">
                 {sectionOne.map((item, index) => {
                   return (
-                    <>
-                      <span key={index}>{item.description}</span>
-                      <br />
-                    </>
+                    <p key={index}>
+                      <span >{item.description}</span>
+                    </p>
                   );
                 })}
-              </p>
+              </div>
 
               <h6 className="fw-bold">
                 {t("privacyPolicy.sectionTwoHeadingText")}

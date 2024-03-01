@@ -90,7 +90,7 @@
 }
 .customDropdownRadius,
 .BorderYellow,
-.onlyBorderRadius,
+.s,
 .BorderRadius,
 .subscriptionDiv {
   border-radius: 14px !important;
@@ -282,6 +282,10 @@ Input::-webkit-input-placeholder {
   max-height: 68vh;
   overflow-y: scroll;
 }
+.adminDashBoardScrolling{
+  max-height: 82vh;
+  overflow-y: scroll;
+}
 
 .genderBtn {
   .selected {
@@ -299,7 +303,7 @@ Input::-webkit-input-placeholder {
 @mixin glowEffect($top: -5%, $left: -5%, $size: 110%, $animationDuration: 20s) {
   &:before {
     content: "";
-    background: linear-gradient(45deg,$yellow, $parrot-green,);
+    background: linear-gradient(45deg, $yellow, $parrot-green);
     position: absolute;
     top: $top;
     left: $left;

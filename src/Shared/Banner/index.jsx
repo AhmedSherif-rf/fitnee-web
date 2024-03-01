@@ -8,7 +8,7 @@ import React, { memo, useCallback } from "react";
 import { Col, Container, Row } from "reactstrap";
 
 const HomeBanner = () => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const navigate = useNavigate();
 
   const bannerText = [
@@ -28,29 +28,72 @@ const HomeBanner = () => {
     visible: { x: 0 },
   };
 
+  const spring = {
+    type: "spring",
+    stiffness: 100,
+    duration: 2.5,
+  };
+
   return (
     <Container fluid className={`${styles.bannerImg}`}>
       <Row className="h-100">
         <Col md={6} className="d-flex align-items-center">
           <div style={{ zIndex: "1", marginLeft: "10px", marginRight: "10px" }}>
+            {i18n.dir() === "ltr" && (
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={fadeInVariants}
+                transition={{ type: "spring", stiffness: 100, duration: 2.5 }}
+                className={`mb-3 ms-3 ${styles.bannerTextWrapper}`}
+              >
+                {bannerText.map((item, index) => (
+                  <motion.p
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{
+                      duration: 0.25,
+                      delay: index / 10,
+                    }}
+                    className="text-white"
+                  >
+                    {item.text}
+                  </motion.p>
+                ))}
+              </motion.div>
+            )}
+            {i18n.dir() === "rtl" && (
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={fadeInVariants}
+                transition={{ type: "spring", stiffness: 100, duration: 2.5 }}
+                className={`mb-3 ms-3 ${styles.bannerTextWrapper}`}
+              >
+                {bannerText.map((item, index) => (
+                  <motion.p
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      duration: 0.25,
+                      delay: index / 10,
+                    }}
+                    className="text-white"
+                  >
+                    {item.text}
+                  </motion.p>
+                ))}
+              </motion.div>
+            )}
+
             <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeInVariants}
-              transition={{ type: "spring", stiffness: 100, duration: 2.5 }}
-              className={`mb-3 ms-3 ${styles.bannerTextWrapper}`}
-            >
-              {bannerText.map((item, index) => (
-                <p key={index} className="text-white">
-                  {item.text}
-                </p>
-              ))}
-            </motion.div>
-            <motion.div
-              initial={{ x: "5%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 100, duration: 2.5 }}
+              transition={spring}
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1.1 }}
+              exit={{ scale: 0.9 }}
             >
               <FillBtn
                 className="ms-3 px-4"

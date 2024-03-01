@@ -36,14 +36,14 @@ const ProfileInformationCard = (props) => {
           <br />
 
           {providerProfile?.email && (
-            <span className="small text-secondary">
+            <span className="small text-secondary mb-2">
               {providerProfile?.email}
             </span>
           )}
         </div>
 
         {providerProfile?.role !== TRAINEE_ROLE && (
-          <div className="d-flex h-100 text-white align-items-end justify-content-between">
+          <div className="d-flex h-100 text-white align-items-end justify-content-between mb-2">
             <div
               className="d-flex align-items-center"
               id="tooltipTarget"

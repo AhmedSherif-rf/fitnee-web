@@ -4,25 +4,18 @@
 .OutlineBtn {
   font-weight: bold !important;
   border-radius: $border-radius-10 !important;
+  border: 2px solid transparent !important;
+  position: relative;
 }
 
 .fillBtn {
   background-color: $yellow !important;
-  border: 2px solid $yellow !important;
   color: $black !important;
-  &:hover {
-    background-color: $hoverYellow !important;
-    color: $black !important;
-  }
+  @include glowEffect(-5%, -5%, 110%);
 }
-
 .OutlineBtn {
   background-color: $white !important;
   border: 2px solid $yellow !important;
   color: $light-gray !important;
-
-  &:hover {
-    background-color: $hoverYellow !important;
-    color: $black !important;
-  }
+  @include glowEffect(-5%, -5%, 110%);
 }

@@ -182,7 +182,7 @@ const ServiceProviderProfileWrapper = (props) => {
                             <Col md={12}>
                               <div className="text-center">
                                 <FillBtn
-                                  className=" py-2"
+                                  className="py-2"
                                   text={t("guest.seeMoreText")}
                                   disabled={hasNextComment ? false : true}
                                   handleOnClick={fetchServiceProviderComments}

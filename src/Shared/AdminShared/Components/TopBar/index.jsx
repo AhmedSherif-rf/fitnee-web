@@ -96,7 +96,7 @@ const Topbar = ({ toggleSidebar }) => {
             <div className="position-relative">
               {getUnReadNotificationsLength(notifications) > 0 ? (
                 <span
-                  className="position-absolute rounded-circle bg-danger text-white pt-1 fw-bold"
+                  className="position-absolute rounded-circle bg-danger text-white fw-bold"
                   style={{
                     width: "20px",
                     height: "20px",
@@ -116,8 +116,7 @@ const Topbar = ({ toggleSidebar }) => {
             </div>
           </DropdownToggle>
           <DropdownMenu
-            className="custom-dropdown-menu bg-white mt-2"
-            style={{ width: "265px" }}
+            className="custom-dropdown-menu-Notifications bg-white mt-2 me-0"
           >
             <div
               className="w-100 pt-3"

@@ -5,8 +5,10 @@ import { RiReservedFill } from "react-icons/ri";
 import { Container, Row, Col } from "reactstrap";
 import React, { useEffect, useState } from "react";
 import { AiOutlineUserSwitch } from "react-icons/ai";
+import BarChart from "../../../Shared/Chart/Barchart";
 import { useDispatch, useSelector } from "react-redux";
 import { FaUser, FaRegUser, FaUsers } from "react-icons/fa";
+import DoughnutChart from "../../../Shared/Chart/DoughnutChart";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import { USER_NOTIFICATIONS_URL } from "../../../utils/constants";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
@@ -277,6 +279,14 @@ const Dashboard = (props) => {
             textOne={counterData?.resubscribers_count}
             textTwo="Fully Booked"
           />
+        </Col>
+      </Row>
+      <Row>
+        <Col md={6} className="mb-3">
+          <BarChart />
+        </Col>
+        <Col md={6} className="mb-3">
+          <DoughnutChart />
         </Col>
       </Row>
       <Row className="mb-3">

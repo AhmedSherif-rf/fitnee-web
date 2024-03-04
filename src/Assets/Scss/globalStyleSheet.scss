@@ -9,7 +9,7 @@
   @include bgProperties;
 }
 .bgNotification {
-  background-color: $yellow-blur;
+  background-color: $yellow-blur !important;
 }
 .small {
   font-size: 10pt !important;
@@ -90,15 +90,15 @@
 }
 .customDropdownRadius,
 .BorderYellow,
-.s,
+.onlyBorderRadius,
 .BorderRadius,
 .subscriptionDiv {
   border-radius: 14px !important;
 }
 
 .ImgBorder {
-  border-top-right-radius: 14px;
-  border-top-left-radius: 14px;
+  border-top-right-radius: 14px !important;
+  border-top-left-radius: 14px !important;
 }
 .yellowBorder,
 .BorderYellow {

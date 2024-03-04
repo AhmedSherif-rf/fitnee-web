@@ -114,6 +114,10 @@ const submenus = [
       title: "Trainee List",
       target: "/admin/user/traineeList",
     },
+    {
+      title: "Fully Booked",
+      target: "/admin/user/fullyBooked",
+    },
   ],
   [
     {

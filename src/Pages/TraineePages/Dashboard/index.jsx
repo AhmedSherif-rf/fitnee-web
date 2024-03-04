@@ -215,7 +215,7 @@ const Dashboard = () => {
                     text={t("traineeDashboard.subscribeForExerciseText")}
                     handleOnClick={handleExerciseSubscriptionClick}
                     disabled={
-                      user?.has_service_provider_subscription ? true : false
+                      (user?.has_service_provider_subscription || user?.has_exercise_subscription) ? true : false
                     }
                   />
                   <FillBtn
@@ -347,10 +347,7 @@ const Dashboard = () => {
           onClose={handleDownloadAppModalClose}
           ModalTextOne={
             <div className="w-100 text-center mt-1 mb-4">
-              <img
-                src={Images.QR_CODE_IMG}
-                alt="qrAppImage"
-              />
+              <img src={Images.QR_CODE_IMG} alt="qrAppImage" />
             </div>
           }
           ModalTextTwo={

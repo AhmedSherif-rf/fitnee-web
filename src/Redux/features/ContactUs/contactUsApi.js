@@ -6,7 +6,7 @@ import TranslationHelper from "../../../Shared/TranslationHelper";
 
 export const contactUs = createAsyncThunk(
   "contactUs",
-  async ({ apiEndpoint, requestData, navigate }, thunkAPI) => {
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
       if (SUCCESS_CODES.includes(response.status)) {

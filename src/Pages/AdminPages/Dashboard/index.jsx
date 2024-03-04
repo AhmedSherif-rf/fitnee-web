@@ -129,7 +129,7 @@ const Dashboard = (props) => {
             </Link>
           ),
           role: request?.role,
-          request_id: (
+          ticket_id: (
             <div className="fw-bold text-secondary">{request?.request_id}</div>
           ),
         })

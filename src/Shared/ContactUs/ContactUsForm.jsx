@@ -45,7 +45,6 @@ const ContactUsForm = () => {
     const data = {
       apiEndpoint: CONTACT_US_URL,
       requestData: JSON.stringify(values),
-      navigate,
     };
     dispatch(contactUs(data)).then((res) => {
       if (res.type === "contactUs/fulfilled") {

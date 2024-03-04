@@ -829,7 +829,7 @@
     "requiredMinimumBodyImageText": "مطلوب على الأقل صورة واحدة للجسم",
     "invalidFileBodyImageText": "تنسيق الملف غير صالح. يُسمح فقط بصيغ PNG وJPG وJPEG.",
     "requiredBodyImageText": "مطلوب صورة للجسم",
-    "limitBodyImageText": "ﺣﺠﻢﺍﻟﻤﻠﻒ ﺗﺠﺎﻭﺯ ﺧﻤﺴﺔ ﻣﻴﺠﺎﺑﺎﻳﺖ",
+    "limitBodyImageText": "ﺣﺠﻢ ﺍﻟﻤﻠﻒ ﺗﺠﺎﻭﺯ ﺧﻤﺴﺔ ﻣﻴﺠﺎﺑﺎﻳﺖ",
     "requiredText": "مطلوب",
     "requiredRoleText": "الدور مطلوب",
     "requiredDayText": "اليوم مطلوب",

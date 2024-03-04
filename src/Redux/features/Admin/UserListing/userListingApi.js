@@ -14,6 +14,7 @@ export const getServiceProviderListing = createAsyncThunk(
     }
   }
 );
+
 export const getTraineeListing = createAsyncThunk(
   "getTraineeListing",
   async ({ apiEndpoint }, thunkAPI) => {

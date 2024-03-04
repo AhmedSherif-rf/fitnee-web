@@ -231,54 +231,70 @@ const Dashboard = (props) => {
       {loading === "pending" && <LoadingScreen />}
       <Row className="py-3">
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <DashboardCard
-            AdminClass="AdminCard"
-            CardBodyClass="AdminCardBody"
-            cardIconClass="cardIcon"
-            cardIcon={<FaUser size={60} />}
-            textOne={counterData?.active_users_count}
-            textTwo="Active User"
-          />
+          <Link
+            to={`/admin/user/userListing/${counterData?.active_users?.slug}`}
+          >
+            <DashboardCard
+              AdminClass="AdminCard"
+              CardBodyClass="AdminCardBody"
+              cardIconClass="cardIcon"
+              cardIcon={<FaUser size={60} />}
+              textOne={counterData?.active_users_count}
+              textTwo="Active User"
+            />
+          </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <DashboardCard
-            AdminClass="AdminCard"
-            CardBodyClass="AdminCardBody"
-            cardIconClass="cardIcon"
-            cardIcon={<FaRegUser size={60} />}
-            textOne={counterData?.inactive_users_count}
-            textTwo="Inactive Users"
-          />
+          <Link
+            to={`/admin/user/userListing/${counterData?.inactive_users?.slug}`}
+          >
+            <DashboardCard
+              AdminClass="AdminCard"
+              CardBodyClass="AdminCardBody"
+              cardIconClass="cardIcon"
+              cardIcon={<FaRegUser size={60} />}
+              textOne={counterData?.inactive_users_count}
+              textTwo="Inactive Users"
+            />
+          </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <DashboardCard
-            AdminClass="AdminCard"
-            CardBodyClass="AdminCardBody"
-            cardIconClass="cardIcon"
-            cardIcon={<FaUsers size={65} />}
-            textOne={counterData?.trainees_count}
-            textTwo="Subscribers"
-          />
+          <Link to={`/admin/user/userListing/${counterData?.trainees?.slug}`}>
+            <DashboardCard
+              AdminClass="AdminCard"
+              CardBodyClass="AdminCardBody"
+              cardIconClass="cardIcon"
+              cardIcon={<FaUsers size={65} />}
+              textOne={counterData?.trainees_count}
+              textTwo="Subscribers"
+            />
+          </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <DashboardCard
-            AdminClass="AdminCard"
-            CardBodyClass="AdminCardBody"
-            cardIconClass="cardIcon"
-            cardIcon={<AiOutlineUserSwitch size={65} />}
-            textOne={counterData?.resubscribers_count}
-            textTwo="Re-Subscribers"
-          />
+          <Link
+            to={`/admin/user/userListing/${counterData["re-subscribers"]?.slug}`}
+          >
+            <DashboardCard
+              AdminClass="AdminCard"
+              CardBodyClass="AdminCardBody"
+              cardIconClass="cardIcon"
+              cardIcon={<AiOutlineUserSwitch size={65} />}
+              textOne={counterData?.resubscribers_count}
+              textTwo="Re-Subscribers"
+            />
+          </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <DashboardCard
-            AdminClass="AdminCard"
-            CardBodyClass="AdminCardBody"
-            cardIconClass="cardIcon"
-            cardIcon={<RiReservedFill size={65} />}
-            textOne={counterData?.resubscribers_count}
-            textTwo="Fully Booked"
-          />
+          <Link to={"/admin/user/fullyBooked"}>
+            <DashboardCard
+              AdminClass="AdminCard"
+              CardBodyClass="AdminCardBody"
+              cardIconClass="cardIcon"
+              cardIcon={<RiReservedFill size={65} />}
+              textOne={counterData?.resubscribers_count}
+              textTwo="Fully Booked"
+            />
+          </Link>
         </Col>
       </Row>
       <Row>

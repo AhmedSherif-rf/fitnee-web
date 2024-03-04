@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
-import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
 import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
 import {
   Badge,
@@ -98,27 +97,6 @@ const FullyBooked = (props) => {
               )}
             </span>
           ),
-
-          action: (
-            <div className="d-flex align-items-center justify-content-md-center">
-              <span className={`iconBadge me-1`}>
-                <MdOutlinePersonOff
-                  size={22}
-                  className={`rejectUser cursorPointer ${
-                    serviceProvider.is_blocked ? "" : "text-danger"
-                  }`}
-                />
-              </span>
-              <span className={`iconBadge me-1`}>
-                <MdOutlinePersonOutline
-                  size={22}
-                  className={`approveUser cursorPointer ${
-                    serviceProvider.is_blocked ? "text-success" : ""
-                  }`}
-                />
-              </span>
-            </div>
-          ),
         });
       });
 
@@ -139,7 +117,6 @@ const FullyBooked = (props) => {
     { label: "Email", dataKey: "email", align: "center" },
     { label: "STC Phone No", dataKey: "stc_pay", align: "center" },
     { label: "Status", dataKey: "status", align: "center" },
-    { label: "Block / UnBlock", dataKey: "action", align: "center" },
   ];
 
   return (

@@ -15,7 +15,7 @@ import {
 } from "../../../../utils/constants";
 import { getTraineeListing } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 
-const ServiceProviders = (props) => {
+const TraineeList = (props) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.userListing);
 
@@ -77,7 +77,9 @@ const ServiceProviders = (props) => {
                 } rounded-circle`}
                 style={{ minWidth: "8px", minHeight: "8px" }}
               ></div>
-              <span>{trainee?.is_active ? "Active" : "Incomplete Profile"}</span>
+              <span>
+                {trainee?.is_active ? "Active" : "Incomplete Profile"}
+              </span>
             </div>
           ),
           action: (
@@ -166,4 +168,4 @@ const ServiceProviders = (props) => {
   );
 };
 
-export default ServiceProviders;
+export default TraineeList;

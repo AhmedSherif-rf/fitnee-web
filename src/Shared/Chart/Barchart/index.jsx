@@ -44,7 +44,7 @@ const BarChartComponent = () => {
       },
       {
         label: "Another Dataset",
-        data: [35, 25, 35, 35,65, 55, 86, 38, 98, 105, 110, 50],
+        data: [35, 25, 35, 35, 65, 55, 86, 38, 98, 105, 110, 50],
         backgroundColor: "#BB99E3",
         borderWidth: 1,
       },
@@ -67,8 +67,8 @@ const BarChartComponent = () => {
   };
 
   return (
-    <div className="h-100">
-      <h1 className="fw-bold">Bar Chart</h1>
+    <div className="h-100 text-black-custom">
+      <h3 className="fw-bold ">User Trends</h3>
       <Bar options={options} data={data} height="200" />
     </div>
   );

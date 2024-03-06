@@ -94,6 +94,7 @@ const HomeBanner = () => {
               initial={{ scale: 0.9 }}
               animate={{ scale: 1.1 }}
               exit={{ scale: 0.9 }}
+              className="mx-3"
             >
               <FillBtn
                 className="ms-3 px-4"

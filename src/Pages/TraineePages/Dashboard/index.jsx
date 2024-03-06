@@ -54,6 +54,11 @@ const Dashboard = () => {
         text: t("traineeDashboard.traineeProgressGraph"),
       },
     },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
     maintainAspectRatio: window.innerWidth > 500,
     redraw: true,
     interaction: {
@@ -215,7 +220,10 @@ const Dashboard = () => {
                     text={t("traineeDashboard.subscribeForExerciseText")}
                     handleOnClick={handleExerciseSubscriptionClick}
                     disabled={
-                      (user?.has_service_provider_subscription || user?.has_exercise_subscription) ? true : false
+                      user?.has_service_provider_subscription ||
+                      user?.has_exercise_subscription
+                        ? true
+                        : false
                     }
                   />
                   <FillBtn

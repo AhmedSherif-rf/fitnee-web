@@ -56,8 +56,8 @@ const CreditCardDetailWrapper = () => {
 
   useEffect(() => {
     if (checkoutId) {
-      // const scriptUrl = `https://eu-prod.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
-      const scriptUrl = `https://test.oppwa.com//v1/paymentWidgets.js?checkoutId=${checkoutId}`;
+      const scriptUrl = `https://eu-prod.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
+      // const scriptUrl = `https://test.oppwa.com//v1/paymentWidgets.js?checkoutId=${checkoutId}`;
 
       const script = document.createElement("script");
       script.src = scriptUrl;

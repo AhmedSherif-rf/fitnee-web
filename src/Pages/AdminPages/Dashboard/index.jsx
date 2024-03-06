@@ -26,10 +26,32 @@ const Dashboard = (props) => {
   const { loading } = useSelector((state) => state.dashboard);
   const [platformFeedbacks, setPlatformFeedbacks] = useState([]);
   const [spFeedbackTableData, setSpFeedbackTableData] = useState([]);
+  const [userTrendsGraphData, setUserTrendsGraphData] = useState({
+    labels: [],
+    datasets: [],
+  });
   const [reviewRequestsTableData, setReviewRequestsTableData] = useState([]);
   const [platformFeedbackTableData, setPlatformFeedbackTableData] = useState(
     []
   );
+
+  const userTrendGrapghOptions = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "User Trends",
+      },
+      legend: {
+        position: "bottom",
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
 
   useEffect(() => {
     fetchUserNotifications();
@@ -55,6 +77,7 @@ const Dashboard = (props) => {
           setReviewRequests(res.payload.data.service_provider);
           setPlatformFeedbacks(res.payload.data.platform_review);
           setSpFeedbacks(res.payload.data.profile_review);
+          populateUserTrendGraphData(res.payload.data);
         }
       });
     };
@@ -204,6 +227,60 @@ const Dashboard = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [spFeedbacks]);
 
+  const populateUserTrendGraphData = (data) => {
+    const labels = data?.trainees_monthly_counts?.map((item) => item.month);
+
+    const traineesData = data?.trainees_monthly_counts?.map(
+      (item) => item.count
+    );
+    const trainersData = data?.trainers_monthly_counts?.map(
+      (item) => item.count
+    );
+    const refundsData = data?.refund_monthly_counts?.map((item) => item.count);
+    const nutritionistsData = data?.nutritionists_monthly_counts?.map(
+      (item) => item.count
+    );
+    const exercise_subscriptions_monthly_counts = data?.exercise_subscriptions_monthly_counts?.map(
+      (item) => item.count
+    );
+
+    setUserTrendsGraphData({
+      labels,
+      datasets: [
+        {
+          label: "Trainees",
+          data: traineesData,
+          backgroundColor: "#E3BD99",
+          borderWidth: 2,
+        },
+        {
+          label: "Trainers",
+          data: trainersData,
+          backgroundColor: "#BB99E3",
+          borderWidth: 2,
+        },
+        {
+          label: "Nutritionists",
+          data: nutritionistsData,
+          backgroundColor: "rgba(18, 55, 45, 0.8)",
+          borderWidth: 2,
+        },
+        {
+          label: "Refunds",
+          data: refundsData,
+          backgroundColor: "#9BE3BD",
+          borderWidth: 2,
+        },
+        {
+          label: "Exercise Subscriptions",
+          data: exercise_subscriptions_monthly_counts,
+          backgroundColor: "#97694F",
+          borderWidth: 2,
+        },
+      ],
+    });
+  };
+
   const reviewRequestColumns = [
     { label: "Full Name", dataKey: "full_name" },
     { label: "Role", dataKey: "role" },
@@ -297,9 +374,12 @@ const Dashboard = (props) => {
           </Link>
         </Col>
       </Row>
-      <Row>
+      <Row className="justify-content-center">
         <Col md={6} className="mb-3">
-          <BarChart />
+          <BarChart
+            data={userTrendsGraphData}
+            options={userTrendGrapghOptions}
+          />
         </Col>
         <Col md={6} className="mb-3">
           <DoughnutChart />

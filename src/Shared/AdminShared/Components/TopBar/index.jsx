@@ -8,11 +8,12 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import moment from "moment";
 import { Card } from "reactstrap";
-import React, { memo } from "react";
 import { CgMenuLeft } from "react-icons/cg";
 import { GoBellFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import React, { memo, useCallback } from "react";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
@@ -33,6 +34,23 @@ const Topbar = ({ toggleSidebar }) => {
   const navigate = useNavigate();
   const { t } = useTranslation("");
   const { user, loading, notifications } = useSelector((state) => state.user);
+
+  const showGreetingText = useCallback(() => {
+    const hour = moment().hour();
+    let greeting;
+
+    if (hour >= 6 && hour < 12) {
+      greeting = "Good Morning";
+    } else if (hour >= 12 && hour < 16) {
+      greeting = "Good Afternoon";
+    } else if (hour >= 16 && hour < 19) {
+      greeting = "Good Evening";
+    } else {
+      greeting = "Good Night";
+    }
+
+    return greeting;
+  }, []);
 
   const handleLogoutClick = () => {
     const data = {
@@ -90,6 +108,9 @@ const Topbar = ({ toggleSidebar }) => {
       >
         <CgMenuLeft color="black" />
       </Button>
+      <div>
+        <p className="fw-bold mb-0">{showGreetingText()}</p>
+      </div>
       <div className="d-flex gap-3 align-items-center">
         <UncontrolledDropdown>
           <DropdownToggle className="p-0" nav>
@@ -115,9 +136,7 @@ const Topbar = ({ toggleSidebar }) => {
               <GoBellFill size={24} />
             </div>
           </DropdownToggle>
-          <DropdownMenu
-            className="custom-dropdown-menu-Notifications bg-white mt-2 me-0"
-          >
+          <DropdownMenu className="custom-dropdown-menu-Notifications bg-white mt-2 me-0">
             <div
               className="w-100 pt-3"
               style={{

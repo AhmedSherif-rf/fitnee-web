@@ -77,6 +77,21 @@ const createFormData = (data) => {
       } else if (!Array.isArray(data[key])) {
         formData.append(key, data[key]);
       }
+    } else {
+      // if (
+      //   key === "weight" ||
+      //   key === "height" ||
+      //   key === "skeletal_muscel_mass" ||
+      //   key === "body_fat_mass" ||
+      //   key === "total_body_water" ||
+      //   key === "protien" ||
+      //   key === "level" ||
+      //   key === "food_sensitive" ||
+      //   key === "training_goal" ||
+      //   key === "injury_details"
+      // ) {
+      //   formData.append(key, null);
+      // }
     }
   }
 

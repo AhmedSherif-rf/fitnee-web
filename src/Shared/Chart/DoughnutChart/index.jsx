@@ -23,7 +23,7 @@ const DoughnutChartComponent = () => {
 
   return (
     <>
-      <h3 className="fw-bold text-black-custom">FitNee Totalities</h3>
+      <h4 className="fw-bold text-black-custom">FitNee Totalities</h4>
       <div className="d-flex justify-content-center text-black-custom pt-4">
         <div className="d-flex justify-content-center">
           <Doughnut data={data} />

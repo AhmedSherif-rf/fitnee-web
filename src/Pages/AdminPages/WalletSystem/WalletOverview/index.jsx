@@ -33,6 +33,7 @@ import {
 } from "reactstrap";
 
 const WalletOverview = (props) => {
+  const today = moment();
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [totalSize, setSizePages] = useState(0);
@@ -97,8 +98,18 @@ const WalletOverview = (props) => {
               </div>
             ),
             total_amount: `${CURRENCY} ${transaction?.total_amount}`,
-            release_date: moment(transaction?.payment_date).format(
-              "DD/MM/YYYY"
+            release_date: (
+              <p
+                className={
+                  today.isSame(moment(transaction?.payment_date), "day")
+                    ? "text-success fw-bold"
+                    : today.isAfter(moment(transaction?.payment_date), "day")
+                    ? "text-danger fw-bold"
+                    : "text-dark"
+                }
+              >
+                {moment(transaction?.payment_date).format("DD/MM/YYYY")}
+              </p>
             ),
             action: (
               <UncontrolledDropdown className={`UncontrolledDropdown`}>

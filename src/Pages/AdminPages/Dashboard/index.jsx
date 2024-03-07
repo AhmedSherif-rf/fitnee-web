@@ -227,8 +227,8 @@ const Dashboard = (props) => {
               <div
                 className={` ${Styles.LineThree} mb-0`}
               >
-                {/* {feedback?.sp_review} */}
-                skjdflaskjdfakjsdfkashdklfjhalksdjfhalksdjfhalksdlfjakljsdjfjlaksdjfalsdkjfhkjaklsjdfh
+                {feedback?.sp_review}
+              
               </div>
               <Rating rating={feedback?.sp_rating} />
             </div>

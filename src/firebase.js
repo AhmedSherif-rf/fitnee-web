@@ -3,12 +3,12 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: "fitnee-frontend.firebaseapp.com",
-  projectId: "fitnee-frontend",
-  storageBucket: "fitnee-frontend.appspot.com",
+  authDomain: "fitnee-599e6.firebaseapp.com",
+  projectId: "fitnee-599e6",
+  storageBucket: "fitnee-599e6.appspot.com",
   messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: "G-TBSC6GBZ7V",
+  measurementId: "G-VY7M0GFXTL",
 };
 
 const firebaseApp = initializeApp(firebaseConfig);

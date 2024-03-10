@@ -8,6 +8,7 @@ import { RxDashboard } from "react-icons/rx";
 import { MdOutlineReviews } from "react-icons/md";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import { FaEdit, FaRunning } from "react-icons/fa";
+import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
@@ -89,6 +90,16 @@ const SideBar = ({ isOpen, toggle }) => (
           </NavLink>
         </NavItem>
         <SubMenu title="Feedback" icon={<GoPaste />} items={submenus[2]} />
+        <NavItem>
+          <NavLink
+            className="py-3 d-flex align-items-center gap-2"
+            tag={Link}
+            to={"/admin/community"}
+          >
+            <IoChatboxEllipsesOutline />
+            Community
+          </NavLink>
+        </NavItem>
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"

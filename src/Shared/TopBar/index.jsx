@@ -376,11 +376,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         </DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
-                    <FillBtn
+                    {/* <FillBtn
                       className="px-3 ms-1 shadow-none"
                       text={t("landing.signUpText")}
                       handleOnClick={handleSignUpClick}
-                    />
+                    /> */}
                     <OutlineBtn
                       className="px-3 shadow-none"
                       text={t("landing.signInText")}
@@ -681,11 +681,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             </Collapse>
                           </NavItem>
                           <div className="d-flex align-items-center flex-column">
-                            <FillBtn
+                            {/* <FillBtn
                               className="w-50 px-3 mb-2"
                               text={t("landing.signUpText")}
                               handleOnClick={handleSignUpClick}
-                            />
+                            /> */}
                             <OutlineBtn
                               className="w-50 px-3"
                               text={t("landing.signInText")}

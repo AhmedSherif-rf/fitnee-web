@@ -39,7 +39,7 @@ const RegisterAs = (props) => {
             {t("registerAs.registerAsText")}
           </h2>
           <div className="pt-3">
-            {/* <FillBtn
+            <FillBtn
               className="w-100 mb-3 customPaddingY"
               text={t("registerAs.traineeText")}
               handleOnClick={handleAsTraineeClick}
@@ -58,7 +58,7 @@ const RegisterAs = (props) => {
               <Link to={"/signIn"} className="text-white">
                 {t("registerAs.alreadyAccountText")}
               </Link>
-            </div> */}
+            </div>
           </div>
         </Col>
       </Row>

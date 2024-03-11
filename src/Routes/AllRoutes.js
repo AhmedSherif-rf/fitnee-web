@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: "/registerAs",
-    component: lazy(() => import("../Pages/Auth/RegisterAs")),
+    component: lazy(() => import("../Pages/Auth/SignIn")),
     isPublic: true,
     theme: "light",
     exact: true,

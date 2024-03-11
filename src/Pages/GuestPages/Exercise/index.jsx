@@ -85,7 +85,7 @@ const Exercise = (props) => {
               <Col md={12} className="mb-3">
                 <div className="text-center w-100">
                   <FillBtn
-                    className="py-2 buttonBoxShadow"
+                    className="py-2"
                     text="Show More"
                     handleOnClick={handleSeeMoreClick}
                   />

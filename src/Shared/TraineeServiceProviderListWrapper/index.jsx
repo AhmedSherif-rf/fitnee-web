@@ -102,68 +102,68 @@ const TraineeServiceProviderListWrapper = (props) => {
       className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
     >
       <CardBody>
-        <Row className={`align-items-center mb-2 ${i18n.dir()}`}>
-          {loading === "pending" && <ShimmerScreen />}
-          <Col xs={10} sm={6} className="text-left">
-            <PageHeading
-              headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}
-              categoryText=""
-            />
-          </Col>
-          <Col
-            xs={2}
-            sm={6}
-            className={`${
-              i18n.dir() === "ltr" ? "text-end" : "text-start px-3"
-            }`}
-          >
-            <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-              <DropdownToggle data-toggle="dropdown" tag="span">
-                <img
-                  className={`${styles.filterIcon}`}
-                  src={Images.FILTER_ICON}
-                  alt="filter-icon"
-                />
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem
-                  onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
-                  className={
-                    listingRole === TRAINER_TYPE
-                      ? "dropdownActive"
-                      : ""
-                  }
-                >
-                  {t("guest.trainersText")}
-                </DropdownItem>
-                <DropdownItem
-                  onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
-                  className={
-                    listingRole === NUTRITIONIST_TYPE
-                      ? "dropdownActive"
-                      : ""
-                  }
-                >
-                  {t("guest.nutritionistsText")}
-                </DropdownItem>
-                <DropdownItem
-                  onClick={() =>
-                    handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
-                  }
-                  className={
-                    listingRole === TRAINER_NUTRITIONIST_TYPE
-                      ? "dropdownActive"
-                      : ""
-                  }
-                >
-                  {t("guest.bothText")}
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </Col>
-        </Row>
+        {loading === "pending" && <ShimmerScreen />}
+        {loading !== "pending" && (
+          <Row className={`align-items-center mb-2 ${i18n.dir()}`}>
+            <Col xs={10} sm={6} className="text-left">
+              <PageHeading
+                headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}
+                categoryText=""
+              />
+            </Col>
+            <Col
+              xs={2}
+              sm={6}
+              className={`${
+                i18n.dir() === "ltr" ? "text-end" : "text-start px-3"
+              }`}
+            >
+              <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                <DropdownToggle data-toggle="dropdown" tag="span">
+                  <img
+                    className={`${styles.filterIcon}`}
+                    src={Images.FILTER_ICON}
+                    alt="filter-icon"
+                  />
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem
+                    onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
+                    className={
+                      listingRole === TRAINER_TYPE ? "dropdownActive" : ""
+                    }
+                  >
+                    {t("guest.trainersText")}
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
+                    className={
+                      listingRole === NUTRITIONIST_TYPE ? "dropdownActive" : ""
+                    }
+                  >
+                    {t("guest.nutritionistsText")}
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() =>
+                      handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
+                    }
+                    className={
+                      listingRole === TRAINER_NUTRITIONIST_TYPE
+                        ? "dropdownActive"
+                        : ""
+                    }
+                  >
+                    {t("guest.bothText")}
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </Col>
+          </Row>
+        )}
+
         <Row>
           {serviceProviderData.length > 0 &&
+            loading !== "pending" &&
             serviceProviderData.map((serviceProvider, index) => {
               return (
                 <Col lg={3} md={4} col={6} className="mb-3" key={index}>

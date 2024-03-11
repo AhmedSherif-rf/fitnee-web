@@ -89,7 +89,7 @@ const HomeBanner = () => {
               </motion.div>
             )}
 
-            <motion.div
+            {/* <motion.div
               transition={spring}
               initial={{ scale: 0.9 }}
               animate={{ scale: 1.1 }}
@@ -101,7 +101,7 @@ const HomeBanner = () => {
                 text={t("landing.getStartedText")}
                 handleOnClick={handleGetStartedClick}
               />
-            </motion.div>
+            </motion.div> */}
           </div>
         </Col>
         <Col md={6}>

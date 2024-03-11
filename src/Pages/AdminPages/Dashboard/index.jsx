@@ -1,5 +1,6 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
+import Styles from "./style.module.scss";
 import Rating from "../../../Shared/Rating";
 import { RiReservedFill } from "react-icons/ri";
 import { Container, Row, Col } from "reactstrap";
@@ -34,6 +35,11 @@ const Dashboard = (props) => {
   const [platformFeedbackTableData, setPlatformFeedbackTableData] = useState(
     []
   );
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleSeeMore = () => {
+    setExpanded(!expanded);
+  };
 
   const userTrendGrapghOptions = {
     responsive: true,
@@ -113,7 +119,16 @@ const Dashboard = (props) => {
               </div>
             </div>
           ),
-          message: feedback?.platform_review,
+          message: (
+            <div
+              className={`${Styles.LineThree} ${
+                expanded ? "see-more" : "see-more"
+              }`}
+            >
+              {feedback?.platform_review}
+              {!expanded && <span onClick={toggleSeeMore}></span>}
+            </div>
+          ),
           date: (
             <div className="fw-bold text-secondary">
               {moment(feedback?.created_on).format("DD/MM/YYYY")}
@@ -208,14 +223,14 @@ const Dashboard = (props) => {
             </div>
           ),
           message: (
-            <div
-              className="d-flex align-items-center "
-              style={{ maxWidth: "300px" }}
-            >
-              <Rating rating={feedback?.sp_rating} />
-              <div className="d-flex align-items-center mb-0">
+            <div style={{ maxWidth: "180px" }}>
+              <div
+                className={` ${Styles.LineThree} mb-0`}
+              >
                 {feedback?.sp_review}
+              
               </div>
+              <Rating rating={feedback?.sp_rating} />
             </div>
           ),
         })

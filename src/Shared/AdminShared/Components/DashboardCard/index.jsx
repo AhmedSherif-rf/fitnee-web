@@ -11,7 +11,7 @@ const DashboardCard = (props) => {
     cardIconClass,
   } = props;
   return (
-    <Card className={`onlyBorderRadius h-100   ${AdminClass}`}>
+    <Card className={`onlyBorderRadius border-0 h-100   ${AdminClass}`}>
       <CardBody className={`${CardBodyClass}`}>
         <div className="d-flex align-items-center justify-content-between">
           <div className="w-100">

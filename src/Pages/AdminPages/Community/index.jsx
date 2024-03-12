@@ -90,8 +90,7 @@ const Community = (props) => {
               Members
             </h6>
             <Card
-              className={`p-2 onlyBorderRadius`}
-              style={{ overflowY: "auto", maxHeight: "400px" }}
+              className={`onlyBorderRadius chatCardFooterHeight`}
             >
               {groupMembers.map((groupMember, index) => {
                 const member = getMemberData(groupMember);

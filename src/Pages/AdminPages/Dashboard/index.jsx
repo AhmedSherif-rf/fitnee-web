@@ -417,7 +417,7 @@ const Dashboard = (props) => {
             link={"/admin/platformFeedback"}
           />
         </Col>
-        <Col lg={6} className="mb-3">
+        <Col lg={6} className="mb-3 p-0">
           <DashboardTable
             data={spFeedbackTableData}
             columns={serviceProviderFeedbackColumns}

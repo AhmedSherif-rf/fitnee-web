@@ -1,9 +1,22 @@
 @import "../../../../Assets/Scss/variables.scss";
 
 .messageWrapper {
+  max-width: 80% !important;
   padding: 10px 14px;
-  border-top-left-radius: 18px;
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
+  border-bottom-left-radius: 18px;
   background-color: $text-bg;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: $text-bg;
+    width: 16px;
+    height: 14px;
+    margin-top: -8px;
+    margin-left: -15px;
+    border-bottom-left-radius: 40px;
+    z-index: 0;
+  }
 }

@@ -1,7 +1,7 @@
 import "./styles.scss";
 import { db } from "../../../firebase";
 import { LuSend } from "react-icons/lu";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import InputField from "../../../Shared/InputField";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import { onValue, ref, orderByChild } from "firebase/database";
@@ -14,6 +14,8 @@ const Community = (props) => {
   const [hoveredIndex, setHoveredIndex] = useState(false);
   const [groupMembers, setGroupMembers] = useState([]);
   const [groupMessages, setGroupMessages] = useState([]);
+
+  const messageEl = useRef(null);
 
   useEffect(() => {
     const query = ref(db, "GroupMessages", orderByChild("messageTime"));
@@ -28,6 +30,12 @@ const Community = (props) => {
     });
     return () => unsubscribe();
   }, []);
+
+  useEffect(()=>{
+    if(messageEl.current){
+      messageEl.current.scrollIntoView();
+    }
+  },[groupMessages]);
 
   useEffect(() => {
     const query = ref(db, "Groups");
@@ -138,6 +146,7 @@ const Community = (props) => {
                   );
                 });
               })}
+              <div className="" ref={messageEl}></div>
             </Card>
             <CardFooter className="chatCardFooter border-0 bg-transparent">
               <div className="position-absolute chatButton ">

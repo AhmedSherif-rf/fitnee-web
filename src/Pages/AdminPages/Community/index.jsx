@@ -65,7 +65,7 @@ const Community = (props) => {
 
   return (
     <React.Fragment>
-      <Container className="adminDashBoardScrolling border border-danger" fluid>
+      <Container className="adminDashBoardScrolling" fluid>
         <Row>
           <Col md={12} className="text-center">
             <PageHeading
@@ -127,7 +127,7 @@ const Community = (props) => {
           <Col md={8} className="position-relative me-3">
             <h4 className="mb-0 fw-bold text-start  d-md-block d-none">Chat</h4>
             <h6 className="mb-0 fw-bold text-start d-md-none d-block">Chat</h6>
-            <Card className="p-2 chatCardFooterHeight onlyBorderRadius border border-danger">
+            <Card className="p-2 chatCardFooterHeight onlyBorderRadius">
               {groupMessages.map((messages, index) => {
                 return Object.values(messages).map((message, index) => {
                   const member = getMemberData(message.messageFrom);

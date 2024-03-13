@@ -54,15 +54,16 @@ function App() {
 
   onMessageListener()
     .then((payload) => {
-      setNotification({
-        title: payload.notification.title,
-        body: payload.notification.body,
-      });
-      fetchUserNotifications();
-      setShowNotification(true);
-      setTimeout(() => {
-        setShowNotification(false);
-      }, 5000);
+      console.log("notification payload", payload)
+      // setNotification({
+      //   title: payload.notification.title,
+      //   body: payload.notification.body,
+      // });
+      // fetchUserNotifications();
+      // setShowNotification(true);
+      // setTimeout(() => {
+      //   setShowNotification(false);
+      // }, 5000);
     })
     .catch((err) => console.log("failed: ", err));
 

@@ -31,11 +31,11 @@ const Community = (props) => {
     return () => unsubscribe();
   }, []);
 
-  useEffect(()=>{
-    if(messageEl.current){
+  useEffect(() => {
+    if (messageEl.current) {
       messageEl.current.scrollIntoView();
     }
-  },[groupMessages]);
+  }, [groupMessages]);
 
   useEffect(() => {
     const query = ref(db, "Groups");
@@ -83,15 +83,13 @@ const Community = (props) => {
             />
           </Col>
           <Col md={3} className="tableBodyWrapperPagination mb-3 ms-2 me-3">
-            <h4 className="mb-0 fw-bold text-start d-md-block d-none">
+            <h5 className="mb-0 fw-bold text-start d-md-block d-none text-black-custom">
               Members
-            </h4>
-            <h6 className="mb-0 fw-bold text-start d-md-none d-block">
+            </h5>
+            <h6 className="mb-0 fw-bold text-start d-md-none d-block text-black-custom">
               Members
             </h6>
-            <Card
-              className={`onlyBorderRadius chatCardFooterHeight`}
-            >
+            <Card className={`onlyBorderRadius chatCardFooterHeight`}>
               {groupMembers.map((groupMember, index) => {
                 const member = getMemberData(groupMember);
                 const teamMemberCssClass =
@@ -132,8 +130,12 @@ const Community = (props) => {
             </Card>
           </Col>
           <Col md={8} className="position-relative me-3">
-            <h4 className="mb-0 fw-bold text-start  d-md-block d-none">Chat</h4>
-            <h6 className="mb-0 fw-bold text-start d-md-none d-block">Chat</h6>
+            <h5 className="mb-0 fw-bold text-start  d-md-block d-none text-black-custom">
+              Chat
+            </h5>
+            <h6 className="mb-0 fw-bold text-start d-md-none d-block text-black-custom">
+              Chat
+            </h6>
             <Card className="p-2 chatCardFooterHeight onlyBorderRadius">
               {groupMessages.map((messages, index) => {
                 return Object.values(messages).map((message, index) => {

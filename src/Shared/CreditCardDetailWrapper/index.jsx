@@ -159,6 +159,7 @@ const CreditCardDetailWrapper = () => {
           subscription_amount: subscriptionPlan.price,
           vat: summaryData.vat,
           email: user?.email,
+          discounted_amount: summaryData?.discount,
           subscription_id: subscriptionPlan.id,
           wallet_amount: calculateWalletAmountUsed(),
         }),
@@ -452,33 +453,41 @@ const CreditCardDetailWrapper = () => {
                               id="use_wallet"
                               isOn={values.use_wallet}
                               handleToggle={() => {
-                                setFieldValue("use_wallet", !values.use_wallet);
-                                if (!values.use_wallet === true) {
-                                  const updatedGrandPrice = functions.getSummary(
-                                    summaryData.discount,
-                                    walletBalance,
-                                    subscriptionPlan.price,
-                                    summaryData.vat
+                                if (
+                                  walletBalance !== "0.00" &&
+                                  !values.use_wallet
+                                ) {
+                                  setFieldValue(
+                                    "use_wallet",
+                                    !values.use_wallet
                                   );
+                                  if (!values.use_wallet === true) {
+                                    const updatedGrandPrice = functions.getSummary(
+                                      summaryData.discount,
+                                      walletBalance,
+                                      subscriptionPlan.price,
+                                      summaryData.vat
+                                    );
 
-                                  setSummaryData({
-                                    ...summaryData,
-                                    grandTotal: updatedGrandPrice,
-                                    walletAmount: walletBalance,
-                                  });
-                                } else {
-                                  const updatedGrandPrice = functions.getSummary(
-                                    summaryData.discount,
-                                    0,
-                                    subscriptionPlan.price,
-                                    summaryData.vat
-                                  );
+                                    setSummaryData({
+                                      ...summaryData,
+                                      grandTotal: updatedGrandPrice,
+                                      walletAmount: walletBalance,
+                                    });
+                                  } else {
+                                    const updatedGrandPrice = functions.getSummary(
+                                      summaryData.discount,
+                                      0,
+                                      subscriptionPlan.price,
+                                      summaryData.vat
+                                    );
 
-                                  setSummaryData({
-                                    ...summaryData,
-                                    grandTotal: updatedGrandPrice,
-                                    walletAmount: 0,
-                                  });
+                                    setSummaryData({
+                                      ...summaryData,
+                                      grandTotal: updatedGrandPrice,
+                                      walletAmount: 0,
+                                    });
+                                  }
                                 }
                               }}
                             />
@@ -515,6 +524,7 @@ const CreditCardDetailWrapper = () => {
                                   handleApplePromoCodeClick(values.promo_code);
                                 }
                               }}
+                              disabled={values.use_wallet}
                             />
                           </Col>
                         </Row>

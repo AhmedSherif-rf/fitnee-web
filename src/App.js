@@ -54,7 +54,9 @@ function App() {
 
   onMessageListener()
     .then((payload) => {
+      console.log("before parse", payload)
       const body = JSON.parse(payload.notification.body);
+      console.log("after parse", body)
       setNotification({
         title: payload.notification.title,
         body: body.msg,

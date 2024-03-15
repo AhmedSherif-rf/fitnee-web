@@ -1,8 +1,8 @@
 import "./styles.scss";
 import moment from "moment";
 import { memo } from "react";
-import Images from "../../../../HelperMethods/Constants/ImgConstants";
 import { Card } from "reactstrap";
+import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
 const Member = ({ message, member }) => {
   return (

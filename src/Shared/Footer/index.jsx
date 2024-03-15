@@ -35,12 +35,12 @@ const Footer = () => {
             <Link to="https://twitter.com/Fitnee_fit" target="_blank">
               <img src={Image.TWITTER_IMG} alt="logo" />
             </Link>
-            <Link to="" target="_blank">
+            {/* <Link to="" target="_blank">
               <img src={Image.YOUTUBE_IMG} alt="logo" />
             </Link>
             <Link to="" target="_blank">
               <img src={Image.TIKTOK_IMG} alt="logo" />
-            </Link>
+            </Link> */}
           </div>
           <div className="d-flex mx-4 align-items-start justify-content-center gap-2">
             <Link to={`termAndCondition/general/home`}>

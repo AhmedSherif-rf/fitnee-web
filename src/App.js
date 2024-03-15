@@ -54,9 +54,10 @@ function App() {
 
   onMessageListener()
     .then((payload) => {
+      const body = JSON.parse(payload.notification.body);
       setNotification({
         title: payload.notification.title,
-        body: payload.notification.body,
+        body: body.msg,
       });
       fetchUserNotifications();
       setShowNotification(true);

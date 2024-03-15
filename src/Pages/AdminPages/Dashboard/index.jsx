@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import Styles from "./style.module.scss";
 import Rating from "../../../Shared/Rating";
 import { RiReservedFill } from "react-icons/ri";
+import { PiHandCoinsFill } from "react-icons/pi";
 import { Container, Row, Col } from "reactstrap";
+import { GiWeightLiftingUp } from "react-icons/gi";
 import React, { useEffect, useState } from "react";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import BarChart from "../../../Shared/Chart/Barchart";
 import { useDispatch, useSelector } from "react-redux";
 import { FaUser, FaRegUser, FaUsers } from "react-icons/fa";
+import { FaPersonWalkingArrowLoopLeft } from "react-icons/fa6";
 import DoughnutChart from "../../../Shared/Chart/DoughnutChart";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import { USER_NOTIFICATIONS_URL } from "../../../utils/constants";
@@ -31,6 +34,11 @@ const Dashboard = (props) => {
     labels: [],
     datasets: [],
   });
+  const [userTotalitiesGraphData, setUserTotalitiesGraphData] = useState({
+    labels: [],
+    datasets: [],
+  });
+
   const [reviewRequestsTableData, setReviewRequestsTableData] = useState([]);
   const [platformFeedbackTableData, setPlatformFeedbackTableData] = useState(
     []
@@ -41,7 +49,7 @@ const Dashboard = (props) => {
     setExpanded(!expanded);
   };
 
-  const userTrendGrapghOptions = {
+  const userTrendGraphOptions = {
     responsive: true,
     plugins: {
       title: {
@@ -84,6 +92,7 @@ const Dashboard = (props) => {
           setPlatformFeedbacks(res.payload.data.platform_review);
           setSpFeedbacks(res.payload.data.profile_review);
           populateUserTrendGraphData(res.payload.data);
+          populateUserTotalitiesGraphData(res.payload.data);
         }
       });
     };
@@ -224,11 +233,8 @@ const Dashboard = (props) => {
           ),
           message: (
             <div style={{ maxWidth: "180px" }}>
-              <div
-                className={` ${Styles.LineThree} mb-0`}
-              >
+              <div className={` ${Styles.LineThree} mb-0`}>
                 {feedback?.sp_review}
-              
               </div>
               <Rating rating={feedback?.sp_rating} />
             </div>
@@ -255,9 +261,8 @@ const Dashboard = (props) => {
     const nutritionistsData = data?.nutritionists_monthly_counts?.map(
       (item) => item.count
     );
-    const exercise_subscriptions_monthly_counts = data?.exercise_subscriptions_monthly_counts?.map(
-      (item) => item.count
-    );
+    const exercise_subscriptions_monthly_counts =
+      data?.exercise_subscriptions_monthly_counts?.map((item) => item.count);
 
     setUserTrendsGraphData({
       labels,
@@ -290,6 +295,30 @@ const Dashboard = (props) => {
           label: "Exercise Subscriptions",
           data: exercise_subscriptions_monthly_counts,
           backgroundColor: "#97694F",
+          borderWidth: 2,
+        },
+      ],
+    });
+  };
+
+  const populateUserTotalitiesGraphData = (data) => {
+    setUserTotalitiesGraphData({
+      labels: ["Trainer", "Nutritionist", "Trainee", "Both"],
+      datasets: [
+        {
+          data: [
+            data?.trainers_count,
+            data?.nutritionists_count,
+            data?.trainees_count,
+            // data.both_count,
+            10,
+          ],
+          backgroundColor: [
+            "rgba(157, 227, 154, 0.6)",
+            "rgba(18, 55, 45, 0.8)",
+            "rgba(153, 102, 255, 0.6)",
+            "rgba(255, 159, 64, 0.6)",
+          ],
           borderWidth: 2,
         },
       ],
@@ -388,19 +417,59 @@ const Dashboard = (props) => {
             />
           </Link>
         </Col>
+        <Col xl={3} lg={4} md={6} className="mb-3">
+          <Link to={"/admin/user/fullyBooked"}>
+            <DashboardCard
+              AdminClass="AdminCard"
+              CardBodyClass="AdminCardBody"
+              cardIconClass="cardIcon"
+              cardIcon={<GiWeightLiftingUp size={65} />}
+              textOne={counterData?.exercise_subscriptions_count}
+              textTwo="Exercise Subscriptions"
+            />
+          </Link>
+        </Col>
+        <Col xl={3} lg={4} md={6} className="mb-3">
+          <Link to={"/admin/user/fullyBooked"}>
+            <DashboardCard
+              AdminClass="AdminCard"
+              CardBodyClass="AdminCardBody"
+              cardIconClass="cardIcon"
+              cardIcon={<FaPersonWalkingArrowLoopLeft size={65} />}
+              textOne={counterData?.exercises_resubscriber_count}
+              textTwo="Exercises Resubscription"
+            />
+          </Link>
+        </Col>
+        <Col xl={3} lg={4} md={6} className="mb-3">
+          <Link to={"/admin/user/fullyBooked"}>
+            <DashboardCard
+              AdminClass="AdminCard"
+              CardBodyClass="AdminCardBody"
+              cardIconClass="cardIcon"
+              cardIcon={<PiHandCoinsFill size={65} />}
+              textOne={counterData?.refund_count}
+              textTwo="Refunds"
+            />
+          </Link>
+        </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md={6} className="mb-3">
+        <Col
+          md={12}
+          className="mb-3"
+          style={{ height: "500px" }}
+        >
           <BarChart
             data={userTrendsGraphData}
-            options={userTrendGrapghOptions}
+            options={userTrendGraphOptions}
           />
-        </Col>
-        <Col md={6} className="mb-3">
-          <DoughnutChart />
         </Col>
       </Row>
       <Row className="mb-3">
+        <Col lg={6} md={12} sm={12} className="mb-3">
+          <DoughnutChart data={userTotalitiesGraphData} />
+        </Col>
         <Col lg={6} className="mb-3">
           <DashboardTable
             data={reviewRequestsTableData}

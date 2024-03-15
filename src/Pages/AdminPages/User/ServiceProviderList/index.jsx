@@ -11,9 +11,13 @@ import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
 import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
 import {
   ADMIN_SERVICE_PROVIDER_LISTING_URL,
+  ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
   PER_PAGE_COUNT,
 } from "../../../../utils/constants";
-import { getServiceProviderListing } from "../../../../Redux/features/Admin/UserListing/userListingApi";
+import {
+  getServiceProviderListing,
+  userBlockUnblock,
+} from "../../../../Redux/features/Admin/UserListing/userListingApi";
 
 const ServiceProviders = (props) => {
   const dispatch = useDispatch();
@@ -25,11 +29,17 @@ const ServiceProviders = (props) => {
   const [stcPayNumber, setStcPayNumber] = useState("");
   const [serviceProvidersData, setServiceProvidersData] = useState(null);
 
+  console.log(serviceProvidersData, "-------------------00");
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
   }, []);
 
   useEffect(() => {
+    fetchServiceProviderListing();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, page, stcPayNumber]);
+
+  const fetchServiceProviderListing = () => {
     const data = {
       apiEndpoint: `${ADMIN_SERVICE_PROVIDER_LISTING_URL}?page=${page}&stc_pay=${stcPayNumber}`,
     };
@@ -40,7 +50,27 @@ const ServiceProviders = (props) => {
         setServiceProvidersData(res.payload.data.results);
       }
     });
-  }, [dispatch, page, stcPayNumber]);
+  };
+
+  const handleActionClick = useCallback(
+    (id, status) => {
+      const data = {
+        apiEndpoint: ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL.replace(
+          "userId",
+          id
+        ),
+        requestData: JSON.stringify({
+          // is_blocked: status,
+        }),
+      };
+      dispatch(userBlockUnblock(data)).then((res) => {
+        if (res.type === "userBlockUnblock/fulfilled") {
+          setPage(1);
+        }
+      });
+    },
+    [dispatch, setPage]
+  );
 
   useEffect(() => {
     if (serviceProvidersData && serviceProvidersData.length > 0) {
@@ -96,22 +126,39 @@ const ServiceProviders = (props) => {
           ),
           action: (
             <div className="d-flex align-items-center justify-content-md-center">
-              <span className={`iconBadge me-1`}>
-                <MdOutlinePersonOff
-                  size={22}
-                  className={`rejectUser cursorPointer ${
-                    serviceProvider.is_blocked ? "" : "text-danger"
-                  }`}
-                />
-              </span>
-              <span className={`iconBadge me-1`}>
-                <MdOutlinePersonOutline
-                  size={22}
-                  className={`approveUser cursorPointer ${
-                    serviceProvider.is_blocked ? "text-success" : ""
-                  }`}
-                />
-              </span>
+              {!serviceProvider?.is_blocked && (
+                <span
+                  className={`iconBadge me-1`}
+                  id={`userId_${serviceProvider?.id}`}
+                  onClick={() => handleActionClick(serviceProvider?.id, false)}
+                  isOn={serviceProvider?.is_blocked === false}
+                >
+                  <MdOutlinePersonOutline
+                    size={25}
+                    className={`rejectUser cursorPointer ${
+                      serviceProvider?.is_blocked === false
+                        ? "text-success"
+                        : ""
+                    }`}
+                  />
+                </span>
+              )}
+
+              {serviceProvider?.is_blocked && (
+                <span
+                  className={`iconBadge me-1`}
+                  id={`userId_${serviceProvider?.id}`}
+                  onClick={() => handleActionClick(serviceProvider?.id, true)}
+                  isOn={serviceProvider?.is_blocked === true}
+                >
+                  <MdOutlinePersonOff
+                    size={25}
+                    className={`rejectUser cursorPointer ${
+                      serviceProvider?.is_blocked === true ? "" : "text-danger"
+                    }`}
+                  />
+                </span>
+              )}
             </div>
           ),
         });

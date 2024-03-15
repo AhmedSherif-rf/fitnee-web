@@ -29,7 +29,6 @@ const ServiceProviders = (props) => {
   const [stcPayNumber, setStcPayNumber] = useState("");
   const [serviceProvidersData, setServiceProvidersData] = useState(null);
 
-  console.log(serviceProvidersData, "-------------------00");
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
   }, []);

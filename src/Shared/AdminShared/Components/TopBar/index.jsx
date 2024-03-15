@@ -12,8 +12,12 @@ import moment from "moment";
 import { Card } from "reactstrap";
 import { CgMenuLeft } from "react-icons/cg";
 import { GoBellFill } from "react-icons/go";
+import { BsSunsetFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { IoSunnySharp } from "react-icons/io5";
 import React, { memo, useCallback } from "react";
+import { IoMdCloudyNight } from "react-icons/io";
+import { BsFillSunriseFill } from "react-icons/bs";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
@@ -40,13 +44,33 @@ const Topbar = ({ toggleSidebar }) => {
     let greeting;
 
     if (hour >= 6 && hour < 12) {
-      greeting = "Good Morning";
+      greeting = (
+        <span className="d-flex align-items-center justify-content-center gap-3">
+          <span className="textYellow fs-5">Good Morning</span>
+          <BsFillSunriseFill className="textYellow fw-bold fs-3" />
+        </span>
+      );
     } else if (hour >= 12 && hour < 16) {
-      greeting = "Good Afternoon";
+      greeting = (
+        <span className="d-flex align-items-center justify-content-center gap-3">
+          <span className="textYellow fs-5">Good Afternoon</span>
+          <IoSunnySharp className="textYellow fw-bold fs-3" />
+        </span>
+      );
     } else if (hour >= 16 && hour < 19) {
-      greeting = "Good Evening";
+      greeting = (
+        <span className="d-flex align-items-center justify-content-center gap-3">
+          <span className="text-black-custom fs-5">Good Evening</span>
+          <BsSunsetFill className="fw-bold fs-3" style={{ color: "#F7BB02" }} />
+        </span>
+      );
     } else {
-      greeting = "Good Night";
+      greeting = (
+        <span className="d-flex align-items-center justify-content-center gap-3">
+          <span className="fs-5">Good Night</span>
+          <IoMdCloudyNight className="text-white fw-bold fs-3 p-1 rounded-4"style={{ background: "#030D48" }} />
+        </span>
+      );
     }
 
     return greeting;

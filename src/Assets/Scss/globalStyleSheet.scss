@@ -56,7 +56,7 @@
 }
 
 .textParrotGreen {
-  color: $parrot-green;
+  color: $parrot-green !important;
 }
 .contactUsCard,
 .contentCard {
@@ -281,6 +281,10 @@ Input::-webkit-input-placeholder {
 .tableBodyWrapperPagination {
   max-height: 68vh;
   overflow-y: scroll;
+}
+.chatCardFooterHeight {
+  max-height: 58vh;
+  overflow-y: auto;
 }
 .adminDashBoardScrolling {
   max-height: 82vh;

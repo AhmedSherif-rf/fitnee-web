@@ -53,12 +53,9 @@ const PlatformFeedback = () => {
   };
 
   const handleToggle = useCallback(
-    (id, status) => {
+    (id, status) => { 
       const data = {
-        apiEndpoint: ADMIN_CHANGE_PLATFORM_FEEDBACK_STATUS_URL.replace(
-          "feedbackId",
-          id
-        ),
+        apiEndpoint: ADMIN_CHANGE_PLATFORM_FEEDBACK_STATUS_URL.replace("feedbackId",id),
         requestData: JSON.stringify({
           status: status === "approved" ? "rejected" : "approved",
           rejection_reason: "anything",

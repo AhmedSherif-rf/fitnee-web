@@ -4,7 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Char = ({ data }) => {
+const DoughnutChart = ({ data }) => {
   if (!data) return null;
 
   return (
@@ -19,4 +19,4 @@ const Char = ({ data }) => {
   );
 };
 
-export default Char;
+export default DoughnutChart;

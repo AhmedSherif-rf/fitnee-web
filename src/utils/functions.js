@@ -91,7 +91,7 @@ const createFormData = (data) => {
         key === "injury_details" ||
         key === "goal"
       ) {
-        formData.append(key, null);
+        formData.append(key, "");
       }
     }
   }

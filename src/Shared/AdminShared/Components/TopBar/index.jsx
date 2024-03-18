@@ -46,28 +46,28 @@ const Topbar = ({ toggleSidebar }) => {
     if (hour >= 6 && hour < 12) {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="textYellow fs-5">Good Morning</span>
+          <span className="textYellow fs-5 d-md-block d-none">Good Morning</span>
           <BsFillSunriseFill className="textYellow fw-bold fs-3" />
         </span>
       );
     } else if (hour >= 12 && hour < 16) {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="textYellow fs-5">Good Afternoon</span>
+          <span className="textYellow fs-5 d-md-block d-none">Good Afternoon</span>
           <IoSunnySharp className="textYellow fw-bold fs-3" />
         </span>
       );
     } else if (hour >= 16 && hour < 19) {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="text-black-custom fs-5">Good Evening</span>
+          <span className="text-black-custom fs-5 d-md-block d-none">Good Evening</span>
           <BsSunsetFill className="fw-bold fs-3" style={{ color: "#F7BB02" }} />
         </span>
       );
     } else {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="fs-5">Good Night</span>
+          <span className="fs-5 d-md-block d-none">Good Night</span>
           <IoMdCloudyNight className="text-white fw-bold fs-3 p-1 rounded-4"style={{ background: "#030D48" }} />
         </span>
       );
@@ -132,8 +132,8 @@ const Topbar = ({ toggleSidebar }) => {
       >
         <CgMenuLeft color="black" />
       </Button>
-      <div>
-        <p className="fw-bold mb-0">{showGreetingText()}</p>
+      <div className="">
+        <p className="fw-bold mb-0 ">{showGreetingText()}</p>
       </div>
       <div className="d-flex gap-3 align-items-center">
         <UncontrolledDropdown>

@@ -455,7 +455,7 @@ const CreditCardDetailWrapper = () => {
                               handleToggle={() => {
                                 if (
                                   walletBalance !== "0.00" &&
-                                  !values.use_wallet
+                                  summaryData.discount === 0
                                 ) {
                                   setFieldValue(
                                     "use_wallet",

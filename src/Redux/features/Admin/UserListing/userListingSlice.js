@@ -3,6 +3,7 @@ import {
   getServiceProviderListing,
   getTraineeListing,
   userBlockUnblock,
+  getTraineeDetail,
 } from "./userListingApi";
 
 export const userListingSlice = createSlice({
@@ -44,6 +45,17 @@ export const userListingSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(userBlockUnblock.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getTraineeDetail.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getTraineeDetail.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(getTraineeDetail.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

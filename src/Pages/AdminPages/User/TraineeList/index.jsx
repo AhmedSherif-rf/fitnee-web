@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import { useState, useCallback } from "react";
@@ -49,22 +50,24 @@ const TraineeList = (props) => {
       traineesData.forEach((trainee) => {
         traineeListArray.push({
           name: (
-            <div className="d-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    trainee?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${trainee?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {`${trainee?.first_name} ${trainee?.last_name}`}
-              </h6>
-            </div>
+            <Link to={`/admin/traineeProviderProfile/${trainee?.id}`}>
+              <div className="d-flex align-items-center">
+                <div
+                  className="bgProperties rounded-circle me-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      trainee?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${trainee?.profile_pic})`,
+                  }}
+                ></div>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {`${trainee?.first_name} ${trainee?.last_name}`}
+                </h6>
+              </div>
+            </Link>
           ),
           role: trainee?.role,
           email: trainee?.email,

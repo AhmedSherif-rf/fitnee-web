@@ -1,7 +1,7 @@
-// import ServiceProviderProfileWrapper from "../../../Shared/AdminShared/Components/ServiceProviderProfile";
+import ServiceProviderProfileWrapper from "../../../Shared/AdminShared/Components/ServiceProviderProfileWrapper";
 
 const ServiceProviderProfile = () => {
-  // return <ServiceProviderProfileWrapper />;
+  return <ServiceProviderProfileWrapper />;
 };
 
 export default ServiceProviderProfile;

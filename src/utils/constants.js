@@ -93,6 +93,7 @@ export const TRAINEE_CHANGE_PASSWORD_URL = "/change_password/";
 export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
 export const CANCEL_SUBSCRIPTION_URL = "wallet/refund_amount/";
 export const SEND_UPDATE_PROFILE_URL = "/profile-update-request/";
+export const ADMIN_TRAINEE_PROFILE_URL = "/admin/trainees/userId/";
 export const ADMIN_RELEASE_PAYMENT_URL = "/admin/release_payment/";
 export const USER_STATUS_LISTING_URL = "/admin/trainee-statistics/";
 export const CHECK_PAYMENT_STATUS_URL = "/payment/hyperpay_status/";

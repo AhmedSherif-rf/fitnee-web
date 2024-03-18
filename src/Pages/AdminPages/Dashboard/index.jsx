@@ -158,8 +158,11 @@ const Dashboard = (props) => {
       reviewRequests.forEach((request) =>
         reviewRequestsArray.push({
           full_name: (
-            <Link to={`/admin/reviewRequestDetail/${request?.uuid}`}>
-              <div className="d-flex align-items-center">
+            <Link
+              className=" w-100"
+              to={`/admin/reviewRequestDetail/${request?.uuid}`}
+            >
+              <div className="d-md-flex align-items-center">
                 <div
                   className="bgProperties rounded-circle me-2"
                   style={{
@@ -179,7 +182,10 @@ const Dashboard = (props) => {
           ),
           role: request?.role,
           ticket_id: (
-            <div className="fw-bold text-secondary">{request?.request_id}</div>
+            <div className="fw-bold text-secondary">
+              {request?.request_id && <>{request.request_id}</>}
+              {!request?.request_id && "0000"}
+            </div>
           ),
         })
       );
@@ -196,9 +202,9 @@ const Dashboard = (props) => {
       spFeedbacks.forEach((feedback) =>
         feedbackArray.push({
           reviewer: (
-            <div className="d-flex align-items-center">
+            <div className="d-md-flex align-items-center">
               <div
-                className="bgProperties rounded-circle me-2"
+                className="bgProperties rounded-circle me-2 "
                 style={{
                   width: "40px",
                   height: "40px",
@@ -214,25 +220,12 @@ const Dashboard = (props) => {
             </div>
           ),
           serviceProvider: (
-            <div className="d-md-flex d-none align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    feedback?.service_provider?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${feedback?.service_provider?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {feedback?.service_provider?.full_name}
-              </h6>
-            </div>
+            <h6 className="text-secondary fw-bold mb-0">
+              {feedback?.service_provider?.full_name}
+            </h6>
           ),
           message: (
-            <div style={{ maxWidth: "180px" }}>
+            <div className="" style={{ maxWidth: "180px" }}>
               <div className={` ${Styles.LineThree} mb-0`}>
                 {feedback?.sp_review}
               </div>
@@ -341,7 +334,7 @@ const Dashboard = (props) => {
     { label: "Reviewer", dataKey: "reviewer" },
     { label: "Service Provider", dataKey: "serviceProvider" },
     {
-      label: "Feedback Message",
+      label: "Feedback",
       dataKey: "message",
       align: "left",
     },
@@ -455,11 +448,7 @@ const Dashboard = (props) => {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col
-          md={12}
-          className="mb-3"
-          style={{ height: "500px" }}
-        >
+        <Col md={12} className="mb-3">
           <BarChart
             data={userTrendsGraphData}
             options={userTrendGraphOptions}

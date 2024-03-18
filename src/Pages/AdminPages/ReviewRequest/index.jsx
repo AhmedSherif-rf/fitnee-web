@@ -30,9 +30,8 @@ const ReviewRequest = () => {
   const [stcPayNumber, setStcPayNumber] = useState("");
   const [rejectedEmail, setRejectedEmail] = useState("");
   const [reviewRequests, setReviewRequests] = useState([]);
-  const [showRejectionReasonModal, setShowRejectionReasonModal] = useState(
-    false
-  );
+  const [showRejectionReasonModal, setShowRejectionReasonModal] =
+    useState(false);
   const { loading } = useSelector((state) => state.reviewRequest);
 
   const handlePageChange = useCallback((page) => {
@@ -97,7 +96,7 @@ const ReviewRequest = () => {
         requestArray.push({
           full_name: (
             <Link to={`/admin/reviewRequestDetail/${request?.uuid}`}>
-              <div className="d-flex align-items-center">
+              <div className="d-md-flex align-items-center">
                 <div
                   className="bgProperties rounded-circle me-2"
                   style={{

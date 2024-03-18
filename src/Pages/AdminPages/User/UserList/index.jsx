@@ -50,7 +50,7 @@ const UserList = (props) => {
       traineesData.forEach((trainee) => {
         traineeListArray.push({
           name: (
-            <div className="d-flex align-items-center">
+            <div className="d-md-flex align-items-center">
               <div
                 className="bgProperties rounded-circle me-2"
                 style={{

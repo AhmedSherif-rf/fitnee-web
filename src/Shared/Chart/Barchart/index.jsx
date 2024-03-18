@@ -21,8 +21,8 @@ ChartJS.register(
 
 const BarChartComponent = ({ data, options }) => {
   return (
-    <div className="text-black-custom d-flex justify-content-center" style={{height:"80%"}}>
-      <Bar options={options} data={data} />
+    <div style={{ width: "100%", height: "350px" }}>
+      <Bar data={data} options={{ maintainAspectRatio: false }} />
     </div>
   );
 };

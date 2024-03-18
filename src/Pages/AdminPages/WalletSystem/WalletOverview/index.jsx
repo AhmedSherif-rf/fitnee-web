@@ -7,6 +7,7 @@ import Pagination from "../../../../Shared/Pagination";
 import React, { useState, useCallback, useEffect } from "react";
 import PageHeading from "../../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
+import { FaEllipsisVertical, FaMagnifyingGlass } from "react-icons/fa6";
 import {
   getWalletData,
   releasePayment,
@@ -18,7 +19,6 @@ import {
   PENDING_PAYMENTS,
   ADMIN_RELEASE_PAYMENT_URL,
 } from "../../../../utils/constants";
-import { FaEllipsisVertical, FaMagnifyingGlass } from "react-icons/fa6";
 import {
   Row,
   Col,
@@ -87,7 +87,7 @@ const WalletOverview = (props) => {
             transaction_no: transaction?.id,
             amount: `${CURRENCY} ${transaction?.amount}`,
             status: (
-              <div className="d-flex align-items-center justify-content-center">
+              <div className="d-flex align-items-center justify-content-md-center">
                 <div
                   className={`me-2 ${
                     transaction?.is_paid ? "bg-success" : "bg-danger"
@@ -149,7 +149,7 @@ const WalletOverview = (props) => {
   }, [walletData]);
 
   const columns = [
-    { label: "Trsansaction #", dataKey: "transaction_no", align: "center" },
+    { label: "Transaction #", dataKey: "transaction_no", align: "center" },
     { label: "Amount", dataKey: "amount" },
     { label: "Status", dataKey: "status", align: "center" },
     {

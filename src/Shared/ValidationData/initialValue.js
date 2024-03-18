@@ -1,3 +1,17 @@
+export const SIGNIN_INITIAL_VALUES = {
+  email: "",
+  password: "",
+  termAndConditionCheck: false,
+};
+
+export const CONTACT_US_INITIAL_VALUES = {
+  email: "",
+  phone: "",
+  message: "",
+  last_name: "",
+  first_name: "",
+};
+
 export const TRAINEE_SIGNUP_INITIAL_VALUES = {
   goal: "",
   level: "",
@@ -50,6 +64,26 @@ export const TRAINER_SIGNUP_INITIAL_VALUES = {
   ],
 };
 
+export const TRAINER_EDIT_PROFILE_INITIAL_VALUES = {
+  bio: "",
+  role: "",
+  email: "",
+  gender: "",
+  stc_pay: "",
+  password: "",
+  full_name: "",
+  experience: "",
+  specialities: [],
+  phone_number: "",
+  profile_pic: null,
+  certification: [],
+  confirm_password: "",
+  saudireps_number: "",
+  certificate_title: [],
+  is_currently_working: "",
+  profile_availability: [{ day: "", starttime: "", endtime: "" }],
+};
+
 export const NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
   bio: "",
   email: "",
@@ -73,6 +107,25 @@ export const NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
     { price: "", membership_type: "Nutrition", duration: "2" },
     { price: "", membership_type: "Nutrition", duration: "3" },
   ],
+};
+
+export const NUTRITIONIST_EDIT_PROFILE_INITIAL_VALUES = {
+  bio: "",
+  email: "",
+  gender: "",
+  stc_pay: "",
+  password: "",
+  full_name: "",
+  experience: "",
+  phone_number: "",
+  profile_pic: null,
+  certification: [],
+  license_number: "",
+  role: "Nutritionist",
+  confirm_password: "",
+  certificate_title: [],
+  is_currently_working: "",
+  profile_availability: [{ day: "", starttime: "", endtime: "" }],
 };
 
 export const TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES = {
@@ -115,6 +168,7 @@ export const NEW_PASSWORD_INITIAL_VALUES = {
 export const PAYMENT_METHOD_DETAIL_INITIAL_VALUES = {
   city: "",
   state: "",
+  amount: "",
   entity: "",
   country: "",
   street1: "",
@@ -123,7 +177,59 @@ export const PAYMENT_METHOD_DETAIL_INITIAL_VALUES = {
   givenName: "",
   promo_code: "",
   currency: "SAR",
-  amount: "100.00",
   paymentType: "DB",
   use_wallet: false,
+};
+
+export const ADD_CATEGORY_INITIAL_VALUES = {
+  title: "",
+  title_ar: "",
+};
+
+export const ADD_SUB_CATEGORY_INITIAL_VALUES = {
+  title: "",
+  title_ar: "",
+};
+
+export const ADD_EXERCISE_INITIAL_VALUES = {
+  title: "",
+  title_ar: "",
+  warm_up: false,
+  stretching: false,
+  exercise_videos: null,
+  exercise_part_text: [""],
+  exercise_part_text_ar: [""],
+};
+
+export const ADD_PROMO_CODE_INITIAL_VALUES = {
+  code: "",
+  type: "",
+  value: "",
+  expire_date: "",
+  limited_users: "",
+};
+
+export const ADD_PROGRESS_INITIAL_VALUES = {
+  weight: "",
+  protien: "",
+  body_fat_mass: "",
+  skeletal_muscel_mass: "",
+};
+
+export const TRAINER_EDIT_PROFILE_REQUEST_INITIAL_VALUES = {
+  stc_pay: "",
+  certificates: [],
+  saudireps_number: "",
+  certificate_files: [],
+};
+
+export const NUTRITIONIST_EDIT_PROFILE_REQUEST_INITIAL_VALUES = {
+  stc_pay: "",
+  license: "",
+  certificates: [],
+  certificate_files: [],
+};
+
+export const REVIEW_REQUEST_REJECTION_INITIAL_VALUES = {
+  reject_message: "",
 };

@@ -12,17 +12,16 @@ import {
 import Toaster from "../Toaster";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
-import { GiWallet } from "react-icons/gi";
-import { FaArrowUp } from "react-icons/fa6";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { PiCaretDownBold } from "react-icons/pi";
 import { RiDashboardFill } from "react-icons/ri";
-import { FaBars, FaUserEdit } from "react-icons/fa";
 import { FaKey, FaTrashCan } from "react-icons/fa6";
+import { RiLogoutCircleLine } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
+import { FaBars, FaUserEdit, FaBell } from "react-icons/fa";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
@@ -48,8 +47,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation("");
-  const { loading: userLoading, user } = useSelector((state) => state.user);
   const { lang: currentLanguage } = useSelector((state) => state.language);
+  const { loading: userLoading, user, notifications } = useSelector(
+    (state) => state.user
+  );
 
   const roleType = user?.role ? user?.role.toLowerCase() : null;
 
@@ -80,7 +81,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         location.pathname === "/signIn" ||
         location.pathname === "/contactUs" ||
         location.pathname === "/forgotPassword" ||
-        location.pathname === "/changePassword")
+        location.pathname === "/changePassword" ||
+        location.pathname === "/privacyPolicy")
     ) {
       setShowTopBar(false);
     } else {
@@ -102,6 +104,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   ] = useState(false);
 
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
+  const [stopScrolling, setStopScrolling] = useState(false);
 
   const [backgroundClass, setBackgroundClass] = useState(
     isPublic
@@ -111,6 +114,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       : "bg-transparent"
   );
 
+  const handleMouseOver = () => {
+    setStopScrolling(true);
+    document.body.style.overflow = "hidden";
+  };
+
   const textClass = "text-white";
 
   const listenScrollEvent = () => {
@@ -118,6 +126,19 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       setBackgroundClass("customBgDark");
     } else {
       setBackgroundClass("bg-transparent");
+    }
+  };
+
+  const getUnReadNotificationsLength = (notifications) => {
+    if (notifications) {
+      const unReadNotifications = notifications.filter(
+        (item) => !item?.is_read
+      );
+      return unReadNotifications.length > 10
+        ? "10+"
+        : unReadNotifications.length;
+    } else {
+      return 0;
     }
   };
 
@@ -131,7 +152,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     navigate("/registerAs");
   }, [navigate]);
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
+  const toggleNavbar = () => {
+    setCollapsed(!collapsed);
+    setStopScrolling(false);
+    document.body.style.overflow = "auto";
+  };
 
   const handleSignInClick = useCallback(() => {
     navigate("/signIn");
@@ -151,13 +176,13 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     };
     dispatch(deleteAccount(data)).then((res) => {
       if (res.type === "deleteAccount/fulfilled") {
-        Toaster.success("Account is deleted successfully");
+        Toaster.success(t("messages.accountDeletedText"));
         navigate("/signIn");
       }
     });
 
     setShowDeleteAccountModal(false);
-  }, [dispatch, navigate, user]);
+  }, [dispatch, navigate, user, t]);
 
   const handleDeleteClick = () => {
     setShowDeleteAccountModal(true);
@@ -166,7 +191,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const handleLogoutClick = () => {
     const data = {
       apiEndpoint: LOGOUT_URL,
-      requestData: { refresh: user?.tokens?.refresh },
+      requestData: { refresh: user?.tokens?.refresh, device: "web" },
     };
     dispatch(logout(data)).then((res) => {
       if (res.type === "logout/fullfiled") {
@@ -231,7 +256,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                   <FaBars />
                 </NavbarToggler>
                 {roleType === null && (
-                  <Nav className={"d-lg-flex d-none"} navbar>
+                  <Nav className={`d-lg-flex d-none ${i18n.dir()}`} navbar>
                     <NavItem>
                       <Link
                         className={`nav-link ${styles.navLink} ${textClass} px-2`}
@@ -365,7 +390,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                 )}
                 {!isGuest && !isPublic && (
                   <Nav
-                    className={`d-lg-flex d-none ${styles.nav} text-black-custom`}
+                    className={`d-md-flex d-none ${styles.nav} text-black-custom`}
                   >
                     <UncontrolledDropdown>
                       <DropdownToggle className="p-0" nav>
@@ -375,17 +400,14 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             backgroundImage:
                               user?.profile_pic === null
                                 ? `url(${Images.USER_DUMMY_IMG})`
-                                : `url(${user?.profile_pic.replace(
-                                    "/api",
-                                    ""
-                                  )})`,
+                                : `url(${user?.profile_pic})`,
                             width: "40px",
                             height: "40px",
                           }}
                         ></div>
                       </DropdownToggle>
                       <DropdownMenu
-                        className="custom-dropdown-menu"
+                        className={`custom-dropdown-menu  ${i18n.dir()}`}
                         style={{ right: 0, left: "auto" }}
                       >
                         <DropdownItem className="p-0">
@@ -397,11 +419,39 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 : "/serviceProvider/dashboard"
                             }
                           >
-                            <div className="d-flex align-items-center text-black-custom">
+                            <div className="d-flex gap-1 align-items-center text-black-custom">
                               <span className="me-2">
                                 <RiDashboardFill size={16} className="mb-1" />
                               </span>
-                              <p className="mb-0">Dashboard</p>
+                              <p className="mb-0">
+                                {t("topBar.dashboardText")}
+                              </p>
+                            </div>
+                          </Link>
+                        </DropdownItem>
+                        <DropdownItem className="p-0">
+                          <Link
+                            className="w-100 p-1"
+                            to={
+                              roleType === TRAINEE_TYPE
+                                ? "/trainee/notifications"
+                                : "/serviceProvider/notifications"
+                            }
+                          >
+                            <div className="d-flex gap-1 align-items-center text-black-custom">
+                              <span className="me-2">
+                                <FaBell size={16} className="mb-1" />
+                              </span>
+                              <span className="d-flex gap-1 align-items-center justify-content-between w-100">
+                                <p className="mb-0">
+                                  {t("topBar.notificationsText")}{" "}
+                                </p>
+                                <span
+                                  className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
+                                >
+                                  {getUnReadNotificationsLength(notifications)}
+                                </span>
+                              </span>
                             </div>
                           </Link>
                         </DropdownItem>
@@ -417,32 +467,16 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 : "/serviceProvider/editProfile/nutritionist"
                             }
                           >
-                            <div className="d-flex align-items-center w-100 text-black-custom">
+                            <div className="d-flex gap-1 align-items-center w-100 text-black-custom">
                               <span className="me-2">
                                 <FaUserEdit size={16} className="mb-1" />
                               </span>
-                              <p className="mb-0">Edit Profile</p>
+                              <p className="mb-0">
+                                {t("topBar.editProfileText")}
+                              </p>
                             </div>
                           </Link>
                         </DropdownItem>
-                        {roleType && roleType !== TRAINEE_TYPE && (
-                          <>
-                            <DropdownItem className="p-0">
-                              <Link
-                                className="w-100 p-1"
-                                to="/serviceProvider/paymentHistory"
-                              >
-                                <div className="d-flex align-items-center text-black-custom">
-                                  <span className="me-2">
-                                    <GiWallet size={16} className="mb-1" />
-                                  </span>
-                                  <p className="mb-0">Wallet</p>
-                                </div>
-                              </Link>
-                            </DropdownItem>
-                          </>
-                        )}
-
                         <DropdownItem className="p-0">
                           <Link
                             className="w-100 p-1"
@@ -452,34 +486,38 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 : "/serviceProvider/resetPassword"
                             }
                           >
-                            <div className="d-flex align-items-center text-black-custom">
+                            <div className="d-flex gap-1 align-items-center text-black-custom">
                               <span className="me-2">
                                 <FaKey size={16} className="mb-1" />
                               </span>
-                              <p className="mb-0">Change Password</p>
+                              <p className="mb-0">
+                                {t("topBar.changePasswordText")}
+                              </p>
                             </div>
                           </Link>
                         </DropdownItem>
                         <DropdownItem className="p-0">
                           <div
-                            className="d-flex align-items-center w-100 p-1 text-black-custom"
+                            className="d-flex gap-1 align-items-center w-100 p-1 text-black-custom"
                             onClick={handleDeleteClick}
                           >
                             <span className="me-2 d-flex">
                               <FaTrashCan size={16} className="mb-1" />
                             </span>
-                            <p className="mb-0">Delete Account</p>
+                            <p className="mb-0">
+                              {t("topBar.deleteAccountText")}
+                            </p>
                           </div>
                         </DropdownItem>
                         <DropdownItem className="p-0">
                           <div
-                            className="d-flex align-items-center w-100 p-1 text-black-custom"
+                            className="d-flex gap-1 align-items-center w-100 p-1 text-black-custom"
                             onClick={handleLogoutClick}
                           >
                             <span className="me-2 d-flex">
-                              <FaArrowUp size={16} className="mb-1" />
+                              <RiLogoutCircleLine size={16} />
                             </span>
-                            <p className="mb-0">Logout</p>
+                            <p className="mb-0">{t("topBar.logoutText")}</p>
                           </div>
                         </DropdownItem>
                       </DropdownMenu>
@@ -493,238 +531,260 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             isOpen={collapsed}
             className={`text-white w-100 ${styles.collapseScss}`}
           >
-            <Nav
-              className={`pt-2 ${styles.togglerNav} customBgDark caret`}
-              navbar
+            <div
+              className={`vh-100 bg-transparent ${
+                stopScrolling ? "no-scroll" : "activeScroll"
+              }`}
+              // onClick={toggleNavbar}
+              onMouseOver={handleMouseOver}
             >
-              {!isPrivate && roleType === null && (
-                <>
-                  <NavItem className={`${styles.navItem}`}>
-                    <Link to="/">
-                      {" "}
-                      <span className={`px-1`}>{t("landing.homeText")}</span>
-                    </Link>
-                  </NavItem>
+              <Nav
+                className={`pt-2 ${styles.togglerNav} customBgDark caret`}
+                navbar
+              >
+                {!isPrivate && roleType === null && (
+                  <div className="mt-2">
+                    <NavItem className={`${styles.navItem}`}>
+                      <Link to="/">
+                        <span className={`px-1`}>{t("landing.homeText")}</span>
+                      </Link>
+                    </NavItem>
 
-                  <NavItem
-                    className={`${styles.navItem}`}
-                    onClick={() =>
-                      setCollapsedServiceList(!collapsedServiceList)
-                    }
-                  >
-                    <span
-                      className={`px-1 d-flex align-items-center justify-content-center`}
+                    <NavItem
+                      className={`${styles.navItem}`}
+                      onClick={() =>
+                        setCollapsedServiceList(!collapsedServiceList)
+                      }
                     >
-                      {t("landing.servicesText")}
-                      <PiCaretDownBold />
-                    </span>
-
-                    <Collapse
-                      isOpen={collapsedServiceList}
-                      className="text-center bg-dark"
-                    >
-                      <Nav navbar>
-                        <NavItem>
-                          <Link
-                            className="w-100 d-flex align-items-center"
-                            to="/guest/serviceProviderList/trainer"
-                          >
-                            <p className="mb-0">{t("landing.trainersText")}</p>
-                          </Link>
-                        </NavItem>
-                        <NavItem>
-                          <Link
-                            className="w-100 d-flex align-items-center"
-                            to="/guest/serviceProviderList/nutritionist"
-                          >
-                            <p className="mb-0">
-                              {t("landing.nutritionistsText")}
-                            </p>
-                          </Link>
-                        </NavItem>
-                        <NavItem>
-                          <Link
-                            className=" d-flex align-items-center"
-                            to="/guest/services"
-                          >
-                            <p className="mb-0">{t("landing.exerciseText")}</p>
-                          </Link>
-                        </NavItem>
-                      </Nav>
-                    </Collapse>
-                  </NavItem>
-
-                  <NavItem className={`${styles.navItem}`}>
-                    <Link to="#" onClick={handleFitneeCommunityClick}>
-                      <span className={`px-1`}>
-                        {t("landing.fitneeCommunityText")}
-                      </span>{" "}
-                    </Link>
-                  </NavItem>
-
-                  <NavItem className={`${styles.navItem}`}>
-                    <Link to="/contactUs">
-                      <span className={`px-1`}>
-                        {t("landing.contactUsText")}
+                      <span
+                        className={`px-1 d-flex align-items-center justify-content-center`}
+                      >
+                        {t("landing.servicesText")}
+                        <PiCaretDownBold />
                       </span>
-                    </Link>
-                  </NavItem>
-                </>
-              )}
-              {!isGuest && roleType !== null && (
-                <div>
-                  <NavItem className={`${styles.NavItem} p-2`}>
-                    <Link
-                      className={`nav-link ${styles.NavLink}`}
-                      to={
-                        roleType === TRAINEE_TYPE
-                          ? "/trainee/dashboard"
-                          : "/serviceProvider/dashboard"
-                      }
-                    >
-                      {"Dashboard"}
-                    </Link>
-                  </NavItem>
-                  <NavItem className={`${styles.NavItem} p-2`}>
-                    <Link
-                      className={`nav-link ${styles.NavLink}`}
-                      to={
-                        roleType === TRAINEE_TYPE
-                          ? "/trainee/editProfile/trainee"
-                          : roleType === TRAINER_TYPE ||
-                            user?.role === TRAINER_NUTRITIONIST_ROLE
-                          ? "/serviceProvider/editProfile/trainer"
-                          : "/serviceProvider/editProfile/nutritionist"
-                      }
-                    >
-                      {"Edit Profile"}
-                    </Link>
-                  </NavItem>
-                  {roleType && roleType !== TRAINEE_TYPE && (
-                    <>
-                      <NavItem className={`${styles.NavItem} p-2`}>
-                        <Link
-                          className={`nav-link ${styles.NavLink}`}
-                          to="/serviceProvider/paymentHistory"
+
+                      <Collapse
+                        isOpen={collapsedServiceList}
+                        className="text-center bg-dark"
+                      >
+                        <Nav navbar>
+                          <NavItem>
+                            <Link
+                              className="w-100 d-flex align-items-center"
+                              to="/guest/serviceProviderList/trainer"
+                            >
+                              <p className="mb-0">
+                                {t("landing.trainersText")}
+                              </p>
+                            </Link>
+                          </NavItem>
+                          <NavItem>
+                            <Link
+                              className="w-100 d-flex align-items-center"
+                              to="/guest/serviceProviderList/nutritionist"
+                            >
+                              <p className="mb-0">
+                                {t("landing.nutritionistsText")}
+                              </p>
+                            </Link>
+                          </NavItem>
+                          <NavItem>
+                            <Link
+                              className=" d-flex align-items-center"
+                              to="/guest/services"
+                            >
+                              <p className="mb-0">
+                                {t("landing.exerciseText")}
+                              </p>
+                            </Link>
+                          </NavItem>
+                        </Nav>
+                      </Collapse>
+                    </NavItem>
+
+                    <NavItem className={`${styles.navItem}`}>
+                      <Link to="#" onClick={handleFitneeCommunityClick}>
+                        <span className={`px-1`}>
+                          {t("landing.fitneeCommunityText")}
+                        </span>
+                      </Link>
+                    </NavItem>
+
+                    <NavItem className={`${styles.navItem}`}>
+                      <Link to="/contactUs">
+                        <span className={`px-1`}>
+                          {t("landing.contactUsText")}
+                        </span>
+                      </Link>
+                    </NavItem>
+                    {!isPrivate && roleType === null && (
+                      <>
+                        <Nav
+                          className={`ml-auto d-lg-none d-block customBgDark ${styles.togglerNav}`}
                         >
-                          {"Wallet"}
-                        </Link>
-                      </NavItem>
-                    </>
-                  )}
-
-                  <NavItem className={`${styles.NavItem} p-2`}>
-                    <Link
-                      className={`nav-link ${styles.NavLink}`}
-                      to={
-                        roleType === TRAINEE_TYPE
-                          ? "/trainee/resetPassword"
-                          : "/serviceProvider/resetPassword"
-                      }
-                    >
-                      {"Change Password"}
-                    </Link>
-                  </NavItem>
-
-                  <NavItem className={`${styles.NavItem} p-2`}>
-                    <div
-                      className={`nav-link d-flex justify-content-center w-100 p-1`}
-                      onClick={handleDeleteClick}
-                    >
-                      {"Delete Account"}
-                    </div>
-                  </NavItem>
-
-                  <NavItem className={`${styles.NavItem} p-2`}>
-                    <div
-                      className="d-flex justify-content-center w-100 p-1"
-                      onClick={handleLogoutClick}
-                    >
-                      {"Logout"}
-                    </div>
-                  </NavItem>
-                </div>
-              )}
-            </Nav>
-            {!isPrivate && roleType === null && (
-              <>
-                <Nav
-                  className={`ml-auto pb-4 d-lg-none d-block customBgDark ${styles.togglerNav}`}
-                >
-                  <NavItem
-                    className={`${styles.navItem}`}
-                    onClick={() => setCollapsedLangList(!collapsedLangList)}
-                  >
-                    <span className={`px-1`}>
-                      <img
-                        src={
-                          currentLanguage === ENGLISH_LANGUAGE
-                            ? Images.AMERICAN_FLAG_IMG
-                            : Images.ARABIA_FLAG_IMG
-                        }
-                        alt="Flag_Image"
-                      />
-                      <PiCaretDownBold />
-                    </span>
-
-                    <Collapse
-                      isOpen={collapsedLangList}
-                      className="text-center bg-dark"
-                    >
-                      <Nav navbar>
-                        <NavItem>
-                          <div
-                            className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
-                            onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                          <NavItem
+                            className={`${styles.navItem}`}
+                            onClick={() =>
+                              setCollapsedLangList(!collapsedLangList)
+                            }
                           >
-                            <span>
+                            <span className={`px-1`}>
                               <img
-                                src={Images.ARABIA_FLAG_IMG}
-                                alt="Arabia_Flag_Image"
+                                src={
+                                  currentLanguage === ENGLISH_LANGUAGE
+                                    ? Images.AMERICAN_FLAG_IMG
+                                    : Images.ARABIA_FLAG_IMG
+                                }
+                                alt="Flag_Image"
                               />
+                              <PiCaretDownBold />
                             </span>
-                            <span>{"العربية"}</span>
+
+                            <Collapse
+                              isOpen={collapsedLangList}
+                              className="text-center bg-dark"
+                            >
+                              <Nav navbar>
+                                <NavItem>
+                                  <div
+                                    className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
+                                    onClick={() =>
+                                      selectLanguage(ARABIC_LANGUAGE)
+                                    }
+                                  >
+                                    <span>
+                                      <img
+                                        src={Images.ARABIA_FLAG_IMG}
+                                        alt="Arabia_Flag_Image"
+                                      />
+                                    </span>
+                                    <span>{"العربية"}</span>
+                                  </div>
+                                </NavItem>
+                                <NavItem>
+                                  <div
+                                    className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
+                                    onClick={() =>
+                                      selectLanguage(ENGLISH_LANGUAGE)
+                                    }
+                                  >
+                                    <span>
+                                      <img
+                                        src={Images.AMERICAN_FLAG_IMG}
+                                        alt="America_Flag_Image"
+                                      />
+                                    </span>
+                                    <span>{"English (US)"}</span>
+                                  </div>
+                                </NavItem>
+                              </Nav>
+                            </Collapse>
+                          </NavItem>
+                          <div className="d-flex align-items-center flex-column">
+                            <FillBtn
+                              className="w-50 px-3 mb-2"
+                              text={t("landing.signUpText")}
+                              handleOnClick={handleSignUpClick}
+                            />
+                            <OutlineBtn
+                              className="w-50 px-3"
+                              text={t("landing.signInText")}
+                              handleOnClick={handleSignInClick}
+                            />
                           </div>
-                        </NavItem>
-                        <NavItem>
-                          <div
-                            className="w-100 d-flex justify-content-center align-items-center py-2 text-white gap-2"
-                            onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
-                          >
-                            <span>
-                              <img
-                                src={Images.AMERICAN_FLAG_IMG}
-                                alt="America_Flag_Image"
-                              />
-                            </span>
-                            <span>{"English (US)"}</span>
-                          </div>
-                        </NavItem>
-                      </Nav>
-                    </Collapse>
-                  </NavItem>
-                  <div className="d-flex align-items-center flex-column">
-                    <FillBtn
-                      className="w-50 px-3 mb-2"
-                      text={t("landing.signUpText")}
-                      handleOnClick={handleSignUpClick}
-                    />
-                    <OutlineBtn
-                      className="w-50 px-3"
-                      text={t("landing.signInText")}
-                      handleOnClick={handleSignInClick}
-                    />
+                        </Nav>
+                      </>
+                    )}
                   </div>
-                </Nav>
-              </>
-            )}
+                )}
+                {!isGuest && roleType !== null && (
+                  <div>
+                    <NavItem className={`${styles.NavItem} p-2`}>
+                      <Link
+                        className={`nav-link ${styles.NavLink}`}
+                        to={
+                          roleType === TRAINEE_TYPE
+                            ? "/trainee/dashboard"
+                            : "/serviceProvider/dashboard"
+                        }
+                      >
+                        {t("topBar.dashboardText")}
+                      </Link>
+                    </NavItem>
+                    <NavItem className={`${styles.NavItem} p-2`}>
+                      <Link
+                        className={`nav-link ${styles.NavLink}`}
+                        to={
+                          roleType === TRAINEE_TYPE
+                            ? "/trainee/notifications"
+                            : "/serviceProvider/notifications"
+                        }
+                      >
+                        {t("topBar.notificationsText")}
+                        <span
+                          className={`text-white bg-danger px-2 py-0 fw-bold mx-1 ${styles.notificationCount}`}
+                        >
+                          {getUnReadNotificationsLength(notifications)}
+                        </span>
+                      </Link>
+                    </NavItem>
+                    <NavItem className={`${styles.NavItem} p-2`}>
+                      <Link
+                        className={`nav-link ${styles.NavLink}`}
+                        to={
+                          roleType === TRAINEE_TYPE
+                            ? "/trainee/editProfile/trainee"
+                            : roleType === TRAINER_TYPE ||
+                              user?.role === TRAINER_NUTRITIONIST_ROLE
+                            ? "/serviceProvider/editProfile/trainer"
+                            : "/serviceProvider/editProfile/nutritionist"
+                        }
+                      >
+                        {t("topBar.editProfileText")}
+                      </Link>
+                    </NavItem>
+
+                    <NavItem className={`${styles.NavItem} p-2`}>
+                      <Link
+                        className={`nav-link ${styles.NavLink}`}
+                        to={
+                          roleType === TRAINEE_TYPE
+                            ? "/trainee/resetPassword"
+                            : "/serviceProvider/resetPassword"
+                        }
+                      >
+                        {t("topBar.changePasswordText")}
+                      </Link>
+                    </NavItem>
+
+                    <NavItem className={`${styles.NavItem} p-2`}>
+                      <div
+                        className={`nav-link d-flex justify-content-center w-100 p-1`}
+                        onClick={handleDeleteClick}
+                      >
+                        {t("topBar.deleteAccountText")}
+                      </div>
+                    </NavItem>
+
+                    <NavItem className={`${styles.NavItem} p-2`}>
+                      <div
+                        className="d-flex justify-content-center w-100 p-1"
+                        onClick={handleLogoutClick}
+                      >
+                        {t("topBar.logoutText")}
+                      </div>
+                    </NavItem>
+                  </div>
+                )}
+              </Nav>
+            </div>
           </Collapse>
         </div>
       )}
 
       <InformationModal
         size={"md"}
-        TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+        TOneClassName={"mb-4 fs-5 text-center"}
         className={"p-4"}
         isOpen={showSubscriptionInformationModal}
         onClose={handleSubscriptionInformationModalClose}
@@ -747,11 +807,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
       <InformationModal
         size={"md"}
-        TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+        TOneClassName={"mb-4 fs-5 text-center"}
         className={"p-4"}
         isOpen={showDeleteAccountModal}
         onClose={handleDeleteAccountModalClose}
-        ModalTextOne="Are you sure to want to delete your account?"
+        ModalTextOne={t("guest.deleteModalText")}
         ButtonOne={
           <FillBtn
             text={t("signup.yesText")}
@@ -762,7 +822,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         }
         ButtonTwo={
           <OutlineBtn
-            text={"No"}
+            text={t("guest.noText")}
             className="py-2 px-5"
             handleOnClick={handleDeleteAccountModalClose}
           />

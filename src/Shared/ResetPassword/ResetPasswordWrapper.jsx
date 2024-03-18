@@ -1,6 +1,6 @@
 import React, { memo } from "react";
+import { Col, Row, Container } from "reactstrap";
 import ResetPasswordForm from "./ResetPasswordForm";
-import { Col, Row, Card, Container } from "reactstrap";
 
 const ResetPasswordWrapper = () => {
   return (

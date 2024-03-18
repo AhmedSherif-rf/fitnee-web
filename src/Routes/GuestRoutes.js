@@ -12,7 +12,7 @@ export const guestRoutes = [
     isGuest: true,
   },
   {
-    path: "/guest/serviceProviderProfile/:uuid",
+    path: "/guest/serviceProviderProfile/:uuid/:id",
     component: lazy(() => import("../Pages/GuestPages/ServiceProviderProfile")),
     exact: true,
     isPublic: true,
@@ -41,7 +41,7 @@ export const guestRoutes = [
     isGuest: true,
   },
   {
-    path: "/guest/exercises",
+    path: "/guest/exercises/:uuid",
     component: lazy(() => import("../Pages/GuestPages/Exercise")),
     exact: true,
     isPublic: true,

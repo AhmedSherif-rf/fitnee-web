@@ -54,14 +54,44 @@ const createFormData = (data) => {
     if (data.hasOwnProperty(key) && data[key] !== "" && data[key] !== null) {
       if (Array.isArray(data[key]) && data[key].length > 0) {
         if (key === "certification") {
-          data[key].forEach((certification, index) => {
+          data[key].forEach((certification) => {
             formData.append(`certification`, certification);
           });
+        } else if (key === "certificate_files") {
+          data[key].forEach((certificate_files) => {
+            formData.append(`certificate_files`, certificate_files);
+          });
+        } else if (key === "subscription_plans") {
+          const updated_subscription_plans = data[key].map(
+            (subscription_plan) => {
+              return { ...subscription_plan, membership_type: data["role"] };
+            }
+          );
+          formData.append(
+            "subscription_plans",
+            JSON.stringify(updated_subscription_plans)
+          );
         } else {
           formData.append(key, JSON.stringify(data[key]));
         }
       } else if (!Array.isArray(data[key])) {
         formData.append(key, data[key]);
+      }
+    } else {
+      if (
+        key === "weight" ||
+        key === "height" ||
+        key === "skeletal_muscel_mass" ||
+        key === "body_fat_mass" ||
+        key === "total_body_water" ||
+        key === "protien" ||
+        key === "level" ||
+        key === "food_sensitive" ||
+        key === "training_goal" ||
+        key === "injury_details" ||
+        key === "goal"
+      ) {
+        formData.append(key, "");
       }
     }
   }
@@ -76,6 +106,36 @@ const copyToClipboard = (text) => {
   textField.select();
   document.execCommand("copy");
   document.body.removeChild(textField);
+};
+
+const getSummary = (discount, walletAmount, totalAmount, vat) => {
+  if (
+    parseFloat(walletAmount) >=
+    (parseFloat(totalAmount) + parseFloat(vat) - parseFloat(discount)).toFixed(
+      2
+    )
+  ) {
+    return 0;
+  } else {
+    const summary =
+      parseFloat(totalAmount) -
+      parseFloat(discount) -
+      parseFloat(walletAmount) +
+      parseFloat(vat);
+    return summary.toFixed(2);
+  }
+};
+
+const calculateVat = (amount) => {
+  return ((parseFloat(amount) * 15) / 100).toFixed(2);
+};
+
+const addVatPrice = (amount) => {
+  return ((parseFloat(amount) * 15) / 100 + parseFloat(amount)).toFixed(2);
+};
+
+const calculatePercentage = (amount, percentage) => {
+  return ((parseFloat(amount) * percentage) / 100).toFixed(2);
 };
 
 const setTraineeInitialValues = (initalValues, user) => {
@@ -101,7 +161,7 @@ const setTraineeInitialValues = (initalValues, user) => {
   };
 };
 
-const setTrainerInitialValues = (initalValues, user) => {
+const setTrainerInitialValues = (initalValues, user, dir) => {
   return {
     ...initalValues,
     bio: user?.bio,
@@ -111,13 +171,29 @@ const setTrainerInitialValues = (initalValues, user) => {
     full_name: user?.full_name,
     experience: user?.experience,
     phone_number: user?.phone_number,
-    specialities: user?.specialities.map(({ id, name }) => ({
-      label: name,
+    specialities: user?.specialities.map(({ id, name, arabic_name }) => ({
+      label: dir === "ltr" ? name : arabic_name,
       value: id,
     })),
     saudireps_number: user?.saudireps_number,
     profile_availability: user?.profile_availability,
     is_currently_working: user?.is_currently_working,
+  };
+};
+
+const setTrainerEditRequestInitialValues = (initalValues, user) => {
+  return {
+    ...initalValues,
+    stc_pay: user?.stc_pay,
+    saudireps_number: user?.saudireps_number,
+  };
+};
+
+const setNutritionistEditRequestInitialValues = (initalValues, user) => {
+  return {
+    ...initalValues,
+    stc_pay: user?.stc_pay,
+    license_number: user?.license_number,
   };
 };
 
@@ -314,15 +390,21 @@ const getListingRole = (listingType) => {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+  getSummary,
+  addVatPrice,
+  calculateVat,
   getInitialUrl,
   createFormData,
   getListingRole,
   copyToClipboard,
   filterSignUpFields,
+  calculatePercentage,
   setLanguageInStorage,
   getLanguageFromStorage,
   setTraineeInitialValues,
   setTrainerInitialValues,
   setNutritionistInitialValues,
+  setTrainerEditRequestInitialValues,
   setTrainerNutritionistInitialValues,
+  setNutritionistEditRequestInitialValues,
 };

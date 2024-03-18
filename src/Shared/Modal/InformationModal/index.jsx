@@ -1,10 +1,8 @@
 import "./styles.scss";
 import PropTypes from "prop-types";
-import React, { memo, useState } from "react";
-import { MdContentCopy } from "react-icons/md";
-import functions from "../../../utils/functions";
+import React, { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 const InformationModal = (props) => {
   const {
@@ -13,7 +11,6 @@ const InformationModal = (props) => {
     className,
     size,
     heading,
-    requestId,
     ModalTextOne,
     ModalTextTwo,
     TOneClassName,
@@ -23,7 +20,7 @@ const InformationModal = (props) => {
     ButtonThree,
   } = props;
 
-  const [isRequestIdCopied, setIsRequestIdCopied] = useState(false);
+  const { i18n } = useTranslation("");
 
   return (
     <Modal
@@ -32,11 +29,11 @@ const InformationModal = (props) => {
       size={size}
       isOpen={isOpen}
       toggle={onClose}
-      className={className}
+      className={`${className} ${i18n.dir()}`}
       backdrop={"static"}
     >
       {heading && (
-        <ModalHeader className="border-0">
+        <ModalHeader className="border-0 pt-3 pb-0">
           <b>{heading}</b>
         </ModalHeader>
       )}
@@ -44,28 +41,6 @@ const InformationModal = (props) => {
       <ModalBody className="py-4 text-black-custom">
         <div className={`${TOneClassName}`}> {ModalTextOne}</div>
         <div className={`${TTwoClassName}`}> {ModalTextTwo}</div>
-        {requestId && (
-          <div
-            className="text-center fw-bold mb-3 fs-4 cursorPointer"
-            onClick={() => {
-              functions.copyToClipboard(requestId);
-              setIsRequestIdCopied(true);
-              setTimeout(() => {
-                setIsRequestIdCopied(false);
-              }, 500);
-            }}
-          >
-            {requestId}
-            {"  "}
-            <span>
-              {isRequestIdCopied ? (
-                <IoMdCheckmarkCircleOutline color="#F6E709" />
-              ) : (
-                <MdContentCopy />
-              )}
-            </span>
-          </div>
-        )}
         <div className="w-100 text-center">{ButtonThree}</div>
         <div className="w-100 d-flex align-items-center justify-content-center gap-3 modalButtons">
           <div>{ButtonOne}</div>
@@ -87,7 +62,6 @@ InformationModal.defaultProps = {
   className: "",
   size: "sm",
   isOpen: false,
-  requestId: null,
   onClose: () => {},
 };
 

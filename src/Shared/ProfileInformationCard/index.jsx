@@ -1,18 +1,19 @@
 import StarRating from "../Rating";
 import { Tooltip } from "reactstrap";
 import React, { memo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { TRAINEE_ROLE } from "../../utils/constants";
 import { Card, CardBody, CardFooter } from "reactstrap";
 import Images from "../../HelperMethods/Constants/ImgConstants";
-
 const ProfileInformationCard = (props) => {
+  const { t, i18n } = useTranslation("");
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggleTooltip = () => setTooltipOpen(!tooltipOpen);
 
   const { className, providerProfile } = props;
   return (
-    <Card className={`BorderRadius border-0 ${className}`}>
+    <Card className={`BorderRadius border-0 ${className} ${i18n.dir()}`}>
       <CardBody className="p-0">
         <div
           className="p-0 bgProperties ImgBorder"
@@ -35,14 +36,14 @@ const ProfileInformationCard = (props) => {
           <br />
 
           {providerProfile?.email && (
-            <span className="small text-secondary">
+            <span className="small text-secondary mb-2">
               {providerProfile?.email}
             </span>
           )}
         </div>
 
         {providerProfile?.role !== TRAINEE_ROLE && (
-          <div className="d-flex h-100 text-white align-items-end justify-content-between">
+          <div className="d-flex h-100 text-white align-items-end justify-content-between mb-2">
             <div
               className="d-flex align-items-center"
               id="tooltipTarget"
@@ -54,10 +55,20 @@ const ProfileInformationCard = (props) => {
                 src={Images.SHORTLOGO_IMG}
                 alt="info logo"
               />
-              <p className="ms-2 fw-bold mb-0 no-Wrap text-secondary">
-                {providerProfile?.experience} Year
+              <p className={`ms-2 fw-bold mb-0 no-Wrap text-secondary px-2 ${i18n.dir()}`}>
+                {i18n.dir() === "ltr" &&
+                  `${providerProfile?.experience} ${t("guest.yearsText")}`}
+                {i18n.dir() === "rtl"
+                  ? providerProfile?.experience === 1
+                    ? "سنة"
+                    : providerProfile?.experience === 2
+                    ? "سنتين"
+                    : (providerProfile?.experience >= 3 &&
+                      providerProfile?.experience <= 10)
+                    ? `${providerProfile?.experience} سنوات`
+                    : `${providerProfile?.experience} سنة`
+                  : ""}
               </p>
-
               <Tooltip
                 placement="top"
                 isOpen={tooltipOpen}

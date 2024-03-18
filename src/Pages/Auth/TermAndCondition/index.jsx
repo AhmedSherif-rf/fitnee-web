@@ -1,8 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
-import { IoIosArrowRoundBack } from "react-icons/io";
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 
 const TermAndCondition = () => {
@@ -1290,20 +1289,8 @@ const TermAndCondition = () => {
               : t("termAndCondition.termAndConditionHeadingText")}
           </h1>
 
-          <div
-            className="d-flex align-items-end my-2 textYellow cursorPointer"
-            onClick={goBack}
-          >
-            <div>
-              <IoIosArrowRoundBack size={42} />
-            </div>
-            <div>
-              <h5> {t("termAndCondition.backButtonText")}</h5>
-            </div>
-          </div>
-
           {type === "general" && (
-            <div style={{ direction: i18n.dir() }}>
+            <div className={`${i18n.dir()}`}>
               <h6 className="fw-bold">
                 {t("termAndCondition.general.welcomeText")}
               </h6>
@@ -1321,11 +1308,11 @@ const TermAndCondition = () => {
                   <br />
                   {sectionOne.map((item, index) => {
                     return (
-                      <div key={index}>
+                      <span key={index}>
                         <span className="fw-bold">{item.heading}</span>
                         {item.description}
                         <br />
-                      </div>
+                      </span>
                     );
                   })}
                 </p>
@@ -1366,13 +1353,12 @@ const TermAndCondition = () => {
                 </h6>
                 <p align="justify">
                   {t("termAndCondition.general.sectionSixMainDescriptionText")}{" "}
-                  <br />
-                  <ol>
-                    {sectionSix.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
                 </p>
+                <ol>
+                  {sectionSix.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionSevenHeadingText")}
                 </h6>
@@ -1394,13 +1380,12 @@ const TermAndCondition = () => {
                 </h6>
                 <p align="justify">
                   {t("termAndCondition.general.sectionNineMainDescriptionText")}{" "}
-                  <br />
-                  <ol>
-                    {sectionNine.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
                 </p>
+                <ol>
+                  {sectionNine.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTenHeadingText")}
                 </h6>
@@ -1417,23 +1402,20 @@ const TermAndCondition = () => {
                   {t(
                     "termAndCondition.general.sectionElevenMainDescriptionText"
                   )}{" "}
-                  <br />
-                  <ol>
-                    {sectionEleven.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
                 </p>
+                <ol>
+                  {sectionEleven.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwelveHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwelve.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwelve.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionThirteenHeadingText")}
                 </h6>
@@ -1445,33 +1427,27 @@ const TermAndCondition = () => {
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionFourteenHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionFourteen.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionFourteen.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionFifteenHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionFifteen.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionFifteen.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionSixteenHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionSixteen.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionSixteen.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionSeventeenHeadingText")}
                 </h6>
@@ -1479,193 +1455,156 @@ const TermAndCondition = () => {
                   {t(
                     "termAndCondition.general.sectionSeventeenMainDescriptionText"
                   )}
-                  <br />
-                  <ol>
-                    {sectionSeventeen.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
                 </p>
+                <ol>
+                  {sectionSeventeen.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionEighteenHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionEighteen.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionEighteen.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionNineteenHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionNineteen.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionNineteen.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentyHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwenty.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwenty.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentyOneHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwentyOne.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwentyOne.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentyTwoHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwentyTwo.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwentyTwo.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentyThreeHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwentyThree.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwentyThree.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentyFourHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwentyFour.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwentyFour.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentyFiveHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwentyFive.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwentyFive.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentySixHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwentySix.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwentySix.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentySevenHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwentySeven.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwentySeven.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentyEightHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwentyEight.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwentyEight.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionTwentyNineHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionTwentyNine.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionTwentyNine.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionThirtyHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionThirty.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionThirty.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionThirtyOneHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionThirtyOne.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionThirtyOne.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionThirtyTwoHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionThirtyTwo.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionThirtyTwo.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionThirtyThreeHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionThirtyThree.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionThirtyThree.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionThirtyFourHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionThirtyFour.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionThirtyFour.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionThirtyFiveHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionThirtyFive.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionThirtyFive.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionThirtySixHeadingText")}
                 </h6>
@@ -1677,13 +1616,11 @@ const TermAndCondition = () => {
                 <h6 className="fw-bold">
                   {t("termAndCondition.general.sectionThirtySevenHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {sectionThirtySeven.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {sectionThirtySeven.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
               </div>
             </div>
           )}
@@ -1702,21 +1639,19 @@ const TermAndCondition = () => {
                 <h6 className="fw-bold">
                   {t("termAndCondition.serviceProviders.sectionTwoHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {ServiceProviderSectionTwo.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {ServiceProviderSectionTwo.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
 
                 <h6 className="fw-bold">
                   {t(
                     "termAndCondition.serviceProviders.sectionThreeHeadingText"
                   )}
                 </h6>
-                <p align="justify">
-                  <ol>
+                <div>
+                  <ol align="justify">
                     {ServiceProviderSectionThree.map((item, index) => {
                       return <li key={index}>{item.description}</li>;
                     })}
@@ -1737,12 +1672,12 @@ const TermAndCondition = () => {
                       "termAndCondition.serviceProviders.sectionThreeDescriptionThreeListThreeText"
                     )}
                   </p>
-                </p>
+                </div>
               </div>
             </div>
           )}
           {type === "trainee" && (
-            <div style={{ direction: i18n.dir() }}>
+            <div className={`${i18n.dir()}`}>
               <div>
                 <h6 className="fw-bold">
                   {t("termAndCondition.trainee.sectionOneHeadingText")}
@@ -1756,13 +1691,11 @@ const TermAndCondition = () => {
                 <h6 className="fw-bold">
                   {t("termAndCondition.trainee.sectionTwoHeadingText")}
                 </h6>
-                <p align="justify">
-                  <ol>
-                    {traineeSectionTwo.map((item, index) => {
-                      return <li key={index}>{item.description}</li>;
-                    })}
-                  </ol>
-                </p>
+                <ol align="justify">
+                  {traineeSectionTwo.map((item, index) => {
+                    return <li key={index}>{item.description}</li>;
+                  })}
+                </ol>
 
                 <h6 className="fw-bold">
                   {t("termAndCondition.trainee.sectionThreeHeadingText")}

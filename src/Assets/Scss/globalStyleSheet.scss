@@ -8,7 +8,12 @@
 .bgProperties {
   @include bgProperties;
 }
-
+.bgNotification {
+  background-color: $yellow-blur !important;
+}
+.small {
+  font-size: 10pt !important;
+}
 .bgBlur {
   background-color: $blur-color !important;
   border-bottom-left-radius: 14px !important;
@@ -51,18 +56,28 @@
 }
 
 .textParrotGreen {
-  color: $parrot-green;
+  color: $parrot-green !important;
 }
-
+.contactUsCard,
 .contentCard {
   margin-top: 12vh;
   overflow-y: scroll;
   height: 88vh !important;
   border: none !important;
 }
-
+.contactUsCard {
+  margin-top: 0px !important;
+}
 .contentCardPadding {
   padding-top: 12vh;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
 }
 
 .cursorPointer {
@@ -82,8 +97,8 @@
 }
 
 .ImgBorder {
-  border-top-right-radius: 14px;
-  border-top-left-radius: 14px;
+  border-top-right-radius: 14px !important;
+  border-top-left-radius: 14px !important;
 }
 .yellowBorder,
 .BorderYellow {
@@ -115,15 +130,47 @@ Input::-webkit-input-placeholder {
 .dropdown-menu {
   padding: 3px 3px !important;
 }
+.dropdownActive {
+  background-color: $yellow !important;
+  color: $black !important;
+  outline: none !important;
+  border-radius: 6px !important;
+}
+
 .dropdown-item {
+  margin-bottom: 5px;
   &:active,
   &:hover,
   &:focus,
   &::selection {
-    background-color: $yellow;
+    background-color: $yellow !important;
     color: $black;
     outline: none;
     border-radius: 6px;
+  }
+}
+.customSelect {
+  select {
+    color: $black !important;
+    font-size: 17px !important;
+    option {
+      &:hover {
+        background: $yellow !important;
+        color: $black !important;
+      }
+    }
+  }
+}
+
+.UncontrolledDropdown {
+  .DropdownMenu {
+    .DropdownItem {
+      padding: 8px;
+      &:hover,
+      &:active {
+        background: $yellow;
+      }
+    }
   }
 }
 
@@ -144,7 +191,7 @@ Input::-webkit-input-placeholder {
   border-radius: 14px;
   .form-control-lg {
     border-radius: 14px !important;
-    border: 1px solid $white;
+    border: 1px solid #dee2e6;
     padding-left: 50px !important;
     &:focus {
       outline: none !important;
@@ -207,13 +254,16 @@ Input::-webkit-input-placeholder {
 }
 
 .customSpacing {
-  letter-spacing: 1px;
+  letter-spacing: -0.8px;
   line-height: 24px;
+  word-spacing: 2px;
 }
 
-.customDropDown {
-  font-size: $font-14 !important;
-  box-shadow: none !important;
+.CategoryCard {
+  .CategoryCardHeader {
+    background-color: $light-yellow !important;
+    height: 100% !important;
+  }
 }
 
 .CameraImg {
@@ -228,6 +278,19 @@ Input::-webkit-input-placeholder {
   background-color: rgba(24, 24, 24, 0.99);
 }
 
+.tableBodyWrapperPagination {
+  max-height: 68vh;
+  overflow-y: scroll;
+}
+.chatCardFooterHeight {
+  max-height: 58vh;
+  overflow-y: auto;
+}
+.adminDashBoardScrolling {
+  max-height: 82vh;
+  overflow-y: scroll;
+}
+
 .genderBtn {
   .selected {
     color: $parrot-green !important;
@@ -239,6 +302,60 @@ Input::-webkit-input-placeholder {
   .selected {
     color: $parrot-green !important;
     border: 2px solid $parrot-green !important ;
+  }
+}
+@mixin glowEffect($top: -5%, $left: -5%, $size: 110%, $animationDuration: 20s) {
+  &:before {
+    content: "";
+    background: linear-gradient(45deg, $yellow, $parrot-green);
+    position: absolute;
+    top: $top;
+    left: $left;
+    background-size: $size;
+    z-index: -1;
+    filter: blur(4px);
+    width: $size;
+    height: $size;
+    animation: glowing $animationDuration linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 14px;
+  }
+
+  &:active {
+    color: #000;
+  }
+
+  &:active:after {
+    background: transparent;
+  }
+
+  &:hover:before {
+    opacity: 1;
+  }
+
+  &:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
   }
 }
 
@@ -256,25 +373,31 @@ Input::-webkit-input-placeholder {
 .arabicBorderHover,
 .borderHover {
   position: relative;
-  overflow: hidden;
 }
+
 .arabicBorderHover::before,
 .borderHover::before {
   content: "";
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  height: 2px;
+  background-color: $yellow;
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0;
-  height: 2px;
-  background-color: $yellow;
-  transition: width 0.3s ease;
+  right: 0;
+  margin-top: -100px;
+  transition: transform 0.9s ease;
 }
-.arabicBorderHover::before {
-  margin-bottom: 0px;
-}
+
 .arabicBorderHover:hover::before,
 .borderHover:hover::before {
-  width: 100%;
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.swiper-pagination-bullet {
+  display: none !important;
 }
 
 .currentlyWorkingBtn {
@@ -290,6 +413,14 @@ Input::-webkit-input-placeholder {
 
 .text-black-custom {
   color: $black !important;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
 }
 
 .cursorPointer {
@@ -330,3 +461,111 @@ Input::-webkit-input-placeholder {
   height: 38vh !important;
   border-radius: 14px;
 }
+
+.customLetterSpacing {
+  letter-spacing: -1px;
+}
+
+.signInCol {
+  background-color: white;
+}
+
+.menu-open {
+  overflow: hidden !important;
+}
+
+.activeScroll {
+  overflow: scroll !important;
+}
+
+@media (max-width: 767px) {
+  .signInCol {
+    background: transparent !important;
+  }
+  .customPadding {
+    padding-top: 58px !important;
+    padding-bottom: 58px !important;
+  }
+}
+@mixin customCard {
+  display: flex;
+  &:hover {
+    .descriptionDiv {
+      display: block;
+      margin-bottom: 70px;
+    }
+    .divider {
+      width: 70px;
+      height: 3px;
+      text-align: center;
+      margin: 0 auto;
+      background-color: $parrot-green;
+    }
+    .customCardFooter {
+      height: 396px;
+      opacity: 1;
+    }
+  }
+}
+.customCard {
+  color: $white;
+  margin: 0px 15px;
+  position: relative;
+  width: 90% !important;
+  background-size: cover;
+  background-position: center;
+  min-height: 400px !important;
+  border: $text-muted 2px solid;
+  border-radius: 14px !important;
+
+  .customCardFooter {
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px !important;
+    transition: all 0.4s linear 0.1s;
+    background-color: rgba(34, 29, 29, 0.8);
+
+    .descriptionDiv {
+      display: none;
+    }
+  }
+
+  &:after {
+    height: 85%;
+    background: $parrot-green;
+    z-index: -5;
+    content: " ";
+    position: absolute;
+    left: -12px;
+    right: -12px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 10px;
+    margin-left: 12px;
+    margin-right: 12px;
+    transition: margin-left 0.5s ease-in-out, margin-right 0.5s ease-in-out,
+      height 0.5s ease-in-out, background 0.5s ease-in-out;
+  }
+
+  &:hover {
+    &:after {
+      margin-left: 0;
+      margin-right: 0;
+      height: 85%;
+      background: $parrot-green;
+      z-index: -5;
+    }
+  }
+
+  transition: all 3s ease-in-out;
+}
+

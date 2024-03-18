@@ -43,7 +43,7 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
-    path: "/trainee/serviceProviderProfile/:uuid",
+    path: "/trainee/serviceProviderProfile/:uuid/:id",
     component: lazy(() =>
       import("../Pages/TraineePages/ServiceProviderProfile")
     ),
@@ -61,6 +61,14 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
+    path: "/trainee/exerciseSubscription",
+    component: lazy(() => import("../Pages/TraineePages/ExerciseSubscription")),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
+    role: traineeRole,
+  },
+  {
     path: "/trainee/subscription/creditCardDetail",
     component: lazy(() => import("../Pages/TraineePages/CreditCardDetail")),
     exact: true,
@@ -69,15 +77,7 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
-    path: "/trainee/subscription/addCard/:checkoutId",
-    component: lazy(() => import("../Pages/TraineePages/AddCard")),
-    exact: true,
-    isPrivate: true,
-    theme: "dark",
-    role: traineeRole,
-  },
-  {
-    path: "/trainee/appDownloadLink",
+    path: "/trainee/appDownloadLink/:hyperPayStatus",
     component: lazy(() => import("../Pages/TraineePages/AppDownloadLink")),
     exact: true,
     isPrivate: true,
@@ -103,6 +103,14 @@ export const traineeRoutes = [
   {
     path: "/trainee/myWallet",
     component: lazy(() => import("../Pages/TraineePages/MyWallet")),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
+    role: traineeRole,
+  },
+  {
+    path: "trainee/notifications",
+    component: lazy(() => import("../Pages/TraineePages/Notifications")),
     exact: true,
     isPrivate: true,
     theme: "dark",

@@ -2,20 +2,35 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   login,
   logout,
-  changePassword,
   signUp,
-  deleteAccount,
   editProfile,
+  deleteAccount,
+  getMyTrainees,
+  changePassword,
+  getUserProfile,
+  setAvailability,
+  addTraineeProgress,
+  cancelSubscription,
+  getUserNotifications,
+  getMyServiceProviders,
+  getTransactionHistory,
+  sendEditProfileRequest,
+  getTraineeProgressHistory,
+  markUserNotificationAsRead,
+  getServiceProviderFeedbacks,
 } from "./userApi";
 
 export const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
+    fcmToken: null,
     isGuest: false,
     loading: "idle",
     error: null,
     email: "",
+    notifications: [],
+    shownAppModal: false,
   },
   reducers: {
     setGuest: (state, action) => {
@@ -26,6 +41,12 @@ export const userSlice = createSlice({
     },
     customLogout: (state) => {
       state.user = null;
+    },
+    setFcmToken: (state, action) => {
+      state.fcmToken = action.payload;
+    },
+    setShownAppModal: (state, action) => {
+      state.shownAppModal = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -47,7 +68,9 @@ export const userSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.loading = "succeeded";
+        state.notifications = [];
         state.user = null;
+        state.shownAppModal = false;
       })
       .addCase(logout.rejected, (state) => {
         state.loading = "failed";
@@ -91,10 +114,133 @@ export const userSlice = createSlice({
       })
       .addCase(editProfile.rejected, (state) => {
         state.loading = "failed";
+      })
+      .addCase(getMyServiceProviders.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getMyServiceProviders.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getMyServiceProviders.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getMyTrainees.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getMyTrainees.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getMyTrainees.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getTraineeProgressHistory.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getTraineeProgressHistory.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getTraineeProgressHistory.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(addTraineeProgress.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(addTraineeProgress.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(addTraineeProgress.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getTransactionHistory.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getTransactionHistory.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getTransactionHistory.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(cancelSubscription.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(cancelSubscription.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(cancelSubscription.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(sendEditProfileRequest.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(sendEditProfileRequest.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(sendEditProfileRequest.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getUserProfile.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getUserProfile.fulfilled, (state, action) => {
+        state.user = { ...action.payload.data[0], tokens: state.user.tokens };
+        state.loading = "succeeded";
+      })
+      .addCase(getUserProfile.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(setAvailability.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(setAvailability.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(setAvailability.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(getServiceProviderFeedbacks.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getServiceProviderFeedbacks.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getServiceProviderFeedbacks.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(getUserNotifications.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getUserNotifications.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.notifications = action.payload;
+      })
+      .addCase(getUserNotifications.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(markUserNotificationAsRead.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(markUserNotificationAsRead.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(markUserNotificationAsRead.rejected, (state) => {
+        state.loading = "failed";
       });
   },
 });
 
-export const { setGuest, setEmail, customLogout } = userSlice.actions;
+export const {
+  setGuest,
+  setEmail,
+  customLogout,
+  setFcmToken,
+  setShownAppModal,
+} = userSlice.actions;
 
 export default userSlice.reducer;

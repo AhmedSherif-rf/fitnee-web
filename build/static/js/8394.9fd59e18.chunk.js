@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[8394],{4331:function(e,n,s){s.r(n);s(2791);var c=s(7823),r=s(3009),i=s(9773),a=s(3464),l=s(9704),t=s(184);n.default=function(){return(0,t.jsx)(c.Z,{fluid:!0,className:"vh-100",children:(0,t.jsx)(r.Z,{children:(0,t.jsx)(i.Z,{children:(0,t.jsx)(a.Z,{className:"contentCard BorderRadius",children:(0,t.jsx)(l.Z,{})})})})})}}}]);
-//# sourceMappingURL=8394.9fd59e18.chunk.js.map

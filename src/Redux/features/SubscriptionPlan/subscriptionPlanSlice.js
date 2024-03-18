@@ -3,6 +3,7 @@ import {
   editSubscriptionPlan,
   createSubscriptionPlan,
   getTraineeSubscriptionPlans,
+  getExerciseSubscriptionPlans,
   getGuestServiceProviderSubscriptionPlans,
 } from "./subscriptionPlanApi";
 
@@ -59,6 +60,17 @@ export const subscriptionPlanSlice = createSlice({
         state.success = true;
       })
       .addCase(editSubscriptionPlan.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getExerciseSubscriptionPlans.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getExerciseSubscriptionPlans.fulfilled, (state) => {
+        state.loading = "succeeded";
+        state.success = true;
+      })
+      .addCase(getExerciseSubscriptionPlans.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

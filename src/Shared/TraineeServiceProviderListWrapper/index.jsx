@@ -18,12 +18,11 @@ import FillBtn from "../../Shared/Buttons/FillBtn";
 import { useSelector, useDispatch } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
-import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { useState, useCallback, memo, useEffect } from "react";
+import ShimmerScreen from "../Skeleton/serviceProviderListingSkeleton";
 import ServiceProviderListCard from "../../Shared/ServiceProviderListCard";
 import { getServiceProviderGuestMode } from "../../Redux/features/Guest/guestApi";
-import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
 import {
   TRAINER_TYPE,
   PER_PAGE_COUNT,
@@ -41,14 +40,14 @@ const TraineeServiceProviderListWrapper = (props) => {
   const { loading } = useSelector((state) => state.guest);
 
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalSize, setTotalSize] = useState(0);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [listingRole, setListingRole] = useState(roleType);
   const [serviceProviderData, setServiceProviderData] = useState([]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
@@ -63,7 +62,7 @@ const TraineeServiceProviderListWrapper = (props) => {
 
     dispatch(getServiceProviderGuestMode(data)).then((res) => {
       if (res.type === "getServiceProviderGuestMode/fulfilled") {
-        setTotalPages(res.payload.data.results.count);
+        setTotalSize(res.payload.data.count);
         setServiceProviderData(res.payload.data.results);
       }
     });
@@ -71,6 +70,7 @@ const TraineeServiceProviderListWrapper = (props) => {
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const handleDropdownItemClick = (role) => {
+    setPage(1);
     setListingRole(role);
   };
 
@@ -89,11 +89,11 @@ const TraineeServiceProviderListWrapper = (props) => {
 
   const conditionalHeader = () => {
     if (listingRole === TRAINER_TYPE) {
-      return "Trainers";
+      return t("guest.trainersText");
     } else if (listingRole === NUTRITIONIST_TYPE) {
-      return "Nutritionists";
+      return t("guest.nutritionistsText");
     } else {
-      return "Trainers & Nutritionists";
+      return t("guest.trainerNutritionistText");
     }
   };
 
@@ -102,47 +102,68 @@ const TraineeServiceProviderListWrapper = (props) => {
       className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
     >
       <CardBody>
-        <Row className="align-items-center mb-2">
-          {loading === "pending" && <LoadingScreen />}
-          <Col xs={10} sm={6} className="text-left">
-            <PageHeading
-              headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}
-              categoryText=""
-            />
-          </Col>
-          <Col xs={2} sm={6} className="text-end">
-            <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-              <DropdownToggle data-toggle="dropdown" tag="span">
-                <img
-                  className={`${styles.filterIcon}`}
-                  src={FilterIcon}
-                  alt="filter-icon"
-                />
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem
-                  onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
-                >
-                  Trainers
-                </DropdownItem>
-                <DropdownItem
-                  onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
-                >
-                  Nutritionists
-                </DropdownItem>
-                <DropdownItem
-                  onClick={() =>
-                    handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
-                  }
-                >
-                  Both
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </Col>
-        </Row>
+        {loading === "pending" && <ShimmerScreen />}
+        {loading !== "pending" && (
+          <Row className={`align-items-center mb-2 ${i18n.dir()}`}>
+            <Col xs={10} sm={6} className="text-left">
+              <PageHeading
+                headingText={`${t("guest.listOfText")} ${conditionalHeader()}`}
+                categoryText=""
+              />
+            </Col>
+            <Col
+              xs={2}
+              sm={6}
+              className={`${
+                i18n.dir() === "ltr" ? "text-end" : "text-start px-3"
+              }`}
+            >
+              <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                <DropdownToggle data-toggle="dropdown" tag="span">
+                  <img
+                    className={`${styles.filterIcon}`}
+                    src={Images.FILTER_ICON}
+                    alt="filter-icon"
+                  />
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem
+                    onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
+                    className={
+                      listingRole === TRAINER_TYPE ? "dropdownActive" : ""
+                    }
+                  >
+                    {t("guest.trainersText")}
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
+                    className={
+                      listingRole === NUTRITIONIST_TYPE ? "dropdownActive" : ""
+                    }
+                  >
+                    {t("guest.nutritionistsText")}
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() =>
+                      handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
+                    }
+                    className={
+                      listingRole === TRAINER_NUTRITIONIST_TYPE
+                        ? "dropdownActive"
+                        : ""
+                    }
+                  >
+                    {t("guest.bothText")}
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </Col>
+          </Row>
+        )}
+
         <Row>
           {serviceProviderData.length > 0 &&
+            loading !== "pending" &&
             serviceProviderData.map((serviceProvider, index) => {
               return (
                 <Col lg={3} md={4} col={6} className="mb-3" key={index}>
@@ -151,7 +172,7 @@ const TraineeServiceProviderListWrapper = (props) => {
                     serviceProvider={serviceProvider}
                     handleOnClick={() =>
                       navigate(
-                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}`
+                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}`
                       )
                     }
                   />
@@ -161,14 +182,20 @@ const TraineeServiceProviderListWrapper = (props) => {
           {serviceProviderData.length <= 0 && (
             <Row className="justify-content-center align-items-center mt-5 pt-4">
               <Col className="text-center" md={4}>
-                <img img-fluid src={Images.NO_DATA_FOUND_IMG} alt="" />
+                {loading !== "pending" && (
+                  <img
+                    className="img-fluid"
+                    src={Images.NO_DATA_FOUND_IMG}
+                    alt="no-data-found"
+                  />
+                )}
               </Col>
             </Row>
           )}
 
           <InformationModal
             size={"md"}
-            TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+            TOneClassName={"mb-4 fs-5 text-center"}
             className={"p-4"}
             isOpen={showSubscriptionInformationModal}
             onClose={handleSubscriptionInformationModalClose}
@@ -190,8 +217,8 @@ const TraineeServiceProviderListWrapper = (props) => {
           />
         </Row>
       </CardBody>
-      {serviceProviderData.length > PER_PAGE_COUNT && (
-        <Pagination size={totalPages} handlePageChange={handlePageChange} />
+      {totalSize > PER_PAGE_COUNT && (
+        <Pagination size={totalSize} handlePageChange={handlePageChange} />
       )}
     </Card>
   );

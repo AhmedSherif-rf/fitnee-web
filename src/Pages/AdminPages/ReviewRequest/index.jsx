@@ -1,6 +1,5 @@
-import { Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
-import styles from "./styles.module.scss";
+import PhoneInput from "react-phone-input-2";
 import Pagination from "../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../Shared/Headings/PageHeading";
@@ -9,6 +8,8 @@ import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { ADMIN_REVIEW_REQUEST_URL } from "../../../utils/constants";
 import { BsFillPersonXFill, BsPersonCheckFill } from "react-icons/bs";
+import RejectionReasonModal from "../../../Shared/Modal/RejectionReasonModal";
+import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 import {
   getReviewRequestListing,
@@ -23,11 +24,16 @@ import {
 
 const ReviewRequest = () => {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.reviewRequest);
   const [page, setPage] = useState(1);
-  const [tableData, setTableData] = useState([]);
   const [totalSize, setSizePages] = useState(0);
+  const [tableData, setTableData] = useState([]);
+  const [stcPayNumber, setStcPayNumber] = useState("");
+  const [rejectedEmail, setRejectedEmail] = useState("");
   const [reviewRequests, setReviewRequests] = useState([]);
+  const [showRejectionReasonModal, setShowRejectionReasonModal] = useState(
+    false
+  );
+  const { loading } = useSelector((state) => state.reviewRequest);
 
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
@@ -36,11 +42,11 @@ const ReviewRequest = () => {
   useEffect(() => {
     fetchReviewRequests();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, page]);
+  }, [dispatch, page, stcPayNumber]);
 
   const fetchReviewRequests = () => {
     const data = {
-      apiEndpoint: `${ADMIN_REVIEW_REQUEST_URL}?page=${page}`,
+      apiEndpoint: `${ADMIN_REVIEW_REQUEST_URL}?page=${page}&stc_pay=${stcPayNumber}`,
     };
 
     dispatch(getReviewRequestListing(data)).then((res) => {
@@ -65,19 +71,24 @@ const ReviewRequest = () => {
     });
   };
 
-  const handleRejectRequestClick = (email) => {
-    const data = {
-      apiEndpoint: ADMIN_REJECT_REVIEW_REQUEST_URL,
-      requestData: JSON.stringify({ email }),
-    };
+  const handleRejectRequestClick = useCallback(
+    (values) => {
+      const data = {
+        apiEndpoint: ADMIN_REJECT_REVIEW_REQUEST_URL,
+        requestData: JSON.stringify({ ...values, email: rejectedEmail }),
+      };
 
-    dispatch(rejectReviewRequest(data)).then((res) => {
-      if (res.type === "rejectReviewRequest/fulfilled") {
-        setPage(1);
-        fetchReviewRequests();
-      }
-    });
-  };
+      dispatch(rejectReviewRequest(data)).then((res) => {
+        if (res.type === "rejectReviewRequest/fulfilled") {
+          setPage(1);
+          fetchReviewRequests();
+          setShowRejectionReasonModal(false);
+        }
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dispatch, rejectedEmail]
+  );
 
   useEffect(() => {
     if (reviewRequests.length > 0) {
@@ -93,10 +104,9 @@ const ReviewRequest = () => {
                     width: "40px",
                     height: "40px",
                     backgroundImage:
-                      request?.profile_pic === "" ||
                       request?.profile_pic === null
                         ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${request?.profile_pic.replace("/api", "")})`,
+                        : `url(${request?.profile_pic})`,
                   }}
                 ></div>
                 <h6 className="text-secondary fw-bold mb-0">
@@ -115,7 +125,10 @@ const ReviewRequest = () => {
             <div className="d-flex align-items-center justify-content-md-center">
               <span
                 className={`iconBadge px-2 cursorPointer`}
-                onClick={() => handleRejectRequestClick(request?.email)}
+                onClick={() => {
+                  setRejectedEmail(request?.email);
+                  setShowRejectionReasonModal(true);
+                }}
               >
                 <BsFillPersonXFill size={22} className="rejectUser mb-1" />
               </span>
@@ -146,23 +159,56 @@ const ReviewRequest = () => {
   ];
 
   return (
-    <React.Fragment>
+    <Row className="h-100">
       {loading === "pending" && <LoadingScreen />}
-      <Row>
-        <Col
-          md="12"
-          className={`text-start ${styles.reviewRequestTableWrapper}`}
-        >
-          <PageHeading headingText="Review Requests" categoryText="" />
-          <ListingTable data={tableData} columns={columns} />
-        </Col>
-        {totalSize > PER_PAGE_COUNT && (
-          <Col md="12 mt-3">
-            <Pagination size={totalSize} handlePageChange={handlePageChange} />
-          </Col>
-        )}
-      </Row>
-    </React.Fragment>
+      <Col md={12}>
+        <Card className="border-0 h-100 text-start">
+          <CardHeader className="bg-transparent border-0 p-0">
+            <PageHeading headingText="Review Requests" categoryText="" />
+          </CardHeader>
+          <CardBody className="tableBodyWrapperPagination">
+            <Row className="justify-content-end py-1">
+              <Col md={4}>
+                <PhoneInput
+                  inputProps={{
+                    name: "stc_pay",
+                    required: true,
+                    className:
+                      "form-control-lg w-100 py-1 px-4 customPhoneInput border",
+                  }}
+                  country={"sa"}
+                  value={stcPayNumber}
+                  className="border ltr"
+                  onChange={(value) => {
+                    setPage(1);
+                    setStcPayNumber(value);
+                  }}
+                />
+              </Col>
+            </Row>
+            <ListingTable data={tableData} columns={columns} />
+          </CardBody>
+          <CardFooter className="bg-transparent text-end pb-0 pt-2">
+            {totalSize > PER_PAGE_COUNT && (
+              <Pagination
+                size={totalSize}
+                handlePageChange={handlePageChange}
+              />
+            )}
+          </CardFooter>
+        </Card>
+      </Col>
+      <RejectionReasonModal
+        size={"md"}
+        className={"p-4"}
+        isOpen={showRejectionReasonModal}
+        heading={"Rejection Reason"}
+        onClose={() => {
+          setShowRejectionReasonModal(false);
+        }}
+        handleSubmit={handleRejectRequestClick}
+      />
+    </Row>
   );
 };
 

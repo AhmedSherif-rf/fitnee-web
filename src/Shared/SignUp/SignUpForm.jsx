@@ -8,21 +8,21 @@ import DocumentCard from "../DocumentCard";
 import MultiSelector from "../MultiSelector";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
-import { FaDeleteLeft } from "react-icons/fa6";
+import { FaCircleXmark } from "react-icons/fa6";
 import PhoneInputField from "../PhoneInputField";
-import { SIGNUP_SCHEMA } from "./data/validation";
-import { INITIAL_VALUES } from "./data/initialValue";
+import { Formik, Field, FieldArray } from "formik";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { ConnectedFocusError } from "focus-formik-error";
-import React, { memo, useState, useEffect } from "react";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
-import { FaBirthdayCake, FaVenus, FaMars } from "react-icons/fa";
-import { Formik, Field, FieldArray, ErrorMessage } from "formik";
+import React, { memo, useState, useEffect, useCallback } from "react";
+import EditProfileRequestModal from "../Modal/EditProfileRequestModal";
+import { FaBirthdayCake, FaVenus, FaMars, FaEdit } from "react-icons/fa";
 import {
   signUp,
   editProfile,
+  getPreferences,
   getSpecialities,
 } from "../../Redux/features/User/userApi";
 import {
@@ -38,7 +38,9 @@ import {
 import {
   TRAINEE_SIGNUP_INITIAL_VALUES,
   TRAINER_SIGNUP_INITIAL_VALUES,
+  TRAINER_EDIT_PROFILE_INITIAL_VALUES,
   NUTRITIONIST_SIGNUP_INITIAL_VALUES,
+  NUTRITIONIST_EDIT_PROFILE_INITIAL_VALUES,
   TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES,
 } from "../ValidationData/initialValue";
 import {
@@ -46,11 +48,16 @@ import {
   REGISTER_URL,
   TRAINEE_TYPE,
   TRAINER_TYPE,
+  TRAINEE_ROLE,
+  weekDaysOptions,
   EDIT_PROFILE_URL,
   NUTRITIONIST_TYPE,
+  roleOptionsArabic,
   GET_SPECIALITIES_URL,
+  weekDaysOptionsArabic,
   TRAINER_NUTRITIONIST_TYPE,
-  TRAINEE_ROLE,
+  GET_LEVEL_PREFERENCES_URL,
+  GET_TRAINING_GOAL_PREFERENCES_URL,
 } from "../../utils/constants";
 import {
   Container,
@@ -61,22 +68,19 @@ import {
   Input,
   Label,
 } from "reactstrap";
-import {
-  trainingGoalOptions,
-  activityLevelOptions,
-  weekDaysOptions,
-} from "../../utils/constants";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { t } = useTranslation("");
   const { roleType } = useParams();
-  const { lang } = useSelector((state) => state.language);
+  const { t, i18n } = useTranslation("");
   const { loading, user } = useSelector((state) => state.user);
   const filterFields = functions.filterSignUpFields(roleType, user);
 
+  const [levelOptions, setLevelOptions] = useState([]);
   const [specialityOptions, setSpecialityOptions] = useState([]);
+  const [trainingGoalOptions, setTrainingGoalOptions] = useState([]);
+  const [showEditProfileModal, setShowEditProfileModal] = useState(false);
 
   useEffect(() => {
     if (roleType === TRAINER_TYPE || roleType === TRAINER_NUTRITIONIST_TYPE) {
@@ -86,7 +90,7 @@ const SignUpForm = () => {
       dispatch(getSpecialities(data)).then((res) => {
         if (res.type === "getSpecialities/fulfilled") {
           let specialities = [];
-          if (lang === "en") {
+          if (i18n.dir() === "ltr") {
             specialities = res.payload.data.en;
           } else {
             specialities = res.payload.data.ar;
@@ -98,8 +102,48 @@ const SignUpForm = () => {
           setSpecialityOptions(specialities);
         }
       });
+    } else if (roleType === TRAINEE_TYPE) {
+      const data = {
+        apiEndpoint: GET_TRAINING_GOAL_PREFERENCES_URL,
+      };
+      dispatch(getPreferences(data)).then((res) => {
+        if (res.type === "getPreferences/fulfilled") {
+          let trainingGoals = [];
+          if (i18n.dir() === "ltr") {
+            trainingGoals = res.payload.data.en;
+          } else {
+            trainingGoals = res.payload.data.ar;
+          }
+          trainingGoals = trainingGoals.map(({ id, name }) => ({
+            label: name,
+            value: id,
+          }));
+          setTrainingGoalOptions(trainingGoals);
+        }
+      });
+
+      const payload = {
+        apiEndpoint: GET_LEVEL_PREFERENCES_URL,
+      };
+      dispatch(getPreferences(payload)).then((res) => {
+        if (res.type === "getPreferences/fulfilled") {
+          let levels = [];
+          if (i18n.dir() === "ltr") {
+            levels = res.payload.data.en;
+          } else {
+            levels = res.payload.data.ar;
+          }
+          levels = levels.map(({ id, name }) => ({
+            label: name,
+            value: id,
+          }));
+          setLevelOptions(levels);
+        }
+      });
     }
-  }, [dispatch, lang, roleType]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getInitialValues = () => {
     if (user) {
@@ -111,12 +155,13 @@ const SignUpForm = () => {
           );
         case TRAINER_TYPE:
           return functions.setTrainerInitialValues(
-            TRAINER_SIGNUP_INITIAL_VALUES,
-            user
+            TRAINER_EDIT_PROFILE_INITIAL_VALUES,
+            user,
+            i18n.dir()
           );
         case NUTRITIONIST_TYPE:
           return functions.setNutritionistInitialValues(
-            NUTRITIONIST_SIGNUP_INITIAL_VALUES,
+            NUTRITIONIST_EDIT_PROFILE_INITIAL_VALUES,
             user
           );
         case TRAINER_NUTRITIONIST_TYPE:
@@ -126,7 +171,7 @@ const SignUpForm = () => {
           );
 
         default:
-          return INITIAL_VALUES;
+          return [];
       }
     } else {
       switch (roleType) {
@@ -140,7 +185,7 @@ const SignUpForm = () => {
           return TRAINER_NUTRITIONIST_SIGNUP_INITIAL_VALUES;
 
         default:
-          return INITIAL_VALUES;
+          return [];
       }
     }
   };
@@ -157,7 +202,7 @@ const SignUpForm = () => {
         case TRAINER_NUTRITIONIST_TYPE:
           return TRAINER_NUTRITIONIST_EDIT_PROFILE_SCHEMA;
         default:
-          return SIGNUP_SCHEMA;
+          return [];
       }
     } else {
       switch (roleType) {
@@ -171,14 +216,15 @@ const SignUpForm = () => {
           return TRAINER_NUTRITIONIST_SIGNUP_SCHEMA;
 
         default:
-        // return INITIAL_VALUES;
+          return [];
       }
     }
   };
 
   const handleSignUpSubmit = (values) => {
-    const formData = functions.createFormData(values);
     if (user === null) {
+      values.lang = localStorage.getItem("Website_Language__fitnee");
+      let formData = functions.createFormData(values);
       const data = {
         apiEndpoint: REGISTER_URL,
         requestData: formData,
@@ -189,6 +235,19 @@ const SignUpForm = () => {
         }
       });
     } else {
+      if (values?.profile_availability) {
+        values.profile_availability = values.profile_availability.map(
+          ({ id, day, starttime, endtime }) => ({
+            id,
+            day,
+            starttime,
+            endtime,
+          })
+        );
+        values.lang = localStorage.getItem("Website_Language__fitnee");
+      }
+
+      let formData = functions.createFormData(values);
       const data = {
         apiEndpoint: EDIT_PROFILE_URL.replace("userId", user?.id),
         requestData: formData,
@@ -202,48 +261,13 @@ const SignUpForm = () => {
   };
 
   return (
-    <Container>
+    <Container className={i18n.dir()}>
       {loading === "pending" && <LoadingScreen />}
       <Formik
         initialValues={getInitialValues()}
         validationSchema={getSchemaValidation()}
         onSubmit={(values) => {
           handleSignUpSubmit(values);
-          // setTimeout(() => {
-          //   setSubmitting(false);
-          //   if (roleType === TRAINEE_TYPE) {
-          //     localStorage.setItem("role", TRAINEE_TYPE);
-          //     navigate("/trainee/dashboard");
-          //   } else if (
-          //     roleType === TRAINER_TYPE ||
-          //     roleType === NUTRITIONIST_TYPE
-          //   ) {
-          //     localStorage.setItem("role", TRAINER_TYPE);
-          //     navigate("/serviceProvider/dashboard");
-          //   }
-          //   // navigate("/verifyOtp");
-          // }, 400);
-
-          // initialValues={{ ...INITIAL_VALUES }}
-          // // validationSchema={SIGNUP_SCHEMA}
-          // onSubmit={(values, { setSubmitting }) => {
-          //   console.log(values);
-          //   setTimeout(() => {
-          //     // alert(JSON.stringify(values));
-          //     setSubmitting(false);
-          //     if (roleType === TRAINEE_TYPE) {
-          //       localStorage.setItem("role", TRAINEE_TYPE);
-          //       navigate("/trainee/dashboard");
-          //     } else if (roleType === TRAINER_TYPE) {
-          //       localStorage.setItem("role", TRAINER_TYPE);
-          //       // navigate("/serviceProvider/dashboard");
-          //       navigate("/serviceProvider/appDownloadLink");
-          //     } else if (roleType === NUTRITIONIST_TYPE) {
-          //       localStorage.setItem("role", NUTRITIONIST_TYPE);
-          //       // navigate("/serviceProvider/dashboard");
-          //       navigate("/serviceProvider/appDownloadLink");
-          //     }
-          //   }, 400);
         }}
       >
         {({
@@ -269,7 +293,7 @@ const SignUpForm = () => {
                             values?.profile_pic
                               ? URL.createObjectURL(values?.profile_pic)
                               : user?.profile_pic
-                              ? user?.profile_pic.replace("/api", "")
+                              ? user?.profile_pic
                               : ""
                           }
                           className="rounded-circle bgProperties position-relative"
@@ -295,7 +319,7 @@ const SignUpForm = () => {
                         id="profile_pic"
                         style={{ display: "none" }}
                         name="profile_pic"
-                        accept=".png, .jpg, .jpeg"
+                        accept="image/png, image/jpeg, image/jpg"
                         onChange={(event) => {
                           const selectedFile = event.currentTarget.files[0];
                           setFieldValue("profile_pic", selectedFile);
@@ -313,6 +337,11 @@ const SignUpForm = () => {
                       </label>
                     </div>
                   </div>
+                  <p className="errorField">
+                    {t(errors.profile_pic) &&
+                      touched.profile_pic &&
+                      t(errors.profile_pic)}
+                  </p>
                 </Col>
               </Row>
             )}
@@ -323,148 +352,168 @@ const SignUpForm = () => {
               </Col>
               {filterFields.includes("first_name") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.firstNameText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="text"
-                    placeholder={t("signup.firstNameText")}
+                    // placeholder={t("signup.firstNameText")}
                     name="first_name"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.first_name}
                   />
                   <p className="errorField">
-                    {errors.first_name &&
+                    {t(errors.first_name) &&
                       touched.first_name &&
-                      errors.first_name}
+                      t(errors.first_name)}
                   </p>
                 </Col>
               )}
 
               {filterFields.includes("full_name") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.fullNameText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="text"
-                    placeholder={t("signup.fullNameText")}
+                    // placeholder={t("signup.fullNameText")}
                     name="full_name"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.full_name}
                   />
                   <p className="errorField">
-                    {errors.full_name && touched.full_name && errors.full_name}
+                    {t(errors.full_name) &&
+                      touched.full_name &&
+                      t(errors.full_name)}
                   </p>
                 </Col>
               )}
 
               {filterFields.includes("last_name") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.lastNameText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="text"
-                    placeholder={t("signup.lastNameText")}
+                    // placeholder={t("signup.lastNameText")}
                     name="last_name"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.last_name}
                   />
                   <p className="errorField">
-                    {errors.last_name && touched.last_name && errors.last_name}
+                    {t(errors.last_name) &&
+                      touched.last_name &&
+                      t(errors.last_name)}
                   </p>
                 </Col>
               )}
 
               {filterFields.includes("email") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.emailLabelText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="text"
                     name="email"
-                    placeholder={t("signup.emailText")}
+                    // placeholder={t("signup.emailText")}
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.email}
                     disabled={user ? true : false}
                   />
                   <p className="errorField">
-                    {errors.email && touched.email && errors.email}
+                    {t(errors.email) && touched.email && t(errors.email)}
                   </p>
                 </Col>
               )}
 
               {filterFields.includes("password") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.passwordLabelText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="password"
                     name="password"
-                    placeholder={t("signup.passwordText")}
+                    // placeholder={t("signup.passwordText")}
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.password}
                   />
                   <p className="errorField">
-                    {errors.password && touched.password && errors.password}
+                    {t(errors.password) &&
+                      touched.password &&
+                      t(errors.password)}
                   </p>
                 </Col>
               )}
 
               {filterFields.includes("confirm_password") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.confirmPasswordText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="password"
-                    placeholder={t("signup.confirmPasswordText")}
+                    // placeholder={t("signup.confirmPasswordText")}
                     name="confirm_password"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.confirm_password}
                   />
                   <p className="errorField">
-                    {errors.confirm_password &&
+                    {t(errors.confirm_password) &&
                       touched.confirm_password &&
-                      errors.confirm_password}
+                      t(errors.confirm_password)}
                   </p>
                 </Col>
               )}
 
               {filterFields.includes("phone_number") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.phoneNumberText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <PhoneInputField
                     inputProps={{
                       name: "phone_number",
@@ -478,26 +527,32 @@ const SignUpForm = () => {
                     disabled={user ? true : false}
                   />
                   <p className="errorField">
-                    {errors.phone_number &&
+                    {t(errors.phone_number) &&
                       touched.phone_number &&
-                      errors.phone_number}
+                      t(errors.phone_number)}
                   </p>
                 </Col>
               )}
 
               {filterFields.includes("gender") && (
                 <Col md={6} lg={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.genderText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <div className="d-flex genderBtn align-items-center justify-content-between gap-2">
                     <div
                       className={`d-flex align-items-center justify-content-between form-control-lg w-100 py-3 customDropdownRadius border  bg-white ${
                         values.gender === "Male" ? "selected" : ""
                       }`}
-                      onClick={() => setFieldValue("gender", "Male")}
+                      onClick={() => {
+                        if (!user) {
+                          setFieldValue("gender", "Male");
+                        }
+                      }}
                     >
                       <h6 className="mb-0 font14"> {t("signup.maleText")}</h6>
                       <FaMars />
@@ -506,26 +561,32 @@ const SignUpForm = () => {
                       className={`d-flex align-items-center justify-content-between form-control-lg py-3 customDropdownRadius border w-100  bg-white ${
                         values.gender === "Female" ? "selected" : ""
                       }`}
-                      onClick={() => setFieldValue("gender", "Female")}
+                      onClick={() => {
+                        if (!user) {
+                          setFieldValue("gender", "Female");
+                        }
+                      }}
                     >
                       <h6 className="mb-0 font14">{t("signup.femaleText")}</h6>
                       <FaVenus />
                     </div>
                   </div>
                   <p className="errorField">
-                    {errors.gender && touched.gender && errors.gender}
+                    {t(errors.gender) && touched.gender && t(errors.gender)}
                   </p>
                 </Col>
               )}
 
               {filterFields.includes("date_of_birth") && (
                 <Col md={6} lg={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
-                  <InputGroup>
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.dobText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
+                  <InputGroup className="ltr">
                     <InputGroupText
                       style={{
                         borderTopLeftRadius: "14px",
@@ -546,7 +607,6 @@ const SignUpForm = () => {
                         borderBottomRightRadius: "14px",
                       }}
                       name="date_of_birth"
-                      placeholder="Date of Birthday"
                       className="form-control-lg px-4"
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -554,20 +614,22 @@ const SignUpForm = () => {
                     />
                   </InputGroup>
                   <p className="errorField">
-                    {errors.date_of_birth &&
+                    {t(errors.date_of_birth) &&
                       touched.date_of_birth &&
-                      errors.date_of_birth}
+                      t(errors.date_of_birth)}
                   </p>
                 </Col>
               )}
 
               {filterFields.includes("experience") && (
                 <Col lg={6} md={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.yearOfExperienceText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
@@ -580,9 +642,9 @@ const SignUpForm = () => {
                   />
 
                   <p className="errorField">
-                    {errors.experience &&
+                    {t(errors.experience) &&
                       touched.experience &&
-                      errors.experience}
+                      t(errors.experience)}
                   </p>
                 </Col>
               )}
@@ -592,22 +654,25 @@ const SignUpForm = () => {
                   <Row className="training">
                     <Col md={12} className="mb-2">
                       <div
-                        className="text-end"
-                        style={{ marginBottom: "-15px" }}
+                        className="d-flex justify-content-between"
+                        style={{ marginBottom: "-2px" }}
                       >
-                        *
+                        <div>{t("signup.roleText")}</div>
+                        {user === null && <div>*</div>}
                       </div>
                       <MyDropdown
-                        className="shadow-0 py-3 px-4 border"
-                        Options={roleOptions}
+                        className="shadow-0 p-2 border"
+                        Options={
+                          i18n.dir() === "ltr" ? roleOptions : roleOptionsArabic
+                        }
                         name={"role"}
-                        placeholder={"What you will provide to the end user"}
+                        placeholder={t("signup.whatYouWillProvideText")}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
                         value={values.role}
                       />
                       <p className="errorField">
-                        {errors.role && touched.role && errors.role}
+                        {t(errors.role) && touched.role && t(errors.role)}
                       </p>
                     </Col>
                   </Row>
@@ -616,23 +681,25 @@ const SignUpForm = () => {
 
               {filterFields.includes("bio") && (
                 <Col md={6} lg={6} className="mb-2">
-                  {user === null && (
-                    <div className="text-end" style={{ marginBottom: "-15px" }}>
-                      *
-                    </div>
-                  )}
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.addBioText")}</div>
+                    {user === null && <div>*</div>}
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="textarea"
                     style={{ minHeight: "115px" }}
-                    placeholder={t("signup.addBioText")}
+                    // placeholder={t("signup.addBioText")}
                     name="bio"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
                     value={values.bio}
                   />
                   <p className="errorField">
-                    {errors.bio && touched.bio && errors.bio}
+                    {t(errors.bio) && touched.bio && t(errors.bio)}
                   </p>
                 </Col>
               )}
@@ -709,130 +776,236 @@ const SignUpForm = () => {
                         </Label>
                       )}
                     </div>
+                    <p className="errorField">
+                      {t(errors.body_images) &&
+                        touched.body_images &&
+                        t(errors.body_images)}
+                    </p>
                   </Col>
                 </>
               )}
 
-              {user &&
-                user?.role !== TRAINEE_ROLE &&
-                user?.ServiceProvider_Certification && (
-                  <>
-                    <Col md={12}>
-                      <h6 className="fw-bold">
-                        {"Certificates"}
-                        {user === null && "*"}
-                      </h6>
-                    </Col>
-                    <Col>
-                      {user?.ServiceProvider_Certification?.map(
-                        (certificate, index) => (
-                          <DocumentCard
-                            key={index}
-                            className="BorderYellow"
-                            documentTitle={certificate?.title}
-                            documentImg={certificate?.certificate_image}
-                          />
-                        )
-                      )}
-                    </Col>
-                  </>
-                )}
-
-              {filterFields.includes("certification") && (
-                <>
-                  <Col md={12}>
-                    <h6 className="fw-bold">
-                      {t("signup.attachCertificateText")} {user === null && "*"}
-                    </h6>
-                  </Col>
-                  <Col>
-                    <div className="form-group multi-preview d-flex flex-wrap align-items-center">
-                      {values.certification.map((image, index) => (
-                        <div
-                          key={index}
-                          className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border"
+              {roleType !== TRAINEE_TYPE && (
+                <div className="editRequestWrapper py-2">
+                  {user &&
+                    user?.role !== TRAINEE_ROLE &&
+                    user?.ServiceProvider_Certification && (
+                      <Row className="mb-4">
+                        <Col md={6}>
+                          <h6 className="fw-bold">
+                            {t("signup.certificatesText")}
+                            {user === null && "*"}
+                          </h6>
+                        </Col>
+                        <Col
+                          md={6}
+                          className={`${
+                            i18n.dir() === "ltr" ? "text-end" : "text-start"
+                          }`}
                         >
-                          <Field
-                            name={`certificate_title.${index}`}
-                            type="text"
-                            className="form-control-lg certificatioTitle bgBlur"
-                            placeholder="Add title"
-                          />
-                          <img
-                            src={URL.createObjectURL(image)}
-                            alt={`${index + 1}`}
-                            className="uploaded-image BorderRadius"
-                            style={{
-                              width: "100%",
-                              height: "170px",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                            }}
-                          />
-                          <button
-                            type="button"
-                            className="deleteButton"
-                            onClick={() => {
-                              const updatedImages = [...values.certification];
-                              updatedImages.splice(index, 1);
-                              setFieldValue("certification", updatedImages);
+                          {user?.change_request_status !== "Pending" && (
+                            <FaEdit
+                              className="cursorPointer"
+                              onClick={() => setShowEditProfileModal(true)}
+                            />
+                          )}
+                        </Col>
+                        {user?.ServiceProvider_Certification?.map(
+                          (certificate, index) => (
+                            <DocumentCard
+                              index={index}
+                              key={index}
+                              className="BorderYellow"
+                              documentTitle={certificate?.title}
+                              documentImg={certificate?.certificate_image}
+                            />
+                          )
+                        )}
+                      </Row>
+                    )}
 
-                              const updatedCertificateTitles = [
-                                ...values.certificate_title,
-                              ];
-                              updatedCertificateTitles.splice(index, 1);
-                              setFieldValue(
-                                "certificate_title",
-                                updatedCertificateTitles
-                              );
+                  {filterFields.includes("certification") && (
+                    <>
+                      <Col md={12}>
+                        <h6 className="fw-bold">
+                          {t("signup.attachCertificateText")}{" "}
+                          {user === null && "*"}
+                        </h6>
+                      </Col>
+                      <Col className="mb-2">
+                        <div className="form-group multi-preview d-flex flex-wrap align-items-center">
+                          {values.certification.map((image, index) => (
+                            <div
+                              key={index}
+                              className="col-sm-12 col-md-3 col-lg-2 col-xl-2 mx-3 position-relative BorderRadius mb-2 "
+                            >
+                              <Field
+                                name={`certificate_title.${index}`}
+                                type="text"
+                                className="form-control-lg certificatioTitle bgBlur"
+                                style={{ width: "186px" }}
+                                placeholder={t("signup.addTitleText")}
+                              />
+                              <img
+                                src={URL.createObjectURL(image)}
+                                alt={`${index + 1}`}
+                                className="uploaded-image BorderRadius"
+                                style={{
+                                  width: "186px",
+                                  height: "170px",
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center",
+                                }}
+                              />
+                              <button
+                                type="button"
+                                className="deleteButton"
+                                onClick={() => {
+                                  const updatedImages = [
+                                    ...values.certification,
+                                  ];
+                                  updatedImages.splice(index, 1);
+                                  setFieldValue("certification", updatedImages);
+
+                                  const updatedCertificateTitles = [
+                                    ...values.certificate_title,
+                                  ];
+                                  updatedCertificateTitles.splice(index, 1);
+                                  setFieldValue(
+                                    "certificate_title",
+                                    updatedCertificateTitles
+                                  );
+                                }}
+                              >
+                                &#10006;
+                              </button>
+                            </div>
+                          ))}
+                          <Label
+                            id="UploadImgLabel"
+                            className="BorderRadius text-center mb-0 mx-3"
+                            style={{
+                              width: "186px",
+                              height: "170px",
                             }}
                           >
-                            &#10006;
-                          </button>
+                            <img src={Images.UPLOAD_ICON} alt="" />
+                            <input
+                              className=""
+                              id="file-upload"
+                              type="file"
+                              accept=".png, .jpg, .jpeg"
+                              onChange={(event) => {
+                                const files = event.currentTarget.files;
+                                if (files.length > 0) {
+                                  const uploadedImages = Array.from(files);
+                                  setFieldValue("certification", [
+                                    ...values.certification,
+                                    ...uploadedImages,
+                                  ]);
+                                }
+                              }}
+                              multiple
+                              style={{ display: "none" }}
+                            />
+                            <h6>{t("signup.uploadImageText")}</h6>
+                          </Label>
                         </div>
-                      ))}
-                      <Label
-                        id="UploadImgLabel"
-                        className="BorderRadius text-center mb-0"
-                        style={{
-                          minWidth: "220px",
-                          maxHeight: "170px",
-                        }}
-                      >
-                        <img src={Images.UPLOAD_ICON} alt="" />
-                        <input
-                          id="file-upload"
-                          type="file"
-                          accept=".png, .jpg, .jpeg"
-                          onChange={(event) => {
-                            const files = event.currentTarget.files;
-                            if (files.length > 0) {
-                              const uploadedImages = Array.from(files);
-                              setFieldValue("certification", [
-                                ...values.certification,
-                                ...uploadedImages,
-                              ]);
-                            }
-                          }}
-                          multiple
-                          style={{ display: "none" }}
+                      </Col>
+                      <p className="errorField">
+                        {t(errors.certification) &&
+                          touched.certification &&
+                          t(errors.certification)}
+                      </p>
+                      <p className="errorField">
+                        {t(errors.certificate_title) &&
+                          touched.certificate_title &&
+                          t(errors.certificate_title)}
+                      </p>
+                    </>
+                  )}
+
+                  <Row>
+                    {filterFields.includes("saudireps_number") && (
+                      <Col md={6}>
+                        <h6 className="mb-2 fw-bold mt-2">
+                          {t("signup.saudiRepsNumberText")}{" "}
+                        </h6>
+                        <InputField
+                          className="py-3 px-4"
+                          type="number"
+                          // placeholder={t("signup.saudiRepsNumberText")}
+                          name="saudireps_number"
+                          onChangeHandle={handleChange}
+                          onBlurHandle={handleBlur}
+                          value={values.saudireps_number}
+                          disabled={user ? true : false}
                         />
-                        <h6>{t("signup.uploadImageText")}</h6>
-                      </Label>
-                    </div>
-                  </Col>
-                </>
+                        <p className="errorField">
+                          {t(errors.saudireps_number) &&
+                            touched.saudireps_number &&
+                            t(errors.saudireps_number)}
+                        </p>
+                      </Col>
+                    )}
+
+                    {filterFields.includes("license_number") && (
+                      <Col md={6}>
+                        <h6 className="mb-2 fw-bold mt-2">
+                          {t("signup.enterYourProfessionalText")}{" "}
+                        </h6>
+                        <InputField
+                          className="py-3 px-4"
+                          type="number"
+                          // placeholder={t("signup.enterYourProfessionalText")}
+                          name="license_number"
+                          onChangeHandle={handleChange}
+                          onBlurHandle={handleBlur}
+                          value={values.license_number}
+                          disabled={user ? true : false}
+                        />
+                        <p className="errorField">
+                          {t(errors.license_number) &&
+                            touched.license_number &&
+                            t(errors.license_number)}
+                        </p>
+                      </Col>
+                    )}
+
+                    {filterFields.includes("stc_pay") && (
+                      <Col lg={6} md={6} className="mb-2 mt-2">
+                        <h6 className="mb-2 fw-bold">
+                          {t("signup.enterStcPayAccountText")}{" "}
+                          {user === null && "*"}
+                        </h6>
+                        <PhoneInputField
+                          inputProps={{
+                            name: "stc_pay",
+                            required: true,
+                            className:
+                              "form-control-lg w-100  py-3 px-4 customPhoneInput border",
+                          }}
+                          defaultCountry={"sa"}
+                          value={values.stc_pay}
+                          setFieldValue={setFieldValue}
+                          disabled={user ? true : false}
+                        />
+                        <p className="errorField">
+                          {t(errors.stc_pay) &&
+                            touched.stc_pay &&
+                            t(errors.stc_pay)}
+                        </p>
+                      </Col>
+                    )}
+                  </Row>
+
+                  {user && user?.change_request_status === "Pending" && (
+                    <p className="mt-2 fw-bold">
+                      {t("signup.profileUnderReviewText")}
+                    </p>
+                  )}
+                </div>
               )}
-              <p className="errorField">
-                {errors.certification &&
-                  touched.certification &&
-                  errors.certification}
-              </p>
-              <p className="errorField">
-                {errors.certificate_title &&
-                  touched.certificate_title &&
-                  errors.certificate_title}
-              </p>
             </Row>
 
             <Row className="mb-3">
@@ -844,10 +1017,16 @@ const SignUpForm = () => {
                     </h6>
                   </Col>
                   <Col md={6} className="mb-3">
+                    <div
+                      className="d-flex justify-content-between"
+                      style={{ marginBottom: "-2px" }}
+                    >
+                      <div>{t("signup.weightText")}</div>
+                    </div>
                     <InputField
                       className="py-3 px-4"
                       type="number"
-                      placeholder={t("signup.weightText")}
+                      // placeholder={t("signup.weightText")}
                       name="weight"
                       onChangeHandle={handleChange}
                       onBlurHandle={handleBlur}
@@ -859,10 +1038,16 @@ const SignUpForm = () => {
 
               {filterFields.includes("height") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.heightText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.heightText")}
+                    // placeholder={t("signup.heightText")}
                     name="height"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -873,10 +1058,16 @@ const SignUpForm = () => {
 
               {filterFields.includes("skeletal_muscel_mass") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.skeletonMuscleText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.skeletonMuscleText")}
+                    // placeholder={t("signup.skeletonMuscleText")}
                     name="skeletal_muscel_mass"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -887,10 +1078,16 @@ const SignUpForm = () => {
 
               {filterFields.includes("body_fat_mass") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.bodyFatText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.bodyFatText")}
+                    // placeholder={t("signup.bodyFatText")}
                     name="body_fat_mass"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -901,10 +1098,16 @@ const SignUpForm = () => {
 
               {filterFields.includes("total_body_water") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.totalBodyText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.totalBodyText")}
+                    // placeholder={t("signup.totalBodyText")}
                     name="total_body_water"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -915,10 +1118,16 @@ const SignUpForm = () => {
 
               {filterFields.includes("protien") && (
                 <Col md={6} className="mb-3">
+                  <div
+                    className="d-flex justify-content-between"
+                    style={{ marginBottom: "-2px" }}
+                  >
+                    <div>{t("signup.protienText")}</div>
+                  </div>
                   <InputField
                     className="py-3 px-4"
                     type="number"
-                    placeholder={t("signup.protienText")}
+                    // placeholder={t("signup.protienText")}
                     name="protien"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -942,15 +1151,15 @@ const SignUpForm = () => {
                           name="specialities"
                           component={MultiSelector}
                           options={specialityOptions}
-                          placeholder="Select options"
+                          placeholder={t("signup.selectText")}
                           className="border-0 customMultiSelector"
                         />
                       </div>
                     </Col>
                     <p className="errorField">
-                      {errors.specialities &&
+                      {t(errors.specialities) &&
                         touched.specialities &&
-                        errors.specialities}
+                        t(errors.specialities)}
                     </p>
                   </>
                 )}
@@ -959,7 +1168,7 @@ const SignUpForm = () => {
             <Row className="mb-3">
               {filterFields.includes("goal") && (
                 <Col md={6}>
-                  <h6 className="mb-2 fw-bold">{t("signup.myGoalText")}</h6>
+                  <h6 className="fw-bold">{t("signup.myGoalText")}</h6>
                   <InputField
                     className="py-3 px-4"
                     type="text"
@@ -980,10 +1189,10 @@ const SignUpForm = () => {
                   <Row className="training">
                     <Col md={12} className="mb-2">
                       <MyDropdown
-                        className=" shadow-0 py-3 px-4 border"
+                        className=" shadow-0 p-2 border"
                         Options={trainingGoalOptions}
                         name={"training_goal"}
-                        placeholder={"Select training goal"}
+                        placeholder={t("signup.selectTrainingGoalText")}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
                         value={values.training_goal}
@@ -1018,10 +1227,10 @@ const SignUpForm = () => {
                   <Row className="activity">
                     <Col md={12} className="mb-2">
                       <MyDropdown
-                        className=" shadow-0 py-3 px-4 border"
-                        Options={activityLevelOptions}
+                        className=" shadow-0 border p-2"
+                        Options={levelOptions}
                         name={"level"}
-                        placeholder={"Select activity level"}
+                        placeholder={t("signup.selectLevelText")}
                         onChangeHandle={handleChange}
                         onBlurHandle={handleBlur}
                         value={values.level}
@@ -1052,84 +1261,13 @@ const SignUpForm = () => {
               )}
             </Row>
 
-            <Row className="mb-3">
-              {filterFields.includes("saudireps_number") && (
-                <Col md={6}>
-                  <h6 className="mb-2 fw-bold">
-                    {t("signup.saudiRepsNumberText")}{" "}
-                  </h6>
-                  <InputField
-                    className="py-3 px-4"
-                    type="number"
-                    placeholder={t("signup.saudiRepsNumberText")}
-                    name="saudireps_number"
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.saudireps_number}
-                    disabled={user ? true : false}
-                  />
-                  <p className="errorField">
-                    {errors.saudireps_number &&
-                      touched.saudireps_number &&
-                      errors.saudireps_number}
-                  </p>
-                </Col>
-              )}
-
-              {filterFields.includes("license_number") && (
-                <Col md={6}>
-                  <h6 className="mb-2 fw-bold">
-                    {t("signup.enterYourProfessionalText")}{" "}
-                  </h6>
-                  <InputField
-                    className="py-3 px-4"
-                    type="number"
-                    placeholder={t("signup.enterYourProfessionalText")}
-                    name="license_number"
-                    onChangeHandle={handleChange}
-                    onBlurHandle={handleBlur}
-                    value={values.license_number}
-                    disabled={user ? true : false}
-                  />
-                  <p className="errorField">
-                    {errors.license_number &&
-                      touched.license_number &&
-                      errors.license_number}
-                  </p>
-                </Col>
-              )}
-
-              {filterFields.includes("stc_pay") && (
-                <Col lg={6} md={6} className="mb-2">
-                  <h6 className="mb-2 fw-bold">
-                    {t("signup.enterStcPayAccountText")} {user === null && "*"}
-                  </h6>
-                  <PhoneInputField
-                    inputProps={{
-                      name: "stc_pay",
-                      required: true,
-                      className:
-                        "form-control-lg w-100  py-3 px-4 customPhoneInput border",
-                    }}
-                    defaultCountry={"sa"}
-                    value={values.stc_pay}
-                    setFieldValue={setFieldValue}
-                    disabled={user ? true : false}
-                  />
-                  <p className="errorField">
-                    {errors.stc_pay && touched.stc_pay && errors.stc_pay}
-                  </p>
-                </Col>
-              )}
-            </Row>
-
             <Row>
               {filterFields.includes("profile_availability") && (
                 <Col lg={12} md={12}>
                   <h6 className="mb-2 fw-bold">
-                    {`   ${t("signup.availableToRespondTraineeText")} ${
-                      roleType === NUTRITIONIST_TYPE ? "subscriber" : "trainee"
-                    } ${user === null && "*"}`}
+                    {`${t("signup.availableToRespondTraineeText")} ${
+                      user === null ? "*" : ""
+                    }`}
                   </h6>
                   <FieldArray
                     name="profile_availability"
@@ -1140,58 +1278,90 @@ const SignUpForm = () => {
                           (daySchedule, index) => (
                             <Row key={index} className="mb-1">
                               <Col lg={5} md={5} className="mb-2">
-                                <Field
-                                  as="select"
+                                <p className="mb-0">{t("signup.dayText")}</p>
+                                <MyDropdown
+                                  className="shadow-0 p-2 border"
+                                  Options={
+                                    i18n.dir() === "ltr"
+                                      ? weekDaysOptions
+                                      : weekDaysOptionsArabic
+                                  }
                                   name={`profile_availability.${index}.day`}
-                                  className="customDropDown customDropdownRadius form-control-lg w-100 selectField border px-4 h-100"
-                                >
-                                  <option
-                                    className="customDropDownOption text-black-custom"
-                                    value=""
-                                    label="Select"
-                                  />
-                                  {weekDaysOptions?.map((option, index) => (
-                                    <option
-                                      className="customDropDownOption text-black-custom border"
-                                      value={option.value}
-                                      key={index}
-                                      label={option.label}
-                                    />
-                                  ))}
-                                </Field>
-                                <ErrorMessage
-                                  name={`profile_availability.${index}.day`}
-                                  component="p"
-                                  className="errorField"
+                                  placeholder={t("signup.selectText")}
+                                  onChangeHandle={handleChange}
+                                  onBlurHandle={handleBlur}
+                                  value={
+                                    values.profile_availability?.[index].day
+                                  }
                                 />
+                                <p className="errorField">
+                                  {t(
+                                    errors.profile_availability?.[index]?.day
+                                  ) &&
+                                    touched.profile_availability?.[index]
+                                      ?.day &&
+                                    t(
+                                      errors.profile_availability?.[index]?.day
+                                    )}
+                                </p>
                               </Col>
                               <Col md={3} className="mb-2">
-                                <Field
-                                  name={`profile_availability.${index}.starttime`}
+                                <p className="mb-0">
+                                  {t("signup.fromTimeText")}
+                                </p>
+                                <InputField
+                                  className="py-3 px-4"
                                   type="time"
-                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
-                                />
-                                <ErrorMessage
+                                  placeholder="awdawdaw"
                                   name={`profile_availability.${index}.starttime`}
-                                  component="p"
-                                  className="errorField"
+                                  onChangeHandle={handleChange}
+                                  onBlurHandle={handleBlur}
+                                  value={
+                                    values.profile_availability?.[index]
+                                      .starttime
+                                  }
                                 />
+                                <p className="errorField">
+                                  {t(
+                                    errors.profile_availability?.[index]
+                                      ?.starttime
+                                  ) &&
+                                    touched.profile_availability?.[index]
+                                      ?.starttime &&
+                                    t(
+                                      errors.profile_availability?.[index]
+                                        ?.starttime
+                                    )}
+                                </p>
                               </Col>
                               <Col md={3} className="mb-2">
-                                <Field
-                                  name={`profile_availability.${index}.endtime`}
+                                <p className="mb-0">{t("signup.toTimeText")}</p>
+                                <InputField
+                                  className="py-3 px-4"
                                   type="time"
-                                  className="customDropdownRadius form-control select-field py-3 px-4 border"
-                                />
-                                <ErrorMessage
                                   name={`profile_availability.${index}.endtime`}
-                                  component="p"
-                                  className="errorField"
+                                  onChangeHandle={handleChange}
+                                  onBlurHandle={handleBlur}
+                                  value={
+                                    values.profile_availability?.[index].endtime
+                                  }
                                 />
+                                <p className="errorField">
+                                  {t(
+                                    errors.profile_availability?.[index]
+                                      ?.endtime
+                                  ) &&
+                                    touched.profile_availability?.[index]
+                                      ?.endtime &&
+                                    t(
+                                      errors.profile_availability?.[index]
+                                        ?.endtime
+                                    )}
+                                </p>
                               </Col>
                               <Col md={1} className="mb-2">
                                 <div className="d-flex align-items-center justify-content-end h-100">
-                                  <FaDeleteLeft
+                                  <FaCircleXmark
                                     className="cursorPointer"
                                     size={22}
                                     onClick={() => arrayHelpers.remove(index)}
@@ -1223,26 +1393,36 @@ const SignUpForm = () => {
             <Row className="my-3">
               {filterFields.includes("subscription_plans") && (
                 <>
-                  <h5 className="mb-2 fw-bold">Subscription Plans</h5>
+                  <h5 className="mb-2 fw-bold">
+                    {t("signup.subscriptionPlansText")}*
+                  </h5>
                   <FieldArray
                     name="subscription_plans"
                     className="d-flex"
                     render={(arrayHelpers) => (
                       <>
-                        {values.subscription_plans.map(
+                        {values?.subscription_plans?.map(
                           (subscription_plan, index) => (
-                            <Col md={4}>
-                              <p className="mb-0">{`${index + 1} Months`}</p>
+                            <Col md={4} key={index}>
+                              <p className="mb-0">
+                                {index + 1 === 1
+                                  ? t("trainerPackages.monthText")
+                                  : index + 1 === 2
+                                  ? t("trainerPackages.twoMonthText")
+                                  : t("trainerPackages.threeMonthText")}
+                              </p>
                               <Field
                                 name={`subscription_plans.${index}.price`}
                                 type="number"
+                                min={0}
+                                step={"any"}
                                 className="customDropdownRadius form-control select-field py-3 px-4 border"
                               />
-                              <ErrorMessage
-                                name={`subscription_plans.${index}.price`}
-                                component="p"
-                                className="errorField"
-                              />
+                              <p className="errorField">
+                                {t(errors.subscription_plans?.[index]?.price) &&
+                                  touched.subscription_plans?.[index]?.price &&
+                                  t(errors.subscription_plans?.[index]?.price)}
+                              </p>
                             </Col>
                           )
                         )}
@@ -1283,9 +1463,9 @@ const SignUpForm = () => {
                     </div>
                   </div>
                   <p className="errorField">
-                    {errors.is_currently_working &&
+                    {t(errors.is_currently_working) &&
                       touched.is_currently_working &&
-                      errors.is_currently_working}
+                      t(errors.is_currently_working)}
                   </p>
                 </Col>
               </Row>
@@ -1297,14 +1477,13 @@ const SignUpForm = () => {
                   <Checkbox
                     label={
                       roleType !== TRAINEE_TYPE ? (
-                        <p className="mb-0 fs-6">
-                          {t("signup.moneyTransferText")}
-
+                        <p className="mb-0 fs-6 px-2">
+                          {t("signup.moneyTransferText")}{" "}
                           <Link
                             target="blank"
                             to={`/termAndCondition/serviceProvider/signUp`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.termsAndConditionText")}
                             </span>
                           </Link>
@@ -1313,20 +1492,19 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/general/home`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.generalText")}
                             </span>
                           </Link>
                         </p>
                       ) : (
-                        <p className="mb-0 fs-6">
-                          {t("signup.acknowledgeText")}
-
+                        <p className="mb-0 fs-6 px-2">
+                          {t("signup.acknowledgeText")}{" "}
                           <Link
                             target="blank"
                             to={`/termAndCondition/trainee/signUp`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.termsAndConditionText")}
                             </span>
                           </Link>
@@ -1335,7 +1513,7 @@ const SignUpForm = () => {
                             target="blank"
                             to={`/termAndCondition/general/home`}
                           >
-                            <span className="textYellow">
+                            <span className="text-dark fw-bolder">
                               {t("signup.generalText")}
                             </span>
                           </Link>
@@ -1349,9 +1527,9 @@ const SignUpForm = () => {
                   />
                 </div>
                 <p className="errorField">
-                  {errors.term_and_condition &&
+                  {t(errors.term_and_condition) &&
                     touched.term_and_condition &&
-                    errors.term_and_condition}
+                    t(errors.term_and_condition)}
                 </p>
               </Row>
             )}
@@ -1360,7 +1538,7 @@ const SignUpForm = () => {
               <Col md={12}>
                 <FillBtn
                   type={"submit"}
-                  text={t("signup.nextText")}
+                  text={user ? t("signup.saveText") : t("signup.nextText")}
                   className="w-100 py-2"
                   disabled={loading === "pending" ? true : false}
                 />
@@ -1369,6 +1547,14 @@ const SignUpForm = () => {
           </form>
         )}
       </Formik>
+      <EditProfileRequestModal
+        heading={t("signup.editRequestText")}
+        size={"lg"}
+        isOpen={showEditProfileModal}
+        onClose={useCallback(() => {
+          setShowEditProfileModal(false);
+        }, [])}
+      />
     </Container>
   );
 };

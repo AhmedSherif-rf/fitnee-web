@@ -3,7 +3,7 @@ import React, { memo, useState } from "react";
 import { Col, Card, CardBody, CardFooter } from "reactstrap";
 
 const DocumentCard = (props) => {
-  const { documentImg, documentTitle, className } = props;
+  const { documentImg, documentTitle, className, index } = props;
   const [showFullImage, setShowFullImage] = useState(false);
 
   const handleToggleClick = () => {
@@ -11,7 +11,7 @@ const DocumentCard = (props) => {
   };
 
   return (
-    <Col lg={3} md={6} sm={6}>
+    <Col lg={3} md={6} sm={6} key={index}>
       <Card
         className={`bgProperties ${className} ${styles.ProfileDocumentCard}`}
         style={{

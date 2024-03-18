@@ -6,7 +6,7 @@ import SignInWrapper from "../../../Shared/SignIn/SignInWrapper";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const SignIn = () => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   const SingInData = [
     {
@@ -24,7 +24,7 @@ const SignIn = () => {
       ),
       text2: (
         <div className="text-center lh-1">
-          <h1 className="fw-bold fs-1 text-white">
+          <h1 className="fw-bold fs-1 text-white customLetterSpacing">
             {t("login.unlockYourPotentialText")}
           </h1>
           <span className="fs-2 text-white fst-italic">
@@ -40,13 +40,15 @@ const SignIn = () => {
     },
   ];
   return (
-    <Container fluid className="vh-100">
-      {SingInData?.map((item) => (
+    <Container fluid className={`${i18n.dir()} vh-100`}>
+      {SingInData?.map((item, index) => (
         <SignInWrapper
           CompStyle={item.CompStyle}
           text1={item.text1}
           text2={item.text2}
           text3={item.text3}
+          index={index}
+          key={index}
         />
       ))}
     </Container>

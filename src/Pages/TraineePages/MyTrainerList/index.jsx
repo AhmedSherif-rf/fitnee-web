@@ -1,66 +1,56 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
+import Pagination from "../../../Shared/Pagination";
+import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../Shared/Headings/PageHeading";
-import { Card, CardBody, Col, Container, Row } from "reactstrap";
-import Images from "../../../HelperMethods/Constants/ImgConstants";
+import React, { useState, useCallback, useEffect } from "react";
+import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import ServiceProvider from "../../../Shared/ServiceProviderListRow";
+import {
+  PER_PAGE_COUNT,
+  MEMBERSHIP_URL,
+  TRAINER_ROLE,
+} from "../../../utils/constants";
+import { getMyServiceProviders } from "../../../Redux/features/User/userApi";
+import { Card, CardBody, CardFooter, Col, Container, Row } from "reactstrap";
 
 const Index = () => {
-  const { t } = useTranslation("");
-  const ServiceProviders = [
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: t("traineeServiceProviderList.trainerText"),
-      duration: t("traineeServiceProviderList.twoMonthDurationText"),
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: t("traineeServiceProviderList.trainerText"),
-      duration: t("traineeServiceProviderList.twoMonthDurationText"),
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: t("traineeServiceProviderList.trainerText"),
-      duration: t("traineeServiceProviderList.twoMonthDurationText"),
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: t("traineeServiceProviderList.trainerText"),
-      duration: t("traineeServiceProviderList.twoMonthDurationText"),
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-    {
-      useImages: `${Images.PROFILE4_IMG}`,
-      userName: "Nayyar Mehdi",
-      serviceProvider: t("traineeServiceProviderList.trainerText"),
-      duration: t("traineeServiceProviderList.twoMonthDurationText"),
-      fee: "SAR 1000",
-      startDate: "12/10/2023",
-      endDate: "11/12/2023",
-    },
-  ];
+  const dispatch = useDispatch();
+  const { t, i18n } = useTranslation("");
+  const { loading } = useSelector((state) => state.user);
+
+  const [page, setPage] = useState(1);
+  const [totalSize, setSizePages] = useState(0);
+  const [trainersData, setTrainersData] = useState([]);
+
+  const handlePageChange = useCallback((page) => {
+    setPage(page.selected + 1);
+  }, []);
+
+  useEffect(() => {
+    fetchTrainersData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, page]);
+
+  const fetchTrainersData = () => {
+    const data = {
+      apiEndpoint: `${MEMBERSHIP_URL}?role=${TRAINER_ROLE}&page=${page}`,
+    };
+
+    dispatch(getMyServiceProviders(data)).then((res) => {
+      if (res.type === "getMyServiceProviders/fulfilled") {
+        setSizePages(res.payload.data.count);
+        setTrainersData(res.payload.data.results);
+      }
+    });
+  };
 
   return (
     <Container fluid>
+      {loading === "pending" && <LoadingScreen />}
       <Row>
         <Col md={12}>
           <Card className="BorderRadius contentCard border-0">
-            <CardBody className="px-4">
+            <CardBody className={`${i18n.dir()} px-4`}>
               <Row>
                 <Col md={12}>
                   <PageHeading
@@ -102,7 +92,7 @@ const Index = () => {
                           <h6 className="mb-0 fw-bold">
                             {t("traineeServiceProviderList.startDateText")}
                           </h6>
-                          <span className="mb-0 mx-1"> / </span>
+                          <span className="mb-0 mx-1"> - </span>
                           <h6 className="mb-0 fw-bold">
                             {t("traineeServiceProviderList.endDateText")}
                           </h6>
@@ -112,20 +102,32 @@ const Index = () => {
                   </Row>
                 </Col>
               </Row>
-              {ServiceProviders.map((item) => {
-                return (
-                  <ServiceProvider
-                    useImages={item.useImages}
-                    userName={item.userName}
-                    serviceProvider={item.serviceProvider}
-                    duration={item.duration}
-                    fee={item.fee}
-                    startDate={item.startDate}
-                    endDate={item.endDate}
-                  />
-                );
+              {trainersData?.map((data, index) => {
+                if (
+                  !data?.is_expired &&
+                  !data?.is_refund &&
+                  !data?.have_exercise_subscription
+                ) {
+                  return (
+                    <ServiceProvider key={index} data={data} index={index} />
+                  );
+                }
+                return null;
               })}
+              {trainersData.length <= 0 && (
+                <div className="d-flex justify-content-center py-4 text-black-custom">
+                  {t("messages.noDataFoundText")}
+                </div>
+              )}
             </CardBody>
+            <CardFooter>
+              {totalSize > PER_PAGE_COUNT && (
+                <Pagination
+                  size={totalSize}
+                  handlePageChange={handlePageChange}
+                />
+              )}
+            </CardFooter>
           </Card>
         </Col>
       </Row>

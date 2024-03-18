@@ -1,0 +1,46 @@
+@import "../../../Assets/Scss/variables.scss";
+
+.teamMemberWrapperFirst {
+  background-color: $nude-color-1;
+  border-radius: 18px;
+}
+
+.teamMemberWrapperSecond {
+  background-color: $nude-color-2;
+  border-radius: 18px;
+}
+
+.teamMemberWrapperThird {
+  background-color: $nude-color-3;
+  border-radius: 18px;
+}
+
+.teamMemberWrapperFourth {
+  background-color: $nude-color-4;
+  border-radius: 18px;
+}
+.cardHovered {
+  transform: scale(1.4);
+  transition: transform 0.5s;
+  margin-right: 20px;
+}
+
+.chatCardFooter {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  width: 100%;
+  bottom: 0;
+  position: relative;
+}
+.chatButton {
+  content: "";
+  width: 50px;
+  position: absolute;
+  z-index: 99;
+  height: 80%;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

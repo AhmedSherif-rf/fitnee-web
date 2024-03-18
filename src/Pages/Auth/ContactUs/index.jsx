@@ -6,7 +6,7 @@ import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ContactUsWrapper from "../../../Shared/ContactUs/ContactUsWrapper";
 
 const ContactUs = () => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
 
   const ContactUsData = [
     {
@@ -24,7 +24,7 @@ const ContactUs = () => {
       ),
       text2: (
         <div className="text-center">
-          <h1 className="fw-bold text-white">
+          <h1 className="fw-bold text-white customLetterSpacing">
             {t("contactUs.unlockYourPotentialText")}
           </h1>
           <span className="fs-4 text-white fst-italic">
@@ -41,13 +41,15 @@ const ContactUs = () => {
   ];
 
   return (
-    <Container fluid className="vh-100">
-      {ContactUsData?.map((item) => (
+    <Container fluid className={`vh-100 ${i18n.dir()}`}>
+      {ContactUsData?.map((item, index) => (
         <ContactUsWrapper
           CompStyle={item.CompStyle}
           text1={item.text1}
           text2={item.text2}
           text3={item.text3}
+          index={index}
+          key={index}
         />
       ))}
     </Container>

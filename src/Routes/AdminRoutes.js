@@ -15,6 +15,12 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
+    path: "/admin/editProfileRequest",
+    component: lazy(() => import("../Pages/AdminPages/EditProfileRequest")),
+    exact: true,
+    role: adminRole,
+  },
+  {
     path: "/admin/user/serviceProviderList",
     component: lazy(() =>
       import("../Pages/AdminPages/User/ServiceProviderList")
@@ -29,19 +35,39 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
+    path: "/admin/user/userListing/:slug",
+    component: lazy(() => import("../Pages/AdminPages/User/UserList")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/user/fullyBooked",
+    component: lazy(() => import("../Pages/AdminPages/User/FullyBooked")),
+    exact: true,
+    role: adminRole,
+  },
+  {
     path: "/admin/reports",
     component: lazy(() => import("../Pages/AdminPages/Reports")),
     exact: true,
     role: adminRole,
   },
   {
-    path: "/admin/feedback",
-    component: lazy(() => import("../Pages/AdminPages/Feedback")),
+    path: "/admin/platformFeedback",
+    component: lazy(() => import("../Pages/AdminPages/PlatformFeedback")),
     exact: true,
     role: adminRole,
   },
   {
-    path: "/admin/exercises/addExercises",
+    path: "/admin/serviceProviderFeedback",
+    component: lazy(() =>
+      import("../Pages/AdminPages/ServiceProviderFeedback")
+    ),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/exercises/addExercises/:subCategoryId",
     component: lazy(() => import("../Pages/AdminPages/Exercises/AddExercises")),
     exact: true,
     role: adminRole,
@@ -57,6 +83,62 @@ export const adminRoutes = [
   {
     path: "/admin/serviceProviderProfile/:uuid",
     component: lazy(() => import("../Pages/AdminPages/ServiceProviderProfile")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/settings",
+    component: lazy(() => import("../Pages/AdminPages/Settings")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/community",
+    component: lazy(() => import("../Pages/AdminPages/Community")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/settings/category",
+    component: lazy(() => import("../Pages/AdminPages/Settings/Category")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/settings/category/:categoryUuid/:categoryId/subCategory",
+    component: lazy(() =>
+      import("../Pages/AdminPages/Settings/Category/SubCategory")
+    ),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/settings/promoCode",
+    component: lazy(() => import("../Pages/AdminPages/PromoCode")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/reviewRequestDetail/:uuid",
+    component: lazy(() =>
+      import("../Pages/AdminPages/ReviewRequest/ReviewRequestDetail")
+    ),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/walletSystem/walletOverview",
+    component: lazy(() =>
+      import("../Pages/AdminPages/WalletSystem/WalletOverview")
+    ),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/Notifications",
+    component: lazy(() =>
+      import("../Pages/AdminPages/WalletSystem/WalletOverview")
+    ),
     exact: true,
     role: adminRole,
   },

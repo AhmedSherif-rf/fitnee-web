@@ -4,10 +4,8 @@
   text-align: start;
   display: flex !important;
   align-items: center !important;
-
   .navLink {
     font-size: 21px;
-
     &:hover {
       color: $yellow !important;
     }
@@ -15,20 +13,19 @@
 }
 .togglerNav {
   .navItem,
-  a, div {
+  a,
+  div {
     padding: 6px;
     text-align: center;
     width: 100% !important;
     color: $white !important;
     font-size: 18px;
-
     &:hover {
       color: $yellow !important;
       font-weight: 400;
     }
   }
 }
-
 .togglerNav {
   padding: 0 0 0 0 !important;
   margin-top: -1px;
@@ -38,8 +35,15 @@
     justify-content: center;
   }
 }
-.collapseScss{
+.collapseScss {
   z-index: 999;
   margin-top: 57px;
-  position:fixed;
+  position: fixed;
+}
+.notificationCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-size: 10px;
 }

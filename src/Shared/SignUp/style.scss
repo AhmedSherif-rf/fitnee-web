@@ -5,7 +5,8 @@
   position: absolute;
   background: none;
   color: $red;
-  right: 0px;
+  right: -5px;
+  top:0;
 }
 
 .certificatioTitle {
@@ -20,4 +21,8 @@
   border-top-left-radius: 0px;
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
+}
+
+.editRequestWrapper {
+  background-color: $light-white;
 }

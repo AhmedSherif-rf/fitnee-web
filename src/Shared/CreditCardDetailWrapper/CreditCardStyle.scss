@@ -3,7 +3,7 @@
   .form-switch {
     .form-check-input {
       width: 35px;
-      background-image: url("../../Assets/Images/ConstImgs/greenCircle.png");
+      background-image: url("https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/greenCircle.png");
       background-size: 38%;
       &:focus {
         box-shadow: none;
@@ -11,7 +11,7 @@
       cursor: pointer;
 
       &:checked {
-        background-image: url("../../Assets/Images/ConstImgs/yellowCircle.png");
+        background-image: url("https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/yellowCircle.png");
         background-size: 38%;
         &:focus {
           box-shadow: none;
@@ -36,7 +36,62 @@
     }
   }
 }
+.wpwl-container {
+  .wpwl-form-card {
+    .wpwl-label{
+      color:$white;
+    }
+ 
+    text-align: left;
+    color:$dark-bg;
+    border: 0px;
+    border-radius: 20px;
+    background-color: transparent;
+    @include bgProperties;
+    background-image: url("https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/PaymentMethod.png");
 
+    .wpwl-wrapper {
+      .wpwl-control-cardHolder{
+        color:$dark-bg;
+      }
+      select {
+        background: #282828;
+        padding-top: 0px !important;
+        color: white;
+      }
+    }
+  }
+}
+.wpwl-form-virtualAccount {
+  background-color: transparent;
+  @include bgProperties;
+  background-image: url("https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Card__4.png");
+  .wpwl-label {
+    display: flex;
+    justify-content: left;
+    color: white;
+  }
+  .wpwl-group-brand {
+    .wpwl-brand-STC_PAY {
+      margin-right: 0;
+    }
+    .wpwl-brand {
+      left: 0px !important;
+    }
+  }
+}
+.wpwl-wrapper-submit {
+  display: flex;
+  justify-content: left;
+  .wpwl-button {
+    background: $yellow;
+    border: none;
+    border-radius: 10px;
+  }
+}
+.wpwl-label{
+  content:" " !important;
+}
 .countryContainerClass {
   .stdropdown-container {
     border-radius: 14px !important;

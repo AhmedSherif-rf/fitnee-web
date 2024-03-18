@@ -1,22 +1,46 @@
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import MyDropdown from "../../../Shared/MyDropdown";
-import { category } from "../../../utils/constants";
-import React, { useCallback, useState } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
+import { useDispatch, useSelector } from "react-redux";
 import { Container, Row, Col, Card } from "reactstrap";
+import { EXERCISE_URL } from "../../../utils/constants";
+import { useNavigate, useParams } from "react-router-dom";
 import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import ExerciseSection from "../../../Shared/ExerciseSection";
 import PageHeading from "../../../Shared/Headings/PageHeading";
+import React, { useCallback, useState, useEffect } from "react";
+import LoadingScreen from "../../../HelperMethods/LoadingScreen";
+import Images from "../../../HelperMethods/Constants/ImgConstants";
 import InformationModal from "../../../Shared/Modal/InformationModal";
+import { getExercisesForGuest } from "../../../Redux/features/Exercise/exerciseApi";
 
 const Exercise = (props) => {
+  const { uuid } = useParams();
   const navigate = useNavigate();
-  const { i18n } = useTranslation("");
+  const dispatch = useDispatch();
+  const { t, i18n } = useTranslation("");
+  const { loading } = useSelector((state) => state.exercise);
   const [
     showSubscriptionInformatoinModal,
     setShowSubscriptionInformatoinModal,
   ] = useState(false);
+  const [exercisesData, setExercisesData] = useState(null);
+
+  useEffect(() => {
+    fetchGuestExercises();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchGuestExercises = () => {
+    const data = {
+      apiEndpoint: `${EXERCISE_URL}${uuid}`,
+    };
+
+    dispatch(getExercisesForGuest(data)).then((res) => {
+      if (res.type === "getExercisesForGuest/fulfilled") {
+        setExercisesData(res.payload.data);
+      }
+    });
+  };
 
   const handleSubscriptionInformationModalClose = useCallback(() => {
     setShowSubscriptionInformatoinModal(false);
@@ -35,83 +59,66 @@ const Exercise = (props) => {
     setShowSubscriptionInformatoinModal(true);
   }, []);
 
-  const ExerciseData = useCallback(() => {
-    return [
-      {
-        title: "Upper Chest",
-        level: "Beginner",
-        categoryName: "Barbell Bench Press",
-        description: [
-          "Lay flat on the bench with your feet on the ground. With straight arms unrack the bar.",
-          "Lower the bar to your mid chest.",
-          "Raise the bar until you have locked your elbows.",
-        ],
-      },
-      {
-        title: "Lower Chest",
-        level: "Beginner",
-        categoryName: "Barbell Bench Press",
-        description: [
-          "Lay flat on the bench with your feet on the ground. With straight arms unrack the bar.",
-          "Lower the bar to your mid chest.",
-          "Raise the bar until you have locked your elbows.",
-        ],
-      },
-    ];
-  }, []);
-
   return (
     <Container fluid className="contentCardPadding">
-      <Row className="text-black-custom" style={{ direction: i18n.dir() }}>
-        <Col md="12">
-          <Card className="BorderRadius contentCard mt-0 px-3">
-            <Col md={12}>
-              <div className="d-flex align-items-center justify-content-between">
-                <div className="w-50">
-                  <PageHeading headingText="Chest" />
+      {loading === "pending" && <LoadingScreen />}
+      <Row className={`text-black-custom ${i18n.dir()}`}>
+        {exercisesData ? (
+          <Col md="12">
+            <Card className="BorderRadius contentCard mt-0 px-3">
+              <Col md={12}>
+                <div className="d-flex align-items-center justify-content-between">
+                  <div className="w-50">
+                    <PageHeading
+                      headingText={
+                        i18n.dir() === "ltr"
+                          ? exercisesData?.title
+                          : exercisesData?.title_ar
+                      }
+                    />
+                  </div>
                 </div>
-                <div className="w-50 px-3">
-                  <MyDropdown
-                    className="border py-3 my-2"
-                    Options={category}
-                    name={"categories"}
+              </Col>
+              <Col md={12} className="mb-3">
+                <ExerciseSection exercisesData={exercisesData} />
+              </Col>
+              <Col md={12} className="mb-3">
+                <div className="text-center w-100">
+                  <FillBtn
+                    className="py-2"
+                    text="Show More"
+                    handleOnClick={handleSeeMoreClick}
                   />
                 </div>
-              </div>
-            </Col>
-            <Col md={12} className="mb-3">
-              <ExerciseSection exercisesData={ExerciseData} />
-            </Col>
-            <Col md={12} className="mb-3">
-              <div className="text-center w-100">
-                <FillBtn
-                  className="py-2 buttonBoxShadow"
-                  text="Show More"
-                  handleOnClick={handleSeeMoreClick}
-                />
-              </div>
-            </Col>
-          </Card>
-        </Col>
+              </Col>
+            </Card>
+          </Col>
+        ) : (
+          <div className="d-flex vh-100 justify-content-center align-items-center">
+            {loading !== "pending" && exercisesData?.length <= 0 && (
+              <img src={Images.NO_DATA_FOUND_IMG} alt="no-data-found" />
+            )}
+          </div>
+        )}
       </Row>
 
       <InformationModal
         size={"md"}
-        TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+        TOneClassName={"mb-4 fs-5 text-center"}
         className={"p-4"}
         isOpen={showSubscriptionInformatoinModal}
         onClose={handleSubscriptionInformationModalClose}
-        ModalTextOne="The rest of the exercises will be hidden. Subscribe for 39 SAR per month to access all exercises."
+        ModalTextOne={t("guest.exerciseSubscriptionModalText")}
         ButtonOne={
           <FillBtn
-            text={"Subscribe"}
+            text={t("guest.subscribeText")}
             className="py-2 px-5"
             handleOnClick={handleRegisterClick}
           />
         }
         ButtonTwo={
           <OutlineBtn
-            text={"Not now"}
+            text={t("guest.notNowText")}
             className="py-2 px-5"
             handleOnClick={handleNotNowClick}
           />

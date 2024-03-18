@@ -1,94 +1,183 @@
 import "./style.scss";
-import { useSelector } from "react-redux";
+import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import InfoModal from "../../../Shared/InfoModal";
-import InputField from "../../../Shared/InputField";
-import React, { useCallback, useState } from "react";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
+import { useDispatch, useSelector } from "react-redux";
 import { LineChart } from "../../../Shared/Chart/LineChart";
-import OutlineBtn from "../../../Shared/Buttons/OutlineBtn";
 import PageHeading from "../../../Shared/Headings/PageHeading";
+import React, { useCallback, useEffect, useState } from "react";
+import { Row, Col, Container, Card, CardBody } from "reactstrap";
+import LoadingScreen from "../../../HelperMethods/LoadingScreen";
+import Images from "../../../HelperMethods/Constants/ImgConstants";
 import ProfileProgressBar from "../../../Shared/ProfileProgressBar";
-import { Row, Col, Container, Card, CardBody, Label } from "reactstrap";
-import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
+import AddProgressModal from "../../../Shared/Modal/AddProgressModal";
+import InformationModal from "../../../Shared/Modal/InformationModal";
+import { setShownAppModal } from "../../../Redux/features/User/userSlice";
 import ProgressHistoryWrapper from "../../../Shared/ProgressHistoryWrapper";
-import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
-
-export const myProgressGrapghOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "bottom",
-    },
-    title: {
-      display: true,
-      text: "Trainee Progress Graph",
-    },
-  },
-  maintainAspectRatio: window.innerWidth > 500,
-  redraw: true,
-  interaction: {
-    intersect: false,
-  },
-};
-
-const labels = ["1 Nov", "15 Nov", "30 Nov", "15 Dec", "30 Dec"];
-
-export const myProgressGrapghData = {
-  labels,
-  datasets: [
-    {
-      label: "Weight",
-      borderDash: [5, 5],
-      data: [100, 200, 150, 250, 200],
-      borderColor: "#67165A",
-      backgroundColor: "rgba(103, 22, 90, 0.40)",
-      pointStyle: "circle",
-      pointRadius: 5,
-      pointHoverRadius: 6,
-    },
-    {
-      label: "SMM",
-      data: [80, 150, 190, 300, 200],
-      borderColor: "#F67109",
-      backgroundColor: "rgba(246, 113, 9, 0.40)",
-      pointStyle: "circle",
-      pointRadius: 5,
-      pointHoverRadius: 6,
-    },
-    {
-      label: "BFM",
-      data: [105, 100, 200, 300, 100],
-      borderColor: "#F6E709",
-      backgroundColor: "rgba(246, 231, 9, 0.40)",
-      pointStyle: "circle",
-      pointRadius: 5,
-      pointHoverRadius: 6,
-    },
-    {
-      label: "Proteins",
-      data: [105, 170, 245, 198, 200],
-      borderColor: "#8EF609",
-      backgroundColor: "rgba(142, 246, 9, 0.40)",
-      pointStyle: "circle",
-      pointRadius: 5,
-      pointHoverRadius: 6,
-    },
-  ],
-};
+import ProfileInformationCard from "../../../Shared/ProfileInformationCard";
+import {
+  USER_PROFILE_URL,
+  TRAINEE_PROGRESS_URL,
+  USER_NOTIFICATIONS_URL,
+} from "../../../utils/constants";
+import {
+  getUserProfile,
+  getUserNotifications,
+  getTraineeProgressHistory,
+} from "../../../Redux/features/User/userApi";
 
 const Dashboard = () => {
-  const { user } = useSelector((state) => state.user);
-  const [showHistory, setShowHistory] = useState(true);
-  const [showAddProgressModal, setSowAddProgressModal] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { t, i18n } = useTranslation("");
 
-  const { t } = useTranslation("");
+  const { user, loading, shownAppModal } = useSelector((state) => state.user);
+
+  const [showHistory, setShowHistory] = useState(true);
+  const [progressHistoryData, setProgressHistoryData] = useState([]);
+  const [showDownloadAppPopup, setShowDownloadAppPopup] = useState(false);
+  const [showAddProgressModal, setShowAddProgressModal] = useState(false);
+  const [myProgressGrapghData, setMyProgressGrapghData] = useState({
+    labels: [],
+    datasets: [],
+  });
+
+  const myProgressGrapghOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "bottom",
+      },
+      title: {
+        display: true,
+        text: t("traineeDashboard.traineeProgressGraph"),
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    maintainAspectRatio: window.innerWidth > 500,
+    redraw: true,
+    interaction: {
+      intersect: false,
+    },
+  };
+
+  useEffect(() => {
+    if (
+      !shownAppModal &&
+      (user?.has_exercise_subscription ||
+        user?.has_service_provider_subscription)
+    ) {
+      setShowDownloadAppPopup(true);
+      dispatch(setShownAppModal(true));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    fetchTraineeProgressHistory();
+    fetchUserProfile();
+    fetchUserNotifications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchUserProfile = () => {
+    const data = {
+      apiEndpoint: USER_PROFILE_URL,
+    };
+
+    dispatch(getUserProfile(data));
+  };
+
+  const fetchUserNotifications = () => {
+    const data = {
+      apiEndpoint: USER_NOTIFICATIONS_URL,
+    };
+
+    dispatch(getUserNotifications(data));
+  };
+
+  const fetchTraineeProgressHistory = () => {
+    const data = {
+      apiEndpoint: TRAINEE_PROGRESS_URL,
+    };
+
+    dispatch(getTraineeProgressHistory(data)).then((res) => {
+      if (res.type === "getTraineeProgressHistory/fulfilled") {
+        setProgressHistoryData(res.payload.data);
+        populateGraphData(res.payload.data);
+      }
+    });
+  };
+
+  const handleDownloadAppModalClose = useCallback(() => {
+    setShowDownloadAppPopup(false);
+  }, []);
+
+  const populateGraphData = (history) => {
+    const labels = history.map((item) =>
+      moment(item.date_recorded).format("DD MMM")
+    );
+    const weightData = history.map((item) => item.weight);
+    const bfmData = history.map((item) => item.body_fat_mass);
+    const smmData = history.map((item) => item.skeletal_muscel_mass);
+    const protienData = history.map((item) => item.protien);
+
+    setMyProgressGrapghData({
+      labels,
+      datasets: [
+        {
+          label: t("traineeDashboard.weightText"),
+          borderDash: [5, 5],
+          data: weightData,
+          borderColor: "#67165A",
+          backgroundColor: "rgba(103, 22, 90, 0.40)",
+          pointStyle: "circle",
+          pointRadius: 5,
+          pointHoverRadius: 6,
+        },
+        {
+          label: t("traineeDashboard.smmText"),
+          data: smmData,
+          borderColor: "#F67109",
+          backgroundColor: "rgba(246, 113, 9, 0.40)",
+          pointStyle: "circle",
+          pointRadius: 5,
+          pointHoverRadius: 6,
+        },
+        {
+          label: t("traineeDashboard.bfmText"),
+          data: bfmData,
+          borderColor: "#F6E709",
+          backgroundColor: "rgba(246, 231, 9, 0.40)",
+          pointStyle: "circle",
+          pointRadius: 5,
+          pointHoverRadius: 6,
+        },
+        {
+          label: t("traineeDashboard.proteinText"),
+          data: protienData,
+          borderColor: "#8EF609",
+          backgroundColor: "rgba(142, 246, 9, 0.40)",
+          pointStyle: "circle",
+          pointRadius: 5,
+          pointHoverRadius: 6,
+        },
+      ],
+    });
+  };
+
   const toggleHistory = useCallback(() => {
     setShowHistory(!showHistory);
   }, [showHistory]);
 
-  const navigate = useNavigate();
+  const handleExerciseSubscriptionClick = useCallback(() => {
+    navigate("/trainee/exerciseSubscription");
+  }, [navigate]);
 
   const handleCurrentTrainerClick = useCallback(() => {
     navigate("/trainee/trainerList");
@@ -107,121 +196,17 @@ const Dashboard = () => {
   }, [navigate]);
 
   const handleAddProgressClick = useCallback(() => {
-    setSowAddProgressModal(true);
+    setShowAddProgressModal(true);
   }, []);
 
   const handlePaymentClick = useCallback(() => {
     navigate("/trainee/myWallet");
   }, [navigate]);
 
-  const HistoryData = [
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-    {
-      TDate: "26.7.2023",
-      Weight: "50",
-      SMM: "40",
-      BFM: "30",
-      Proteins: "20",
-    },
-  ];
-
-  const users = [
-    {
-      currentDate: "26/ Dec /2023",
-      Weight: "50 kg",
-      SMM: "30 kg",
-      BFM: "30 kg",
-      Proteins: "30 g / kg",
-    },
-  ];
-
-  const columns = [
-    { label: "Date", dataKey: "currentDate" },
-    { label: "Weight", dataKey: "Weight", align: "center" },
-    { label: "SMM", dataKey: "SMM", align: "center" },
-    { label: "BFM", dataKey: "BFM", align: "center" },
-    { label: "Proteins", dataKey: "Proteins", align: "center" },
-  ];
-
   return (
     <Container fluid>
-      <Row>
+      {loading === "pending" && <LoadingScreen />}
+      <Row className={`${i18n.dir()}`}>
         <Card className="px-3 contentCard bg-transparent">
           <Row>
             <Col lg={3} md={4} className="mb-2">
@@ -230,6 +215,17 @@ const Dashboard = () => {
               </div>
               <Row className="my-3">
                 <Col md={12}>
+                  <FillBtn
+                    className="w-100 mb-2 py-2"
+                    text={t("traineeDashboard.subscribeForExerciseText")}
+                    handleOnClick={handleExerciseSubscriptionClick}
+                    disabled={
+                      user?.has_service_provider_subscription ||
+                      user?.has_exercise_subscription
+                        ? true
+                        : false
+                    }
+                  />
                   <FillBtn
                     className="w-100 mb-2 py-2"
                     text={t("traineeDashboard.myCurrentTrainerText")}
@@ -265,12 +261,12 @@ const Dashboard = () => {
                     <Col md={12}>
                       <div className="d-flex align-items-center justify-content-between">
                         <PageHeading
-                          headingText="My Progress"
+                          headingText={t("traineeDashboard.myProgressText")}
                           categoryText=""
                         />
                         <div className="">
                           <FillBtn
-                            text="Add"
+                            text={t("traineeDashboard.addProgressText")}
                             handleOnClick={handleAddProgressClick}
                           />
                         </div>
@@ -279,8 +275,10 @@ const Dashboard = () => {
                   </Row>
                   <Row>
                     <Col md={12} className="mb-2">
-                      <div className="p-2">
-                        <ProfileProgressBar />
+                      <div className="p-2 ltr">
+                        <ProfileProgressBar
+                          value={user?.get_trainee_progress}
+                        />
                       </div>
                     </Col>
                   </Row>
@@ -294,13 +292,10 @@ const Dashboard = () => {
                               data={myProgressGrapghData}
                             />
                           </div>
-
-                          <div className="mb-3">
-                            <ListingTable data={users} columns={columns} />
-                          </div>
-                          <div className="text-center">
+                          <div className="text-center my-4">
                             <FillBtn
-                              text="View History"
+                              text={t("traineeDashboard.viewHistoryText")}
+                              className="customLetterSpacing"
                               handleOnClick={toggleHistory}
                             />
                           </div>
@@ -311,86 +306,40 @@ const Dashboard = () => {
                             className="overflowScroll p-3"
                             style={{ maxHeight: "65vh", overflowY: "auto" }}
                           >
-                            {HistoryData.map((item, index) => {
+                            {progressHistoryData.map((item, index) => {
                               return (
-                                <Col md={3} className="mb-2" key={index}>
-                                  <ProgressHistoryWrapper
-                                    TDate={item.TDate}
-                                    Weight={item.Weight}
-                                    SMM={item.SMM}
-                                    BFM={item.BFM}
-                                    Proteins={item.Proteins}
-                                  />
+                                <Col
+                                  md={3}
+                                  className={`mb-2 ${i18n.dir()}`}
+                                  key={index}
+                                >
+                                  <ProgressHistoryWrapper data={item} />
                                 </Col>
                               );
                             })}
                           </Row>
                           <div className="text-center pt-3">
                             <FillBtn
-                              text="View Graph"
+                              text={t("traineeDashboard.viewGraphText")}
+                              className="customLetterSpacing"
                               handleOnClick={toggleHistory}
                             />
                           </div>
                         </div>
                       )}
 
-                      <InfoModal
-                        heading={"Add Your Progress"}
+                      <AddProgressModal
+                        heading={t("traineeDashboard.addYourProgressText")}
                         size={"md"}
-                        TOneClassName={"fw-bold mb-4 fs-5"}
                         isOpen={showAddProgressModal}
                         onClose={useCallback(() => {
-                          setSowAddProgressModal(false);
+                          setShowAddProgressModal(false);
                         }, [])}
-                        ModalText1={
-                          <>
-                            <Label className="mb-0 fw-normal small">
-                              Weight
-                            </Label>
-                            <InputField
-                              className="mb-2"
-                              type="text"
-                              placeholder="Weight"
-                            />
-
-                            <Label className="mb-0 fw-normal small">
-                              Skeletal Muscle Mass
-                            </Label>
-                            <InputField
-                              className="mb-2"
-                              type="text"
-                              placeholder="Kg"
-                            />
-
-                            <Label className="mb-0 fw-normal small">
-                              Body Fat Mass
-                            </Label>
-                            <InputField
-                              className="mb-2"
-                              type="text"
-                              placeholder="Kg"
-                            />
-
-                            <Label className="mb-0 fw-normal small">
-                              Protein
-                            </Label>
-                            <InputField
-                              className="mb-2"
-                              type="text"
-                              placeholder="g / kg"
-                            />
-                          </>
-                        }
-                        ButtonOne={<FillBtn className="w-100" text={"Save"} />}
-                        ButtonTwo={
-                          <OutlineBtn
-                            className="w-100"
-                            text={"Cancel"}
-                            handleOnClick={useCallback(() => {
-                              setSowAddProgressModal(false);
-                            }, [])}
-                          />
-                        }
+                        handleRefetchHistory={useCallback(() => {
+                          fetchTraineeProgressHistory();
+                          setShowAddProgressModal(false);
+                          // eslint-disable-next-line react-hooks/exhaustive-deps
+                        }, [])}
                       />
                     </Col>
                   </Row>
@@ -399,6 +348,53 @@ const Dashboard = () => {
             </Col>
           </Row>
         </Card>
+        <InformationModal
+          size={"md"}
+          TOneClassName={"s"}
+          isOpen={showDownloadAppPopup}
+          onClose={handleDownloadAppModalClose}
+          ModalTextOne={
+            <div className="w-100 text-center mt-1 mb-4">
+              <img src={Images.QR_CODE_IMG} alt="qrAppImage" />
+            </div>
+          }
+          ModalTextTwo={
+            <Row className=" justify-content-center align-content-center h-100 m-0">
+              <Col md={6} className="text-center">
+                <div className="w-100 mb-2">
+                  <img
+                    src={Images.APP_STORE_IMG}
+                    className="img-fluid"
+                    alt=""
+                  />
+                </div>
+              </Col>
+              <Col md={6} className="text-center mb-3">
+                <div className="w-100">
+                  <img
+                    src={Images.GOOGLE_PLAY_IMG}
+                    className="img-fluid"
+                    alt=""
+                  />
+                </div>
+              </Col>
+              <div className="text-center w-100 mb-2">
+                <p>
+                  {user?.has_service_provider_subscription
+                    ? t("traineeDashboard.DownloadAppTraineeText")
+                    : t("traineeDashboard.DownloadAppTraineeExerciseText")}
+                </p>
+              </div>
+            </Row>
+          }
+          ButtonThree={
+            <FillBtn
+              className="w-100"
+              text={t("otpVerification.okayText")}
+              handleOnClick={handleDownloadAppModalClose}
+            />
+          }
+        />
       </Row>
     </Container>
   );

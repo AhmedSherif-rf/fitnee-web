@@ -1,4 +1,3 @@
-import ShimmerScreen from "./Skeleton";
 import styles from "./style.module.scss";
 import {
   Card,
@@ -20,9 +19,9 @@ import InformationModal from "../Modal/InformationModal";
 import OutlineBtn from "../../Shared/Buttons/OutlineBtn";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { useState, useCallback, memo, useEffect } from "react";
+import ShimmerScreen from "../Skeleton/serviceProviderListingSkeleton";
 import ServiceProviderListCard from "../../Shared/ServiceProviderListCard";
 import { getServiceProviderGuestMode } from "../../Redux/features/Guest/guestApi";
-import FilterIcon from "../../Assets/Images/serviceProviderListScreen/filterIcon.png";
 import {
   TRAINER_TYPE,
   NUTRITIONIST_TYPE,
@@ -43,7 +42,11 @@ const GuestServiceProviderListWrapper = (props) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
+
+  useEffect(() => {
+    setListingRole(roleType);
+  }, [roleType]);
 
   useEffect(() => {
     const data = {
@@ -83,11 +86,11 @@ const GuestServiceProviderListWrapper = (props) => {
 
   const conditionalHeader = () => {
     if (listingRole === TRAINER_TYPE) {
-      return "Trainers";
+      return t("guest.trainersText");
     } else if (listingRole === NUTRITIONIST_TYPE) {
-      return "Nutritionists";
+      return t("guest.nutritionistsText");
     } else {
-      return "Trainers & Nutritionists";
+      return t("guest.trainerNutritionistText");
     }
   };
 
@@ -100,7 +103,7 @@ const GuestServiceProviderListWrapper = (props) => {
           <ShimmerScreen />
         ) : (
           <>
-            <Row className="align-items-center mb-2">
+            <Row className={`align-items-center mb-2  ${i18n.dir()}`}>
               <Col xs={10} sm={6} className="text-left">
                 <PageHeading
                   headingText={`${t(
@@ -109,32 +112,51 @@ const GuestServiceProviderListWrapper = (props) => {
                   categoryText=""
                 />
               </Col>
-              <Col xs={2} sm={6} className="text-end">
+              <Col
+                xs={2}
+                sm={6}
+                className={`${
+                  i18n.dir() === "ltr" ? "text-end" : "text-start px-3"
+                }`}
+              >
                 <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                   <DropdownToggle data-toggle="dropdown" tag="span">
                     <img
                       className={`${styles.filterIcon}`}
-                      src={FilterIcon}
+                      src={Images.FILTER_ICON}
                       alt="filter-icon"
                     />
                   </DropdownToggle>
                   <DropdownMenu>
                     <DropdownItem
+                      className={
+                        listingRole === TRAINER_TYPE ? "dropdownActive" : ""
+                      }
                       onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
                     >
-                      Trainers
+                      {t("guest.trainersText")}
                     </DropdownItem>
                     <DropdownItem
+                      className={
+                        listingRole === NUTRITIONIST_TYPE
+                          ? "dropdownActive"
+                          : ""
+                      }
                       onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
                     >
-                      Nutritionists
+                      {t("guest.nutritionistsText")}
                     </DropdownItem>
                     <DropdownItem
+                      className={
+                        listingRole === TRAINER_NUTRITIONIST_TYPE
+                          ? "dropdownActive"
+                          : ""
+                      }
                       onClick={() =>
                         handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
                       }
                     >
-                      Both
+                      {t("guest.bothText")}
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
@@ -150,7 +172,7 @@ const GuestServiceProviderListWrapper = (props) => {
                         serviceProvider={serviceProvider}
                         handleOnClick={() =>
                           navigate(
-                            `/guest/serviceProviderProfile/${serviceProvider.uuid}`
+                            `/guest/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider.id}`
                           )
                         }
                       />
@@ -160,7 +182,13 @@ const GuestServiceProviderListWrapper = (props) => {
               {serviceProviderData.length <= 0 && (
                 <Row className="justify-content-center align-items-center mt-5 pt-4">
                   <Col className="text-center" md={4}>
-                    <img img-fluid src={Images.NO_DATA_FOUND_IMG} alt="" />
+                    {loading !== "pending" && (
+                      <img
+                        className="img-fluid"
+                        src={Images.NO_DATA_FOUND_IMG}
+                        alt=""
+                      />
+                    )}
                   </Col>
                 </Row>
               )}
@@ -175,10 +203,7 @@ const GuestServiceProviderListWrapper = (props) => {
                     onClick={handleSeeMoreClick}
                   >
                     <CardBody>
-                      <div
-                        className="w-100 d-flex align-items-center justify-content-center"
-                        style={{ height: "30vh" }}
-                      >
+                      <div className="w-100 d-flex align-items-center justify-content-center h-100">
                         <div className="">
                           <p className="mb-0 fs-4 fw-bold">
                             {t("guest.seeMoreText")}
@@ -199,7 +224,7 @@ const GuestServiceProviderListWrapper = (props) => {
 
               <InformationModal
                 size={"md"}
-                TOneClassName={"fw-bold mb-4 fs-5 text-center"}
+                TOneClassName={"mb-4 fs-5 text-center"}
                 className={"p-4"}
                 isOpen={showSubscriptionInformationModal}
                 onClose={handleSubscriptionInformationModalClose}

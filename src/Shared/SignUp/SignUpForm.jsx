@@ -1371,18 +1371,20 @@ const SignUpForm = () => {
                             </Row>
                           )
                         )}
-                        <span
-                          className="textYellow fs-6 cursorPointer"
-                          onClick={() =>
-                            arrayHelpers.push({
-                              day: "",
-                              starttime: "",
-                              endtime: "",
-                            })
-                          }
-                        >
-                          {t("signup.addMoreText")}
-                        </span>
+                        {values.profile_availability.length < 7 && (
+                          <span
+                            className="textYellow fs-6 cursorPointer"
+                            onClick={() =>
+                              arrayHelpers.push({
+                                day: "",
+                                starttime: "",
+                                endtime: "",
+                              })
+                            }
+                          >
+                            {t("signup.addMoreText")}
+                          </span>
+                        )}
                       </>
                     )}
                   />

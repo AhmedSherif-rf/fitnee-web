@@ -16,7 +16,8 @@ const Notification = () => {
 
   useEffect(() => {
     fetchUserNotifications();
-  }, []); // Fetch notifications when the component mounts
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const markNotificationAsRead = (id) => {
     const data = {

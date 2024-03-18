@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import { useState, useCallback } from "react";
@@ -78,22 +79,24 @@ const ServiceProviders = (props) => {
       serviceProvidersData.forEach((serviceProvider, index) => {
         ServiceProviderListArray.push({
           full_name: (
-            <div className="d-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    serviceProvider?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${serviceProvider?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {serviceProvider?.full_name}
-              </h6>
-            </div>
+            <Link to={`/admin/serviceProviderProfile/${serviceProvider?.uuid}`}>
+              <div className="d-flex align-items-center">
+                <div
+                  className="bgProperties rounded-circle me-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      serviceProvider?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${serviceProvider?.profile_pic})`,
+                  }}
+                ></div>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {serviceProvider?.full_name}
+                </h6>
+              </div>
+            </Link>
           ),
           role: serviceProvider?.role,
           email: serviceProvider?.email,
@@ -167,6 +170,7 @@ const ServiceProviders = (props) => {
     } else {
       setTableData([]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serviceProvidersData]);
 
   const columns = [

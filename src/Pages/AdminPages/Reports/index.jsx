@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
-import { GoEye, GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
+import { GoEye, GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 
 const ContactUs = (props) => {
@@ -16,7 +16,7 @@ const ContactUs = (props) => {
   const users = [
     {
       ReportingUser: (
-        <div className="d-flex align-items-center">
+        <div className="d-md-flex align-items-center">
           <div
             className="bgProperties rounded-circle me-2"
             style={{
@@ -30,7 +30,7 @@ const ContactUs = (props) => {
       ),
       dateTime: "02:00 PM - 03/04/2023",
       ReportingTo: (
-        <div className="d-flex align-items-center">
+        <div className="d-md-flex align-items-center">
           <div
             className="bgProperties rounded-circle me-2"
             style={{

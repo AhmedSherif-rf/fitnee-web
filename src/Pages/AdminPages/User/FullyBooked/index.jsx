@@ -56,7 +56,7 @@ const FullyBooked = (props) => {
       serviceProvidersData.forEach((serviceProvider, index) => {
         ServiceProviderListArray.push({
           full_name: (
-            <div className="d-flex align-items-center">
+            <div className="d-md-flex align-items-center">
               <div
                 className="bgProperties rounded-circle me-2"
                 style={{

@@ -11,8 +11,8 @@ const DoughnutChart = ({ data }) => {
     <div className="h-100">
       <h4 className="fw-bold text-black-custom">FitNee Totalities</h4>
       <div className="d-flex justify-content-center text-black-custom pt-4">
-        <div className="d-fex justify-content-center">
-          <Doughnut data={data}/>
+        <div style={{ width: "100%", height: "350px" }}>
+          <Doughnut data={data} options={{ maintainAspectRatio: false }} />
         </div>
       </div>
     </div>

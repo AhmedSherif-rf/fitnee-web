@@ -13,7 +13,7 @@ const DashboardTable = (props) => {
       >
         <h6 className="fw-bold mb-0">{headingText}</h6>
       </CardHeader>
-      <CardBody className="py-2 px-1">
+      <CardBody className="py-2 px-1 p-0">
         <ListingTable data={data} columns={columns} />
       </CardBody>
       <CardFooter className="text-end bg-transparent border-0 pt-0 mb-2">

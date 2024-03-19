@@ -279,7 +279,7 @@ Input::-webkit-input-placeholder {
 }
 
 .tableBodyWrapperPagination {
-  max-height: 68vh;
+  max-height: 65vh;
   overflow-y: scroll;
 }
 .chatCardFooterHeight {
@@ -569,3 +569,19 @@ Input::-webkit-input-placeholder {
   transition: all 3s ease-in-out;
 }
 
+@media screen and (max-width: 40em) {
+  .responsiveTable {
+    td {
+      .tdBefore {
+        position: absolute;
+        display: block;
+        left: 0.2em !important;
+        width: calc(56% - 20px) !important;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        text-align: left !important;
+        font-weight: 600;
+      }
+    }
+  }
+}

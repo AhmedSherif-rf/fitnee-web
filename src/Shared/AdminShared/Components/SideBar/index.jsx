@@ -37,6 +37,7 @@ const SideBar = ({ isOpen, toggle }) => (
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
+            onClick={toggle}
             to={"/admin/dashboard"}
           >
             <RxDashboard />
@@ -45,6 +46,7 @@ const SideBar = ({ isOpen, toggle }) => (
         </NavItem>
         <NavItem>
           <NavLink
+            onClick={toggle}
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
             to={"/admin/reviewRequest"}
@@ -55,6 +57,7 @@ const SideBar = ({ isOpen, toggle }) => (
         </NavItem>
         <NavItem>
           <NavLink
+            onClick={toggle}
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
             to={"/admin/editProfileRequest"}
@@ -63,11 +66,17 @@ const SideBar = ({ isOpen, toggle }) => (
             Edit Profile Requests
           </NavLink>
         </NavItem>
-        <SubMenu title="Users" icon={<GoPersonAdd />} items={submenus[0]} />
+        <SubMenu
+          title="Users"
+          toggler={toggle}
+          icon={<GoPersonAdd />}
+          items={submenus[0]}
+        />
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
+            onClick={toggle}
             to={"/admin/exercises/viewExercises"}
           >
             <FaRunning />
@@ -78,23 +87,31 @@ const SideBar = ({ isOpen, toggle }) => (
           title="Wallet System"
           icon={<GiWallet />}
           items={submenus[1]}
+          toggler={toggle}
         />
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
             to={"/admin/reports"}
+            onClick={toggle}
           >
             <GoLog />
             Reports
           </NavLink>
         </NavItem>
-        <SubMenu title="Feedback" icon={<GoPaste />} items={submenus[2]} />
+        <SubMenu
+          title="Feedback"
+          toggler={toggle}
+          icon={<GoPaste />}
+          items={submenus[2]}
+        />
         <NavItem>
           <NavLink
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
             to={"/admin/community"}
+            onClick={toggle}
           >
             <IoChatboxEllipsesOutline />
             Community
@@ -105,6 +122,7 @@ const SideBar = ({ isOpen, toggle }) => (
             className="py-3 d-flex align-items-center gap-2"
             tag={Link}
             to={"/admin/settings"}
+            onClick={toggle}
           >
             <GoGear />
             Settings

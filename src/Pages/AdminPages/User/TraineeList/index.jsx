@@ -7,7 +7,15 @@ import PageHeading from "../../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
-import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Col,
+  Container,
+  Row,
+} from "reactstrap";
 import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
 import {
   ADMIN_TRAINEE_LISTING_URL,
@@ -49,7 +57,7 @@ const TraineeList = (props) => {
       traineesData.forEach((trainee) => {
         traineeListArray.push({
           name: (
-            <div className="d-flex align-items-center">
+            <div className="d-md-flex align-items-center">
               <div
                 className="bgProperties rounded-circle me-2"
                 style={{
@@ -125,22 +133,20 @@ const TraineeList = (props) => {
   ];
 
   return (
-    <Row className="h-100">
-      {loading === "pending" && <LoadingScreen />}
-      <Col md={12}>
-        <Card className="border-0 h-100 text-start">
-          <CardHeader className="bg-transparent border-0 p-0">
-            <PageHeading headingText="Trainee List" categoryText="" />
-          </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
-            <Row className="justify-content-end py-1">
-              <Col md={4}>
+    <Container>
+      <Row className="h-100">
+        {loading === "pending" && <LoadingScreen />}
+        <Col md={12}>
+          <Card className="border-0 h-100 text-start border border-danger">
+            <CardHeader className="bg-transparent border-0 p-0 d-md-flex align-items-center justify-content-between">
+              <PageHeading headingText="Trainee List" categoryText="" />
+              <div className="">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",
                     required: true,
                     className:
-                      "form-control-lg w-100 py-1 px-4 customPhoneInput border",
+                      "form-control-lg w-100 py-2  px-4 customPhoneInput border-0 ",
                   }}
                   country={"sa"}
                   value={phoneNumber}
@@ -150,21 +156,23 @@ const TraineeList = (props) => {
                     setPhoneNumber(value);
                   }}
                 />
-              </Col>
-            </Row>
-            <ListingTable data={tableData} columns={columns} />
-          </CardBody>
-          <CardFooter className="bg-transparent text-end pb-0 pt-2">
-            {totalSize > PER_PAGE_COUNT && (
-              <Pagination
-                size={totalSize}
-                handlePageChange={handlePageChange}
-              />
-            )}
-          </CardFooter>
-        </Card>
-      </Col>
-    </Row>
+              </div>
+            </CardHeader>
+            <CardBody className="tableBodyWrapperPagination p-0">
+              <ListingTable data={tableData} columns={columns} />
+            </CardBody>
+            <CardFooter className="bg-transparent text-end pb-0 pt-2">
+              {totalSize > PER_PAGE_COUNT && (
+                <Pagination
+                  size={totalSize}
+                  handlePageChange={handlePageChange}
+                />
+              )}
+            </CardFooter>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

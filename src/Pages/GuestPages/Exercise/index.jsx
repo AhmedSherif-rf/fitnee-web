@@ -86,7 +86,7 @@ const Exercise = (props) => {
                 <div className="text-center w-100">
                   <FillBtn
                     className="py-2"
-                    text="Show More"
+                    text={t("guest.seeMoreText")}
                     handleOnClick={handleSeeMoreClick}
                   />
                 </div>

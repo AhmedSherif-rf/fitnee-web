@@ -76,12 +76,12 @@ const TraineeList = (props) => {
             <div className="d-flex align-items-center justify-content-center">
               <div
                 className={`me-2 ${
-                  trainee?.is_active ? "bg-success" : "bg-warning"
+                  trainee?.is_deleted ? "bg-danger" : trainee?.is_active ? "bg-success" : "bg-warning"
                 } rounded-circle`}
                 style={{ minWidth: "8px", minHeight: "8px" }}
               ></div>
               <span>
-                {trainee?.is_active ? "Active" : "Incomplete Profile"}
+                {trainee?.is_deleted ? "Deleted" : trainee?.is_active ? "Active" : "Incomplete Profile"}
               </span>
             </div>
           ),

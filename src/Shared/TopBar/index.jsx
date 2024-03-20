@@ -104,7 +104,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   ] = useState(false);
 
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
-  const [stopScrolling, setStopScrolling] = useState(false);
 
   const [backgroundClass, setBackgroundClass] = useState(
     isPublic
@@ -113,11 +112,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         : "bg-transparent"
       : "bg-transparent"
   );
-
-  const handleMouseOver = () => {
-    setStopScrolling(true);
-    document.body.style.overflow = "hidden";
-  };
 
   const textClass = "text-white";
 
@@ -154,7 +148,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
   const toggleNavbar = () => {
     setCollapsed(!collapsed);
-    setStopScrolling(false);
     document.body.style.overflow = "auto";
   };
 
@@ -532,11 +525,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             className={`text-white w-100 ${styles.collapseScss}`}
           >
             <div
-              className={`vh-100 bg-transparent ${
-                stopScrolling ? "no-scroll" : "activeScroll"
-              }`}
-              // onClick={toggleNavbar}
-              onMouseOver={handleMouseOver}
+              className={`vh-100 bg-transparent ${"activeScroll"}`}
             >
               <Nav
                 className={`pt-2 ${styles.togglerNav} customBgDark caret`}

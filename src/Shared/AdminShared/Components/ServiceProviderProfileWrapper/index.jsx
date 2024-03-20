@@ -69,7 +69,7 @@ const ServiceProviderProfileWrapper = (props) => {
           ),
           price: (
             <p className="fw-bold mb-0">
-              {CURRENCY} {membership?.subscription?.price}
+              {CURRENCY} {membership?.transition?.current_price}
             </p>
           ),
           duration: (

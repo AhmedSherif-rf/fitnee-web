@@ -7,7 +7,11 @@ import { Col, Container, Row, Card } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import { CHECK_PAYMENT_STATUS_URL } from "../../../utils/constants";
+import {
+  CHECK_PAYMENT_STATUS_URL,
+  NUTRITIONIST_ROLE,
+  TRAINER_ROLE,
+} from "../../../utils/constants";
 import { checkPaymentStatus } from "../../../Redux/features/Subscription/subscriptionApi";
 
 const AppDownloadLink = () => {
@@ -65,7 +69,10 @@ const AppDownloadLink = () => {
                           <span className="fw-bold">
                             {serviceProvider?.full_name}
                           </span>
-                          {t("appLink.downloadAppText")}
+                          {serviceProvider?.role === TRAINER_ROLE &&
+                            t("appLink.downloadAppTrainerText")}
+                          {serviceProvider?.role === NUTRITIONIST_ROLE &&
+                            t("appLink.downloadAppNutritionistText")}
                         </p>
                         <p>{t("appLink.downloadAppSecondText")}</p>
                       </>

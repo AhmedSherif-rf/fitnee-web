@@ -114,7 +114,7 @@ let Images = {
   ARROW_UP_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/ArrowUp.svg",
   CREDIT_CARD_IMG:
-    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/CreditCardImage.svg",
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/CreditCardImg.png",
   PAYMENT_METHOD_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/PaymentMethod.png",
   CARD_ICON_IMG:
@@ -148,9 +148,9 @@ let Images = {
   QR_CODE_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/QRImage.svg",
 
-    //============================================loading============================
-    
-    POSTER_LOADING_GIF: require("../../Assets/Images/WalkPoster.gif"),
+  //============================================loading============================
+
+  POSTER_LOADING_GIF: require("../../Assets/Images/WalkPoster.gif"),
 };
 
 export default Images;

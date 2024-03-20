@@ -11,11 +11,9 @@
 .fillBtn {
   background-color: $yellow !important;
   color: $black !important;
-  @include glowEffect(-5%, -5%, 110%);
 }
 .OutlineBtn {
   background-color: $white !important;
   border: 2px solid $yellow !important;
   color: $light-gray !important;
-  @include glowEffect(-5%, -5%, 110%);
 }

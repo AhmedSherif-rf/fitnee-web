@@ -106,7 +106,7 @@ const Dashboard = (props) => {
       platformFeedbacks.forEach((feedback) =>
         platformFeedbacksArray.push({
           reviewer: (
-            <div className="d-flex align-items-center">
+            <div className="d-md-flex align-items-center">
               <div
                 className="bgProperties rounded-circle me-2"
                 style={{

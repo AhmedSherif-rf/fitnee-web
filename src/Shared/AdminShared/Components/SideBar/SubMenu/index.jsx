@@ -5,13 +5,13 @@ import { Collapse, NavItem, NavLink } from "reactstrap";
 const SubMenu = (props) => {
   const [collapsed, setCollapsed] = useState(true);
   const toggle = () => setCollapsed(!collapsed);
-  const { icon, title, items } = props;
+  const { icon, title, items,toggler } = props;
 
   return (
     <div>
       <NavItem onClick={toggle}>
         <NavLink className="dropdown-toggle justify-content-between pe-5">
-          <div className="py-2 d-flex align-items-center gap-2">
+          <div className="py-2 d-flex align-items-center gap-2" >
             {icon}
             {title}
           </div>
@@ -19,7 +19,7 @@ const SubMenu = (props) => {
       </NavItem>
       <Collapse isOpen={!collapsed} navbar className="bg-dark pl-5">
         {items.map((item, index) => (
-          <NavItem key={index}>
+          <NavItem key={index} onClick={toggler}>
             <NavLink tag={Link} to={item.target}>
               {item.title}
             </NavLink>

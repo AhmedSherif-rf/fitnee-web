@@ -46,21 +46,32 @@ const Topbar = ({ toggleSidebar }) => {
     if (hour >= 6 && hour < 12) {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="textYellow fs-5 d-md-block d-none">Good Morning</span>
+          <span className="textYellow fs-5 d-md-block d-none">
+            Good Morning
+          </span>
+          <span className="textYellow fs-5 d-md-none d-block">Morning</span>
           <BsFillSunriseFill className="textYellow fw-bold fs-3" />
         </span>
       );
     } else if (hour >= 12 && hour < 16) {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="textYellow fs-5 d-md-block d-none">Good Afternoon</span>
+          <span className="textYellow fs-5 d-md-block d-none">
+            Good Afternoon
+          </span>{" "}
+          <span className="textYellow fs-5 d-md-none d-block">Afternoon</span>
           <IoSunnySharp className="textYellow fw-bold fs-3" />
         </span>
       );
     } else if (hour >= 16 && hour < 19) {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="text-black-custom fs-5 d-md-block d-none">Good Evening</span>
+          <span className="text-black-custom fs-5 d-md-block d-none">
+            Good Evening
+          </span>
+          <span className="text-black-custom fs-5 d-md-none d-block">
+            Evening
+          </span>
           <BsSunsetFill className="fw-bold fs-3" style={{ color: "#F7BB02" }} />
         </span>
       );
@@ -68,7 +79,10 @@ const Topbar = ({ toggleSidebar }) => {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
           <span className="fs-5 d-md-block d-none">Good Night</span>
-          <IoMdCloudyNight className="text-white fw-bold fs-3 p-1 rounded-4"style={{ background: "#030D48" }} />
+          <IoMdCloudyNight
+            className="text-white fw-bold fs-3 p-1 rounded-4"
+            style={{ background: "#030D48" }}
+          />
         </span>
       );
     }

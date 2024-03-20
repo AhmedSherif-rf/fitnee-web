@@ -212,8 +212,8 @@ const PromoCode = (props) => {
                             t(errors.expire_date)}
                         </p>
                       </Col>
-                      <Row className="justify-content-center mt-2">
-                        <Col md={5} className="text-end">
+                      <Row className="mt-2 m-auto justify-content-center">
+                        <Col md={5} className="">
                           <FillBtn
                             type={"submit"}
                             text={"Submit Code"}

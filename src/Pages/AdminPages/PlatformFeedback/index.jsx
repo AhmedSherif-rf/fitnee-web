@@ -79,7 +79,7 @@ const PlatformFeedback = () => {
       platformFeedback.forEach((feedback) =>
         feedbackArray.push({
           reviewer: (
-            <div className="d-flex align-items-center">
+            <div className="d-md-flex align-items-center">
               <div
                 className="bgProperties rounded-circle me-2"
                 style={{
@@ -146,10 +146,10 @@ const PlatformFeedback = () => {
       {loading === "pending" && <LoadingScreen />}
       <Col md={12}>
         <Card className="border-0 h-100 text-start">
-          <CardHeader className="bg-transparent border-0 p-0">
+          <CardHeader className="bg-transparent border-0">
             <PageHeading headingText="Platform Feedback" categoryText="" />
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
+          <CardBody className="tableBodyWrapperPagination p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

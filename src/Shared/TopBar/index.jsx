@@ -250,7 +250,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             {showNavItems && (
               <>
                 <NavbarToggler
-                  className={"textYellow d-md-none d-block pb-2"}
+                  className={"textYellow d-lg-none d-block pb-2"}
                   onClick={toggleNavbar}
                 >
                   <FaBars />
@@ -339,7 +339,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                   </Nav>
                 )}
                 {!isPrivate && roleType === null && (
-                  <Nav className={`d-md-flex d-none gap-2`}>
+                  <Nav className={`d-lg-flex d-none gap-2`}>
                     <UncontrolledDropdown nav inNavbar>
                       <DropdownToggle nav caret>
                         <img
@@ -390,7 +390,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                 )}
                 {!isGuest && !isPublic && (
                   <Nav
-                    className={`d-md-flex d-none ${styles.nav} text-black-custom`}
+                    className={`d-lg-flex d-none  ${styles.nav} text-black-custom`}
                   >
                     <UncontrolledDropdown>
                       <DropdownToggle className="p-0" nav>

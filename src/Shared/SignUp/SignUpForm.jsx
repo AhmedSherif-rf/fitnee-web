@@ -842,19 +842,17 @@ const SignUpForm = () => {
                               <Field
                                 name={`certificate_title.${index}`}
                                 type="text"
-                                className="form-control-lg certificatioTitle bgBlur"
-                                style={{ width: "186px" }}
+                                className="form-control-lg certificationTitle bgBlur"
+                                style={{ width: "100%" }}
                                 placeholder={t("signup.addTitleText")}
                               />
                               <img
                                 src={URL.createObjectURL(image)}
                                 alt={`${index + 1}`}
-                                className="uploaded-image BorderRadius"
+                                className=" BorderRadius bgProperties"
                                 style={{
-                                  width: "186px",
+                                  width: "100%",
                                   height: "170px",
-                                  backgroundSize: "cover",
-                                  backgroundPosition: "center",
                                 }}
                               />
                               <button

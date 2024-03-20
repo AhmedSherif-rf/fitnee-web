@@ -15,22 +15,22 @@ const AppDownloadLink = () => {
 
   return (
     <Container fluid>
-      <Row>
+      <Row className="">
         <Col md="12">
           <Card className="BorderRadius contentCard px-3">
-            <Row>
+            <Row className="vh-100">
               <Col md="6" className="text-center">
-                <div className=" pt-3">
-                  <h3 className="py-3 fw-bold">
+                <div className=" pt-2">
+                  <h3 className="py-2 fw-bold">
                     {t("appLink.congratulationsText")}
                   </h3>
-                  <p className="px-md-5 mx-md-2">
+                  <p className="px-md-2 mx-md-2">
                     {t("appLink.adminReviewText")}
                   </p>
-                  <p className="py-4 fw-bold">
+                  <p className="py-2 fw-bold">
                     {t("appLink.ticketIdText")}
                     <div
-                      className="text-center fw-bold mb-3 fs-4 cursorPointer"
+                      className="text-center fw-bold mb-2 fs-4 cursorPointer"
                       onClick={() => {
                         functions.copyToClipboard(requestId);
                         setIsRequestIdCopied(true);
@@ -40,7 +40,6 @@ const AppDownloadLink = () => {
                       }}
                     >
                       {requestId}
-                      {"  "}
                       <span>
                         {isRequestIdCopied ? (
                           <IoMdCheckmarkCircleOutline color="#F6E709" />
@@ -51,8 +50,8 @@ const AppDownloadLink = () => {
                     </div>
                   </p>
                 </div>
-                <div className="text-center">
-                  <img className="w-75" src={Images.CREDIT_CARD_IMG} alt="" />
+                <div className="text-center d-flex align-items-center justify-content-center">
+                  <img className={`CreditCardImg`} src={Images.CREDIT_CARD_IMG} alt="" />
                 </div>
               </Col>
               <Col md="6">

@@ -1721,7 +1721,7 @@ const TermAndCondition = () => {
             <Col md={4}>
               <OutlineBtn
                 handleOnClick={goBack}
-                className="w-100 py-3"
+                className="w-100 py-3 my-3"
                 text={t("termAndCondition.doneButtonText")}
               />
             </Col>

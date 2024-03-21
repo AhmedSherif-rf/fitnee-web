@@ -1,11 +1,11 @@
 //===============Currency=========================
 export const CURRENCY = "SAR";
-//===============AdminCredentials==================
+//===============AdminCredentials=================
 export const ADMIN_EMAIL = "admin@admin.com";
-//======================paginationParams============
+//======================paginationParams==========
 export const PAGE_RANGE = 2;
 export const PER_PAGE_COUNT = 8;
-//======================languages===================
+//======================languages==================
 export const ARABIC_LANGUAGE = "ar";
 export const ENGLISH_LANGUAGE = "en";
 export const DEFAULT_LANGUAGE = "en";

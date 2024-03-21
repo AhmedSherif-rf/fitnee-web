@@ -163,17 +163,17 @@ const ReviewRequest = () => {
       <Col md={12}>
         <Card className="border-0 h-100 text-start">
           <CardHeader className="bg-transparent border-0 p-0">
-            <PageHeading headingText="Review Requests" categoryText="" />
-          </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
-            <Row className="justify-content-end py-1">
-              <Col md={4}>
+            <Row className="align-items-center py-1">
+              <Col md={6}>
+                <PageHeading headingText="Review Requests" categoryText="" />
+              </Col>
+              <Col md={6} className="pe-4">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",
                     required: true,
                     className:
-                      "form-control-lg w-100 py-1 px-4 customPhoneInput border",
+                      "form-control-lg w-100 py-3 px-4 mb-0 customPhoneInput border-0",
                   }}
                   country={"sa"}
                   value={stcPayNumber}
@@ -185,6 +185,8 @@ const ReviewRequest = () => {
                 />
               </Col>
             </Row>
+          </CardHeader>
+          <CardBody className="tableBodyWrapperPagination">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

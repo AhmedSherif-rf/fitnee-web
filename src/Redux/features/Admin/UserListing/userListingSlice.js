@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  getServiceProviderListing,
   getTraineeListing,
   userBlockUnblock,
   getTraineeDetail,
+  getExerciseSubscription,
+  getServiceProviderListing,
 } from "./userListingApi";
 
 export const userListingSlice = createSlice({
@@ -56,6 +57,17 @@ export const userListingSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(getTraineeDetail.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getExerciseSubscription.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getExerciseSubscription.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(getExerciseSubscription.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

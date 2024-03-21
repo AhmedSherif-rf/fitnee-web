@@ -144,7 +144,7 @@ const TraineeList = (props) => {
   ];
 
   return (
-    <Container>
+    <Container fluid>
       <Row className="h-100">
         {loading === "pending" && <LoadingScreen />}
         <Col md={12}>

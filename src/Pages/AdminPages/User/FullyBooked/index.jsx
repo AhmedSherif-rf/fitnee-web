@@ -105,7 +105,7 @@ const FullyBooked = (props) => {
       setTableData([]);
     }
   }, [serviceProvidersData]);
-  console.log(serviceProvidersData, "check fully booked serviceProvider");
+
   const columns = [
     { label: "FullName", dataKey: "full_name" },
     {

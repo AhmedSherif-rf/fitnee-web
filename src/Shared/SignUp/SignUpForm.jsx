@@ -1208,7 +1208,6 @@ const SignUpForm = () => {
                   <InputField
                     className="py-3 px-4"
                     type="text"
-                    placeholder={t("signup.seeFoodText")}
                     name="food_sensitive"
                     onChangeHandle={handleChange}
                     onBlurHandle={handleBlur}
@@ -1534,7 +1533,7 @@ const SignUpForm = () => {
               </Row>
             )}
 
-            <Row className="pb-5">
+            <Row className="mb-5 pb-2">
               <Col md={12}>
                 <FillBtn
                   type={"submit"}

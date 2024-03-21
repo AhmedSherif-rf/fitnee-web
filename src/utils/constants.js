@@ -4,7 +4,7 @@ export const CURRENCY = "SAR";
 export const ADMIN_EMAIL = "admin@admin.com";
 //======================paginationParams============
 export const PAGE_RANGE = 2;
-export const PER_PAGE_COUNT = 20;
+export const PER_PAGE_COUNT = 8;
 //======================languages===================
 export const ARABIC_LANGUAGE = "ar";
 export const ENGLISH_LANGUAGE = "en";

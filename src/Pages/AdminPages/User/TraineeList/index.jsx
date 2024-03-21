@@ -57,22 +57,24 @@ const TraineeList = (props) => {
       traineesData.forEach((trainee) => {
         traineeListArray.push({
           name: (
-            <div className="d-md-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    trainee?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${trainee?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {`${trainee?.first_name} ${trainee?.last_name}`}
-              </h6>
-            </div>
+            <Link to={`/admin/traineeProviderProfile/${trainee?.id}`}>
+              <div className="d-md-flex align-items-center">
+                <div
+                  className="bgProperties rounded-circle me-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      trainee?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${trainee?.profile_pic})`,
+                  }}
+                ></div>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {`${trainee?.first_name} ${trainee?.last_name}`}
+                </h6>
+              </div>
+            </Link>
           ),
           role: trainee?.role,
           email: trainee?.email,
@@ -81,12 +83,20 @@ const TraineeList = (props) => {
             <div className="d-flex align-items-center justify-content-center">
               <div
                 className={`me-2 ${
-                  trainee?.is_active ? "bg-success" : "bg-warning"
+                  trainee?.is_deleted
+                    ? "bg-danger"
+                    : trainee?.is_active
+                    ? "bg-success"
+                    : "bg-warning"
                 } rounded-circle`}
                 style={{ minWidth: "8px", minHeight: "8px" }}
               ></div>
               <span>
-                {trainee?.is_active ? "Active" : "Incomplete Profile"}
+                {trainee?.is_deleted
+                  ? "Deleted"
+                  : trainee?.is_active
+                  ? "Active"
+                  : "Incomplete Profile"}
               </span>
             </div>
           ),

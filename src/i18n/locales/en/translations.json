@@ -505,7 +505,7 @@
     "subscribeText": "Subscribe",
     "availableHoursText": "Available Hours",
     "qualificationExperienceText": "Qualification and Experience",
-    "areaSpecialtyText": "Area of Specialty",
+    "areaSpecialtyText": "Area of Speciality",
     "bodyBuildingText": "Body Building ",
     "powerLiftingText": "Power Lifting",
     "commentsText": "Comments",
@@ -670,7 +670,7 @@
     "inBodyText": "InBody",
     "totalBodyText": "Total Body Water (litre)",
     "protienText": "Protein (g / kg)",
-    "selectAreaOfSpecialtyText": "Select area of specialty",
+    "selectAreaOfSpecialtyText": "Select area of speciality",
     "myGoalText": "My goal",
     "looseWeightText": "I want to lose my 5kg weight in 4 weeks",
     "trainingGoalText": "Training goal",
@@ -792,11 +792,12 @@
     "congratulationsText": "Congratulations",
     "getAppText": "GET APP",
     "youHaveSubscribedWithText": "You have subscribed with",
-    "downloadAppText": ", your service provider will review your profile and get back to you shortly, please download \"FitNee\" app and enable the notification.",
+    "downloadAppTrainerText": ", your trainer will review your profile and get back to you shortly, please download \"FitNee\" app and enable the notification.",
+    "downloadAppNutritionistText": ", your nutritionist will review your profile and get back to you shortly, please download \"FitNee\" app and enable the notification.",
     "downloadAppSecondText": "Be informed that you have the right to cancel your subscription for any reason within 72 hours and your money will be in your wallet in the app so you can re-subscribe with other trainer/nutrition specialist. Manage your profile and contact your trainer/nutrition by downloading the app.",
     "exerciseDownloadText": "Congratulations on your subscription. Download the FitNee app to access your workout exercises.",
     "ticketIdText": "Ticket ID",
-    "adminReviewText": "The admin will review your profile and get back to you shortly by email, please keep checking your emails. Meanwhile, you can download the app with by accessing the below link."
+    "adminReviewText": "The admin will review your profile and get back to you shortly by email, please keep checking your emails. Meanwhile, you can download the App by scanning the QR code or from the Google Play Store/Apple Store."
   },
   "messages": {
     "paymentFailedText": "Oops! Payment unsuccessful. It seems like there was an issue processing your payment. Please try again or check your payment details.",

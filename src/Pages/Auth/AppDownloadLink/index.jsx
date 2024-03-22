@@ -36,7 +36,7 @@ const AppDownloadLink = () => {
                         setIsRequestIdCopied(true);
                         setTimeout(() => {
                           setIsRequestIdCopied(false);
-                        }, 500);
+                        }, 1000);
                       }}
                     >
                       {requestId}

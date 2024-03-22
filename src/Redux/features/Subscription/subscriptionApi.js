@@ -37,7 +37,13 @@ export const checkPaymentStatus = createAsyncThunk(
       } else if (error?.response?.data?.error?.Messages) {
         Toaster.error(error?.response?.data?.error?.Messages);
       } else if (error?.response?.data?.error?.Message) {
-        Toaster.error(error?.response?.data?.error?.Message);
+        if (typeof error?.response?.data?.error?.Message === "string") {
+          Toaster.error(error?.response?.data?.error?.Message);
+        } else {
+          Toaster.error(
+            error?.response?.data?.error?.Message?.result?.description
+          );
+        }
       }
       return thunkAPI.rejectWithValue(error?.response?.data);
     }

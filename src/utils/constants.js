@@ -1,6 +1,6 @@
 //===============Currency=========================
 export const CURRENCY = "SAR";
-//===============AdminCredentials==================
+//===============AdminCredentials=================
 export const ADMIN_EMAIL = "admin@admin.com";
 //======================paginationParams===========
 export const PAGE_RANGE = 2;

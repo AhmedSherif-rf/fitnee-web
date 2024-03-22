@@ -1,28 +1,10 @@
 @import "../../../Assets/Scss/variables.scss";
-
-.teamMemberWrapperFirst {
-  background-color: $nude-color-1;
-  border-radius: 18px;
-}
-
-.teamMemberWrapperSecond {
-  background-color: $nude-color-2;
-  border-radius: 18px;
-}
-
-.teamMemberWrapperThird {
-  background-color: $nude-color-3;
-  border-radius: 18px;
-}
-
-.teamMemberWrapperFourth {
-  background-color: $nude-color-4;
-  border-radius: 18px;
+.bgCommunity{
+  background-color: $btn-hover;
 }
 .cardHovered {
   transform: scale(1.4);
   transition: transform 0.5s;
-  margin-right: 20px;
 }
 
 .chatCardFooter {

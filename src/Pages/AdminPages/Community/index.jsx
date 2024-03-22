@@ -29,7 +29,7 @@ const Community = (props) => {
       }
     });
     return () => unsubscribe();
-  }, []);
+  },);
 
   useEffect(() => {
     if (messageEl.current) {
@@ -89,28 +89,19 @@ const Community = (props) => {
             <h6 className="mb-0 fw-bold text-start d-md-none d-block text-black-custom">
               Members
             </h6>
-            <Card className={`onlyBorderRadius chatCardFooterHeight`}>
+            <Card className={`onlyBorderRadius chatCardFooterHeight p-3`}>
               {groupMembers.map((groupMember, index) => {
                 const member = getMemberData(groupMember);
-                const teamMemberCssClass =
-                  (index + 1) % 2 === 0
-                    ? (index + 1) % 4 === 0
-                      ? "teamMemberWrapperFirst"
-                      : "teamMemberWrapperFourth"
-                    : (index + 1) % 3 === 0
-                    ? "teamMemberWrapperSecond"
-                    : "teamMemberWrapperThird";
-
                 return (
                   <Col
                     md={12}
                     key={index}
                     onMouseOver={() => setHoveredIndex(index)}
                     onMouseOut={() => setHoveredIndex(false)}
-                    className={`d-flex mb-1 align-items-center py-1 ${teamMemberCssClass}`}
+                    className={`d-flex mb-1 align-items-center py-1 bgCommunity rounded-4 ps-1`}
                   >
                     <div
-                      className={`bgProperties rounded-circle ${
+                      className={`bgProperties rounded-circle  ${
                         hoveredIndex === index ? "cardHovered" : ""
                       }`}
                       style={{
@@ -123,7 +114,7 @@ const Community = (props) => {
                         height: "45px",
                       }}
                     ></div>
-                    <small className="cardHoverTex">{member?.name}</small>
+                    <small className="ms-3 fw-bold">{member?.name}</small>
                   </Col>
                 );
               })}
@@ -151,7 +142,7 @@ const Community = (props) => {
             </Card>
             <CardFooter className="chatCardFooter border-0 bg-transparent">
               <div className="position-absolute chatButton ">
-                <LuSend className="fs-2 textParrotGreen" />
+                <LuSend className="fs-3 textParrotGreen" />
               </div>
               <InputField
                 type="text"

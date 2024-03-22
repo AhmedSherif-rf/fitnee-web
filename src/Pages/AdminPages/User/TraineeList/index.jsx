@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import { useState, useCallback } from "react";
+import React, { useEffect, Link } from "react";
 import Pagination from "../../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../../Shared/Headings/PageHeading";
@@ -148,26 +147,30 @@ const TraineeList = (props) => {
       <Row className="h-100">
         {loading === "pending" && <LoadingScreen />}
         <Col md={12}>
-          <Card className="border-0 h-100 text-start border border-danger">
-            <CardHeader className="bg-transparent border-0 p-0 d-md-flex align-items-center justify-content-between">
-              <PageHeading headingText="Trainee List" categoryText="" />
-              <div className="">
-                <PhoneInput
-                  inputProps={{
-                    name: "stc_pay",
-                    required: true,
-                    className:
-                      "form-control-lg w-100 py-2  px-4 customPhoneInput border-0 ",
-                  }}
-                  country={"sa"}
-                  value={phoneNumber}
-                  className="border ltr"
-                  onChange={(value) => {
-                    setPage(1);
-                    setPhoneNumber(value);
-                  }}
-                />
-              </div>
+          <Card className="border-0 h-100 text-start">
+            <CardHeader className="bg-transparent border-0 p-0">
+              <Row className="align-items-center">
+                <Col md={6}>
+                  <PageHeading headingText="Trainee List" categoryText="" />
+                </Col>
+                <Col md={6} className="pe-3">
+                  <PhoneInput
+                    inputProps={{
+                      name: "stc_pay",
+                      required: true,
+                      className:
+                        "form-control-lg w-100 py-3 px-4 customPhoneInput border-0",
+                    }}
+                    country={"sa"}
+                    value={phoneNumber}
+                    className="border ltr"
+                    onChange={(value) => {
+                      setPage(1);
+                      setPhoneNumber(value);
+                    }}
+                  />
+                </Col>
+              </Row>
             </CardHeader>
             <CardBody className="tableBodyWrapperPagination p-0">
               <ListingTable data={tableData} columns={columns} />

@@ -128,23 +128,21 @@ const EditProfileRequestModal = (props) => {
                         {values.certificate_files.map((image, index) => (
                           <div
                             key={index}
-                            className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border"
+                            className="col-sm-12 col-md-2 col-lg-3 col-xl-3 mx-2 position-relative BorderRadius"
                           >
                             <Field
                               name={`certificates.${index}`}
                               type="text"
-                              className="form-control-lg certificatioTitle bgBlur"
+                              className="form-control-lg certificationTitle bgBlur"
                               placeholder="Add title"
                             />
                             <img
                               src={URL.createObjectURL(image)}
                               alt={`${index + 1}`}
-                              className="uploaded-image BorderRadius"
+                              className="uploaded-image BorderRadius bgProperties w-100"
                               style={{
-                                width: "100%",
                                 height: "170px",
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
+                           
                               }}
                             />
                             <button
@@ -176,7 +174,7 @@ const EditProfileRequestModal = (props) => {
                         ))}
                         <Label
                           id="UploadImgLabel"
-                          className="BorderRadius text-center mb-0"
+                          className="BorderRadius text-center mb-0 my-2"
                           style={{
                             minWidth: "220px",
                             maxHeight: "170px",

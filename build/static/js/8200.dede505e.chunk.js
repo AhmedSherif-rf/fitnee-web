@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfitnee_web=self.webpackChunkfitnee_web||[]).push([[8200],{379:function(e,n,s){s.r(n);s(2791);var r=s(7823),c=s(3009),i=s(9773),d=s(3464),t=s(1493),u=s(184);n.default=function(e){return(0,u.jsx)(r.Z,{fluid:!0,children:(0,u.jsx)(c.Z,{children:(0,u.jsx)(i.Z,{md:"12",children:(0,u.jsx)(d.Z,{className:"BorderRadius contentCard",children:(0,u.jsx)(t.Z,{})})})})})}}}]);
+//# sourceMappingURL=8200.dede505e.chunk.js.map

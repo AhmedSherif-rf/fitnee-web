@@ -139,6 +139,7 @@ const UserList = (props) => {
               <Pagination
                 size={totalSize}
                 handlePageChange={handlePageChange}
+                page={page}
               />
             )}
           </CardFooter>

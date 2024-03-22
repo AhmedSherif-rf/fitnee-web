@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { PER_PAGE_COUNT, PAGE_RANGE } from "../../utils/constants";
 
-const pagination = ({ size, handlePageChange }) => {
+const Pagination = ({ size, handlePageChange, page }) => {
   return (
     <>
       <ReactPaginate
@@ -17,9 +17,10 @@ const pagination = ({ size, handlePageChange }) => {
         renderOnZeroPageCount={null}
         containerClassName={"pagination"}
         activeLinkClassName={"activePageLink"}
+        forcePage={page - 1}
       />
     </>
   );
 };
 
-export default memo(pagination);
+export default memo(Pagination);

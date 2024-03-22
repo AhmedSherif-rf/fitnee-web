@@ -31,7 +31,7 @@ const EditProfileRequest = () => {
   useEffect(() => {
     fetchProfileUpdateRequests();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, page]);
+  }, [page]);
 
   const fetchProfileUpdateRequests = () => {
     const data = {
@@ -57,7 +57,8 @@ const EditProfileRequest = () => {
 
     dispatch(changeProfileUpdateRequestStatus(data)).then((res) => {
       if (res.type === "changeProfileUpdateRequestStatus/fulfilled") {
-        setPage(1);
+        setPage(1)
+        fetchProfileUpdateRequests();
       }
     });
   };
@@ -140,6 +141,7 @@ const EditProfileRequest = () => {
               <Pagination
                 size={totalSize}
                 handlePageChange={handlePageChange}
+                page={page}
               />
             )}
           </CardFooter>

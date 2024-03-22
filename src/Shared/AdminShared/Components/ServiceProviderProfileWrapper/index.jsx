@@ -176,27 +176,30 @@ const ServiceProviderProfileWrapper = (props) => {
                           )
                         )}
                     </Row>
-                    <Row>
-                      <Col md={12}>
-                        <h5 className="fw-bold my-2">
-                          {t("guest.areaSpecialtyText")}
-                        </h5>
-                        {serviceProviderProfile?.specialities &&
-                          serviceProviderProfile?.specialities?.map(
-                            (specialty, index) => (
-                              <Badge
-                                key={index}
-                                color="custom"
-                                className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
-                              >
-                                {i18n.dir() === "ltr"
-                                  ? specialty.name
-                                  : specialty.arabic_name}
-                              </Badge>
-                            )
-                          )}
-                      </Col>
-                    </Row>
+                    {serviceProviderProfile?.specialities.length > 0 && (
+                      <Row>
+                        <Col md={12}>
+                          <h5 className="fw-bold my-2">
+                            {t("guest.areaSpecialtyText")}
+                          </h5>
+                          {serviceProviderProfile?.specialities &&
+                            serviceProviderProfile?.specialities?.map(
+                              (specialty, index) => (
+                                <Badge
+                                  key={index}
+                                  color="custom"
+                                  className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
+                                >
+                                  {i18n.dir() === "ltr"
+                                    ? specialty.name
+                                    : specialty.arabic_name}
+                                </Badge>
+                              )
+                            )}
+                        </Col>
+                      </Row>
+                    )}
+
                     {serviceProviderProfile?.profile_subscriptions && (
                       <Row>
                         <h5 className="fw-bold my-2">Subscription Plans</h5>

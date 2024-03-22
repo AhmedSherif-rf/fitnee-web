@@ -803,7 +803,7 @@
   "validation": {
     "invalidEmailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ المدخل غير صحيح",
     "requiredEmailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ مطلوب",
-    "invalidPasswordText": "ﺃﺣﺭﻭﻑ ﻋﻠﻰ ﺍﻷﻗﻝ ۸ ﻳﺠﺐ ﺍﻥ ﻳﺤﺘﻮﻱ الرقم السري ﻋﻠﻰ",
+    "invalidPasswordText": "يجب ان يحتوي الرقم السري ٨ أحروف على الأقل",
     "invalidPasswordTwoText": "ﻳﺠﺐ ﺃﻥ ﻳﺤﺘﻮﻱ الرقم السري ﻋﻠﻰ ﺭﻗﻡ واحد، ﺣﺭﻑ ﺻﻐﻳﺭ واحد، ﺣﺭﻑ كبير واحد ﻭ ﺭﻣﺯ واحد ﻋﻠﻰ ﺍﻷﻗﻝ",
     "requiredPasswordText": "الرقم السري مطلوب",
     "invalidFirstNameText": "ﻳﺠﺐ ﺃﻥ ﻳﺤﺘﻮﻱ الأسمﺍﻷﻭﻝ ﻋﻠﻰ ﺃﺣﺮﻑ ﻓﻘﻁ",

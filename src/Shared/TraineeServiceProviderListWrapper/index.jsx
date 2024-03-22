@@ -218,7 +218,11 @@ const TraineeServiceProviderListWrapper = (props) => {
         </Row>
       </CardBody>
       {totalSize > PER_PAGE_COUNT && (
-        <Pagination size={totalSize} handlePageChange={handlePageChange} />
+        <Pagination
+          size={totalSize}
+          handlePageChange={handlePageChange}
+          page={page}
+        />
       )}
     </Card>
   );

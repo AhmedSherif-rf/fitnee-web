@@ -1275,7 +1275,14 @@ const SignUpForm = () => {
                           (daySchedule, index) => (
                             <Row key={index} className="mb-1">
                               <Col lg={5} md={5} className="mb-2">
-                                <p className="mb-0">{t("signup.dayText")}</p>
+                                <div className="d-flex align-items-center justify-content-between">
+                                  <p className="mb-0">{t("signup.dayText")}</p>
+                                  <FaCircleXmark
+                                    className="cursorPointer d-md-none d-flex"
+                                    size={22}
+                                    onClick={() => arrayHelpers.remove(index)}
+                                  />
+                                </div>
                                 <MyDropdown
                                   className="shadow-0 p-2 border"
                                   Options={
@@ -1357,7 +1364,7 @@ const SignUpForm = () => {
                                 </p>
                               </Col>
                               <Col md={1} className="mb-2">
-                                <div className="d-flex align-items-center justify-content-end h-100">
+                                <div className="d-none d-md-flex align-items-center justify-content-end h-100">
                                   <FaCircleXmark
                                     className="cursorPointer"
                                     size={22}

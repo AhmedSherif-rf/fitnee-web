@@ -7,7 +7,11 @@ import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { memo, useEffect, useState, useCallback } from "react";
 import { getTransactionHistory } from "../../Redux/features/User/userApi";
 import { CardBody, CardHeader, Card, Col, Row, CardFooter } from "reactstrap";
-import { TRANSACTION_HISTORY_URL, PER_PAGE_COUNT, CURRENCY } from "../../utils/constants";
+import {
+  TRANSACTION_HISTORY_URL,
+  PER_PAGE_COUNT,
+  CURRENCY,
+} from "../../utils/constants";
 
 const PaymentHistoryWrapper = () => {
   const dispatch = useDispatch();
@@ -86,7 +90,11 @@ const PaymentHistoryWrapper = () => {
       </CardBody>
       <CardFooter>
         {totalSize > PER_PAGE_COUNT && (
-          <Pagination size={totalSize} handlePageChange={handlePageChange} />
+          <Pagination
+            size={totalSize}
+            handlePageChange={handlePageChange}
+            page={page}
+          />
         )}
       </CardFooter>
     </>

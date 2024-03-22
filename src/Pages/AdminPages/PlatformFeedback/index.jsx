@@ -157,6 +157,7 @@ const PlatformFeedback = () => {
               <Pagination
                 size={totalSize}
                 handlePageChange={handlePageChange}
+                page={page}
               />
             )}
           </CardFooter>

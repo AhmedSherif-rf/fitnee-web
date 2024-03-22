@@ -192,6 +192,7 @@ const ReviewRequest = () => {
               <Pagination
                 size={totalSize}
                 handlePageChange={handlePageChange}
+                page={page}
               />
             )}
           </CardFooter>

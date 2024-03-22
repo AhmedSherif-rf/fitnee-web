@@ -100,6 +100,7 @@ export const userSlice = createSlice({
       })
       .addCase(deleteAccount.fulfilled, (state) => {
         state.user = null;
+        state.notifications = [];
         state.loading = "succeeded";
       })
       .addCase(deleteAccount.rejected, (state) => {

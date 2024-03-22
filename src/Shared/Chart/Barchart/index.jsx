@@ -22,7 +22,7 @@ ChartJS.register(
 const BarChartComponent = ({ data, options }) => {
   return (
     <div style={{ width: "100%", height: "350px" }}>
-      <Bar data={data} options={{ maintainAspectRatio: false }} />
+      <Bar data={data} options={options} />
     </div>
   );
 };

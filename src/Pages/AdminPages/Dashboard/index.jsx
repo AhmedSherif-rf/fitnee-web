@@ -65,6 +65,7 @@ const Dashboard = (props) => {
         beginAtZero: true,
       },
     },
+    maintainAspectRatio: false
   };
 
   useEffect(() => {
@@ -254,8 +255,9 @@ const Dashboard = (props) => {
     const nutritionistsData = data?.nutritionists_monthly_counts?.map(
       (item) => item.count
     );
-    const exercise_subscriptions_monthly_counts =
-      data?.exercise_subscriptions_monthly_counts?.map((item) => item.count);
+    const exercise_subscriptions_monthly_counts = data?.exercise_subscriptions_monthly_counts?.map(
+      (item) => item.count
+    );
 
     setUserTrendsGraphData({
       labels,
@@ -303,8 +305,7 @@ const Dashboard = (props) => {
             data?.trainers_count,
             data?.nutritionists_count,
             data?.trainees_count,
-            // data.both_count,
-            10,
+            data.both_count,
           ],
           backgroundColor: [
             "rgba(157, 227, 154, 0.6)",
@@ -341,7 +342,7 @@ const Dashboard = (props) => {
   ];
 
   return (
-    <Container className="adminDashBoardScrolling">
+    <Container fluid className="adminDashBoardScrolling">
       {loading === "pending" && <LoadingScreen />}
       <Row className="py-3">
         <Col xl={3} lg={4} md={6} className="mb-3">
@@ -411,7 +412,7 @@ const Dashboard = (props) => {
           </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <Link to={"/admin/user/fullyBooked"}>
+          <Link to={"/admin/exerciseSubscription"}>
             <DashboardCard
               AdminClass="AdminCard"
               CardBodyClass="AdminCardBody"
@@ -423,7 +424,7 @@ const Dashboard = (props) => {
           </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <Link to={"/admin/user/fullyBooked"}>
+          <Link to={"#"}>
             <DashboardCard
               AdminClass="AdminCard"
               CardBodyClass="AdminCardBody"
@@ -435,7 +436,7 @@ const Dashboard = (props) => {
           </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <Link to={"/admin/user/fullyBooked"}>
+          <Link to={"#"}>
             <DashboardCard
               AdminClass="AdminCard"
               CardBodyClass="AdminCardBody"
@@ -448,7 +449,7 @@ const Dashboard = (props) => {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md={12} className="mb-3">
+        <Col md={12} className="my-4">
           <BarChart
             data={userTrendsGraphData}
             options={userTrendGraphOptions}

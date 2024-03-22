@@ -2,7 +2,7 @@
 export const CURRENCY = "SAR";
 //===============AdminCredentials=================
 export const ADMIN_EMAIL = "admin@admin.com";
-//======================paginationParams==========
+//======================paginationParams===========
 export const PAGE_RANGE = 2;
 export const PER_PAGE_COUNT = 8;
 //======================languages==================
@@ -103,6 +103,7 @@ export const GUEST_SUBSCRIPTION_PLAN_URL = "/guest/service_subscription";
 export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
 export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";
+export const ADMIN_EXERCISE_SUBSCRIPTION_LISTING_URL = "/admin/membership";
 export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";

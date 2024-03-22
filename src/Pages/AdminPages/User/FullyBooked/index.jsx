@@ -82,7 +82,7 @@ const FullyBooked = (props) => {
                 <Badge
                   href="#"
                   color="danger"
-                  className="d-flex align-items-center justify-content-center"
+                  className="d-flex align-items-center justify-content-center p-1"
                 >
                   Booked
                 </Badge>

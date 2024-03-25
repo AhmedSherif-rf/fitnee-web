@@ -29,6 +29,8 @@ import {
   NUTRITIONIST_TYPE,
   TRAINER_NUTRITIONIST_TYPE,
   TRAINEE_SERVICE_PROVIDER_LISTING_URL,
+  NUTRITIONIST_ROLE,
+  TRAINER_ROLE,
 } from "../../utils/constants";
 
 const TraineeServiceProviderListWrapper = (props) => {
@@ -178,11 +180,15 @@ const TraineeServiceProviderListWrapper = (props) => {
                   <ServiceProviderListCard
                     className={`${styles.activeTrainerCard}`}
                     serviceProvider={serviceProvider}
-                    handleOnClick={() =>
+                    handleOnClick={() => {
+                      const role =
+                        listingRole === NUTRITIONIST_TYPE
+                          ? NUTRITIONIST_ROLE
+                          : TRAINER_ROLE;
                       navigate(
-                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}`
-                      )
-                    }
+                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}/${role}`
+                      );
+                    }}
                   />
                 </Col>
               );

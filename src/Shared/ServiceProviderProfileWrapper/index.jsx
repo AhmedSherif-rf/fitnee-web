@@ -20,7 +20,7 @@ import {
 } from "../../utils/constants";
 
 const ServiceProviderProfileWrapper = (props) => {
-  const { uuid, id } = useParams();
+  const { uuid, id, role } = useParams();
   const { subscriptionLink } = props;
   const { loading } = useSelector((state) => state.guest);
   const { loading: userLoading } = useSelector((state) => state.user);
@@ -66,9 +66,16 @@ const ServiceProviderProfileWrapper = (props) => {
   }, [commentData, dispatch, hasNextComment, id]);
 
   const handleSubscribeClick = useCallback(() => {
-    dispatch(setServiceProvider(serviceProviderProfile));
+    dispatch(setServiceProvider({ ...serviceProviderProfile, role }));
     navigate(`${subscriptionLink}/${uuid}`);
-  }, [dispatch, navigate, serviceProviderProfile, subscriptionLink, uuid]);
+  }, [
+    dispatch,
+    navigate,
+    role,
+    serviceProviderProfile,
+    subscriptionLink,
+    uuid,
+  ]);
 
   return (
     <Container fluid className={i18n.dir()}>
@@ -175,7 +182,11 @@ const ServiceProviderProfileWrapper = (props) => {
                               </h5>
                               {commentData.map((item, index) => {
                                 return (
-                                  <CommentCard key={index} index={index} data={item} />
+                                  <CommentCard
+                                    key={index}
+                                    index={index}
+                                    data={item}
+                                  />
                                 );
                               })}
                             </Col>

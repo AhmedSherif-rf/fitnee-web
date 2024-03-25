@@ -43,7 +43,7 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
-    path: "/trainee/serviceProviderProfile/:uuid/:id",
+    path: "/trainee/serviceProviderProfile/:uuid/:id/:role",
     component: lazy(() =>
       import("../Pages/TraineePages/ServiceProviderProfile")
     ),

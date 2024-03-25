@@ -54,6 +54,13 @@ const TraineeServiceProviderListWrapper = (props) => {
   }, []);
 
   useEffect(() => {
+    const listingContainer = document.getElementById("listingContainer");
+    if (listingContainer) {
+      listingContainer.scrollTop = 0;
+    }
+  }, [page]);
+
+  useEffect(() => {
     const data = {
       apiEndpoint: `${TRAINEE_SERVICE_PROVIDER_LISTING_URL}?role=${functions.getListingRole(
         listingRole
@@ -100,6 +107,7 @@ const TraineeServiceProviderListWrapper = (props) => {
   return (
     <Card
       className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
+      id={"listingContainer"}
     >
       <CardBody>
         {loading === "pending" && <ShimmerScreen />}

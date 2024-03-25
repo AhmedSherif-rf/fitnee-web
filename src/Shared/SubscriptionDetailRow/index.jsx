@@ -80,19 +80,33 @@ const Index = (props) => {
               className="text-decoration-none"
               to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}`}
             >
-              <div
-                className="me-2 bgProperties rounded-circle"
-                style={{
-                  width: "60px",
-                  height: "60px",
-                  cursor: "pointer",
-                  backgroundImage:
-                    data?.serviceprovider?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${data?.serviceprovider?.profile_pic})`,
-                  border: "1px solid transparent",
-                }}
-              ></div>
+              {data?.have_exercise_subscription && (
+                <div
+                  className="me-2 bgProperties rounded-circle img-fluid"
+                  style={{
+                    width: "40px",
+                    height: "10px",
+                    cursor: "pointer",
+                    backgroundImage: `url(${Images.SMALL_LOGO_IMG})`,
+                    border: "1px solid transparent",
+                  }}
+                ></div>
+              )}
+              {!data?.have_exercise_subscription && (
+                <div
+                  className="me-2 bgProperties rounded-circle"
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    cursor: "pointer",
+                    backgroundImage:
+                      data?.serviceprovider?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${data?.serviceprovider?.profile_pic})`,
+                    border: "1px solid transparent",
+                  }}
+                ></div>
+              )}
             </Link>
             <div>
               <h6 className="mb-0 fw-bold px-2">

@@ -52,25 +52,19 @@ const ServiceProviders = (props) => {
     });
   };
 
-  const handleActionClick = useCallback(
-    (id, status) => {
-      const data = {
-        apiEndpoint: ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL.replace(
-          "userId",
-          id
-        ),
-        requestData: JSON.stringify({
-          // is_blocked: status,
-        }),
-      };
-      dispatch(userBlockUnblock(data)).then((res) => {
-        if (res.type === "userBlockUnblock/fulfilled") {
-          setPage(1);
-        }
-      });
-    },
-    [dispatch, setPage]
-  );
+  const handleActionClick = (id) => {
+    const data = {
+      apiEndpoint: ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL.replace(
+        "userId",
+        id
+      ),
+    };
+    dispatch(userBlockUnblock(data)).then((res) => {
+      if (res.type === "userBlockUnblock/fulfilled") {
+        fetchServiceProviderListing();
+      }
+    });
+  };
 
   useEffect(() => {
     if (serviceProvidersData && serviceProvidersData.length > 0) {
@@ -132,12 +126,11 @@ const ServiceProviders = (props) => {
                 <span
                   className={`iconBadge me-1`}
                   id={`userId_${serviceProvider?.id}`}
-                  onClick={() => handleActionClick(serviceProvider?.id, false)}
-                  isOn={serviceProvider?.is_blocked === false}
+                  onClick={() => handleActionClick(serviceProvider?.id)}
                 >
                   <MdOutlinePersonOutline
                     size={25}
-                    className={`rejectUser cursorPointer ${
+                    className={`cursorPointer ${
                       serviceProvider?.is_blocked === false
                         ? "text-success"
                         : ""
@@ -150,12 +143,11 @@ const ServiceProviders = (props) => {
                 <span
                   className={`iconBadge me-1`}
                   id={`userId_${serviceProvider?.id}`}
-                  onClick={() => handleActionClick(serviceProvider?.id, true)}
-                  isOn={serviceProvider?.is_blocked === true}
+                  onClick={() => handleActionClick(serviceProvider?.id)}
                 >
                   <MdOutlinePersonOff
                     size={25}
-                    className={`rejectUser cursorPointer ${
+                    className={`cursorPointer ${
                       serviceProvider?.is_blocked === true ? "" : "text-danger"
                     }`}
                   />

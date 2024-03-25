@@ -64,7 +64,7 @@ const AppDownloadLink = () => {
                     </h3>
                     {subscriptionPlan?.type !== "Exercise" && (
                       <>
-                        <p className="px-5">
+                        <p className="px-md-5">
                           {t("appLink.youHaveSubscribedWithText")}{" "}
                           <span className="fw-bold">
                             {serviceProvider?.full_name}
@@ -78,7 +78,7 @@ const AppDownloadLink = () => {
                       </>
                     )}
                     {subscriptionPlan?.type === "Exercise" && (
-                      <p className="px-5">
+                      <p className="px-md-5">
                         {t("appLink.exerciseDownloadText")}
                       </p>
                     )}

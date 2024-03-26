@@ -142,7 +142,6 @@ const EditProfileRequestModal = (props) => {
                               className="uploaded-image BorderRadius bgProperties w-100"
                               style={{
                                 height: "170px",
-                           
                               }}
                             />
                             <button

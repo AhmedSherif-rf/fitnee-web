@@ -90,6 +90,11 @@ const routes = [
     theme: "dark",
     exact: true,
   },
+  {
+    path: "*",
+    isPublic: true,
+    component: lazy(() => import("../Shared/PageNotFound")),
+  },
 ]
   .concat(guestRoutes)
   .concat(adminRoutes)

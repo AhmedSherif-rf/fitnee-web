@@ -781,14 +781,14 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         ButtonOne={
           <FillBtn
             text={t("guest.subscribeText")}
-            className="py-2 px-5"
+            className="py-2 w-75"
             handleOnClick={handleSubscriptionClick}
           />
         }
         ButtonTwo={
           <OutlineBtn
             text={t("guest.notNowText")}
-            className="py-2 px-5"
+            className="py-2 w-75"
             handleOnClick={handleSubscriptionInformationModalClose}
           />
         }

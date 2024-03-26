@@ -2,7 +2,7 @@ import "./styles.scss";
 import PropTypes from "prop-types";
 import React, { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import { Col, Modal, ModalBody, ModalHeader, Row } from "reactstrap";
 
 const InformationModal = (props) => {
   const {
@@ -39,13 +39,23 @@ const InformationModal = (props) => {
       )}
 
       <ModalBody className="py-4 text-black-custom">
-        <div className={`${TOneClassName}`}> {ModalTextOne}</div>
-        <div className={`${TTwoClassName}`}> {ModalTextTwo}</div>
-        <div className="w-100 text-center">{ButtonThree}</div>
-        <div className="w-100 d-flex align-items-center justify-content-center gap-3 modalButtons">
-          <div>{ButtonOne}</div>
-          <div>{ButtonTwo}</div>
-        </div>
+        <Row>
+          <Col md={12} className="mb-2">
+            <div className={`${TOneClassName}`}> {ModalTextOne}</div>
+          </Col>
+          <Col md={12} className="mb-2">
+            <div className={`${TTwoClassName}`}> {ModalTextTwo}</div>
+          </Col>
+          <Col md={12} className="mb-2">
+            <div className="w-100 text-center">{ButtonThree}</div>
+          </Col>
+          <Col md={6} className="mb-2 text-center">
+            <div>{ButtonOne}</div>
+          </Col>
+          <Col md={6} className="mb-2 text-center">
+            <div>{ButtonTwo}</div>
+          </Col>
+        </Row>
       </ModalBody>
     </Modal>
   );

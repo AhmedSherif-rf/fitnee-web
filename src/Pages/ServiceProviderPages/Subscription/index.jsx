@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Row, Card } from "reactstrap";
 import React, { useState, useCallback, useEffect } from "react";
@@ -12,6 +13,7 @@ import {
 
 const Subscription = () => {
   const dispatch = useDispatch();
+  const { i18n } = useTranslation("");
   const { loading } = useSelector((state) => state.subscriptionPlan);
 
   const [subscriptionData, setSubscriptionData] = useState([]);
@@ -90,7 +92,7 @@ const Subscription = () => {
   );
 
   return (
-    <Container fluid className="vh-100">
+    <Container fluid className={`vh-100 ${i18n.dir()}`}>
       {loading === "pending" && <LoadingScreen />}
       <Row className="justify-content-center align-items-center">
         <Col md={9} className="">

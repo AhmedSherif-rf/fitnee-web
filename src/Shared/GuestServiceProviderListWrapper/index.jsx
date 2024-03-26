@@ -204,7 +204,7 @@ const GuestServiceProviderListWrapper = (props) => {
                   >
                     <CardBody>
                       <div className="w-100 d-flex align-items-center justify-content-center h-100">
-                        <div className="">
+                        <div>
                           <p className="mb-0 fs-4 fw-bold">
                             {t("guest.seeMoreText")}
                           </p>

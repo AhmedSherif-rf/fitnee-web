@@ -29,6 +29,8 @@ import {
   NUTRITIONIST_TYPE,
   TRAINER_NUTRITIONIST_TYPE,
   TRAINEE_SERVICE_PROVIDER_LISTING_URL,
+  NUTRITIONIST_ROLE,
+  TRAINER_ROLE,
 } from "../../utils/constants";
 
 const TraineeServiceProviderListWrapper = (props) => {
@@ -52,6 +54,13 @@ const TraineeServiceProviderListWrapper = (props) => {
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
   }, []);
+
+  useEffect(() => {
+    const listingContainer = document.getElementById("listingContainer");
+    if (listingContainer) {
+      listingContainer.scrollTop = 0;
+    }
+  }, [page]);
 
   useEffect(() => {
     const data = {
@@ -100,6 +109,7 @@ const TraineeServiceProviderListWrapper = (props) => {
   return (
     <Card
       className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
+      id={"listingContainer"}
     >
       <CardBody>
         {loading === "pending" && <ShimmerScreen />}
@@ -170,11 +180,15 @@ const TraineeServiceProviderListWrapper = (props) => {
                   <ServiceProviderListCard
                     className={`${styles.activeTrainerCard}`}
                     serviceProvider={serviceProvider}
-                    handleOnClick={() =>
+                    handleOnClick={() => {
+                      const role =
+                        listingRole === NUTRITIONIST_TYPE
+                          ? NUTRITIONIST_ROLE
+                          : TRAINER_ROLE;
                       navigate(
-                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}`
-                      )
-                    }
+                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}/${role}`
+                      );
+                    }}
                   />
                 </Col>
               );
@@ -218,7 +232,11 @@ const TraineeServiceProviderListWrapper = (props) => {
         </Row>
       </CardBody>
       {totalSize > PER_PAGE_COUNT && (
-        <Pagination size={totalSize} handlePageChange={handlePageChange} />
+        <Pagination
+          size={totalSize}
+          handlePageChange={handlePageChange}
+          page={page}
+        />
       )}
     </Card>
   );

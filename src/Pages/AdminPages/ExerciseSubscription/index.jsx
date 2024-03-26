@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import { useState, useCallback } from "react";
@@ -77,13 +78,19 @@ const ExerciseSubscription = (props) => {
               </div>
             </Link>
           ),
-          role: subscription?.trainee?.role,
+          phone: subscription?.trainee?.phone_number,
           price: (
             <p className="fw-bold mb-0">
               {CURRENCY} {subscription?.transition?.current_price}
             </p>
           ),
-          duration: `${subscription?.subscription?.duration} Months`,
+          duration: (
+            <div>{`${moment(subscription?.subscription?.created_at).format(
+              "DD/MM/YYYY"
+            )} - ${moment(subscription?.subscription?.expire_date).format(
+              "DD/MM/YYYY"
+            )}`}</div>
+          ),
         });
       });
 
@@ -96,9 +103,8 @@ const ExerciseSubscription = (props) => {
   const columns = [
     { label: "Name", dataKey: "name" },
     {
-      label: "Role",
-      dataKey: "role",
-      align: "center",
+      label: "Phone Number",
+      dataKey: "phone",
     },
     { label: "Price", dataKey: "price", align: "center" },
     { label: "Duration", dataKey: "duration", align: "center" },
@@ -124,6 +130,7 @@ const ExerciseSubscription = (props) => {
                 <Pagination
                   size={totalSize}
                   handlePageChange={handlePageChange}
+                  page={page}
                 />
               )}
             </CardFooter>

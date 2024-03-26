@@ -107,12 +107,18 @@ const Index = () => {
                   />
                 );
               })}
+              {subscriptionData.length <= 0 && (
+                <div className="d-flex justify-content-center py-4 text-black-custom">
+                  {t("messages.noDataFoundText")}
+                </div>
+              )}
             </CardBody>
             <CardFooter>
               {totalSize > PER_PAGE_COUNT && (
                 <Pagination
                   size={totalSize}
                   handlePageChange={handlePageChange}
+                  page={page}
                 />
               )}
             </CardFooter>

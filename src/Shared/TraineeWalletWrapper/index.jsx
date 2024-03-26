@@ -90,7 +90,11 @@ const PaymentHistoryWrapper = () => {
       </CardBody>
       <CardFooter>
         {totalSize > PER_PAGE_COUNT && (
-          <Pagination size={totalSize} handlePageChange={handlePageChange} />
+          <Pagination
+            size={totalSize}
+            handlePageChange={handlePageChange}
+            page={page}
+          />
         )}
       </CardFooter>
     </>

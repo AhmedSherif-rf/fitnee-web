@@ -1,7 +1,7 @@
+import React, { memo } from "react";
 import { CardBody } from "reactstrap";
 import styles from "./style.module.scss";
 import { Card, Col, Row } from "reactstrap";
-import React, { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
@@ -9,7 +9,7 @@ import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 const ExerciseSection = (props) => {
   const { exercisesData } = props;
   const { i18n } = useTranslation("");
-  const [hasPoster, setHasPoster] = useState(true);
+  const hasPoster = true;
 
   return (
     <Row>
@@ -24,8 +24,14 @@ const ExerciseSection = (props) => {
                       className={`py-2 px-4 fw-bold fs-2 ${styles.workoutVideosHeader}`}
                     >
                       {i18n.dir() === "ltr"
-                        ? subCategory?.title
-                        : subCategory?.title_ar}
+                        ? `${subCategory?.exercise[0]?.title}`
+                        : `${subCategory?.exercise[0]?.title_ar}`}
+
+                      <span className="fs-5">
+                        {i18n.dir() === "ltr"
+                          ? ` (${subCategory?.title})`
+                          : ` (${subCategory?.title_ar})`}
+                      </span>
                     </div>
                   </Col>
                   <Col md={12} className="mb-2">

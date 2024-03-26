@@ -108,8 +108,7 @@ export const ADMIN_APPROVE_REVIEW_REQUEST_URL = "/service_provider_approve/";
 export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
 export const ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL =
-  "/admin/toggle-user-status/22/";
-
+  "/admin/toggle-user-status/userId/";
 export const ADMIN_SERVICE_PROVIDER_FULLY_BOOKED_URL =
   "/admin/fully-booked-service-providers/";
 export const EXERCUSE_SUBSCRIPITION_PLAN_URL =

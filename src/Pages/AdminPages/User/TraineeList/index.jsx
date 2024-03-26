@@ -1,12 +1,23 @@
+import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import { useState, useCallback } from "react";
-import React, { useEffect, Link } from "react";
 import Pagination from "../../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
+import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
+import {
+  ADMIN_TRAINEE_LISTING_URL,
+  ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
+  PER_PAGE_COUNT,
+} from "../../../../utils/constants";
+import {
+  getTraineeListing,
+  userBlockUnblock,
+} from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import {
   Card,
   CardBody,
@@ -16,12 +27,6 @@ import {
   Container,
   Row,
 } from "reactstrap";
-import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
-import {
-  ADMIN_TRAINEE_LISTING_URL,
-  PER_PAGE_COUNT,
-} from "../../../../utils/constants";
-import { getTraineeListing } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 
 const TraineeList = (props) => {
   const dispatch = useDispatch();
@@ -38,6 +43,11 @@ const TraineeList = (props) => {
   }, []);
 
   useEffect(() => {
+    fetchTraineeList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, phoneNumber, page]);
+
+  const fetchTraineeList = () => {
     const data = {
       apiEndpoint: `${ADMIN_TRAINEE_LISTING_URL}?page=${page}&phone_number=${phoneNumber}`,
     };
@@ -48,7 +58,21 @@ const TraineeList = (props) => {
         setTraineesData(res.payload.data.results);
       }
     });
-  }, [dispatch, page, phoneNumber]);
+  };
+
+  const handleActionClick = (id) => {
+    const data = {
+      apiEndpoint: ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL.replace(
+        "userId",
+        id
+      ),
+    };
+    dispatch(userBlockUnblock(data)).then((res) => {
+      if (res.type === "userBlockUnblock/fulfilled") {
+        fetchTraineeList();
+      }
+    });
+  };
 
   useEffect(() => {
     if (traineesData && traineesData.length > 0) {
@@ -87,6 +111,8 @@ const TraineeList = (props) => {
                     ? "bg-danger"
                     : trainee?.is_active
                     ? "bg-success"
+                    : trainee?.is_blocked
+                    ? "bg-danger"
                     : "bg-warning"
                 } rounded-circle`}
                 style={{ minWidth: "8px", minHeight: "8px" }}
@@ -96,28 +122,43 @@ const TraineeList = (props) => {
                   ? "Deleted"
                   : trainee?.is_active
                   ? "Active"
+                  : trainee?.is_blocked
+                  ? "Blocked"
                   : "Incomplete Profile"}
               </span>
             </div>
           ),
           action: (
             <div className="d-flex align-items-center justify-content-md-center">
-              <span className={`iconBadge me-1`}>
-                <MdOutlinePersonOff
-                  size={22}
-                  className={`rejectUser cursorPointer ${
-                    trainee.is_blocked ? "" : "text-danger"
-                  }`}
-                />
-              </span>
-              <span className={`iconBadge me-1`}>
-                <MdOutlinePersonOutline
-                  size={22}
-                  className={`approveUser cursorPointer ${
-                    trainee.is_blocked ? "text-success" : ""
-                  }`}
-                />
-              </span>
+              {!trainee?.is_blocked && (
+                <span
+                  className={`iconBadge me-1`}
+                  id={`userId_${trainee?.id}`}
+                  onClick={() => handleActionClick(trainee?.id)}
+                >
+                  <MdOutlinePersonOutline
+                    size={25}
+                    className={`cursorPointer ${
+                      trainee?.is_blocked === false ? "text-success" : ""
+                    }`}
+                  />
+                </span>
+              )}
+
+              {trainee?.is_blocked && (
+                <span
+                  className={`iconBadge me-1`}
+                  id={`userId_${trainee?.id}`}
+                  onClick={() => handleActionClick(trainee?.id)}
+                >
+                  <MdOutlinePersonOff
+                    size={25}
+                    className={`cursorPointer ${
+                      trainee?.is_blocked === true ? "" : "text-danger"
+                    }`}
+                  />
+                </span>
+              )}
             </div>
           ),
         });
@@ -127,6 +168,7 @@ const TraineeList = (props) => {
     } else {
       setTableData([]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [traineesData]);
 
   const columns = [
@@ -165,7 +207,7 @@ const TraineeList = (props) => {
                     value={phoneNumber}
                     className="border ltr"
                     onChange={(value) => {
-                      setPage(1);
+                      // setPage(1);
                       setPhoneNumber(value);
                     }}
                   />
@@ -180,6 +222,7 @@ const TraineeList = (props) => {
                 <Pagination
                   size={totalSize}
                   handlePageChange={handlePageChange}
+                  page={page}
                 />
               )}
             </CardFooter>

@@ -136,31 +136,45 @@ const TraineeProfileWrapper = (props) => {
                         </h3>
                       </div>
                     </div>
-                    <div
-                      className="overflow-scroll onlyBorderRadius p-3 border border-light"
-                      style={{ maxHeight: "100px" }}
-                    >
-                      <p className="small">{traineeProfile?.bio}</p>
+                    <div className="lh-1 mt-2">
+                      <h6 className="fw-bold">Gender</h6>
+                      <p className="small">{traineeProfile?.gender}</p>
+                    </div>
+                    <div className="lh-1 mt-2">
+                      <h6 className="fw-bold">Phone Number</h6>
+                      <p className="small">{traineeProfile?.phone_number}</p>
+                    </div>
+                    <div className="lh-1 mt-2">
+                      <h6 className="fw-bold">Date of Birth</h6>
+                      <p className="small">
+                        {moment(traineeProfile?.date_of_birth).format(
+                          "MMMM Do YYYY"
+                        )}
+                      </p>
                     </div>
 
-                    <Row>
-                      <Col md={12}>
-                        <h5 className="fw-bold my-2">InBody</h5>
-                      </Col>
-                      <Col md={6}>
-                        <img
-                          src={traineeProfile?.body_images}
-                          alt="body_images"
-                          className="uploaded-image BorderRadius"
-                          style={{
-                            width: "100%",
-                            height: "170px",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                          }}
-                        />
-                      </Col>
-                    </Row>
+                    {traineeProfile?.body_images !== null &&
+                      traineeProfile?.body_images !== "" && (
+                        <Row>
+                          <Col md={12}>
+                            <h5 className="fw-bold my-2">InBody</h5>
+                          </Col>
+                          <Col md={6}>
+                            <img
+                              src={traineeProfile?.body_images}
+                              alt="body_images"
+                              className="uploaded-image BorderRadius"
+                              style={{
+                                width: "100%",
+                                height: "170px",
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                              }}
+                            />
+                          </Col>
+                        </Row>
+                      )}
+
                     <Row className="mt-4">
                       <Col md={12}>
                         <h5 className="fw-bold my-2">Subscriptions</h5>

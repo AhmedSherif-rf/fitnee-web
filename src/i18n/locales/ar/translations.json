@@ -496,7 +496,7 @@
     "exerciseSubscriptionModalText": "اشترك بقيمة 33.35 ريال شهرياً لعرض جميع التمارين بتعليمات واضحة  تمكنك من اداء التمارين بطريقة صحيحه"
   },
   "contactUs": {
-    "firstNameText": "الأسم ﺍﻻﻭﻝ",
+    "firstNameText": "الأسم ﺍﻷﻭﻝ",
     "lastNameText": "الأسم الأخير",
     "emailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ",
     "describeIssueText": "اكتب استفسارك هنا",
@@ -811,7 +811,7 @@
     "invalidFullNameText": "ﻳﺠﺐ ﺃﻥ ﻳﺤﺘﻮﻱ ﺍﻻﺳﻢ ﻛﺎﻣﻼ ﻋﻠﻰ ﺃﺣﺮﻑ ﻓﻘﻂ",
     "requiredFullNameText": "ﺍﻻﺳﻢ ﻛﺎﻣﻼ ﻣﻄﻠﻮﺏ",
     "invalidLastNameText": " يجب أن يحتوي ﺍﻷﺳﻡ الأخير على أحرف فقط",
-    "requiredLastNameText": " ﺍﻷﺳﻡ الأخير مطلوب",
+    "requiredLastNameText": " الأسم الأخير مطلوب",
     "requiredMessageText": "الرسالة مطلوبة",
     "invalidFamilyNameText": "يجب أن يحتوي اسم العائلة على أحرف فقط",
     "requiredFamilyNameText": "اسم العائلة مطلوب",

@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "reactstrap";
 import SubscriptionCard from "../../../Shared/SubscriptionCard";
@@ -12,6 +13,7 @@ import { getGuestServiceProviderSubscriptionPlans } from "../../../Redux/feature
 const ServiceProviderSubscription = () => {
   const { uuid } = useParams();
   const dispatch = useDispatch();
+  const { i18n } = useTranslation("");
   const [subscriptionData, setSubscriptionData] = useState([]);
   const { loading } = useSelector((state) => state.subscriptionPlan);
 
@@ -33,7 +35,7 @@ const ServiceProviderSubscription = () => {
   };
 
   return (
-    <Container fluid className="vh-100">
+    <Container fluid className={`vh-100 ${i18n.dir()}`}>
       {loading === "pending" && <LoadingScreen />}
       {subscriptionData.length > 0 ? (
         <Row className="justify-content-center align-items-center">

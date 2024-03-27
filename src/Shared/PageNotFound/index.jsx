@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
 import { Col, Container, Row } from "reactstrap";
-import { FaAngleDoubleLeft } from "react-icons/fa";
 
 const PageNotFound = () => {
   return (

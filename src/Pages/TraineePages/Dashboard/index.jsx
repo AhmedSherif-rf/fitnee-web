@@ -119,8 +119,11 @@ const Dashboard = () => {
   }, []);
 
   const populateGraphData = (history) => {
-    const labels = history.map((item) =>
-      moment(item.date_recorded).format("DD MMM")
+    const labels = history.map(
+      (item) =>
+        `${moment(item.date_recorded).format("DD")} ${
+          i18n.dir() === "ltr" ? item?.month_en : item?.month_ar
+        }`
     );
     const weightData = history.map((item) => item.weight);
     const bfmData = history.map((item) => item.body_fat_mass);

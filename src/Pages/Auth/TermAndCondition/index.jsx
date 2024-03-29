@@ -14,7 +14,7 @@ const TermAndCondition = () => {
     if (backLink === "home") {
       navigate("/");
     } else if (backLink === "signUp") {
-      navigate(-1);
+      window.close();
     } else {
       navigate(`/${backLink}`);
     }

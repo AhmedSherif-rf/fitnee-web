@@ -1,13 +1,14 @@
 import moment from "moment";
+import { Link } from "react-router-dom";
 import { GrCurrency } from "react-icons/gr";
+import PhoneInput from "react-phone-input-2";
+import { FaEllipsisVertical } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
-import InputField from "../../../../Shared/InputField";
-import MyDropdown from "../../../../Shared/MyDropdown";
 import Pagination from "../../../../Shared/Pagination";
 import React, { useState, useCallback, useEffect } from "react";
 import PageHeading from "../../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
-import { FaEllipsisVertical, FaMagnifyingGlass } from "react-icons/fa6";
+import Images from "../../../../HelperMethods/Constants/ImgConstants";
 import {
   getWalletData,
   releasePayment,
@@ -39,6 +40,7 @@ const WalletOverview = (props) => {
   const [totalSize, setSizePages] = useState(0);
   const [tableData, setTableData] = useState([]);
   const [walletData, setWalletData] = useState(null);
+  const [stcPayNumber, setStcPayNumber] = useState("");
 
   const { loading } = useSelector((state) => state.wallet);
 
@@ -49,11 +51,11 @@ const WalletOverview = (props) => {
   useEffect(() => {
     getWalletHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, page]);
+  }, [dispatch, page, stcPayNumber]);
 
   const getWalletHistory = () => {
     const data = {
-      apiEndpoint: `${PENDING_PAYMENTS}?page=${page}`,
+      apiEndpoint: `${PENDING_PAYMENTS}?page=${page}&stc_pay=${stcPayNumber}`,
     };
 
     dispatch(getWalletData(data)).then((res) => {
@@ -84,7 +86,29 @@ const WalletOverview = (props) => {
       walletData?.forEach((wallet) => {
         wallet?.transactions.forEach((transaction) => {
           traineeListArray.push({
-            transaction_no: transaction?.id,
+            full_name: (
+              <Link
+                to={`/admin/serviceProviderProfile/${wallet?.service_provider?.uuid}`}
+              >
+                <div className="d-flex align-items-center">
+                  <div
+                    className="bgProperties rounded-circle me-2"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundImage:
+                        wallet?.service_provider?.profile_pic === null
+                          ? `url(${Images.USER_DUMMY_IMG})`
+                          : `url(${wallet?.service_provider?.profile_pic})`,
+                    }}
+                  ></div>
+                  <h6 className="text-secondary fw-bold mb-0">
+                    {wallet?.service_provider?.full_name}
+                  </h6>
+                </div>
+              </Link>
+            ),
+            stc_pay: wallet?.service_provider?.stc_pay,
             amount: `${CURRENCY} ${transaction?.amount}`,
             status: (
               <div className="d-flex align-items-center justify-content-md-center">
@@ -98,6 +122,10 @@ const WalletOverview = (props) => {
               </div>
             ),
             total_amount: `${CURRENCY} ${transaction?.total_amount}`,
+            discount:
+              wallet?.discounted_price === null
+                ? "N/A"
+                : `${CURRENCY} ${wallet?.discounted_price}`,
             release_date: (
               <p
                 className={
@@ -149,12 +177,18 @@ const WalletOverview = (props) => {
   }, [walletData]);
 
   const columns = [
-    { label: "Transaction #", dataKey: "transaction_no", align: "center" },
+    { label: "FullName", dataKey: "full_name" },
+    { label: "STC Phone No", dataKey: "stc_pay", align: "center" },
     { label: "Amount", dataKey: "amount" },
     { label: "Status", dataKey: "status", align: "center" },
     {
       label: "Total Subscription Amount",
       dataKey: "total_amount",
+      align: "center",
+    },
+    {
+      label: "Discount",
+      dataKey: "discount",
       align: "center",
     },
     { label: "Release Date", dataKey: "release_date", align: "center" },
@@ -166,41 +200,32 @@ const WalletOverview = (props) => {
       <Col md={12}>
         <Card className="border-0 h-100 text-start">
           <CardHeader className="bg-transparent border-0 p-0">
-            <PageHeading headingText="Wallet Overview" />
+            <Row className="align-items-center">
+              <Col md={6}>
+                <PageHeading headingText="Wallet Overview" categoryText="" />
+              </Col>
+              <Col md={6} className="pe-3">
+                <PhoneInput
+                  inputProps={{
+                    name: "stc_pay",
+                    required: true,
+                    className:
+                      "form-control-lg w-100 py-3 px-4 customPhoneInput border-0",
+                  }}
+                  country={"sa"}
+                  value={stcPayNumber}
+                  className="border ltr"
+                  onChange={(value) => {
+                    setStcPayNumber(value);
+                  }}
+                />
+              </Col>
+            </Row>
           </CardHeader>
           <CardBody className="tableBodyWrapperPagination">
             {loading === "pending" && <LoadingScreen />}
 
             <Row>
-              <Col md={12} className="mb-3">
-                <Card className="shadow-sm border onlyBorderRadius">
-                  <CardBody>
-                    <Row>
-                      <Col md={6}>
-                        <div className="d-flex align-items-center justify-content-between h-100">
-                          <h6 className="w-50">Payment Duration:</h6>
-                          <div className="w-50">
-                            <MyDropdown
-                              className="mb-0 border"
-                              name={"role"}
-                              placeholder="Select Duration"
-                            />
-                          </div>
-                        </div>
-                      </Col>
-                      <Col md={6}>
-                        <InputField
-                          icon={<FaMagnifyingGlass />}
-                          placeholder="Search by phone number"
-                          type="text"
-                          name="category"
-                          className="py-3 ps-5 mt-1"
-                        />
-                      </Col>
-                    </Row>
-                  </CardBody>
-                </Card>
-              </Col>
               <Col md={12} className="mb-2">
                 <ListingTable data={tableData} columns={columns} />
               </Col>

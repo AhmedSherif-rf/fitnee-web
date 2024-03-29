@@ -1165,7 +1165,7 @@ const SignUpForm = () => {
 
             <Row className="mb-3">
               {filterFields.includes("goal") && (
-                <Col md={6}>
+                <Col md={6} className="mb-2">
                   <h6 className="fw-bold">{t("signup.myGoalText")}</h6>
                   <InputField
                     className="py-3 px-4"
@@ -1180,7 +1180,7 @@ const SignUpForm = () => {
               )}
 
               {filterFields.includes("training_goal") && (
-                <Col md={6}>
+                <Col md={6} className="mb-2">
                   <h6 className="mb-2 fw-bold">
                     {t("signup.trainingGoalText")}
                   </h6>
@@ -1201,7 +1201,7 @@ const SignUpForm = () => {
               )}
 
               {filterFields.includes("food_sensitive") && (
-                <Col md={6}>
+                <Col md={6} className="mb-2">
                   <h6 className="mb-2 fw-bold">
                     {t("signup.anyFoodSensitiveText")}
                   </h6>
@@ -1217,7 +1217,7 @@ const SignUpForm = () => {
               )}
 
               {filterFields.includes("level") && (
-                <Col md={6}>
+                <Col md={6} className="mb-2">
                   <h6 className="mb-2 fw-bold">
                     {t("signup.activityLevelText")}
                   </h6>
@@ -1496,7 +1496,7 @@ const SignUpForm = () => {
                           <span> & </span>
                           <Link
                             target="blank"
-                            to={`/termAndCondition/general/home`}
+                            to={`/termAndCondition/general/signUp`}
                           >
                             <span className="text-dark fw-bolder">
                               {t("signup.generalText")}
@@ -1517,7 +1517,7 @@ const SignUpForm = () => {
                           <span> & </span>
                           <Link
                             target="blank"
-                            to={`/termAndCondition/general/home`}
+                            to={`/termAndCondition/general/signUp`}
                           >
                             <span className="text-dark fw-bolder">
                               {t("signup.generalText")}

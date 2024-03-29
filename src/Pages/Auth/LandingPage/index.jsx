@@ -1,4 +1,3 @@
-import { Container } from "reactstrap";
 import Hero from "../../../Shared/Hero";
 import styles from "./style.module.scss";
 import React, { useCallback } from "react";
@@ -6,7 +5,9 @@ import Footer from "../../../Shared/Footer";
 import Feature from "../../../Shared/Feature";
 import { useTranslation } from "react-i18next";
 import HomeBanner from "../../../Shared/Banner";
+import { Col, Container, Row } from "reactstrap";
 import CardSwiper from "../../../Shared/CardSwiper";
+import AboutBg from "../../../Assets/Images/AboutImg.svg";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const LandingPage = (props) => {
@@ -21,7 +22,7 @@ const LandingPage = (props) => {
         </span>
       ),
       text: (
-        <p className={"fs-5 text-white text-center customSpacing pb-4"}>
+        <p className={"fs-4 lh-1 text-white text-center customSpacing pb-4"}>
           {t("landing.firstHeroSectionText")}
         </p>
       ),
@@ -85,11 +86,11 @@ const LandingPage = (props) => {
       ),
       text: (
         <div className="customSpacing text-center pb-4">
-          <p className={"fs-5 lh-1 text-white"}>
+          <p className={"fs-4 lh-2 text-white"}>
             {t("landing.secondHeroSectionTextOne")}
           </p>
 
-          <p className={"fs-5 lh-1 text-white"}>
+          <p className={"fs-4 lh-2 text-white"}>
             {t("landing.secondHeroSectionTextTwo")}
           </p>
         </div>
@@ -112,7 +113,7 @@ const LandingPage = (props) => {
         </span>
       ),
       text: (
-        <p className="text-white fs-5 text-center customSpacing pb-4">
+        <p className="text-white fs-4 lh-2 text-center customSpacing pb-4">
           {t("landing.thirdHeroSectionTextOne")}
         </p>
       ),
@@ -208,6 +209,71 @@ const LandingPage = (props) => {
               textBackgroundImage={item.textBackgroundImage}
             />
           ))}
+        </Container>
+      </section>
+      <section>
+        <Container
+          fluid
+          className="vh-100 overflow-hidden position-relative"
+        >
+          <Row className="position-absolute w-100 h-100 justify-content-center align-items-center">
+            <Col md={4} className="h-100">
+              <div className="h-100 d-flex align-items-center justify-content-center">
+                <div
+                  className={`d-flex align-items-center ${styles.aboutTextContainer}`}
+                >
+                  <div className={`${styles.aboutTextDiv} pt-4`}>
+                    <h1 className="mb-5 text-center d-md-none d-block">
+                      <span className={`fw-bold display-5 arabicBorderHover text-white`}>
+                        {t("landing.whatIsText")}
+                        <span className="textYellow"> {t("landing.fitneeText")} </span>
+                      </span>
+                    </h1>
+                    <p
+                      className={
+                        "fs-1 lh-1 text-white text-center customSpacing pb-4"
+                      }
+                    >
+                      {t("landing.firstHeroSectionText")}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              md={6}
+              className="p-0 bgProperties d-md-block d-none"
+              style={{
+                backgroundImage:`url(${AboutBg})`,
+                // backgroundSize: "contain",
+              }}
+            >
+              <div className="d-flex align-items-center justify-content-center w-100 h-100">
+                <h1 className="mb-5 w-100 ">
+                  <span className={`text-white fw-bold display-4 arabicBorderHover`}>
+                    {t("landing.whatIsText")}
+                    <span className="textYellow"> {t("landing.fitneeText")} </span>
+                  </span>
+                </h1>
+                {/* <p
+                  className={
+                    "fs-4 lh-1 text-white text-center customSpacing pb-4"
+                  }
+                >
+                  {t("landing.firstHeroSectionText")}
+                </p> */}
+              </div>
+            </Col>
+            <Col md={6} className="p-0 h-100 border border-danger">
+              <img
+                className={`img-fluid w-100 vh-100 ${styles.heroImg}`}
+                src={Images.ABOUT_IMG}
+                alt="hero1"
+              />
+            </Col>
+          </Row>
         </Container>
       </section>
 

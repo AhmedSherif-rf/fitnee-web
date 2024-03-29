@@ -5,7 +5,6 @@ import { Card } from "reactstrap";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
 const Member = ({ message, member }) => {
-  console.log(message.isDeleted, "teeeeeeeeeeeeeeeeee");
   return (
     <div className="d-flex gap-2 py-2">
       <div

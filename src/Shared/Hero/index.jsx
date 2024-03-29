@@ -35,7 +35,7 @@ const Hero = (props) => {
 
   return (
     <Row
-      className={`bg-back ${styles.heroSectionWrapper} ${
+      className={`LandingPageBg ${styles.heroSectionWrapper} ${
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
@@ -63,7 +63,7 @@ const Hero = (props) => {
                 >
                   {heading}
                 </div>
-                {text}
+                <div className="text-center mx-5 px-5 fs-4">{text}</div>
               </motion.div>
             </div>
           </div>
@@ -86,7 +86,7 @@ const Hero = (props) => {
                 >
                   {heading}
                 </div>
-                <div className="text-center">{text}</div>
+                <div className="text-center mx-5 px-5 fs-4">{text}</div>
               </motion.div>
             </div>
           </div>

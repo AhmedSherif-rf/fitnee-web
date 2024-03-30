@@ -9,7 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import InformationModal from "../Modal/InformationModal";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { cancelSubscription } from "../../Redux/features/User/userApi";
-import { CURRENCY, CANCEL_SUBSCRIPTION_URL } from "../../utils/constants";
+import {
+  CURRENCY,
+  CANCEL_SUBSCRIPTION_URL,
+  TRAINER_ROLE,
+  NUTRITIONIST_ROLE,
+} from "../../utils/constants";
 
 const Index = (props) => {
   const dispatch = useDispatch();
@@ -115,7 +120,11 @@ const Index = (props) => {
               <span className="text-black-custom px-2">
                 {data?.have_exercise_subscription
                   ? t("traineeServiceProviderList.exerciseSubscriptionText")
-                  : data?.serviceprovider?.role}
+                  : data?.serviceprovider?.role === TRAINER_ROLE
+                  ? t("registerAs.trainerText")
+                  : data?.serviceprovider?.role === NUTRITIONIST_ROLE
+                  ? t("registerAs.nutritionistText")
+                  : t("registerAs.trainerNutritionistText")}
               </span>
               <div className="mb-md-0 d-md-none d-block py-2 px-2">
                 <h6 className="mb-0 w-100 small fw-bold ">

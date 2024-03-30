@@ -18,7 +18,11 @@ const Member = ({ message, member }) => {
           height: "35px",
         }}
       ></div>
-      <Card className="d-flex flex-column  messageWrapper p-2 border-0">
+      <Card
+        className={`d-flex flex-column border ${
+          message.isDeleted ? "messageWrapperDanger" : "messageWrapper"
+        } p-2`}
+      >
         <small className="fw-bold ">{member?.name}</small>
         {message.messageType === "TEXT" && (
           <small className="px-2">{message.messageText}</small>
@@ -38,7 +42,10 @@ const Member = ({ message, member }) => {
             ></div>
           </div>
         )}
-       <div className="d-flex justify-content-end pe-2"> <small>{moment(message.messageTime).format("h:mm A")}</small></div>
+        <div className="d-flex justify-content-end pe-2">
+          {" "}
+          <small>{moment(message.messageTime).format("h:mm A")}</small>
+        </div>
       </Card>
     </div>
   );

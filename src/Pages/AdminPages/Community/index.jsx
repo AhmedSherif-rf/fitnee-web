@@ -5,7 +5,15 @@ import React, { useEffect, useRef, useState } from "react";
 import InputField from "../../../Shared/InputField";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import { onValue, ref, orderByChild } from "firebase/database";
-import { Container, Row, Col, Card, CardFooter } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardFooter,
+  CardHeader,
+  CardBody,
+} from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import Message from "../../../Shared/AdminShared/Components/Message";
 
@@ -29,12 +37,14 @@ const Community = (props) => {
       }
     });
     return () => unsubscribe();
-  },);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (messageEl.current) {
       messageEl.current.scrollIntoView();
     }
+    console.log(groupMessages);
   }, [groupMessages]);
 
   useEffect(() => {
@@ -82,42 +92,46 @@ const Community = (props) => {
               className="text-start"
             />
           </Col>
-          <Col md={3} className="tableBodyWrapperPagination mb-3 ms-2 me-3">
+          <Col md={3} className=" mb-3 ms-2 me-3">
             <h5 className="mb-0 fw-bold text-start d-md-block d-none text-black-custom">
               Members
             </h5>
             <h6 className="mb-0 fw-bold text-start d-md-none d-block text-black-custom">
               Members
             </h6>
-            <Card className={`onlyBorderRadius chatCardFooterHeight p-3`}>
-              {groupMembers.map((groupMember, index) => {
-                const member = getMemberData(groupMember);
-                return (
-                  <Col
-                    md={12}
-                    key={index}
-                    onMouseOver={() => setHoveredIndex(index)}
-                    onMouseOut={() => setHoveredIndex(false)}
-                    className={`d-flex mb-1 align-items-center py-1 bgCommunity rounded-4 ps-1`}
-                  >
-                    <div
-                      className={`bgProperties rounded-circle  ${
-                        hoveredIndex === index ? "cardHovered" : ""
-                      }`}
-                      style={{
-                        border: "3px solid White",
-                        backgroundImage:
-                          member?.avatar === null
-                            ? `url(${Images.USER_DUMMY_IMG})`
-                            : `url(${member?.avatar})`,
-                        width: "45px",
-                        height: "45px",
-                      }}
-                    ></div>
-                    <small className="ms-3 fw-bold">{member?.name}</small>
-                  </Col>
-                );
-              })}
+            <Card className={`onlyBorderRadius p-0`}>
+              <CardHeader className="bg-transparent border-0"></CardHeader>
+              <CardBody className="chatCardFooterHeight py-0">
+                {groupMembers.map((groupMember, index) => {
+                  const member = getMemberData(groupMember);
+                  return (
+                    <Col
+                      md={12}
+                      key={index}
+                      onMouseOver={() => setHoveredIndex(index)}
+                      onMouseOut={() => setHoveredIndex(false)}
+                      className={`d-flex mb-1 align-items-center py-1 bgCommunity rounded-4 ps-1`}
+                    >
+                      <div
+                        className={`bgProperties rounded-circle  ${
+                          hoveredIndex === index ? "cardHovered" : ""
+                        }`}
+                        style={{
+                          border: "3px solid White",
+                          backgroundImage:
+                            member?.avatar === null
+                              ? `url(${Images.USER_DUMMY_IMG})`
+                              : `url(${member?.avatar})`,
+                          width: "45px",
+                          height: "45px",
+                        }}
+                      ></div>
+                      <small className="ms-3 fw-bold">{member?.name}</small>
+                    </Col>
+                  );
+                })}
+              </CardBody>
+              <CardFooter className="border-0 bg-transparent"></CardFooter>
             </Card>
           </Col>
           <Col md={8} className="position-relative me-3">
@@ -127,20 +141,25 @@ const Community = (props) => {
             <h6 className="mb-0 fw-bold text-start d-md-none d-block text-black-custom">
               Chat
             </h6>
-            <Card className="p-2 chatCardFooterHeight onlyBorderRadius">
-              {groupMessages.map((messages, index) => {
-                return Object.values(messages).map((message, index) => {
-                  const member = getMemberData(message.messageFrom);
-                  return (
-                    <Col md={12} className="text-start" key={index}>
-                      <Message member={member} message={message} />
-                    </Col>
-                  );
-                });
-              })}
-              <div className="" ref={messageEl}></div>
+            <Card className="px-2 onlyBorderRadius">
+              <CardHeader className="border-0 bg-transparent"></CardHeader>
+              <CardBody className="py-0 chatCardFooterHeight">
+                {groupMessages.map((messages, index) => {
+                  return Object.values(messages).map((message, index) => {
+                    const member = getMemberData(message.messageFrom);
+                    return (
+                      <Col md={12} className="text-start" key={index}>
+                        <Message member={member} message={message} />
+                        <div className="" ref={messageEl}></div>
+                      </Col>
+                    );
+                  });
+                })}
+              </CardBody>
+
+              <CardFooter className="border-0 bg-transparent"></CardFooter>
             </Card>
-            <CardFooter className="chatCardFooter border-0 bg-transparent">
+            {/* <CardFooter className="chatCardFooter border-0 bg-transparent">
               <div className="position-absolute chatButton ">
                 <LuSend className="fs-3 textParrotGreen" />
               </div>
@@ -149,7 +168,7 @@ const Community = (props) => {
                 name="AdminInputChat"
                 placeholder="Start Typing"
               />
-            </CardFooter>
+            </CardFooter> */}
           </Col>
         </Row>
       </Container>

@@ -1,5 +1,5 @@
 @import "../../../../Assets/Scss/variables.scss";
-
+.messageWrapperDanger,
 .messageWrapper {
   max-width: 80% !important;
   padding: 10px 14px;
@@ -8,15 +8,24 @@
   border-bottom-left-radius: 18px;
   background-color: $text-bg;
   position: relative;
+  z-index: 2;
   &::before {
     content: "";
     position: absolute;
     background-color: $text-bg;
     width: 16px;
     height: 14px;
-    margin-top: -8px;
-    margin-left: -15px;
+    margin-top: -9px;
+    margin-left: -16px;
     border-bottom-left-radius: 40px;
     z-index: 0;
+  }
+}
+.messageWrapperDanger {
+  background-color: $color-pink !important;
+  color:$white;
+  &::before {
+    background-color: $color-pink !important;
+   margin-top: -8px;
   }
 }

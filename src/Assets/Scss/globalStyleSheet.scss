@@ -6,8 +6,8 @@
   background-size: cover;
 }
 .btn.disabled {
-  background-color:$yellow-blur !important;
-    opacity:1 !important;
+  background-color: $yellow-blur !important;
+  opacity: 1 !important;
 }
 .bgProperties {
   @include bgProperties;
@@ -53,6 +53,11 @@
 
 .textOrange {
   color: $orange !important;
+}
+
+.exerciseSubcategoryWrapper {
+  background-color: $yellow;
+  border-radius: 14px;
 }
 
 .textGrey {
@@ -133,12 +138,6 @@ Input::-webkit-input-placeholder {
 }
 .dropdown-menu {
   padding: 3px 3px !important;
-}
-.dropdownActive {
-  background-color: $yellow !important;
-  color: $black !important;
-  outline: none !important;
-  border-radius: 6px !important;
 }
 
 .dropdown-item {
@@ -286,7 +285,7 @@ Input::-webkit-input-placeholder {
   overflow-y: scroll;
 }
 .chatCardFooterHeight {
-  max-height: 58vh;
+  max-height: 62vh;
   overflow-y: auto;
 }
 .adminDashBoardScrolling {

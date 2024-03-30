@@ -16,7 +16,7 @@ const Notification = () => {
 
   useEffect(() => {
     fetchUserNotifications();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const markNotificationAsRead = (id) => {
@@ -56,7 +56,6 @@ const Notification = () => {
               }`}
             >
               <div>
-                <h6 className="fw-bold mb-0">{notification?.title}</h6>
                 <p className="mb-0 small">{notification?.body}</p>
               </div>
 

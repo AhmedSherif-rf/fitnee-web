@@ -1,11 +1,13 @@
 import moment from "moment";
 import React, { memo } from "react";
 import { Col, Row } from "reactstrap";
+import { useTranslation } from "react-i18next";
 import { CURRENCY } from "../../utils/constants";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const TransactionDetail = (props) => {
   const { data } = props;
+  const { t } = useTranslation("");
 
   return (
     <>
@@ -16,13 +18,17 @@ const TransactionDetail = (props) => {
               <div className="me-2">
                 <img
                   src={Images.ARROW_UP_IMG}
-                  height={58}
+                  height={50}
                   alt="paymentTypeImg"
                 />
               </div>
               <div className="d-flex align-items-center justify-content-between w-100">
-                <div className="">
-                  <h6 className="fw-bold">{transaction?.status}</h6>
+                <div className="me-2">
+                  <h6 className="fw-bold fs-6">
+                    {transaction?.status === "released"
+                      ? t("paymentHistory.amountReleasedText")
+                      : t("paymentHistory.amountPendingText")}
+                  </h6>
                   <span className="small text-black-custom">
                     {transaction?.status === "released"
                       ? moment(transaction?.payment_date).format(
@@ -34,7 +40,7 @@ const TransactionDetail = (props) => {
                   </span>
                 </div>
                 <div>
-                  <h4 className="mb-0">{`${CURRENCY} ${transaction?.amount}`}</h4>
+                  <h4 className="mb-0 fs-6">{`${CURRENCY} ${transaction?.amount}`}</h4>
                 </div>
               </div>
             </div>

@@ -109,10 +109,10 @@ const TraineeList = (props) => {
                 className={`me-2 ${
                   trainee?.is_deleted
                     ? "bg-danger"
-                    : trainee?.is_active
-                    ? "bg-success"
                     : trainee?.is_blocked
                     ? "bg-danger"
+                    : trainee?.is_active
+                    ? "bg-success"
                     : "bg-warning"
                 } rounded-circle`}
                 style={{ minWidth: "8px", minHeight: "8px" }}
@@ -120,10 +120,10 @@ const TraineeList = (props) => {
               <span>
                 {trainee?.is_deleted
                   ? "Deleted"
-                  : trainee?.is_active
-                  ? "Active"
                   : trainee?.is_blocked
                   ? "Blocked"
+                  : trainee?.is_active
+                  ? "Active"
                   : "Incomplete Profile"}
               </span>
             </div>

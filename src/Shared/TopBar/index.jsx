@@ -47,6 +47,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation("");
+  const [unReadNotifications, setUnReadNotifications] = useState("");
   const { lang: currentLanguage } = useSelector((state) => state.language);
   const { loading: userLoading, user, notifications } = useSelector(
     (state) => state.user
@@ -67,6 +68,19 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
   }, [isPublic, location.pathname]);
+
+  useEffect(() => {
+    if (notifications) {
+      const unReadNotifications = notifications.filter(
+        (item) => !item?.is_read
+      );
+      setUnReadNotifications(
+        unReadNotifications.length > 10 ? "10+" : unReadNotifications.length
+      );
+    } else {
+      setUnReadNotifications(0);
+    }
+  }, [notifications]);
 
   useEffect(() => {
     if (isPublic && isAuth) {
@@ -120,19 +134,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       setBackgroundClass("customBgDark");
     } else {
       setBackgroundClass("bg-transparent");
-    }
-  };
-
-  const getUnReadNotificationsLength = (notifications) => {
-    if (notifications) {
-      const unReadNotifications = notifications.filter(
-        (item) => !item?.is_read
-      );
-      return unReadNotifications.length > 10
-        ? "10+"
-        : unReadNotifications.length;
-    } else {
-      return 0;
     }
   };
 
@@ -442,7 +443,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 <span
                                   className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
                                 >
-                                  {getUnReadNotificationsLength(notifications)}
+                                  {unReadNotifications}
                                 </span>
                               </span>
                             </div>
@@ -524,9 +525,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             isOpen={collapsed}
             className={`text-white w-100 ${styles.collapseScss}`}
           >
-            <div
-              className={`vh-100 bg-transparent ${"activeScroll"}`}
-            >
+            <div className={`vh-100 bg-transparent ${"activeScroll"}`}>
               <Nav
                 className={`pt-2 ${styles.togglerNav} customBgDark caret`}
                 navbar
@@ -713,7 +712,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         <span
                           className={`text-white bg-danger px-2 py-0 fw-bold mx-1 ${styles.notificationCount}`}
                         >
-                          {getUnReadNotificationsLength(notifications)}
+                          {unReadNotifications}
                         </span>
                       </Link>
                     </NavItem>

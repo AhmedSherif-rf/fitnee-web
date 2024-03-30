@@ -139,28 +139,17 @@ const TraineeServiceProviderListWrapper = (props) => {
                 <DropdownMenu>
                   <DropdownItem
                     onClick={() => handleDropdownItemClick(TRAINER_TYPE)}
-                    className={
-                      listingRole === TRAINER_TYPE ? "dropdownActive" : ""
-                    }
                   >
                     {t("guest.trainersText")}
                   </DropdownItem>
                   <DropdownItem
                     onClick={() => handleDropdownItemClick(NUTRITIONIST_TYPE)}
-                    className={
-                      listingRole === NUTRITIONIST_TYPE ? "dropdownActive" : ""
-                    }
                   >
                     {t("guest.nutritionistsText")}
                   </DropdownItem>
                   <DropdownItem
                     onClick={() =>
                       handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
-                    }
-                    className={
-                      listingRole === TRAINER_NUTRITIONIST_TYPE
-                        ? "dropdownActive"
-                        : ""
                     }
                   >
                     {t("guest.bothText")}

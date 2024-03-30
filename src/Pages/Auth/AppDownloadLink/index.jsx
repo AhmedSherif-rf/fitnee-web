@@ -9,12 +9,12 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const AppDownloadLink = () => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const { requestId } = useParams();
   const [isRequestIdCopied, setIsRequestIdCopied] = useState(false);
 
   return (
-    <Container fluid>
+    <Container fluid className={i18n.dir()}>
       <Row className="">
         <Col md="12">
           <Card className="BorderRadius contentCard px-3">
@@ -25,7 +25,10 @@ const AppDownloadLink = () => {
                     {t("appLink.congratulationsText")}
                   </h3>
                   <p className="px-md-2 mx-md-2">
-                    {t("appLink.adminReviewText")}
+                    {t("appLink.adminReviewFirstText")}
+                  </p>
+                  <p className="px-md-2 mx-md-2">
+                    {t("appLink.adminReviewSecondText")}
                   </p>
                   <p className="py-2 fw-bold">
                     {t("appLink.ticketIdText")}
@@ -51,7 +54,11 @@ const AppDownloadLink = () => {
                   </p>
                 </div>
                 <div className="text-center d-flex align-items-center justify-content-center">
-                  <img className={`CreditCardImg`} src={Images.CREDIT_CARD_IMG} alt="" />
+                  <img
+                    className={`CreditCardImg`}
+                    src={Images.CREDIT_CARD_IMG}
+                    alt=""
+                  />
                 </div>
               </Col>
               <Col md="6">
@@ -71,11 +78,17 @@ const AppDownloadLink = () => {
                 <Row className="justify-content-center">
                   <Col md={5} className="mb-3 text-md-block text-center">
                     <div className="w-100">
-                      <img
-                        src={Images.APP_STORE_IMG}
-                        className="img-fluid "
-                        alt=""
-                      />
+                      <a
+                        href="https://apps.apple.com/us/app/fitnee/id6473802571"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img
+                          src={Images.APP_STORE_IMG}
+                          className="img-fluid "
+                          alt=""
+                        />
+                      </a>
                     </div>
                   </Col>
                   <Col md={5} className="mb-3 text-md-block text-center">

@@ -6,10 +6,10 @@
       rgba(0, 0, 0, 0.4) 0%,
       rgba(0, 0, 0, 0.4) 100%
     ),
-    url("../../Assets/Images/HOMEBANNER.png");
-background-attachment: fixed;
-@include bgProperties;
-background-repeat: no-repeat;
+    url("https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/HOMEBANNER.svg");
+  background-attachment: fixed;
+  @include bgProperties;
+  background-repeat: no-repeat;
   height: 100vh !important;
 
   .bannerTextWrapper {

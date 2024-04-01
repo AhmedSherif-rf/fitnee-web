@@ -31,7 +31,7 @@ const ExerciseSection = (props) => {
                       handleOnClick={() => {}}
                     />
                     <div
-                      className={`py-2 fw-bold fs-2 ${styles.workoutVideosHeader}`}
+                      className={`pt-2 pb-1 fw-bold fs-4 ${styles.workoutVideosHeader}`}
                     >
                       {i18n.dir() === "ltr"
                         ? `${subCategory?.exercise[0]?.title}`
@@ -47,6 +47,7 @@ const ExerciseSection = (props) => {
                           muted
                           autoPlay
                           loop
+                          controls={false}
                           className={`${styles.workoutVideos} w-100 ${
                             hasPoster ? "with-poster" : ""
                           }`}

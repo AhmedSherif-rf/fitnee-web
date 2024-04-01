@@ -804,11 +804,14 @@ const SignUpForm = () => {
                           }`}
                         >
                           {user?.change_request_status !== "Pending" && (
-                            <FaEdit
-                              className="cursorPointer"
-                              onClick={() => setShowEditProfileModal(true)}
-                            />
-                          )}
+                              <>
+                                {t("trainer.editText")}{" "}
+                                <FaEdit
+                                  className="cursorPointer"
+                                  onClick={() => setShowEditProfileModal(true)}
+                                />
+                              </>
+                            )}
                         </Col>
                         {user?.ServiceProvider_Certification?.map(
                           (certificate, index) => (
@@ -926,9 +929,29 @@ const SignUpForm = () => {
                   <Row>
                     {filterFields.includes("saudireps_number") && (
                       <Col md={6}>
-                        <h6 className="mb-2 fw-bold mt-2">
-                          {t("signup.saudiRepsNumberText")}{" "}
-                        </h6>
+                        <Row>
+                          <Col>
+                            <h6 className="mb-2 fw-bold mt-2">
+                              {t("signup.saudiRepsNumberText")}
+                              {user === null && "*"}
+                            </h6>
+                          </Col>
+                          <Col
+                            className={`${
+                              i18n.dir() === "ltr" ? "text-end" : "text-start"
+                            }`}
+                          >
+                            {user?.change_request_status !== "Pending" && (
+                              <>
+                                {t("trainer.editText")}{" "}
+                                <FaEdit
+                                  className="cursorPointer"
+                                  onClick={() => setShowEditProfileModal(true)}
+                                />
+                              </>
+                            )}
+                          </Col>
+                        </Row>
                         <InputField
                           className="py-3 px-4"
                           type="number"
@@ -949,9 +972,29 @@ const SignUpForm = () => {
 
                     {filterFields.includes("license_number") && (
                       <Col md={6}>
-                        <h6 className="mb-2 fw-bold mt-2">
-                          {t("signup.enterYourProfessionalText")}{" "}
-                        </h6>
+                        <Row>
+                          <Col>
+                            <h6 className="mb-2 fw-bold mt-2">
+                              {t("signup.enterYourProfessionalText")}
+                              {user === null && "*"}
+                            </h6>
+                          </Col>
+                          <Col
+                            className={`${
+                              i18n.dir() === "ltr" ? "text-end" : "text-start"
+                            }`}
+                          >
+                            {user?.change_request_status !== "Pending" && (
+                              <>
+                                {t("trainer.editText")}{" "}
+                                <FaEdit
+                                  className="cursorPointer"
+                                  onClick={() => setShowEditProfileModal(true)}
+                                />
+                              </>
+                            )}
+                          </Col>
+                        </Row>
                         <InputField
                           className="py-3 px-4"
                           type="number"
@@ -972,10 +1015,29 @@ const SignUpForm = () => {
 
                     {filterFields.includes("stc_pay") && (
                       <Col lg={6} md={6} className="mb-2 mt-2">
-                        <h6 className="mb-2 fw-bold">
-                          {t("signup.enterStcPayAccountText")}{" "}
-                          {user === null && "*"}
-                        </h6>
+                        <Row>
+                          <Col>
+                            <h6 className="mb-2 fw-bold mt-2">
+                              {t("signup.enterStcPayAccountText")}{" "}
+                              {user === null && "*"}
+                            </h6>
+                          </Col>
+                          <Col
+                            className={`${
+                              i18n.dir() === "ltr" ? "text-end" : "text-start"
+                            }`}
+                          >
+                            {user?.change_request_status !== "Pending" && (
+                              <>
+                                {t("trainer.editText")}{" "}
+                                <FaEdit
+                                  className="cursorPointer"
+                                  onClick={() => setShowEditProfileModal(true)}
+                                />
+                              </>
+                            )}
+                          </Col>
+                        </Row>
                         <PhoneInputField
                           inputProps={{
                             name: "stc_pay",

@@ -804,11 +804,11 @@ const SignUpForm = () => {
                           }`}
                         >
                           {user?.change_request_status !== "Pending" && (
-                            <div className="cursorPointer">
-                              {t("trainer.editText")}{" "}
-                              <FaEdit
-                                onClick={() => setShowEditProfileModal(true)}
-                              />
+                            <div
+                              className="cursorPointer"
+                              onClick={() => setShowEditProfileModal(true)}
+                            >
+                              {t("trainer.editText")} <FaEdit />
                             </div>
                           )}
                         </Col>
@@ -941,11 +941,11 @@ const SignUpForm = () => {
                             }`}
                           >
                             {user?.change_request_status !== "Pending" && (
-                              <div className="cursorPointer">
-                                {t("trainer.editText")}{" "}
-                                <FaEdit
-                                  onClick={() => setShowEditProfileModal(true)}
-                                />
+                              <div
+                                className="cursorPointer"
+                                onClick={() => setShowEditProfileModal(true)}
+                              >
+                                {t("trainer.editText")} <FaEdit />
                               </div>
                             )}
                           </Col>
@@ -983,11 +983,11 @@ const SignUpForm = () => {
                             }`}
                           >
                             {user?.change_request_status !== "Pending" && (
-                              <div className="cursorPointer">
-                                {t("trainer.editText")}{" "}
-                                <FaEdit
-                                  onClick={() => setShowEditProfileModal(true)}
-                                />
+                              <div
+                                className="cursorPointer"
+                                onClick={() => setShowEditProfileModal(true)}
+                              >
+                                {t("trainer.editText")} <FaEdit />
                               </div>
                             )}
                           </Col>
@@ -1025,11 +1025,11 @@ const SignUpForm = () => {
                             }`}
                           >
                             {user?.change_request_status !== "Pending" && (
-                              <div className="cursorPointer">
-                                {t("trainer.editText")}{" "}
-                                <FaEdit
-                                  onClick={() => setShowEditProfileModal(true)}
-                                />
+                              <div
+                                className="cursorPointer"
+                                onClick={() => setShowEditProfileModal(true)}
+                              >
+                                {t("trainer.editText")} <FaEdit />
                               </div>
                             )}
                           </Col>

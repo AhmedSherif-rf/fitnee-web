@@ -6,6 +6,7 @@ import "swiper/css/effect-coverflow";
 import routes from "./Routes/AllRoutes";
 import functions from "./utils/functions";
 import { Toaster } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 import { adminRole } from "./Routes/routeConfig";
 import { PublicRoute } from "./Routes/PublicRoutes";
 import AdminLayout from "./Pages/Layout/AdminLayout";
@@ -24,6 +25,7 @@ import { DEFAULT_LANGUAGE, USER_NOTIFICATIONS_URL } from "./utils/constants";
 
 function App() {
   const dispatch = useDispatch();
+  const { i18n } = useTranslation("");
 
   const { user } = useSelector((state) => state.user);
 
@@ -54,11 +56,12 @@ function App() {
 
   onMessageListener()
     .then((payload) => {
-      console.log("notifications",  payload)
+      console.log("notifications", payload);
       const body = JSON.parse(payload.notification.body);
+      const title = JSON.parse(payload.notification.title);
       setNotification({
-        title: payload.notification.title,
-        body: body.msg,
+        title: i18n.dir() === "ltr" ? title.title_en : title.title_ar,
+        body: i18n.dir() === "ltr" ? body.msg : body.msg_ar,
       });
       fetchUserNotifications();
       setShowNotification(true);

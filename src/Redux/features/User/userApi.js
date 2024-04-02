@@ -206,6 +206,7 @@ export const getUserNotifications = createAsyncThunk(
         if (a.is_read === false && b.is_read === true) return -1;
         return 0;
       });
+      console.log("trigger app", sortedNotifications);
       return sortedNotifications;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.detail);

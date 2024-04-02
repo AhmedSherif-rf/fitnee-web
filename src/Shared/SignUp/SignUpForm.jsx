@@ -804,14 +804,13 @@ const SignUpForm = () => {
                           }`}
                         >
                           {user?.change_request_status !== "Pending" && (
-                              <>
-                                {t("trainer.editText")}{" "}
-                                <FaEdit
-                                  className="cursorPointer"
-                                  onClick={() => setShowEditProfileModal(true)}
-                                />
-                              </>
-                            )}
+                            <div className="cursorPointer">
+                              {t("trainer.editText")}{" "}
+                              <FaEdit
+                                onClick={() => setShowEditProfileModal(true)}
+                              />
+                            </div>
+                          )}
                         </Col>
                         {user?.ServiceProvider_Certification?.map(
                           (certificate, index) => (
@@ -942,13 +941,12 @@ const SignUpForm = () => {
                             }`}
                           >
                             {user?.change_request_status !== "Pending" && (
-                              <>
+                              <div className="cursorPointer">
                                 {t("trainer.editText")}{" "}
                                 <FaEdit
-                                  className="cursorPointer"
                                   onClick={() => setShowEditProfileModal(true)}
                                 />
-                              </>
+                              </div>
                             )}
                           </Col>
                         </Row>
@@ -985,13 +983,12 @@ const SignUpForm = () => {
                             }`}
                           >
                             {user?.change_request_status !== "Pending" && (
-                              <>
+                              <div className="cursorPointer">
                                 {t("trainer.editText")}{" "}
                                 <FaEdit
-                                  className="cursorPointer"
                                   onClick={() => setShowEditProfileModal(true)}
                                 />
-                              </>
+                              </div>
                             )}
                           </Col>
                         </Row>
@@ -1028,13 +1025,12 @@ const SignUpForm = () => {
                             }`}
                           >
                             {user?.change_request_status !== "Pending" && (
-                              <>
+                              <div className="cursorPointer">
                                 {t("trainer.editText")}{" "}
                                 <FaEdit
-                                  className="cursorPointer"
                                   onClick={() => setShowEditProfileModal(true)}
                                 />
-                              </>
+                              </div>
                             )}
                           </Col>
                         </Row>

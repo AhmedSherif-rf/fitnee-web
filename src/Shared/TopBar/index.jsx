@@ -70,7 +70,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   }, [isPublic, location.pathname]);
 
   useEffect(() => {
-    console.log("trigger topbar", notifications)
     if (notifications) {
       const unReadNotifications = notifications.filter(
         (item) => !item?.is_read

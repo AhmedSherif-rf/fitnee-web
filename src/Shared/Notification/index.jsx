@@ -1,9 +1,11 @@
-import { Card } from "reactstrap";
-import React, { memo, useEffect } from "react";
+import Pagination from "../Pagination";
+import { Card, CardFooter } from "reactstrap";
 import { useTranslation } from "react-i18next";
+import { PER_PAGE_COUNT } from "../../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { USER_NOTIFICATIONS_URL } from "../../utils/constants";
+import React, { memo, useEffect, useState, useCallback } from "react";
 import {
   markUserNotificationAsRead,
   getUserNotifications,
@@ -12,12 +14,21 @@ import {
 const Notification = () => {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
-  const { notifications, loading } = useSelector((state) => state.user);
+  const { notifications, loading, notificationCount } = useSelector(
+    (state) => state.user
+  );
+
+  const [page, setPage] = useState(1);
+  const [totalSize, setSizePages] = useState(notificationCount);
+
+  const handlePageChange = useCallback((page) => {
+    setPage(page.selected + 1);
+  }, []);
 
   useEffect(() => {
     fetchUserNotifications();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [page]);
 
   const markNotificationAsRead = (id) => {
     const data = {
@@ -33,13 +44,13 @@ const Notification = () => {
 
   const fetchUserNotifications = () => {
     const data = {
-      apiEndpoint: USER_NOTIFICATIONS_URL,
+      apiEndpoint: `${USER_NOTIFICATIONS_URL}?page=${page}`,
     };
     dispatch(getUserNotifications(data));
   };
 
   return (
-    <div className={`${i18n.dir()} w-100`}>
+    <Card className={`${i18n.dir()} w-100 border-0`}>
       {loading === "pending" && <LoadingScreen />}
       <h5 className="fw-bold my-2 p-4">{t("topBar.notificationsText")}</h5>
 
@@ -80,7 +91,16 @@ const Notification = () => {
           </Card>
         ))
       )}
-    </div>
+      <CardFooter>
+        {totalSize > PER_PAGE_COUNT && (
+          <Pagination
+            size={totalSize}
+            handlePageChange={handlePageChange}
+            page={page}
+          />
+        )}
+      </CardFooter>
+    </Card>
   );
 };
 

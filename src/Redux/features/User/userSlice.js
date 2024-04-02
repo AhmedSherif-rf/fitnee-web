@@ -30,6 +30,7 @@ export const userSlice = createSlice({
     error: null,
     email: "",
     notifications: [],
+    notificationCount: 0,
     shownAppModal: false,
   },
   reducers: {
@@ -219,7 +220,8 @@ export const userSlice = createSlice({
       })
       .addCase(getUserNotifications.fulfilled, (state, action) => {
         state.loading = "succeeded";
-        state.notifications = action.payload;
+        state.notifications = action.payload.sortedNotifications;
+        state.notificationCount = action.payload.count;
       })
       .addCase(getUserNotifications.rejected, (state) => {
         state.loading = "failed";

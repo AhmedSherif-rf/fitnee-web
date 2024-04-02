@@ -44,7 +44,6 @@ const Community = (props) => {
     if (messageEl.current) {
       messageEl.current.scrollIntoView();
     }
-    console.log(groupMessages);
   }, [groupMessages]);
 
   useEffect(() => {

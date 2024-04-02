@@ -56,7 +56,11 @@ const Notification = () => {
               }`}
             >
               <div>
-                <p className="mb-0 small">{notification?.body}</p>
+                <p className="mb-0 small">
+                  {i18n.dir() === "ltr"
+                    ? notification?.body
+                    : notification?.body_ar}
+                </p>
               </div>
 
               <div

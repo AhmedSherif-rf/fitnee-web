@@ -38,13 +38,15 @@ function App() {
   }, []);
 
   const fetchUserNotifications = () => {
-    if (user) {
-      const data = {
-        apiEndpoint: USER_NOTIFICATIONS_URL,
-      };
+    setTimeout(() => {
+      if (user) {
+        const data = {
+          apiEndpoint: USER_NOTIFICATIONS_URL,
+        };
 
-      dispatch(getUserNotifications(data));
-    }
+        dispatch(getUserNotifications(data));
+      }
+    }, 1000);
   };
 
   const setToken = async () => {

@@ -206,7 +206,7 @@ export const getUserNotifications = createAsyncThunk(
         if (a.is_read === false && b.is_read === true) return -1;
         return 0;
       });
-      return sortedNotifications;
+      return { sortedNotifications, count: response.data.data.count };
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.detail);
       return thunkAPI.rejectWithValue(error?.response?.data);

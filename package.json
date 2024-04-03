@@ -1,8 +1,8 @@
 {
   "name": "fitnee-web",
   "version": "0.1.0",
-  "private": true,
   "proxy": "https://staging.fitnee.fit/",
+  "private": true,
   "dependencies": {
     "@react-hook/media-query": "^1.1.1",
     "@reduxjs/toolkit": "^1.9.5",

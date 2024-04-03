@@ -74,7 +74,7 @@ const PaymentHistoryWrapper = () => {
             </Card>
           </Col>
         </Row>
-        <Row className="my-2 text-black-custom">
+        <Row className={`my-2 text-black-custom ${i18n.dir()}`}>
           <Col md={12}>
             {transactionHistoryData &&
               transactionHistoryData.map((item, index) => {

@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { CardBody } from "reactstrap";
+import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { Card, Col, Row } from "reactstrap";
 import { useTranslation } from "react-i18next";
@@ -20,18 +21,21 @@ const ExerciseSection = (props) => {
               return (
                 <div className="mb-3 px-md-5" key={index}>
                   <Col md={12}>
+                    <FillBtn
+                      className="py-2 fs-4"
+                      text={
+                        i18n.dir() === "ltr"
+                          ? ` ${subCategory?.title}`
+                          : ` ${subCategory?.title_ar}`
+                      }
+                      handleOnClick={() => {}}
+                    />
                     <div
-                      className={`py-2 px-4 fw-bold fs-2 ${styles.workoutVideosHeader}`}
+                      className={`pt-2 pb-1 fw-bold fs-4 ${styles.workoutVideosHeader}`}
                     >
                       {i18n.dir() === "ltr"
                         ? `${subCategory?.exercise[0]?.title}`
                         : `${subCategory?.exercise[0]?.title_ar}`}
-
-                      <span className="fs-5">
-                        {i18n.dir() === "ltr"
-                          ? ` (${subCategory?.title})`
-                          : ` (${subCategory?.title_ar})`}
-                      </span>
                     </div>
                   </Col>
                   <Col md={12} className="mb-2">
@@ -43,7 +47,8 @@ const ExerciseSection = (props) => {
                           muted
                           autoPlay
                           loop
-                          className={`workoutVideos w-100 ${
+                          controls={false}
+                          className={`${styles.workoutVideos} w-100 ${
                             hasPoster ? "with-poster" : ""
                           }`}
                           poster={hasPoster ? Images.POSTER_LOADING_GIF : null}
@@ -64,9 +69,14 @@ const ExerciseSection = (props) => {
                                   key={index}
                                 >
                                   <div>
-                                    <FaAngleDoubleRight className="textYellow fs-4 me-2" />
-                                  </div>
-                                  <div className="">
+                                    <FaAngleDoubleRight
+                                      className={`textYellow fs-2 me-2 ${
+                                        i18n.dir() === "ltr"
+                                          ? styles.descriptionItemLeft
+                                          : styles.descriptionItemRight
+                                      }`}
+                                    />
+
                                     <span>{desc}</span>
                                   </div>
                                 </div>
@@ -82,9 +92,13 @@ const ExerciseSection = (props) => {
                                   key={index}
                                 >
                                   <div>
-                                    <FaAngleDoubleLeft className="textYellow fs-4 me-2" />
-                                  </div>
-                                  <div className="">
+                                    <FaAngleDoubleLeft
+                                      className={`textYellow fs-2 me-2 ${
+                                        i18n.dir() === "ltr"
+                                          ? styles.descriptionItemLeft
+                                          : styles.descriptionItemRight
+                                      }`}
+                                    />
                                     <span>{desc}</span>
                                   </div>
                                 </div>

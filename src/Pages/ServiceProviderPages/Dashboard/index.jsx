@@ -246,7 +246,13 @@ const Dashboard = () => {
                               {t("trainer.commentText")}
                             </h5>
                             {commentData.map((item, index) => {
-                              return <CommentCard key={index} index={index} data={item} />;
+                              return (
+                                <CommentCard
+                                  key={index}
+                                  index={index}
+                                  data={item}
+                                />
+                              );
                             })}
                           </Col>
                           <Col md={12}>
@@ -273,10 +279,7 @@ const Dashboard = () => {
               onClose={handleDownloadAppModalClose}
               ModalTextOne={
                 <div className="w-100 text-center mt-1 mb-4">
-                  <img
-                    src={Images.QR_CODE_IMG}
-                    alt="qrAppImage"
-                  />
+                  <img src={Images.QR_CODE_IMG} alt="qrAppImage" />
                 </div>
               }
               ModalTextTwo={
@@ -285,11 +288,17 @@ const Dashboard = () => {
 
                   <Col md={6} className="text-center">
                     <div className="w-100 mb-2">
-                      <img
-                        src={Images.APP_STORE_IMG}
-                        className="img-fluid"
-                        alt=""
-                      />
+                      <a
+                        href="https://apps.apple.com/us/app/fitnee/id6473802571"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img
+                          src={Images.APP_STORE_IMG}
+                          className="img-fluid "
+                          alt=""
+                        />
+                      </a>
                     </div>
                   </Col>
                   <Col md={6} className="text-center mb-3">

@@ -21,11 +21,17 @@ const AppStoreLink = () => {
 
               <div className="w-100 text-center">
                 <div className="w-100 mb-2">
-                  <img
-                    src={Images.APP_STORE_IMG}
-                    className="img-fluid"
-                    alt=""
-                  />
+                  <a
+                    href="https://apps.apple.com/us/app/fitnee/id6473802571"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src={Images.APP_STORE_IMG}
+                      className="img-fluid "
+                      alt=""
+                    />
+                  </a>
                 </div>
 
                 <div className="w-100">

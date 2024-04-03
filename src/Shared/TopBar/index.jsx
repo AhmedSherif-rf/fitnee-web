@@ -47,6 +47,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation("");
+  const [unReadNotifications, setUnReadNotifications] = useState("");
   const { lang: currentLanguage } = useSelector((state) => state.language);
   const { loading: userLoading, user, notifications } = useSelector(
     (state) => state.user
@@ -67,6 +68,19 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
   }, [isPublic, location.pathname]);
+
+  useEffect(() => {
+    if (notifications) {
+      const unReadNotifications = notifications.filter(
+        (item) => !item?.is_read
+      );
+      setUnReadNotifications(
+        unReadNotifications.length > 10 ? "10+" : unReadNotifications.length
+      );
+    } else {
+      setUnReadNotifications(0);
+    }
+  }, [notifications]);
 
   useEffect(() => {
     if (isPublic && isAuth) {
@@ -120,19 +134,6 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
       setBackgroundClass("customBgDark");
     } else {
       setBackgroundClass("bg-transparent");
-    }
-  };
-
-  const getUnReadNotificationsLength = (notifications) => {
-    if (notifications) {
-      const unReadNotifications = notifications.filter(
-        (item) => !item?.is_read
-      );
-      return unReadNotifications.length > 10
-        ? "10+"
-        : unReadNotifications.length;
-    } else {
-      return 0;
     }
   };
 
@@ -383,8 +384,44 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                 )}
                 {!isGuest && !isPublic && (
                   <Nav
-                    className={`d-lg-flex d-none  ${styles.nav} text-black-custom`}
+                    className={`d-lg-flex d-none gap-5 ${styles.nav} text-black-custom`}
                   >
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav caret>
+                        <img
+                          src={
+                            currentLanguage === ENGLISH_LANGUAGE
+                              ? Images.AMERICAN_FLAG_IMG
+                              : Images.ARABIA_FLAG_IMG
+                          }
+                          alt="Flag_Image"
+                        />
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                        >
+                          <span>
+                            <img
+                              src={Images.ARABIA_FLAG_IMG}
+                              alt="Arabia_Flag_Image"
+                            />
+                          </span>
+                          <span>{"العربية"}</span>
+                        </DropdownItem>
+                        <DropdownItem
+                          onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
+                        >
+                          <span>
+                            <img
+                              src={Images.AMERICAN_FLAG_IMG}
+                              alt="America_Flag_Image"
+                            />
+                          </span>
+                          <span>{"English (US)"}</span>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
                     <UncontrolledDropdown>
                       <DropdownToggle className="p-0" nav>
                         <div
@@ -442,7 +479,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 <span
                                   className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
                                 >
-                                  {getUnReadNotificationsLength(notifications)}
+                                  {unReadNotifications}
                                 </span>
                               </span>
                             </div>
@@ -504,7 +541,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         </DropdownItem>
                         <DropdownItem className="p-0">
                           <div
-                            className="d-flex gap-1 align-items-center w-100 p-1 text-black-custom"
+                            className="d-flex gap-1 align-items-center w-100 p-1 text-black-custom cursorPointer"
                             onClick={handleLogoutClick}
                           >
                             <span className="me-2 d-flex">
@@ -524,9 +561,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
             isOpen={collapsed}
             className={`text-white w-100 ${styles.collapseScss}`}
           >
-            <div
-              className={`vh-100 bg-transparent ${"activeScroll"}`}
-            >
+            <div className={`vh-100 bg-transparent ${"activeScroll"}`}>
               <Nav
                 className={`pt-2 ${styles.togglerNav} customBgDark caret`}
                 navbar
@@ -713,7 +748,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         <span
                           className={`text-white bg-danger px-2 py-0 fw-bold mx-1 ${styles.notificationCount}`}
                         >
-                          {getUnReadNotificationsLength(notifications)}
+                          {unReadNotifications}
                         </span>
                       </Link>
                     </NavItem>
@@ -757,11 +792,49 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
                     <NavItem className={`${styles.NavItem} p-2`}>
                       <div
-                        className="d-flex justify-content-center w-100 p-1"
+                        className="d-flex justify-content-center w-100 p-1 cursorPointer"
                         onClick={handleLogoutClick}
                       >
                         {t("topBar.logoutText")}
                       </div>
+                    </NavItem>
+                    <NavItem>
+                      <UncontrolledDropdown nav inNavbar>
+                        <DropdownToggle nav caret>
+                          <img
+                            src={
+                              currentLanguage === ENGLISH_LANGUAGE
+                                ? Images.AMERICAN_FLAG_IMG
+                                : Images.ARABIA_FLAG_IMG
+                            }
+                            alt="Flag_Image"
+                          />
+                        </DropdownToggle>
+                        <DropdownMenu>
+                          <DropdownItem
+                            onClick={() => selectLanguage(ARABIC_LANGUAGE)}
+                          >
+                            <span>
+                              <img
+                                src={Images.ARABIA_FLAG_IMG}
+                                alt="Arabia_Flag_Image"
+                              />
+                            </span>
+                            <span>{"العربية"}</span>
+                          </DropdownItem>
+                          <DropdownItem
+                            onClick={() => selectLanguage(ENGLISH_LANGUAGE)}
+                          >
+                            <span>
+                              <img
+                                src={Images.AMERICAN_FLAG_IMG}
+                                alt="America_Flag_Image"
+                              />
+                            </span>
+                            <span>{"English (US)"}</span>
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </UncontrolledDropdown>
                     </NavItem>
                   </div>
                 )}

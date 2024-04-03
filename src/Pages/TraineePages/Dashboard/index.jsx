@@ -83,7 +83,7 @@ const Dashboard = () => {
     fetchUserProfile();
     fetchUserNotifications();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [i18n.dir()]);
 
   const fetchUserProfile = () => {
     const data = {
@@ -365,11 +365,17 @@ const Dashboard = () => {
             <Row className=" justify-content-center align-content-center h-100 m-0">
               <Col md={6} className="text-center">
                 <div className="w-100 mb-2">
-                  <img
-                    src={Images.APP_STORE_IMG}
-                    className="img-fluid"
-                    alt=""
-                  />
+                  <a
+                    href="https://apps.apple.com/us/app/fitnee/id6473802571"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src={Images.APP_STORE_IMG}
+                      className="img-fluid "
+                      alt=""
+                    />
+                  </a>
                 </div>
               </Col>
               <Col md={6} className="text-center mb-3">

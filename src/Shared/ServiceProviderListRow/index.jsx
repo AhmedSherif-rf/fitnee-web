@@ -1,14 +1,20 @@
 import moment from "moment";
 import React, { memo } from "react";
 import { Col, Row } from "reactstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { CURRENCY, TRAINEE_ROLE } from "../../utils/constants";
+import {
+  CURRENCY,
+  NUTRITIONIST_ROLE,
+  TRAINEE_ROLE,
+  TRAINER_ROLE,
+} from "../../utils/constants";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const Index = (props) => {
   const { data, index } = props;
+  const navigate = useNavigate();
 
   const { t } = useTranslation("");
   const { user } = useSelector((state) => state.user);
@@ -20,42 +26,48 @@ const Index = (props) => {
         key={index}
       >
         <Col md={3} className="mb-md-0 mb-2">
-          <div className="d-flex align-items-center">
-            <Link
-              className="text-decoration-none"
-              to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}`}
-            >
-              {user?.role === TRAINEE_ROLE && data?.serviceprovider && (
-                <div
-                  className="me-2 bgProperties rounded-circle"
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    cursor: "pointer",
-                    backgroundImage:
-                      data?.serviceprovider?.profile_pic === null
-                        ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${data?.serviceprovider?.profile_pic})`,
-                    border: "1px solid transparent",
-                  }}
-                ></div>
-              )}
-              {user?.role !== TRAINEE_ROLE && data?.trainee && (
-                <div
-                  className="me-2 bgProperties rounded-circle"
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    cursor: "pointer",
-                    backgroundImage:
-                      data?.trainee?.profile_pic === null
-                        ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${data?.trainee?.profile_pic})`,
-                    border: "1px solid transparent",
-                  }}
-                ></div>
-              )}
-            </Link>
+          <div
+            className="d-flex align-items-center"
+            onClick={() => {
+              const role =
+                data?.serviceprovider?.role === NUTRITIONIST_ROLE
+                  ? NUTRITIONIST_ROLE
+                  : TRAINER_ROLE;
+              navigate(
+                `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}`
+              );
+            }}
+          >
+            {user?.role === TRAINEE_ROLE && data?.serviceprovider && (
+              <div
+                className="me-2 bgProperties rounded-circle"
+                style={{
+                  width: "60px",
+                  height: "60px",
+                  cursor: "pointer",
+                  backgroundImage:
+                    data?.serviceprovider?.profile_pic === null
+                      ? `url(${Images.USER_DUMMY_IMG})`
+                      : `url(${data?.serviceprovider?.profile_pic})`,
+                  border: "1px solid transparent",
+                }}
+              ></div>
+            )}
+            {user?.role !== TRAINEE_ROLE && data?.trainee && (
+              <div
+                className="me-2 bgProperties rounded-circle"
+                style={{
+                  width: "60px",
+                  height: "60px",
+                  cursor: "pointer",
+                  backgroundImage:
+                    data?.trainee?.profile_pic === null
+                      ? `url(${Images.USER_DUMMY_IMG})`
+                      : `url(${data?.trainee?.profile_pic})`,
+                  border: "1px solid transparent",
+                }}
+              ></div>
+            )}
             <div>
               <h6 className="mb-0 fw-bold mx-2">
                 {data?.serviceprovider
@@ -64,8 +76,12 @@ const Index = (props) => {
               </h6>
               <span className="text-black-custom mx-2">
                 {data?.serviceprovider
-                  ? data?.serviceprovider?.role
-                  : data?.trainee?.role}
+                  ? data?.serviceprovider?.role === TRAINER_ROLE
+                    ? t("registerAs.trainerText")
+                    : data?.serviceprovider?.role === NUTRITIONIST_ROLE
+                    ? t("registerAs.nutritionistText")
+                    : t("registerAs.trainerNutritionistText")
+                  : t("registerAs.traineeText")}
               </span>
               <div className="mb-md-0 d-md-none d-block py-2">
                 <h6 className="mb-0 w-100 small fw-bold ">

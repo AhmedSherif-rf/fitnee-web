@@ -26,9 +26,6 @@
   .dark-gray {
     color: $dark-gray;
   }
-  .nav-item:hover {
-    background: transparent;
-  }
 
   li a.dropdown-toggle::after {
     display: inline-flex;
@@ -53,6 +50,16 @@
 
   .side-menu .nav .nav-item a {
     color: $white;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    &:hover {
+      color: $parrot-green;
+    }
+  }
+  .AdminActive {
+    background-color: $parrot-green;
+    color: black !important;
+    font-weight: 700;
   }
 
   .side-menu::-webkit-scrollbar {

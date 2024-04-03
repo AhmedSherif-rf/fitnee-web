@@ -14,25 +14,10 @@
 }
 .heroImg {
   height: 100vh;
-  /* border-radius: 30% 60% 67% 33% / 30% 30% 60% 70%; */
 }
 
 @media (max-width: 575px) {
   .heroImg {
     height: 45vh;
-  }
-}
-
-.aboutTextContainer {
-  width: 500px !important;
-  height: 500px !important;
-  background-color: #91f5337c;
-  border-radius: 100px;
-  transform: rotate(-45deg);
-  box-shadow: 0 0 20px 10px $yellow;
-  .aboutTextDiv {
-    transform: rotate(45deg);
-    width: 100%;
-    color: $dark-bg;
   }
 }

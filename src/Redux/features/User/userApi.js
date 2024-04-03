@@ -201,12 +201,11 @@ export const getUserNotifications = createAsyncThunk(
   async ({ apiEndpoint }, thunkAPI) => {
     try {
       const response = await axiosInstance.get(apiEndpoint);
-      const sortedNotifications = response.data.data.results.sort((a, b) => {
-        if (a.is_read === true && b.is_read === false) return 1;
-        if (a.is_read === false && b.is_read === true) return -1;
-        return 0;
-      });
-      return { sortedNotifications, count: response.data.data.count };
+      return {
+        sortedNotifications: response.data.data.results.results,
+        count: response.data.data.count,
+        unRead: response.data.data.results.un_read,
+      };
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.detail);
       return thunkAPI.rejectWithValue(error?.response?.data);

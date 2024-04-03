@@ -560,8 +560,8 @@
     "paymentHistoryTitleText": "Payment History",
     "availableBalanceText": "Available Balance",
     "todayText": "Today",
-    "amountReleasedText": "Amount Released",
-    "amountPendingText": "Amount Pending",
+    "amountReleasedText": "Amount Released on",
+    "amountPendingText": "Amount will be released on",
     "SARText": "SAR"
   },
   "trainerPackages": {

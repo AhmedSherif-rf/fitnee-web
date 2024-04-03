@@ -25,7 +25,6 @@ const ExerciseSubscription = () => {
     };
     dispatch(getExerciseSubscriptionPlans(data)).then((res) => {
       if (res.type === "getExerciseSubscriptionPlans/fulfilled") {
-        console.log(res.payload.data);
         setSubscriptionData(res.payload.data);
       }
     });

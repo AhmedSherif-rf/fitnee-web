@@ -28,7 +28,7 @@ const Footer = () => {
           </div>
         </Col>
         <Col md={4} className="lh-1">
-          <div className="d-flex gap-3 mx-4 align-items-center justify-content-center p-2">
+          <div className="d-flex gap-3 mx-4 mb-1 align-items-center justify-content-center p-2">
             <Link to="https://www.instagram.com/fitnee.app" target="_blank">
               <img src={Image.INSTA_IMG} alt="logo" />
             </Link>

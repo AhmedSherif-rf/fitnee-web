@@ -12,9 +12,11 @@ import { useMediaQuery } from "@react-hook/media-query";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
+import { useLocation } from "react-router-dom";
 
 const SideBar = ({ isOpen, toggle }) => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const location = useLocation();
 
   return (
     <div
@@ -40,7 +42,9 @@ const SideBar = ({ isOpen, toggle }) => {
         <Nav vertical className="list-unstyled pb-3">
           <NavItem>
             <NavLink
-              className="py-3 d-flex align-items-center gap-2"
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/dashboard" ? "AdminActive" : ""
+              }`}
               tag={Link}
               onClick={isSmallScreen ? toggle : undefined}
               to={"/admin/dashboard"}
@@ -52,7 +56,11 @@ const SideBar = ({ isOpen, toggle }) => {
           <NavItem>
             <NavLink
               onClick={isSmallScreen ? toggle : undefined}
-              className="py-3 d-flex align-items-center gap-2"
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/reviewRequest"
+                  ? "AdminActive"
+                  : ""
+              }`}
               tag={Link}
               to={"/admin/reviewRequest"}
             >
@@ -63,7 +71,11 @@ const SideBar = ({ isOpen, toggle }) => {
           <NavItem>
             <NavLink
               onClick={isSmallScreen ? toggle : undefined}
-              className="py-3 d-flex align-items-center gap-2"
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/editProfileRequest"
+                  ? "AdminActive"
+                  : ""
+              }`}
               tag={Link}
               to={"/admin/editProfileRequest"}
             >
@@ -72,15 +84,20 @@ const SideBar = ({ isOpen, toggle }) => {
             </NavLink>
           </NavItem>
           <SubMenu
+            location={location.pathname}
             title="Users"
-            onClick={isSmallScreen ? toggle : undefined}
+            toggleSmallScreen={isSmallScreen ? toggle : undefined}
             icon={<GoPersonAdd />}
             items={submenus[0]}
             isVisible={!isSmallScreen}
           />
           <NavItem>
             <NavLink
-              className="py-3 d-flex align-items-center gap-2"
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/exercises/viewExercises"
+                  ? "AdminActive"
+                  : ""
+              }`}
               tag={Link}
               onClick={isSmallScreen ? toggle : undefined}
               to={"/admin/exercises/viewExercises"}
@@ -90,15 +107,18 @@ const SideBar = ({ isOpen, toggle }) => {
             </NavLink>
           </NavItem>
           <SubMenu
+            location={location.pathname}
             title="Wallet System"
             icon={<GiWallet />}
             items={submenus[1]}
-            onClick={isSmallScreen ? toggle : undefined}
             isVisible={!isSmallScreen}
+            toggleSmallScreen={isSmallScreen ? toggle : undefined}
           />
           <NavItem>
             <NavLink
-              className="py-3 d-flex align-items-center gap-2"
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/reports" ? "AdminActive" : ""
+              }`}
               tag={Link}
               to={"/admin/reports"}
               onClick={isSmallScreen ? toggle : undefined}
@@ -108,15 +128,18 @@ const SideBar = ({ isOpen, toggle }) => {
             </NavLink>
           </NavItem>
           <SubMenu
+            location={location.pathname}
             title="Feedback"
-            onClick={isSmallScreen ? toggle : undefined}
+            toggleSmallScreen={isSmallScreen ? toggle : undefined}
             icon={<GoPaste />}
             items={submenus[2]}
             isVisible={!isSmallScreen}
           />
           <NavItem>
             <NavLink
-              className="py-3 d-flex align-items-center gap-2"
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/community" ? "AdminActive" : ""
+              }`}
               tag={Link}
               to={"/admin/community"}
               onClick={isSmallScreen ? toggle : undefined}
@@ -127,7 +150,9 @@ const SideBar = ({ isOpen, toggle }) => {
           </NavItem>
           <NavItem>
             <NavLink
-              className="py-3 d-flex align-items-center gap-2"
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/settings" ? "AdminActive" : ""
+              }`}
               tag={Link}
               to={"/admin/settings"}
               onClick={isSmallScreen ? toggle : undefined}

@@ -29,6 +29,7 @@ export const userSlice = createSlice({
     loading: "idle",
     error: null,
     email: "",
+    unReadCount: 0,
     notifications: [],
     notificationCount: 0,
     shownAppModal: false,
@@ -222,6 +223,7 @@ export const userSlice = createSlice({
         state.loading = "succeeded";
         state.notifications = action.payload.sortedNotifications;
         state.notificationCount = action.payload.count;
+        state.unReadCount = action.payload.unRead;
       })
       .addCase(getUserNotifications.rejected, (state) => {
         state.loading = "failed";

@@ -49,9 +49,12 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
   const { t, i18n } = useTranslation("");
   const [unReadNotifications, setUnReadNotifications] = useState("");
   const { lang: currentLanguage } = useSelector((state) => state.language);
-  const { loading: userLoading, user, notifications } = useSelector(
-    (state) => state.user
-  );
+  const {
+    loading: userLoading,
+    user,
+    unReadCount,
+    notifications,
+  } = useSelector((state) => state.user);
 
   const roleType = user?.role ? user?.role.toLowerCase() : null;
 
@@ -71,16 +74,11 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
 
   useEffect(() => {
     if (notifications) {
-      const unReadNotifications = notifications.filter(
-        (item) => !item?.is_read
-      );
-      setUnReadNotifications(
-        unReadNotifications.length > 10 ? "10+" : unReadNotifications.length
-      );
+      setUnReadNotifications(unReadCount > 10 ? "10+" : unReadCount);
     } else {
       setUnReadNotifications(0);
     }
-  }, [notifications]);
+  }, [notifications, unReadCount]);
 
   useEffect(() => {
     if (isPublic && isAuth) {

@@ -65,7 +65,7 @@ const Dashboard = (props) => {
         beginAtZero: true,
       },
     },
-    maintainAspectRatio: false
+    maintainAspectRatio: false,
   };
 
   useEffect(() => {
@@ -374,16 +374,14 @@ const Dashboard = (props) => {
           </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <Link to={`/admin/user/userListing/${counterData?.trainees?.slug}`}>
-            <DashboardCard
-              AdminClass="AdminCard"
-              CardBodyClass="AdminCardBody"
-              cardIconClass="cardIcon"
-              cardIcon={<FaUsers size={65} />}
-              textOne={counterData?.trainees_count}
-              textTwo="Subscribers"
-            />
-          </Link>
+          <DashboardCard
+            AdminClass="AdminCard"
+            CardBodyClass="AdminCardBody"
+            cardIconClass="cardIcon"
+            cardIcon={<FaUsers size={65} />}
+            textOne={counterData?.total_subscriptions_count}
+            textTwo="Subscriptions"
+          />
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
           <Link

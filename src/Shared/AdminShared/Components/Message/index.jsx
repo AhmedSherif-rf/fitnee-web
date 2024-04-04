@@ -2,16 +2,30 @@ import "./styles.scss";
 import moment from "moment";
 import { memo } from "react";
 import { Card } from "reactstrap";
+import Toaster from "../../../Toaster";
+import { db } from "../../../../firebase";
+import { ref, set } from "firebase/database";
+import { FaDeleteLeft } from "react-icons/fa6";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
 const Member = ({ message, member }) => {
+  const handleDeleteMessage = () => {
+    const messageRef = ref(
+      db,
+      `GroupMessages/${message.messageTo}/${message.messageId}`
+    );
+    set(messageRef, { ...message, isDeleted: true })
+      .then(() => Toaster.error("Message deleted"))
+      .catch((error) => console.error("Error updating isDeleted:", error));
+  };
+
   return (
     <div className="d-flex gap-2 py-2">
       <div
         className="bgProperties rounded-circle me-2"
         style={{
           backgroundImage:
-            member?.avatar === null
+            member?.avatar === "null" || member?.avatar === undefined
               ? `url(${Images.USER_DUMMY_IMG})`
               : `url(${member?.avatar})`,
           width: "35px",
@@ -47,6 +61,13 @@ const Member = ({ message, member }) => {
           <small>{moment(message.messageTime).format("h:mm A")}</small>
         </div>
       </Card>
+      {!message?.isDeleted && (
+        <FaDeleteLeft
+          color="#c56263"
+          className="cursorPointer"
+          onClick={handleDeleteMessage}
+        />
+      )}
     </div>
   );
 };

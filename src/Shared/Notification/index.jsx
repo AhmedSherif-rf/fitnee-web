@@ -19,7 +19,6 @@ const Notification = () => {
   );
 
   const [page, setPage] = useState(1);
-  const [totalSize, setSizePages] = useState(notificationCount);
 
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
@@ -91,10 +90,10 @@ const Notification = () => {
           </Card>
         ))
       )}
-      <CardFooter>
-        {totalSize > PER_PAGE_COUNT && (
+      <CardFooter className="ltr">
+        {notificationCount > PER_PAGE_COUNT && (
           <Pagination
-            size={totalSize}
+            size={notificationCount}
             handlePageChange={handlePageChange}
             page={page}
           />

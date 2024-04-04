@@ -710,7 +710,7 @@
   },
   "otpVerification": {
     "verificationText": "ﺍﻟﺘﺤﻘﻖ",
-    "openYourEmailText": "ﺍﻟﺮﺟﺎء ﺇﺩﺧﺎﻝ ﺍﻟﺮﻣﺰ ﺍﻟﻤﺮﺳﻞ ﻟﺒﺮﻳﺪﻙ ﺍﻹﻟﻜﺘﺮﻭﻧﻲ",
+    "openYourEmailText": "الرجاء التحقق من الرمز المرسل لبريدك الإلكتروني",
     "resendCodeInText": "الوقت المتبقي",
     "resendCodeText": "ﺇﻋﺎﺩﺓ ﺇﺭﺳﺎﻝ ﺍﻟﺮﻣﺰ",
     "invalidOtpModalText": "ﺍﻟﺮﻣﺰ ﺍﻟﻤﺪﺧﻞ ﻏﻴﺮ ﺻﺤﻴﺢ، ﺍﻟﺮﺟﺎء ﺍﻟﻤﺤﺎﻭﻟﺔ ﻣﺮﻩ ﺃﺧﺮﻯ",

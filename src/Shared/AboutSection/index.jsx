@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./style.module.scss";
-import { useInView } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
 import AboutBg from "../../Assets/Images/aboutBgImg.svg";
 
 const AboutSection = () => {
   const { t } = useTranslation("");
-  // const [textRef, textInView] = useInView({
-  //   triggerOnce: true,
-  // });
+  const [isTextVisible, setIsTextVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const textSection = document.getElementById("textSection");
+
+      if (textSection && scrollPosition > textSection.offsetTop) {
+        setIsTextVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const textVariants = {
-    hidden: { opacity: 0, y: 100 },
+    hidden: { opacity: 0, scale: 0.1 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: "anticipate" },
+      scale: 1,
+      transition: { duration: 1, ease: "easeInOut" },
     },
   };
+
   return (
     <Container
       fluid
@@ -69,49 +82,51 @@ const AboutSection = () => {
           </div>
         </Col>
         <Col md={6} className="p-0 h-100">
-          {/* <motion.div
+          <motion.div
             initial="hidden"
-            ref={textRef}
-            animate={textInView ? "visible" : "hidden"}
+            animate={isTextVisible ? "visible" : "hidden"}
             variants={textVariants}
-            className="w-100"
-          > */}
-          <div className="d-flex align-items-center justify-content-center h-100">
+            className="w-100 h-100"
+          >
             <div
-              className={`${styles.aboutTextDiv} pt-4 text-center h-50  px-4 `}
+              id="textSection"
+              className="d-flex align-items-center justify-content-center h-100"
             >
-              <span className="mb-5 w-100 d-md-block d-none">
-                <span
-                  className={`text-white display-5 fw-bold arabicBorderHover`}
-                >
-                  {t("landing.whatIsText")}
-                  <span className="textYellow">
-                    {" "}
-                    {t("landing.fitneeText")}{" "}
-                  </span>
-                </span>
-              </span>
-              <h5 className="mb-5 text-center d-md-none d-block">
-                <span
-                  className={`fw-bold display-5 arabicBorderHover text-white`}
-                >
-                  {t("landing.whatIsText")}
-                  <span className="textYellow">
-                    {" "}
-                    {t("landing.fitneeText")}{" "}
-                  </span>
-                </span>
-              </h5>
-              <p
-                className={
-                  "fs-4 lh-1 text-white text-center customSpacing pb-4"
-                }
+              <div
+                className={`${styles.aboutTextDiv} pt-4 text-center h-50  px-4 `}
               >
-                {t("landing.firstHeroSectionText")}
-              </p>
+                <span className="mb-5 w-100 d-md-block d-none">
+                  <span
+                    className={`text-white display-5 fw-bold arabicBorderHover`}
+                  >
+                    {t("landing.whatIsText")}
+                    <span className="textYellow">
+                      {" "}
+                      {t("landing.fitneeText")}{" "}
+                    </span>
+                  </span>
+                </span>
+                <h5 className="mb-5 text-center d-md-none d-block">
+                  <span
+                    className={`fw-bold display-5 arabicBorderHover text-white`}
+                  >
+                    {t("landing.whatIsText")}
+                    <span className="textYellow">
+                      {" "}
+                      {t("landing.fitneeText")}{" "}
+                    </span>
+                  </span>
+                </h5>
+                <p
+                  className={
+                    "fs-4 lh-1 text-white text-center customSpacing pb-4"
+                  }
+                >
+                  {t("landing.firstHeroSectionText")}
+                </p>
+              </div>
             </div>
-          </div>
-          {/* </motion.div> */}
+          </motion.div>
         </Col>
       </Row>
     </Container>

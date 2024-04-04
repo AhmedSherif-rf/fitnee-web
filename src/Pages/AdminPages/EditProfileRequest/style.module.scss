@@ -1,18 +1,5 @@
-@import "../../Assets/Scss/globalStyleSheet.scss";
-
-.ProfileDocumentCard {
-  color: white;
-  height: 20vh;
-  margin: 4px;
-  cursor: pointer;
-  transition: opacity 0.5s ease-in-out;
-
-  .documentCardFooter {
-    border-bottom-right-radius: 14px;
-    border-bottom-left-radius: 14px;
-  }
-
-  .fullImageOverlay {
+@import "../../../Assets/Scss/globalStyleSheet.scss";
+.fullImageOverlay {
     cursor: pointer;
     position: fixed;
     top: 0;
@@ -48,4 +35,3 @@
       transition: all 0.3s ease-in-out;
     }
   }
-}

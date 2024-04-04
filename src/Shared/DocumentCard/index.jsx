@@ -30,7 +30,6 @@ const DocumentCard = (props) => {
         {showFullImage && (
           <div
             className={` ${styles.fullImageOverlay}`}
-            style={{}}
             onClick={handleToggleClick}
           >
             <img src={documentImg} alt={documentTitle} />

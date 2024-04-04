@@ -489,7 +489,7 @@
     "nutritionistsText": "اخصائيي التغذية",
     "trainersText": "المدربين",
     "bothText": "ﺍﻟﺠﻤﻴﻊ",
-    "deleteModalText": "ﻫﻞ ﺃﻧﺖ ﻣﺘﺄﻛﺪ ﻣﻦ ﺭﻏﺒﺘﻚ ﻓﻲ ﺣﺬﻑ ﺍﻟﺤﺴﺎﺏ؟",
+    "deleteModalText": "ﻫﻞ ﺃﻧﺖ ﻣﺘﺄﻛﺪ ﻣﻦ ﺭﻏﺒﺘﻚ ﻓﻲ ﺣﺬﻑ ﺍﻟﺤﺴﺎﺏ?",
     "noText": "ﻻ",
     "maleText": "ذكر",
     "femaleText": "أنثى",
@@ -505,7 +505,7 @@
     "contactUsText": "تواصل معنا",
     "sendText": "إرسال",
     "cancelText": "إلغاء",
-    "modalOneText": "تم الإرسال بنجاح. سيتواصل معك فريق فتني قريبًا"
+    "modalOneText": "تم الإرسال بنجاح. سيتواصل معك فريق فتني قريبًا."
   },
   "trainer": {
     "walletText": "المحفظة",
@@ -572,10 +572,10 @@
     "dateText": "التاريخ",
     "viewGraphText": "عرض الرسم البياني",
     "subscribeForExerciseText": "اشترك للتمارين",
-    "DownloadAppTraineeText": "قم بتنزيل التطبيق حتى تتمكن من التواصل مع مدربك /اخصائيي التغذية الخاص بك ولتتمكن من الوصول لجميع التمارين",
-    "DownloadAppTraineeExerciseText": "قم بتنزيل التطبيق حتى تتمكن من الوصول لجميع التمارين",
-    "DownloadAppTrainerText": "حمل التطبيق لتتمكن من التواصل مع متدربينك",
-    "DownloadAppNutritionistText": "حمل التطبيق لتتمكن من التواصل مع مشتركينك",
+    "DownloadAppTraineeText": "قم بتنزيل التطبيق حتى تتمكن من التواصل مع مدربك /اخصائيي التغذية الخاص بك ولتتمكن من الوصول لجميع التمارين.",
+    "DownloadAppTraineeExerciseText": "قم بتنزيل التطبيق حتى تتمكن من الوصول لجميع التمارين.",
+    "DownloadAppTrainerText": "حمل التطبيق لتتمكن من التواصل مع متدربينك.",
+    "DownloadAppNutritionistText": "حمل التطبيق لتتمكن من التواصل مع مشتركينك.",
     "amountRefundedText": "مبلغ مسترد",
     "walletAmountUsedText": "تم استخدام المبلغ المسترد"
   },
@@ -672,7 +672,7 @@
     "termsAndConditionText": "ﺍﻟﺸﺮﻭﻁ ﻭﺍﻷﺣﻜﺎﻡ",
     "acknowledgeText": "ﺍﻗﺮ ﺑﺄﻧﻲ ﻗﺮﺃﺕ ﻭﻗﺒﻠﺖ ﺟﻤﻴﻊ ﺍﻟﺸﺮﻭﻁ ﻭﺍﻷﺣﻜﺎﻡ",
     "generalText": "ﺍﻟﺸﺮﻁ ﻭﺍﻷﺣﻜﺎﻡ ﺍﻟﻌﺎﻣﺔ",
-    "cancellingSubscriptionModalText": "ﻫﻞ ﺃﻧﺖ ﻣﺘﺄﻛﺪ ﻣﻦ ﺇﻟﻐﺎء ﺍﻻﺷﺘﺮﺍﻙ",
+    "cancellingSubscriptionModalText": "ﻫﻞ ﺃﻧﺖ ﻣﺘﺄﻛﺪ ﻣﻦ ﺇﻟﻐﺎء ﺍﻻﺷﺘﺮﺍﻙ?",
     "dayText": "اليوم",
     "fromTimeText": "الوقت من",
     "toTimeText": "الوقت الى",
@@ -698,8 +698,8 @@
     "cancelText": "إلغاء",
     "unlockYourPotentialText": "ﺃﻁﻠﻖ العنان لإمكانياتك",
     "transformYourBodyText": "ﻟﻴﺎﻗﺘﻚ ﻗﺮﺍﺭﻙ",
-    "requestUnderProcessText": "طلبك قيد المراجعة",
-    "accountRejectText": "بعد مراجعة طلبك، تم رفضه من قِبل فريق فتني، الرجاء تفقد البريد الإلكتروني الخاص بك لمعرفه السبب"
+    "requestUnderProcessText": "طلبك قيد المراجعة.",
+    "accountRejectText": "بعد مراجعة طلبك، تم رفضه من قِبل فريق فتني، الرجاء تفقد البريد الإلكتروني الخاص بك لمعرفه السبب."
   },
   "forgotPassword": {
     "emailText": "البريد ﺍﻹﻟﻜﺘﺮﻭﻧﻲ",

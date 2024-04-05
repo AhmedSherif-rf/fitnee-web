@@ -65,7 +65,7 @@ const Dashboard = (props) => {
         beginAtZero: true,
       },
     },
-    maintainAspectRatio: false
+    maintainAspectRatio: false,
   };
 
   useEffect(() => {
@@ -226,7 +226,7 @@ const Dashboard = (props) => {
             </h6>
           ),
           message: (
-            <div className="" style={{ maxWidth: "180px" }}>
+            <div className="" style={{ maxWidth: "160px" }}>
               <div className={` ${Styles.LineThree} mb-0`}>
                 {feedback?.sp_review}
               </div>
@@ -374,16 +374,14 @@ const Dashboard = (props) => {
           </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <Link to={`/admin/user/userListing/${counterData?.trainees?.slug}`}>
-            <DashboardCard
-              AdminClass="AdminCard"
-              CardBodyClass="AdminCardBody"
-              cardIconClass="cardIcon"
-              cardIcon={<FaUsers size={65} />}
-              textOne={counterData?.trainees_count}
-              textTwo="Subscribers"
-            />
-          </Link>
+          <DashboardCard
+            AdminClass="AdminCard"
+            CardBodyClass="AdminCardBody"
+            cardIconClass="cardIcon"
+            cardIcon={<FaUsers size={65} />}
+            textOne={counterData?.total_subscriptions_count}
+            textTwo="Subscriptions"
+          />
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
           <Link
@@ -457,10 +455,10 @@ const Dashboard = (props) => {
         </Col>
       </Row>
       <Row className="mb-3">
-        <Col lg={6} md={12} sm={12} className="mb-3">
+        <Col xl={6} md={12} sm={12} className="mb-3">
           <DoughnutChart data={userTotalitiesGraphData} />
         </Col>
-        <Col lg={6} className="mb-3">
+        <Col xl={6} md={12} className="mb-3">
           <DashboardTable
             data={reviewRequestsTableData}
             columns={reviewRequestColumns}
@@ -468,7 +466,7 @@ const Dashboard = (props) => {
             link={"/admin/reviewRequest"}
           />
         </Col>
-        <Col lg={6} className="mb-3">
+        <Col xl={6} md={12} className="mb-3">
           <DashboardTable
             data={platformFeedbackTableData}
             columns={platformFeedbackColumns}
@@ -476,7 +474,7 @@ const Dashboard = (props) => {
             link={"/admin/platformFeedback"}
           />
         </Col>
-        <Col lg={6} className="mb-3 p-0">
+        <Col xl={6} md={12} className="mb-3 p-0">
           <DashboardTable
             data={spFeedbackTableData}
             columns={serviceProviderFeedbackColumns}

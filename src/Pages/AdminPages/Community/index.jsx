@@ -1,8 +1,6 @@
 import "./styles.scss";
 import { db } from "../../../firebase";
-import { LuSend } from "react-icons/lu";
 import React, { useEffect, useRef, useState } from "react";
-import InputField from "../../../Shared/InputField";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import { onValue, ref, orderByChild } from "firebase/database";
 import {
@@ -118,7 +116,8 @@ const Community = (props) => {
                         style={{
                           border: "3px solid White",
                           backgroundImage:
-                            member?.avatar === null
+                            member?.avatar === "null" ||
+                            member?.avatar === undefined
                               ? `url(${Images.USER_DUMMY_IMG})`
                               : `url(${member?.avatar})`,
                           width: "45px",

@@ -90,7 +90,7 @@ const Notification = () => {
           </Card>
         ))
       )}
-      <CardFooter>
+      <CardFooter className="ltr">
         {notificationCount > PER_PAGE_COUNT && (
           <Pagination
             size={notificationCount}

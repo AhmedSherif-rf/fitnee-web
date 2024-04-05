@@ -560,8 +560,8 @@
     "paymentHistoryTitleText": "Payment History",
     "availableBalanceText": "Available Balance",
     "todayText": "Today",
-    "amountReleasedText": "Amount Released",
-    "amountPendingText": "Amount Pending",
+    "amountReleasedText": "Amount Released on",
+    "amountPendingText": "Amount will be released on",
     "SARText": "SAR"
   },
   "trainerPackages": {
@@ -597,10 +597,10 @@
     "dateText": "Date",
     "viewGraphText": "View Graph",
     "subscribeForExerciseText": "Subscribe For Exercises",
-    "DownloadAppTraineeText": "Download the app to see all the exercises and chat with your trainers/nutritionists",
-    "DownloadAppTraineeExerciseText": "Download the app to view all the exercises",
-    "DownloadAppTrainerText": "Download the app to chat with your trainees",
-    "DownloadAppNutritionistText": "Download the app to chat with your subscribers",
+    "DownloadAppTraineeText": "Download the app to see all the exercises and chat with your trainers/nutritionists.",
+    "DownloadAppTraineeExerciseText": "Download the app to view all the exercises.",
+    "DownloadAppTrainerText": "Download the app to chat with your trainees.",
+    "DownloadAppNutritionistText": "Download the app to chat with your subscribers.",
     "amountRefundedText": "Amount Refunded",
     "walletAmountUsedText": "Wallet Amount Used"
   },
@@ -722,8 +722,8 @@
     "cancelText": "Cancel",
     "unlockYourPotentialText": "Unlock your potential",
     "transformYourBodyText": "Transform your body",
-    "requestUnderProcessText": "Your request is under process",
-    "accountRejectText": "Your request has been rejected by FitNee Admin, Please check your email"
+    "requestUnderProcessText": "Your request is under process.",
+    "accountRejectText": "Your request has been rejected by FitNee Admin, Please check your email."
   },
   "forgotPassword": {
     "emailText": "Type your email",

@@ -5,8 +5,8 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-.LandingPageBg{
-  background-color:$yellow;
+.LandingPageBg {
+  background-color: $yellow;
 }
 .btn.disabled {
   background-color: $yellow-blur !important;
@@ -83,14 +83,6 @@
 }
 .contentCardPadding {
   padding-top: 12vh;
-}
-
-.rtl {
-  direction: rtl;
-}
-
-.ltr {
-  direction: ltr;
 }
 
 .cursorPointer {
@@ -369,7 +361,6 @@ Input::-webkit-input-placeholder {
 .rtl {
   direction: rtl;
 }
-
 .ltr {
   direction: ltr;
 }
@@ -519,7 +510,12 @@ Input::-webkit-input-placeholder {
 
   transition: all 3s ease-in-out;
 }
-
+.optWidthForEng {
+  width: 100%;
+}
+.optWidthForArb {
+  width: 90%;
+}
 @media screen and (max-width: 40em) {
   .responsiveTable {
     td {

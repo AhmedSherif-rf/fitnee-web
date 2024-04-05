@@ -15,9 +15,9 @@ const Feature = (props) => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid >
       <Row
-        className={`p-2 ${styles.featureSectionWrapper} ${
+        className={`${styles.featureSectionWrapper} ${
           type === "textRight" ? "flex-row-reverse" : ""
         }`}
       >
@@ -87,7 +87,7 @@ const Feature = (props) => {
         <Col
           xs={12}
           md={6}
-          className={`mb-md-0 mb-3 ${styles.featureSectionRightContent}`}
+          className={`mb-md-0 mb-3 h-100 ${styles.featureSectionRightContent}`}
         >
           <Swiper
             speed={1000}

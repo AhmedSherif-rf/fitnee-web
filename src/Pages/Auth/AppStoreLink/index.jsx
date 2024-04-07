@@ -10,12 +10,8 @@ const AppStoreLink = () => {
       <Row className="justify-content-center m-0">
         <Col lg="5" md={6}>
           <Card className="contentCard BorderRadius h-100">
-            <CardBody>
-              <div className="w-100 text-center p-4 mb-4">
-                <img src={Images.SMALL_LOGO_IMG} className="" alt="" />
-              </div>
-
-              <div className="w-100 text-center my-5">
+            <CardBody className="d-flex align-items-center justify-content-center">
+              <div className="text-center">
                 <div className="w-100 mb-2">
                   <a
                     href="https://apps.apple.com/us/app/fitnee/id6473802571"

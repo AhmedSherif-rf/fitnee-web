@@ -803,7 +803,7 @@ const SignUpForm = () => {
                             i18n.dir() === "ltr" ? "text-end" : "text-start"
                           }`}
                         >
-                          {user?.change_request_status !== "Pending" && (
+                          {user && user?.change_request_status !== "Pending" && (
                             <div
                               className="cursorPointer"
                               onClick={() => setShowEditProfileModal(true)}
@@ -940,7 +940,7 @@ const SignUpForm = () => {
                               i18n.dir() === "ltr" ? "text-end" : "text-start"
                             }`}
                           >
-                            {user?.change_request_status !== "Pending" && (
+                            {user && user?.change_request_status !== "Pending" && (
                               <div
                                 className="cursorPointer"
                                 onClick={() => setShowEditProfileModal(true)}
@@ -982,7 +982,7 @@ const SignUpForm = () => {
                               i18n.dir() === "ltr" ? "text-end" : "text-start"
                             }`}
                           >
-                            {user?.change_request_status !== "Pending" && (
+                            {user && user?.change_request_status !== "Pending" && (
                               <div
                                 className="cursorPointer"
                                 onClick={() => setShowEditProfileModal(true)}
@@ -1024,7 +1024,7 @@ const SignUpForm = () => {
                               i18n.dir() === "ltr" ? "text-end" : "text-start"
                             }`}
                           >
-                            {user?.change_request_status !== "Pending" && (
+                            {user && user?.change_request_status !== "Pending" && (
                               <div
                                 className="cursorPointer"
                                 onClick={() => setShowEditProfileModal(true)}

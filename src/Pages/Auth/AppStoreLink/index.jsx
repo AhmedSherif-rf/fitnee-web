@@ -4,7 +4,7 @@ import { Col, Container, Row, Card, CardBody } from "reactstrap";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const AppStoreLink = () => {
-  const { t, i18n } = useTranslation("");
+  const { i18n } = useTranslation("");
   return (
     <Container fluid className={i18n.dir()}>
       <Row className="justify-content-center m-0">
@@ -14,12 +14,8 @@ const AppStoreLink = () => {
               <div className="w-100 text-center p-4 mb-4">
                 <img src={Images.SMALL_LOGO_IMG} className="" alt="" />
               </div>
-              <p className="text-center ws-2 mb-5">
-                {t("landing.firstHeroSectionText")}
-                {t("landing.secondHeroSectionTextOne")}
-              </p>
 
-              <div className="w-100 text-center">
+              <div className="w-100 text-center my-5">
                 <div className="w-100 mb-2">
                   <a
                     href="https://apps.apple.com/us/app/fitnee/id6473802571"

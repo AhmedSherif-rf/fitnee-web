@@ -535,8 +535,8 @@
     "paymentHistoryTitleText": "تاريخ عمليات الدفع",
     "availableBalanceText": "الرصيدالمتاح",
     "todayText": "اليوم",
-    "amountReleasedText": "Amount Released on",
-    "amountPendingText": "Amount will be released on",
+    "amountReleasedText": "تم ايداع المبلغ",
+    "amountPendingText": "سوف يتم ايداع المبلغ في",
     "SARText": "ريال"
   },
   "trainerPackages": {

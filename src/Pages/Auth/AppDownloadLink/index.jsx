@@ -93,11 +93,17 @@ const AppDownloadLink = () => {
                   </Col>
                   <Col md={5} className="mb-3 text-md-block text-center">
                     <div className="w-100">
-                      <img
-                        src={Images.GOOGLE_PLAY_IMG}
-                        className="img-fluid"
-                        alt=""
-                      />
+                      <a
+                        href="https://play.google.com/store/apps/details?id=com.fitneeapplication"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img
+                          src={Images.GOOGLE_PLAY_IMG}
+                          className="img-fluid"
+                          alt=""
+                        />
+                      </a>
                     </div>
                   </Col>
                 </Row>

@@ -380,11 +380,17 @@ const Dashboard = () => {
               </Col>
               <Col md={6} className="text-center mb-3">
                 <div className="w-100">
-                  <img
-                    src={Images.GOOGLE_PLAY_IMG}
-                    className="img-fluid"
-                    alt=""
-                  />
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.fitneeapplication"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src={Images.GOOGLE_PLAY_IMG}
+                      className="img-fluid"
+                      alt=""
+                    />
+                  </a>
                 </div>
               </Col>
               <div className="text-center w-100 mb-2">

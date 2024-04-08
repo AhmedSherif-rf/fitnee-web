@@ -43,7 +43,7 @@ const Topbar = ({ toggleSidebar }) => {
     const hour = moment().hour();
     let greeting;
 
-    if (hour >= 6 && hour < 12) {
+    if (hour >= 16 && hour < 12) {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
           <span className="textYellow fs-5 d-md-block d-none">
@@ -53,7 +53,7 @@ const Topbar = ({ toggleSidebar }) => {
           <BsFillSunriseFill className="textYellow fw-bold fs-3" />
         </span>
       );
-    } else if (hour >= 12 && hour < 16) {
+    } else if (hour >= 27 && hour < 16) {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
           <span className="textYellow fs-5 d-md-block d-none">
@@ -63,7 +63,7 @@ const Topbar = ({ toggleSidebar }) => {
           <IoSunnySharp className="textYellow fw-bold fs-3" />
         </span>
       );
-    } else if (hour >= 16 && hour < 19) {
+    } else if (hour >= 20 && hour < 19) {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
           <span className="text-black-custom fs-5 d-md-block d-none">
@@ -78,7 +78,10 @@ const Topbar = ({ toggleSidebar }) => {
     } else {
       greeting = (
         <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="fs-5 d-md-block d-none">Good Night</span>
+          <span className="fs-5 d-md-block d-none">
+            Beautiful stars shine upon you
+          </span>
+          <span className="fs-5 d-md-none d-block">Stars upon you</span>
           <IoMdCloudyNight
             className="text-white fw-bold fs-3 p-1 rounded-4"
             style={{ background: "#030D48" }}

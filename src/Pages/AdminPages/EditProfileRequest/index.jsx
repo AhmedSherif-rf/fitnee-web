@@ -1,9 +1,11 @@
+import styles from "./style.module.scss";
 import Pagination from "../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { PER_PAGE_COUNT } from "../../../utils/constants";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import React, { useState, useEffect, useCallback } from "react";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
+import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { BsFillPersonXFill, BsPersonCheckFill } from "react-icons/bs";
 import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
@@ -21,9 +23,15 @@ const EditProfileRequest = () => {
   const [page, setPage] = useState(1);
   const [totalSize, setSizePages] = useState(0);
   const [tableData, setTableData] = useState([]);
+  const [showFullImage, setShowFullImage] = useState(false);
+  const [FullImage, setFullImage] = useState(false);
   const [editProfileRequests, setEditProfileRequests] = useState([]);
   const { loading } = useSelector((state) => state.EditProfileRequest);
 
+  const handleToggleClick = (fullImage) => {
+    setShowFullImage(!showFullImage);
+    setFullImage(fullImage);
+  };
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
   }, []);
@@ -57,7 +65,7 @@ const EditProfileRequest = () => {
 
     dispatch(changeProfileUpdateRequestStatus(data)).then((res) => {
       if (res.type === "changeProfileUpdateRequestStatus/fulfilled") {
-        setPage(1)
+        setPage(1);
         fetchProfileUpdateRequests();
       }
     });
@@ -68,14 +76,59 @@ const EditProfileRequest = () => {
       let requestArray = [];
       editProfileRequests.forEach((request) =>
         requestArray.push({
+          name: (
+            <div className="d-md-flex align-items-center">
+              <div
+                className="bgProperties rounded-circle me-2"
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  backgroundImage:
+                    request.service_provider?.profile_pic === null
+                      ? `url(${Images.USER_DUMMY_IMG})`
+                      : `url(${request.service_provider?.profile_pic})`,
+                }}
+              ></div>
+              <h6 className="text-secondary fw-bold mb-0">
+                {`${request.service_provider?.full_name}`}
+                <p className="mb-0 text-dark small fw-bold">{`${request.service_provider?.role}`}</p>
+              </h6>
+            </div>
+          ),
+
           license: request?.license,
           stc_pay: request?.stc_pay,
           saudireps_number: request?.saudireps_number,
-          certificate:
-            request?.certificate &&
-            request?.certificate?.map((certificate, index) => (
-              <p key={index}>{certificate?.title}</p>
-            )),
+          certificate: (
+            <div
+              className="d-md-flex gap-1 overflow-hidden"
+              style={{ maxWidth: "160px" }}
+            >
+              {request &&
+                request.certificate &&
+                request.certificate.map((certificate, index) => (
+                  <div
+                    key={index}
+                    className="bgProperties border-2"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundImage: `url(${certificate.certificate_image})`,
+                      cursor: "pointer",
+                    }}
+                    onClick={() =>
+                      handleToggleClick(certificate.certificate_image)
+                    }
+                  />
+                ))}
+              {showFullImage && (
+                <div className={styles.fullImageOverlay} onClick="">
+                  <img src={showFullImage} alt="" />
+                </div>
+              )}
+            </div>
+          ),
+
           request_status: (
             <div className="d-flex align-items-center justify-content-center">
               <div
@@ -117,6 +170,7 @@ const EditProfileRequest = () => {
   }, [editProfileRequests]);
 
   const columns = [
+    { label: "Name", dataKey: "name" },
     { label: "License Number", dataKey: "license" },
     { label: "STC Phone No", dataKey: "stc_pay" },
     { label: "Saudireps Number", dataKey: "saudireps_number" },
@@ -147,6 +201,14 @@ const EditProfileRequest = () => {
           </CardFooter>
         </Card>
       </Col>
+      {showFullImage && (
+        <div
+          className={` ${styles.fullImageOverlay}`}
+          onClick={handleToggleClick}
+        >
+          <img src={FullImage} alt="" />
+        </div>
+      )}
     </Row>
   );
 };

@@ -9,7 +9,7 @@
       rgba(126, 124, 124, 0.2) 100%
     ),
     url("../../Assets/Images/homeScreen/FeatureSectionBgImage.svg");
-    background-attachment: fixed;
+  background-attachment: fixed;
   @include bgProperties;
   align-items: center;
 
@@ -25,6 +25,14 @@
     }
   }
   .featureSectionRightContent {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      #dfe312b2 30px,
+      #dfe31227 64px
+    );
+    background-color: rgba(247, 247, 247, 0);
     .cardSwiper {
       width: 100%;
       .cardSwiperSlider {
@@ -35,7 +43,6 @@
     }
   }
 }
-
 @media (max-width: 480px) {
   .featureSectionWrapper {
     .featureTextSlider {

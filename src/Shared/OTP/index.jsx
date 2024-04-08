@@ -124,7 +124,9 @@ const OTPVerification = () => {
             </CardHeader>
             <CardBody className="customPadding">
               <div
-                className={`d-flex align-items-center justify-content-center ltr ${styles.otpDiv}`}
+                className={`d-flex align-items-center justify-content-center ${
+                  i18n.dir() === "rtl" ? "optWidthForArb" : "optWidthForEng"
+                } ${styles.otpDiv} `}
               >
                 <OTPInput
                   className={`${styles.otpInputs}`}

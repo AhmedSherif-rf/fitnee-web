@@ -1,4 +1,4 @@
-import { Container } from "reactstrap";
+import { Container} from "reactstrap";
 import Hero from "../../../Shared/Hero";
 import styles from "./style.module.scss";
 import React, { useCallback } from "react";
@@ -7,6 +7,7 @@ import Feature from "../../../Shared/Feature";
 import { useTranslation } from "react-i18next";
 import HomeBanner from "../../../Shared/Banner";
 import CardSwiper from "../../../Shared/CardSwiper";
+import AboutSection from "../../../Shared/AboutSection";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const LandingPage = (props) => {
@@ -21,7 +22,7 @@ const LandingPage = (props) => {
         </span>
       ),
       text: (
-        <p className={"fs-5 text-white text-center customSpacing pb-4"}>
+        <p className={"fs-4 lh-1 text-white text-center customSpacing pb-4"}>
           {t("landing.firstHeroSectionText")}
         </p>
       ),
@@ -85,11 +86,11 @@ const LandingPage = (props) => {
       ),
       text: (
         <div className="customSpacing text-center pb-4">
-          <p className={"fs-5 lh-1 text-white"}>
+          <p className={"fs-4 lh-2 text-white"}>
             {t("landing.secondHeroSectionTextOne")}
           </p>
 
-          <p className={"fs-5 lh-1 text-white"}>
+          <p className={"fs-4 lh-2 text-white"}>
             {t("landing.secondHeroSectionTextTwo")}
           </p>
         </div>
@@ -112,7 +113,7 @@ const LandingPage = (props) => {
         </span>
       ),
       text: (
-        <p className="text-white fs-5 text-center customSpacing pb-4">
+        <p className="text-white fs-4 lh-2 text-center customSpacing pb-4">
           {t("landing.thirdHeroSectionTextOne")}
         </p>
       ),
@@ -192,23 +193,9 @@ const LandingPage = (props) => {
       <section id="bannerSection" style={{ direction: i18n.dir() }}>
         <HomeBanner />
       </section>
-      <section
-        id="fitneeSection"
-        className=""
-        style={{ direction: i18n.dir() }}
-      >
-        <Container fluid className="h-100">
-          {WhatIsFitneeData?.map((item, index) => (
-            <Hero
-              key={item.heading + "_" + index}
-              heading={item.heading}
-              text={item.text}
-              image={item.image}
-              type={item.type}
-              textBackgroundImage={item.textBackgroundImage}
-            />
-          ))}
-        </Container>
+
+      <section>
+      <AboutSection />
       </section>
 
       <section id="featureSection" className="100-vh">

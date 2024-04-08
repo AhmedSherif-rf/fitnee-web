@@ -35,7 +35,7 @@ const Hero = (props) => {
 
   return (
     <Row
-      className={`bg-back ${styles.heroSectionWrapper} ${
+      className={`LandingPageBg ${styles.heroSectionWrapper} ${
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >
@@ -49,7 +49,7 @@ const Hero = (props) => {
             <div
               className={`${
                 textBackgroundImage ? styles.heroTextBackground : ""
-              } w-100 px-4 pt-4 d-flex align-items-center`}
+              } w-100 px-md-4 px-2 pt-4 d-flex align-items-center`}
             >
               <motion.div
                 initial="hidden"
@@ -63,7 +63,7 @@ const Hero = (props) => {
                 >
                   {heading}
                 </div>
-                {text}
+                <div className="text-center  px-md-3 px-0 fs-4">{text}</div>
               </motion.div>
             </div>
           </div>
@@ -86,7 +86,7 @@ const Hero = (props) => {
                 >
                   {heading}
                 </div>
-                <div className="text-center">{text}</div>
+                <div className="text-center mx-md-5 mx-0 px-3 fs-4">{text}</div>
               </motion.div>
             </div>
           </div>

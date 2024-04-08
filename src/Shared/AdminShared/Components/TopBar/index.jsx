@@ -8,16 +8,11 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import moment from "moment";
 import { Card } from "reactstrap";
+import React, { memo} from "react";
 import { CgMenuLeft } from "react-icons/cg";
 import { GoBellFill } from "react-icons/go";
-import { BsSunsetFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { IoSunnySharp } from "react-icons/io5";
-import React, { memo, useCallback } from "react";
-import { IoMdCloudyNight } from "react-icons/io";
-import { BsFillSunriseFill } from "react-icons/bs";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
@@ -38,60 +33,6 @@ const Topbar = ({ toggleSidebar }) => {
   const navigate = useNavigate();
   const { t } = useTranslation("");
   const { user, loading, notifications } = useSelector((state) => state.user);
-
-  const showGreetingText = useCallback(() => {
-    const hour = moment().hour();
-    let greeting;
-
-    if (hour >= 16 && hour < 12) {
-      greeting = (
-        <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="textYellow fs-5 d-md-block d-none">
-            Good Morning
-          </span>
-          <span className="textYellow fs-5 d-md-none d-block">Morning</span>
-          <BsFillSunriseFill className="textYellow fw-bold fs-3" />
-        </span>
-      );
-    } else if (hour >= 27 && hour < 16) {
-      greeting = (
-        <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="textYellow fs-5 d-md-block d-none">
-            Good Afternoon
-          </span>{" "}
-          <span className="textYellow fs-5 d-md-none d-block">Afternoon</span>
-          <IoSunnySharp className="textYellow fw-bold fs-3" />
-        </span>
-      );
-    } else if (hour >= 20 && hour < 19) {
-      greeting = (
-        <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="text-black-custom fs-5 d-md-block d-none">
-            Good Evening
-          </span>
-          <span className="text-black-custom fs-5 d-md-none d-block">
-            Evening
-          </span>
-          <BsSunsetFill className="fw-bold fs-3" style={{ color: "#F7BB02" }} />
-        </span>
-      );
-    } else {
-      greeting = (
-        <span className="d-flex align-items-center justify-content-center gap-3">
-          <span className="fs-5 d-md-block d-none">
-            Beautiful stars shine upon you
-          </span>
-          <span className="fs-5 d-md-none d-block">Stars upon you</span>
-          <IoMdCloudyNight
-            className="text-white fw-bold fs-3 p-1 rounded-4"
-            style={{ background: "#030D48" }}
-          />
-        </span>
-      );
-    }
-
-    return greeting;
-  }, []);
 
   const handleLogoutClick = () => {
     const data = {
@@ -149,9 +90,6 @@ const Topbar = ({ toggleSidebar }) => {
       >
         <CgMenuLeft color="black" />
       </Button>
-      <div className="">
-        <p className="fw-bold mb-0 ">{showGreetingText()}</p>
-      </div>
       <div className="d-flex gap-3 align-items-center">
         <UncontrolledDropdown>
           <DropdownToggle className="p-0" nav>

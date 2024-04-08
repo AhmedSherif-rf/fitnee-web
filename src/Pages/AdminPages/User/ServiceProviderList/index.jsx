@@ -120,7 +120,7 @@ const ServiceProviders = (props) => {
               </span>
             </div>
           ),
-          action: (
+          action: !serviceProvider?.is_deleted && (
             <div className="d-flex align-items-center justify-content-md-center">
               {!serviceProvider?.is_blocked && (
                 <span

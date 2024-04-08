@@ -128,7 +128,7 @@ const TraineeList = (props) => {
               </span>
             </div>
           ),
-          action: (
+          action: !trainee?.is_deleted && (
             <div className="d-flex align-items-center justify-content-md-center">
               {!trainee?.is_blocked && (
                 <span

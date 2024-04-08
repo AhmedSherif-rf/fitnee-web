@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./style.module.scss";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Row } from "reactstrap";
-import AboutBg from "../../Assets/Images/aboutBgImg.svg";
+import React, { useEffect, useState } from "react";
+import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const AboutSection = () => {
   const { t } = useTranslation("");
@@ -42,7 +42,7 @@ const AboutSection = () => {
           md={6}
           className={`p-0 bgProperties h-100 ${styles.aboutImg}`}
           style={{
-            backgroundImage: `url(${AboutBg})`,
+            backgroundImage: `url(${Images.ABOUT_US_IMG})`,
           }}
         >
           <div className="d-flex align-items-center justify-content-center h-100 d-md-none d-block">

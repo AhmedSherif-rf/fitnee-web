@@ -35,7 +35,7 @@ const Hero = (props) => {
 
   return (
     <Row
-      className={`LandingPageBg ${styles.heroSectionWrapper} ${
+      className={`${styles.heroSectionWrapper} ${
         type === "textRight" ? "flex-row-reverse" : ""
       }`}
     >

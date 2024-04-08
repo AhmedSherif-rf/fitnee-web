@@ -13,31 +13,6 @@ import Images from "../../../HelperMethods/Constants/ImgConstants";
 const LandingPage = (props) => {
   const { t, i18n } = useTranslation("");
 
-  const WhatIsFitneeData = [
-    {
-      heading: (
-        <span className={`fw-bold text-white display-5 arabicBorderHover`}>
-          {t("landing.whatIsText")}
-          <span className="textYellow"> {t("landing.fitneeText")} </span>
-        </span>
-      ),
-      text: (
-        <p className={"fs-4 lh-1 text-white text-center customSpacing pb-4"}>
-          {t("landing.firstHeroSectionText")}
-        </p>
-      ),
-      type: "textLeft",
-      textBackgroundImage: true,
-      image: (
-        <img
-          className={`img-fluid w-100 ${styles.heroImg}`}
-          src={Images.ABOUT_IMG}
-          alt="hero1"
-        />
-      ),
-    },
-  ];
-
   const FeaturesTextData = useCallback(() => {
     return [
       {

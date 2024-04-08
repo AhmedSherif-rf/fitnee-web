@@ -5,13 +5,13 @@ import SignUpForm from "../../../Shared/SignUp/SignUpForm";
 const SignUp = (props) => {
   return (
     <Container fluid>
-   <Row>
-    <Col md="12">
-    <Card className="BorderRadius contentCard">
-      <SignUpForm />
-      </Card>
-    </Col>
-   </Row>
+      <Row>
+        <Col md="12">
+          <Card className="BorderRadius contentCard">
+            <SignUpForm />
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 };

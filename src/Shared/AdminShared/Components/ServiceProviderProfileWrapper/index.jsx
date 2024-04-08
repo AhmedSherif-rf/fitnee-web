@@ -222,6 +222,14 @@ const ServiceProviderProfileWrapper = (props) => {
                       </Row>
                     )}
                     <Row className="mt-4">
+                      <Col md={12} className="d-flex align-items-center gap-4">
+                        <h5 className="fw-bold">Wallet Amount :</h5>
+                        <h5 className="fw-bold">
+                          {CURRENCY} {serviceProviderProfile?.current_wallet}
+                        </h5>
+                      </Col>
+                    </Row>
+                    <Row className="mt-2">
                       <Col md={12}>
                         <h5 className="fw-bold my-2">Subscriptions</h5>
                       </Col>

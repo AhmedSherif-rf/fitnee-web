@@ -65,6 +65,8 @@ export const signUp = createAsyncThunk(
     } catch (error) {
       if (error?.response?.data?.error?.email) {
         Toaster.error(error?.response?.data?.error?.email[0]);
+      } else if (error?.response?.data?.error?.Message) {
+        Toaster.error(error?.response?.data?.error?.Message);
       } else if (error?.response?.data?.error?.phone_number) {
         Toaster.error(error?.response?.data?.error?.phone_number[0]);
       } else if (error?.response?.data?.error?.bio) {

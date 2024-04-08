@@ -11,12 +11,14 @@ const NotificationToaster = (props) => {
     <div className={`${styles.toaster} ${i18n.dir()}`}>
       <Toast className={`${styles.toaster}`} isOpen={showNotification}>
         <ToastHeader
-          className={`${styles.toasterHeader}`}
+          className={`${styles.toasterHeader} ${
+            i18n.dir() === "rtl" ? styles.toasterHeaderArabic : ""
+          }`}
           toggle={() => setShowNotification(false)}
         >
           {notificationData?.title}
         </ToastHeader>
-        <ToastBody className={`${styles.toasterBody}`}>
+        <ToastBody className={`${styles.toasterBody} ${i18n.dir()}`}>
           {notificationData?.body}
         </ToastBody>
       </Toast>

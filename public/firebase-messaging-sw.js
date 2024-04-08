@@ -6,13 +6,13 @@ importScripts(
 );
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDlaqzq4yUz-ZxWHCn6Yw24uEfwQgvjW9c",
-  authDomain: "fitnee-frontend.firebaseapp.com",
-  projectId: "fitnee-frontend",
-  storageBucket: "fitnee-frontend.appspot.com",
-  messagingSenderId: "49244377688",
-  appId: "1:49244377688:web:518d04e752da697cf5302d",
-  measurementId: "G-TBSC6GBZ7V",
+  apiKey: "AIzaSyAhkd3kt91KiPEkWKFXfiNlTLMbtMQ6QDY",
+  authDomain: "fitnee-599e6.firebaseapp.com",
+  projectId: "fitnee-599e6",
+  storageBucket: "fitnee-599e6.appspot.com",
+  messagingSenderId: "656320859335",
+  appId: "1:656320859335:web:90ecc985a07ec6ae5302e2",
+  measurementId: "G-VY7M0GFXTL",
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -22,14 +22,12 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage(function (payload) {
   console.log("Received background message ", payload);
 
-  const notificationTitle = payload.notification.title;
   const body = JSON.parse(payload.notification.body);
+  const title = JSON.parse(payload.notification.title);
+
   const notificationOptions = {
     body: body.msg,
   };
 
-  console.log(body);
-
-  // self.registration.showNotification(notificationTitle,
-  //   notificationOptions);
+  self.registration.showNotification(title.title_en, notificationOptions);
 });

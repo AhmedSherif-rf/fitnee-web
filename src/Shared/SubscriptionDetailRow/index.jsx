@@ -162,7 +162,10 @@ const Index = (props) => {
         <Col md={2} className="d-md-block d-none">
           <div className="mb-md-0 text-center py-2 rounded-3">
             <h6 className="mb-0 w-100 fs-5 fw-bold ">
-              {CURRENCY} {data?.transition?.total_amount}
+              {CURRENCY}{" "}
+              {data?.transition?.total_amount === null
+                ? data?.transition?.current_price
+                : data?.transition?.total_amount}
             </h6>
           </div>
         </Col>

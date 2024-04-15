@@ -113,8 +113,8 @@ const OTPVerification = () => {
           sm={10}
           className={`text-center d-flex align-items-center justify-content-center`}
         >
-          <Card className="px-4 py-5 mb-2 onlyBorderRadius d-flex align-items-center justify-content-center w-100">
-            <CardHeader className="bg-transparent border-0 p-0 my-3">
+          <Card className="px-4 py-md-5 py-4 mb-2 onlyBorderRadius d-flex align-items-center justify-content-center w-100">
+            <CardHeader className="bg-transparent border-0 p-0 my-md-3 my-1">
               <h1 className="mb-4 fw-400 fw-bold">
                 {t("otpVerification.verificationText")}
               </h1>
@@ -122,7 +122,7 @@ const OTPVerification = () => {
                 {t("otpVerification.openYourEmailText")}
               </p>
             </CardHeader>
-            <CardBody className="customPadding">
+            <CardBody className={`${styles.cardBodyCustom}`}>
               <div
                 className={`d-flex align-items-center justify-content-center ${
                   i18n.dir() === "rtl" ? "optWidthForArb" : "optWidthForEng"
@@ -157,7 +157,7 @@ const OTPVerification = () => {
               </p>
               <FillBtn
                 text={t("otpVerification.nextText")}
-                className="w-100 py-2 my-3"
+                className="w-75 py-2"
                 disabled={otp.length < 6 ? true : false}
                 handleOnClick={handleNextClick}
               />

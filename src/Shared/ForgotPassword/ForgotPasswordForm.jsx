@@ -67,8 +67,8 @@ const ForgotPasswordForm = () => {
               handleSubmit,
             }) => (
               <Form onSubmit={handleSubmit}>
-                <Card className="py-5 px-3 border-0 bg-white onlyBorderRadius mb-2 ">
-                  <CardHeader className="border-0 bg-transparent my-3">
+                <Card className="py-md-5 py-2 px-3 border-0 bg-white onlyBorderRadius mb-2 ">
+                  <CardHeader className="border-0 bg-transparent my-md-3">
                     <h1 className="text-center fs-1 fw-bold">
                       {t("forgotPassword.forgotPasswordText")}
                     </h1>

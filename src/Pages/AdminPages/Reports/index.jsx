@@ -43,7 +43,6 @@ const Report = () => {
 
     dispatch(getReportsListing(data)).then((res) => {
       if (res.type === "getReportsListing/fulfilled") {
-        console.log(res.payload.data.results);
         setSizePages(res.payload.data.count);
         setReportData(res.payload.data.results);
       }
@@ -67,42 +66,50 @@ const Report = () => {
         reportArray.push({
           reporter: (
             <div className="d-md-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    report?.reporting_user?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${report?.reporting_user?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {report?.reporting_user?.first_name}{" "}
-                {report?.reporting_user?.last_name}
-              </h6>
+               <div>
+                <div
+                  className="bgProperties rounded-circle me-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      report?.reporting_user?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${report?.reporting_user?.profile_pic})`,
+                  }}
+                ></div>
+              </div>
+              <div className="" style={{ maxWidth: "96px" }}>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {report?.reporting_user?.first_name}{" "}
+                  {report?.reporting_user?.last_name}
+                </h6>
+              </div>
             </div>
           ),
           reported: (
             <div className="d-md-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    report?.reported_user?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${report?.reported_user?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {report?.reported_user?.full_name}
-              </h6>
+              <div className="">
+                <div
+                  className="bgProperties rounded-circle me-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      report?.reported_user?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${report?.reported_user?.profile_pic})`,
+                  }}
+                ></div>
+              </div>
+              <div style={{ maxWidth: "96px" }}>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {report?.reported_user?.full_name}
+                </h6>
+              </div>
             </div>
           ),
-          report: <p className="mb-0">{report?.message}</p>,
+          report: <p className="mb-0" style={{ maxWidth: "96px" }}>{report?.message}</p>,
           type:
             report?.message_data !== null || report?.type === "message" ? (
               <>

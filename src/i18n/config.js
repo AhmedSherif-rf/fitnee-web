@@ -21,12 +21,12 @@ i18n
     // backend: {
     //   loadPath: "/locales/{{lng}}/{{ns}}.json",
     // },
-    interpolation: {
-      escapeValue: false,
-    },
-    react: {
-      useSuspense: false,
-    },
+    // interpolation: {
+    //   escapeValue: false,
+    // },
+    // react: {
+    //   useSuspense: false,
+    // },
     resources: {
       en: {
         translations: require("./locales/en/translations.json"),
@@ -35,7 +35,7 @@ i18n
         translations: require("./locales/ar/translations.json"),
       },
     },
-    ns: ["translations"],
+    // ns: ["translations"],
     defaultNS: "translations",
   });
 

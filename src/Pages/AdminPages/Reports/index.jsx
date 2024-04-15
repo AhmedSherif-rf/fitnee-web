@@ -66,7 +66,7 @@ const Report = () => {
       reportData.forEach((report) =>
         reportArray.push({
           reporter: (
-            <div className="d-md-flex align-items-center" style={{maxWidth: "100px"}}>
+            <div className="d-md-flex align-items-center">
               <div
                 className="bgProperties rounded-circle me-2"
                 style={{

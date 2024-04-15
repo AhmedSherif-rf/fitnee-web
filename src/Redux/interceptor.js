@@ -3,8 +3,7 @@ import Toaster from "../Shared/Toaster";
 import { customLogout } from "./features/User/userSlice";
 
 const axiosInstance = axios.create({
-  // baseURL: `${process.env.REACT_APP_BACKEND_BASE_URL}/api`,
-  baseURL: `https://staging.fitnee.fit/api`,
+  baseURL: `${process.env.REACT_APP_BACKEND_BASE_URL}/api`,
   // baseURL: "/api",
 });
 

@@ -203,7 +203,7 @@ export const ADD_EXERCISE_INITIAL_VALUES = {
 
 export const ADD_PROMO_CODE_INITIAL_VALUES = {
   code: "",
-  type: "",
+  type: "percentage",
   value: "",
   expire_date: "",
   limited_users: "",

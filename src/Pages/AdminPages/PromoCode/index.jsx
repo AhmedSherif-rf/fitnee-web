@@ -119,6 +119,7 @@ const PromoCode = (props) => {
                   handleBlur,
                   handleChange,
                   handleSubmit,
+                  setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
                     <Row>
@@ -166,7 +167,11 @@ const PromoCode = (props) => {
                           className="p-3 px-5"
                           value={values.value}
                           onBlurHandle={handleBlur}
-                          onChangeHandle={handleChange}
+                          onChangeHandle={(e) => {
+                            if (e.target.value <= 50) {
+                              setFieldValue("value", e.target.value);
+                            }
+                          }}
                         />
                         <p className="errorField text-start">
                           {t(errors.value) && touched.value && t(errors.value)}

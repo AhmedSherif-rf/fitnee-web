@@ -1,26 +1,26 @@
 import i18n from "i18next";
 import functions from "../utils/functions";
-import Backend from "i18next-http-backend";
+// import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 import { DEFAULT_LANGUAGE } from "../utils/constants";
-import LanguageDetector from "i18next-browser-languagedetector";
+// import LanguageDetector from "i18next-browser-languagedetector";
 
 const currentLanguage = functions.getLanguageFromStorage();
 
 i18n
-  .use(Backend)
-  .use(LanguageDetector)
+  // .use(Backend)
+  // .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     fallbackLng: currentLanguage === null ? DEFAULT_LANGUAGE : currentLanguage,
     lng: currentLanguage === null ? DEFAULT_LANGUAGE : currentLanguage,
     debug: true,
-    detection: {
-      order: ["navigator"],
-    },
-    backend: {
-      loadPath: "/locales/{{lng}}/{{ns}}.json",
-    },
+    // detection: {
+    //   order: ["navigator"],
+    // },
+    // backend: {
+    //   loadPath: "/locales/{{lng}}/{{ns}}.json",
+    // },
     interpolation: {
       escapeValue: false,
     },

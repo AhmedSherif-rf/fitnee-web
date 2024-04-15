@@ -32,46 +32,46 @@ function App() {
   const [notification, setNotification] = useState(null);
   const [showNotification, setShowNotification] = useState(false);
 
-  // useEffect(() => {
-  //   setToken();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    setToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // const fetchUserNotifications = () => {
-  //   setTimeout(() => {
-  //     if (user) {
-  //       const data = {
-  //         apiEndpoint: USER_NOTIFICATIONS_URL,
-  //       };
+  const fetchUserNotifications = () => {
+    setTimeout(() => {
+      if (user) {
+        const data = {
+          apiEndpoint: USER_NOTIFICATIONS_URL,
+        };
 
-  //       dispatch(getUserNotifications(data));
-  //     }
-  //   }, 1000);
-  // };
+        dispatch(getUserNotifications(data));
+      }
+    }, 1000);
+  };
 
-  // const setToken = async () => {
-  //   const firebaseToken = await getNotificationToken();
-  //   if (firebaseToken) {
-  //     dispatch(setFcmToken(firebaseToken));
-  //   }
-  // };
+  const setToken = async () => {
+    const firebaseToken = await getNotificationToken();
+    if (firebaseToken) {
+      dispatch(setFcmToken(firebaseToken));
+    }
+  };
 
-  // onMessageListener()
-  //   .then((payload) => {
-  //     console.log("notifications", payload);
-  //     const body = JSON.parse(payload.notification.body);
-  //     const title = JSON.parse(payload.notification.title);
-  //     setNotification({
-  //       title: i18n.dir() === "ltr" ? title.title_en : title.title_ar,
-  //       body: i18n.dir() === "ltr" ? body.msg : body.msg_ar,
-  //     });
-  //     fetchUserNotifications();
-  //     setShowNotification(true);
-  //     setTimeout(() => {
-  //       setShowNotification(false);
-  //     }, 5000);
-  //   })
-  //   .catch((err) => console.log("failed: ", err));
+  onMessageListener()
+    .then((payload) => {
+      console.log("notifications", payload);
+      const body = JSON.parse(payload.notification.body);
+      const title = JSON.parse(payload.notification.title);
+      setNotification({
+        title: i18n.dir() === "ltr" ? title.title_en : title.title_ar,
+        body: i18n.dir() === "ltr" ? body.msg : body.msg_ar,
+      });
+      fetchUserNotifications();
+      setShowNotification(true);
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 5000);
+    })
+    .catch((err) => console.log("failed: ", err));
 
   useEffect(() => {
     if (localStorage.getItem("Website_Language__fitnee") === null) {

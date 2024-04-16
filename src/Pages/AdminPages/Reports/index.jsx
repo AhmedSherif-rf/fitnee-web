@@ -1,6 +1,7 @@
 import moment from "moment";
 import { Col, Row } from "reactstrap";
 import { db } from "../../../firebase";
+import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import { ref, set } from "firebase/database";
 import { useState, useCallback } from "react";
@@ -15,6 +16,7 @@ import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 import {
   PER_PAGE_COUNT,
   ADMIN_REPORTS_LISTING_URL,
+  TRAINEE_ROLE,
 } from "../../../utils/constants";
 import { getReportsListing } from "../../../Redux/features/Admin/Feedback/FeedbackApi";
 
@@ -64,52 +66,117 @@ const Report = () => {
       let reportArray = [];
       reportData.forEach((report) =>
         reportArray.push({
-          reporter: (
-            <div className="d-md-flex align-items-center">
-               <div>
-                <div
-                  className="bgProperties rounded-circle me-2"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    backgroundImage:
-                      report?.reporting_user?.profile_pic === null
-                        ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${report?.reporting_user?.profile_pic})`,
-                  }}
-                ></div>
-              </div>
-              <div className="" style={{ maxWidth: "96px" }}>
-                <h6 className="text-secondary fw-bold mb-0">
-                  {report?.reporting_user?.first_name}{" "}
-                  {report?.reporting_user?.last_name}
-                </h6>
-              </div>
-            </div>
+          reporter:
+            report?.reporting_user?.role === TRAINEE_ROLE ? (
+              <Link
+                to={`/admin/traineeProviderProfile/${report?.reporting_user?.id}`}
+              >
+                <div className="d-md-flex align-items-center">
+                  <div>
+                    <div
+                      className="bgProperties rounded-circle me-2"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        backgroundImage:
+                          report?.reporting_user?.profile_pic === null
+                            ? `url(${Images.USER_DUMMY_IMG})`
+                            : `url(${report?.reporting_user?.profile_pic})`,
+                      }}
+                    ></div>
+                  </div>
+                  <div className="" style={{ maxWidth: "96px" }}>
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {report?.reporting_user?.first_name}{" "}
+                      {report?.reporting_user?.last_name}
+                    </h6>
+                  </div>
+                </div>
+              </Link>
+            ) : (
+              <Link
+                to={`/admin/traineeProviderProfile/${report?.reporting_user?.uuid}`}
+              >
+                <div className="d-md-flex align-items-center">
+                  <div>
+                    <div
+                      className="bgProperties rounded-circle me-2"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        backgroundImage:
+                          report?.reporting_user?.profile_pic === null
+                            ? `url(${Images.USER_DUMMY_IMG})`
+                            : `url(${report?.reporting_user?.profile_pic})`,
+                      }}
+                    ></div>
+                  </div>
+                  <div className="" style={{ maxWidth: "96px" }}>
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {report?.reporting_user?.full_name}
+                    </h6>
+                  </div>
+                </div>
+              </Link>
+            ),
+          reported:
+            report?.reported_user?.role !== TRAINEE_ROLE ? (
+              <Link
+                to={`/admin/serviceProviderProfile/${report?.reported_user?.uuid}`}
+              >
+                <div className="d-md-flex align-items-center">
+                  <div className="">
+                    <div
+                      className="bgProperties rounded-circle me-2"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        backgroundImage:
+                          report?.reported_user?.profile_pic === null
+                            ? `url(${Images.USER_DUMMY_IMG})`
+                            : `url(${report?.reported_user?.profile_pic})`,
+                      }}
+                    ></div>
+                  </div>
+                  <div style={{ maxWidth: "96px" }}>
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {report?.reported_user?.full_name}
+                    </h6>
+                  </div>
+                </div>
+              </Link>
+            ) : (
+              <Link
+                to={`/admin/serviceProviderProfile/${report?.reported_user?.id}`}
+              >
+                <div className="d-md-flex align-items-center">
+                  <div className="">
+                    <div
+                      className="bgProperties rounded-circle me-2"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        backgroundImage:
+                          report?.reported_user?.profile_pic === null
+                            ? `url(${Images.USER_DUMMY_IMG})`
+                            : `url(${report?.reported_user?.profile_pic})`,
+                      }}
+                    ></div>
+                  </div>
+                  <div style={{ maxWidth: "96px" }}>
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {report?.reported_user?.first_name}{" "}
+                      {report?.reported_user?.last_name}
+                    </h6>
+                  </div>
+                </div>
+              </Link>
+            ),
+          report: (
+            <p className="mb-0" style={{ maxWidth: "96px" }}>
+              {report?.message}
+            </p>
           ),
-          reported: (
-            <div className="d-md-flex align-items-center">
-              <div className="">
-                <div
-                  className="bgProperties rounded-circle me-2"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    backgroundImage:
-                      report?.reported_user?.profile_pic === null
-                        ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${report?.reported_user?.profile_pic})`,
-                  }}
-                ></div>
-              </div>
-              <div style={{ maxWidth: "96px" }}>
-                <h6 className="text-secondary fw-bold mb-0">
-                  {report?.reported_user?.full_name}
-                </h6>
-              </div>
-            </div>
-          ),
-          report: <p className="mb-0" style={{ maxWidth: "96px" }}>{report?.message}</p>,
           type:
             report?.message_data !== null || report?.type === "message" ? (
               <>

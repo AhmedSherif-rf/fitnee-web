@@ -1,15 +1,20 @@
-import React, { useState } from "react";
 import { Rating } from "react-simple-star-rating";
+import React, { useEffect, useState } from "react";
 
 const StarRating = (props) => {
-  const [rating, setRating] = useState(props.rating);
+  const { rating } = props;
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    setValue(rating);
+  }, [rating]);
 
   const handleRating = (rate) => {
-    setRating(rate);
+    setValue(rate);
   };
 
   return (
-    <Rating size={20} onClick={handleRating} initialValue={rating} readonly />
+    <Rating size={20} onClick={handleRating} initialValue={value} readonly />
   );
 };
 

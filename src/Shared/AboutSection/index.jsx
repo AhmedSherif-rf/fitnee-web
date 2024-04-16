@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
 const AboutSection = () => {
-  const { t } = useTranslation("");
+  const { t, i18n } = useTranslation("");
   const [isTextVisible, setIsTextVisible] = useState(false);
 
   useEffect(() => {
@@ -72,9 +72,7 @@ const AboutSection = () => {
                 </span>
               </h5>
               <p
-                className={
-                  "fs-4 lh-1 text-white text-center customSpacing pb-4"
-                }
+                className={`fs-4 lh-1 text-white text-center customSpacing pb-4 ${i18n.dir()}`}
               >
                 {t("landing.firstHeroSectionText")}
               </p>
@@ -118,9 +116,7 @@ const AboutSection = () => {
                   </span>
                 </h5>
                 <p
-                  className={
-                    "fs-4 lh-1 text-white text-center customSpacing pb-4"
-                  }
+                  className={`fs-4 lh-1 text-white text-center customSpacing pb-4 ${i18n.dir()}`}
                 >
                   {t("landing.firstHeroSectionText")}
                 </p>

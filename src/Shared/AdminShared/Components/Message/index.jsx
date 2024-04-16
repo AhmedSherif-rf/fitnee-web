@@ -6,9 +6,12 @@ import Toaster from "../../../Toaster";
 import { db } from "../../../../firebase";
 import { ref, set } from "firebase/database";
 import { FaDeleteLeft } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
 const Member = ({ message, member }) => {
+  const navigate = useNavigate();
+
   const handleDeleteMessage = () => {
     const messageRef = ref(
       db,
@@ -22,7 +25,14 @@ const Member = ({ message, member }) => {
   return (
     <div className="d-flex gap-2 py-2">
       <div
-        className="bgProperties rounded-circle me-2"
+        className="bgProperties rounded-circle me-2 cursorPointer"
+        onClick={() => {
+          if (member?.role === "Trainee") {
+            navigate(`/admin/traineeProviderProfile/${member?.serverUserId}`);
+          } else {
+            navigate(`/admin/serviceProviderProfile/${member?.uuid}`);
+          }
+        }}
         style={{
           backgroundImage:
             member?.avatar === "null" || member?.avatar === undefined

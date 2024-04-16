@@ -1,5 +1,6 @@
 import moment from "moment";
 import { Col, Row } from "reactstrap";
+import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import Rating from "../../../Shared/Rating";
 import { useState, useCallback } from "react";
@@ -53,9 +54,12 @@ const PlatformFeedback = () => {
   };
 
   const handleToggle = useCallback(
-    (id, status) => { 
+    (id, status) => {
       const data = {
-        apiEndpoint: ADMIN_CHANGE_PLATFORM_FEEDBACK_STATUS_URL.replace("feedbackId",id),
+        apiEndpoint: ADMIN_CHANGE_PLATFORM_FEEDBACK_STATUS_URL.replace(
+          "feedbackId",
+          id
+        ),
         requestData: JSON.stringify({
           status: status === "approved" ? "rejected" : "approved",
           rejection_reason: "anything",
@@ -79,22 +83,27 @@ const PlatformFeedback = () => {
       platformFeedback.forEach((feedback) =>
         feedbackArray.push({
           reviewer: (
-            <div className="d-md-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    feedback?.reviewer?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${feedback?.reviewer?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {feedback?.reviewer?.first_name} {feedback?.reviewer?.last_name}
-              </h6>
-            </div>
+            <Link
+              to={`/admin/traineeProviderProfile/${feedback?.reviewer?.id}`}
+            >
+              <div className="d-md-flex align-items-center">
+                <div
+                  className="bgProperties rounded-circle me-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      feedback?.reviewer?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${feedback?.reviewer?.profile_pic})`,
+                  }}
+                ></div>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {feedback?.reviewer?.first_name}{" "}
+                  {feedback?.reviewer?.last_name}
+                </h6>
+              </div>
+            </Link>
           ),
           rating: <Rating rating={feedback?.platform_rating} />,
           message: (

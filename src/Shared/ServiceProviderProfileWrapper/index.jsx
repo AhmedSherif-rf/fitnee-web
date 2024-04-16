@@ -99,6 +99,11 @@ const ServiceProviderProfileWrapper = (props) => {
                         className="w-100 py-2"
                         text={t("trainer.fullyBookedText")}
                       />
+                    ) : !serviceProviderProfile?.serviceprovider_available ? (
+                      <OutlineBtn
+                        className="w-100 py-2"
+                        text={t("trainer.alreadySubscribedText")}
+                      />
                     ) : (
                       <FillBtn
                         className="w-100 py-2"

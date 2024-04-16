@@ -1,5 +1,6 @@
 import moment from "moment";
 import { Col, Row } from "reactstrap";
+import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import Rating from "../../../Shared/Rating";
 import { useState, useCallback } from "react";
@@ -82,49 +83,57 @@ const ServiceProviderFeedback = () => {
       spFeedback.forEach((feedback) =>
         feedbackArray.push({
           reviewer: (
-            <div className="d-md-flex align-items-center">
-              <div className="mb-2">
-                <div
-                  className="bgProperties rounded-circle me-2"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    backgroundImage:
-                      feedback?.reviewer?.profile_pic === null
-                        ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${feedback?.reviewer?.profile_pic})`,
-                  }}
-                ></div>
+            <Link
+              to={`/admin/traineeProviderProfile/${feedback?.reviewer?.id}`}
+            >
+              <div className="d-md-flex align-items-center">
+                <div className="mb-2">
+                  <div
+                    className="bgProperties rounded-circle me-2"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundImage:
+                        feedback?.reviewer?.profile_pic === null
+                          ? `url(${Images.USER_DUMMY_IMG})`
+                          : `url(${feedback?.reviewer?.profile_pic})`,
+                    }}
+                  ></div>
+                </div>
+                <div className="" style={{ maxWidth: "90px" }}>
+                  <h6 className="text-secondary fw-bold mb-0">
+                    {feedback?.reviewer?.first_name}{" "}
+                    {feedback?.reviewer?.last_name}
+                  </h6>
+                </div>
               </div>
-              <div className="" style={{ maxWidth: "90px" }}>
-                <h6 className="text-secondary fw-bold mb-0">
-                  {feedback?.reviewer?.first_name}{" "}
-                  {feedback?.reviewer?.last_name}
-                </h6>
-              </div>
-            </div>
+            </Link>
           ),
           serviceProvider: (
-            <div className="d-md-flex align-items-center">
-              <div className="mb-2">
-                <div
-                  className="bgProperties rounded-circle me-2"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    backgroundImage:
-                      feedback?.service_provider?.profile_pic === null
-                        ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${feedback?.service_provider?.profile_pic})`,
-                  }}
-                ></div>
+            <Link
+              to={`/admin/serviceProviderProfile/${feedback?.service_provider?.uuid}`}
+            >
+              <div className="d-md-flex align-items-center">
+                <div className="mb-2">
+                  <div
+                    className="bgProperties rounded-circle me-2"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundImage:
+                        feedback?.service_provider?.profile_pic === null
+                          ? `url(${Images.USER_DUMMY_IMG})`
+                          : `url(${feedback?.service_provider?.profile_pic})`,
+                    }}
+                  ></div>
+                </div>
+                <div style={{ maxWidth: "90px" }}>
+                  <h6 className="text-secondary fw-bold mb-0">
+                    {feedback?.service_provider?.full_name}
+                  </h6>
+                </div>
               </div>
-              <div style={{ maxWidth: "90px" }}>
-                <h6 className="text-secondary fw-bold mb-0">
-                  {feedback?.service_provider?.full_name}
-                </h6>
-              </div>
-            </div>
+            </Link>
           ),
           rating: <Rating rating={feedback?.sp_rating} />,
           message: (

@@ -8,11 +8,16 @@ import { Row, Container, Col, Card, CardBody } from "reactstrap";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../../../ProfileInformationCard";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
-import { getTraineeDetail } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import {
+  getTraineeDetail,
+  userBlockUnblock,
+} from "../../../../Redux/features/Admin/UserListing/userListingApi";
+import {
+  ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
   ADMIN_TRAINEE_PROFILE_URL,
   CURRENCY,
 } from "../../../../utils/constants";
+import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
 
 const TraineeProfileWrapper = (props) => {
   const { id } = useParams();
@@ -24,6 +29,11 @@ const TraineeProfileWrapper = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    fetchTraineeProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, id]);
+
+  const fetchTraineeProfile = () => {
     const data = {
       apiEndpoint: ADMIN_TRAINEE_PROFILE_URL.replace("userId", id),
     };
@@ -33,7 +43,7 @@ const TraineeProfileWrapper = (props) => {
         setTraineeProfile({ ...res.payload.data, role: "Trainee" });
       }
     });
-  }, [dispatch, id]);
+  };
 
   useEffect(() => {
     if (traineeProfile && traineeProfile.membership.length > 0) {
@@ -61,7 +71,7 @@ const TraineeProfileWrapper = (props) => {
           ),
           price: (
             <p className="fw-bold mb-0">
-              {CURRENCY} {membership?.subscription?.price}
+              {CURRENCY} {membership?.transition?.total_amount}
             </p>
           ),
           duration: (
@@ -103,6 +113,20 @@ const TraineeProfileWrapper = (props) => {
     }
   }, [traineeProfile]);
 
+  const handleActionClick = (id) => {
+    const data = {
+      apiEndpoint: ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL.replace(
+        "userId",
+        id
+      ),
+    };
+    dispatch(userBlockUnblock(data)).then((res) => {
+      if (res.type === "userBlockUnblock/fulfilled") {
+        fetchTraineeProfile();
+      }
+    });
+  };
+
   const columns = [
     { label: "Service Provider", dataKey: "sp" },
     {
@@ -134,6 +158,49 @@ const TraineeProfileWrapper = (props) => {
                           {traineeProfile?.first_name}{" "}
                           {traineeProfile?.last_name}
                         </h3>
+                      </div>
+                      <div>
+                        {!traineeProfile?.is_deleted && (
+                          <div className="d-flex align-items-center justify-content-md-center">
+                            {!traineeProfile?.is_blocked && (
+                              <span
+                                className={`iconBadge me-1`}
+                                id={`userId_${traineeProfile?.id}`}
+                                onClick={() =>
+                                  handleActionClick(traineeProfile?.id)
+                                }
+                              >
+                                <MdOutlinePersonOutline
+                                  size={25}
+                                  className={`cursorPointer ${
+                                    traineeProfile?.is_blocked === false
+                                      ? "text-success"
+                                      : ""
+                                  }`}
+                                />
+                              </span>
+                            )}
+
+                            {traineeProfile?.is_blocked && (
+                              <span
+                                className={`iconBadge me-1`}
+                                id={`userId_${traineeProfile?.id}`}
+                                onClick={() =>
+                                  handleActionClick(traineeProfile?.id)
+                                }
+                              >
+                                <MdOutlinePersonOff
+                                  size={25}
+                                  className={`cursorPointer ${
+                                    traineeProfile?.is_blocked === true
+                                      ? ""
+                                      : "text-danger"
+                                  }`}
+                                />
+                              </span>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="lh-1 mt-2">

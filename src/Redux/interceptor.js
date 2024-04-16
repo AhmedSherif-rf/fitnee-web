@@ -35,8 +35,8 @@ const initializeAxiosInterceptors = async () => {
         config.headers["Authorization"] = `Bearer ${user?.tokens?.access}`;
       }
 
-      const localTime = new Date();
-      config.headers["Local-Time"] = localTime.toLocaleString();
+      // const localTime = new Date();
+      // config.headers["Local-Time"] = localTime.toLocaleString();
 
       return config;
     },

@@ -27,11 +27,11 @@ const ListingTable = ({ data, columns }) => {
         </Thead>
         <Tbody>
           {data.map((item, userIndex) => (
-            <Tr key={userIndex}>
+            <Tr key={userIndex} className={`mb-2`}>
               {columns.map((column, columnIndex) => (
                 <Td
                   key={columnIndex}
-                  className={column.align ? `text-${column.align}` : ""}
+                  className={column.align ? `text-${column.align} mb-3` : ""}
                 >
                   {column.dataKey ? item[column.dataKey] : null}
                 </Td>

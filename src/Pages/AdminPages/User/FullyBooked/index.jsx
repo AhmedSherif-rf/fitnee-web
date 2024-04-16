@@ -58,7 +58,7 @@ const FullyBooked = (props) => {
           full_name: (
             <div className="d-md-flex align-items-center">
               <div
-                className="bgProperties rounded-circle me-2"
+                className="bgProperties rounded-circle me-2 mb-2"
                 style={{
                   width: "40px",
                   height: "40px",

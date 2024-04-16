@@ -74,9 +74,9 @@ const ServiceProviders = (props) => {
         ServiceProviderListArray.push({
           full_name: (
             <Link to={`/admin/serviceProviderProfile/${serviceProvider?.uuid}`}>
-              <div className="d-flex align-items-center">
+              <div className="d-md-flex align-items-center">
                 <div
-                  className="bgProperties rounded-circle me-2"
+                  className="bgProperties rounded-circle me-2 mb-2"
                   style={{
                     width: "40px",
                     height: "40px",
@@ -86,7 +86,7 @@ const ServiceProviders = (props) => {
                         : `url(${serviceProvider?.profile_pic})`,
                   }}
                 ></div>
-                <h6 className="text-secondary fw-bold mb-0">
+                <h6 className="text-secondary fw-bold mb-0" style={{maxWidth:"110px"}}>
                   {serviceProvider?.full_name}
                 </h6>
               </div>
@@ -191,7 +191,7 @@ const ServiceProviders = (props) => {
                   categoryText=""
                 />
               </Col>
-              <Col md={6} className="pe-4">
+              <Col md={6} className="pe-4 mb-2">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",

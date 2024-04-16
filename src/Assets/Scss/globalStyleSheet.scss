@@ -284,6 +284,7 @@ Input::-webkit-input-placeholder {
 .adminDashBoardScrolling {
   max-height: 82vh;
   overflow-y: scroll;
+  
 }
 
 .genderBtn {
@@ -422,8 +423,8 @@ Input::-webkit-input-placeholder {
     background: transparent !important;
   }
   .customPadding {
-    padding-top: 58px !important;
-    padding-bottom: 58px !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
   }
 }
 @mixin customCard {

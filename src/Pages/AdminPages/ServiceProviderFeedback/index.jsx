@@ -82,46 +82,55 @@ const ServiceProviderFeedback = () => {
       spFeedback.forEach((feedback) =>
         feedbackArray.push({
           reviewer: (
-            <div className="d-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    feedback?.reviewer?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${feedback?.reviewer?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {feedback?.reviewer?.first_name} {feedback?.reviewer?.last_name}
-              </h6>
+            <div className="d-md-flex align-items-center">
+              <div className="mb-2">
+                <div
+                  className="bgProperties rounded-circle me-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      feedback?.reviewer?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${feedback?.reviewer?.profile_pic})`,
+                  }}
+                ></div>
+              </div>
+              <div className="" style={{ maxWidth: "90px" }}>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {feedback?.reviewer?.first_name}{" "}
+                  {feedback?.reviewer?.last_name}
+                </h6>
+              </div>
             </div>
           ),
           serviceProvider: (
-            <div className="d-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    feedback?.service_provider?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${feedback?.service_provider?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {feedback?.service_provider?.full_name}
-              </h6>
+            <div className="d-md-flex align-items-center">
+              <div className="mb-2">
+                <div
+                  className="bgProperties rounded-circle me-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      feedback?.service_provider?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${feedback?.service_provider?.profile_pic})`,
+                  }}
+                ></div>
+              </div>
+              <div style={{ maxWidth: "90px" }}>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {feedback?.service_provider?.full_name}
+                </h6>
+              </div>
             </div>
           ),
           rating: <Rating rating={feedback?.sp_rating} />,
           message: (
             <div
-              className="d-flex align-items-center "
-              style={{ maxWidth: "300px" }}
+              className="d-flex align-items-center"
+              style={{ maxWidth: "200px" }}
             >
               <div className="d-flex align-items-center mb-0">
                 {feedback?.sp_review}

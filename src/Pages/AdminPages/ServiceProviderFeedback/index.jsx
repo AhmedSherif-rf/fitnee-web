@@ -133,8 +133,7 @@ const ServiceProviderFeedback = () => {
               style={{ maxWidth: "200px" }}
             >
               <div className="d-flex align-items-center mb-0">
-                {/* {feedback?.sp_review} */}
-                lkdjfklsjfsk jdfksh dkfkjsd fkjdfs kjdskfsdhfkj
+                {feedback?.sp_review}
               </div>
             </div>
           ),

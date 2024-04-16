@@ -102,7 +102,7 @@ const PromoCode = (props) => {
           <PageHeading headingText="Add Promo Code" categoryText="" />
         </div>
         <Col md={12} className="tableBodyWrapperPagination">
-          <Card className="shadow-sm mb-2">
+          <Card className="shadow-sm mb-2 ms-2">
             <CardBody>
               <Formik
                 initialValues={{ ...ADD_PROMO_CODE_INITIAL_VALUES }}
@@ -232,7 +232,9 @@ const PromoCode = (props) => {
               </Formik>
             </CardBody>
           </Card>
-          <ListingTable data={tableData} columns={columns} />
+          <div className="ms-2">
+            <ListingTable data={tableData} columns={columns} />
+          </div>
         </Col>
       </Row>
     </React.Fragment>

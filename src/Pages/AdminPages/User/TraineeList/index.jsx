@@ -94,9 +94,11 @@ const TraineeList = (props) => {
                         : `url(${trainee?.profile_pic})`,
                   }}
                 ></div>
-                <h6 className="text-secondary fw-bold mb-0">
-                  {`${trainee?.first_name} ${trainee?.last_name}`}
-                </h6>
+                <div className="" style={{ maxWidth: "100px" }}>
+                  <h6 className="text-secondary fw-bold mb-0">
+                    {`${trainee?.first_name} ${trainee?.last_name}`}
+                  </h6>
+                </div>
               </div>
             </Link>
           ),

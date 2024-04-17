@@ -221,7 +221,7 @@ const Report = () => {
           <CardHeader className="bg-transparent border-0">
             <PageHeading headingText="Reports" categoryText="" />
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination p-0">
+          <CardBody className="tableBodyWrapperPagination p-md-3 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

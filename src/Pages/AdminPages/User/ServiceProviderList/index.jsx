@@ -184,14 +184,14 @@ const ServiceProviders = (props) => {
       <Col md={12}>
         <Card className="border-0 h-100 text-start">
           <CardHeader className="bg-transparent border-0 p-0">
-            <Row className="align-items-center">
+            <Row className="align-items-center px-2">
               <Col md={6}>
                 <PageHeading
                   headingText="Service Provider List"
                   categoryText=""
                 />
               </Col>
-              <Col md={6} className="pe-4 mb-2">
+              <Col md={6} className=" mb-3">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",

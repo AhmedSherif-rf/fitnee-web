@@ -169,7 +169,7 @@ const ReviewRequest = () => {
               <Col md={6}>
                 <PageHeading headingText="Review Requests" categoryText="" />
               </Col>
-              <Col md={6} className="mb-3 px-md-2 px-3">
+              <Col md={6} className="mb-3 px-md-2 px-3 mt-2">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",

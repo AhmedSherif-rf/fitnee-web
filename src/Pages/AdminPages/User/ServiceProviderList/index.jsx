@@ -193,7 +193,7 @@ const ServiceProviders = (props) => {
                   categoryText=""
                 />
               </Col>
-              <Col md={6} className=" mb-3">
+              <Col md={6} className="mb-3 px-4 mt-2">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",

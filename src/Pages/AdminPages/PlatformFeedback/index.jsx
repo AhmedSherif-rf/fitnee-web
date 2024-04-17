@@ -107,13 +107,8 @@ const PlatformFeedback = () => {
           ),
           rating: <Rating rating={feedback?.platform_rating} />,
           message: (
-            <div
-              className="d-flex align-items-center "
-              style={{ maxWidth: "300px" }}
-            >
-              <div className="d-flex align-items-center mb-0">
-                {feedback?.platform_review}
-              </div>
+            <div className="tableResponsiveWidth mb-0">
+              {feedback?.platform_review}
             </div>
           ),
           date: moment(feedback?.created_on).format("DD/MM/YYYY"),

@@ -85,7 +85,7 @@ const Report = () => {
                       }}
                     ></div>
                   </div>
-                  <div className="" style={{ maxWidth: "96px" }}>
+                  <div className="tableResponsiveWidth">
                     <h6 className="text-secondary fw-bold mb-0">
                       {report?.reporting_user?.first_name}{" "}
                       {report?.reporting_user?.last_name}
@@ -111,7 +111,7 @@ const Report = () => {
                       }}
                     ></div>
                   </div>
-                  <div className="" style={{ maxWidth: "96px" }}>
+                  <div className="tableResponsiveWidth">
                     <h6 className="text-secondary fw-bold mb-0">
                       {report?.reporting_user?.full_name}
                     </h6>
@@ -138,7 +138,7 @@ const Report = () => {
                       }}
                     ></div>
                   </div>
-                  <div style={{ maxWidth: "96px" }}>
+                  <div className="tableResponsiveWidth">
                     <h6 className="text-secondary fw-bold mb-0">
                       {report?.reported_user?.full_name}
                     </h6>
@@ -163,7 +163,7 @@ const Report = () => {
                       }}
                     ></div>
                   </div>
-                  <div style={{ maxWidth: "96px" }}>
+                  <div className="tableResponsiveWidth">
                     <h6 className="text-secondary fw-bold mb-0">
                       {report?.reported_user?.first_name}{" "}
                       {report?.reported_user?.last_name}
@@ -173,7 +173,7 @@ const Report = () => {
               </Link>
             ),
           report: (
-            <p className="mb-0" style={{ maxWidth: "96px" }}>
+            <p className="mb-0 tableResponsiveWidth">
               {report?.message}
             </p>
           ),
@@ -221,7 +221,7 @@ const Report = () => {
           <CardHeader className="bg-transparent border-0">
             <PageHeading headingText="Reports" categoryText="" />
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination p-md-3 p-0">
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

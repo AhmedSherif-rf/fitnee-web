@@ -135,7 +135,7 @@ const FullyBooked = (props) => {
                   categoryText=""
                 />
               </Col>
-              <Col md={6} className="pe-4">
+              <Col md={6} className="mb-3 px-md-2 px-3">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",
@@ -154,7 +154,7 @@ const FullyBooked = (props) => {
               </Col>
             </Row>
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

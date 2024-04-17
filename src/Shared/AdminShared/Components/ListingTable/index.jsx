@@ -27,7 +27,7 @@ const ListingTable = ({ data, columns }) => {
         </Thead>
         <Tbody>
           {data.map((item, userIndex) => (
-            <Tr key={userIndex} className={`mb-2`}>
+              <Tr key={userIndex} className={`mb-2`}>
               {columns.map((column, columnIndex) => (
                 <Td
                   key={columnIndex}

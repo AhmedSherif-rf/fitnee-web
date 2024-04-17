@@ -86,9 +86,11 @@ const ServiceProviders = (props) => {
                         : `url(${serviceProvider?.profile_pic})`,
                   }}
                 ></div>
-                <h6 className="text-secondary fw-bold mb-0" style={{maxWidth:"110px"}}>
-                  {serviceProvider?.full_name}
-                </h6>
+                <div className="tableResponsiveWidth">
+                  <h6 className="text-secondary fw-bold mb-0">
+                    {serviceProvider?.full_name}
+                  </h6>
+                </div>
               </div>
             </Link>
           ),
@@ -210,7 +212,7 @@ const ServiceProviders = (props) => {
               </Col>
             </Row>
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

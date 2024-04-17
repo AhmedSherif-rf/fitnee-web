@@ -96,9 +96,9 @@ const ReviewRequest = () => {
         requestArray.push({
           full_name: (
             <Link to={`/admin/reviewRequestDetail/${request?.uuid}`}>
-              <div className="d-md-flex align-items-center">
+              <div className="d-md-flex align-items-center ">
                 <div
-                  className="bgProperties rounded-circle me-2"
+                  className="bgProperties rounded-circle mb-2 me-2"
                   style={{
                     width: "40px",
                     height: "40px",
@@ -108,9 +108,11 @@ const ReviewRequest = () => {
                         : `url(${request?.profile_pic})`,
                   }}
                 ></div>
-                <h6 className="text-secondary fw-bold mb-0">
-                  {request?.full_name}
-                </h6>
+                <div className="tableResponsiveWidth">
+                  <h6 className="text-secondary fw-bold mb-0">
+                    {request?.full_name}
+                  </h6>
+                </div>
               </div>
             </Link>
           ),
@@ -167,7 +169,7 @@ const ReviewRequest = () => {
               <Col md={6}>
                 <PageHeading headingText="Review Requests" categoryText="" />
               </Col>
-              <Col md={6} className="mb-3">
+              <Col md={6} className="mb-3 px-md-2 px-3">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",
@@ -186,7 +188,7 @@ const ReviewRequest = () => {
               </Col>
             </Row>
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

@@ -7,7 +7,7 @@ const DashboardTable = (props) => {
   const { data, columns, link, headingText } = props;
 
   return (
-    <Card className="onlyBorderRadius  fw-bold text-start overflowY-scroll mb-3 h-100 shadow border-0">
+    <Card className="onlyBorderRadius fw-bold text-start overflowY-scroll mb-3 h-100 shadow border-0">
       <CardHeader
         className={`bgNotification border-0 onlyBorderRadius d-flex align-items-center py-3 `}
       >

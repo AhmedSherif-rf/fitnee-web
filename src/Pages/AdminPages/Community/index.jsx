@@ -92,7 +92,7 @@ const Community = (props) => {
               className="text-start"
             />
           </Col>
-          <Col md={3} className=" mb-3 ms-2 me-3">
+          <Col md={3} className=" mb-3">
             <h5 className="mb-0 fw-bold text-start d-md-block d-none text-black-custom">
               Members
             </h5>

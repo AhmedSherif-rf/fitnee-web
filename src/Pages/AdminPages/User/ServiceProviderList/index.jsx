@@ -86,9 +86,11 @@ const ServiceProviders = (props) => {
                         : `url(${serviceProvider?.profile_pic})`,
                   }}
                 ></div>
-                <h6 className="text-secondary fw-bold mb-0" style={{maxWidth:"110px"}}>
-                  {serviceProvider?.full_name}
-                </h6>
+                <div className="tableResponsiveWidth">
+                  <h6 className="text-secondary fw-bold mb-0">
+                    {serviceProvider?.full_name}
+                  </h6>
+                </div>
               </div>
             </Link>
           ),
@@ -184,14 +186,14 @@ const ServiceProviders = (props) => {
       <Col md={12}>
         <Card className="border-0 h-100 text-start">
           <CardHeader className="bg-transparent border-0 p-0">
-            <Row className="align-items-center">
+            <Row className="align-items-center px-2">
               <Col md={6}>
                 <PageHeading
                   headingText="Service Provider List"
                   categoryText=""
                 />
               </Col>
-              <Col md={6} className="pe-4 mb-2">
+              <Col md={6} className="mb-3 px-4 mt-2">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",
@@ -210,7 +212,7 @@ const ServiceProviders = (props) => {
               </Col>
             </Row>
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

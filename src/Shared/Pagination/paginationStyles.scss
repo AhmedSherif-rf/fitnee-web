@@ -1,13 +1,14 @@
 @import "../../Assets/Scss/variables.scss";
 
 .pagination {
+  margin-bottom: 0px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   list-style: none;
 
   .activePageLink {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bolder;
     color: $parrot-green;
   }

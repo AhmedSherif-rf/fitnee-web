@@ -100,7 +100,7 @@ const ServiceProviderFeedback = () => {
                     }}
                   ></div>
                 </div>
-                <div className="" style={{ maxWidth: "90px" }}>
+                <div className="tableResponsiveWidth">
                   <h6 className="text-secondary fw-bold mb-0">
                     {feedback?.reviewer?.first_name}{" "}
                     {feedback?.reviewer?.last_name}
@@ -127,7 +127,7 @@ const ServiceProviderFeedback = () => {
                     }}
                   ></div>
                 </div>
-                <div style={{ maxWidth: "90px" }}>
+                <div className="tableResponsiveWidth">
                   <h6 className="text-secondary fw-bold mb-0">
                     {feedback?.service_provider?.full_name}
                   </h6>
@@ -141,7 +141,7 @@ const ServiceProviderFeedback = () => {
               className="d-flex align-items-center"
               style={{ maxWidth: "200px" }}
             >
-              <div className="d-flex align-items-center mb-0">
+              <div className="mb-0 tableResponsiveWidth">
                 {feedback?.sp_review}
               </div>
             </div>
@@ -218,7 +218,7 @@ const ServiceProviderFeedback = () => {
               categoryText=""
             />
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

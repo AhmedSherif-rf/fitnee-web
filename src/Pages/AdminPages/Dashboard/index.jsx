@@ -458,7 +458,7 @@ const Dashboard = (props) => {
         <Col xl={6} md={12} sm={12} className="mb-3">
           <DoughnutChart data={userTotalitiesGraphData} />
         </Col>
-        <Col xl={6} md={12} className="mb-3">
+        <Col xl={6} md={12} className="mb-3 p-md-2 p-0">
           <DashboardTable
             data={reviewRequestsTableData}
             columns={reviewRequestColumns}
@@ -466,7 +466,7 @@ const Dashboard = (props) => {
             link={"/admin/reviewRequest"}
           />
         </Col>
-        <Col xl={6} md={12} className="mb-3">
+        <Col xl={6} md={12} className="mb-3 p-md-2 p-0">
           <DashboardTable
             data={platformFeedbackTableData}
             columns={platformFeedbackColumns}
@@ -474,7 +474,7 @@ const Dashboard = (props) => {
             link={"/admin/platformFeedback"}
           />
         </Col>
-        <Col xl={6} md={12} className="mb-3 p-0">
+        <Col xl={6} md={12} className="mb-3 mb-3 p-md-2 p-0">
           <DashboardTable
             data={spFeedbackTableData}
             columns={serviceProviderFeedbackColumns}

@@ -88,7 +88,7 @@ const PlatformFeedback = () => {
             >
               <div className="d-md-flex align-items-center">
                 <div
-                  className="bgProperties rounded-circle me-2"
+                  className="bgProperties rounded-circle me-2 mb-2"
                   style={{
                     width: "40px",
                     height: "40px",
@@ -98,22 +98,19 @@ const PlatformFeedback = () => {
                         : `url(${feedback?.reviewer?.profile_pic})`,
                   }}
                 ></div>
-                <h6 className="text-secondary fw-bold mb-0">
-                  {feedback?.reviewer?.first_name}{" "}
-                  {feedback?.reviewer?.last_name}
-                </h6>
+                <div className="tableResponsiveWidth">
+                  <h6 className="text-secondary fw-bold mb-0">
+                    {feedback?.reviewer?.first_name}{" "}
+                    {feedback?.reviewer?.last_name}
+                  </h6>
+                </div>
               </div>
             </Link>
           ),
           rating: <Rating rating={feedback?.platform_rating} />,
           message: (
-            <div
-              className="d-flex align-items-center "
-              style={{ maxWidth: "300px" }}
-            >
-              <div className="d-flex align-items-center mb-0">
-                {feedback?.platform_review}
-              </div>
+            <div className="mb-0 messageWidth">
+              {feedback?.platform_review}
             </div>
           ),
           date: moment(feedback?.created_on).format("DD/MM/YYYY"),
@@ -158,10 +155,10 @@ const PlatformFeedback = () => {
           <CardHeader className="bg-transparent border-0">
             <PageHeading headingText="Platform Feedback" categoryText="" />
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination p-0">
+          <CardBody className="tableBodyWrapperPagination p-md-3 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
-          <CardFooter className="bg-transparent text-end pb-0 pt-2">
+          <CardFooter className="bg-transparent text-end p-0">
             {totalSize > PER_PAGE_COUNT && (
               <Pagination
                 size={totalSize}

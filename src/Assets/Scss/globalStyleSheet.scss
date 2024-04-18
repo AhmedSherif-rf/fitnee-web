@@ -61,6 +61,10 @@
   border-radius: 14px;
 }
 
+.bgYellow {
+  background-color: $yellow;
+}
+
 .textGrey {
   color: $text-muted !important;
 }
@@ -284,7 +288,6 @@ Input::-webkit-input-placeholder {
 .adminDashBoardScrolling {
   max-height: 82vh;
   overflow-y: scroll;
-  
 }
 
 .genderBtn {

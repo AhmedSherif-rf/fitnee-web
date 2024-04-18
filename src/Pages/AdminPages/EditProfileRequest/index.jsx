@@ -89,7 +89,7 @@ const EditProfileRequest = () => {
                       : `url(${request.service_provider?.profile_pic})`,
                 }}
               ></div>
-              <h6 className="text-black-custom fw-bold mb-0">
+              <h6 className="text-secondary fw-bold mb-0">
                 {`${request.service_provider?.full_name}`}
                 <p className="mb-0 small fw-bold">{`${request.service_provider?.role}`}</p>
               </h6>

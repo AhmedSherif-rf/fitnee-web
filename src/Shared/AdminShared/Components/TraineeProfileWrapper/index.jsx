@@ -1,17 +1,21 @@
 import moment from "moment";
 import GoBack from "../GoBack";
+import { db } from "../../../../firebase";
 import ListingTable from "../ListingTable";
+import { BsChatText } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import React, { memo, useState, useEffect } from "react";
+import { onValue, ref, orderByChild } from "firebase/database";
 import { Row, Container, Col, Card, CardBody } from "reactstrap";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../../../ProfileInformationCard";
+import IndividualChatModal from "../../../Modal/IndividualChatModal";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 import {
   getTraineeDetail,
   userBlockUnblock,
 } from "../../../../Redux/features/Admin/UserListing/userListingApi";
+import React, { memo, useState, useEffect, useCallback } from "react";
 import {
   ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
   ADMIN_TRAINEE_PROFILE_URL,
@@ -25,6 +29,9 @@ const TraineeProfileWrapper = (props) => {
 
   const [traineeProfile, setTraineeProfile] = useState(null);
   const [tableData, setTableData] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [recipient, setRecipient] = useState(null);
+  const [showChatModal, setShowChatModal] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -104,6 +111,20 @@ const TraineeProfileWrapper = (props) => {
               )}
             </>
           ),
+          action: (
+            <p
+              className="mb-0 text-decoration-underline cursorPointer"
+              onClick={() =>
+                fetchChat(
+                  id,
+                  membership?.serviceprovider?.id,
+                  membership?.serviceprovider
+                )
+              }
+            >
+              <BsChatText size={25} />
+            </p>
+          ),
         });
       });
 
@@ -111,7 +132,27 @@ const TraineeProfileWrapper = (props) => {
     } else {
       setTableData([]);
     }
-  }, [traineeProfile]);
+  }, [id, traineeProfile]);
+
+  const fetchChat = (traineeId, trainerId, recipient) => {
+    const query = ref(
+      db,
+      `Messages/${traineeId}/${trainerId}`,
+      orderByChild("messageTime")
+    );
+
+    onValue(query, (snapshot) => {
+      const data = snapshot.val();
+      setMessages(data ? Object.values(data) : []);
+    });
+
+    setRecipient(recipient);
+    setShowChatModal(true);
+  };
+
+  const handleChatModalClose = useCallback(() => {
+    setShowChatModal(false);
+  }, []);
 
   const handleActionClick = (id) => {
     const data = {
@@ -136,6 +177,7 @@ const TraineeProfileWrapper = (props) => {
     },
     { label: "Duration", dataKey: "duration", align: "center" },
     { label: "Status", dataKey: "Status", align: "center" },
+    { label: "Action", dataKey: "action", align: "center" },
   ];
 
   return (
@@ -264,6 +306,16 @@ const TraineeProfileWrapper = (props) => {
           </Col>
         )}
       </Row>
+
+      <IndividualChatModal
+        size={"lg"}
+        TOneClassName={"mb-4 fs-5 text-center"}
+        className={"p-4"}
+        isOpen={showChatModal}
+        onClose={handleChatModalClose}
+        messages={messages}
+        recipient={recipient}
+      />
     </Container>
   );
 };

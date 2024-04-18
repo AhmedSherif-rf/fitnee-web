@@ -90,9 +90,9 @@ const WalletOverview = (props) => {
               <Link
                 to={`/admin/serviceProviderProfile/${wallet?.service_provider?.uuid}`}
               >
-                <div className="d-flex align-items-center">
+                <div className="d-md-flex align-items-center">
                   <div
-                    className="bgProperties rounded-circle me-2"
+                    className="bgProperties rounded-circle me-2 mb-2"
                     style={{
                       width: "40px",
                       height: "40px",
@@ -102,9 +102,12 @@ const WalletOverview = (props) => {
                           : `url(${wallet?.service_provider?.profile_pic})`,
                     }}
                   ></div>
-                  <h6 className="text-secondary fw-bold mb-0">
-                    {wallet?.service_provider?.full_name}
-                  </h6>
+                  <div className="tableResponsiveWidth">
+                    {" "}
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {wallet?.service_provider?.full_name}
+                    </h6>
+                  </div>
                 </div>
               </Link>
             ),
@@ -204,7 +207,7 @@ const WalletOverview = (props) => {
               <Col md={6}>
                 <PageHeading headingText="Wallet Overview" categoryText="" />
               </Col>
-              <Col md={6} className="pe-3">
+              <Col md={6} className="mb-3 px-4 mt-2">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",
@@ -222,14 +225,9 @@ const WalletOverview = (props) => {
               </Col>
             </Row>
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
             {loading === "pending" && <LoadingScreen />}
-
-            <Row>
-              <Col md={12} className="mb-2">
-                <ListingTable data={tableData} columns={columns} />
-              </Col>
-            </Row>
+            <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">
             {totalSize > PER_PAGE_COUNT && (

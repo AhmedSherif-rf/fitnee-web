@@ -1,252 +1,242 @@
-import React from "react";
-import { useState } from "react";
+import moment from "moment";
 import { Col, Row } from "reactstrap";
+import { db } from "../../../firebase";
 import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { ref, set } from "firebase/database";
+import { useState, useCallback } from "react";
+import Toaster from "../../../Shared/Toaster";
+import Pagination from "../../../Shared/Pagination";
+import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../Shared/Headings/PageHeading";
+import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import { GoEye, GoTriangleDown, GoTriangleUp } from "react-icons/go";
+import { Card, CardHeader, CardBody, CardFooter } from "reactstrap";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
+import {
+  PER_PAGE_COUNT,
+  ADMIN_REPORTS_LISTING_URL,
+  TRAINEE_ROLE,
+} from "../../../utils/constants";
+import { getReportsListing } from "../../../Redux/features/Admin/Feedback/FeedbackApi";
 
-const ContactUs = (props) => {
-  const [showFullText, setShowFullText] = useState(false);
+const Report = () => {
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const [totalSize, setSizePages] = useState(0);
+  const [tableData, setTableData] = useState([]);
+  const [reportData, setReportData] = useState([]);
 
-  const handleToggleText = () => {
-    setShowFullText(!showFullText);
+  const { loading } = useSelector((state) => state.feedback);
+
+  const handlePageChange = useCallback((page) => {
+    setPage(page.selected + 1);
+  }, []);
+
+  useEffect(() => {
+    fetchReports();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, page]);
+
+  const fetchReports = () => {
+    const data = {
+      apiEndpoint: `${ADMIN_REPORTS_LISTING_URL}?page=${page}`,
+    };
+
+    dispatch(getReportsListing(data)).then((res) => {
+      if (res.type === "getReportsListing/fulfilled") {
+        setSizePages(res.payload.data.count);
+        setReportData(res.payload.data.results);
+      }
+    });
   };
-  const users = [
-    {
-      ReportingUser: (
-        <div className="d-md-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE3_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Nadeem Abbas</h6>
-        </div>
-      ),
-      dateTime: "02:00 PM - 03/04/2023",
-      ReportingTo: (
-        <div className="d-md-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE3_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Edgar</h6>
-        </div>
-      ),
 
-      subscriptionStatus: "Trainer",
-      phone: "+966-45-3456715",
-      reportReason: (
-        <div
-          className="d-flex align-items-center "
-          style={{ maxWidth: "300px" }}
-        >
-          <div className="d-flex align-items-center mb-0">
-            {showFullText
-              ? "Lorazepam, sold under the brand name Ativan among others, is a benzodiazepine medication. It is used to treat anxiety, trouble sleeping, severe agitation, active seizures including status epilepticus, alcohol withdrawal, and chemotherapy-induced nausea and"
-              : "Lorazepam, sold under the brand name Ativan among others,"}
-          </div>
-          <div>
-            {showFullText ? (
-              <GoTriangleUp
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
-            ) : (
-              <GoTriangleDown
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
-            )}
-          </div>
-        </div>
-      ),
-      reportFrom: "FitNee Community",
-      view: (
-        <div className="d-flex align-items-center justify-content-md-center">
-          <span className={`iconBadge me-1`}>
-            <Link to="#0">
-              <GoEye className="GoEye mb-1" />
-            </Link>
-          </span>
-        </div>
-      ),
-    },
-    {
-      ReportingUser: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE3_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Frank</h6>
-        </div>
-      ),
-      dateTime: "02:00 PM - 03/04/2023",
-      ReportingTo: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE5_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Jorge</h6>
-        </div>
-      ),
+  const handleDeleteMessage = (message) => {
+    const messageRef = ref(
+      db,
+      `GroupMessages/${message.messageTo}/${message.messageId}`
+    );
+    set(messageRef, { ...message, isDeleted: true })
+      .then(() => Toaster.error("Message deleted"))
+      .catch((error) => console.error("Error updating isDeleted:", error));
+  };
 
-      subscriptionStatus: "Trainer",
-      phone: "+966-45-3456715",
-      reportReason: (
-        <div
-          className="d-flex align-items-center "
-          style={{ maxWidth: "300px" }}
-        >
-          <div className="d-flex align-items-center mb-0">
-            {showFullText
-              ? "Lorazepam, sold under the brand name Ativan among others, is a benzodiazepine medication. It is used to treat anxiety, trouble sleeping, severe agitation, active seizures including status epilepticus, alcohol withdrawal, and chemotherapy-induced nausea and"
-              : "Lorazepam, sold under the brand name Ativan among others,"}
-          </div>
-          <div>
-            {showFullText ? (
-              <GoTriangleUp
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
+  useEffect(() => {
+    if (reportData.length > 0) {
+      let reportArray = [];
+      reportData.forEach((report) =>
+        reportArray.push({
+          reporter:
+            report?.reporting_user?.role === TRAINEE_ROLE ? (
+              <Link
+                to={`/admin/traineeProviderProfile/${report?.reporting_user?.id}`}
+              >
+                <div className="d-md-flex align-items-center">
+                  <div>
+                    <div
+                      className="bgProperties rounded-circle me-2"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        backgroundImage:
+                          report?.reporting_user?.profile_pic === null
+                            ? `url(${Images.USER_DUMMY_IMG})`
+                            : `url(${report?.reporting_user?.profile_pic})`,
+                      }}
+                    ></div>
+                  </div>
+                  <div className="tableResponsiveWidth">
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {report?.reporting_user?.first_name}{" "}
+                      {report?.reporting_user?.last_name}
+                    </h6>
+                  </div>
+                </div>
+              </Link>
             ) : (
-              <GoTriangleDown
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
-            )}
-          </div>
-        </div>
-      ),
-      reportFrom: "FitNee Community",
-      view: (
-        <div className="d-flex align-items-center justify-content-md-center">
-          <span className={`iconBadge me-1`}>
-            <Link to="#0">
-              <GoEye className="GoEye mb-1" />
-            </Link>
-          </span>
-        </div>
-      ),
-    },
-    {
-      ReportingUser: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE4_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">John</h6>
-        </div>
-      ),
-      dateTime: "02:00 PM - 03/04/2023",
-      ReportingTo: (
-        <div className="d-flex align-items-center">
-          <div
-            className="bgProperties rounded-circle me-2"
-            style={{
-              width: "40px",
-              height: "40px",
-              backgroundImage: `url(${Images.PROFILE2_IMG})`,
-            }}
-          ></div>
-          <h6 className="text-secondary fw-bold mb-0">Maya</h6>
-        </div>
-      ),
-      phone: "+966-45-3456715",
-      reportReason: (
-        <div
-          className="d-flex align-items-center "
-          style={{ maxWidth: "300px" }}
-        >
-          <div className="d-flex align-items-center mb-0">
-            {showFullText
-              ? "Lorazepam, sold under the brand name Ativan among others, is a benzodiazepine medication. It is used to treat anxiety, trouble sleeping, severe agitation, active seizures including status epilepticus, alcohol withdrawal, and chemotherapy-induced nausea and"
-              : "Lorazepam, sold under the brand name Ativan among others,"}
-          </div>
-          <div>
-            {showFullText ? (
-              <GoTriangleUp
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
+              <Link
+                to={`/admin/traineeProviderProfile/${report?.reporting_user?.uuid}`}
+              >
+                <div className="d-md-flex align-items-center">
+                  <div>
+                    <div
+                      className="bgProperties rounded-circle me-2"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        backgroundImage:
+                          report?.reporting_user?.profile_pic === null
+                            ? `url(${Images.USER_DUMMY_IMG})`
+                            : `url(${report?.reporting_user?.profile_pic})`,
+                      }}
+                    ></div>
+                  </div>
+                  <div className="tableResponsiveWidth">
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {report?.reporting_user?.full_name}
+                    </h6>
+                  </div>
+                </div>
+              </Link>
+            ),
+          reported:
+            report?.reported_user?.role !== TRAINEE_ROLE ? (
+              <Link
+                to={`/admin/serviceProviderProfile/${report?.reported_user?.uuid}`}
+              >
+                <div className="d-md-flex align-items-center">
+                  <div className="">
+                    <div
+                      className="bgProperties rounded-circle me-2"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        backgroundImage:
+                          report?.reported_user?.profile_pic === null
+                            ? `url(${Images.USER_DUMMY_IMG})`
+                            : `url(${report?.reported_user?.profile_pic})`,
+                      }}
+                    ></div>
+                  </div>
+                  <div className="tableResponsiveWidth">
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {report?.reported_user?.full_name}
+                    </h6>
+                  </div>
+                </div>
+              </Link>
             ) : (
-              <GoTriangleDown
-                className="textYellow fs-2"
-                onClick={handleToggleText}
-                style={{ cursor: "pointer" }}
-              />
-            )}
-          </div>
-        </div>
-      ),
-      reportFrom: "FitNee Community",
-      view: (
-        <div className="d-flex align-items-center justify-content-md-center">
-          <span className={`iconBadge me-1`}>
-            <Link to="#0">
-              <GoEye className="GoEye mb-1" />
-            </Link>
-          </span>
-        </div>
-      ),
-    },
-  ];
+              <Link
+                to={`/admin/serviceProviderProfile/${report?.reported_user?.id}`}
+              >
+                <div className="d-md-flex align-items-center">
+                  <div className="">
+                    <div
+                      className="bgProperties rounded-circle me-2"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        backgroundImage:
+                          report?.reported_user?.profile_pic === null
+                            ? `url(${Images.USER_DUMMY_IMG})`
+                            : `url(${report?.reported_user?.profile_pic})`,
+                      }}
+                    ></div>
+                  </div>
+                  <div className="tableResponsiveWidth">
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {report?.reported_user?.first_name}{" "}
+                      {report?.reported_user?.last_name}
+                    </h6>
+                  </div>
+                </div>
+              </Link>
+            ),
+          report: (
+            <p className="mb-0 tableResponsiveWidth">
+              {report?.message}
+            </p>
+          ),
+          type:
+            report?.message_data !== null || report?.type === "message" ? (
+              <>
+                <p className="mb-0">FitNee Community</p>
+                <p className="fw-bold">{report?.message_data?.messageText}</p>
+              </>
+            ) : (
+              <p>Individual</p>
+            ),
+          date: moment(report?.created_on).format("DD/MM/YYYY"),
+          action: report?.message_data !== null && (
+            <p
+              className="text-danger text-decoration-underline cursorPointer"
+              onClick={() => handleDeleteMessage(report?.message_data)}
+            >
+              Delete Message
+            </p>
+          ),
+        })
+      );
+      setTableData(reportArray);
+    } else {
+      setTableData([]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reportData]);
 
   const columns = [
-    { label: "Reporting User", dataKey: "ReportingUser" },
-    { label: "Date & Time", dataKey: "dateTime", align: "center" },
-    { label: "Reporting To", dataKey: "ReportingTo" },
-    {
-      label: "Report From",
-      dataKey: "reportFrom",
-      align: "center",
-    },
-
-    { label: "Report Reason", dataKey: "reportReason", align: "center" },
-    { label: "View", dataKey: "view", align: "center" },
+    { label: "Reporter User", dataKey: "reporter" },
+    { label: "Reported User", dataKey: "reported" },
+    { label: "Report", dataKey: "report", width: "30" },
+    { label: "Type", dataKey: "type", align: "center" },
+    { label: "Date", dataKey: "date", align: "center" },
+    { label: "Action", dataKey: "action", align: "center" },
   ];
 
   return (
-    <React.Fragment>
-      <Row>
-        <Col md="12" className="text-start">
-          <PageHeading headingText="Reports" categoryText="" />
-        </Col>
-        <Col md="12">
-          <ListingTable data={users} columns={columns} />
-        </Col>
-      </Row>
-    </React.Fragment>
+    <Row className="h-100">
+      {loading === "pending" && <LoadingScreen />}
+      <Col md={12}>
+        <Card className="border-0 h-100 text-start">
+          <CardHeader className="bg-transparent border-0">
+            <PageHeading headingText="Reports" categoryText="" />
+          </CardHeader>
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
+            <ListingTable data={tableData} columns={columns} />
+          </CardBody>
+          <CardFooter className="bg-transparent text-end pb-0 pt-2">
+            {totalSize > PER_PAGE_COUNT && (
+              <Pagination
+                size={totalSize}
+                handlePageChange={handlePageChange}
+                page={page}
+              />
+            )}
+          </CardFooter>
+        </Card>
+      </Col>
+    </Row>
   );
 };
 
-export default ContactUs;
+export default Report;

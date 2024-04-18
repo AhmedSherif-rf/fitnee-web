@@ -1,21 +1,22 @@
+import React from "react";
 import StarRating from "../Rating";
-import React, { useState } from "react";
 import styles from "./style.module.scss";
-import { Card, CardFooter } from "reactstrap";
 import { LuArrowUp } from "react-icons/lu";
+import { Card, CardFooter } from "reactstrap";
+import { useTranslation } from "react-i18next";
 
 const FeedbackCard = (props) => {
+  const { i18n } = useTranslation("");
   const { header, image, des } = props;
+
   return (
     <Card
-      className={`rounded-0 w-100 customCard`}
+      className={`rounded-0 w-100 customCard ${i18n.dir()}`}
       style={{
         backgroundImage: `url(${image})`,
       }}
     >
-      <CardFooter
-        className={`text-center w-100 p-0 m-0 customCardFooter`}
-      >
+      <CardFooter className={`text-center w-100 p-0 m-0 customCardFooter`}>
         <div
           className={`customCardFooterText d-flex align-items-end justify-content-center`}
         >
@@ -32,7 +33,8 @@ const FeedbackCard = (props) => {
         </div>
       </CardFooter>
       <div
-        className={`position-absolute rounded-circle d-md-none d-flex align-items-center justify-content-center textParrotGreen ${styles.arrowCircle}`}>
+        className={`position-absolute rounded-circle d-md-none d-flex align-items-center justify-content-center textParrotGreen ${styles.arrowCircle}`}
+      >
         <LuArrowUp />
       </div>
     </Card>

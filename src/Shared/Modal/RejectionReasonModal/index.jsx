@@ -14,7 +14,7 @@ import { REVIEW_REQUEST_REJECTION_INITIAL_VALUES } from "../../ValidationData/in
 const RejectionReasonModal = (props) => {
   const { onClose, isOpen, className, size, heading, handleSubmit } = props;
 
-  const { t, i18n } = useTranslation("");
+  const { t } = useTranslation("");
   const { loading } = useSelector((state) => state.reviewRequest);
 
   return (
@@ -24,7 +24,7 @@ const RejectionReasonModal = (props) => {
       size={size}
       isOpen={isOpen}
       toggle={onClose}
-      className={`${className} ${i18n.dir()}`}
+      className={`${className}`}
       backdrop={"static"}
     >
       <ModalHeader toggle={() => onClose(false)} className="border-0 pt-3 pb-0">

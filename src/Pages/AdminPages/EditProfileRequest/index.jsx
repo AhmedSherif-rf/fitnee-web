@@ -89,13 +89,14 @@ const EditProfileRequest = () => {
                       : `url(${request.service_provider?.profile_pic})`,
                 }}
               ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {`${request.service_provider?.full_name}`}
-                <p className="mb-0 text-dark small fw-bold">{`${request.service_provider?.role}`}</p>
-              </h6>
+              <div className="tableResponsiveWidth">
+                <h6 className="text-black-custom fw-bold mb-0">
+                  {`${request.service_provider?.full_name}`}
+                  <p className="mb-0 small fw-bold">{`(${request.service_provider?.role})`}</p>
+                </h6>
+              </div>
             </div>
           ),
-
           license: request?.license,
           stc_pay: request?.stc_pay,
           saudireps_number: request?.saudireps_number,
@@ -183,11 +184,11 @@ const EditProfileRequest = () => {
     <Row className="h-100">
       {loading === "pending" && <LoadingScreen />}
       <Col md={12}>
-        <Card className="border-0 h-100 text-start">
+        <Card className="border-0 h-100 text-start ">
           <CardHeader className="bg-transparent border-0 p-0">
             <PageHeading headingText="Edit Profile Requests" categoryText="" />
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

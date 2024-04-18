@@ -1,8 +1,8 @@
 import moment from "moment";
 import { Col, Row } from "reactstrap";
-import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
 import React, { useState, memo } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +18,7 @@ import {
 
 const Index = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { data, index, handleRefreshData } = props;
   const { loading } = useSelector((state) => state.user);
 
@@ -80,39 +81,45 @@ const Index = (props) => {
         key={index}
       >
         <Col md={3} className="mb-md-0 mb-2">
-          <div className="d-flex align-items-center">
-            <Link
-              className="text-decoration-none"
-              to={`/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}`}
-            >
-              {data?.have_exercise_subscription && (
-                <div
-                  className="me-2 bgProperties rounded-circle img-fluid"
-                  style={{
-                    width: "40px",
-                    height: "10px",
-                    cursor: "pointer",
-                    backgroundImage: `url(${Images.SMALL_LOGO_IMG})`,
-                    border: "1px solid transparent",
-                  }}
-                ></div>
-              )}
-              {!data?.have_exercise_subscription && (
-                <div
-                  className="me-2 bgProperties rounded-circle"
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    cursor: "pointer",
-                    backgroundImage:
-                      data?.serviceprovider?.profile_pic === null
-                        ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${data?.serviceprovider?.profile_pic})`,
-                    border: "1px solid transparent",
-                  }}
-                ></div>
-              )}
-            </Link>
+          <div
+            className="d-flex align-items-center"
+            onClick={() => {
+              const role =
+                data?.serviceprovider?.role === NUTRITIONIST_ROLE
+                  ? NUTRITIONIST_ROLE
+                  : TRAINER_ROLE;
+              navigate(
+                `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}`
+              );
+            }}
+          >
+            {data?.have_exercise_subscription && (
+              <div
+                className="me-2 bgProperties rounded-circle img-fluid"
+                style={{
+                  width: "40px",
+                  height: "10px",
+                  cursor: "pointer",
+                  backgroundImage: `url(${Images.SMALL_LOGO_IMG})`,
+                  border: "1px solid transparent",
+                }}
+              ></div>
+            )}
+            {!data?.have_exercise_subscription && (
+              <div
+                className="me-2 bgProperties rounded-circle"
+                style={{
+                  width: "60px",
+                  height: "60px",
+                  cursor: "pointer",
+                  backgroundImage:
+                    data?.serviceprovider?.profile_pic === null
+                      ? `url(${Images.USER_DUMMY_IMG})`
+                      : `url(${data?.serviceprovider?.profile_pic})`,
+                  border: "1px solid transparent",
+                }}
+              ></div>
+            )}
             <div>
               <h6 className="mb-0 fw-bold px-2">
                 {data?.serviceprovider?.full_name}
@@ -162,7 +169,10 @@ const Index = (props) => {
         <Col md={2} className="d-md-block d-none">
           <div className="mb-md-0 text-center py-2 rounded-3">
             <h6 className="mb-0 w-100 fs-5 fw-bold ">
-              {CURRENCY} {data?.transition?.total_amount}
+              {CURRENCY}{" "}
+              {data?.transition?.total_amount === null
+                ? data?.transition?.current_price
+                : data?.transition?.total_amount}
             </h6>
           </div>
         </Col>

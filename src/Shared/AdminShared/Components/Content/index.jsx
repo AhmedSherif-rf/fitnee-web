@@ -15,12 +15,11 @@ const Content = ({ children, sidebarIsOpen, toggleSidebar }) => {
         "d-none": shouldHideContent,
       })}`}
     >
-      <Row className="position-absolute px-2 w-100" style={{ zIndex: "2" }}>
-        <Col md="12 ">
+      <Row className="position-absolute px-1 w-100" style={{ zIndex: "2" }}>
+        <Col md="12">
           <Topbar toggleSidebar={toggleSidebar} />
           <Card
-            className="BorderRadius px-2 pb-1"
-            style={{ height: "84vh", overflowY: "hidden" }}
+            className={`BorderRadius pb-1 ${styles.cardHeight}`}
           >
             <div className="h-100">{children}</div>
           </Card>

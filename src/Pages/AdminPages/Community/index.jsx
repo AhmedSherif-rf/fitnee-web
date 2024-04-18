@@ -1,5 +1,6 @@
 import "./styles.scss";
 import { db } from "../../../firebase";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import { onValue, ref, orderByChild } from "firebase/database";
@@ -16,6 +17,8 @@ import Images from "../../../HelperMethods/Constants/ImgConstants";
 import Message from "../../../Shared/AdminShared/Components/Message";
 
 const Community = (props) => {
+  const navigate = useNavigate();
+
   const [members, setMembers] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(false);
   const [groupMembers, setGroupMembers] = useState([]);
@@ -89,7 +92,7 @@ const Community = (props) => {
               className="text-start"
             />
           </Col>
-          <Col md={3} className=" mb-3 ms-2 me-3">
+          <Col md={3} className=" mb-3">
             <h5 className="mb-0 fw-bold text-start d-md-block d-none text-black-custom">
               Members
             </h5>
@@ -107,10 +110,21 @@ const Community = (props) => {
                       key={index}
                       onMouseOver={() => setHoveredIndex(index)}
                       onMouseOut={() => setHoveredIndex(false)}
-                      className={`d-flex mb-1 align-items-center py-1 bgCommunity rounded-4 ps-1`}
+                      className={`d-flex mb-1 cursorPointer align-items-center py-1 bgCommunity rounded-4 ps-1`}
+                      onClick={() => {
+                        if (member?.role === "Trainee") {
+                          navigate(
+                            `/admin/traineeProviderProfile/${member?.serverUserId}`
+                          );
+                        } else {
+                          navigate(
+                            `/admin/serviceProviderProfile/${member?.uuid}`
+                          );
+                        }
+                      }}
                     >
                       <div
-                        className={`bgProperties rounded-circle  ${
+                        className={`bgProperties rounded-circle ${
                           hoveredIndex === index ? "cardHovered" : ""
                         }`}
                         style={{
@@ -124,7 +138,14 @@ const Community = (props) => {
                           height: "45px",
                         }}
                       ></div>
-                      <small className="ms-3 fw-bold">{member?.name}</small>
+                      <div className="text-start">
+                        <p className="ms-3 mb-0 small fw-bold">
+                          {member?.name}
+                        </p>
+                        <p className="ms-3 mb-0 small fw-bold">
+                          {member?.role}
+                        </p>
+                      </div>
                     </Col>
                   );
                 })}

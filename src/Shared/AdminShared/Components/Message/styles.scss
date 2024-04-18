@@ -9,17 +9,6 @@
   background-color: $text-bg;
   position: relative;
   z-index: 2;
-  &::before {
-    content: "";
-    position: absolute;
-    background-color: $text-bg;
-    width: 16px;
-    height: 14px;
-    margin-top: -9px;
-    margin-left: -16px;
-    border-bottom-left-radius: 40px;
-    z-index: 0;
-  }
 }
 .messageWrapperDanger {
   background-color: $color-pink !important;

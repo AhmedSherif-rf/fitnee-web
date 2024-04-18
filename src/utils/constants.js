@@ -81,6 +81,7 @@ export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const USE_PROMO_CODE_URL = "/payment/promo-code/";
 export const ADMIN_PROMO_CODE_URL = "/admin/promo-codes/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
+export const ADMIN_REPORTS_LISTING_URL = "/admin/report/";
 export const ADMIN_DASHBOARD_COUNTERS = "/admin/user-stats";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const ADMIN_EXERCISE_URL = "/admin/exercise/detail/";

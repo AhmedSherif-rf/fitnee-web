@@ -1,18 +1,27 @@
 import moment from "moment";
 import GoBack from "../GoBack";
+import { db } from "../../../../firebase";
 import ListingTable from "../ListingTable";
+import { BsChatText } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import React, { memo, useState, useEffect } from "react";
+import { onValue, ref, orderByChild } from "firebase/database";
 import { Row, Container, Col, Card, CardBody } from "reactstrap";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../../../ProfileInformationCard";
+import IndividualChatModal from "../../../Modal/IndividualChatModal";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
-import { getTraineeDetail } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import {
+  getTraineeDetail,
+  userBlockUnblock,
+} from "../../../../Redux/features/Admin/UserListing/userListingApi";
+import React, { memo, useState, useEffect, useCallback } from "react";
+import {
+  ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
   ADMIN_TRAINEE_PROFILE_URL,
   CURRENCY,
 } from "../../../../utils/constants";
+import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
 
 const TraineeProfileWrapper = (props) => {
   const { id } = useParams();
@@ -20,10 +29,18 @@ const TraineeProfileWrapper = (props) => {
 
   const [traineeProfile, setTraineeProfile] = useState(null);
   const [tableData, setTableData] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [recipient, setRecipient] = useState(null);
+  const [showChatModal, setShowChatModal] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    fetchTraineeProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, id]);
+
+  const fetchTraineeProfile = () => {
     const data = {
       apiEndpoint: ADMIN_TRAINEE_PROFILE_URL.replace("userId", id),
     };
@@ -33,7 +50,7 @@ const TraineeProfileWrapper = (props) => {
         setTraineeProfile({ ...res.payload.data, role: "Trainee" });
       }
     });
-  }, [dispatch, id]);
+  };
 
   useEffect(() => {
     if (traineeProfile && traineeProfile.membership.length > 0) {
@@ -61,7 +78,7 @@ const TraineeProfileWrapper = (props) => {
           ),
           price: (
             <p className="fw-bold mb-0">
-              {CURRENCY} {membership?.subscription?.price}
+              {CURRENCY} {membership?.transition?.total_amount}
             </p>
           ),
           duration: (
@@ -94,6 +111,20 @@ const TraineeProfileWrapper = (props) => {
               )}
             </>
           ),
+          action: (
+            <p
+              className="mb-0 text-decoration-underline cursorPointer"
+              onClick={() =>
+                fetchChat(
+                  id,
+                  membership?.serviceprovider?.id,
+                  membership?.serviceprovider
+                )
+              }
+            >
+              <BsChatText size={25} />
+            </p>
+          ),
         });
       });
 
@@ -101,7 +132,41 @@ const TraineeProfileWrapper = (props) => {
     } else {
       setTableData([]);
     }
-  }, [traineeProfile]);
+  }, [id, traineeProfile]);
+
+  const fetchChat = (traineeId, trainerId, recipient) => {
+    const query = ref(
+      db,
+      `Messages/${traineeId}/${trainerId}`,
+      orderByChild("messageTime")
+    );
+
+    onValue(query, (snapshot) => {
+      const data = snapshot.val();
+      setMessages(data ? Object.values(data) : []);
+    });
+
+    setRecipient(recipient);
+    setShowChatModal(true);
+  };
+
+  const handleChatModalClose = useCallback(() => {
+    setShowChatModal(false);
+  }, []);
+
+  const handleActionClick = (id) => {
+    const data = {
+      apiEndpoint: ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL.replace(
+        "userId",
+        id
+      ),
+    };
+    dispatch(userBlockUnblock(data)).then((res) => {
+      if (res.type === "userBlockUnblock/fulfilled") {
+        fetchTraineeProfile();
+      }
+    });
+  };
 
   const columns = [
     { label: "Service Provider", dataKey: "sp" },
@@ -112,6 +177,7 @@ const TraineeProfileWrapper = (props) => {
     },
     { label: "Duration", dataKey: "duration", align: "center" },
     { label: "Status", dataKey: "Status", align: "center" },
+    { label: "Action", dataKey: "action", align: "center" },
   ];
 
   return (
@@ -134,6 +200,49 @@ const TraineeProfileWrapper = (props) => {
                           {traineeProfile?.first_name}{" "}
                           {traineeProfile?.last_name}
                         </h3>
+                      </div>
+                      <div>
+                        {!traineeProfile?.is_deleted && (
+                          <div className="d-flex align-items-center justify-content-md-center">
+                            {!traineeProfile?.is_blocked && (
+                              <span
+                                className={`iconBadge me-1`}
+                                id={`userId_${traineeProfile?.id}`}
+                                onClick={() =>
+                                  handleActionClick(traineeProfile?.id)
+                                }
+                              >
+                                <MdOutlinePersonOutline
+                                  size={25}
+                                  className={`cursorPointer ${
+                                    traineeProfile?.is_blocked === false
+                                      ? "text-success"
+                                      : ""
+                                  }`}
+                                />
+                              </span>
+                            )}
+
+                            {traineeProfile?.is_blocked && (
+                              <span
+                                className={`iconBadge me-1`}
+                                id={`userId_${traineeProfile?.id}`}
+                                onClick={() =>
+                                  handleActionClick(traineeProfile?.id)
+                                }
+                              >
+                                <MdOutlinePersonOff
+                                  size={25}
+                                  className={`cursorPointer ${
+                                    traineeProfile?.is_blocked === true
+                                      ? ""
+                                      : "text-danger"
+                                  }`}
+                                />
+                              </span>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="lh-1 mt-2">
@@ -159,7 +268,7 @@ const TraineeProfileWrapper = (props) => {
                           <Col md={12}>
                             <h5 className="fw-bold my-2">InBody</h5>
                           </Col>
-                          <Col md={6}>
+                          <Col md={4}>
                             <img
                               src={traineeProfile?.body_images}
                               alt="body_images"
@@ -197,6 +306,16 @@ const TraineeProfileWrapper = (props) => {
           </Col>
         )}
       </Row>
+
+      <IndividualChatModal
+        size={"lg"}
+        TOneClassName={"mb-4 fs-5 text-center"}
+        className={"p-4"}
+        isOpen={showChatModal}
+        onClose={handleChatModalClose}
+        messages={messages}
+        recipient={recipient}
+      />
     </Container>
   );
 };

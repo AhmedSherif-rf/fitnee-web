@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  getReportsListing,
   getPlatformFeedbackListing,
   updatePlatformFeedbackStatus,
   getServiceProviderFeedbackListing,
@@ -61,7 +62,18 @@ export const feedbackSlice = createSlice({
           state.loading = "failed";
           state.error = action.payload.error;
         }
-      );
+      )
+      .addCase(getReportsListing.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getReportsListing.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(getReportsListing.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      });
   },
 });
 

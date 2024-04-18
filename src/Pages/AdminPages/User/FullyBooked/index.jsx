@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import { useState, useCallback } from "react";
@@ -56,22 +57,24 @@ const FullyBooked = (props) => {
       serviceProvidersData.forEach((serviceProvider, index) => {
         ServiceProviderListArray.push({
           full_name: (
-            <div className="d-md-flex align-items-center">
-              <div
-                className="bgProperties rounded-circle me-2"
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  backgroundImage:
-                    serviceProvider?.profile_pic === null
-                      ? `url(${Images.USER_DUMMY_IMG})`
-                      : `url(${serviceProvider?.profile_pic})`,
-                }}
-              ></div>
-              <h6 className="text-secondary fw-bold mb-0">
-                {serviceProvider?.full_name}
-              </h6>
-            </div>
+            <Link to={`/admin/serviceProviderProfile/${serviceProvider?.uuid}`}>
+              <div className="d-md-flex align-items-center">
+                <div
+                  className="bgProperties rounded-circle me-2 mb-2"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundImage:
+                      serviceProvider?.profile_pic === null
+                        ? `url(${Images.USER_DUMMY_IMG})`
+                        : `url(${serviceProvider?.profile_pic})`,
+                  }}
+                ></div>
+                <h6 className="text-secondary fw-bold mb-0">
+                  {serviceProvider?.full_name}
+                </h6>
+              </div>
+            </Link>
           ),
           role: serviceProvider?.role,
           email: serviceProvider?.email,
@@ -132,7 +135,7 @@ const FullyBooked = (props) => {
                   categoryText=""
                 />
               </Col>
-              <Col md={6} className="pe-4">
+              <Col md={6} className="mb-3 px-4 mt-2">
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",
@@ -151,7 +154,7 @@ const FullyBooked = (props) => {
               </Col>
             </Row>
           </CardHeader>
-          <CardBody className="tableBodyWrapperPagination">
+          <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">

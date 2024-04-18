@@ -78,6 +78,7 @@ const SignUpForm = () => {
   const filterFields = functions.filterSignUpFields(roleType, user);
 
   const [levelOptions, setLevelOptions] = useState([]);
+  const [showPreviousImg, setShowPreviousImg] = useState(true);
   const [specialityOptions, setSpecialityOptions] = useState([]);
   const [trainingGoalOptions, setTrainingGoalOptions] = useState([]);
   const [showEditProfileModal, setShowEditProfileModal] = useState(false);
@@ -235,6 +236,7 @@ const SignUpForm = () => {
         }
       });
     } else {
+      console.log(values);
       if (values?.profile_availability) {
         values.profile_availability = values.profile_availability.map(
           ({ id, day, starttime, endtime }) => ({
@@ -245,6 +247,9 @@ const SignUpForm = () => {
           })
         );
         values.lang = localStorage.getItem("Website_Language__fitnee");
+      }
+      if (!showPreviousImg && values?.body_images === null) {
+        values.body_images = "";
       }
 
       let formData = functions.createFormData(values);
@@ -713,67 +718,127 @@ const SignUpForm = () => {
                   </Col>
                   <Col>
                     <div className="form-group multi-preview d-flex flex-wrap align-items-center">
-                      {user?.body_images && (
-                        <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border">
-                          <img
-                            src={user?.body_images}
-                            alt="body_images"
-                            className="uploaded-image BorderRadius"
-                            style={{
-                              width: "100%",
-                              height: "170px",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                            }}
-                          />
-                        </div>
+                      {user !== null && (
+                        <>
+                          {user?.body_images && showPreviousImg && (
+                            <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border">
+                              <img
+                                src={user?.body_images}
+                                alt="body_images"
+                                className="uploaded-image BorderRadius"
+                                style={{
+                                  width: "100%",
+                                  height: "170px",
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center",
+                                }}
+                              />
+                              <button
+                                type="button"
+                                className="deleteButton"
+                                onClick={() => {
+                                  setShowPreviousImg(false);
+                                }}
+                              >
+                                &#10006;
+                              </button>
+                            </div>
+                          )}
+                          {(user?.body_images === null || !showPreviousImg) && (
+                            <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border">
+                              <Label
+                                id="UploadImgLabel"
+                                className="mb-0"
+                                style={{
+                                  minWidth: "100%",
+                                  maxHeight: "170px",
+                                }}
+                              >
+                                <img
+                                  src={
+                                    values?.body_images
+                                      ? URL.createObjectURL(values?.body_images)
+                                      : Images.UPLOAD_ICON
+                                  }
+                                  alt=""
+                                  style={{
+                                    width: "100%",
+                                    height: "170px",
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                  }}
+                                  className="borderRadius"
+                                />
+                                <input
+                                  id="body_images"
+                                  type="file"
+                                  accept=".png, .jpg, .jpeg"
+                                  onChange={(event) => {
+                                    event.stopPropagation();
+
+                                    const selectedFile =
+                                      event.currentTarget.files[0];
+                                    setFieldValue("body_images", selectedFile);
+                                  }}
+                                  style={{
+                                    display: "none",
+                                    width: "100%",
+                                    height: "170px",
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                  }}
+                                />
+                              </Label>
+                            </div>
+                          )}
+                        </>
                       )}
-                      {values?.body_images && (
+                      {user === null && (
                         <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2 mx-2 position-relative BorderRadius border">
-                          <img
-                            src={URL.createObjectURL(values?.body_images)}
-                            alt="body_images"
-                            className="uploaded-image BorderRadius"
+                          <Label
+                            id="UploadImgLabel"
+                            className="mb-0"
                             style={{
-                              width: "100%",
-                              height: "170px",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                            }}
-                          />
-                          <button
-                            type="button"
-                            className="deleteButton"
-                            onClick={() => {
-                              setFieldValue("body_images", null);
+                              minWidth: "100%",
+                              maxHeight: "170px",
                             }}
                           >
-                            &#10006;
-                          </button>
+                            <img
+                              src={
+                                values?.body_images
+                                  ? URL.createObjectURL(values?.body_images)
+                                  : Images.UPLOAD_ICON
+                              }
+                              alt=""
+                              style={{
+                                width: "100%",
+                                height: "170px",
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                              }}
+                              className="BorderRadius"
+                            />
+                            <input
+                              id="body_images"
+                              type="file"
+                              accept=".png, .jpg, .jpeg"
+                              onChange={(event) => {
+                                event.stopPropagation();
+
+                                const selectedFile =
+                                  event.currentTarget.files[0];
+                                setFieldValue("body_images", selectedFile);
+                              }}
+                              style={{
+                                display: "none",
+                                width: "100%",
+                                height: "170px",
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                              }}
+                            />
+                          </Label>
                         </div>
-                      )}
-                      {values?.body_images === null && (
-                        <Label
-                          id="UploadImgLabel"
-                          className="BorderRadius text-center mb-0"
-                          style={{
-                            minWidth: "220px",
-                            maxHeight: "170px",
-                          }}
-                        >
-                          <img src={Images.UPLOAD_ICON} alt="" />
-                          <input
-                            id="body_images"
-                            type="file"
-                            accept=".png, .jpg, .jpeg"
-                            onChange={(event) => {
-                              const selectedFile = event.currentTarget.files[0];
-                              setFieldValue("body_images", selectedFile);
-                            }}
-                            style={{ display: "none" }}
-                          />
-                          <h6>{t("signup.uploadImageText")}</h6>
-                        </Label>
                       )}
                     </div>
                     <p className="errorField">

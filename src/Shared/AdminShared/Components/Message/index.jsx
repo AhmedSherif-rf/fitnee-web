@@ -6,9 +6,12 @@ import Toaster from "../../../Toaster";
 import { db } from "../../../../firebase";
 import { ref, set } from "firebase/database";
 import { FaDeleteLeft } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 
-const Member = ({ message, member }) => {
+const Member = ({ message, member, recipient = null }) => {
+  const navigate = useNavigate();
+
   const handleDeleteMessage = () => {
     const messageRef = ref(
       db,
@@ -21,24 +24,36 @@ const Member = ({ message, member }) => {
 
   return (
     <div className="d-flex gap-2 py-2">
-      <div
-        className="bgProperties rounded-circle me-2"
-        style={{
-          backgroundImage:
-            member?.avatar === "null" || member?.avatar === undefined
-              ? `url(${Images.USER_DUMMY_IMG})`
-              : `url(${member?.avatar})`,
-          width: "35px",
-          height: "35px",
-        }}
-      ></div>
+      {member && (
+        <div
+          className="bgProperties rounded-circle me-2 cursorPointer"
+          onClick={() => {
+            if (member?.role === "Trainee") {
+              navigate(`/admin/traineeProviderProfile/${member?.serverUserId}`);
+            } else {
+              navigate(`/admin/serviceProviderProfile/${member?.uuid}`);
+            }
+          }}
+          style={{
+            backgroundImage:
+              member?.avatar === "null" || member?.avatar === undefined
+                ? `url(${Images.USER_DUMMY_IMG})`
+                : `url(${member?.avatar})`,
+            width: "35px",
+            height: "35px",
+          }}
+        ></div>
+      )}
       <Card
         className={`d-flex flex-column border ${
           message.isDeleted ? "messageWrapperDanger" : "messageWrapper"
-        } p-2`}
+        } p-2 ${parseInt(message?.messageFrom) === recipient?.id
+          ? "messageWrapper"
+          : "bgYellow"}`}
       >
-        <small className="fw-bold ">{member?.name}</small>
-        {message.messageType === "TEXT" && (
+        {member && <small className="fw-bold ">{member?.name}</small>}
+        {(message.messageType === "TEXT" ||
+          message.messageType === "EXERCISE") && (
           <small className="px-2">{message.messageText}</small>
         )}
         {message.messageType === "IMAGE" && (
@@ -61,7 +76,7 @@ const Member = ({ message, member }) => {
           <small>{moment(message.messageTime).format("h:mm A")}</small>
         </div>
       </Card>
-      {!message?.isDeleted && (
+      {member && !message?.isDeleted && (
         <FaDeleteLeft
           color="#c56263"
           className="cursorPointer"

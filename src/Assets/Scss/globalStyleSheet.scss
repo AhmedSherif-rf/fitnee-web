@@ -61,6 +61,10 @@
   border-radius: 14px;
 }
 
+.bgYellow {
+  background-color: $yellow !important;
+}
+
 .textGrey {
   color: $text-muted !important;
 }
@@ -282,8 +286,14 @@ Input::-webkit-input-placeholder {
   overflow-y: auto;
 }
 .adminDashBoardScrolling {
-  max-height: 82vh;
+  max-height: 81vh;
   overflow-y: scroll;
+  scrollbar-color: green;
+}
+
+.tableBodyWrapperPagination::-webkit-scrollbar,
+.adminDashBoardScrolling::-webkit-scrollbar {
+  width: 0; 
 }
 
 .genderBtn {
@@ -422,8 +432,8 @@ Input::-webkit-input-placeholder {
     background: transparent !important;
   }
   .customPadding {
-    padding-top: 58px !important;
-    padding-bottom: 58px !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
   }
 }
 @mixin customCard {
@@ -513,14 +523,20 @@ Input::-webkit-input-placeholder {
 .optWidthForArb {
   width: 90%;
 }
+.tableResponsiveWidth {
+  max-width: 100%;
+}
 @media screen and (max-width: 40em) {
+  .tableResponsiveWidth {
+    max-width: 130px;
+  }
   .responsiveTable {
     td {
       .tdBefore {
         position: absolute;
         display: block;
         left: 0.2em !important;
-        width: calc(56% - 20px) !important;
+        width: calc(54% - 20px) !important;
         white-space: pre-wrap;
         overflow-wrap: break-word;
         text-align: left !important;

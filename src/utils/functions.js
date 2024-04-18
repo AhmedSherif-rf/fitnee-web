@@ -93,6 +93,11 @@ const createFormData = (data) => {
       ) {
         formData.append(key, "");
       }
+      if (key === "body_images") {
+        if (data[key] === "") {
+          formData.append(key, "");
+        }
+      }
     }
   }
 

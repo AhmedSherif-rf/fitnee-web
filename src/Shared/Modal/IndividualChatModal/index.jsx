@@ -1,13 +1,11 @@
-import moment from "moment";
 import PropTypes from "prop-types";
 import React, { memo } from "react";
+import Message from "../../AdminShared/Components/Message";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { Modal, ModalBody, ModalHeader, Row, Col } from "reactstrap";
 
 const IndividualChatModal = (props) => {
   const { onClose, isOpen, className, size, messages, recipient } = props;
-
-  console.log(messages);
 
   return (
     <Modal
@@ -33,49 +31,36 @@ const IndividualChatModal = (props) => {
             }}
           ></div>
           <h5 className="text-secondary fw-bold mb-0">
-            {recipient?.full_name}
+            {recipient?.full_name
+              ? recipient?.full_name
+              : `${recipient?.first_name} ${recipient?.last_name}`}
           </h5>
         </div>
       </ModalHeader>
       <ModalBody className="p-4">
         <Row>
-          <Col md={12} className="border border-primary">
-            {messages.map((message, index) => {
-              return (
-                <div
-                  className={
-                    parseInt(message?.messageFrom) === recipient?.id
-                      ? "ltr d-flex flex-column border messageWrapper p-2 card "
-                      : "rtl d-flex flex-column border messageWrapper p-2 d-inline-block border-danger bgYellow"
-                  }
-                >
-                  {message.messageType === "TEXT" && (
-                    <p className="px-2">{message.messageText}</p>
-                  )}
-                  {message.messageType === "EXERCISE" && (
-                    <p className="px-2">{message.messageText}</p>
-                  )}
-                  {message.messageType === "IMAGE" && (
-                    <div className="">
-                      <div
-                        className="bgProperties"
-                        style={{
-                          backgroundImage:
-                            message?.mediaUrl === null
-                              ? `url(${Images.USER_DUMMY_IMG})`
-                              : `url(${message?.mediaUrl})`,
-                          width: "80px",
-                          height: "100px",
-                        }}
-                      ></div>
-                    </div>
-                  )}
-
-                  <small>{moment(message.messageTime).format("h:mm A")}</small>
-                </div>
-              );
-            })}
-          </Col>
+          {messages.map((message, index) => {
+            return (
+              <Col
+                md={12}
+                className={`text-start ${
+                  parseInt(message?.messageFrom) === recipient?.id
+                    ? "ltr"
+                    : "rtl"
+                }`}
+                key={index}
+              >
+                <Message
+                  member={null}
+                  message={message}
+                  recipient={recipient}
+                />
+              </Col>
+            );
+          })}
+          {messages.length <= 0 && (
+            <p className="mb-0 text-center">No messages found</p>
+          )}
         </Row>
       </ModalBody>
     </Modal>

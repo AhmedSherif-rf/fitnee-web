@@ -207,7 +207,7 @@ const Report = () => {
   const columns = [
     { label: "Reporter User", dataKey: "reporter" },
     { label: "Reported User", dataKey: "reported" },
-    { label: "Report", dataKey: "report" },
+    { label: "Report", dataKey: "report", width: "30" },
     { label: "Type", dataKey: "type", align: "center" },
     { label: "Date", dataKey: "date", align: "center" },
     { label: "Action", dataKey: "action", align: "center" },

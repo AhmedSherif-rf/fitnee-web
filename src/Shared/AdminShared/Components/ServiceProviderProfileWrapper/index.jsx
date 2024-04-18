@@ -1,15 +1,19 @@
 import moment from "moment";
 import GoBack from "../GoBack";
+import { db } from "../../../../firebase";
 import ListingTable from "../ListingTable";
+import { BsChatText } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import DocumentCard from "../../../DocumentCard";
 import { useSelector, useDispatch } from "react-redux";
-import React, { memo, useState, useEffect } from "react";
+import { onValue, ref, orderByChild } from "firebase/database";
 import AvailableHourListing from "../../../AvailableHourListing";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
+import IndividualChatModal from "../../../Modal/IndividualChatModal";
 import ProfileInformationCard from "../../../ProfileInformationCard";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
+import React, { memo, useState, useEffect, useCallback } from "react";
 import { Row, Container, Col, Card, CardBody, Badge } from "reactstrap";
 import {
   ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
@@ -17,8 +21,8 @@ import {
   CURRENCY,
 } from "../../../../utils/constants";
 import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
-import { getServiceProviderDetail } from "../../../../Redux/features/Admin/ReviewRequest/ReviewRequestApi";
 import { userBlockUnblock } from "../../../../Redux/features/Admin/UserListing/userListingApi";
+import { getServiceProviderDetail } from "../../../../Redux/features/Admin/ReviewRequest/ReviewRequestApi";
 
 const ServiceProviderProfileWrapper = (props) => {
   const { uuid } = useParams();
@@ -27,7 +31,10 @@ const ServiceProviderProfileWrapper = (props) => {
     (state) => state.userListing
   );
 
+  const [messages, setMessages] = useState([]);
   const [tableData, setTableData] = useState([]);
+  const [recipient, setRecipient] = useState(null);
+  const [showChatModal, setShowChatModal] = useState(false);
   const [serviceProviderProfile, setServiceProviderProfile] = useState(null);
 
   const dispatch = useDispatch();
@@ -48,6 +55,26 @@ const ServiceProviderProfileWrapper = (props) => {
         setServiceProviderProfile(res.payload.data);
       }
     });
+  };
+
+  const handleChatModalClose = useCallback(() => {
+    setShowChatModal(false);
+  }, []);
+
+  const fetchChat = (traineeId, trainerId, recipient) => {
+    const query = ref(
+      db,
+      `Messages/${trainerId}/${traineeId}`,
+      orderByChild("messageTime")
+    );
+
+    onValue(query, (snapshot) => {
+      const data = snapshot.val();
+      setMessages(data ? Object.values(data) : []);
+    });
+
+    setRecipient(recipient);
+    setShowChatModal(true);
   };
 
   useEffect(() => {
@@ -113,6 +140,20 @@ const ServiceProviderProfileWrapper = (props) => {
               )}
             </>
           ),
+          action: (
+            <p
+              className="mb-0 text-decoration-underline cursorPointer"
+              onClick={() =>
+                fetchChat(
+                  membership?.trainee?.id,
+                  serviceProviderProfile?.id,
+                  membership?.trainee
+                )
+              }
+            >
+              <BsChatText size={25} />
+            </p>
+          ),
         });
       });
 
@@ -145,6 +186,7 @@ const ServiceProviderProfileWrapper = (props) => {
     },
     { label: "Duration", dataKey: "duration", align: "center" },
     { label: "Status", dataKey: "Status", align: "center" },
+    { label: "Action", dataKey: "action", align: "center" },
   ];
 
   return (
@@ -324,6 +366,16 @@ const ServiceProviderProfileWrapper = (props) => {
           </Col>
         )}
       </Row>
+
+      <IndividualChatModal
+        size={"lg"}
+        TOneClassName={"mb-4 fs-5 text-center"}
+        className={"p-4"}
+        isOpen={showChatModal}
+        onClose={handleChatModalClose}
+        messages={messages}
+        recipient={recipient}
+      />
     </Container>
   );
 };

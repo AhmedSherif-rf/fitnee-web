@@ -268,7 +268,7 @@ const TraineeProfileWrapper = (props) => {
                           <Col md={12}>
                             <h5 className="fw-bold my-2">InBody</h5>
                           </Col>
-                          <Col md={6}>
+                          <Col md={4}>
                             <img
                               src={traineeProfile?.body_images}
                               alt="body_images"

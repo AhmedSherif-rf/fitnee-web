@@ -94,14 +94,20 @@ const TraineeList = (props) => {
                         : `url(${trainee?.profile_pic})`,
                   }}
                 ></div>
-                <h6 className="text-secondary fw-bold mb-0">
-                  {`${trainee?.first_name} ${trainee?.last_name}`}
-                </h6>
+                <div className="tableResponsiveWidth">
+                  <h6 className="text-secondary fw-bold mb-0">
+                    {`${trainee?.first_name} ${trainee?.last_name}`}
+                  </h6>
+                </div>
               </div>
             </Link>
           ),
           role: trainee?.role,
-          email: trainee?.email,
+          email: (
+            <p className="mb-0 d-md-block text-center tableResponsiveWidth">
+              {trainee?.email}
+            </p>
+          ),
           phone_number: trainee?.phone_number,
           status: (
             <div className="d-flex align-items-center justify-content-center">
@@ -188,14 +194,14 @@ const TraineeList = (props) => {
     <Container fluid>
       <Row className="h-100">
         {loading === "pending" && <LoadingScreen />}
-        <Col md={12}>
+        <Col md={12} className="p-md-2 p-0">
           <Card className="border-0 h-100 text-start">
             <CardHeader className="bg-transparent border-0 p-0">
               <Row className="align-items-center">
                 <Col md={6}>
                   <PageHeading headingText="Trainee List" categoryText="" />
                 </Col>
-                <Col md={6} className="pe-3">
+                <Col md={6} className="mb-3 px-4 mt-2">
                   <PhoneInput
                     inputProps={{
                       name: "stc_pay",
@@ -214,7 +220,7 @@ const TraineeList = (props) => {
                 </Col>
               </Row>
             </CardHeader>
-            <CardBody className="tableBodyWrapperPagination p-0">
+            <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
               <ListingTable data={tableData} columns={columns} />
             </CardBody>
             <CardFooter className="bg-transparent text-end pb-0 pt-2">

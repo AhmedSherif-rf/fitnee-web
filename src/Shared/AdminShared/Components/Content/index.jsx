@@ -15,7 +15,7 @@ const Content = ({ children, sidebarIsOpen, toggleSidebar }) => {
         "d-none": shouldHideContent,
       })}`}
     >
-      <Row className="position-absolute px-2 w-100" style={{ zIndex: "2" }}>
+      <Row className="position-absolute px-1 w-100" style={{ zIndex: "2" }}>
         <Col md="12">
           <Topbar toggleSidebar={toggleSidebar} />
           <Card

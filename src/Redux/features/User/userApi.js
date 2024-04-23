@@ -100,7 +100,11 @@ export const editProfile = createAsyncThunk(
       Toaster.success(TranslationHelper("messages.profileEditedText"));
       return response.data;
     } catch (error) {
-      Toaster.error(error?.response?.data?.message);
+      if (error?.response?.data?.error) {
+        Toaster.error(error?.response?.data?.error[0]);
+      } else {
+        Toaster.error(error?.response?.data?.message);
+      }
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

@@ -83,7 +83,7 @@ const Index = (props) => {
                     : t("registerAs.trainerNutritionistText")
                   : t("registerAs.traineeText")}
               </span>
-              <div className="mb-md-0 d-md-none d-block py-2">
+              <div className="mb-md-0 d-md-none d-block py-2 mx-2">
                 <h6 className="mb-0 w-100 small fw-bold ">
                   {CURRENCY}{" "}
                   {data?.transition?.total_amount === null

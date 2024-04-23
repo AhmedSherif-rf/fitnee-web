@@ -71,8 +71,8 @@ const CreditCardDetailWrapper = () => {
 
   useEffect(() => {
     if (checkoutId) {
-      const scriptUrl = `https://eu-prod.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
-      // const scriptUrl = `https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
+      // const scriptUrl = `https://eu-prod.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
+      const scriptUrl = `https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
 
       const script = document.createElement("script");
       script.src = scriptUrl;
@@ -194,7 +194,7 @@ const CreditCardDetailWrapper = () => {
 
   const calculateWalletAmountUsed = () => {
     if (
-      walletBalance >=
+      parseFloat(walletBalance) >=
       (
         parseFloat(subscriptionPlan.price) +
         parseFloat(summaryData.vat) -
@@ -523,7 +523,7 @@ const CreditCardDetailWrapper = () => {
                             <InputField
                               type="text"
                               name="promo_code"
-                              placeholder={t("cardDetails.promoCodeText")}
+                              // placeholder={t("cardDetails.promoCodeText")}
                               onChangeHandle={handleChange}
                               onBlurHandle={handleBlur}
                               value={values.promo_code}

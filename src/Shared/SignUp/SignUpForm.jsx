@@ -997,7 +997,6 @@ const SignUpForm = () => {
                           <Col>
                             <h6 className="mb-2 fw-bold mt-2">
                               {t("signup.saudiRepsNumberText")}
-                              {user === null && "*"}
                             </h6>
                           </Col>
                           <Col

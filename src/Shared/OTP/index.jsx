@@ -129,7 +129,7 @@ const OTPVerification = () => {
                 } ${styles.otpDiv} `}
               >
                 <OTPInput
-                  className={`${styles.otpInputs}`}
+                  className={`${styles.otpInputs} ltr`}
                   value={otp}
                   onChange={setOtp}
                   autoFocus={true}

@@ -159,13 +159,22 @@ const experienceValidation = Yup.number()
   .required("validation.requiredYearsOfExperienceText")
   .max(100, "validation.invalidText");
 
-const currentlyWorkingValidation = Yup.string().required(
-  "validation.RequiredText"
-);
-
 const requiredValidation = Yup.string().required("validation.requiredText");
 
 const profileAvailabilityValidation = Yup.array().of(
+  Yup.object().shape({
+    day: Yup.string().required("validation.requiredDayText"),
+    starttime: Yup.string().required("validation.requiredFromDayText"),
+    endtime: Yup.string()
+      .required("validation.requiredToDayText")
+      .test("is-greater", "validation.invalidEndTimeText", function (endtime) {
+        const { starttime } = this.parent;
+        return starttime && endtime && starttime < endtime;
+      }),
+  })
+);
+
+const editProfileAvailabilityValidation = Yup.array().of(
   Yup.object().shape({
     day: Yup.string().required("validation.requiredDayText"),
     starttime: Yup.string().required("validation.requiredFromDayText"),
@@ -297,6 +306,7 @@ export const TRAINER_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   saudireps_number: Yup.string(),
   profile_pic: profilePicValidation,
   is_currently_working: Yup.string(),
+  profile_availability: editProfileAvailabilityValidation,
 });
 
 export const TRAINER_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
@@ -307,7 +317,6 @@ export const TRAINER_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
     .test("certificateSize", "validation.limitCertificateText", (value) => {
       return value && value.every((file) => file.size <= 5 * 1024 * 1024);
     }),
-  profile_pic: profilePicValidation,
 });
 
 export const NUTRITIONIST_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
@@ -318,7 +327,6 @@ export const NUTRITIONIST_EDIT_PROFILE_REQUEST_SCHEMA = Yup.object().shape({
     .test("certificateSize", "validation.limitCertificateText", (value) => {
       return value && value.every((file) => file.size <= 5 * 1024 * 1024);
     }),
-  profile_pic: profilePicValidation,
 });
 
 export const NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
@@ -329,6 +337,7 @@ export const NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   license_number: Yup.string(),
   profile_pic: profilePicValidation,
   is_currently_working: Yup.string(),
+  profile_availability: editProfileAvailabilityValidation,
 });
 
 export const TRAINER_NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
@@ -340,6 +349,7 @@ export const TRAINER_NUTRITIONIST_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   saudireps_number: Yup.string(),
   profile_pic: profilePicValidation,
   is_currently_working: Yup.string(),
+  profile_availability: editProfileAvailabilityValidation,
 });
 
 export const CHANGE_PASSWORD_SCHEMA = Yup.object().shape({

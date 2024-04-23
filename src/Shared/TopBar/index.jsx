@@ -169,7 +169,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     dispatch(deleteAccount(data)).then((res) => {
       if (res.type === "deleteAccount/fulfilled") {
         Toaster.success(t("messages.accountDeletedText"));
-        navigate("/signIn");
+        navigate("/");
       }
     });
 
@@ -187,7 +187,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     };
     dispatch(logout(data)).then((res) => {
       if (res.type === "logout/fullfiled") {
-        navigate("/signIn");
+        navigate("/");
       }
     });
   };
@@ -474,11 +474,13 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                                 <p className="mb-0">
                                   {t("topBar.notificationsText")}{" "}
                                 </p>
-                                <span
-                                  className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
-                                >
-                                  {unReadNotifications}
-                                </span>
+                                {parseInt(unReadNotifications) > 0 && (
+                                  <span
+                                    className={`text-white bg-danger px-2 py-0 fw-bold ${styles.notificationCount}`}
+                                  >
+                                    {unReadNotifications}
+                                  </span>
+                                )}
                               </span>
                             </div>
                           </Link>
@@ -743,11 +745,13 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         }
                       >
                         {t("topBar.notificationsText")}
-                        <span
-                          className={`text-white bg-danger px-2 py-0 fw-bold mx-1 ${styles.notificationCount}`}
-                        >
-                          {unReadNotifications}
-                        </span>
+                        {parseInt(unReadNotifications) > 0 && (
+                          <span
+                            className={`text-white bg-danger px-2 py-0 fw-bold mx-1 ${styles.notificationCount}`}
+                          >
+                            {unReadNotifications}
+                          </span>
+                        )}
                       </Link>
                     </NavItem>
                     <NavItem className={`${styles.NavItem} p-2`}>

@@ -79,6 +79,11 @@ export const signUp = createAsyncThunk(
         Toaster.error(
           error?.response?.data?.error?.subscription_plans[0].price
         );
+      } else if (error?.response?.data?.error.certificate_title) {
+        Toaster.error(
+          TranslationHelper("validation.requiredCertificateTitleText"),
+          false
+        );
       } else {
         Toaster.error(error?.response?.data?.message);
       }
@@ -260,10 +265,17 @@ export const sendEditProfileRequest = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      Toaster.success(response?.data?.data?.message);
+      Toaster.success(
+        TranslationHelper("messages.adminReviewFirstText"),
+        false
+      );
       return response.data;
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.detail);
+      if (error?.response?.data?.error?.detail) {
+        Toaster.error(error?.response?.data?.error?.detail);
+      } else {
+        Toaster.error(error?.response?.data?.error);
+      }
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

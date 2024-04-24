@@ -160,6 +160,6 @@ export const category = [
 export const duration = ["Weekly", "monthly"];
 //=======================AdminPanel select promotion type=====================
 export const promoCodeTypeOptions = [
-  { label: "flat", value: "flat" },
+  // { label: "flat", value: "flat" },
   { label: "percentage", value: "percentage" },
 ];

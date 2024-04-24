@@ -97,9 +97,9 @@ const Topbar = ({ toggleSidebar }) => {
                 <span
                   className="position-absolute rounded-circle bg-danger text-white fw-bold"
                   style={{
-                    width: "20px",
-                    height: "20px",
-                    marginTop: "-5px",
+                    width: "25px",
+                    height: "25px",
+                    marginTop: "-10px",
                     marginLeft: "10px",
                     fontSize: "11px",
                     display: "flex",

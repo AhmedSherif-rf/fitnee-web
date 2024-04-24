@@ -523,7 +523,7 @@ const CreditCardDetailWrapper = () => {
                             <InputField
                               type="text"
                               name="promo_code"
-                              // placeholder={t("cardDetails.promoCodeText")}
+                              placeholder={"Free20"}
                               onChangeHandle={handleChange}
                               onBlurHandle={handleBlur}
                               value={values.promo_code}

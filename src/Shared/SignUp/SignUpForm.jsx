@@ -1485,15 +1485,17 @@ const SignUpForm = () => {
                                     )}
                                 </p>
                               </Col>
-                              <Col md={1} className="mb-2">
-                                <div className="d-none d-md-flex align-items-center justify-content-end h-100">
-                                  <FaCircleXmark
-                                    className="cursorPointer"
-                                    size={22}
-                                    onClick={() => arrayHelpers.remove(index)}
-                                  />
-                                </div>
-                              </Col>
+                              {index > 0 && (
+                                <Col md={1} className="mb-2">
+                                  <div className="d-none d-md-flex align-items-center justify-content-end h-100">
+                                    <FaCircleXmark
+                                      className="cursorPointer"
+                                      size={22}
+                                      onClick={() => arrayHelpers.remove(index)}
+                                    />
+                                  </div>
+                                </Col>
+                              )}
                             </Row>
                           )
                         )}

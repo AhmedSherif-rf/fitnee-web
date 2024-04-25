@@ -29,7 +29,7 @@ const ExerciseSection = (props) => {
                       handleOnClick={() => {}}
                     />
                     <div
-                      className={`pt-2 pb-1 fw-bold fs-5 ${styles.workoutVideosHeader}`}
+                      className={`pt-2 pb-1 fw-bold fs-6 ${styles.workoutVideosHeader}`}
                     >
                       {i18n.dir() === "ltr"
                         ? `${subCategory?.exercise[0]?.title}`

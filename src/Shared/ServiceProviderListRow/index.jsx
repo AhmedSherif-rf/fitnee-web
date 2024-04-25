@@ -29,13 +29,15 @@ const Index = (props) => {
           <div
             className="d-flex align-items-center"
             onClick={() => {
-              const role =
-                data?.serviceprovider?.role === NUTRITIONIST_ROLE
-                  ? NUTRITIONIST_ROLE
-                  : TRAINER_ROLE;
-              navigate(
-                `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}`
-              );
+              if (data?.serviceprovider) {
+                const role =
+                  data?.serviceprovider?.role === NUTRITIONIST_ROLE
+                    ? NUTRITIONIST_ROLE
+                    : TRAINER_ROLE;
+                navigate(
+                  `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}`
+                );
+              }
             }}
           >
             {user?.role === TRAINEE_ROLE && data?.serviceprovider && (

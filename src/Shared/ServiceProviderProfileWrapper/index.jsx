@@ -25,6 +25,7 @@ const ServiceProviderProfileWrapper = (props) => {
   const { loading } = useSelector((state) => state.guest);
   const { loading: userLoading } = useSelector((state) => state.user);
 
+  const [page, setPage] = useState(1);
   const [commentData, setCommentData] = useState([]);
   const [hasNextComment, setHasNextComment] = useState(true);
   const [serviceProviderProfile, setServiceProviderProfile] = useState(null);
@@ -50,7 +51,7 @@ const ServiceProviderProfileWrapper = (props) => {
   const fetchServiceProviderComments = useCallback(() => {
     if (hasNextComment) {
       const data = {
-        apiEndpoint: GET_SERVICE_PROVIDER_COMMENTS_URL.replace(
+        apiEndpoint: `${GET_SERVICE_PROVIDER_COMMENTS_URL}?page_size=4&page=${page}`.replace(
           "serviceProviderId",
           id
         ),
@@ -58,11 +59,13 @@ const ServiceProviderProfileWrapper = (props) => {
 
       dispatch(getServiceProviderFeedbacks(data)).then((res) => {
         if (res.type === "getServiceProviderFeedbacks/fulfilled") {
+          setPage(page + 1);
           setHasNextComment(res.payload.data.next);
           setCommentData([...commentData, ...res.payload.data.results]);
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commentData, dispatch, hasNextComment, id]);
 
   const handleSubscribeClick = useCallback(() => {
@@ -195,16 +198,18 @@ const ServiceProviderProfileWrapper = (props) => {
                                 );
                               })}
                             </Col>
-                            <Col md={12}>
-                              <div className="text-center">
-                                <FillBtn
-                                  className="py-2"
-                                  text={t("guest.seeMoreText")}
-                                  disabled={hasNextComment ? false : true}
-                                  handleOnClick={fetchServiceProviderComments}
-                                />
-                              </div>
-                            </Col>
+                            {hasNextComment && (
+                              <Col md={12}>
+                                <div className="text-center">
+                                  <FillBtn
+                                    className="py-2"
+                                    text={t("guest.seeMoreText")}
+                                    disabled={hasNextComment ? false : true}
+                                    handleOnClick={fetchServiceProviderComments}
+                                  />
+                                </div>
+                              </Col>
+                            )}
                           </>
                         )}
                       </Row>

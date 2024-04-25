@@ -27,10 +27,10 @@ const emailValidation = Yup.string()
   .required("validation.requiredEmailText");
 
 const currentPasswordValidation = Yup.string()
-  .min(8, "validation.invalidPreviousPasswordText")
+  .min(8, "validation.invalidText")
   .matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
-    "validation.invalidPreviousPasswordTwoText"
+    "validation.invalidText"
   )
   .required("validation.requiredPreviousPasswordText");
 

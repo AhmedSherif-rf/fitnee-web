@@ -269,10 +269,6 @@ export const sendEditProfileRequest = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      Toaster.success(
-        TranslationHelper("messages.adminReviewFirstText"),
-        false
-      );
       return response.data;
     } catch (error) {
       if (error?.response?.data?.error?.detail) {

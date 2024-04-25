@@ -817,7 +817,7 @@
     "planCreatedText": "Plan created successfully",
     "messageSentText": "Message sent successfully",
     "profileEditedText": "Profile edited successfully",
-    "adminReviewFirstText": "The admin will review your profile and get back to you shortly by email, please keep checking your emails."
+    "adminReviewFirstText": "The admin will review your profile and get back to you shortly by email, please keep checking your emails"
   },
   "topBar": {
     "dashboardText": "Dashboard",

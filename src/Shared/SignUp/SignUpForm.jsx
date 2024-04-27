@@ -90,6 +90,7 @@ const SignUpForm = () => {
 
   useEffect(() => {
     if (roleType === TRAINER_TYPE || roleType === TRAINER_NUTRITIONIST_TYPE) {
+      setSpecialityOptions([]);
       const data = {
         apiEndpoint: GET_SPECIALITIES_URL,
       };

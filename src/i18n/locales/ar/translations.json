@@ -754,7 +754,9 @@
     "oneMonthDurationText": "ﺷﻬﺮ",
     "twoMonthsDurationText": "ﺷﻬﺮﻳﻦ",
     "threeMonthsDurationText": "ﺛﻼﺛﺔ ﺃﺷﻬﺮ",
-    "subscribeText": "اشتراك"
+    "subscribeText": "اشتراك",
+    "AddPriceText": "أضف السعر",
+    "AddPriceErrorText": "أضف السعر لإنشاء خطة الاشتراك"
   },
   "traineeSubscriptionDetail": {
     "nameText": "ﺍﻻﺳﻢ",

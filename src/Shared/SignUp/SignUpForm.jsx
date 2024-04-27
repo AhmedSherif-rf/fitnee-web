@@ -1139,7 +1139,8 @@ const SignUpForm = () => {
 
                   {user && user?.change_request_status === "Pending" && (
                     <p className="mt-2 fw-bold">
-                      {t("signup.profileUnderReviewText")}
+                      {t("signup.profileUnderReviewText")}{" "}
+                      <span><a href="mailto:info@fitnee.fit">info@fitnee.fit</a></span>
                     </p>
                   )}
                 </div>

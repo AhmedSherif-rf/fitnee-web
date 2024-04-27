@@ -1704,7 +1704,7 @@ const SignUpForm = () => {
         ModalTextOne={t("messages.adminReviewFirstText")}
         ButtonOne={
           <FillBtn
-            text={"Okay"}
+            text={t("otpVerification.okayText")}
             className="py-2 px-5"
             handleOnClick={() => {
               handleEditProfileRequestSentModalClose();

@@ -229,7 +229,7 @@ const SignInForm = () => {
         ModalTextOne={accountRequestModalErrorText}
         ButtonOne={
           <FillBtn
-            text={"Okay"}
+            text={t("otpVerification.okayText")}
             className="py-2 px-5"
             handleOnClick={handleAccountRequestModalClose}
           />

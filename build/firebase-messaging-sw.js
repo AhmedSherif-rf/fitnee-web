@@ -22,12 +22,12 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage(function (payload) {
   console.log("Received background message ", payload);
 
-  const body = JSON.parse(payload.notification.body);
-  const title = JSON.parse(payload.notification.title);
+  // const body = JSON.parse(payload.notification.body);
+  // const title = JSON.parse(payload.notification.title);
 
-  const notificationOptions = {
-    body: body.msg,
-  };
+  // const notificationOptions = {
+  //   body: body.msg,
+  // };
 
-  self.registration.showNotification(title.title_en, notificationOptions);
+  // self.registration.showNotification(title.title_en, notificationOptions);
 });

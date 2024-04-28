@@ -79,7 +79,7 @@ const SubscriptionCard = (props) => {
 
       <CardBody className="mt-5">
         <h1 className="mb-3">
-          `${CURRENCY} ${functions.addVatPrice(price)}`
+          {`${CURRENCY} ${functions.addVatPrice(price)}`}
         </h1>
         <img
           className="fluid w-50 my-2"

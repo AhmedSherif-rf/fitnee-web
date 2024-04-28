@@ -13,7 +13,6 @@ import {
   TRAINER_ROLE,
   NUTRITIONIST_ROLE,
   TRAINER_NUTRITIONIST_ROLE,
-  EXERCISE_MEMBERSHIP_TYPE,
 } from "../../utils/constants";
 
 const SubscriptionCard = (props) => {
@@ -80,9 +79,7 @@ const SubscriptionCard = (props) => {
 
       <CardBody className="mt-5">
         <h1 className="mb-3">
-          {type === EXERCISE_MEMBERSHIP_TYPE && `${CURRENCY} ${price}`}
-          {type !== EXERCISE_MEMBERSHIP_TYPE &&
-            `${CURRENCY} ${functions.addVatPrice(price)}`}
+          `${CURRENCY} ${functions.addVatPrice(price)}`
         </h1>
         <img
           className="fluid w-50 my-2"

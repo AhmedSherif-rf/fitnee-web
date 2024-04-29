@@ -10,12 +10,12 @@ const IndividualChatModal = (props) => {
   return (
     <Modal
       aria-labelledby="contained-modal-title-vcenter"
-      centered
       size={size}
       isOpen={isOpen}
       onClosed={onClose}
       toggle={onClose}
-      className={`${className}`}
+      className={`${className} vh-25 d-flex align-items-center justify-content-center`}
+      style={{ left: "20%", top: "20%", transform: "translate(-20%, -20%)" }}
     >
       <ModalHeader className="border-0 bgYellow">
         <div className="d-flex align-items-center">
@@ -37,8 +37,8 @@ const IndividualChatModal = (props) => {
           </h5>
         </div>
       </ModalHeader>
-      <ModalBody className="p-4">
-        <Row>
+      <ModalBody className="p-4 overflow-scroll" style={{ maxHeight: "450px" }}>
+        <Row className="overflow-scroll">
           {messages.map((message, index) => {
             return (
               <Col

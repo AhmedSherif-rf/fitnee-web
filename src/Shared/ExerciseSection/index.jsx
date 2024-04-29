@@ -4,25 +4,23 @@ import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
 import { Card, Col, Row } from "reactstrap";
 import { useTranslation } from "react-i18next";
-import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 
 const ExerciseSection = (props) => {
   const { exercisesData } = props;
   const { i18n } = useTranslation("");
-  const hasPoster = true;
 
   return (
     <Row>
-      <Col md={12} className="mb-3 text-black-custom px-md-5">
+      <Col md={12} className="mb-3 text-black-custom">
         <div className="mt-3">
           <Row>
             {exercisesData?.sub_categories?.map((subCategory, index) => {
               return (
-                <div className="mb-3 px-md-5" key={index}>
+                <div className="mb-3" key={index}>
                   <Col md={12}>
                     <FillBtn
-                      className="py-2 fs-4"
+                      className="py-1 fs-5"
                       text={
                         i18n.dir() === "ltr"
                           ? ` ${subCategory?.title}`
@@ -31,7 +29,7 @@ const ExerciseSection = (props) => {
                       handleOnClick={() => {}}
                     />
                     <div
-                      className={`pt-2 pb-1 fw-bold fs-4 ${styles.workoutVideosHeader}`}
+                      className={`pt-2 pb-1 fw-bold fs-6 ${styles.workoutVideosHeader}`}
                     >
                       {i18n.dir() === "ltr"
                         ? `${subCategory?.exercise[0]?.title}`
@@ -48,10 +46,7 @@ const ExerciseSection = (props) => {
                           autoPlay
                           loop
                           controls={false}
-                          className={`${styles.workoutVideos} w-100 ${
-                            hasPoster ? "with-poster" : ""
-                          }`}
-                          poster={hasPoster ? Images.POSTER_LOADING_GIF : null}
+                          className={`${styles.workoutVideos} w-100`}
                           src={subCategory?.exercise[0]?.exercise_media[0].file}
                         ></video>
                       </div>
@@ -59,7 +54,7 @@ const ExerciseSection = (props) => {
                   </Col>
                   <Col md={12} className="mb-2">
                     <Card className="BorderRadius">
-                      <CardBody className="p-3 lh-2">
+                      <CardBody className="p-2 lh-2">
                         {i18n.dir() === "ltr" &&
                           subCategory?.exercise[0]?.exercise_part_text?.map(
                             (desc, index) => {
@@ -76,7 +71,6 @@ const ExerciseSection = (props) => {
                                           : styles.descriptionItemRight
                                       }`}
                                     />
-
                                     <span>{desc}</span>
                                   </div>
                                 </div>

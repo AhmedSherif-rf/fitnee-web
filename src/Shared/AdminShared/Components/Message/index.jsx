@@ -47,9 +47,11 @@ const Member = ({ message, member, recipient = null }) => {
       <Card
         className={`d-flex flex-column border ${
           message.isDeleted ? "messageWrapperDanger" : "messageWrapper"
-        } p-2 ${parseInt(message?.messageFrom) === recipient?.id
-          ? "messageWrapper"
-          : "bgYellow"}`}
+        } p-2 ${
+          parseInt(message?.messageFrom) === recipient?.id
+            ? "messageWrapper"
+            : "bgYellow"
+        }`}
       >
         {member && <small className="fw-bold ">{member?.name}</small>}
         {(message.messageType === "TEXT" ||
@@ -70,6 +72,25 @@ const Member = ({ message, member, recipient = null }) => {
               }}
             ></div>
           </div>
+        )}
+        {message.messageType === "VIDEO" && (
+          <div className="">
+            <video
+              muted
+              controls={true}
+              width="200px"
+              height="150px"
+              src={message?.mediaUrl}
+            ></video>
+          </div>
+        )}
+        {message.messageType === "Document" && (
+          <embed width="200px" height="200px" src={message?.mediaUrl} />
+        )}
+        {message.messageType === "Audio" && (
+          <audio controls>
+            <source src={message?.mediaUrl} />
+          </audio>
         )}
         <div className="d-flex justify-content-end pe-2">
           {" "}

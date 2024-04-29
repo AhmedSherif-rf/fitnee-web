@@ -14,6 +14,7 @@ import { Formik, Field, FieldArray } from "formik";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { ConnectedFocusError } from "focus-formik-error";
+import InformationModal from "../Modal/InformationModal";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { memo, useState, useEffect, useCallback } from "react";
@@ -82,9 +83,14 @@ const SignUpForm = () => {
   const [specialityOptions, setSpecialityOptions] = useState([]);
   const [trainingGoalOptions, setTrainingGoalOptions] = useState([]);
   const [showEditProfileModal, setShowEditProfileModal] = useState(false);
+  const [
+    showEditProfileRequestSentModal,
+    setShowEditProfileRequestSentModal,
+  ] = useState(false);
 
   useEffect(() => {
     if (roleType === TRAINER_TYPE || roleType === TRAINER_NUTRITIONIST_TYPE) {
+      setSpecialityOptions([]);
       const data = {
         apiEndpoint: GET_SPECIALITIES_URL,
       };
@@ -144,7 +150,7 @@ const SignUpForm = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [i18n.dir()]);
 
   const getInitialValues = () => {
     if (user) {
@@ -264,6 +270,10 @@ const SignUpForm = () => {
       });
     }
   };
+
+  const handleEditProfileRequestSentModalClose = useCallback(() => {
+    setShowEditProfileRequestSentModal(false);
+  }, []);
 
   return (
     <Container className={i18n.dir()}>
@@ -740,7 +750,7 @@ const SignUpForm = () => {
                                   setShowPreviousImg(false);
                                 }}
                               >
-                                &#10006;
+                                <span>&#10006;</span>
                               </button>
                             </div>
                           )}
@@ -942,7 +952,7 @@ const SignUpForm = () => {
                                   );
                                 }}
                               >
-                                &#10006;
+                                <span>&#10006;</span>
                               </button>
                             </div>
                           ))}
@@ -994,13 +1004,15 @@ const SignUpForm = () => {
                     {filterFields.includes("saudireps_number") && (
                       <Col md={6}>
                         <Row>
-                          <Col>
+                          <Col md={10} sm={9} xs={9}>
                             <h6 className="mb-2 fw-bold mt-2">
                               {t("signup.saudiRepsNumberText")}
-                              {user === null && "*"}
                             </h6>
                           </Col>
                           <Col
+                            md={2}
+                            sm={3}
+                            xs={3}
                             className={`${
                               i18n.dir() === "ltr" ? "text-end" : "text-start"
                             }`}
@@ -1036,13 +1048,15 @@ const SignUpForm = () => {
                     {filterFields.includes("license_number") && (
                       <Col md={6}>
                         <Row>
-                          <Col>
+                          <Col md={10} sm={9} xs={9}>
                             <h6 className="mb-2 fw-bold mt-2">
                               {t("signup.enterYourProfessionalText")}
-                              {user === null && "*"}
                             </h6>
                           </Col>
                           <Col
+                            md={2}
+                            sm={3}
+                            xs={3}
                             className={`${
                               i18n.dir() === "ltr" ? "text-end" : "text-start"
                             }`}
@@ -1076,15 +1090,18 @@ const SignUpForm = () => {
                     )}
 
                     {filterFields.includes("stc_pay") && (
-                      <Col lg={6} md={6} className="mb-2 mt-2">
+                      <Col lg={6} md={6}>
                         <Row>
-                          <Col>
+                          <Col md={10} sm={9} xs={9}>
                             <h6 className="mb-2 fw-bold mt-2">
                               {t("signup.enterStcPayAccountText")}{" "}
                               {user === null && "*"}
                             </h6>
                           </Col>
                           <Col
+                            md={2}
+                            sm={3}
+                            xs={3}
                             className={`${
                               i18n.dir() === "ltr" ? "text-end" : "text-start"
                             }`}
@@ -1122,7 +1139,10 @@ const SignUpForm = () => {
 
                   {user && user?.change_request_status === "Pending" && (
                     <p className="mt-2 fw-bold">
-                      {t("signup.profileUnderReviewText")}
+                      {t("signup.profileUnderReviewText")}{" "}
+                      <span>
+                        <a href="mailto:info@fitnee.fit">info@fitnee.fit</a>
+                      </span>
                     </p>
                   )}
                 </div>
@@ -1486,15 +1506,17 @@ const SignUpForm = () => {
                                     )}
                                 </p>
                               </Col>
-                              <Col md={1} className="mb-2">
-                                <div className="d-none d-md-flex align-items-center justify-content-end h-100">
-                                  <FaCircleXmark
-                                    className="cursorPointer"
-                                    size={22}
-                                    onClick={() => arrayHelpers.remove(index)}
-                                  />
-                                </div>
-                              </Col>
+                              {index > 0 && (
+                                <Col md={1} className="mb-2">
+                                  <div className="d-none d-md-flex align-items-center justify-content-end h-100">
+                                    <FaCircleXmark
+                                      className="cursorPointer"
+                                      size={22}
+                                      onClick={() => arrayHelpers.remove(index)}
+                                    />
+                                  </div>
+                                </Col>
+                              )}
                             </Row>
                           )
                         )}
@@ -1676,6 +1698,24 @@ const SignUpForm = () => {
           </form>
         )}
       </Formik>
+      <InformationModal
+        size={"md"}
+        TOneClassName={"mb-2 fs-5 text-center"}
+        className={"p-4"}
+        isOpen={showEditProfileRequestSentModal}
+        onClose={handleEditProfileRequestSentModalClose}
+        ModalTextOne={t("messages.adminReviewFirstText")}
+        ButtonOne={
+          <FillBtn
+            text={t("otpVerification.okayText")}
+            className="py-2 px-5"
+            handleOnClick={() => {
+              handleEditProfileRequestSentModalClose();
+              navigate("/");
+            }}
+          />
+        }
+      />
       <EditProfileRequestModal
         heading={t("signup.editRequestText")}
         size={"lg"}
@@ -1683,6 +1723,7 @@ const SignUpForm = () => {
         onClose={useCallback(() => {
           setShowEditProfileModal(false);
         }, [])}
+        setShowEditProfileRequestSentModal={setShowEditProfileRequestSentModal}
       />
     </Container>
   );

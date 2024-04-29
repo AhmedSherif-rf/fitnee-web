@@ -49,12 +49,23 @@ const InformationModal = (props) => {
           <Col md={12} className="mb-2">
             <div className="w-100 text-center">{ButtonThree}</div>
           </Col>
-          <Col md={6} className="mb-2 text-center">
-            <div>{ButtonOne}</div>
-          </Col>
-          <Col md={6} className="mb-2 text-center">
-            <div>{ButtonTwo}</div>
-          </Col>
+          {!ButtonTwo && (
+            <>
+              <Col md={12} className="mb-2 text-center">
+                <div>{ButtonOne}</div>
+              </Col>
+            </>
+          )}
+          {ButtonTwo && (
+            <>
+              <Col md={6} className="mb-2 text-center">
+                <div>{ButtonOne}</div>
+              </Col>
+              <Col md={6} className="mb-2 text-center">
+                <div>{ButtonTwo}</div>
+              </Col>
+            </>
+          )}
         </Row>
       </ModalBody>
     </Modal>

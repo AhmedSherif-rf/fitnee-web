@@ -95,7 +95,7 @@ const Report = () => {
               </Link>
             ) : (
               <Link
-                to={`/admin/traineeProviderProfile/${report?.reporting_user?.uuid}`}
+                to={`/admin/serviceProviderProfile/${report?.reporting_user?.uuid}`}
               >
                 <div className="d-md-flex align-items-center">
                   <div>
@@ -147,7 +147,7 @@ const Report = () => {
               </Link>
             ) : (
               <Link
-                to={`/admin/serviceProviderProfile/${report?.reported_user?.id}`}
+                to={`/admin/traineeProviderProfile/${report?.reported_user?.id}`}
               >
                 <div className="d-md-flex align-items-center">
                   <div className="">

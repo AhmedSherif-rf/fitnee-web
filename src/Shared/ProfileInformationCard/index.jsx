@@ -55,7 +55,7 @@ const ProfileInformationCard = (props) => {
                 src={Images.SHORTLOGO_IMG}
                 alt="info logo"
               />
-              <p className={`ms-2 fw-bold mb-0 no-Wrap text-secondary px-2 ${i18n.dir()}`}>
+              <p className={`ms-2 fw-bold mb-0 no-Wrap text-secondary px-2 ${i18n.dir()}`} style={{flex: "none"}}>
                 {i18n.dir() === "ltr" &&
                   `${providerProfile?.experience} ${t("guest.yearsText")}`}
                 {i18n.dir() === "rtl"
@@ -78,7 +78,7 @@ const ProfileInformationCard = (props) => {
                 Experience
               </Tooltip>
             </div>
-            <div className="d-flex align-items-center justify-content-center">
+            <div className="d-flex align-items-center justify-content-center mx-5">
               <StarRating rating={providerProfile?.Avg_rating} />
               <p className="mb-0 pt-1">{providerProfile?.Avg_rating}</p>
             </div>

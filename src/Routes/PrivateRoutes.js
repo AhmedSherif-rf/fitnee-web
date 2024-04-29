@@ -8,7 +8,7 @@ export function PrivateRoute({ Component, role, props }) {
 
   useEffect(() => {
     if (user === null) {
-      navigate("/signIn");
+      navigate("/");
     }
   }, [navigate, user]);
 

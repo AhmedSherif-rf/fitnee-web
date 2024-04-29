@@ -29,13 +29,15 @@ const Index = (props) => {
           <div
             className="d-flex align-items-center"
             onClick={() => {
-              const role =
-                data?.serviceprovider?.role === NUTRITIONIST_ROLE
-                  ? NUTRITIONIST_ROLE
-                  : TRAINER_ROLE;
-              navigate(
-                `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}`
-              );
+              if (data?.serviceprovider) {
+                const role =
+                  data?.serviceprovider?.role === NUTRITIONIST_ROLE
+                    ? NUTRITIONIST_ROLE
+                    : TRAINER_ROLE;
+                navigate(
+                  `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}`
+                );
+              }
             }}
           >
             {user?.role === TRAINEE_ROLE && data?.serviceprovider && (
@@ -83,7 +85,7 @@ const Index = (props) => {
                     : t("registerAs.trainerNutritionistText")
                   : t("registerAs.traineeText")}
               </span>
-              <div className="mb-md-0 d-md-none d-block py-2">
+              <div className="mb-md-0 d-md-none d-block py-2 mx-2">
                 <h6 className="mb-0 w-100 small fw-bold ">
                   {CURRENCY}{" "}
                   {data?.transition?.total_amount === null

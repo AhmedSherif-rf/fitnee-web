@@ -5,7 +5,6 @@ import InputField from "../../InputField";
 import FillBtn from "../../Buttons/FillBtn";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import functions from "../../../utils/functions";
 import PhoneInputField from "../../PhoneInputField";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,10 +26,16 @@ import {
 } from "../../ValidationData/initialValue";
 
 const EditProfileRequestModal = (props) => {
-  const { onClose, isOpen, className, size, heading } = props;
+  const {
+    onClose,
+    isOpen,
+    className,
+    size,
+    heading,
+    setShowEditProfileRequestSentModal,
+  } = props;
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { roleType } = useParams();
   const { t, i18n } = useTranslation("");
   const { user, loading } = useSelector((state) => state.user);
@@ -50,7 +55,7 @@ const EditProfileRequestModal = (props) => {
     dispatch(sendEditProfileRequest(data)).then((res) => {
       if (res.type === "sendEditProfileRequest/fulfilled") {
         onClose();
-        navigate("/");
+        setShowEditProfileRequestSentModal(true);
       }
     });
   };
@@ -167,7 +172,7 @@ const EditProfileRequestModal = (props) => {
                                 );
                               }}
                             >
-                              &#10006;
+                              <span>&#10006;</span>
                             </button>
                           </div>
                         ))}
@@ -312,6 +317,7 @@ EditProfileRequestModal.defaultProps = {
   size: "lg",
   isOpen: false,
   onClose: () => {},
+  setShowEditProfileRequestSentModal: () => {},
 };
 
 export default memo(EditProfileRequestModal);

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const MyDropdown = (props) => {
   const {
@@ -11,24 +12,21 @@ const MyDropdown = (props) => {
     value,
   } = props;
 
+  const { i18n } = useTranslation("");
+
   return (
     <div className={`mb-0 customSelect`}>
       <select
-        className={`customDropdownRadius w-100 form-control-lg ${className}`}
+        className={`customDropdownRadius w-100 form-control-lg ${className} ${i18n.dir()}`}
         name={name}
         onChange={onChangeHandle}
         onBlur={onBlurHandle}
         value={value}
       >
-        <option value="">
-          {placeholder}
-        </option>
+        <option value="">{placeholder}</option>
         {Options &&
           Options?.map((item, index) => (
-            <option
-              key={index}
-              value={item?.value}
-            >
+            <option key={index} value={item?.value}>
               {item.label}
             </option>
           ))}

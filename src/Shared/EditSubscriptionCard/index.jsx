@@ -35,7 +35,7 @@ const EditSubscriptionCard = (props) => {
 
   const handleSubmit = () => {
     if (packagePrice === "") {
-      Toaster.error("Add price to create subscription plan");
+      Toaster.error(t("traineeSubscription.addPriceErrorText"));
     } else {
       if (isDummy) {
         handleOnAdd(
@@ -109,7 +109,7 @@ const EditSubscriptionCard = (props) => {
         <h4 className="m-0">{CURRENCY}</h4>
         <div className="d-flex justify-content-center">
           <InputField
-            placeholder="Add Price"
+            placeholder={t("traineeSubscription.addPriceText")}
             className="text-center fs-4 border-0 w-50"
             type="number"
             value={packagePrice}

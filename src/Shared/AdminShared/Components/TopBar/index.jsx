@@ -9,12 +9,12 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { Card } from "reactstrap";
-import React, { memo} from "react";
 import { CgMenuLeft } from "react-icons/cg";
 import { GoBellFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
+import React, { memo, useEffect, useState } from "react";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 import {
@@ -32,7 +32,11 @@ const Topbar = ({ toggleSidebar }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation("");
-  const { user, loading, notifications } = useSelector((state) => state.user);
+  const { user, loading, notifications, unReadCount } = useSelector(
+    (state) => state.user
+  );
+
+  const [unReadNotifications, setUnReadNotifications] = useState("");
 
   const handleLogoutClick = () => {
     const data = {
@@ -41,23 +45,18 @@ const Topbar = ({ toggleSidebar }) => {
     };
     dispatch(logout(data)).then((res) => {
       if (res.type === "logout/fullfiled") {
-        navigate("/signIn");
+        navigate("/");
       }
     });
   };
 
-  const getUnReadNotificationsLength = (notifications) => {
+  useEffect(() => {
     if (notifications) {
-      const unReadNotifications = notifications.filter(
-        (item) => !item?.is_read
-      );
-      return unReadNotifications.length > 10
-        ? "10+"
-        : unReadNotifications.length;
+      setUnReadNotifications(unReadCount > 10 ? "10+" : unReadCount);
     } else {
-      return 0;
+      setUnReadNotifications(0);
     }
-  };
+  }, [notifications, unReadCount]);
 
   const markNotificationAsRead = (id) => {
     const data = {
@@ -94,13 +93,13 @@ const Topbar = ({ toggleSidebar }) => {
         <UncontrolledDropdown>
           <DropdownToggle className="p-0" nav>
             <div className="position-relative">
-              {getUnReadNotificationsLength(notifications) > 0 ? (
+              {unReadCount > 0 ? (
                 <span
                   className="position-absolute rounded-circle bg-danger text-white fw-bold"
                   style={{
-                    width: "20px",
-                    height: "20px",
-                    marginTop: "-5px",
+                    width: "25px",
+                    height: "25px",
+                    marginTop: "-10px",
                     marginLeft: "10px",
                     fontSize: "11px",
                     display: "flex",
@@ -108,7 +107,7 @@ const Topbar = ({ toggleSidebar }) => {
                     justifyContent: "center",
                   }}
                 >
-                  {getUnReadNotificationsLength(notifications)}
+                  {unReadNotifications}
                 </span>
               ) : null}
 

@@ -14,6 +14,8 @@ export const TRAINEE_TYPE = "trainee";
 export const TRAINER_TYPE = "trainer";
 export const NUTRITIONIST_TYPE = "nutritionist";
 export const TRAINER_NUTRITIONIST_TYPE = "both";
+//===================membershipTypes=================
+export const EXERCISE_MEMBERSHIP_TYPE = "Exercise";
 //======================body=======================
 export const MALE_BODY = "Male";
 export const FEMALE_BODY = "Female";
@@ -158,6 +160,6 @@ export const category = [
 export const duration = ["Weekly", "monthly"];
 //=======================AdminPanel select promotion type=====================
 export const promoCodeTypeOptions = [
-  { label: "flat", value: "flat" },
+  // { label: "flat", value: "flat" },
   { label: "percentage", value: "percentage" },
 ];

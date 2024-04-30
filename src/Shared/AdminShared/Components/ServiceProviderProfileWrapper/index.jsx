@@ -4,6 +4,7 @@ import { db } from "../../../../firebase";
 import ListingTable from "../ListingTable";
 import { BsChatText } from "react-icons/bs";
 import { useParams } from "react-router-dom";
+import BarChart from "../../../Chart/Barchart";
 import { useTranslation } from "react-i18next";
 import DocumentCard from "../../../DocumentCard";
 import { useSelector, useDispatch } from "react-redux";
@@ -36,6 +37,32 @@ const ServiceProviderProfileWrapper = (props) => {
   const [recipient, setRecipient] = useState(null);
   const [showChatModal, setShowChatModal] = useState(false);
   const [serviceProviderProfile, setServiceProviderProfile] = useState(null);
+  const [
+    serviceProviderPerformanceData,
+    setServiceProviderPerformanceData,
+  ] = useState({
+    labels: [],
+    datasets: [],
+  });
+
+  const serviceProviderPerformanceGraphOptions = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "Performance",
+      },
+      legend: {
+        position: "bottom",
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    maintainAspectRatio: false,
+  };
 
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
@@ -52,8 +79,27 @@ const ServiceProviderProfileWrapper = (props) => {
 
     dispatch(getServiceProviderDetail(data)).then((res) => {
       if (res.type === "getServiceProviderDetail/fulfilled") {
-        setServiceProviderProfile(res.payload.data);
+        setServiceProviderProfile(res?.payload?.data);
+        populateServiceProviderPerformanceGraphData(res?.payload?.data);
       }
+    });
+  };
+
+  const populateServiceProviderPerformanceGraphData = (data) => {
+    const labels = data?.monthly_data?.map((item) => item.month);
+
+    const traineeData = data?.monthly_data?.map((item) => item.trainee);
+
+    setServiceProviderPerformanceData({
+      labels,
+      datasets: [
+        {
+          label: "Trainee",
+          data: traineeData,
+          backgroundColor: "#E3BD99",
+          borderWidth: 2,
+        },
+      ],
     });
   };
 
@@ -349,6 +395,14 @@ const ServiceProviderProfileWrapper = (props) => {
                         <h5 className="fw-bold">
                           {CURRENCY} {serviceProviderProfile?.current_wallet}
                         </h5>
+                      </Col>
+                    </Row>
+                    <Row className="justify-content-center">
+                      <Col md={12} className="my-4">
+                        <BarChart
+                          data={serviceProviderPerformanceData}
+                          options={serviceProviderPerformanceGraphOptions}
+                        />
                       </Col>
                     </Row>
                     <Row className="mt-2">

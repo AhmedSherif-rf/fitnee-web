@@ -35,6 +35,9 @@ const Footer = () => {
             <Link to="https://twitter.com/Fitnee_fit" target="_blank">
               <img src={Image.TWITTER_IMG} alt="logo" />
             </Link>
+            <Link to="https://wa.me/+966549836605" target="_blank">
+              <img src={Image.WHATSAPP_IMG} alt="logo" />
+            </Link>
             {/* <Link to="" target="_blank">
               <img src={Image.YOUTUBE_IMG} alt="logo" />
             </Link>

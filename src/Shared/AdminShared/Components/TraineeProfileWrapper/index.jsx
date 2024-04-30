@@ -4,6 +4,7 @@ import { db } from "../../../../firebase";
 import ListingTable from "../ListingTable";
 import { BsChatText } from "react-icons/bs";
 import { useParams } from "react-router-dom";
+import BarChart from "../../../Chart/Barchart";
 import { useSelector, useDispatch } from "react-redux";
 import { onValue, ref, orderByChild } from "firebase/database";
 import { Row, Container, Col, Card, CardBody } from "reactstrap";
@@ -27,11 +28,15 @@ const TraineeProfileWrapper = (props) => {
   const { id } = useParams();
   const { loading } = useSelector((state) => state.userListing);
 
-  const [traineeProfile, setTraineeProfile] = useState(null);
-  const [tableData, setTableData] = useState([]);
   const [messages, setMessages] = useState([]);
+  const [tableData, setTableData] = useState([]);
   const [recipient, setRecipient] = useState(null);
   const [showChatModal, setShowChatModal] = useState(false);
+  const [traineeProfile, setTraineeProfile] = useState(null);
+  const [traineeSubscriptionData, setTraineeSubscriptionData] = useState({
+    labels: [],
+    datasets: [],
+  });
 
   const dispatch = useDispatch();
 
@@ -48,7 +53,47 @@ const TraineeProfileWrapper = (props) => {
     dispatch(getTraineeDetail(data)).then((res) => {
       if (res.type === "getTraineeDetail/fulfilled") {
         setTraineeProfile({ ...res.payload.data, role: "Trainee" });
+        populateTraineeSubscriptionsGraphData(res.payload.data);
       }
+    });
+  };
+
+  const populateTraineeSubscriptionsGraphData = (data) => {
+    const labels = data?.monthly_data?.map((item) => item.month);
+
+    const bothData = data?.monthly_data?.map((item) => item.both);
+
+    const trainersData = data?.monthly_data?.map((item) => item.trainer);
+
+    const nutritionistsData = data?.monthly_data?.map(
+      (item) => item.nutritionist
+    );
+
+    setTraineeSubscriptionData({
+      labels,
+      datasets: [
+        {
+          label: "Both",
+          data: bothData,
+          backgroundColor: "#E3BD99",
+          borderWidth: 2,
+          stack: "Stack 0",
+        },
+        {
+          label: "Trainers",
+          data: trainersData,
+          backgroundColor: "#BB99E3",
+          borderWidth: 2,
+          stack: "Stack 0",
+        },
+        {
+          label: "Nutritionists",
+          data: nutritionistsData,
+          backgroundColor: "#9BE3BD",
+          borderWidth: 2,
+          stack: "Stack 0",
+        },
+      ],
     });
   };
 
@@ -180,6 +225,29 @@ const TraineeProfileWrapper = (props) => {
     { label: "Action", dataKey: "action", align: "center" },
   ];
 
+  const traineeSubscriptionsGraphOptions = {
+    responsive: true,
+    type: "bar",
+    plugins: {
+      title: {
+        display: true,
+        text: "Trainee Subscriptions",
+      },
+      legend: {
+        position: "bottom",
+      },
+    },
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true,
+      },
+    },
+    maintainAspectRatio: false,
+  };
+
   return (
     <Container fluid className="p-2">
       <GoBack />
@@ -289,6 +357,14 @@ const TraineeProfileWrapper = (props) => {
                         <h5 className="fw-bold">
                           {CURRENCY} {traineeProfile?.current_wallet}
                         </h5>
+                      </Col>
+                    </Row>
+                    <Row className="justify-content-center">
+                      <Col md={12} className="my-4">
+                        <BarChart
+                          data={traineeSubscriptionData}
+                          options={traineeSubscriptionsGraphOptions}
+                        />
                       </Col>
                     </Row>
                     <Row className="mt-2">

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { memo } from "react";
 import { Formik, Field } from "formik";
+import { RxCross2 } from "react-icons/rx";
 import InputField from "../../InputField";
 import FillBtn from "../../Buttons/FillBtn";
 import { useParams } from "react-router-dom";
@@ -172,7 +173,7 @@ const EditProfileRequestModal = (props) => {
                                 );
                               }}
                             >
-                              <span>&#10006;</span>
+                              <RxCross2 size={20} color="red" />
                             </button>
                           </div>
                         ))}

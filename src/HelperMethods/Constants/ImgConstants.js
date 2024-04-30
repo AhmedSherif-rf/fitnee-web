@@ -3,7 +3,8 @@ let Images = {
   LOGO_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/LOGO.svg",
   SMALL_LOGO_IMG: require("../../Assets/Images/smallLogo.svg").default,
-  ABOUT_US_IMG: "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/aboutBgImg.png",
+  ABOUT_US_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/aboutBgImg.png",
   GOAL_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/OurGoal.png",
   VISION_IMG:
@@ -30,6 +31,8 @@ let Images = {
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/AmericanFlag.svg",
   TWITTER_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Twitter.svg",
+  WHATSAPP_IMG:
+    "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Whatsapp.svg",
   YOUTUBE_IMG:
     "https://fitme-dev-bucket.s3.eu-north-1.amazonaws.com/media/webStatic/Youtube.svg",
   HERO_TEXT_BACKGROUND_IMG:

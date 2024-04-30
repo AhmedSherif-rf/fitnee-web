@@ -19,7 +19,7 @@ ChartJS.register(
   Legend
 );
 
-const BarChartComponent = ({ data, options }) => {
+const BarChart = ({ data, options }) => {
   return (
     <div style={{ width: "100%", height: "350px" }}>
       <Bar data={data} options={options} />
@@ -27,4 +27,4 @@ const BarChartComponent = ({ data, options }) => {
   );
 };
 
-export default BarChartComponent;
+export default BarChart;

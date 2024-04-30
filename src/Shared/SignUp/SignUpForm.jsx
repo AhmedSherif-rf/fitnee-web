@@ -4,6 +4,7 @@ import MyDropdown from "../MyDropdown";
 import InputField from "../InputField";
 import { Link } from "react-router-dom";
 import FillBtn from "../Buttons/FillBtn";
+import { RxCross2 } from "react-icons/rx";
 import DocumentCard from "../DocumentCard";
 import MultiSelector from "../MultiSelector";
 import functions from "../../utils/functions";
@@ -750,7 +751,7 @@ const SignUpForm = () => {
                                   setShowPreviousImg(false);
                                 }}
                               >
-                                <span>&#10006;</span>
+                                <RxCross2 size={20} color="red" />
                               </button>
                             </div>
                           )}
@@ -952,7 +953,7 @@ const SignUpForm = () => {
                                   );
                                 }}
                               >
-                                <span>&#10006;</span>
+                                <RxCross2 size={20} color="red" />
                               </button>
                             </div>
                           ))}

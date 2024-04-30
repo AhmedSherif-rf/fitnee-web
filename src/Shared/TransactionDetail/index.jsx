@@ -38,7 +38,7 @@ const TransactionDetail = (props) => {
                       ? moment(transaction?.payment_date).format(
                           "MM/DD/YYYY hh:mm A"
                         )
-                      : moment(transaction?.date_created).format(
+                      : moment(transaction?.payment_date).format(
                           "MM/DD/YYYY hh:mm A"
                         )}
                   </span>

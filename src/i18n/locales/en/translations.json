@@ -779,8 +779,8 @@
     "twoMonthsDurationText": "2 Months",
     "threeMonthsDurationText": "3 Months",
     "subscribeText": "Subscribe",
-    "AddPriceText": "Add Price",
-    "AddPriceErrorText": "Add price to create subscription plan"
+    "addPriceText": "Add Price",
+    "addPriceErrorText": "Add price to create subscription plan"
   },
   "traineeSubscriptionDetail": {
     "nameText": "Name",

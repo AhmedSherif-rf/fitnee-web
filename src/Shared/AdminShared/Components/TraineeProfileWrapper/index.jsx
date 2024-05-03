@@ -69,6 +69,8 @@ const TraineeProfileWrapper = (props) => {
       (item) => item.nutritionist
     );
 
+    const exercisesData = data?.monthly_data?.map((item) => item.exercise);
+
     setTraineeSubscriptionData({
       labels,
       datasets: [
@@ -92,6 +94,13 @@ const TraineeProfileWrapper = (props) => {
           backgroundColor: "#9BE3BD",
           borderWidth: 2,
           stack: "Stack 0",
+        },
+        {
+          label: "Exercises",
+          data: exercisesData,
+          backgroundColor: "rgba(18, 55, 45, 0.8)",
+          borderWidth: 2,
+          stack: "Stack 1",
         },
       ],
     });

@@ -173,7 +173,7 @@ const EditProfileRequestModal = (props) => {
                                 );
                               }}
                             >
-                              <RxCross2 size={20} color="red" />
+                              <RxCross2 size={15} color="red" />
                             </button>
                           </div>
                         ))}

@@ -751,7 +751,7 @@ const SignUpForm = () => {
                                   setShowPreviousImg(false);
                                 }}
                               >
-                                <RxCross2 size={20} color="red" />
+                                <RxCross2 size={15} color="red" />
                               </button>
                             </div>
                           )}
@@ -953,7 +953,7 @@ const SignUpForm = () => {
                                   );
                                 }}
                               >
-                                <RxCross2 size={20} color="red" />
+                                <RxCross2 size={15} color="red" />
                               </button>
                             </div>
                           ))}

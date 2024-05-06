@@ -3,10 +3,11 @@
 .deleteButton {
   border: none;
   position: absolute;
-  background: none;
+  background: $white;
   color: $red;
-  right: -5px;
-  top:0;
+  right: 5px;
+  border-radius: 30px;
+  top: 5px;
   span {
     color: red !important;
   }

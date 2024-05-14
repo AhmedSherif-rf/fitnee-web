@@ -9,6 +9,7 @@ import {
   changePassword,
   getUserProfile,
   setAvailability,
+  setUserLanguage,
   addTraineeProgress,
   cancelSubscription,
   getUserNotifications,
@@ -235,6 +236,15 @@ export const userSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(markUserNotificationAsRead.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(setUserLanguage.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(setUserLanguage.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(setUserLanguage.rejected, (state) => {
         state.loading = "failed";
       });
   },

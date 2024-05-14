@@ -1,4 +1,4 @@
-import { Container} from "reactstrap";
+import { Container } from "reactstrap";
 import Hero from "../../../Shared/Hero";
 import styles from "./style.module.scss";
 import React, { useCallback } from "react";
@@ -170,7 +170,7 @@ const LandingPage = (props) => {
       </section>
 
       <section>
-      <AboutSection />
+        <AboutSection />
       </section>
 
       <section id="featureSection" className="100-vh">
@@ -195,13 +195,15 @@ const LandingPage = (props) => {
           ))}
         </Container>
       </section>
-      <br />
+
+      {/* <br />
       <section id="swiperSection">
         <CardSwiper
           data={SwiperCardsData()}
           heading={t("landing.feedbackText")}
         />
-      </section>
+        </section> */}
+
       <Footer />
     </div>
   );

@@ -1,5 +1,5 @@
-import { getUserStat } from "./dashboardApi";
 import { createSlice } from "@reduxjs/toolkit";
+import { getUserStat, getCategoryWiseGraphData } from "./dashboardApi";
 
 export const dashboardSlice = createSlice({
   name: "dashboard",
@@ -18,6 +18,17 @@ export const dashboardSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(getUserStat.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getCategoryWiseGraphData.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getCategoryWiseGraphData.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(getCategoryWiseGraphData.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

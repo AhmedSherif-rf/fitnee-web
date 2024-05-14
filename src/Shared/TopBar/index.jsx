@@ -27,12 +27,17 @@ import Images from "../../HelperMethods/Constants/ImgConstants";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect, memo, useCallback } from "react";
 import {
-  DELETE_ACCOUNT_URL,
   LOGOUT_URL,
+  DELETE_ACCOUNT_URL,
+  SET_USER_LANGUAGE,
   TRAINER_NUTRITIONIST_ROLE,
 } from "../../utils/constants";
-import { logout, deleteAccount } from "../../Redux/features/User/userApi";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
+import {
+  logout,
+  deleteAccount,
+  setUserLanguage,
+} from "../../Redux/features/User/userApi";
 import {
   ENGLISH_LANGUAGE,
   ARABIC_LANGUAGE,
@@ -139,6 +144,14 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
     dispatch(setLanguage(language));
     i18n.changeLanguage(language);
     functions.setLanguageInStorage(language);
+
+    if (user) {
+      const data = {
+        apiEndpoint: SET_USER_LANGUAGE,
+        requestData: JSON.stringify({ lang: language }),
+      };
+      dispatch(setUserLanguage(data));
+    }
   };
 
   const handleSignUpClick = useCallback(() => {

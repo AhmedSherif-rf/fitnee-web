@@ -7,7 +7,6 @@ import React, { useLayoutEffect } from "react";
 import { setGuest } from "../Redux/features/User/userSlice";
 
 export function PublicRoute({ Component, props }) {
-  //   const userDetail = useSelector((state) => state.Auth);
   const { isGuest, user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
@@ -26,9 +25,9 @@ export function PublicRoute({ Component, props }) {
     }
   }, [dispatch, isGuest, navigate, props.role, user]);
 
-  // if (user) {
-  //   return navigate(getInitialUrl(user?.role));
-  // } else {
-  return <Component {...props} />;
-  // }
+  if (user) {
+    return null;
+  } else {
+    return <Component {...props} />;
+  }
 }

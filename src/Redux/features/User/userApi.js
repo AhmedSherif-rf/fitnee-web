@@ -123,6 +123,19 @@ export const deleteAccount = createAsyncThunk(
   }
 );
 
+export const setUserLanguage = createAsyncThunk(
+  "setUserLanguage",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.put(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const getSpecialities = createAsyncThunk(
   "getSpecialities",
   async ({ apiEndpoint }, thunkAPI) => {

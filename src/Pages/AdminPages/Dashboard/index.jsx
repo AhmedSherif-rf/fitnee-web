@@ -2,33 +2,49 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import Styles from "./style.module.scss";
 import Rating from "../../../Shared/Rating";
+import Checkbox from "../../../Shared/Checkbox";
 import { RiReservedFill } from "react-icons/ri";
 import { PiHandCoinsFill } from "react-icons/pi";
 import { Container, Row, Col } from "reactstrap";
 import { GiWeightLiftingUp } from "react-icons/gi";
-import React, { useEffect, useState } from "react";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import BarChart from "../../../Shared/Chart/Barchart";
 import { useDispatch, useSelector } from "react-redux";
 import { FaUser, FaRegUser, FaUsers } from "react-icons/fa";
 import { FaPersonWalkingArrowLoopLeft } from "react-icons/fa6";
 import DoughnutChart from "../../../Shared/Chart/DoughnutChart";
+import React, { useCallback, useEffect, useState } from "react";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import { USER_NOTIFICATIONS_URL } from "../../../utils/constants";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
-import { ADMIN_DASHBOARD_COUNTERS } from "../../../utils/constants";
 import { getUserNotifications } from "../../../Redux/features/User/userApi";
 import DashboardCard from "../../../Shared/AdminShared/Components/DashboardCard";
-import { getUserStat } from "../../../Redux/features/Admin/Dashboard/dashboardApi";
 import DashboardTable from "../../../Shared/AdminShared/Components/DashboardTable";
+import {
+  getUserStat,
+  getCategoryWiseGraphData,
+} from "../../../Redux/features/Admin/Dashboard/dashboardApi";
+import {
+  ADMIN_DASHBOARD_COUNTERS,
+  ADMIN_CATEGORY_WISE_DATA_URL,
+} from "../../../utils/constants";
 
 const Dashboard = (props) => {
   const dispatch = useDispatch();
   const [spFeedbacks, setSpFeedbacks] = useState([]);
   const [counterData, setCounterData] = useState("");
+  const [filterData, setFilterData] = useState({
+    overall: true,
+    day: false,
+    month: false,
+  });
   const [reviewRequests, setReviewRequests] = useState([]);
   const { loading } = useSelector((state) => state.dashboard);
   const [platformFeedbacks, setPlatformFeedbacks] = useState([]);
+  const [categoryGraphData, setCategoryGraphData] = useState({
+    labels: [],
+    datasets: [],
+  });
   const [spFeedbackTableData, setSpFeedbackTableData] = useState([]);
   const [userTrendsGraphData, setUserTrendsGraphData] = useState({
     labels: [],
@@ -68,6 +84,25 @@ const Dashboard = (props) => {
     maintainAspectRatio: false,
   };
 
+  const caetgoriesGraphOptions = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "Training Goals",
+      },
+      legend: {
+        position: "bottom",
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    maintainAspectRatio: false,
+  };
+
   useEffect(() => {
     fetchUserNotifications();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,9 +116,31 @@ const Dashboard = (props) => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCategoryGraphData = async () => {
       const data = {
-        apiEndpoint: ADMIN_DASHBOARD_COUNTERS,
+        apiEndpoint: ADMIN_CATEGORY_WISE_DATA_URL,
+      };
+
+      dispatch(getCategoryWiseGraphData(data)).then((res) => {
+        if (res.type === "getCategoryWiseGraphData/fulfilled") {
+          populateCategoryGraphData(res.payload.data);
+        }
+      });
+    };
+
+    fetchCategoryGraphData();
+  }, [dispatch]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const filterParam = filterData?.day
+        ? "day"
+        : filterData?.month
+        ? "month"
+        : "overall";
+
+      const data = {
+        apiEndpoint: `${ADMIN_DASHBOARD_COUNTERS}?date=${filterParam}`,
       };
 
       dispatch(getUserStat(data)).then((res) => {
@@ -99,7 +156,7 @@ const Dashboard = (props) => {
     };
 
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, filterData]);
 
   useEffect(() => {
     if (platformFeedbacks.length > 0) {
@@ -242,6 +299,21 @@ const Dashboard = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [spFeedbacks]);
 
+  const handleFilterChange = useCallback(
+    (event) => {
+      const { name, checked } = event.target;
+
+      setFilterData({
+        ...filterData,
+        [name]: checked,
+        overall: name === "overall" ? checked : false,
+        day: name === "day" ? checked : false,
+        month: name === "month" ? checked : false,
+      });
+    },
+    [filterData]
+  );
+
   const populateUserTrendGraphData = (data) => {
     const labels = data?.trainees_monthly_counts?.map((item) => item.month);
 
@@ -296,6 +368,24 @@ const Dashboard = (props) => {
     });
   };
 
+  const populateCategoryGraphData = (data) => {
+    const labels = data?.map((item) => item.goal_name);
+
+    const categoriesData = data?.map((item) => item.count);
+
+    setCategoryGraphData({
+      labels,
+      datasets: [
+        {
+          label: "Subscribers",
+          data: categoriesData,
+          backgroundColor: "#BB99E3",
+          borderWidth: 2,
+        },
+      ],
+    });
+  };
+
   const populateUserTotalitiesGraphData = (data) => {
     setUserTotalitiesGraphData({
       labels: ["Trainer", "Nutritionist", "Trainee", "Both"],
@@ -344,6 +434,26 @@ const Dashboard = (props) => {
   return (
     <Container fluid className="adminDashBoardScrolling">
       {loading === "pending" && <LoadingScreen />}
+      <div className="d-flex gap-2 pt-4">
+        <Checkbox
+          label={<p className="mb-0 fs-6">{"Overall"}</p>}
+          name={"overall"}
+          onChangeHandle={handleFilterChange}
+          checked={filterData.overall}
+        />
+        <Checkbox
+          label={<p className="mb-0 fs-6">{"Today"}</p>}
+          name={"day"}
+          onChangeHandle={handleFilterChange}
+          checked={filterData.day}
+        />
+        <Checkbox
+          label={<p className="mb-0 fs-6">{"This Month"}</p>}
+          name={"month"}
+          onChangeHandle={handleFilterChange}
+          checked={filterData.month}
+        />
+      </div>
       <Row className="py-3">
         <Col xl={3} lg={4} md={6} className="mb-3">
           <Link
@@ -457,6 +567,9 @@ const Dashboard = (props) => {
       <Row className="mb-3">
         <Col xl={6} md={12} sm={12} className="mb-3">
           <DoughnutChart data={userTotalitiesGraphData} />
+        </Col>
+        <Col xl={6} md={12} sm={12} className="mb-3">
+          <BarChart data={categoryGraphData} options={caetgoriesGraphOptions} />
         </Col>
         <Col xl={6} md={12} className="mb-3 p-md-2 p-0">
           <DashboardTable

@@ -86,6 +86,20 @@
   padding-top: 12vh;
 }
 
+.allServiceProvidersFloatingBtnRight {
+  position: absolute !important;
+  bottom: 35px;
+  right: 25px;
+  z-index: 1;
+}
+
+.allServiceProvidersFloatingBtnLeft {
+  position: absolute !important;
+  bottom: 35px;
+  left: 25px;
+  z-index: 1;
+}
+
 .cursorPointer {
   cursor: pointer;
 }
@@ -293,7 +307,7 @@ Input::-webkit-input-placeholder {
 
 .tableBodyWrapperPagination::-webkit-scrollbar,
 .adminDashBoardScrolling::-webkit-scrollbar {
-  width: 0; 
+  width: 0;
 }
 
 .genderBtn {

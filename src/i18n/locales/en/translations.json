@@ -575,8 +575,8 @@
   },
   "traineeDashboard": {
     "traineeProgressGraph": "My Progress In Graph",
-    "myCurrentTrainerText": "My Current Trainers",
-    "myCurrentNutritionistText": "My Current Nutritionists",
+    "myCurrentTrainerText": "Subscribe With Trainer",
+    "myCurrentNutritionistText": "Subscribe With Nutrition",
     "mySubscriptionHistoryText": "My Subscription History",
     "myProgressText": "My Progress",
     "allServiceProvidersText": "All Trainers and  Nutritionists",
@@ -597,7 +597,7 @@
     "saveText": "Save",
     "dateText": "Date",
     "viewGraphText": "View Graph",
-    "subscribeForExerciseText": "Subscribe For Exercises",
+    "subscribeForExerciseText": "Subscribe For The Exercise/Recipes Only",
     "DownloadAppTraineeText": "Download the app to see all the exercises and chat with your trainers/nutritionists",
     "DownloadAppTraineeExerciseText": "Download the app to view all the exercises",
     "DownloadAppTrainerText": "Download the app to chat with your trainees",
@@ -821,9 +821,13 @@
     "profileEditedText": "Profile edited successfully",
     "adminReviewFirstText": "The admin will review your profile and get back to you shortly by email, please keep checking your emails"
   },
+  "settings": {
+    "settingsText": "Settings"
+  },
   "topBar": {
     "dashboardText": "Dashboard",
     "editProfileText": "Edit Profile",
+    "settingsText": "Settings",
     "changePasswordText": "Change Password",
     "deleteAccountText": "Delete Account",
     "logoutText": "Logout",

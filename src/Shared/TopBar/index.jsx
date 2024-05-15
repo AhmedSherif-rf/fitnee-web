@@ -12,6 +12,7 @@ import {
 import Toaster from "../Toaster";
 import FillBtn from "../Buttons/FillBtn";
 import styles from "./style.module.scss";
+import { IoMdSettings } from "react-icons/io";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import OutlineBtn from "../Buttons/OutlineBtn";
@@ -503,7 +504,7 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             className="w-100 p-1"
                             to={
                               roleType === TRAINEE_TYPE
-                                ? "/trainee/editProfile/trainee"
+                                ? "/trainee/settings"
                                 : roleType === TRAINER_TYPE ||
                                   user?.role === TRAINER_NUTRITIONIST_ROLE
                                 ? "/serviceProvider/editProfile/trainer"
@@ -512,10 +513,16 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           >
                             <div className="d-flex gap-1 align-items-center w-100 text-black-custom">
                               <span className="me-2">
-                                <FaUserEdit size={16} className="mb-1" />
+                                {roleType === TRAINEE_TYPE ? (
+                                  <IoMdSettings size={16} className="mb-1" />
+                                ) : (
+                                  <FaUserEdit size={16} className="mb-1" />
+                                )}
                               </span>
                               <p className="mb-0">
-                                {t("topBar.editProfileText")}
+                                {roleType === TRAINEE_TYPE
+                                  ? t("topBar.settingsText")
+                                  : t("topBar.editProfileText")}
                               </p>
                             </div>
                           </Link>
@@ -772,14 +779,16 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         className={`nav-link ${styles.NavLink}`}
                         to={
                           roleType === TRAINEE_TYPE
-                            ? "/trainee/editProfile/trainee"
+                            ? "/trainee/settings"
                             : roleType === TRAINER_TYPE ||
                               user?.role === TRAINER_NUTRITIONIST_ROLE
                             ? "/serviceProvider/editProfile/trainer"
                             : "/serviceProvider/editProfile/nutritionist"
                         }
                       >
-                        {t("topBar.editProfileText")}
+                        {roleType === TRAINEE_TYPE
+                          ? t("topBar.settingsText")
+                          : t("topBar.editProfileText")}
                       </Link>
                     </NavItem>
 

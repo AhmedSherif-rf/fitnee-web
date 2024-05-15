@@ -550,8 +550,8 @@
   },
   "traineeDashboard": {
     "traineeProgressGraph": "رسم بياني لتقدمي",
-    "myCurrentTrainerText": "المدرب الخاص بي",
-    "myCurrentNutritionistText": "اخصائي التغذية الخاص بي",
+    "myCurrentTrainerText": "اشترك مع مدرب",
+    "myCurrentNutritionistText": "اشترك مع اخصائي تغذية",
     "mySubscriptionHistoryText": "تاريخ اشتراكاتي",
     "myProgressText": "تقدمي",
     "allServiceProvidersText": "جميع المدربين واخصائي التغذية",
@@ -572,7 +572,7 @@
     "saveText": "حفظ",
     "dateText": "التاريخ",
     "viewGraphText": "عرض الرسم البياني",
-    "subscribeForExerciseText": "اشترك للتمارين",
+    "subscribeForExerciseText": "اشترك للتمارين والوصفات فقط",
     "DownloadAppTraineeText": "قم بتنزيل التطبيق حتى تتمكن من التواصل مع مدربك /اخصائيي التغذية الخاص بك ولتتمكن من الوصول لجميع التمارين",
     "DownloadAppTraineeExerciseText": "قم بتنزيل التطبيق حتى تتمكن من الوصول لجميع التمارين",
     "DownloadAppTrainerText": "حمل التطبيق لتتمكن من التواصل مع متدربينك",
@@ -797,9 +797,13 @@
     "profileEditedText": "تم تعديل الملف الشخصي بنجاح",
     "adminReviewFirstText": "تم ارسال طلبك بنجاح. سيقوم فريق فتني بمراجعة طلبك والرد عليك من خلال البريد الإلكتروني"
   },
+  "settings": {
+    "settingsText": "الإعدادات"
+  },
   "topBar": {
     "dashboardText": "ﺍﻟﺮﺋﻴﺴﻴﺔ",
     "editProfileText": "ﺗﻌﺪﻳﻞ ﺍﻟﻤﻠﻒ ﺍﻟﺸﺨﺼﻲ",
+    "settingsText": "الإعدادات",
     "changePasswordText": "ﺗﻐﻴﻴﺮ الرقم السري",
     "deleteAccountText": "حذف الحساب",
     "logoutText": "تسجيل الخروج",

@@ -803,6 +803,7 @@
   "topBar": {
     "dashboardText": "ﺍﻟﺮﺋﻴﺴﻴﺔ",
     "editProfileText": "ﺗﻌﺪﻳﻞ ﺍﻟﻤﻠﻒ ﺍﻟﺸﺨﺼﻲ",
+    "myProfileText": "ملفي الشخصي",
     "settingsText": "الإعدادات",
     "changePasswordText": "ﺗﻐﻴﻴﺮ الرقم السري",
     "deleteAccountText": "حذف الحساب",

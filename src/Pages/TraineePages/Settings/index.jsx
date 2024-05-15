@@ -40,7 +40,7 @@ const Index = () => {
                   <OutlineBtn
                     handleOnClick={handleEditProfileClick}
                     className="w-100 mb-2 py-3"
-                    text={t("topBar.editProfileText")}
+                    text={t("topBar.myProfileText")}
                   />
                 </Col>
                 <Col md={6} className="mb-md-0 mb-2">

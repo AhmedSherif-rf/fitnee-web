@@ -827,6 +827,7 @@
   "topBar": {
     "dashboardText": "Dashboard",
     "editProfileText": "Edit Profile",
+    "myProfileText": "My Profile",
     "settingsText": "Settings",
     "changePasswordText": "Change Password",
     "deleteAccountText": "Delete Account",

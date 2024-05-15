@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import Pagination from "../../../Shared/Pagination";
+import FillBtn from "../../../Shared/Buttons/FillBtn";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import React, { useState, useCallback, useEffect } from "react";
@@ -14,6 +16,7 @@ import { getMyServiceProviders } from "../../../Redux/features/User/userApi";
 import { Card, CardBody, CardFooter, Col, Container, Row } from "reactstrap";
 
 const Index = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
   const { loading } = useSelector((state) => state.user);
@@ -44,9 +47,22 @@ const Index = () => {
     });
   };
 
+  const handleAllServiceProviderClick = useCallback(() => {
+    navigate("/trainee/allServiceProvider/trainer");
+  }, [navigate]);
+
   return (
     <Container fluid>
       {loading === "pending" && <LoadingScreen />}
+      <FillBtn
+        className={`mb-2 py-2 ${
+          i18n.dir() === "ltr"
+            ? "allServiceProvidersFloatingBtnRight"
+            : "allServiceProvidersFloatingBtnLeft"
+        }`}
+        text={t("traineeDashboard.allServiceProvidersText")}
+        handleOnClick={handleAllServiceProviderClick}
+      />
       <Row>
         <Col md={12}>
           <Card className="BorderRadius contentCard border-0">

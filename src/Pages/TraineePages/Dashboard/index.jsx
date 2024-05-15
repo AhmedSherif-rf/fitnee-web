@@ -190,21 +190,9 @@ const Dashboard = () => {
     navigate("/trainee/nutritionistList");
   }, [navigate]);
 
-  const handleSubscriptionHistoryClick = useCallback(() => {
-    navigate("/trainee/subscriptionHistory");
-  }, [navigate]);
-
-  const handleAllServiceProviderClick = useCallback(() => {
-    navigate("/trainee/allServiceProvider/trainer");
-  }, [navigate]);
-
   const handleAddProgressClick = useCallback(() => {
     setShowAddProgressModal(true);
   }, []);
-
-  const handlePaymentClick = useCallback(() => {
-    navigate("/trainee/myWallet");
-  }, [navigate]);
 
   return (
     <Container fluid>
@@ -220,17 +208,6 @@ const Dashboard = () => {
                 <Col md={12}>
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text={t("traineeDashboard.subscribeForExerciseText")}
-                    handleOnClick={handleExerciseSubscriptionClick}
-                    disabled={
-                      user?.has_service_provider_subscription ||
-                      user?.has_exercise_subscription
-                        ? true
-                        : false
-                    }
-                  />
-                  <FillBtn
-                    className="w-100 mb-2 py-2"
                     text={t("traineeDashboard.myCurrentTrainerText")}
                     handleOnClick={handleCurrentTrainerClick}
                   />
@@ -241,18 +218,14 @@ const Dashboard = () => {
                   />
                   <FillBtn
                     className="w-100 mb-2 py-2"
-                    text={t("traineeDashboard.mySubscriptionHistoryText")}
-                    handleOnClick={handleSubscriptionHistoryClick}
-                  />
-                  <FillBtn
-                    className="w-100 mb-2 py-2"
-                    text={t("traineeDashboard.allServiceProvidersText")}
-                    handleOnClick={handleAllServiceProviderClick}
-                  />
-                  <FillBtn
-                    handleOnClick={handlePaymentClick}
-                    className="w-100 mb-2 py-2"
-                    text={t("traineeDashboard.myWalletText")}
+                    text={t("traineeDashboard.subscribeForExerciseText")}
+                    handleOnClick={handleExerciseSubscriptionClick}
+                    disabled={
+                      user?.has_service_provider_subscription ||
+                      user?.has_exercise_subscription
+                        ? true
+                        : false
+                    }
                   />
                 </Col>
               </Row>

@@ -101,6 +101,14 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
+    path: "/trainee/settings",
+    component: lazy(() => import("../Pages/TraineePages/Settings")),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
+    role: traineeRole,
+  },
+  {
     path: "/trainee/myWallet",
     component: lazy(() => import("../Pages/TraineePages/MyWallet")),
     exact: true,

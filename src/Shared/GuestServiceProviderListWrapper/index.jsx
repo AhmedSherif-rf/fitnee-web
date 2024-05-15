@@ -75,9 +75,9 @@ const GuestServiceProviderListWrapper = (props) => {
     setShowSubscriptionInformationModal(false);
   }, []);
 
-  const handleRegisterClick = useCallback(() => {
+  const handleSignInClick = useCallback(() => {
     setShowSubscriptionInformationModal(false);
-    navigate("/registerAs");
+    navigate("/signIn");
   }, [navigate]);
 
   const handleSubscriptionInformationModalClose = useCallback(() => {
@@ -218,9 +218,9 @@ const GuestServiceProviderListWrapper = (props) => {
                 ModalTextOne={t("guest.subscribeToSeeText")}
                 ButtonOne={
                   <FillBtn
-                    text={t("guest.registerText")}
+                    text={t("login.signInText")}
                     className="py-2 px-5"
-                    handleOnClick={handleRegisterClick}
+                    handleOnClick={handleSignInClick}
                   />
                 }
                 ButtonTwo={

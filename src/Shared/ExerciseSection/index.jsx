@@ -71,7 +71,7 @@ const ExerciseSection = (props) => {
                                           : styles.descriptionItemRight
                                       }`}
                                     />
-                                    <span>{desc}</span>
+                                    <span className="px-2">{desc}</span>
                                   </div>
                                 </div>
                               );
@@ -93,7 +93,7 @@ const ExerciseSection = (props) => {
                                           : styles.descriptionItemRight
                                       }`}
                                     />
-                                    <span>{desc}</span>
+                                    <span className="px-2">{desc}</span>
                                   </div>
                                 </div>
                               );

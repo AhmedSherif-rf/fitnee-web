@@ -12,6 +12,7 @@ import {
   CURRENCY,
   TRAINER_ROLE,
   NUTRITIONIST_ROLE,
+  EXERCISE_MEMBERSHIP_TYPE,
   TRAINER_NUTRITIONIST_ROLE,
 } from "../../utils/constants";
 
@@ -27,7 +28,7 @@ const SubscriptionCard = (props) => {
       dispatch(setSubscriptionPlan({ id, duration, price, type }));
       navigate("/trainee/subscription/creditCardDetail");
     } else {
-      navigate("/registerAs");
+      navigate("/signIn");
     }
   }, [dispatch, duration, id, navigate, price, type, user]);
 
@@ -77,17 +78,20 @@ const SubscriptionCard = (props) => {
         </div>
       </div>
 
-      <CardBody className="mt-5">
-        <h1 className="mb-3">
+      <CardBody className={type !== EXERCISE_MEMBERSHIP_TYPE && "mt-5"}>
+        {type === EXERCISE_MEMBERSHIP_TYPE && (
+          <small>{t("guest.exercisePackageText")}</small>
+        )}
+        <h1 className="mt-2">
           {`${CURRENCY} ${functions.addVatPrice(price)}`}
         </h1>
         <img
-          className="fluid w-50 my-2"
+          className="fluid w-50"
           src={getSubscriptionCardImage(duration, type)}
           alt=""
         />
       </CardBody>
-      <CardFooter className="bg-transparent border-0 py-3">
+      <CardFooter className="bg-transparent border-0">
         <FillBtn
           className={"px-5"}
           text={t("guest.subscribeText")}

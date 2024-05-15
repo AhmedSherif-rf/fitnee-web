@@ -77,9 +77,9 @@ const Services = (props) => {
     setShowSubscriptionInformationModal(false);
   }, []);
 
-  const handleRegisterClick = useCallback(() => {
+  const handleSignInClick = useCallback(() => {
     setShowSubscriptionInformationModal(false);
-    navigate("/registerAs");
+    navigate("/signIn");
   }, [navigate]);
 
   const handleMouseEnter = (e) => {
@@ -357,9 +357,9 @@ const Services = (props) => {
           ModalTextOne={t("guest.exerciseSubscriptionModalText")}
           ButtonOne={
             <FillBtn
-              text={t("guest.subscribeText")}
+              text={t("login.signInText")}
               className="py-2 px-5"
-              handleOnClick={handleRegisterClick}
+              handleOnClick={handleSignInClick}
             />
           }
           ButtonTwo={

@@ -50,9 +50,9 @@ const Exercise = (props) => {
     setShowSubscriptionInformatoinModal(false);
   }, []);
 
-  const handleRegisterClick = useCallback(() => {
+  const handleSignInClick = useCallback(() => {
     setShowSubscriptionInformatoinModal(false);
-    navigate("/registerAs");
+    navigate("/signIn");
   }, [navigate]);
 
   const handleSeeMoreClick = useCallback(() => {
@@ -112,9 +112,9 @@ const Exercise = (props) => {
         ModalTextOne={t("guest.exerciseSubscriptionModalText")}
         ButtonOne={
           <FillBtn
-            text={t("guest.subscribeText")}
+            text={t("login.signInText")}
             className="py-2 px-5"
-            handleOnClick={handleRegisterClick}
+            handleOnClick={handleSignInClick}
           />
         }
         ButtonTwo={

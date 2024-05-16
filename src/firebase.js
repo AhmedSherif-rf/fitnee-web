@@ -4,12 +4,12 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: "fitnee-599e6.firebaseapp.com",
-  projectId: "fitnee-599e6",
-  storageBucket: "fitnee-599e6.appspot.com",
+  authDomain: "videochat-8f94b.firebaseapp.com",
+  projectId: "videochat-8f94b",
+  storageBucket: "videochat-8f94b.appspot.com",
   messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: "G-VY7M0GFXTL",
+  measurementId: "484396006856",
 };
 
 const firebaseApp = initializeApp(firebaseConfig);

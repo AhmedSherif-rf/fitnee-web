@@ -12,6 +12,8 @@
 
 #environment
 .env
+.env.staging
+.env.development
 
 # misc
 .DS_Store

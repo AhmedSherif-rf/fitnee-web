@@ -1566,7 +1566,7 @@ const SignUpForm = () => {
                               <Field
                                 name={`subscription_plans.${index}.price`}
                                 type="number"
-                                min={0}
+                                min={1}
                                 step={"any"}
                                 className="customDropdownRadius form-control select-field py-3 px-4 border"
                               />

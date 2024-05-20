@@ -434,26 +434,46 @@ const Dashboard = (props) => {
   return (
     <Container fluid className="adminDashBoardScrolling">
       {loading === "pending" && <LoadingScreen />}
-      <div className="d-flex gap-2 pt-4">
-        <Checkbox
-          label={<p className="mb-0 fs-6">{"Overall"}</p>}
-          name={"overall"}
-          onChangeHandle={handleFilterChange}
-          checked={filterData.overall}
-        />
-        <Checkbox
-          label={<p className="mb-0 fs-6">{"Today"}</p>}
-          name={"day"}
-          onChangeHandle={handleFilterChange}
-          checked={filterData.day}
-        />
-        <Checkbox
-          label={<p className="mb-0 fs-6">{"This Month"}</p>}
-          name={"month"}
-          onChangeHandle={handleFilterChange}
-          checked={filterData.month}
-        />
-      </div>
+      <Row className="d-flex justify-content-between pt-4">
+        <Col md={6} className="d-flex gap-2">
+          <Checkbox
+            label={<p className="mb-0 fs-6">{"Overall"}</p>}
+            name={"overall"}
+            onChangeHandle={handleFilterChange}
+            checked={filterData.overall}
+          />
+          <Checkbox
+            label={<p className="mb-0 fs-6">{"Today"}</p>}
+            name={"day"}
+            onChangeHandle={handleFilterChange}
+            checked={filterData.day}
+          />
+          <Checkbox
+            label={<p className="mb-0 fs-6">{"This Month"}</p>}
+            name={"month"}
+            onChangeHandle={handleFilterChange}
+            checked={filterData.month}
+          />
+        </Col>
+        <Col
+          md={6}
+          className="d-flex gap-1 justify-content-md-end justify-content-center align-items-center"
+        >
+          <div>
+            <p className="fw-bold mb-0">
+              Platform Rating :{" "}
+              <span>
+                {counterData?.platform_average_rating?.toFixed(1) ?? null}
+              </span>
+            </p>
+          </div>
+          <div className="mb-2">
+            <Rating
+              rating={counterData?.platform_average_rating?.toFixed(1) ?? null}
+            />
+          </div>
+        </Col>
+      </Row>
       <Row className="py-3">
         <Col xl={3} lg={4} md={6} className="mb-3">
           <Link

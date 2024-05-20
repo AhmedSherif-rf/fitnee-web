@@ -89,14 +89,21 @@ const ServiceProviderProfileWrapper = (props) => {
     const labels = data?.monthly_data?.map((item) => item.month);
 
     const traineeData = data?.monthly_data?.map((item) => item.trainee);
+    const resubscriberData = data?.monthly_data?.map((item) => item.resubscribe);
 
     setServiceProviderPerformanceData({
       labels,
       datasets: [
         {
-          label: "Trainee",
+          label: "Trainees",
           data: traineeData,
           backgroundColor: "#E3BD99",
+          borderWidth: 2,
+        },
+        {
+          label: "Resubscriber",
+          data: resubscriberData,
+          backgroundColor: "#97694F",
           borderWidth: 2,
         },
       ],

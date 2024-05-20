@@ -14,7 +14,13 @@ const StarRating = (props) => {
   };
 
   return (
-    <Rating size={20} onClick={handleRating} initialValue={value} readonly />
+    <Rating
+      allowFraction={true}
+      size={20}
+      onClick={handleRating}
+      initialValue={value}
+      readonly
+    />
   );
 };
 

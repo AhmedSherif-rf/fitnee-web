@@ -48,7 +48,7 @@ const Index = () => {
   };
 
   const handleAllServiceProviderClick = useCallback(() => {
-    navigate("/trainee/allServiceProvider/trainer");
+    navigate("/trainee/allServiceProvider/nutritionist");
   }, [navigate]);
 
   return (
@@ -60,7 +60,7 @@ const Index = () => {
             ? "allServiceProvidersFloatingBtnRight"
             : "allServiceProvidersFloatingBtnLeft"
         }`}
-        text={t("traineeDashboard.allServiceProvidersText")}
+        text={t("traineeDashboard.nutritionistListText")}
         handleOnClick={handleAllServiceProviderClick}
       />
       <Row>

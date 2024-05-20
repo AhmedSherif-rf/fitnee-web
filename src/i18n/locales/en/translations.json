@@ -575,6 +575,8 @@
     "amountReleasedText": "Amount Released"
   },
   "traineeDashboard": {
+    "trainerListText": "Trainers list",
+    "nutritionistListText": "Nutritions list",
     "traineeProgressGraph": "My Progress In Graph",
     "myCurrentTrainerText": "Subscribe With Trainer",
     "myCurrentNutritionistText": "Subscribe With Nutrition",

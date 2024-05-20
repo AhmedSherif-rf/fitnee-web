@@ -25,9 +25,5 @@ export function PublicRoute({ Component, props }) {
     }
   }, [dispatch, isGuest, navigate, props.role, user]);
 
-  if (user) {
-    return null;
-  } else {
-    return <Component {...props} />;
-  }
+  return <Component {...props} />;
 }

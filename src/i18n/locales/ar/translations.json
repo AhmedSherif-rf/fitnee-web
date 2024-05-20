@@ -550,6 +550,8 @@
     "amountReleasedText": "المبلغ المدفوع"
   },
   "traineeDashboard": {
+    "trainerListText": "قائمه المدربين",
+    "nutritionistListText": "قائمة اخصائيي التغذية",
     "traineeProgressGraph": "رسم بياني لتقدمي",
     "myCurrentTrainerText": "اشترك مع مدرب",
     "myCurrentNutritionistText": "اشترك مع اخصائي تغذية",

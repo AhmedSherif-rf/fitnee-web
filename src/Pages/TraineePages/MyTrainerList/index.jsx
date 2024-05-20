@@ -60,7 +60,7 @@ const Index = () => {
             ? "allServiceProvidersFloatingBtnRight"
             : "allServiceProvidersFloatingBtnLeft"
         }`}
-        text={t("traineeDashboard.allServiceProvidersText")}
+        text={t("traineeDashboard.trainerListText")}
         handleOnClick={handleAllServiceProviderClick}
       />
       <Row>

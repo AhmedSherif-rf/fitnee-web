@@ -496,6 +496,9 @@
     "alreadyAccountText": "Already have account? "
   },
   "guest": {
+    "providedServicesText": "The Provided Services",
+    "trainerTagText": "Trainer",
+    "bothTagText": "Trainer and Nutritionist",
     "listOfText": "List of",
     "yearsText": "Years",
     "seeMoreText": "See More",

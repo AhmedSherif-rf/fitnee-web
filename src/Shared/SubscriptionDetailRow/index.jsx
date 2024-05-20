@@ -89,7 +89,7 @@ const Index = (props) => {
                   ? NUTRITIONIST_ROLE
                   : TRAINER_ROLE;
               navigate(
-                `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}`
+                `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}/${data?.serviceprovider?.role}`
               );
             }}
           >

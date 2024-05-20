@@ -7,7 +7,7 @@ import ToggleSwitch from "../ToggleSwitch";
 import functions from "../../utils/functions";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import SubHeading from "../Headings/SubHeading";
+// import SubHeading from "../Headings/SubHeading";
 import PageHeading from "../Headings/PageHeading";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Col, Container, Row, Form } from "reactstrap";
@@ -18,11 +18,11 @@ import "react-country-state-city/dist/react-country-state-city.css";
 import { CURRENCY, WALLET_AMOUNT_URL } from "../../utils/constants";
 import React, { memo, useCallback, useState, useEffect } from "react";
 import { PAYMENT_METHOD_DETAIL_SCHEMA } from "../ValidationData/validation";
-import {
-  CitySelect,
-  CountrySelect,
-  StateSelect,
-} from "react-country-state-city";
+// import {
+//   CitySelect,
+//   CountrySelect,
+//   StateSelect,
+// } from "react-country-state-city";
 import {
   PREPARE_CHECKOUT_URL,
   USE_PROMO_CODE_URL,
@@ -49,10 +49,10 @@ const CreditCardDetailWrapper = () => {
     vat: functions.calculateVat(subscriptionPlan.price),
   });
   const [walletBalance, setWalletBalance] = useState(0);
-  const [countryData, setCountryData] = useState({
-    countryId: "",
-    stateId: "",
-  });
+  // const [countryData, setCountryData] = useState({
+  //   countryId: "",
+  //   stateId: "",
+  // });
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -244,7 +244,11 @@ const CreditCardDetailWrapper = () => {
           )}
           {!checkoutId && (
             <Formik
-              initialValues={{ ...PAYMENT_METHOD_DETAIL_INITIAL_VALUES }}
+              initialValues={{
+                ...PAYMENT_METHOD_DETAIL_INITIAL_VALUES,
+                surname: `${user?.first_name} ${user?.last_name}`,
+                givenName: `${user?.first_name} ${user?.last_name}`,
+              }}
               validationSchema={PAYMENT_METHOD_DETAIL_SCHEMA}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
@@ -262,7 +266,7 @@ const CreditCardDetailWrapper = () => {
               }) => (
                 <Form onSubmit={handleSubmit}>
                   <Container>
-                    <Row className="paymentMethodBtn py-4">
+                    <Row className="paymentMethodBtn pb-4">
                       <Col md={4} className="mb-1">
                         <div
                           className={`d-flex align-items-center justify-content-between form-control-lg py-2 customDropdownRadius border bg-white cursorPointer ${
@@ -320,7 +324,7 @@ const CreditCardDetailWrapper = () => {
                       </p>
                     </Row>
                     <Row>
-                      <Col md={12}>
+                      {/* <Col md={12}>
                         <SubHeading
                           headingText={t("cardDetails.billingAddressText")}
                           className="mb-0"
@@ -455,7 +459,7 @@ const CreditCardDetailWrapper = () => {
                             touched.street1 &&
                             t(errors.street1)}
                         </p>
-                      </Col>
+                      </Col> */}
                       <Col md={12}>
                         <div className="CreditCard d-flex justify-content-between align-items-center">
                           <div className=" me-2">

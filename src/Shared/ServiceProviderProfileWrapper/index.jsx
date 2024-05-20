@@ -17,10 +17,12 @@ import { setServiceProvider } from "../../Redux/features/Subscription/subscripti
 import {
   GUEST_SERVICE_PROVIDER_PROFILE_URL,
   GET_SERVICE_PROVIDER_COMMENTS_URL,
+  NUTRITIONIST_ROLE,
+  TRAINER_ROLE,
 } from "../../utils/constants";
 
 const ServiceProviderProfileWrapper = (props) => {
-  const { uuid, id, role } = useParams();
+  const { uuid, id, role, userRole } = useParams();
   const { subscriptionLink } = props;
   const { loading } = useSelector((state) => state.guest);
   const { loading: userLoading } = useSelector((state) => state.user);
@@ -127,9 +129,23 @@ const ServiceProviderProfileWrapper = (props) => {
                 <Col lg={9} md={8}>
                   <Card className="BorderRadius border-0 text-black-custom">
                     <CardBody>
-                      <h3 className="fw-bold my-2">
-                        {serviceProviderProfile?.full_name}
-                      </h3>
+                      <Row>
+                        <Col md={12}>
+                          <h5 className="fw-bold my-2">
+                            {t("guest.providedServicesText")}
+                          </h5>
+                          <Badge
+                            color="custom"
+                            className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
+                          >
+                            {userRole === TRAINER_ROLE.toLowerCase()
+                              ? t("guest.trainerTagText")
+                              : userRole === NUTRITIONIST_ROLE.toLowerCase()
+                              ? t("registerAs.nutritionistText")
+                              : t("guest.bothTagText")}
+                          </Badge>
+                        </Col>
+                      </Row>
                       <div
                         className="overflow-scroll onlyBorderRadius p-3 border border-light"
                         style={{ maxHeight: "100px" }}

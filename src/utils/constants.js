@@ -46,9 +46,9 @@ export const roleOptions = [
   },
 ];
 export const roleOptionsArabic = [
-  { label: "المدرب", value: "Trainer" },
+  { label: "تدريب", value: "Trainer" },
   {
-    label: "مدرب وأخصائي تغذية",
+    label: "تدريب وتغذية",
     value: "Trainer And Nutritionist",
   },
 ];

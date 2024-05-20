@@ -166,14 +166,14 @@ export const NEW_PASSWORD_INITIAL_VALUES = {
 };
 
 export const PAYMENT_METHOD_DETAIL_INITIAL_VALUES = {
-  city: "",
-  state: "",
+  city: "Riyadh",
+  state: "Riyadh",
   amount: "",
   entity: "",
-  country: "",
-  street1: "",
+  country: "SA",
+  street1: "saudi arabia",
   surname: "",
-  postcode: "",
+  postcode: "12211",
   givenName: "",
   promo_code: "",
   currency: "SAR",

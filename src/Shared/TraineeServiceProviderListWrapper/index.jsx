@@ -175,7 +175,7 @@ const TraineeServiceProviderListWrapper = (props) => {
                           ? NUTRITIONIST_ROLE
                           : TRAINER_ROLE;
                       navigate(
-                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}/${role}`
+                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}/${role}/${listingRole}`
                       );
                     }}
                   />

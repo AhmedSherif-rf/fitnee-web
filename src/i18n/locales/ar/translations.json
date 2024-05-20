@@ -471,6 +471,9 @@
     "alreadyAccountText": " ﻟﺪﻳﻚ ﺣﺴﺎﺏ؟"
   },
   "guest": {
+    "providedServicesText": "الخدمات المقدمة",
+    "trainerTagText": "تدريب",
+    "bothTagText": "تدريب وتغذية",
     "listOfText": "قائمة",
     "yearsText": "سنوات",
     "seeMoreText": "المزيد",

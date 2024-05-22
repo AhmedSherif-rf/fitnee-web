@@ -25,7 +25,6 @@ import { getServiceProviderGuestMode } from "../../Redux/features/Guest/guestApi
 import {
   TRAINER_TYPE,
   NUTRITIONIST_TYPE,
-  TRAINER_NUTRITIONIST_TYPE,
   GUEST_SERVICE_PROVIDER_LISTING_URL,
 } from "../../utils/constants";
 
@@ -138,13 +137,13 @@ const GuestServiceProviderListWrapper = (props) => {
                     >
                       {t("guest.nutritionistsText")}
                     </DropdownItem>
-                    <DropdownItem
+                    {/* <DropdownItem
                       onClick={() =>
                         handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
                       }
                     >
                       {t("guest.bothText")}
-                    </DropdownItem>
+                    </DropdownItem> */}
                   </DropdownMenu>
                 </Dropdown>
               </Col>

@@ -27,7 +27,6 @@ import {
   TRAINER_TYPE,
   PER_PAGE_COUNT,
   NUTRITIONIST_TYPE,
-  TRAINER_NUTRITIONIST_TYPE,
   TRAINEE_SERVICE_PROVIDER_LISTING_URL,
   NUTRITIONIST_ROLE,
   TRAINER_ROLE,
@@ -147,13 +146,13 @@ const TraineeServiceProviderListWrapper = (props) => {
                   >
                     {t("guest.nutritionistsText")}
                   </DropdownItem>
-                  <DropdownItem
+                  {/* <DropdownItem
                     onClick={() =>
                       handleDropdownItemClick(TRAINER_NUTRITIONIST_TYPE)
                     }
                   >
                     {t("guest.bothText")}
-                  </DropdownItem>
+                  </DropdownItem> */}
                 </DropdownMenu>
               </Dropdown>
             </Col>

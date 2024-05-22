@@ -75,6 +75,8 @@ export const signUp = createAsyncThunk(
         Toaster.error(error?.response?.data?.error?.weight[0]);
       } else if (error?.response?.data?.error?.height) {
         Toaster.error(error?.response?.data?.error?.height[0]);
+      } else if (error?.response?.data?.error?.certification) {
+        Toaster.error(error?.response?.data?.error?.certification[0]);
       } else if (error?.response?.data?.error?.subscription_plans) {
         Toaster.error(
           error?.response?.data?.error?.subscription_plans[0].price

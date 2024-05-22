@@ -89,7 +89,9 @@ const ServiceProviderProfileWrapper = (props) => {
     const labels = data?.monthly_data?.map((item) => item.month);
 
     const traineeData = data?.monthly_data?.map((item) => item.trainee);
-    const resubscriberData = data?.monthly_data?.map((item) => item.resubscribe);
+    const resubscriberData = data?.monthly_data?.map(
+      (item) => item.resubscribe
+    );
 
     setServiceProviderPerformanceData({
       labels,
@@ -332,6 +334,15 @@ const ServiceProviderProfileWrapper = (props) => {
                     >
                       <p className="small">{serviceProviderProfile?.bio}</p>
                     </div>
+
+                    <Row>
+                      <div className="lh-1 mt-4">
+                        <h6 className="fw-bold">Phone Number</h6>
+                        <p className="small">
+                          {serviceProviderProfile?.phone_number}
+                        </p>
+                      </div>
+                    </Row>
 
                     <Row>
                       <Col md={12}>

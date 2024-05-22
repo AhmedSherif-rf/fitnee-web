@@ -14,6 +14,7 @@ import {
   CANCEL_SUBSCRIPTION_URL,
   TRAINER_ROLE,
   NUTRITIONIST_ROLE,
+  EXERCISE_MEMBERSHIP_TYPE,
 } from "../../utils/constants";
 
 const Index = (props) => {
@@ -84,13 +85,17 @@ const Index = (props) => {
           <div
             className="d-flex align-items-center"
             onClick={() => {
-              const role =
-                data?.serviceprovider?.role === NUTRITIONIST_ROLE
-                  ? NUTRITIONIST_ROLE
-                  : TRAINER_ROLE;
-              navigate(
-                `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}/${data?.serviceprovider?.role}`
-              );
+              if (
+                data?.subscription?.membership_type !== EXERCISE_MEMBERSHIP_TYPE
+              ) {
+                const role =
+                  data?.serviceprovider?.role === NUTRITIONIST_ROLE
+                    ? NUTRITIONIST_ROLE
+                    : TRAINER_ROLE;
+                navigate(
+                  `/trainee/serviceProviderProfile/${data?.serviceprovider?.uuid}/${data?.serviceprovider?.id}/${role}/${data?.serviceprovider?.role}`
+                );
+              }
             }}
           >
             {data?.have_exercise_subscription && (

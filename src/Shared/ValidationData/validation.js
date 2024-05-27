@@ -419,6 +419,20 @@ export const CONTACT_US_SCHEMA = Yup.object().shape({
   first_name: firstNameValidation,
 });
 
+export const BMI_SCHEMA = Yup.object().shape({
+  email: emailValidation,
+  weight: requiredValidation,
+  height: requiredValidation,
+});
+
+export const BMR_SCHEMA = Yup.object().shape({
+  age: requiredValidation,
+  email: emailValidation,
+  gender: requiredValidation,
+  weight: requiredValidation,
+  height: requiredValidation,
+});
+
 export const REVIEW_REQUEST_REJECTION_SCHEMA = Yup.object().shape({
   reject_message: requiredValidation,
 });

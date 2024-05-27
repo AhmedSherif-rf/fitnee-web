@@ -186,6 +186,24 @@ export const ADD_CATEGORY_INITIAL_VALUES = {
   title_ar: "",
 };
 
+export const BMI_INITIAL_VALUES = {
+  name: "",
+  email: "",
+  weight: "",
+  height: "",
+  phone_number: "",
+};
+
+export const BMR_INITIAL_VALUES = {
+  age: "",
+  name: "",
+  email: "",
+  gender: "",
+  weight: "",
+  height: "",
+  phone_number: "",
+};
+
 export const ADD_SUB_CATEGORY_INITIAL_VALUES = {
   title: "",
   title_ar: "",

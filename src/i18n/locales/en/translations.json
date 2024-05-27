@@ -524,6 +524,22 @@
     "exerciseSubscriptionModalText": "The rest of the exercises will be hidden. Subscribe for 27 SAR per month to access all exercises",
     "exercisePackageText": "This package will give you full body exercise videos, also videos of recipes with counted calories, be informed that if you subscribed with trainer or nutrition this package will be free."
   },
+  "calculation": {
+    "toolText": "Tool",
+    "submitText": "Submit",
+    "backText": "Back",
+    "bodyMassIndexText": "Body Mass Index",
+    "basalMetabolicRateText": "Basal Metabolic Rate",
+    "isYourWeightRangeText": "Is your wight in the normal range or not?",
+    "genderText": "Gender",
+    "weightText": "Weight (kg)",
+    "heightText": "Height (cm)",
+    "ageText": "Age",
+    "emailText": "Your email so we can send the report to you",
+    "nameText": "Your name (optional)",
+    "phoneNumberText": "Your phone number (optional)",
+    "calorieShouldEatText":"calories you should eat per day to lose weight is ="
+  },
   "contactUs": {
     "firstNameText": "First Name",
     "lastNameText": "Last Name",

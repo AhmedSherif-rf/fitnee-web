@@ -52,6 +52,20 @@ export const roleOptionsArabic = [
     value: "Trainer And Nutritionist",
   },
 ];
+export const genderOptions = [
+  { label: "Male", value: "1" },
+  {
+    label: "Female",
+    value: "2",
+  },
+];
+export const genderOptionsArabic = [
+  { label: "ذكر", value: "1" },
+  {
+    label: "أنثى",
+    value: "2",
+  },
+];
 //=====================Roles=====================
 export const ADMIN_ROLE = "Admin";
 export const TRAINEE_ROLE = "Trainee";

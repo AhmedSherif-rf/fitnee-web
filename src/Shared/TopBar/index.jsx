@@ -100,7 +100,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         location.pathname === "/contactUs" ||
         location.pathname === "/forgotPassword" ||
         location.pathname === "/changePassword" ||
-        location.pathname === "/privacyPolicy")
+        location.pathname === "/privacyPolicy" ||
+        location.pathname === "/calculation")
     ) {
       setShowTopBar(false);
     } else {
@@ -320,6 +321,17 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             >
                               <p className="text-black-custom mb-0">
                                 {t("landing.exerciseText")}
+                              </p>
+                            </Link>
+                          </DropdownItem>
+
+                          <DropdownItem>
+                            <Link
+                              className="w-100 d-flex align-items-center"
+                              to="/calculation"
+                            >
+                              <p className="text-black-custom mb-0">
+                                {t("calculation.toolText")}
                               </p>
                             </Link>
                           </DropdownItem>
@@ -639,6 +651,16 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             >
                               <p className="mb-0">
                                 {t("landing.exerciseText")}
+                              </p>
+                            </Link>
+                          </NavItem>
+                          <NavItem>
+                            <Link
+                              className=" d-flex align-items-center"
+                              to="/calculation"
+                            >
+                              <p className="mb-0">
+                                {t("calculation.toolText")}
                               </p>
                             </Link>
                           </NavItem>

@@ -534,7 +534,7 @@ const Dashboard = (props) => {
               CardBodyClass="AdminCardBody"
               cardIconClass="cardIcon"
               cardIcon={<RiReservedFill size={65} />}
-              textOne={counterData?.resubscribers_count}
+              textOne={counterData?.fully_booked_count}
               textTwo="Fully Booked"
             />
           </Link>

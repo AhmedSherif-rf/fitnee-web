@@ -105,7 +105,7 @@ const CalculationWrapper = () => {
       requestData: JSON.stringify({
         ...values,
         type: "bmr",
-        value: result,
+        value: result.toFixed(2),
         lang: currentLanguage,
       }),
     };

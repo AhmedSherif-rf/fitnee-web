@@ -471,6 +471,7 @@
     "alreadyAccountText": " ﻟﺪﻳﻚ ﺣﺴﺎﺏ؟"
   },
   "guest": {
+    "resultSendText": "يرجى التحقق من بريدك الإلكتروني للحصول على النتائج",
     "providedServicesText": "الخدمات المقدمة",
     "trainerTagText": "تدريب",
     "bothTagText": "تدريب وتغذية",

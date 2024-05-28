@@ -496,6 +496,7 @@
     "alreadyAccountText": "Already have account? "
   },
   "guest": {
+    "resultSendText": "Please check your email for results",
     "providedServicesText": "The Provided Services",
     "trainerTagText": "Trainer",
     "bothTagText": "Trainer and Nutritionist",

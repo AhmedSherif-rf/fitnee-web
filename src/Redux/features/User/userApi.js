@@ -335,3 +335,16 @@ export const getServiceProviderFeedbacks = createAsyncThunk(
     }
   }
 );
+
+export const sendHealthCheckEmail = createAsyncThunk(
+  "sendHealthCheckEmail",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.detail);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);

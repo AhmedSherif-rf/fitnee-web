@@ -12,6 +12,7 @@ import {
   setUserLanguage,
   addTraineeProgress,
   cancelSubscription,
+  sendHealthCheckEmail,
   getUserNotifications,
   getMyServiceProviders,
   getTransactionHistory,
@@ -245,6 +246,15 @@ export const userSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(setUserLanguage.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(sendHealthCheckEmail.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(sendHealthCheckEmail.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(sendHealthCheckEmail.rejected, (state) => {
         state.loading = "failed";
       });
   },

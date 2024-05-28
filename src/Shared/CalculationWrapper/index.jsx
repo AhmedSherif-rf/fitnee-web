@@ -8,8 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PhoneInputField from "../PhoneInputField";
 import PageHeading from "../Headings/PageHeading";
-import { BMI_SCHEMA, BMR_SCHEMA } from "../ValidationData/validation";
-import { genderOptions, genderOptionsArabic } from "../../utils/constants";
+import {
+  genderOptions,
+  genderOptionsArabic,
+  SEND_HEALTH_RESULT,
+} from "../../utils/constants";
 import {
   BMI_INITIAL_VALUES,
   BMR_INITIAL_VALUES,
@@ -19,7 +22,6 @@ import {
   AccordionBody,
   AccordionHeader,
   AccordionItem,
-  Alert,
   Card,
   CardBody,
   CardHeader,
@@ -28,19 +30,27 @@ import {
   Form,
   Row,
 } from "reactstrap";
+import { useDispatch, useSelector } from "react-redux";
+import InformationModal from "../Modal/InformationModal";
+import LoadingScreen from "../../HelperMethods/LoadingScreen";
+import { BMI_SCHEMA, BMR_SCHEMA } from "../ValidationData/validation";
+import { sendHealthCheckEmail } from "../../Redux/features/User/userApi";
 
 const CalculationWrapper = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
 
+  const { loading } = useSelector((state) => state.user);
+  const { lang: currentLanguage } = useSelector((state) => state.language);
+
   const [open, setOpen] = useState("1");
-  const [bmi, setBmi] = useState(null);
-  const [bmr, setBmr] = useState(null);
+  const [showInfoModal, setShowInfoModal] = useState(false);
+
+  const handleCloseInfoModal = () => setShowInfoModal(false);
 
   const toggle = (id) => {
     if (open === id) {
-      setBmi(null);
-      setBmr(null);
       setOpen();
     } else {
       setOpen(id);
@@ -62,8 +72,23 @@ const CalculationWrapper = () => {
       result = "Obese";
     }
 
-    resetForm(true);
-    setBmi(result);
+    const data = {
+      apiEndpoint: SEND_HEALTH_RESULT,
+      requestData: JSON.stringify({
+        ...values,
+        type: "bmi",
+        value: bmi,
+        result,
+        lang: currentLanguage,
+      }),
+    };
+
+    dispatch(sendHealthCheckEmail(data)).then((res) => {
+      if (res.type === "sendHealthCheckEmail/fulfilled") {
+        resetForm(true);
+        setShowInfoModal(true);
+      }
+    });
   };
 
   const handleBMRSubmit = (values, resetForm) => {
@@ -75,8 +100,22 @@ const CalculationWrapper = () => {
       result = 10 * values.weight + 6.25 * values.height - 5 * values.age - 161;
     }
 
-    resetForm(true);
-    setBmr(result);
+    const data = {
+      apiEndpoint: SEND_HEALTH_RESULT,
+      requestData: JSON.stringify({
+        ...values,
+        type: "bmr",
+        value: result,
+        lang: currentLanguage,
+      }),
+    };
+
+    dispatch(sendHealthCheckEmail(data)).then((res) => {
+      if (res.type === "sendHealthCheckEmail/fulfilled") {
+        resetForm(true);
+        setShowInfoModal(true);
+      }
+    });
   };
 
   return (
@@ -85,7 +124,7 @@ const CalculationWrapper = () => {
         className={`justify-content-center text-black-custom`}
         style={{ minHeight: "100vh", maxHeight: "auto" }}
       >
-        {/* {loading === "pending" && <LoadingScreen />} */}
+        {loading === "pending" && <LoadingScreen />}
         <Col md={10} className={`d-flex`}>
           <Card className="px-md-4 px-1 py-md-5 py-4 mb-2 onlyBorderRadius d-flex justify-content-center w-100">
             <CardHeader className="bg-transparent text-center border-0 p-0 my-md-3 my-1">
@@ -224,7 +263,9 @@ const CalculationWrapper = () => {
                                 <FillBtn
                                   className="w-50 py-2 my-3 text-center mx-2"
                                   text={t("calculation.submitText")}
-                                  //   disabled={loading === "pending" ? true : false}
+                                  disabled={
+                                    loading === "pending" ? true : false
+                                  }
                                   type={"submit"}
                                 />
                               </div>
@@ -233,13 +274,6 @@ const CalculationWrapper = () => {
                         </Form>
                       )}
                     </Formik>
-                    {bmi && (
-                      <div className="text-center">
-                        <Alert color="info" className="fw-bold fs-4">
-                          {bmi}
-                        </Alert>
-                      </div>
-                    )}
                   </AccordionBody>
                 </AccordionItem>
                 <AccordionItem>
@@ -409,7 +443,9 @@ const CalculationWrapper = () => {
                                 <FillBtn
                                   className="w-50 py-2 my-3 text-center"
                                   text={t("calculation.submitText")}
-                                  //   disabled={loading === "pending" ? true : false}
+                                  disabled={
+                                    loading === "pending" ? true : false
+                                  }
                                   type={"submit"}
                                 />
                               </div>
@@ -418,13 +454,6 @@ const CalculationWrapper = () => {
                         </Form>
                       )}
                     </Formik>
-                    {bmr && (
-                      <div className="text-center">
-                        <Alert color="info" className="fw-bold fs-4">
-                          {t("calculation.calorieShouldEatText")} {bmr}
-                        </Alert>
-                      </div>
-                    )}
                   </AccordionBody>
                 </AccordionItem>
               </Accordion>
@@ -439,6 +468,22 @@ const CalculationWrapper = () => {
           </Card>
         </Col>
       </Row>
+
+      <InformationModal
+        size={"md"}
+        TOneClassName={"mb-4 fs-5 text-center"}
+        className={"p-4"}
+        isOpen={showInfoModal}
+        onClose={handleCloseInfoModal}
+        ModalTextOne={t("guest.resultSendText")}
+        ButtonOne={
+          <FillBtn
+            text={t("otpVerification.okayText")}
+            className="py-2 px-5"
+            handleOnClick={handleCloseInfoModal}
+          />
+        }
+      />
     </Container>
   );
 };

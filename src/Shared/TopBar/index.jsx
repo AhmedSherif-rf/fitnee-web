@@ -101,7 +101,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
         location.pathname === "/forgotPassword" ||
         location.pathname === "/changePassword" ||
         location.pathname === "/privacyPolicy" ||
-        location.pathname === "/calculation")
+        location.pathname === "/bmi" ||
+        location.pathname === "/bmr")
     ) {
       setShowTopBar(false);
     } else {
@@ -328,10 +329,21 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           <DropdownItem>
                             <Link
                               className="w-100 d-flex align-items-center"
-                              to="/calculation"
+                              to="/bmi"
                             >
                               <p className="text-black-custom mb-0">
-                                {t("calculation.toolText")}
+                                {t("calculation.bodyMassIndexText")}
+                              </p>
+                            </Link>
+                          </DropdownItem>
+
+                          <DropdownItem>
+                            <Link
+                              className="w-100 d-flex align-items-center"
+                              to="/bmr"
+                            >
+                              <p className="text-black-custom mb-0">
+                                {t("calculation.basalMetabolicRateText")}
                               </p>
                             </Link>
                           </DropdownItem>
@@ -654,13 +666,25 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                               </p>
                             </Link>
                           </NavItem>
+
                           <NavItem>
                             <Link
                               className=" d-flex align-items-center"
-                              to="/calculation"
+                              to="/bmi"
                             >
                               <p className="mb-0">
-                                {t("calculation.toolText")}
+                                {t("calculation.bodyMassIndexText")}
+                              </p>
+                            </Link>
+                          </NavItem>
+
+                          <NavItem>
+                            <Link
+                              className=" d-flex align-items-center"
+                              to="/bmr"
+                            >
+                              <p className="mb-0">
+                                {t("calculation.basalMetabolicRateText")}
                               </p>
                             </Link>
                           </NavItem>

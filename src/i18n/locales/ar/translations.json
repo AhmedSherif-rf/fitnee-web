@@ -471,7 +471,8 @@
     "alreadyAccountText": " ﻟﺪﻳﻚ ﺣﺴﺎﺏ؟"
   },
   "guest": {
-    "resultSendText": "يرجى التحقق من بريدك الإلكتروني للحصول على النتائج",
+    "caloriesShouldText": "كم عدد السعرات الحرارية اللتي تحتاجها في يومك لخساره الوزن",
+    "resultSendText": "تم ارسال النتائج الى بريدك الإلكتروني",
     "providedServicesText": "الخدمات المقدمة",
     "trainerTagText": "تدريب",
     "bothTagText": "تدريب وتغذية",

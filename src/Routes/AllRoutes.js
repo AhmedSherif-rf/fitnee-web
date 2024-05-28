@@ -63,8 +63,16 @@ const routes = [
     exact: true,
   },
   {
-    path: "/calculation",
-    component: lazy(() => import("../Pages/GuestPages/Calculation")),
+    path: "/bmi",
+    component: lazy(() => import("../Pages/GuestPages/BMI")),
+    isPublic: true,
+    isAuth: true,
+    theme: "light",
+    exact: true,
+  },
+  {
+    path: "/bmr",
+    component: lazy(() => import("../Pages/GuestPages/BMR")),
     isPublic: true,
     isAuth: true,
     theme: "light",

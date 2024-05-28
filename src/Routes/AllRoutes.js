@@ -63,6 +63,14 @@ const routes = [
     exact: true,
   },
   {
+    path: "/selectTool",
+    component: lazy(() => import("../Pages/GuestPages/SelectTool")),
+    isPublic: true,
+    isAuth: true,
+    theme: "light",
+    exact: true,
+  },
+  {
     path: "/bmi",
     component: lazy(() => import("../Pages/GuestPages/BMI")),
     isPublic: true,

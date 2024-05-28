@@ -250,7 +250,7 @@ const BMRCalculationWrapper = () => {
                 <OutlineBtn
                   className="w-50 py-2"
                   text={t("calculation.backText")}
-                  handleOnClick={() => navigate("/")}
+                  handleOnClick={() => navigate("/selectTool")}
                 />
               </div>
             </CardBody>

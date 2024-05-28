@@ -329,21 +329,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           <DropdownItem>
                             <Link
                               className="w-100 d-flex align-items-center"
-                              to="/bmi"
+                              to="/selectTool"
                             >
                               <p className="text-black-custom mb-0">
-                                {t("calculation.bodyMassIndexText")}
-                              </p>
-                            </Link>
-                          </DropdownItem>
-
-                          <DropdownItem>
-                            <Link
-                              className="w-100 d-flex align-items-center"
-                              to="/bmr"
-                            >
-                              <p className="text-black-custom mb-0">
-                                {t("calculation.basalMetabolicRateText")}
+                                {t("calculation.toolText")}
                               </p>
                             </Link>
                           </DropdownItem>
@@ -670,21 +659,10 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                           <NavItem>
                             <Link
                               className=" d-flex align-items-center"
-                              to="/bmi"
+                              to="/selectTool"
                             >
                               <p className="mb-0">
-                                {t("calculation.bodyMassIndexText")}
-                              </p>
-                            </Link>
-                          </NavItem>
-
-                          <NavItem>
-                            <Link
-                              className=" d-flex align-items-center"
-                              to="/bmr"
-                            >
-                              <p className="mb-0">
-                                {t("calculation.basalMetabolicRateText")}
+                                {t("calculation.toolText")}
                               </p>
                             </Link>
                           </NavItem>

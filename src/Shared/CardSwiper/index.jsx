@@ -62,18 +62,22 @@ const CardSwiper = (props) => {
     <Container className="">
       <Row className="mb-5 p-2">
         <Col>
-          <h1 className="text-center fw-bold text-white mt-5"> {heading}</h1>
+          <h1 className="text-center fw-bold text-white mt-5">{heading}</h1>
           <Swiper {...swiperConfiguration} className={"feedbackSwiper"}>
-            {slicedCardsData.map((card, index) => {
+            {slicedCardsData.map((feedback, index) => {
               return (
                 <SwiperSlide
                   key={"_" + index}
                   className={"feedbackSwiperSlider"}
                 >
                   <FeedbackCard
-                    header={card.title}
-                    image={card.sliderImg}
-                    des={card.description}
+                    header={`${feedback?.reviewer_data?.first_name} ${feedback?.reviewer_data?.last_name}`}
+                    image={feedback?.reviewer_data?.profile_pic}
+                    des={
+                      feedback?.platform_review.length > 6
+                        ? feedback?.platform_review.slice(0, 300) + "..."
+                        : feedback?.platform_review
+                    }
                   />
                 </SwiperSlide>
               );

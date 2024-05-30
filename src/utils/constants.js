@@ -80,6 +80,7 @@ export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
 export const LOGOUT_URL = "/logout/";
+export const GET_STATS = "/guest/stats/";
 export const USER_PROFILE_URL = "/User/";
 export const MEMBERSHIP_URL = "/membership/";
 export const REGISTER_URL = "/registeruser/";

@@ -155,7 +155,7 @@ const LandingPage = (props) => {
         </Container>
       </section>
 
-      {feedbacks && (
+      {feedbacks && feedbacks.length > 0 && (
         <>
           <br />
           <section id="swiperSection">

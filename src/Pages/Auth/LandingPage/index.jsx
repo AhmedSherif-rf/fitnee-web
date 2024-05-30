@@ -1,17 +1,35 @@
 import { Container } from "reactstrap";
 import Hero from "../../../Shared/Hero";
 import styles from "./style.module.scss";
-import React, { useCallback } from "react";
 import Footer from "../../../Shared/Footer";
 import Feature from "../../../Shared/Feature";
 import { useTranslation } from "react-i18next";
 import HomeBanner from "../../../Shared/Banner";
 import CardSwiper from "../../../Shared/CardSwiper";
+import { GET_STATS } from "../../../utils/constants";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import AboutSection from "../../../Shared/AboutSection";
+import { getStats } from "../../../Redux/features/Guest/guestApi";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const LandingPage = (props) => {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation("");
+  const { feedbacks } = useSelector((state) => state.guest);
+
+  useEffect(() => {
+    fetchStats();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchStats = () => {
+    const data = {
+      apiEndpoint: GET_STATS,
+    };
+
+    dispatch(getStats(data));
+  };
 
   const FeaturesTextData = useCallback(() => {
     return [
@@ -104,65 +122,6 @@ const LandingPage = (props) => {
     },
   ];
 
-  const SwiperCardsData = useCallback(() => {
-    return [
-      {
-        sliderImg: Images.GOAL_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.GOAL_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.GOAL_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.GOAL_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.GOAL_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: t("landing.swiperText"),
-
-        title: "Zorawar",
-      },
-    ];
-  }, [t]);
-
   return (
     <div className="bg-black">
       <section id="bannerSection" style={{ direction: i18n.dir() }}>
@@ -196,13 +155,14 @@ const LandingPage = (props) => {
         </Container>
       </section>
 
-      {/* <br />
-      <section id="swiperSection">
-        <CardSwiper
-          data={SwiperCardsData()}
-          heading={t("landing.feedbackText")}
-        />
-        </section> */}
+      {feedbacks && (
+        <>
+          <br />
+          <section id="swiperSection">
+            <CardSwiper data={feedbacks} heading={t("landing.feedbackText")} />
+          </section>
+        </>
+      )}
 
       <Footer />
     </div>

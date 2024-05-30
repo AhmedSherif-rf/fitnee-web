@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import styles from "./style.module.scss";
 import FillBtn from "../Buttons/FillBtn";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import CounterUp from "../../Shared/CounterUp/";
@@ -8,8 +9,9 @@ import React, { memo, useCallback } from "react";
 import { Col, Container, Row } from "reactstrap";
 
 const HomeBanner = () => {
-  const { t, i18n } = useTranslation("");
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation("");
+  const { userCount } = useSelector((state) => state.guest);
 
   const bannerText = [
     { type: "heading1", text: t("landing.embraceAText") },
@@ -111,21 +113,33 @@ const HomeBanner = () => {
               style={{ bottom: 0, right: 0 }}
             >
               <div className={"p-sm-2 mx-4 text-center lh-2 mb-2"}>
-                <CounterUp start={0} end={500} duration={2} />
+                <CounterUp
+                  start={0}
+                  end={userCount?.trainerCount}
+                  duration={2}
+                />
                 <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
                   {t("landing.trainersText")}
                 </p>
               </div>
               <span className={"fs-1 text-secondary"}>|</span>
               <div className={"p-sm-2 mx-4 text-center lh-2 mb-2"}>
-                <CounterUp start={0} end={1000} duration={4} />
+                <CounterUp
+                  start={0}
+                  end={userCount?.traineeCount}
+                  duration={4}
+                />
                 <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
                   {t("landing.traineesText")}
                 </p>
               </div>
               <span className={"fs-1 text-secondary"}>|</span>
               <div className="p-sm-2 mx-2 text-center lh-2 mb-2">
-                <CounterUp start={0} end={2000} duration={5} />
+                <CounterUp
+                  start={0}
+                  end={userCount?.nutritionistCount}
+                  duration={5}
+                />
                 <p className="text-secondary fw-bold fs-md-5 fs-sm-3">
                   {t("landing.nutritionistsText")}
                 </p>

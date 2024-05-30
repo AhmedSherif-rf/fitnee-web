@@ -1,11 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getServiceProviderGuestMode, getServiceProviderProfile } from "./guestApi";
+import {
+  getStats,
+  getServiceProviderProfile,
+  getServiceProviderGuestMode,
+} from "./guestApi";
 
 export const guestSlice = createSlice({
   name: "guest",
   initialState: {
-    loading: "idle",
     error: null,
+    loading: "idle",
+    userCount: null,
+    feedbacks: null,
   },
   extraReducers: (builder) => {
     builder
@@ -26,6 +32,15 @@ export const guestSlice = createSlice({
       })
       .addCase(getServiceProviderProfile.rejected, (state) => {
         state.loading = "failed";
+      })
+      .addCase(getStats.fulfilled, (state, action) => {
+        const data = action.payload.data;
+        state.userCount = {
+          traineeCount: data?.trainee_count?.trainee_count,
+          trainerCount: data?.trainer_count?.trainer_count,
+          nutritionistCount: data?.nutritionist_count?.trainer_count,
+        };
+        state.feedbacks = data?.platform_reviews?.platform_reviews;
       });
   },
 });

@@ -107,7 +107,9 @@ const ServiceProviders = (props) => {
                     ? "bg-danger"
                     : serviceProvider?.is_approved
                     ? "bg-success"
-                    : "bg-warning"
+                    : !serviceProvider?.is_active
+                    ? "bg-warning"
+                    : "bg-success"
                 } rounded-circle`}
                 style={{ minWidth: "8px", minHeight: "8px" }}
               ></div>
@@ -118,7 +120,9 @@ const ServiceProviders = (props) => {
                   ? "Rejected"
                   : serviceProvider?.is_approved
                   ? "Approved"
-                  : "Incomplete Profile"}
+                  : !serviceProvider?.is_active
+                  ? "Incomplete Profile"
+                  : "Profile Completed"}
               </span>
             </div>
           ),

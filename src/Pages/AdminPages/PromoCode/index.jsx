@@ -85,6 +85,7 @@ const PromoCode = (props) => {
       setTableData([]);
     }
   }, [promoCodeData]);
+  
   const columns = [
     { label: "ID", dataKey: "id", align: "center" },
     { label: "Code", dataKey: "code" },

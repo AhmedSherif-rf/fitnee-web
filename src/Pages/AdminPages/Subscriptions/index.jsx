@@ -107,9 +107,9 @@ const Subscriptions = (props) => {
             </p>
           ),
           duration: (
-            <div>{`${moment(subscription?.subscription?.created_at).format(
+            <div>{`${moment(subscription?.created_at).format(
               "DD/MM/YYYY"
-            )} - ${moment(subscription?.subscription?.expire_date).format(
+            )} - ${moment(subscription?.expire_date).format(
               "DD/MM/YYYY"
             )}`}</div>
           ),

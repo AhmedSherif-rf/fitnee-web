@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  getSubscription,
   getTraineeListing,
   userBlockUnblock,
   getTraineeDetail,
@@ -68,6 +69,17 @@ export const userListingSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(getExerciseSubscription.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getSubscription.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getSubscription.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(getSubscription.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

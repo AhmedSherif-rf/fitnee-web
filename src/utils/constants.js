@@ -121,6 +121,7 @@ export const CHECK_PAYMENT_STATUS_URL = "/payment/hyperpay_status/";
 export const ADMIN_REVIEW_REQUEST_URL = "/service_provider_requests";
 export const TRANSACTION_HISTORY_URL = "/wallet/wallet_transitions/";
 export const GUEST_SUBSCRIPTION_PLAN_URL = "/guest/service_subscription";
+export const ADMIN_SUBSCRIPTION_LISTING_URL = "/admin/total-subscription";
 export const GUEST_SERVICE_PROVIDER_LISTING_URL = "/guest/serviceprovide";
 export const GUEST_SERVICE_PROVIDER_PROFILE_URL = "/guest/serviceprovide";
 export const ADMIN_REJECT_REVIEW_REQUEST_URL = "/service_provider_reject/";

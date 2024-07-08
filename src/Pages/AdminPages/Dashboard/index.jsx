@@ -1,5 +1,4 @@
 import moment from "moment";
-import { Link } from "react-router-dom";
 import Styles from "./style.module.scss";
 import Rating from "../../../Shared/Rating";
 import Checkbox from "../../../Shared/Checkbox";
@@ -7,6 +6,7 @@ import { RiReservedFill } from "react-icons/ri";
 import { PiHandCoinsFill } from "react-icons/pi";
 import { Container, Row, Col } from "reactstrap";
 import { GiWeightLiftingUp } from "react-icons/gi";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import BarChart from "../../../Shared/Chart/Barchart";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,6 +31,7 @@ import {
 
 const Dashboard = (props) => {
   const dispatch = useDispatch();
+  const naviagte = useNavigate();
   const [spFeedbacks, setSpFeedbacks] = useState([]);
   const [counterData, setCounterData] = useState("");
   const [filterData, setFilterData] = useState({
@@ -368,6 +369,16 @@ const Dashboard = (props) => {
     });
   };
 
+  const handleSubscriptionsClick = () => {
+    const filterParam = filterData?.day
+      ? "day"
+      : filterData?.month
+      ? "month"
+      : "overall";
+
+    naviagte(`/admin/subscriptions/${filterParam}`);
+  };
+
   const populateCategoryGraphData = (data) => {
     const labels = data?.map((item) => item.goal_name);
 
@@ -504,14 +515,16 @@ const Dashboard = (props) => {
           </Link>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
-          <DashboardCard
-            AdminClass="AdminCard"
-            CardBodyClass="AdminCardBody"
-            cardIconClass="cardIcon"
-            cardIcon={<FaUsers size={65} />}
-            textOne={counterData?.total_subscriptions_count}
-            textTwo="Subscriptions"
-          />
+          <div className="cursorPointer" onClick={handleSubscriptionsClick}>
+            <DashboardCard
+              AdminClass="AdminCard"
+              CardBodyClass="AdminCardBody"
+              cardIconClass="cardIcon"
+              cardIcon={<FaUsers size={65} />}
+              textOne={counterData?.total_subscriptions_count}
+              textTwo="Subscriptions"
+            />
+          </div>
         </Col>
         <Col xl={3} lg={4} md={6} className="mb-3">
           <Link

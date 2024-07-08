@@ -99,6 +99,12 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
+    path: "/admin/subscriptions/:date",
+    component: lazy(() => import("../Pages/AdminPages/Subscriptions")),
+    exact: true,
+    role: adminRole,
+  },
+  {
     path: "/admin/settings",
     component: lazy(() => import("../Pages/AdminPages/Settings")),
     exact: true,

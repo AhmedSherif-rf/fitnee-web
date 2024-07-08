@@ -2,7 +2,8 @@ import { Container } from "reactstrap";
 import React, { useEffect } from "react";
 import styles from "./style.module.scss";
 import TopBar from "../../../Shared/TopBar";
-import { useLocation } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa6";
+import { useLocation, Link } from "react-router-dom";
 
 const GeneralLayout = (props) => {
   const { pathname } = useLocation();
@@ -23,6 +24,17 @@ const GeneralLayout = (props) => {
           isPrivate={props.isPrivate}
           isAuth={props.isAuth}
         />
+        <button
+          className={`rounded-circle position-fixed ${styles.whatsappBtnOverlay} bottom-0 m-3  z-3  border-0 shadow-md p-2`}
+        >
+          <Link
+            className="text-decoration-none"
+            to="https://wa.me/+966549836605"
+            target="_blank"
+          >
+            <FaWhatsapp className="text-white" size="30px" />
+          </Link>
+        </button>
         <Container
           fluid
           className={`p-0 ${

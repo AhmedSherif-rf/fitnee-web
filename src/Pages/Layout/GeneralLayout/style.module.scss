@@ -6,6 +6,10 @@
   @include bgProperties;
   height: 100vh;
   max-height: auto;
+
+  .whatsappBtnOverlay {
+    background-color: $green;
+  }
 }
 
 .lightBg {

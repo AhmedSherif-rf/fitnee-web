@@ -15,6 +15,19 @@ export const getPromoCodeList = createAsyncThunk(
   }
 );
 
+export const getToolRecords = createAsyncThunk(
+  "getToolRecords",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const createPromoCodeList = createAsyncThunk(
   "createPromoCodeList",
   async ({ apiEndpoint, requestData }, thunkAPI) => {

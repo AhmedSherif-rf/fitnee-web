@@ -129,7 +129,7 @@ const TraineeList = (props) => {
                   : trainee?.is_blocked
                   ? "Blocked"
                   : trainee?.is_active
-                  ? "Active"
+                  ? "Registered"
                   : "Incomplete Profile"}
               </span>
             </div>

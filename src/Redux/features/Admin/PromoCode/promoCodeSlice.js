@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPromoCodeList, createPromoCodeList } from "./promoCodeApi";
+import {
+  getPromoCodeList,
+  createPromoCodeList,
+  getToolRecords,
+} from "./promoCodeApi";
 
 export const promoCodeSlice = createSlice({
   name: "promoCode",
@@ -20,7 +24,6 @@ export const promoCodeSlice = createSlice({
         state.loading = "failed";
         state.error = action.payload.error;
       })
-
       .addCase(createPromoCodeList.pending, (state) => {
         state.loading = "pending";
       })
@@ -28,6 +31,16 @@ export const promoCodeSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(createPromoCodeList.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getToolRecords.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getToolRecords.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getToolRecords.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

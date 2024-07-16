@@ -1,4 +1,5 @@
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FaGift, FaUsers } from "react-icons/fa6";
 import React, { useEffect, useState } from "react";
@@ -66,18 +67,23 @@ const PromoCode = (props) => {
       let promoCodeArray = [];
       promoCodeData.forEach((promoCode) => {
         promoCodeArray.push({
-          id: <h6 className="text-secondary fw-bold mb-0">{promoCode.id}</h6>,
-          code: promoCode.code,
-          type: promoCode.type,
+          id: <h6 className="text-secondary fw-bold mb-0">{promoCode?.id}</h6>,
+          code: (
+            <Link to={`/admin/promoCode/users/${promoCode?.id}`}>
+              {promoCode.code}
+            </Link>
+          ),
+          type: promoCode?.type,
           value: (
             <p>
-              {promoCode.type === "flat"
-                ? `${CURRENCY} ${promoCode.value}`
-                : `${promoCode.value}%`}
+              {promoCode?.type === "flat"
+                ? `${CURRENCY} ${promoCode?.value}`
+                : `${promoCode?.value}%`}
             </p>
           ),
-          limited_users: promoCode.limited_users,
-          expire_date: promoCode.expire_date,
+          limited_users: promoCode?.limited_users,
+          total_users: promoCode?.total_users,
+          expire_date: promoCode?.expire_date,
         });
       });
       setTableData(promoCodeArray);
@@ -85,13 +91,14 @@ const PromoCode = (props) => {
       setTableData([]);
     }
   }, [promoCodeData]);
-  
+
   const columns = [
     { label: "ID", dataKey: "id", align: "center" },
     { label: "Code", dataKey: "code" },
     { label: "Type", dataKey: "type" },
     { label: "Value", dataKey: "value" },
     { label: "User Limit", dataKey: "limited_users", align: "center" },
+    { label: "Total Users", dataKey: "total_users", align: "center" },
     { label: "Expire Date", dataKey: "expire_date", align: "center" },
   ];
 
@@ -169,7 +176,7 @@ const PromoCode = (props) => {
                           value={values.value}
                           onBlurHandle={handleBlur}
                           onChangeHandle={(e) => {
-                            if (e.target.value <= 50) {
+                            if (e.target.value <= 80) {
                               setFieldValue("value", e.target.value);
                             }
                           }}

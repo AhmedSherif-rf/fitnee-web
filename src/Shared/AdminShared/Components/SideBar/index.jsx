@@ -93,6 +93,21 @@ const SideBar = ({ isOpen, toggle }) => {
           />
           <NavItem>
             <NavLink
+              onClick={isSmallScreen ? toggle : undefined}
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/toolRecords"
+                  ? "AdminActive"
+                  : ""
+              }`}
+              tag={Link}
+              to={"/admin/toolRecords"}
+            >
+              <MdOutlineReviews />
+              BMI/BMR Records
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
               className={`py-3 d-flex align-items-center gap-2 ${
                 location.pathname === "/admin/exercises/viewExercises"
                   ? "AdminActive"

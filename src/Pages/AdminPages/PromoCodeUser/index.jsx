@@ -14,6 +14,7 @@ const ToolRecord = () => {
   const dispatch = useDispatch();
   const { promoCodeId } = useParams();
   const [tableData, setTableData] = useState([]);
+  const [totalDiscount, setTotalDiscount] = useState(0);
   const [promoCodeData, setPromoCodeData] = useState(null);
   const { loading } = useSelector((state) => state.promoCode);
 
@@ -29,6 +30,7 @@ const ToolRecord = () => {
 
     dispatch(getToolRecords(data)).then((res) => {
       if (res.type === "getToolRecords/fulfilled") {
+        setTotalDiscount(res?.payload?.data?.total_discounted_amount);
         setPromoCodeData(res?.payload?.data?.usages);
       }
     });
@@ -93,9 +95,7 @@ const ToolRecord = () => {
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">
-            <div>{`Total Amount : SAR ${
-              promoCodeData?.total_discounted_amount || 0
-            }`}</div>
+            <div>{`Total Amount : SAR ${totalDiscount}`}</div>
           </CardFooter>
         </Card>
       </Col>

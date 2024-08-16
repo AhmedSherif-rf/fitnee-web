@@ -359,7 +359,7 @@ export const CHANGE_PASSWORD_SCHEMA = Yup.object().shape({
 });
 
 export const FORGOT_PASSWORD_SCHEMA = Yup.object().shape({
-  email: emailValidation,
+  phone_number: phoneNumberValidaton,
 });
 
 export const NEW_PASSWORD_SCHEMA = Yup.object().shape({

@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
-import { setEmail } from "../../Redux/features/User/userSlice";
+import { setPhoneNumber } from "../../Redux/features/User/userSlice";
 import { Card, CardBody, CardHeader, Col, Container, Row } from "reactstrap";
 import {
   resendOtp,
@@ -25,8 +25,8 @@ const OTPVerification = () => {
   const [otp, setOtp] = useState("");
   const { t, i18n } = useTranslation("");
   const [timer, setTimer] = useState({ minutes: 1, seconds: 59 });
-  const { email: userEmail } = useSelector((state) => state.user);
-  const { email: forgotPasswordEmail, loading } = useSelector(
+  const { phone_number: userPhoneNumber } = useSelector((state) => state.user);
+  const { phone_number: forgotPasswordPhoneNumber, loading } = useSelector(
     (state) => state.forgotPassword
   );
 
@@ -50,20 +50,21 @@ const OTPVerification = () => {
   }, [timer]);
 
   const handleNextClick = () => {
-    let email = "";
+    let phone_number = "";
     if (type === "forgotPassword" || type === "signUp") {
-      email = type === "forgotPassword" ? forgotPasswordEmail : userEmail;
+      phone_number =
+        type === "forgotPassword" ? forgotPasswordPhoneNumber : userPhoneNumber;
     }
     const data = {
       apiEndpoint: FORGOT_PASSWORD_VERIFY_URL,
-      requestData: JSON.stringify({ email, otp }),
+      requestData: JSON.stringify({ phone_number, otp }),
     };
     dispatch(verifyOtp(data)).then((res) => {
       if (res.type === "verifyOtp/fulfilled") {
         if (type === "forgotPassword") {
           navigate("/changePassword");
         } else {
-          dispatch(setEmail(""));
+          dispatch(setPhoneNumber(""));
           if (res?.payload?.data?.request_id) {
             navigate(
               `/serviceProvider/appDownloadLink/${res.payload.data.request_id}`
@@ -77,15 +78,16 @@ const OTPVerification = () => {
   };
 
   const handleResendClick = () => {
-    let email = "";
+    let phone_number = "";
     if (type === "forgotPassword" || type === "signUp") {
-      email = type === "forgotPassword" ? forgotPasswordEmail : userEmail;
+      phone_number =
+        type === "forgotPassword" ? forgotPasswordPhoneNumber : userPhoneNumber;
     }
     if (timer.seconds === 0 && timer.minutes === 0) {
       if (type === "forgotPassword" || type === "signUp") {
         const data = {
           apiEndpoint: FORGOT_PASSWORD_RESEND_OTP_URL,
-          requestData: JSON.stringify({ email }),
+          requestData: JSON.stringify({ phone_number }),
         };
         dispatch(resendOtp(data)).then((res) => {
           if (res.type === "resendOtp/fulfilled") {

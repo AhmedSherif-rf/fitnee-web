@@ -20,7 +20,10 @@ export const login = createAsyncThunk(
       ) {
         Toaster.error(error?.response?.data?.error?.Message);
       }
-      return thunkAPI.rejectWithValue({ statusCode: error.response.status });
+      return thunkAPI.rejectWithValue({
+        statusCode: error.response.status,
+        phone_number: error?.response?.data?.error?.phone_number,
+      });
     }
   }
 );
@@ -61,7 +64,7 @@ export const signUp = createAsyncThunk(
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
       Toaster.success(TranslationHelper("messages.otpSendText", false));
-      return response.data.data.email;
+      return response.data.data.phone_number;
     } catch (error) {
       if (error?.response?.data?.error?.email) {
         Toaster.error(error?.response?.data?.error?.email[0]);

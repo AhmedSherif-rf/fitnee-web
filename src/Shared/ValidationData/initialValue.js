@@ -157,7 +157,7 @@ export const CHANGE_PASSWORD_INITIAL_VALUES = {
 };
 
 export const FORGOT_PASSWORD_INITIAL_VALUES = {
-  email: "",
+  phone_number: "",
 };
 
 export const NEW_PASSWORD_INITIAL_VALUES = {

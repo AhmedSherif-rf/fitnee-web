@@ -11,9 +11,9 @@ import { login } from "../../Redux/features/User/userApi";
 import React, { memo, useCallback, useState } from "react";
 import { SIGNIN_SCHEMA } from "../ValidationData/validation";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
-import { setEmail } from "../../Redux/features/User/userSlice";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { setPhoneNumber } from "../../Redux/features/User/userSlice";
 import { SIGNIN_INITIAL_VALUES } from "../ValidationData/initialValue";
 import {
   Card,
@@ -81,7 +81,7 @@ const SignInForm = () => {
         Toaster.success(t("messages.loggedInText"));
       } else if (res.type === "login/rejected") {
         if (res?.payload?.statusCode === FORBIDDEN_CODE) {
-          dispatch(setEmail(values.email));
+          dispatch(setPhoneNumber(res?.payload?.phone_number));
           navigate("/verifyOtp/signUp");
         } else if (res?.payload?.statusCode === PRECONDITION_REQUIRED_CODE) {
           setAccountRequestModalErrorText(t("login.requestUnderProcessText"));

@@ -30,7 +30,7 @@ export const userSlice = createSlice({
     isGuest: false,
     loading: "idle",
     error: null,
-    email: "",
+    phone_number: "",
     unReadCount: 0,
     notifications: [],
     notificationCount: 0,
@@ -40,8 +40,8 @@ export const userSlice = createSlice({
     setGuest: (state, action) => {
       state.isGuest = action.payload;
     },
-    setEmail: (state, action) => {
-      state.email = action.payload;
+    setPhoneNumber: (state, action) => {
+      state.phone_number = action.payload;
     },
     customLogout: (state) => {
       state.user = null;
@@ -94,7 +94,7 @@ export const userSlice = createSlice({
       })
       .addCase(signUp.fulfilled, (state, action) => {
         state.loading = "succeeded";
-        state.email = action.payload;
+        state.phone_number = action.payload;
       })
       .addCase(signUp.rejected, (state) => {
         state.loading = "failed";
@@ -262,7 +262,7 @@ export const userSlice = createSlice({
 
 export const {
   setGuest,
-  setEmail,
+  setPhoneNumber,
   customLogout,
   setFcmToken,
   setShownAppModal,

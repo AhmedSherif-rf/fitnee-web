@@ -1,8 +1,8 @@
 import { Formik } from "formik";
-import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
+import PhoneInputField from "../PhoneInputField";
 import React, { memo, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -17,7 +17,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import { FORGOT_PASSWORD_OTP_URL } from "../../utils/constants";
-import Images from "../../HelperMethods/Constants/ImgConstants";
 import { FORGOT_PASSWORD_SCHEMA } from "../ValidationData/validation";
 import { FORGOT_PASSWORD_INITIAL_VALUES } from "../ValidationData/initialValue";
 import { forgotPassword } from "../../Redux/features/ForgotPassword/forgotPasswordApi";
@@ -36,7 +35,7 @@ const ForgotPasswordForm = () => {
     const data = {
       apiEndpoint: FORGOT_PASSWORD_OTP_URL,
       requestData: JSON.stringify(values),
-      email: values.email,
+      phone_number: values.phone_number,
     };
     dispatch(forgotPassword(data)).then((res) => {
       if (res.type === "forgotPassword/fulfilled") {
@@ -58,14 +57,7 @@ const ForgotPasswordForm = () => {
               handleForgotPasswordSubmit(values);
             }}
           >
-            {({
-              values,
-              errors,
-              touched,
-              handleBlur,
-              handleChange,
-              handleSubmit,
-            }) => (
+            {({ values, errors, touched, handleSubmit, setFieldValue }) => (
               <Form onSubmit={handleSubmit}>
                 <Card className="py-md-5 py-2 px-3 border-0 bg-white onlyBorderRadius mb-2 ">
                   <CardHeader className="border-0 bg-transparent my-md-3">
@@ -74,21 +66,27 @@ const ForgotPasswordForm = () => {
                     </h1>
                   </CardHeader>
                   <CardBody className="customPadding">
-                    <InputField
-                      type="email"
-                      name="email"
-                      placeholder={t("forgotPassword.emailText")}
-                      onChangeHandle={handleChange}
-                      onBlurHandle={handleBlur}
-                      value={values.email}
-                      icon={<img src={Images.EMAIL_ICON} alt="email-icon" />}
-                      className={"form-control-lg BorderRadiusInput py-3 px-5"}
+                    <PhoneInputField
+                      inputProps={{
+                        name: "phone_number",
+                        required: true,
+                        className:
+                          "form-control-lg w-100  py-3 px-4 customPhoneInput border",
+                      }}
+                      defaultCountry={"sa"}
+                      value={values.stc_pay}
+                      setFieldValue={setFieldValue}
                     />
                     <p className="errorField">
-                      {t(errors.email) && touched.email && t(errors.email)}
+                      {t(errors.phone_number) &&
+                        touched.phone_number &&
+                        t(errors.phone_number)}
                     </p>
                     <div className="my-3">
-                      <Link to="/signIn" className="text-black-custom fw-bolder">
+                      <Link
+                        to="/signIn"
+                        className="text-black-custom fw-bolder"
+                      >
                         {t("forgotPassword.knowMyPasswordText")}
                       </Link>
                     </div>

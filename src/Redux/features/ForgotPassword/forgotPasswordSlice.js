@@ -12,7 +12,7 @@ export const forgotPasswordSlice = createSlice({
     loading: "idle",
     error: null,
     success: null,
-    email: "",
+    phone_number: "",
   },
   extraReducers: (builder) => {
     builder
@@ -22,7 +22,7 @@ export const forgotPasswordSlice = createSlice({
       .addCase(forgotPassword.fulfilled, (state, action) => {
         state.success = true;
         state.loading = "succeeded";
-        state.email = action.payload;
+        state.phone_number = action.payload;
       })
       .addCase(forgotPassword.rejected, (state, action) => {
         state.loading = "failed";
@@ -54,7 +54,7 @@ export const forgotPasswordSlice = createSlice({
         state.loading = "pending";
       })
       .addCase(newPassword.fulfilled, (state, action) => {
-        state.email = "";
+        state.phone_number = "";
         state.success = true;
         state.loading = "succeeded";
       })

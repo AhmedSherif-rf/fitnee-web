@@ -5,13 +5,13 @@ import { SUCCESS_CODES } from "../../../utils/constants";
 
 export const forgotPassword = createAsyncThunk(
   "forgotPassword",
-  async ({ apiEndpoint, requestData, email }, thunkAPI) => {
+  async ({ apiEndpoint, requestData, phone_number }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
       if (SUCCESS_CODES.includes(response.status)) {
         Toaster.success(response?.data?.data?.Message);
       }
-      return email;
+      return phone_number;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.Message);
       return thunkAPI.rejectWithValue(error?.response?.data);

@@ -759,7 +759,7 @@
   },
   "otpVerification": {
     "verificationText": "Verification",
-    "openYourEmailText": "Open your email and insert the code",
+    "openYourEmailText": "Please enter the code receiving by SMS",
     "resendCodeInText": "The remaining time ",
     "resendCodeText": "Resend Code",
     "invalidOtpModalText": "You entered an Invalid OTP, please try again",

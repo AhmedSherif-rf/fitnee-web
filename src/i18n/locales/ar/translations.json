@@ -735,7 +735,7 @@
   },
   "otpVerification": {
     "verificationText": "ﺍﻟﺘﺤﻘﻖ",
-    "openYourEmailText": "الرجاء التحقق من الرمز المرسل لبريدك الإلكتروني",
+    "openYourEmailText": "الرجاء إدخال الرمز المرسل عبر الرسائل النصية",
     "resendCodeInText": "الوقت المتبقي",
     "resendCodeText": "ﺇﻋﺎﺩﺓ ﺇﺭﺳﺎﻝ ﺍﻟﺮﻣﺰ",
     "invalidOtpModalText": "ﺍﻟﺮﻣﺰ ﺍﻟﻤﺪﺧﻞ ﻏﻴﺮ ﺻﺤﻴﺢ، ﺍﻟﺮﺟﺎء ﺍﻟﻤﺤﺎﻭﻟﺔ ﻣﺮﻩ ﺃﺧﺮﻯ",

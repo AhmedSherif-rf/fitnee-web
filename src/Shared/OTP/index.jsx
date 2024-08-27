@@ -87,7 +87,7 @@ const OTPVerification = () => {
       if (type === "forgotPassword" || type === "signUp") {
         const data = {
           apiEndpoint: FORGOT_PASSWORD_RESEND_OTP_URL,
-          requestData: JSON.stringify({ phone_number }),
+          requestData: JSON.stringify({ phone_number, type }),
         };
         dispatch(resendOtp(data)).then((res) => {
           if (res.type === "resendOtp/fulfilled") {

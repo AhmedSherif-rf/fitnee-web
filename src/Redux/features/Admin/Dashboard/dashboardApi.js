@@ -23,6 +23,7 @@ export const getCategoryWiseGraphData = createAsyncThunk(
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.Message);
+      window.location.replace("/");
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

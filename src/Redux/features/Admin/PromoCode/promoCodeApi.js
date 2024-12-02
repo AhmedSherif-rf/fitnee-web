@@ -36,7 +36,7 @@ export const createPromoCodeList = createAsyncThunk(
       Toaster.success("Promo code created successfully");
       return response.data;
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.Message);
+      Toaster.error(error?.response?.data?.error?.Errors?.code?.[0]);
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

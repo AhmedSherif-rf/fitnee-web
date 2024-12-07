@@ -62,7 +62,7 @@ const OTPVerification = () => {
     dispatch(verifyOtp(data)).then((res) => {
       if (res.type === "verifyOtp/fulfilled") {
         if (type === "forgotPassword") {
-          navigate("/changePassword");
+          navigate(`/changePassword?phone_number=${phone_number}`);
         } else {
           dispatch(setPhoneNumber(""));
           if (res?.payload?.data?.request_id) {

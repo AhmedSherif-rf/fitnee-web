@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import InputField from "../InputField";
 import FillBtn from "../Buttons/FillBtn";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import OutlineBtn from "../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
 import React, { memo, useCallback } from "react";
@@ -27,15 +27,26 @@ const NewPasswordForm = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation("");
   const { loading, email } = useSelector((state) => state.forgotPassword);
+  const [searchParams] = useSearchParams();
+  const phone_number = searchParams.get("phone_number");
 
   const handleCancelClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
 
   const handleNewPasswordSubmit = (values) => {
+    const requestData = {
+      ...values,
+      email,
+    };
+
+    if (phone_number) {
+      requestData.phone_number = phone_number;
+    }
+
     const data = {
       apiEndpoint: NEW_PASSWORD_URL,
-      requestData: JSON.stringify({ ...values, email }),
+      requestData: JSON.stringify(requestData),
     };
     dispatch(newPassword(data)).then((res) => {
       if (res.type === "newPassword/fulfilled") {

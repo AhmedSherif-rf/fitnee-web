@@ -150,6 +150,7 @@ const phoneNumberValidaton = Yup.string().required(
 );
 
 const dobValidation = Yup.date()
+  .min(new Date("1950"), "Date of Birth cannot be before 1950")
   .max(new Date(), "Date of Birth cannot be in the future")
   .required("validation.requiredDOBText");
 
@@ -293,7 +294,7 @@ export const TRAINEE_EDIT_PROFILE_SCHEMA = Yup.object().shape({
   last_name: Yup.string(),
   first_name: Yup.string(),
   phone_number: Yup.string(),
-  date_of_birth: Yup.string(),
+  date_of_birth: dobValidation,
   body_images: profilePicValidation,
   profile_pic: profilePicValidation,
 });

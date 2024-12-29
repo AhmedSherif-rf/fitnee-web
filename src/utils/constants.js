@@ -158,6 +158,7 @@ export const UPDATE_PROFILE_REQUEST_LISTING_URL =
   "/admin/profile-update-request/";
 export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
   "/serviceprovider_logged_in";
+export const ADMIN_COACH_PROFILE_URL = "/coachfitnee/userId";
 export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
   "/admin/service-providers/userId/";
 //=================StatusCodes===================

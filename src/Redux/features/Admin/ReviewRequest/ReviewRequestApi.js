@@ -28,6 +28,19 @@ export const getServiceProviderDetail = createAsyncThunk(
   }
 );
 
+export const getCoachDetail = createAsyncThunk(
+  "getCoachDetail",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response?.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const approveReviewRequest = createAsyncThunk(
   "approveReviewRequest",
   async ({ apiEndpoint, requestData }, thunkAPI) => {

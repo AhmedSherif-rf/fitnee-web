@@ -144,16 +144,16 @@ const Dashboard = (props) => {
         apiEndpoint: `${ADMIN_DASHBOARD_COUNTERS}?date=${filterParam}`,
       };
 
-      dispatch(getUserStat(data)).then((res) => {
-        if (res.type === "getUserStat/fulfilled") {
-          setCounterData(res.payload.data);
-          setReviewRequests(res.payload.data.service_provider);
-          setPlatformFeedbacks(res.payload.data.platform_review);
-          setSpFeedbacks(res.payload.data.profile_review);
-          populateUserTrendGraphData(res.payload.data);
-          populateUserTotalitiesGraphData(res.payload.data);
-        }
-      });
+      // dispatch(getUserStat(data)).then((res) => {
+      //   if (res.type === "getUserStat/fulfilled") {
+      //     setCounterData(res.payload.data);
+      //     setReviewRequests(res.payload.data.service_provider);
+      //     setPlatformFeedbacks(res.payload.data.platform_review);
+      //     setSpFeedbacks(res.payload.data.profile_review);
+      //     populateUserTrendGraphData(res.payload.data);
+      //     populateUserTotalitiesGraphData(res.payload.data);
+      //   }
+      // });
     };
 
     fetchData();
@@ -328,9 +328,8 @@ const Dashboard = (props) => {
     const nutritionistsData = data?.nutritionists_monthly_counts?.map(
       (item) => item.count
     );
-    const exercise_subscriptions_monthly_counts = data?.exercise_subscriptions_monthly_counts?.map(
-      (item) => item.count
-    );
+    const exercise_subscriptions_monthly_counts =
+      data?.exercise_subscriptions_monthly_counts?.map((item) => item.count);
 
     setUserTrendsGraphData({
       labels,

@@ -19,6 +19,7 @@ import {
   getCoachListing,
   userBlockUnblock,
 } from "../../../../Redux/features/Admin/UserListing/userListingApi";
+import FillBtn from "../../../../Shared/Buttons/FillBtn";
 
 const Coach = (props) => {
   const dispatch = useDispatch();
@@ -47,7 +48,7 @@ const Coach = (props) => {
     dispatch(getCoachListing(data)).then((res) => {
       if (res.type === "getCoachListing/fulfilled") {
         setSizePages(res.payload.data.count);
-        setCoachData(res.payload.data.results);
+        setCoachData(res.payload.data);
       }
     });
   };
@@ -73,7 +74,7 @@ const Coach = (props) => {
       coachData.forEach((singleCoach, index) => {
         CoachListArray.push({
           full_name: (
-            <Link to={`/admin/serviceProviderProfile/${singleCoach?.uuid}`}>
+            <Link to={`/admin/coach/${singleCoach?.id}`}>
               <div className="d-md-flex align-items-center">
                 <div
                   className="bgProperties rounded-circle me-2 mb-2"
@@ -96,7 +97,6 @@ const Coach = (props) => {
           ),
           role: singleCoach?.role,
           email: singleCoach?.email,
-          stc_pay: singleCoach.stc_pay,
           status: (
             <div className="d-flex align-items-center justify-content-center">
               <div
@@ -177,7 +177,6 @@ const Coach = (props) => {
       align: "center",
     },
     { label: "Email", dataKey: "email", align: "center" },
-    { label: "STC Phone No", dataKey: "stc_pay", align: "center" },
     { label: "Status", dataKey: "status", align: "center" },
     { label: "Block / UnBlock", dataKey: "action", align: "center" },
   ];
@@ -192,13 +191,21 @@ const Coach = (props) => {
               <Col md={6}>
                 <PageHeading headingText="Coach List" categoryText="" />
               </Col>
-              <Col md={6} className="mb-3 px-4 mt-2">
+              <Col
+                md={6}
+                className="mb-3 px-4 mt-2 d-flex flex-row gap-3 justify-end"
+              >
+                <FillBtn
+                  className="w-50"
+                  text="Add Coach"
+                  handleOnClick={() => {}}
+                />
                 <PhoneInput
                   inputProps={{
                     name: "stc_pay",
                     required: true,
                     className:
-                      "form-control-lg w-100 py-3 px-4 customPhoneInput border-0",
+                      "form-control-lg py-3 w-75 px-4 customPhoneInput border-0",
                   }}
                   country={"sa"}
                   value={stcPayNumber}

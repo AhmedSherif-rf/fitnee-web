@@ -106,6 +106,7 @@ export const ADMIN_DASHBOARD_COUNTERS = "/admin/user-stats";
 export const FORGOT_PASSWORD_RESEND_OTP_URL = "/resendotp/";
 export const ADMIN_EXERCISE_URL = "/admin/exercise/detail/";
 export const ADMIN_TRAINEE_LISTING_URL = "/admin/trainees/";
+export const ADMIN_COACH_LISTING_URL = "/coachfitnee/";
 export const PENDING_PAYMENTS = "/admin/remaining_payments/";
 export const USER_NOTIFICATIONS_URL = "/user-notifications/";
 export const ADMIN_PROMOCODE_USER_URL = "/admin/promo-codes";

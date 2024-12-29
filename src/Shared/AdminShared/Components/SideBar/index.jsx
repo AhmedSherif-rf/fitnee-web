@@ -95,9 +95,7 @@ const SideBar = ({ isOpen, toggle }) => {
             <NavLink
               onClick={isSmallScreen ? toggle : undefined}
               className={`py-3 d-flex align-items-center gap-2 ${
-                location.pathname === "/admin/toolRecords"
-                  ? "AdminActive"
-                  : ""
+                location.pathname === "/admin/toolRecords" ? "AdminActive" : ""
               }`}
               tag={Link}
               to={"/admin/toolRecords"}
@@ -187,6 +185,10 @@ const submenus = [
     {
       title: "Service Provider List",
       target: "/admin/user/serviceProviderList",
+    },
+    {
+      title: "Coach List",
+      target: "/admin/user/coachList",
     },
     {
       title: "Trainee List",

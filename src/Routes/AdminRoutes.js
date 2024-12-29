@@ -29,6 +29,12 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
+    path: "/admin/user/coachList",
+    component: lazy(() => import("../Pages/AdminPages/User/CoachList")),
+    exact: true,
+    role: adminRole,
+  },
+  {
     path: "/admin/user/traineeList",
     component: lazy(() => import("../Pages/AdminPages/User/TraineeList")),
     exact: true,

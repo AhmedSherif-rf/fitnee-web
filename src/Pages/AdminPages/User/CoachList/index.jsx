@@ -20,16 +20,26 @@ import {
   userBlockUnblock,
 } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import FillBtn from "../../../../Shared/Buttons/FillBtn";
+import AddProgressModal from "../../../../Shared/Modal/AddCoach";
 
 const Coach = (props) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.userListing);
 
+  const [isOpen, setIsOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [totalSize, setSizePages] = useState(0);
   const [tableData, setTableData] = useState([]);
   const [stcPayNumber, setStcPayNumber] = useState("");
   const [coachData, setCoachData] = useState(null);
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
 
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
@@ -198,7 +208,7 @@ const Coach = (props) => {
                 <FillBtn
                   className="w-50"
                   text="Add Coach"
-                  handleOnClick={() => {}}
+                  handleOnClick={handleOpen}
                 />
                 <PhoneInput
                   inputProps={{
@@ -232,6 +242,11 @@ const Coach = (props) => {
           </CardFooter>
         </Card>
       </Col>
+      <AddProgressModal
+        isOpen={isOpen}
+        onClose={handleClose}
+        handleRefetchHistory={fetchCoachListing}
+      />
     </Row>
   );
 };

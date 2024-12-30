@@ -42,6 +42,14 @@ const newPasswordValidation = Yup.string()
   )
   .required("validation.requiredPasswordText");
 
+const coachPasswordValidation = Yup.string()
+  .min(8, "validation.requiredPasswordText")
+  .matches(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/,
+    "validation.invalidPasswordTwoText"
+  )
+  .required("validation.requiredPasswordText");
+
 const certificationValidation = Yup.array()
   .min(1, "validation.requiredMinimumCertificateText")
   .test(
@@ -100,6 +108,10 @@ const confirmNewPasswordValidation = Yup.string()
     [Yup.ref("new_password"), null],
     "validation.invalidConfirmPasswordText"
   )
+  .required("validation.requiredConfirmPasswordText");
+
+const confirmCoachPasswordValidation = Yup.string()
+  .oneOf([Yup.ref("password"), null], "validation.invalidConfirmPasswordText")
   .required("validation.requiredConfirmPasswordText");
 
 const passwordValidation = Yup.string()
@@ -410,6 +422,14 @@ export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
   protien: requiredValidation,
   body_fat_mass: requiredValidation,
   skeletal_muscel_mass: requiredValidation,
+});
+
+export const ADD_COACH_SCHEMA = Yup.object().shape({
+  profile_pic: requiredValidation,
+  email: emailValidation,
+  password: coachPasswordValidation,
+  re_password: confirmCoachPasswordValidation,
+  description: requiredValidation,
 });
 
 export const CONTACT_US_SCHEMA = Yup.object().shape({

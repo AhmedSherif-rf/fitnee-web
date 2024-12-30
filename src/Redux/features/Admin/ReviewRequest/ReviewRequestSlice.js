@@ -4,6 +4,7 @@ import {
   approveReviewRequest,
   rejectReviewRequest,
   getServiceProviderDetail,
+  getCoachDetail,
 } from "./ReviewRequestApi";
 
 export const reviewRequestSlice = createSlice({
@@ -56,6 +57,17 @@ export const reviewRequestSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(getServiceProviderDetail.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getCoachDetail.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getCoachDetail.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(getCoachDetail.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

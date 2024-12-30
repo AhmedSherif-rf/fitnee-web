@@ -908,5 +908,19 @@
     "requiredExerciseVideoText": "Exercise video is required",
     "invalidEndTimeText": "End time must be greater than start time",
     "invalidText": "Invalid"
+  },
+  "coachListing": {
+    "addCoach": "Add Coach",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm Password",
+    "roleLabel": "Role",
+    "descriptionLabel": "Description",
+    "emailPlaceholder": "Enter email",
+    "passwordPlaceholder": "Enter password",
+    "confirmPasswordPlaceholder": "Confirm Coach's password",
+    "rolePlaceholder": "Enter role",
+    "descriptionPlaceholder": "Enter description",
+    "saveText": "Save"
   }
 }

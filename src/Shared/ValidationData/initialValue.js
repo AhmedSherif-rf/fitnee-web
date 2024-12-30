@@ -227,6 +227,17 @@ export const ADD_PROMO_CODE_INITIAL_VALUES = {
   limited_users: "",
 };
 
+export const ADD_COACH_INITIAL_VALUES = {
+  profile_pic: null,
+  email: "",
+  password: "",
+  re_password: "",
+  description: "",
+  role: "",
+  is_active: "",
+  is_approved: "",
+};
+
 export const ADD_PROGRESS_INITIAL_VALUES = {
   weight: "",
   protien: "",

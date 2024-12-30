@@ -515,7 +515,7 @@
     "emailText": "الرجاء كتابة بريدك الالكتروني لارسال التقرير الخاص بك واللذي يحتوي على المعلومات الاساسيه اللتي تحتاجها للوصول لهدفك",
     "nameText": "اسمك (اختياري)",
     "phoneNumberText": "رقم الجوال (اختياري)",
-    "calorieShouldEatText":"عدد السعرات الحرارية اللتي تحتاجها في يومك لخساره الوزن هي ="
+    "calorieShouldEatText": "عدد السعرات الحرارية اللتي تحتاجها في يومك لخساره الوزن هي ="
   },
   "contactUs": {
     "firstNameText": "الأسم ﺍﻷﻭﻝ",
@@ -884,5 +884,19 @@
     "requiredExerciseVideoText": "مطلوب فيديو التمرين",
     "invalidEndTimeText": "وقت الانتهاء يجب أن يكون أكبر من وقت البدء",
     "invalidText": "غير صالح"
+  },
+  "coachListing": {
+    "addCoach": "إضافة مدرب",
+    "emailLabel": "البريد الإلكتروني",
+    "passwordLabel": "كلمة المرور",
+    "confirmPasswordLabel": "تأكيد كلمة المرور",
+    "roleLabel": "الدور",
+    "descriptionLabel": "الوصف",
+    "emailPlaceholder": "أدخل البريد الإلكتروني",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+    "confirmPasswordPlaceholder": "أكد كلمة مرور المدرب",
+    "rolePlaceholder": "أدخل الدور",
+    "descriptionPlaceholder": "أدخل الوصف",
+    "saveText": "حفظ"
   }
 }

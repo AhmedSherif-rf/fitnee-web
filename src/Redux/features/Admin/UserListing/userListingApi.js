@@ -53,6 +53,24 @@ export const AddCoach = createAsyncThunk(
     }
   }
 );
+export const EditCoach = createAsyncThunk(
+  "EditCoach",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.put(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
+      Toaster.error(
+        Object.keys(error?.response?.data?.error)[0] +
+          ": " +
+          Object.values(error?.response?.data?.error)[0]
+      );
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
 
 export const userBlockUnblock = createAsyncThunk(
   "userBlockUnblock",

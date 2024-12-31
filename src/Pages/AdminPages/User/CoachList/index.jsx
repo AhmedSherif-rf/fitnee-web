@@ -20,7 +20,7 @@ import {
   userBlockUnblock,
 } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import FillBtn from "../../../../Shared/Buttons/FillBtn";
-import AddProgressModal from "../../../../Shared/Modal/AddCoach";
+import AddCoachModal from "../../../../Shared/Modal/AddCoach";
 
 const Coach = (props) => {
   const dispatch = useDispatch();
@@ -107,38 +107,38 @@ const Coach = (props) => {
           ),
           role: singleCoach?.role,
           email: singleCoach?.email,
-          status: (
-            <div className="d-flex align-items-center justify-content-center">
-              <div
-                className={`me-2 ${
-                  singleCoach?.is_deleted
-                    ? "bg-danger"
-                    : singleCoach?.is_blocked
-                    ? "bg-danger"
-                    : singleCoach?.is_approved
-                    ? "bg-success"
-                    : !singleCoach?.is_active
-                    ? "bg-warning"
-                    : "bg-success"
-                } rounded-circle`}
-                style={{ minWidth: "8px", minHeight: "8px" }}
-              ></div>
-              <span>
-                {singleCoach?.is_deleted
-                  ? "Deleted"
-                  : singleCoach?.is_blocked
-                  ? "Rejected"
-                  : singleCoach?.is_approved
-                  ? "Approved"
-                  : !singleCoach?.is_active
-                  ? "Incomplete Profile"
-                  : "Profile Completed"}
-              </span>
-            </div>
-          ),
+          // status: (
+          //   <div className="d-flex align-items-center justify-content-center">
+          //     <div
+          //       className={`me-2 ${
+          //         singleCoach?.is_deleted
+          //           ? "bg-danger"
+          //           : singleCoach?.is_blocked
+          //           ? "bg-danger"
+          //           : singleCoach?.is_approved
+          //           ? "bg-success"
+          //           : !singleCoach?.is_active
+          //           ? "bg-warning"
+          //           : "bg-success"
+          //       } rounded-circle`}
+          //       style={{ minWidth: "8px", minHeight: "8px" }}
+          //     ></div>
+          //     <span>
+          //       {singleCoach?.is_deleted
+          //         ? "Deleted"
+          //         : singleCoach?.is_blocked
+          //         ? "Rejected"
+          //         : singleCoach?.is_approved
+          //         ? "Approved"
+          //         : !singleCoach?.is_active
+          //         ? "Incomplete Profile"
+          //         : "Profile Completed"}
+          //     </span>
+          //   </div>
+          // ),
           action: !singleCoach?.is_deleted && (
             <div className="d-flex align-items-center justify-content-md-center">
-              {!singleCoach?.is_blocked && (
+              {singleCoach?.is_active && (
                 <span
                   className={`iconBadge me-1`}
                   id={`userId_${singleCoach?.id}`}
@@ -147,13 +147,13 @@ const Coach = (props) => {
                   <MdOutlinePersonOutline
                     size={25}
                     className={`cursorPointer ${
-                      singleCoach?.is_blocked === false ? "text-success" : ""
+                      singleCoach?.is_active === false ? "text-success" : ""
                     }`}
                   />
                 </span>
               )}
 
-              {singleCoach?.is_blocked && (
+              {!singleCoach?.is_active && (
                 <span
                   className={`iconBadge me-1`}
                   id={`userId_${singleCoach?.id}`}
@@ -162,7 +162,7 @@ const Coach = (props) => {
                   <MdOutlinePersonOff
                     size={25}
                     className={`cursorPointer ${
-                      singleCoach?.is_blocked === true ? "" : "text-danger"
+                      singleCoach?.is_active === true ? "" : "text-danger"
                     }`}
                   />
                 </span>
@@ -187,8 +187,8 @@ const Coach = (props) => {
       align: "center",
     },
     { label: "Email", dataKey: "email", align: "center" },
-    { label: "Status", dataKey: "status", align: "center" },
-    { label: "Block / UnBlock", dataKey: "action", align: "center" },
+    // { label: "Status", dataKey: "status", align: "center" },
+    { label: "Active / Inactive", dataKey: "action", align: "center" },
   ];
 
   return (
@@ -203,14 +203,14 @@ const Coach = (props) => {
               </Col>
               <Col
                 md={6}
-                className="mb-3 px-4 mt-2 d-flex flex-row gap-3 justify-end"
+                className="mb-3 px-4 mt-2 d-flex flex-row gap-3 justify-content-end"
               >
                 <FillBtn
                   className="w-50"
                   text="Add Coach"
                   handleOnClick={handleOpen}
                 />
-                <PhoneInput
+                {/* <PhoneInput
                   inputProps={{
                     name: "stc_pay",
                     required: true,
@@ -224,7 +224,7 @@ const Coach = (props) => {
                     setPage(1);
                     setStcPayNumber(value);
                   }}
-                />
+                /> */}
               </Col>
             </Row>
           </CardHeader>
@@ -242,7 +242,7 @@ const Coach = (props) => {
           </CardFooter>
         </Card>
       </Col>
-      <AddProgressModal
+      <AddCoachModal
         isOpen={isOpen}
         onClose={handleClose}
         handleRefetchHistory={fetchCoachListing}

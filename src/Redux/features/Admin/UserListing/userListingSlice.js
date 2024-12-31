@@ -7,6 +7,7 @@ import {
   getExerciseSubscription,
   getServiceProviderListing,
   getCoachListing,
+  EditCoach,
   AddCoach,
 } from "./userListingApi";
 
@@ -104,6 +105,17 @@ export const userListingSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(AddCoach.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(EditCoach.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(EditCoach.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(EditCoach.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

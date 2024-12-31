@@ -1,48 +1,52 @@
 import { Formik } from "formik";
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import InputField from "../../InputField";
 import FillBtn from "../../Buttons/FillBtn";
 import OutlineBtn from "../../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_COACH } from "../../../utils/constants";
-import { ADD_COACH_SCHEMA } from "../../ValidationData/validation";
-import { AddCoach } from "../../../Redux/features/Admin/UserListing/userListingApi";
+import { EDIT_COACH } from "../../../utils/constants";
+import { EDIT_COACH_SCHEMA } from "../../ValidationData/validation";
+import { EditCoach } from "../../../Redux/features/Admin/UserListing/userListingApi";
 import { Modal, ModalBody, ModalHeader, Label, Form } from "reactstrap";
-import { ADD_COACH_INITIAL_VALUES } from "../../ValidationData/initialValue";
 import UploadPic from "../../UploadPic";
 
-const AddCoachModal = (props) => {
-  const [displayImages, setDisplayImages] = useState("");
+const EditCoachModal = (props) => {
+  const { onClose, isOpen, className, size, coachData, handleRefetchHistory } =
+    props;
 
-  const { onClose, isOpen, className, size, handleRefetchHistory } = props;
+  const [displayImages, setDisplayImages] = useState("");
   const { loading } = useSelector((state) => state.userListing);
   const dispatch = useDispatch();
 
   const { t, i18n } = useTranslation("");
 
-  const handleAddProgressSubmit = async (values) => {
+  const handleEditCoachSubmit = async (values) => {
     const requestData = new FormData();
     requestData.append("profile_pic", values.profile_pic);
     requestData.append("email", values.email);
-    requestData.append("password", values.password);
-    requestData.append("re_password", values.re_password);
+    // requestData.append("password", values.password);
+    // requestData.append("re_password", values.re_password);
     requestData.append("description", values.description);
     requestData.append("role", "coach_fitnee");
-    requestData.append("is_active", "True");
-    requestData.append("is_approved", "True");
+    // requestData.append("is_active", "True");
+    // requestData.append("is_approved", "True");
 
     const data = {
-      apiEndpoint: ADD_COACH,
+      apiEndpoint: EDIT_COACH + coachData.id + "/",
       requestData,
     };
 
-    await dispatch(AddCoach(data)).then((res) => {
-      if (res.type === "AddCoach/fulfilled") {
+    await dispatch(EditCoach(data)).then((res) => {
+      if (res.type === "EditCoach/fulfilled") {
         handleRefetchHistory();
       }
     });
   };
+
+  useEffect(() => {
+    isOpen ? setDisplayImages(coachData?.profile_pic) : setDisplayImages("");
+  }, [isOpen]);
 
   return (
     <Modal
@@ -55,16 +59,15 @@ const AddCoachModal = (props) => {
       className={`${className} ${i18n.dir()}`}
     >
       <ModalHeader className="border-0">
-        <b>{t("coachListing.addCoach")}</b>
+        <b>{t("coachListing.editCoach")}</b>
       </ModalHeader>
       <ModalBody className="px-4">
         <Formik
-          initialValues={{ ...ADD_COACH_INITIAL_VALUES }}
-          validationSchema={ADD_COACH_SCHEMA}
+          initialValues={{ ...coachData }}
+          validationSchema={EDIT_COACH_SCHEMA}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            await handleAddProgressSubmit(values);
-            resetForm({ values: { ...ADD_COACH_INITIAL_VALUES } });
+            await handleEditCoachSubmit(values);
             setDisplayImages("");
             onClose();
           }}
@@ -108,7 +111,7 @@ const AddCoachModal = (props) => {
                   {t(errors.email) && touched.email && t(errors.email)}
                 </p>
               </div>
-              <div className="mb-2">
+              {/* <div className="mb-2">
                 <Label className="fw-normal small mb-0">
                   {`${t("coachListing.passwordLabel")}`}
                 </Label>
@@ -143,7 +146,7 @@ const AddCoachModal = (props) => {
                     touched.re_password &&
                     t(errors.re_password)}
                 </p>
-              </div>
+              </div> */}
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
                   {`${t("coachListing.descriptionLabel")}`}
@@ -185,4 +188,4 @@ const AddCoachModal = (props) => {
   );
 };
 
-export default memo(AddCoachModal);
+export default memo(EditCoachModal);

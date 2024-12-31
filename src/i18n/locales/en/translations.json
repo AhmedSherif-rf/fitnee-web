@@ -911,6 +911,7 @@
   },
   "coachListing": {
     "addCoach": "Add Coach",
+    "editCoach": "Edit Coach",
     "emailLabel": "Email",
     "passwordLabel": "Password",
     "confirmPasswordLabel": "Confirm Password",

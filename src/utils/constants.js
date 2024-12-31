@@ -96,6 +96,7 @@ export const CONTACT_US_URL = "/guest/contactusemail/";
 export const FORGOT_PASSWORD_VERIFY_URL = "/verifyotp/";
 export const ADMIN_TOOL_RECORD_URL = "/admin/bmi-record";
 export const ADD_COACH = "/coachfitnee/";
+export const EDIT_COACH = "/coachfitnee/";
 export const TRAINEE_PROGRESS_URL = "/trainee/progress/";
 export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const USE_PROMO_CODE_URL = "/payment/promo-code/";

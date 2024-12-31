@@ -5,7 +5,7 @@ import FillBtn from "../../Buttons/FillBtn";
 import OutlineBtn from "../../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { EDIT_PACKAGE } from "../../../utils/constants";
+import { PACKAGES_URL } from "../../../utils/constants";
 import { EDIT_PACKAGE_SCHEMA } from "../../ValidationData/validation";
 import { Modal, ModalBody, ModalHeader, Label, Form } from "reactstrap";
 import { EditPackage } from "../../../Redux/features/Admin/Packages/packagesApi";
@@ -27,7 +27,7 @@ const EditPackageModal = (props) => {
 
   const handleEditPackageSubmit = async (values) => {
     const data = {
-      apiEndpoint: EDIT_PACKAGE + packageData.id + "/",
+      apiEndpoint: PACKAGES_URL + packageData.id + "/",
       requestData: values,
     };
 

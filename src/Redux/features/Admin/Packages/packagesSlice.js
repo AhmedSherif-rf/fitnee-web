@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPackages, EditPackage } from "./packagesApi";
+import { getPackages, EditPackage, getPackageDetails } from "./packagesApi";
 
 export const packagesSlice = createSlice({
   name: "packages",
@@ -29,6 +29,17 @@ export const packagesSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(EditPackage.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getPackageDetails.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getPackageDetails.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(getPackageDetails.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

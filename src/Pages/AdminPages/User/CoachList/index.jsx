@@ -30,7 +30,6 @@ const Coach = (props) => {
   const [page, setPage] = useState(1);
   const [totalSize, setSizePages] = useState(0);
   const [tableData, setTableData] = useState([]);
-  const [stcPayNumber, setStcPayNumber] = useState("");
   const [coachData, setCoachData] = useState(null);
 
   const handleClose = () => {
@@ -48,17 +47,17 @@ const Coach = (props) => {
   useEffect(() => {
     fetchCoachListing();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, page, stcPayNumber]);
+  }, [dispatch, page]);
 
   const fetchCoachListing = () => {
     const data = {
-      apiEndpoint: `${ADMIN_COACH_LISTING_URL}?page=${page}&stc_pay=${stcPayNumber}`,
+      apiEndpoint: `${ADMIN_COACH_LISTING_URL}?page=${page}`,
     };
 
     dispatch(getCoachListing(data)).then((res) => {
       if (res.type === "getCoachListing/fulfilled") {
         setSizePages(res.payload.data.count);
-        setCoachData(res.payload.data);
+        setCoachData(res.payload.data.results);
       }
     });
   };

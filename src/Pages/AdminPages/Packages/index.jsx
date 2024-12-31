@@ -1,12 +1,11 @@
-import "./styles.scss";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import { Container, Row, Col, CardBody, CardFooter } from "reactstrap";
 import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 import { COLUMNS } from "./services";
 import Pagination from "../../../Shared/Pagination";
 import { useDispatch } from "react-redux";
-import { PACKAGES_LISTING_URL } from "../../../utils/constants";
+import { PACKAGES_URL, PER_PAGE_COUNT } from "../../../utils/constants";
 import { getPackages } from "../../../Redux/features/Admin/Packages/packagesApi";
 import { Link } from "react-router-dom";
 import { CiEdit } from "react-icons/ci";
@@ -17,8 +16,13 @@ const Packages = () => {
   const [packageList, setPackageList] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [editedPackage, setEditedPackage] = useState({});
+  const [page, setPage] = useState(1);
 
   // ------------- functions ------------
+  const handlePageChange = useCallback((page) => {
+    setPage(page.selected + 1);
+  }, []);
+
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -29,7 +33,7 @@ const Packages = () => {
 
   function fetchPackagesList() {
     const data = {
-      apiEndpoint: PACKAGES_LISTING_URL,
+      apiEndpoint: PACKAGES_URL + `?page=${page}`,
     };
 
     dispatch(getPackages(data)).then((res) => {
@@ -38,7 +42,7 @@ const Packages = () => {
           return {
             ...singlePackage,
             name: (
-              <Link to={`/admin/package/${singlePackage?.id}`}>
+              <Link to={`/admin/packages/${singlePackage?.id}`}>
                 <div className="d-md-flex align-items-center">
                   <div className="tableResponsiveWidth">
                     <h6 className="text-secondary fw-bold mb-0">
@@ -72,7 +76,7 @@ const Packages = () => {
   // ------------ side effects -----------
   useEffect(() => {
     fetchPackagesList();
-  }, [dispatch]);
+  }, [dispatch, page]);
   return (
     <React.Fragment>
       <Container className="adminDashBoardScrolling" fluid>
@@ -88,7 +92,13 @@ const Packages = () => {
             <ListingTable data={packageList} columns={COLUMNS} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">
-            <Pagination size={{}} handlePageChange={() => {}} page={0} />
+            {packageList?.count > PER_PAGE_COUNT && (
+              <Pagination
+                size={packageList?.count}
+                handlePageChange={handlePageChange}
+                page={0}
+              />
+            )}
           </CardFooter>
         </Row>
       </Container>

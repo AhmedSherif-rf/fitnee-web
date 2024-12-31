@@ -135,6 +135,12 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
+    path: "/admin/packages/:id",
+    component: lazy(() => import("../Pages/AdminPages/PackagesDetails")),
+    exact: true,
+    role: adminRole,
+  },
+  {
     path: "/admin/settings/category",
     component: lazy(() => import("../Pages/AdminPages/Settings/Category")),
     exact: true,

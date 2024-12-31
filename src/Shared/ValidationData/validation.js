@@ -437,6 +437,12 @@ export const EDIT_COACH_SCHEMA = Yup.object().shape({
   description: requiredValidation,
 });
 
+export const EDIT_PACKAGE_SCHEMA = Yup.object().shape({
+  name: requiredValidation,
+  price: requiredValidation,
+  description: requiredValidation,
+});
+
 export const CONTACT_US_SCHEMA = Yup.object().shape({
   email: emailValidation,
   message: messageValidation,

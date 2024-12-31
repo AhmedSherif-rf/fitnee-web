@@ -10,6 +10,7 @@ import { NavItem, NavLink, Nav } from "reactstrap";
 import { FaEdit, FaRunning } from "react-icons/fa";
 import { useMediaQuery } from "@react-hook/media-query";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
+import { FaRegCalendarCheck } from "react-icons/fa";
 import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
 import { useLocation } from "react-router-dom";
@@ -159,6 +160,19 @@ const SideBar = ({ isOpen, toggle }) => {
             >
               <IoChatboxEllipsesOutline />
               Community
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/packages" ? "AdminActive" : ""
+              }`}
+              tag={Link}
+              to={"/admin/packages"}
+              onClick={isSmallScreen ? toggle : undefined}
+            >
+              <FaRegCalendarCheck />
+              Packages
             </NavLink>
           </NavItem>
           <NavItem>

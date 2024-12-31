@@ -923,5 +923,15 @@
     "rolePlaceholder": "Enter role",
     "descriptionPlaceholder": "Enter description",
     "saveText": "Save"
+  },
+  "packages": {
+    "editPackage": "Edit Package",
+    "nameLabel": "Name",
+    "namePlaceholder": "Enter Package Name",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Enter Package Description",
+    "priceLabel": "Price",
+    "pricePlaceholder": "Enter Package Price",
+    "saveText": "Save"
   }
 }

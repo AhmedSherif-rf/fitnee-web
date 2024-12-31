@@ -17,6 +17,7 @@ import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.j
 import reviewRequestSlice from "./features/Admin/ReviewRequest/ReviewRequestSlice.js";
 import subscriptionPlanSlice from "./features/SubscriptionPlan/subscriptionPlanSlice.js";
 import EditProfileRequestSlice from "./features/Admin/EditProfileRequest/EditProfileRequestSlice.js";
+import packagesSlice from "./features/Admin/Packages/packagesSlice.js";
 
 const persistConfig = {
   key: "root",
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   feedback: feedbackSlice,
   contactUs: contactUsSlice,
   dashboard: dashboardSlice,
+  packages: packagesSlice,
   userListing: userListingSlice,
   subscription: subscriptionSlice,
   reviewRequest: reviewRequestSlice,

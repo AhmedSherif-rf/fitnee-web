@@ -167,6 +167,9 @@ export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
 export const ADMIN_COACH_PROFILE_URL = "/coachfitnee/userId";
 export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
   "/admin/service-providers/userId/";
+export const ADMIN_MEAL_CLASSIFICATION_STATUS_URL =
+  "/meal_classifications/id/active/";
+export const ADMIN_MEAL_CLASSIFICATION_URL = "/meal_classifications/";
 //=================StatusCodes===================
 export const FORBIDDEN_CODE = 403;
 export const SUCCESS_CODES = [200, 201];

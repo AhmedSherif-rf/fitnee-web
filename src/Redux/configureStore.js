@@ -13,6 +13,7 @@ import feedbackSlice from "./features/Admin/Feedback/FeedbackSlice.js";
 import dashboardSlice from "./features/Admin/Dashboard/dashboardSlice.js";
 import subscriptionSlice from "./features/Subscription/subscriptionSlice.js";
 import userListingSlice from "./features/Admin/UserListing/userListingSlice.js";
+import mealsSlice from "./features/Admin/Meals/mealsSlice.js";
 import forgotPasswordSlice from "./features/ForgotPassword/forgotPasswordSlice.js";
 import reviewRequestSlice from "./features/Admin/ReviewRequest/ReviewRequestSlice.js";
 import subscriptionPlanSlice from "./features/SubscriptionPlan/subscriptionPlanSlice.js";
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   dashboard: dashboardSlice,
   packages: packagesSlice,
   userListing: userListingSlice,
+  meals: mealsSlice,
   subscription: subscriptionSlice,
   reviewRequest: reviewRequestSlice,
   forgotPassword: forgotPasswordSlice,

@@ -9,6 +9,7 @@ import { MdOutlineReviews } from "react-icons/md";
 import { NavItem, NavLink, Nav } from "reactstrap";
 import { FaEdit, FaRunning } from "react-icons/fa";
 import { useMediaQuery } from "@react-hook/media-query";
+import { GiMeal } from "react-icons/gi";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
@@ -122,6 +123,14 @@ const SideBar = ({ isOpen, toggle }) => {
           </NavItem>
           <SubMenu
             location={location.pathname}
+            title="Meals"
+            toggleSmallScreen={isSmallScreen ? toggle : undefined}
+            icon={<GiMeal />}
+            items={submenus[3]}
+            isVisible={!isSmallScreen}
+          />
+          <SubMenu
+            location={location.pathname}
             title="Wallet System"
             icon={<GiWallet />}
             items={submenus[1]}
@@ -227,6 +236,12 @@ const submenus = [
     {
       title: "Service Provider Feedback",
       target: "/admin/serviceProviderFeedback",
+    },
+  ],
+  [
+    {
+      title: "Categories",
+      target: "/admin/categories",
     },
   ],
 ];

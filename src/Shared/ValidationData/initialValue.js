@@ -280,3 +280,10 @@ export const SUBSCRIPTION_FORM_INITIAL_VALUES = {
   preference_meals: "",
   conditions: "",
 };
+
+export const MEAL_CLASSIFICATIONS_INITIAL_VALUES = {
+  en_name: "",
+  ar_name: "",
+  description: "",
+  active: "True",
+};

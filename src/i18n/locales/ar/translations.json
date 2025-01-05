@@ -900,5 +900,16 @@
     "descriptionPlaceholder": "أدخل الوصف",
     "saveText": "حفظ",
     "changePassword": "تغيير كلمة المرور"
+  },
+  "meals": {
+    "addMealClassification": "إضافة تصنيف وجبة",
+    "editMealClassification": "تعديل تصنيف وجبة",
+    "en_nameLabel": "الاسم باللغة الإنجليزية",
+    "en_namePlaceholder": "أدخل اسم تصنيف الوجبة بالإنجليزية",
+    "ar_nameLabel": "الاسم باللغة العربية",
+    "ar_namePlaceholder": "أدخل اسم تصنيف الوجبة بالعربية",
+    "descriptionLabel": "الوصف",
+    "descriptionPlaceholder": "أدخل الوصف",
+    "saveText": "حفظ"
   }
 }

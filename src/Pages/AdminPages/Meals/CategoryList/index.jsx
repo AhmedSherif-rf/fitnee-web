@@ -5,7 +5,6 @@ import Pagination from "../../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeading from "../../../../Shared/Headings/PageHeading";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
-import Images from "../../../../HelperMethods/Constants/ImgConstants";
 import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
 import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
 import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
@@ -14,9 +13,8 @@ import {
   ADMIN_MEAL_CLASSIFICATION_URL,
   PER_PAGE_COUNT,
 } from "../../../../utils/constants";
-import { userBlockUnblock } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import FillBtn from "../../../../Shared/Buttons/FillBtn";
-import AddCoachModal from "../../../../Shared/Modal/AddCoach";
+import AddMealClassifications from "../../../../Shared/Modal/AddCategoryClassification";
 import {
   getMealsClassifications,
   mealClassificationStatus,
@@ -187,7 +185,7 @@ const Coach = (props) => {
           </CardFooter>
         </Card>
       </Col>
-      <AddCoachModal
+      <AddMealClassifications
         isOpen={isOpen}
         onClose={handleClose}
         handleRefetchHistory={fetchMealsClassificationListing}

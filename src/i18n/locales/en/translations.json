@@ -967,5 +967,16 @@
     "preference_mealsPlaceholder": "Enter meals",
     "conditionsLabel": "By clicking on the subscribe button, you agree that you don't have any medical conditions that prevent you from exercising",
     "saveText": "Save"
+  },
+  "meals": {
+    "addMealClassification": "Add Meal Classification",
+    "editMealClassification": "Edit Meal Classification",
+    "en_nameLabel": "English Name",
+    "en_namePlaceholder": "Enter English Meal Classification Name",
+    "ar_nameLabel": "Arabic Name",
+    "ar_namePlaceholder": "Enter Arabic Meal Classification Name",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Enter Description",
+    "saveText": "Save"
   }
 }

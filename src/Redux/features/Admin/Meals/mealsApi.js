@@ -15,8 +15,8 @@ export const getMealsClassifications = createAsyncThunk(
   }
 );
 
-export const AddCoach = createAsyncThunk(
-  "AddCoach",
+export const AddMealClassifications = createAsyncThunk(
+  "AddMealClassifications",
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);

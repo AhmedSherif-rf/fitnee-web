@@ -18,15 +18,22 @@ const EditCoachModal = (props) => {
   const [displayImages, setDisplayImages] = useState("");
   const { loading } = useSelector((state) => state.userListing);
   const dispatch = useDispatch();
+  const [isChangePassword, setIsChangePassword] = useState(false);
 
   const { t, i18n } = useTranslation("");
+
+  const toggleChangePassword = () => {
+    setIsChangePassword(!isChangePassword);
+  };
 
   const handleEditCoachSubmit = async (values) => {
     const requestData = new FormData();
     requestData.append("profile_pic", values.profile_pic);
     requestData.append("email", values.email);
-    // requestData.append("password", values.password);
-    // requestData.append("re_password", values.re_password);
+    if (isChangePassword) {
+      requestData.append("password", values.password);
+      requestData.append("re_password", values.re_password);
+    }
     requestData.append("description", values.description);
     requestData.append("role", "coach_fitnee");
     // requestData.append("is_active", "True");
@@ -45,7 +52,12 @@ const EditCoachModal = (props) => {
   };
 
   useEffect(() => {
-    isOpen ? setDisplayImages(coachData?.profile_pic) : setDisplayImages("");
+    if (isOpen) {
+      setIsChangePassword(false);
+      setDisplayImages(coachData?.profile_pic);
+    } else {
+      setDisplayImages("");
+    }
   }, [isOpen]);
 
   return (
@@ -111,13 +123,21 @@ const EditCoachModal = (props) => {
                   {t(errors.email) && touched.email && t(errors.email)}
                 </p>
               </div>
-              {/* <div className="mb-2">
+
+              <p
+                style={{ cursor: "pointer", textDecoration: "underline" }}
+                onClick={toggleChangePassword}
+              >
+                {t("coachListing.changePassword")}
+              </p>
+              <div className="mb-2">
                 <Label className="fw-normal small mb-0">
                   {`${t("coachListing.passwordLabel")}`}
                 </Label>
                 <InputField
                   type="password"
                   name="password"
+                  disabled={!isChangePassword}
                   placeholder={t("coachListing.passwordPlaceholder")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
@@ -135,6 +155,7 @@ const EditCoachModal = (props) => {
                 <InputField
                   type="password"
                   name="re_password"
+                  disabled={!isChangePassword}
                   placeholder={t("coachListing.confirmPasswordPlaceholder")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
@@ -146,7 +167,7 @@ const EditCoachModal = (props) => {
                     touched.re_password &&
                     t(errors.re_password)}
                 </p>
-              </div> */}
+              </div>
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
                   {`${t("coachListing.descriptionLabel")}`}

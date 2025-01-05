@@ -4,6 +4,7 @@ import {
   applyPromoCode,
   getWalletAmount,
   checkPaymentStatus,
+  subscribeWithACoach,
 } from "./subscriptionApi";
 
 export const subscriptionSlice = createSlice({
@@ -76,13 +77,21 @@ export const subscriptionSlice = createSlice({
       .addCase(getWalletAmount.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
+      })
+      .addCase(subscribeWithACoach.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(subscribeWithACoach.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(subscribeWithACoach.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
       });
   },
 });
 
-export const {
-  setSubscriptionPlan,
-  setServiceProvider,
-} = subscriptionSlice.actions;
+export const { setSubscriptionPlan, setServiceProvider } =
+  subscriptionSlice.actions;
 
 export default subscriptionSlice.reducer;

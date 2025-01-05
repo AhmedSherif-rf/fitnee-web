@@ -53,6 +53,14 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
+    path: "/trainee/subscription/form/:id",
+    component: lazy(() => import("../Pages/TraineePages/SubscriptionForm")),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
+    role: traineeRole,
+  },
+  {
     path: "/trainee/subscription/:uuid",
     component: lazy(() => import("../Pages/TraineePages/Subscription")),
     exact: true,

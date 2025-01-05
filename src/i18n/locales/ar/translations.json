@@ -898,6 +898,7 @@
     "confirmPasswordPlaceholder": "أكد كلمة مرور المدرب",
     "rolePlaceholder": "أدخل الدور",
     "descriptionPlaceholder": "أدخل الوصف",
-    "saveText": "حفظ"
+    "saveText": "حفظ",
+    "changePassword": "تغيير كلمة المرور"
   }
 }

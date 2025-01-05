@@ -13,7 +13,7 @@ const ProfileInformationCard = (props) => {
 
   const { className, providerProfile } = props;
   return (
-    <Card className={`BorderRadius border-0 w-25 ${className} ${i18n.dir()}`}>
+    <Card className={`BorderRadius border-0 w-100 ${className} ${i18n.dir()}`}>
       <CardBody className="p-0">
         <div
           className="p-0 bgProperties ImgBorder"

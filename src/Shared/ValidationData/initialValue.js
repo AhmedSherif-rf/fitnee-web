@@ -262,3 +262,21 @@ export const NUTRITIONIST_EDIT_PROFILE_REQUEST_INITIAL_VALUES = {
 export const REVIEW_REQUEST_REJECTION_INITIAL_VALUES = {
   reject_message: "",
 };
+
+export const SUBSCRIPTION_FORM_INITIAL_VALUES = {
+  gender: "",
+  weight: "",
+  favMeals: "",
+  training_place: "",
+  training_level: "",
+  injuries: "",
+  reference: "",
+  accept: "",
+  age: "",
+  height: "",
+  training_type: "",
+  your_goal: "",
+  illness: "",
+  preference_meals: "",
+  conditions: "",
+};

@@ -14,10 +14,11 @@ import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 // import IndividualChatModal from "../../../Modal/IndividualChatModal";
 import ProfileInformationCard from "../../../ProfileInformationCard";
 // import Images from "../../../../HelperMethods/Constants/ImgConstants";
-import React, { memo, useState, useEffect, useCallback } from "react";
-import { Row, Container, Col, Card, CardBody, Badge } from "reactstrap";
+import React, { memo, useState, useEffect } from "react";
+import { Row, Container, Col, Card, CardBody } from "reactstrap";
 import EditCoachModal from "../../../../Shared/Modal/EditCoach";
 import {
+  ADMIN_COACH_ALL_TRAINEES_URL,
   // ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
   ADMIN_COACH_PROFILE_URL,
   // CURRENCY,
@@ -26,6 +27,20 @@ import {
 // import { userBlockUnblock } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import { getCoachDetail } from "../../../../Redux/features/Admin/ReviewRequest/ReviewRequestApi";
 import FillBtn from "../../../Buttons/FillBtn";
+import ListingTable from "../ListingTable";
+import { getCoachAllTraineesListing } from "../../../../Redux/features/Admin/UserListing/userListingApi";
+
+const columns = [
+  { label: "Trainee", dataKey: "sp" },
+  {
+    label: "Price",
+    dataKey: "price",
+    align: "center",
+  },
+  { label: "Duration", dataKey: "duration", align: "center" },
+  { label: "Status", dataKey: "Status", align: "center" },
+  { label: "Action", dataKey: "action", align: "center" },
+];
 
 const CoachProfileWrapper = (props) => {
   const { uuid } = useParams();
@@ -36,7 +51,7 @@ const CoachProfileWrapper = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // const [messages, setMessages] = useState([]);
-  // const [tableData, setTableData] = useState([]);
+  const [tableData, setTableData] = useState([]);
   // const [recipient, setRecipient] = useState(null);
   // const [showChatModal, setShowChatModal] = useState(false);
   const [coachProfile, setCoachProfile] = useState(null);
@@ -221,6 +236,17 @@ const CoachProfileWrapper = (props) => {
   //   }
   // }, [coachProfile]);
 
+  useEffect(() => {
+    const data = {
+      apiEndpoint: ADMIN_COACH_ALL_TRAINEES_URL.replace("userId", uuid),
+    };
+    dispatch(getCoachAllTraineesListing(data)).then((res) => {
+      if (res.type === "getCoachAllTraineesListing/fulfilled") {
+        setTableData(res?.payload?.data);
+      }
+    });
+  }, []);
+
   // const handleActionClick = (id) => {
   //   const data = {
   //     apiEndpoint: ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL.replace(
@@ -235,18 +261,6 @@ const CoachProfileWrapper = (props) => {
   //   });
   // };
 
-  // const columns = [
-  //   { label: "Trainee", dataKey: "sp" },
-  //   {
-  //     label: "Price",
-  //     dataKey: "price",
-  //     align: "center",
-  //   },
-  //   { label: "Duration", dataKey: "duration", align: "center" },
-  //   { label: "Status", dataKey: "Status", align: "center" },
-  //   { label: "Action", dataKey: "action", align: "center" },
-  // ];
-
   return (
     <Container fluid className="p-2">
       <GoBack />
@@ -259,174 +273,41 @@ const CoachProfileWrapper = (props) => {
             <Row>
               <Col
                 className="d-flex align-items-start justify-content-between p-4"
-                lg={12}
+                lg={3}
                 md={4}
               >
                 <ProfileInformationCard providerProfile={coachProfile} />
-                <FillBtn
-                  className="w-25"
-                  text="Edit Coach"
-                  handleOnClick={handleOpen}
-                />
               </Col>
-              {/* <Col lg={9} md={8}>
+              <Col lg={9} md={8}>
                 <Card className="BorderRadius border-0 text-black-custom">
                   <CardBody>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="d-flex align-items-center gap-2">
-                        <h3 className="fw-bold my-2">
-                          {coachProfile?.full_name}
-                        </h3>
-                        {coachProfile?.is_fully_booked && (
-                          <span>
-                            <Badge
-                              color="danger"
-                              className="me-2 mb-1 text-white fw-normal custom-badge px-3 small text-center"
-                            >
-                              Fully Booked
-                            </Badge>
-                          </span>
-                        )}
-                      </div>
-                      <div>
-                        {!coachProfile?.is_deleted && (
-                          <div className="d-flex align-items-center justify-content-md-center">
-                            {!coachProfile?.is_blocked && (
-                              <span
-                                className={`iconBadge me-1`}
-                                id={`userId_${coachProfile?.id}`}
-                                onClick={() =>
-                                  handleActionClick(coachProfile?.id)
-                                }
-                              >
-                                <MdOutlinePersonOutline
-                                  size={25}
-                                  className={`cursorPointer ${
-                                    coachProfile?.is_blocked === false
-                                      ? "text-success"
-                                      : ""
-                                  }`}
-                                />
-                              </span>
-                            )}
-
-                            {coachProfile?.is_blocked && (
-                              <span
-                                className={`iconBadge me-1`}
-                                id={`userId_${coachProfile?.id}`}
-                                onClick={() =>
-                                  handleActionClick(coachProfile?.id)
-                                }
-                              >
-                                <MdOutlinePersonOff
-                                  size={25}
-                                  className={`cursorPointer ${
-                                    coachProfile?.is_blocked === true
-                                      ? ""
-                                      : "text-danger"
-                                  }`}
-                                />
-                              </span>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div
-                      className="overflow-scroll onlyBorderRadius p-3 border border-light"
-                      style={{ maxHeight: "100px" }}
-                    >
-                      <p className="small">{coachProfile?.bio}</p>
+                    <div className="d-flex flex-row justify-content-end">
+                      <FillBtn
+                        className="w-25"
+                        text="Edit Coach"
+                        handleOnClick={handleOpen}
+                      />
                     </div>
 
-                    <Row>
-                      <div className="lh-1 mt-4">
-                        <h6 className="fw-bold">Phone Number</h6>
-                        <p className="small">{coachProfile?.phone_number}</p>
-                      </div>
-                    </Row>
-
-                    <Row>
-                      <Col md={12}>
-                        <h5 className="fw-bold my-2">
-                          {t("guest.qualificationExperienceText")}
-                        </h5>
-                      </Col>
-                      {coachProfile?.Coach_Certification &&
-                        coachProfile?.Coach_Certification?.map(
-                          (certificate, index) => (
-                            <DocumentCard
-                              index={index}
-                              className="BorderYellow"
-                              documentTitle={certificate?.title}
-                              documentImg={certificate?.certificate_image}
-                            />
-                          )
-                        )}
-                    </Row>
-
-                    {coachProfile?.profile_subscriptions && (
-                      <Row>
-                        <h5 className="fw-bold my-2">Subscription Plans</h5>
-                        {coachProfile?.profile_subscriptions?.map(
-                          (plan, index) => (
-                            <Col md={4} key={index}>
-                              <Card className="border-0">
-                                <div className="d-flex justify-content-between align-items-center p-4 BorderRadius shadow-sm">
-                                  <p className="mb-0">
-                                    {plan?.duration} Months
-                                  </p>
-                                  <p className="mb-0 fw-bold">
-                                    {CURRENCY} {plan?.price}
-                                  </p>
-                                </div>
-                              </Card>
-                            </Col>
-                          )
-                        )}
-                      </Row>
-                    )}
-                    <Row className="mt-4">
-                      <Col md={12} className="d-flex align-items-center gap-4">
-                        <h5 className="fw-bold">Wallet Amount :</h5>
-                        <h5 className="fw-bold">
-                          {CURRENCY} {coachProfile?.current_wallet}
-                        </h5>
-                      </Col>
-                    </Row>
-                    <Row className="justify-content-center">
-                      <Col md={12} className="my-4">
-                        <BarChart
-                          data={coachPerformanceData}
-                          options={coachPerformanceGraphOptions}
-                        />
-                      </Col>
-                    </Row>
                     <Row className="mt-2">
                       <Col md={12}>
                         <h5 className="fw-bold my-2">Subscriptions</h5>
                       </Col>
                       <Col md={12}>
-                        <ListingTable data={tableData} columns={columns} />
+                        <ListingTable
+                          data={!tableData?.length ? [] : tableData}
+                          columns={columns}
+                        />
                       </Col>
                     </Row>
                   </CardBody>
                 </Card>
-              </Col> */}
+              </Col>
             </Row>
           </Col>
         )}
       </Row>
 
-      {/* <IndividualChatModal
-        size={"lg"}
-        TOneClassName={"mb-4 fs-5 text-center"}
-        className={"p-4"}
-        isOpen={showChatModal}
-        onClose={handleChatModalClose}
-        messages={messages}
-        recipient={recipient}
-      /> */}
       <EditCoachModal
         isOpen={isOpen}
         onClose={handleClose}

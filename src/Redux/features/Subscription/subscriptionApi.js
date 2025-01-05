@@ -25,6 +25,28 @@ export const getCheckoutId = createAsyncThunk(
   }
 );
 
+export const subscribeWithACoach = createAsyncThunk(
+  "subscribeWithACoach",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      return {
+        id: response.data.data.id,
+        is_hyper_pay: response.data.data.is_hyper_pay ?? false,
+      };
+    } catch (error) {
+      if (error?.response?.data?.error?.Message) {
+        Toaster.error(error?.response?.data?.error?.Message);
+      } else if (error?.response?.data?.error?.Messages) {
+        Toaster.error(error?.response?.data?.error?.Messages);
+      } else {
+        Toaster.error(error?.response?.data?.error?.Error);
+      }
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const checkPaymentStatus = createAsyncThunk(
   "checkPaymentStatus",
   async ({ apiEndpoint, requestData }, thunkAPI) => {

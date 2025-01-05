@@ -102,6 +102,7 @@ export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const USE_PROMO_CODE_URL = "/payment/promo-code/";
 export const ADMIN_PROMO_CODE_URL = "/admin/promo-codes/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
+export const SUBSCRIPTION_FORM_URL = "/subcription_plan/";
 export const ADMIN_REPORTS_LISTING_URL = "/admin/report/";
 export const SEND_HEALTH_RESULT = "/guest/health-record/";
 export const ADMIN_DASHBOARD_COUNTERS = "/admin/user-stats";
@@ -137,6 +138,8 @@ export const ADMIN_EXERCISE_SUBCATEGORY_URL = "/admin/exercise_subcategory/";
 export const ADMIN_SERVICE_PROVIDER_LISTING_URL = "/admin/service-providers/";
 export const ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL =
   "/admin/toggle-user-status/userId/";
+export const ADMIN_COACH_ALL_TRAINEES_URL =
+  "/coachfitnee/userId/get_related_trainee";
 export const ADMIN_SERVICE_PROVIDER_FULLY_BOOKED_URL =
   "/admin/fully-booked-service-providers/";
 export const EXERCUSE_SUBSCRIPITION_PLAN_URL =

@@ -922,7 +922,8 @@
     "confirmPasswordPlaceholder": "Confirm Coach's password",
     "rolePlaceholder": "Enter role",
     "descriptionPlaceholder": "Enter description",
-    "saveText": "Save"
+    "saveText": "Save",
+    "changePassword": "Change Password?"
   },
   "packages": {
     "editPackage": "Edit Package",
@@ -932,6 +933,39 @@
     "descriptionPlaceholder": "Enter Package Description",
     "priceLabel": "Price",
     "pricePlaceholder": "Enter Package Price",
+    "saveText": "Save"
+  },
+  "subscription": {
+    "formTitle": "Please fill the form below to subscribe",
+    "genderLabel": "Gender",
+    "genderPlaceholder": "Select Gender",
+    "weightLabel": "Weight",
+    "weightPlaceholder": "Enter weight",
+    "heightLabel": "Height",
+    "heightPlaceholder": "Enter height",
+    "favMealsLabel": "Favourite Meals",
+    "favMealsPlaceholder": "Enter favourite meals",
+    "ageLabel": "Age",
+    "agePlaceholder": "Enter age",
+    "training_placeLabel": "Training Place",
+    "training_placePlaceholder": "Enter training place",
+    "your_goalLabel": "Training Goal",
+    "your_goalPlaceholder": "Enter training goal",
+    "training_levelLabel": "What is your Training Level",
+    "training_levelPlaceholder": "Enter your training level",
+    "injuriesLabel": "Do you have any injuries?",
+    "injuriesPlaceholder": "Enter injuries",
+    "referenceLabel": "How did you find us?",
+    "referencePlaceholder": "Enter reference",
+    "acceptLabel": "I accept the terms and conditions",
+    "acceptPlaceholder": "Enter reference",
+    "training_typeLabel": "Training Type",
+    "training_typePlaceholder": "Enter reference",
+    "illnessLabel": "Do you have any illness?",
+    "illnessPlaceholder": "Enter illness",
+    "preference_mealsLabel": "Meals you want to add in your deit",
+    "preference_mealsPlaceholder": "Enter meals",
+    "conditionsLabel": "By clicking on the subscribe button, you agree that you don't have any medical conditions that prevent you from exercising",
     "saveText": "Save"
   }
 }

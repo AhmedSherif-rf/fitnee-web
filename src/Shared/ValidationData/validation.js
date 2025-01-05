@@ -468,3 +468,5 @@ export const BMR_SCHEMA = Yup.object().shape({
 export const REVIEW_REQUEST_REJECTION_SCHEMA = Yup.object().shape({
   reject_message: requiredValidation,
 });
+
+export const SUBSCRIPTION_FORM_SCHEMA = Yup.object().shape({});

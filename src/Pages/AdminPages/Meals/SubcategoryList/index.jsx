@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { act, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useState, useCallback } from "react";
 import Pagination from "../../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,19 +10,19 @@ import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
 import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
 import { MdDelete } from "react-icons/md";
 import {
-  ADMIN_MEAL_CLASSIFICATION_STATUS_URL,
-  ADMIN_MEAL_CLASSIFICATION_URL,
+  ADMIN_MEAL_TYPE_STATUS_URL,
+  ADMIN_MEAL_TYPE_URL,
   PER_PAGE_COUNT,
 } from "../../../../utils/constants";
 import FillBtn from "../../../../Shared/Buttons/FillBtn";
-import AddMealClassifications from "../../../../Shared/Modal/AddCategoryClassification";
+import AddSubcategory from "../../../../Shared/Modal/AddSubcategory";
 import {
   deleteCategoryClassification,
   getMealsClassifications,
   mealClassificationStatus,
 } from "../../../../Redux/features/Admin/Meals/mealsApi";
 
-const Category = (props) => {
+const SubCategory = (props) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.userListing);
   const [lang, setLang] = useState("en");
@@ -50,7 +50,7 @@ const Category = (props) => {
 
   const fetchMealsClassificationListing = () => {
     const data = {
-      apiEndpoint: `${ADMIN_MEAL_CLASSIFICATION_URL}?page=${page}`,
+      apiEndpoint: `${ADMIN_MEAL_TYPE_URL}?page=${page}`,
     };
 
     dispatch(getMealsClassifications(data)).then((res) => {
@@ -63,7 +63,7 @@ const Category = (props) => {
 
   const handleActionClick = (id) => {
     const data = {
-      apiEndpoint: ADMIN_MEAL_CLASSIFICATION_STATUS_URL.replace("id", id),
+      apiEndpoint: ADMIN_MEAL_TYPE_STATUS_URL.replace("id", id),
     };
     dispatch(mealClassificationStatus(data)).then((res) => {
       if (res.type === "mealClassificationStatus/fulfilled") {
@@ -74,7 +74,7 @@ const Category = (props) => {
 
   const handleDelete = (id) => {
     const data = {
-      apiEndpoint: ADMIN_MEAL_CLASSIFICATION_URL + `${id}/`,
+      apiEndpoint: ADMIN_MEAL_TYPE_URL + `${id}/`,
     };
     dispatch(deleteCategoryClassification(data)).then((res) => {
       if (res.type === "deleteCategoryClassification/fulfilled") {
@@ -89,18 +89,16 @@ const Category = (props) => {
 
       mealsClassifications.forEach((singleMealsClassification, index) => {
         mealsClassificationsArray.push({
-          name: (
-            <Link to={`/admin/categories/${singleMealsClassification?.id}`}>
+          en_name: (
+            <Link to={`/admin/subcategories/${singleMealsClassification?.id}`}>
               <div className="d-md-flex align-items-center">
                 <h6 className="text-secondary fw-bold mb-0">
-                  {lang === "en"
-                    ? singleMealsClassification?.en_name
-                    : singleMealsClassification?.ar_name}
+                  {singleMealsClassification?.en_name}
                 </h6>
               </div>
             </Link>
           ),
-          description: singleMealsClassification?.description,
+          ar_name: singleMealsClassification?.ar_name,
           status: (
             <div className="d-flex align-items-center justify-content-md-center">
               {singleMealsClassification?.active && (
@@ -166,8 +164,8 @@ const Category = (props) => {
   }, []);
 
   const columns = [
-    { label: "Name", dataKey: "name" },
-    { label: "Description", dataKey: "description" },
+    { label: "English name", dataKey: "en_name" },
+    { label: "Arabic name", dataKey: "ar_name" },
     { label: "Active / Inactive", dataKey: "status", align: "center" },
     { label: "Action", dataKey: "action", align: "center" },
   ];
@@ -208,7 +206,7 @@ const Category = (props) => {
           </CardFooter>
         </Card>
       </Col>
-      <AddMealClassifications
+      <AddSubcategory
         isOpen={isOpen}
         onClose={handleClose}
         handleRefetchHistory={fetchMealsClassificationListing}
@@ -217,4 +215,4 @@ const Category = (props) => {
   );
 };
 
-export default Category;
+export default SubCategory;

@@ -883,7 +883,8 @@
     "invalidDescriptionText": "يجب أن يكون هناك وصف واحد على الأقل",
     "requiredExerciseVideoText": "مطلوب فيديو التمرين",
     "invalidEndTimeText": "وقت الانتهاء يجب أن يكون أكبر من وقت البدء",
-    "invalidText": "غير صالح"
+    "invalidText": "غير صالح",
+    "maxCaloriesText": "السعرات الحرارية يجب أن تكون اكبر من السعرات الحرارية الادنية"
   },
   "coachListing": {
     "addCoach": "إضافة مدرب",
@@ -906,10 +907,17 @@
     "editMealClassification": "تعديل تصنيف وجبة",
     "en_nameLabel": "الاسم باللغة الإنجليزية",
     "en_namePlaceholder": "أدخل اسم تصنيف الوجبة بالإنجليزية",
+    "nameLabel": "الاسم",
+    "namePlaceholder": "أدخل اسم تصنيف الوجبة",
     "ar_nameLabel": "الاسم باللغة العربية",
     "ar_namePlaceholder": "أدخل اسم تصنيف الوجبة بالعربية",
     "descriptionLabel": "الوصف",
     "descriptionPlaceholder": "أدخل الوصف",
+    "minCalLabel": "أدنى عدد سعرات حرارية",
+    "minCalPlaceholder": "أدخل أدنى عدد سعرات حرارية",
+    "maxCalLabel": "أقصى عدد سعرات حرارية",
+    "maxCalPlaceholder": "أدخل أقصى عدد سعرات حرارية",
+    "classificationLabel": "التصنيف الرئيسي",
     "saveText": "حفظ"
   }
 }

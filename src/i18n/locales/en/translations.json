@@ -907,7 +907,8 @@
     "invalidDescriptionText": "At least one description is required",
     "requiredExerciseVideoText": "Exercise video is required",
     "invalidEndTimeText": "End time must be greater than start time",
-    "invalidText": "Invalid"
+    "invalidText": "Invalid",
+    "maxCaloriesText": "Maximum calories must be greater than minimum calories"
   },
   "coachListing": {
     "addCoach": "Add Coach",
@@ -973,10 +974,17 @@
     "editMealClassification": "Edit Meal Classification",
     "en_nameLabel": "English Name",
     "en_namePlaceholder": "Enter English Meal Classification Name",
+    "nameLabel": "Name",
+    "namePlaceholder": "Enter Meal Classification Name",
     "ar_nameLabel": "Arabic Name",
     "ar_namePlaceholder": "Enter Arabic Meal Classification Name",
     "descriptionLabel": "Description",
     "descriptionPlaceholder": "Enter Description",
+    "minCalLabel": "Minimum Calories",
+    "minCalPlaceholder": "Enter Minimum Calories",
+    "maxCalLabel": "Maximum Calories",
+    "maxCalPlaceholder": "Enter Maximum Calories",
+    "classificationLabel": "Main Category",
     "saveText": "Save"
   }
 }

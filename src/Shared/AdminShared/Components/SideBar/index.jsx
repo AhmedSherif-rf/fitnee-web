@@ -243,6 +243,14 @@ const submenus = [
       title: "Categories",
       target: "/admin/categories",
     },
+    {
+      title: "Subcategories",
+      target: "/admin/subcategories",
+    },
+    {
+      title: "Calorie Groups",
+      target: "/admin/calorieGroups",
+    },
   ],
 ];
 

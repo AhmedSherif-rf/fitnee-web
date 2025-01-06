@@ -131,6 +131,36 @@ export const adminRoutes = [
     role: adminRole,
   },
   {
+    path: "/admin/subcategories",
+    component: lazy(() => import("../Pages/AdminPages/Meals/SubcategoryList")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/subcategories/:id",
+    component: lazy(() =>
+      import(
+        "../Pages/AdminPages/Meals/SubcategoryList/SubcategoryDetails/index"
+      )
+    ),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/calorieGroups",
+    component: lazy(() => import("../Pages/AdminPages/Meals/CalGroup")),
+    exact: true,
+    role: adminRole,
+  },
+  {
+    path: "/admin/calorieGroups/:id",
+    component: lazy(() =>
+      import("../Pages/AdminPages/Meals/CalGroup/GroupDetails/index")
+    ),
+    exact: true,
+    role: adminRole,
+  },
+  {
     path: "/admin/settings",
     component: lazy(() => import("../Pages/AdminPages/Settings")),
     exact: true,

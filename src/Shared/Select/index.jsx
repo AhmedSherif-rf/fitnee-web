@@ -15,6 +15,7 @@ const SelectField = (props) => {
     isDisabled = false,
     isLoading = false,
     isSearchable = false,
+    handleChange,
   } = props;
 
   const { i18n } = useTranslation("");
@@ -80,6 +81,7 @@ const SelectField = (props) => {
         isLoading={isLoading}
         isSearchable={isSearchable}
         options={options}
+        onChange={(e) => handleChange(e.value)}
         // isRtl={isRtl}
       />
     </div>

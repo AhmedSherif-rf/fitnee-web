@@ -287,3 +287,17 @@ export const MEAL_CLASSIFICATIONS_INITIAL_VALUES = {
   description: "",
   active: "True",
 };
+
+export const MEAL_SUBCATEGORY_INITIAL_VALUES = {
+  en_name: "",
+  ar_name: "",
+  classification: "",
+  active: "True",
+};
+
+export const CALORIES_GROUP_INITIAL_VALUES = {
+  name: "",
+  min_calories: "",
+  max_calories: "",
+  active: "True",
+};

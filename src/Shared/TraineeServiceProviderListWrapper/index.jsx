@@ -174,15 +174,15 @@ const TraineeServiceProviderListWrapper = (props) => {
                           ? NUTRITIONIST_ROLE
                           : TRAINER_ROLE;
 
-                      if (serviceProvider?.role === "coach_fitnee") {
-                        navigate(
-                          `/trainee/subscription/form/${serviceProvider.id}`
-                        );
-                      } else {
-                        navigate(
-                          `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}/${role}/${listingRole}`
-                        );
-                      }
+                      // if (serviceProvider?.role === "coach_fitnee") {
+                      //   navigate(
+                      //     `/trainee/subscription/form/${serviceProvider.id}`
+                      //   );
+                      // } else {
+                      navigate(
+                        `/trainee/serviceProviderProfile/${serviceProvider.uuid}/${serviceProvider?.id}/${role}/${listingRole}`
+                      );
+                      // }
                     }}
                   />
                 </Col>

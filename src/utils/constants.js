@@ -170,6 +170,10 @@ export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
 export const ADMIN_MEAL_CLASSIFICATION_STATUS_URL =
   "/meal_classifications/id/active/";
 export const ADMIN_MEAL_CLASSIFICATION_URL = "/meal_classifications/";
+export const ADMIN_MEAL_TYPE_URL = "/meal_types/";
+export const ADMIN_MEAL_TYPE_STATUS_URL = "/meal_types/id/active/";
+export const ADMIN_CALORIES_URL = "/calories/";
+export const ADMIN_CALORIES_STATUS_URL = "/calories/id/active/";
 //=================StatusCodes===================
 export const FORBIDDEN_CODE = 403;
 export const SUCCESS_CODES = [200, 201];

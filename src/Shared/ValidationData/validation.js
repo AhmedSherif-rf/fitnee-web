@@ -474,5 +474,16 @@ export const SUBSCRIPTION_FORM_SCHEMA = Yup.object().shape({});
 export const MEAL_CLASSIFICATIONS_SCHEMA = Yup.object().shape({
   en_name: requiredValidation,
   ar_name: requiredValidation,
-  description: requiredValidation,
+});
+
+export const CALORIES_GROUP_SCHEMA = Yup.object().shape({
+  name: requiredValidation,
+  min_calories: requiredValidation,
+  max_calories: Yup.number()
+    .required("validation.requiredText")
+    .typeError("validation.numberText")
+    .test("is-greater", "validation.maxCaloriesText", function (value) {
+      const { min_calories } = this.parent; // Access the sibling field
+      return value >= min_calories;
+    }),
 });

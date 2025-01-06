@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { act, useEffect } from "react";
 import { useState, useCallback } from "react";
 import Pagination from "../../../../Shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
 import { Card, CardBody, CardFooter, CardHeader, Col, Row } from "reactstrap";
 import ListingTable from "../../../../Shared/AdminShared/Components/ListingTable";
+import { MdDelete } from "react-icons/md";
 import {
   ADMIN_MEAL_CLASSIFICATION_STATUS_URL,
   ADMIN_MEAL_CLASSIFICATION_URL,
@@ -16,6 +17,7 @@ import {
 import FillBtn from "../../../../Shared/Buttons/FillBtn";
 import AddMealClassifications from "../../../../Shared/Modal/AddCategoryClassification";
 import {
+  deleteCategoryClassification,
   getMealsClassifications,
   mealClassificationStatus,
 } from "../../../../Redux/features/Admin/Meals/mealsApi";
@@ -70,6 +72,17 @@ const Coach = (props) => {
     });
   };
 
+  const handleDelete = (id) => {
+    const data = {
+      apiEndpoint: ADMIN_MEAL_CLASSIFICATION_URL + `${id}/`,
+    };
+    dispatch(deleteCategoryClassification(data)).then((res) => {
+      if (res.type === "deleteCategoryClassification/fulfilled") {
+        fetchMealsClassificationListing();
+      }
+    });
+  };
+
   useEffect(() => {
     if (mealsClassifications && mealsClassifications.length > 0) {
       let mealsClassificationsArray = [];
@@ -77,7 +90,7 @@ const Coach = (props) => {
       mealsClassifications.forEach((singleMealsClassification, index) => {
         mealsClassificationsArray.push({
           name: (
-            <Link to={`/admin/coach/${singleMealsClassification?.id}`}>
+            <Link to={`/admin/categories/${singleMealsClassification?.id}`}>
               <div className="d-md-flex align-items-center">
                 <h6 className="text-secondary fw-bold mb-0">
                   {lang === "en"
@@ -88,7 +101,7 @@ const Coach = (props) => {
             </Link>
           ),
           description: singleMealsClassification?.description,
-          action: (
+          status: (
             <div className="d-flex align-items-center justify-content-md-center">
               {singleMealsClassification?.active && (
                 <span
@@ -129,6 +142,15 @@ const Coach = (props) => {
               )}
             </div>
           ),
+          action: (
+            <div>
+              <MdDelete
+                onClick={() => handleDelete(singleMealsClassification?.id)}
+                size={25}
+                className={`cursorPointer text-danger`}
+              />
+            </div>
+          ),
         });
       });
 
@@ -146,7 +168,8 @@ const Coach = (props) => {
   const columns = [
     { label: "Name", dataKey: "name" },
     { label: "Description", dataKey: "description" },
-    { label: "Active / Inactive", dataKey: "action", align: "center" },
+    { label: "Active / Inactive", dataKey: "status", align: "center" },
+    { label: "Action", dataKey: "action", align: "center" },
   ];
 
   return (

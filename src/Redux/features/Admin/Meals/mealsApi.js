@@ -28,11 +28,30 @@ export const AddMealClassifications = createAsyncThunk(
   }
 );
 
-export const EditCoach = createAsyncThunk(
-  "EditCoach",
+export const EditMealClassifications = createAsyncThunk(
+  "EditMealClassifications",
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.put(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
+      Toaster.error(
+        Object.keys(error?.response?.data?.error)[0] +
+          ": " +
+          Object.values(error?.response?.data?.error)[0]
+      );
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const deleteCategoryClassification = createAsyncThunk(
+  "deleteCategoryClassification",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.delete(apiEndpoint);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -61,8 +80,8 @@ export const mealClassificationStatus = createAsyncThunk(
   }
 );
 
-export const getTraineeDetail = createAsyncThunk(
-  "getTraineeDetail",
+export const getCategoryClassificationDetails = createAsyncThunk(
+  "getCategoryClassificationDetails",
   async ({ apiEndpoint }, thunkAPI) => {
     try {
       const response = await axiosInstance.get(apiEndpoint);

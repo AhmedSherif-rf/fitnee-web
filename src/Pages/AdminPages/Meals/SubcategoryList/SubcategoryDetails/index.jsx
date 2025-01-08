@@ -70,6 +70,10 @@ const Packages = () => {
                 <h3>English Name: {categoryClassificationDetails?.en_name}</h3>
                 <h3>Arabic Name: {categoryClassificationDetails?.ar_name}</h3>
                 <h3>
+                  Main Category:{" "}
+                  {categoryClassificationDetails?.classification?.en_name}
+                </h3>
+                <h3>
                   Status:{" "}
                   {categoryClassificationDetails?.active
                     ? "Active"

@@ -99,6 +99,7 @@ const SubCategory = (props) => {
             </Link>
           ),
           ar_name: singleMealsClassification?.ar_name,
+          main_category: singleMealsClassification?.classification?.en_name,
           status: (
             <div className="d-flex align-items-center justify-content-md-center">
               {singleMealsClassification?.active && (
@@ -166,6 +167,7 @@ const SubCategory = (props) => {
   const columns = [
     { label: "English name", dataKey: "en_name" },
     { label: "Arabic name", dataKey: "ar_name" },
+    { label: "Main category", dataKey: "main_category" },
     { label: "Active / Inactive", dataKey: "status", align: "center" },
     { label: "Action", dataKey: "action", align: "center" },
   ];

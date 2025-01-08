@@ -28,7 +28,9 @@ const EditCoachModal = (props) => {
 
   const handleEditCoachSubmit = async (values) => {
     const requestData = new FormData();
-    requestData.append("profile_pic", values.profile_pic);
+    if (values.profile_pic && typeof values.profile_pic === "object") {
+      requestData.append("profile_pic", values.profile_pic);
+    }
     requestData.append("email", values.email);
     if (isChangePassword) {
       requestData.append("password", values.password);

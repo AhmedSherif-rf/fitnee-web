@@ -167,6 +167,8 @@ export const TRAINEE_SERVICE_PROVIDER_LISTING_URL =
 export const ADMIN_COACH_PROFILE_URL = "/coachfitnee/userId";
 export const ADMIN_SERVICE_PROVIDER_PROFILE_URL =
   "/admin/service-providers/userId/";
+export const ADMIN_MEAL_STATUS_URL = "/meals/id/active/";
+export const ADMIN_MEAL_URL = "/meals/";
 export const ADMIN_MEAL_CLASSIFICATION_STATUS_URL =
   "/meal_classifications/id/active/";
 export const ADMIN_MEAL_CLASSIFICATION_URL = "/meal_classifications/";

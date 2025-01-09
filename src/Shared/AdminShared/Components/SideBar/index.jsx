@@ -240,6 +240,10 @@ const submenus = [
   ],
   [
     {
+      title: "Meals",
+      target: "/admin/meals",
+    },
+    {
       title: "Categories",
       target: "/admin/categories",
     },

@@ -188,7 +188,7 @@ const SubCategory = (props) => {
               >
                 <FillBtn
                   className="w-50"
-                  text="Add Category"
+                  text="Add Subcategory"
                   handleOnClick={handleOpen}
                 />
               </Col>

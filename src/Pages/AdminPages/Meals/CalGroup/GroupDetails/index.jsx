@@ -86,7 +86,7 @@ const Packages = () => {
               <div className="d-flex flex-row justify-content-start">
                 <FillBtn
                   className="w-100"
-                  text="Edit Coach"
+                  text="Edit Calorie Group"
                   handleOnClick={handleOpen}
                 />
               </div>

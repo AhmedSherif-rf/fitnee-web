@@ -8,6 +8,7 @@ import {
   ILLNESS_URL,
   ADMIN_MEAL_TYPE_URL,
   SUBSCRIPTION_FORM_URL,
+  PACKAGES_URL,
 } from "../../../utils/constants";
 import {
   getIllness,
@@ -29,6 +30,7 @@ import {
   trainingPlaces,
 } from "./constants";
 import toast from "react-hot-toast";
+import { getPackageDetails } from "../../../Redux/features/Admin/Packages/packagesApi";
 
 const SubscriptionForm = () => {
   // ------------- hooks -------------
@@ -59,12 +61,29 @@ const SubscriptionForm = () => {
       requestData,
     };
 
+    let packageDetails;
+
+    await dispatch(
+      getPackageDetails({ apiEndpoint: `${PACKAGES_URL}1/` })
+    ).then((res) => {
+      if (res.type === "getPackageDetails/fulfilled") {
+        packageDetails = res.payload.data?.package;
+      }
+    });
+
     dispatch(getSubscriped(data)).then((res) => {
       if (res.type === "getSubscriped/fulfilled") {
         if (!res.payload.data?.detail === "You are not qualified for this.") {
           toast.error(res.payload.data?.detail);
         } else {
-          setSubscriptionPlan({ id: res.payload.data.id });
+          dispatch(
+            setSubscriptionPlan({
+              id: packageDetails?.id,
+              duration: packageDetails?.duration,
+              price: packageDetails?.price,
+              type: packageDetails?.type,
+            })
+          );
           navigate("/trainee/subscription/creditCardDetail");
         }
       }

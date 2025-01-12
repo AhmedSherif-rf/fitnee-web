@@ -299,3 +299,16 @@ export const CALORIES_GROUP_INITIAL_VALUES = {
   max_calories: "",
   active: "True",
 };
+
+export const MEALS_INITIAL_VALUES = {
+  en_name: "",
+  ar_name: "",
+  description: "",
+  active: "",
+  meal_type: "",
+  calorie_range: "",
+  fats: "",
+  carbohydrate: "",
+  protein: "",
+  ingredients: "",
+};

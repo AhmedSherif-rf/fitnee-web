@@ -476,6 +476,18 @@ export const MEAL_CLASSIFICATIONS_SCHEMA = Yup.object().shape({
   ar_name: requiredValidation,
 });
 
+export const MEALS_SCHEMA = Yup.object().shape({
+  en_name: requiredValidation,
+  ar_name: requiredValidation,
+  description: requiredValidation,
+  meal_type: requiredValidation,
+  calorie_range: requiredValidation,
+  fats: requiredValidation,
+  carbohydrate: requiredValidation,
+  protein: requiredValidation,
+  ingredients: requiredValidation,
+});
+
 export const CALORIES_GROUP_SCHEMA = Yup.object().shape({
   name: requiredValidation,
   min_calories: requiredValidation,

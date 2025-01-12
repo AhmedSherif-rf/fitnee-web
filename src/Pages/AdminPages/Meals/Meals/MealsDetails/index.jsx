@@ -1,18 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import PageHeading from "../../../../../Shared/Headings/PageHeading";
 import { Container, Row, Col, CardBody, CardFooter } from "reactstrap";
-// import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
-// import { COLUMNS } from "./services";
-// import Pagination from "../../../Shared/Pagination";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ADMIN_MEAL_URL } from "../../../../../utils/constants";
 import { getCategoryClassificationDetails } from "../../../../../Redux/features/Admin/Meals/mealsApi";
-import EditCategoryClassification from "../../../../../Shared/Modal/EditCategoryClassification";
+import EditMeals from "../../../../../Shared/Modal/EditMeals";
 import FillBtn from "../../../../../Shared/Buttons/FillBtn";
-// import { Link } from "react-router-dom";
-// import { CiEdit } from "react-icons/ci";
-// import EditPackageModal from "../../../Shared/Modal/EditPackage";
 
 const Packages = () => {
   const dispatch = useDispatch();
@@ -20,13 +14,8 @@ const Packages = () => {
     useState([]);
   const { id } = useParams();
   const [isOpen, setIsOpen] = useState(false);
-  // const [editedPackage, setEditedPackage] = useState({});
-  // const [page, setPage] = useState(1);
 
   // // ------------- functions ------------
-  // const handlePageChange = useCallback((page) => {
-  //   setPage(page.selected + 1);
-  // }, []);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -145,10 +134,10 @@ const Packages = () => {
           </Col>
         </Row>
       </Container>
-      <EditCategoryClassification
+      <EditMeals
         isOpen={isOpen}
         onClose={handleClose}
-        categoryData={categoryClassificationDetails}
+        mealData={categoryClassificationDetails}
         handleRefetchHistory={fetchPackageDetails}
       />
     </React.Fragment>

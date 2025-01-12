@@ -1,7 +1,12 @@
 import React, { memo, useRef } from "react";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 
-const UploadPic = ({ setFieldValue, displayImages, setDisplayImages }) => {
+const UploadPic = ({
+  setFieldValue,
+  displayImages,
+  setDisplayImages,
+  keyName = "profile_pic",
+}) => {
   const imageRef = useRef(null);
 
   //   ----------- functions --------------
@@ -11,7 +16,7 @@ const UploadPic = ({ setFieldValue, displayImages, setDisplayImages }) => {
 
     let display = URL.createObjectURL(fileList[0]);
     setDisplayImages(display);
-    setFieldValue("profile_pic", fileList[0]);
+    setFieldValue(keyName, fileList[0]);
   };
 
   return (

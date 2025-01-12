@@ -15,7 +15,7 @@ import {
   PER_PAGE_COUNT,
 } from "../../../../utils/constants";
 import FillBtn from "../../../../Shared/Buttons/FillBtn";
-import AddMealClassifications from "../../../../Shared/Modal/AddCategoryClassification";
+import AddMeals from "../../../../Shared/Modal/AddMeals";
 import {
   deleteCategoryClassification,
   getMealsClassifications,
@@ -208,7 +208,7 @@ const Category = (props) => {
           </CardFooter>
         </Card>
       </Col>
-      <AddMealClassifications
+      <AddMeals
         isOpen={isOpen}
         onClose={handleClose}
         handleRefetchHistory={fetchMealsClassificationListing}

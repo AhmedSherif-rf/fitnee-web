@@ -5,6 +5,7 @@ import {
   getWalletAmount,
   checkPaymentStatus,
   subscribeWithACoach,
+  getLikedMeals,
 } from "./subscriptionApi";
 
 export const subscriptionSlice = createSlice({
@@ -85,6 +86,16 @@ export const subscriptionSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(subscribeWithACoach.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getLikedMeals.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getLikedMeals.fulfilled, (state) => {
+        state.loading = "succeeded";
+      })
+      .addCase(getLikedMeals.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

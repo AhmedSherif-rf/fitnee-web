@@ -25,6 +25,45 @@ export const getCheckoutId = createAsyncThunk(
   }
 );
 
+export const getLikedMeals = createAsyncThunk(
+  "getLikedMeals",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const getSubscriped = createAsyncThunk(
+  "getSubscriped",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const getIllness = createAsyncThunk(
+  "getIllness",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 export const subscribeWithACoach = createAsyncThunk(
   "subscribeWithACoach",
   async ({ apiEndpoint, requestData }, thunkAPI) => {

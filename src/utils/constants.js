@@ -102,7 +102,6 @@ export const PREPARE_CHECKOUT_URL = "/payment/hyperpay/";
 export const USE_PROMO_CODE_URL = "/payment/promo-code/";
 export const ADMIN_PROMO_CODE_URL = "/admin/promo-codes/";
 export const SUBSCRIPTION_PLAN_URL = "/subcription_plan/";
-export const SUBSCRIPTION_FORM_URL = "/subcription_plan/";
 export const ADMIN_REPORTS_LISTING_URL = "/admin/report/";
 export const SEND_HEALTH_RESULT = "/guest/health-record/";
 export const ADMIN_DASHBOARD_COUNTERS = "/admin/user-stats";
@@ -176,6 +175,9 @@ export const ADMIN_MEAL_TYPE_URL = "/meal_types/";
 export const ADMIN_MEAL_TYPE_STATUS_URL = "/meal_types/id/active/";
 export const ADMIN_CALORIES_URL = "/calories/";
 export const ADMIN_CALORIES_STATUS_URL = "/calories/id/active/";
+export const LIKED_MEALS_URL = "/user_meal_likes/";
+export const ILLNESS_URL = "/diseases/";
+export const SUBSCRIPTION_FORM_URL = "/register-for-Package/";
 //=================StatusCodes===================
 export const FORBIDDEN_CODE = 403;
 export const SUCCESS_CODES = [200, 201];

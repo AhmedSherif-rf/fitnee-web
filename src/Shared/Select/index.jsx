@@ -1,5 +1,6 @@
 import styles from "./style.module.scss";
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
+import { use } from "react";
 import { useTranslation } from "react-i18next";
 
 import Select from "react-select";
@@ -65,6 +66,12 @@ const SelectField = (props) => {
       },
     }),
   };
+
+  useEffect(() => {
+    if (options.length > 0) {
+      handleChange(options[0].value);
+    }
+  }, []);
 
   return (
     <div className={`${styles.inputWrapper} ${i18n.dir()}`}>

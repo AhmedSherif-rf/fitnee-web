@@ -266,18 +266,16 @@ export const REVIEW_REQUEST_REJECTION_INITIAL_VALUES = {
 export const SUBSCRIPTION_FORM_INITIAL_VALUES = {
   gender: "",
   weight: "",
-  favMeals: "",
+  likes_meal: "",
   training_place: "",
   training_level: "",
-  injuries: "",
-  reference: "",
+  is_injured: false,
+  how_did_you_know_us: "",
   accept: "",
   age: "",
   height: "",
-  training_type: "",
   your_goal: "",
-  illness: "",
-  preference_meals: "",
+  diseases: "",
   conditions: "",
 };
 

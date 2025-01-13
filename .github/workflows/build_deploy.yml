@@ -1,0 +1,47 @@
+name: Build React App
+
+on:
+  push:
+    branches:
+      - staging # Replace with your branch name
+  pull_request:
+
+jobs:
+  build:
+    name: Build React.js Application
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Use the Node.js version required by your project
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build the application
+      - name: Build the application
+        run: npm run build
+
+      - name: compress
+        run: tar -czf build.tar.gz build/
+
+      - name: add the private
+        run: echo "$PRIVATE_KEY" > cert.pem
+      
+      - name: change perm
+        run: chmod 600 cert.pem
+      - name: push build 
+        run: scp -i /cert.pem build.tar.gz StrictHostKeyChecking=no ubuntu@16.170.125.0:/home/ubuntu
+      # Optionally upload build artifacts (if you want to use them elsewhere)
+      - name: Execute Remote Script
+        run: |
+          ssh -i cert.pem -o StrictHostKeyChecking=no ubuntu@16.170.125.0 '/path/to/remote/script.sh'
+        

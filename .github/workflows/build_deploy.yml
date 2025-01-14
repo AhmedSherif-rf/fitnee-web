@@ -15,6 +15,18 @@ jobs:
       # Checkout the repository code
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Set environment variables
+        run: |
+          echo "REACT_APP_FIREBASE_API_KEY='AIzaSyAhkd3kt91KiPEkWKFXfiNlTLMbtMQ6QDY'" >> .env
+          echo "REACT_APP_FIREBASE_AUTH_DOMAIN='fitnee-599e6.firebaseapp.com'" >> .env
+          echo "REACT_APP_FIREBASE_PROJECT_ID='fitnee-599e6'" >> .env
+          echo "REACT_APP_FIREBASE_STORAGE_BUCKET='fitnee-599e6.appspot.com'" >> .env
+          echo "REACT_APP_FIREBASE_SENDER_ID='656320859335'" >> .env
+          echo "REACT_APP_FIREBASE_APP_ID='1:656320859335:web:90ecc985a07ec6ae5302e2'" >> .env
+          echo "REACT_APP_FIREBASE_MEASUREMENT_ID='VY7M0GFXTL'" >> .env
+          echo "REACT_APP_BACKEND_BASE_URL='https://staging.fitnee.fit'" >> .env
+
 
       # Set up Node.js environment
       - name: Set up Node.js

@@ -30,35 +30,15 @@ jobs:
       - name: echo
         run: cat .env
 
-
-      # Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '21' # Use the Node.js version required by your project
-
-      # Install dependencies
-      - name: Install dependencies
-        run: npm install
-
-      # Build the application
-      - name: Build the application
-        run: NODE_OPTIONS=--no-warnings npm run build
-
-      - name: compress
-        run: tar -czf build.tar.gz build/
-
       - name: add the private
         run: echo "$PRIVATE_KEY" > cert.pem
       
       - name: change perm
         run: chmod 600 cert.pem
-      - name: push build 
-        run: scp -i /cert.pem build.tar.gz StrictHostKeyChecking=no ubuntu@16.170.125.0:/home/ubuntu
-      # Optionally upload build artifacts (if you want to use them elsewhere)
+
       - name: Execute Remote Script
         run: |
-          ssh -i cert.pem -o StrictHostKeyChecking=no ubuntu@16.170.125.0 '/path/to/remote/script.sh'
+          ssh -i cert.pem -o StrictHostKeyChecking=no ubuntu@16.170.125.0 '/home/ubuntu/fe-deploy.sh'
       
 
     env:

@@ -61,7 +61,7 @@ export const AddCoach = createAsyncThunk(
       const response = await axiosInstance.post(apiEndpoint, requestData);
       return response.data;
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.Message);
+      Toaster.error(Object.values(error.response?.data?.error)[0][0]);
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

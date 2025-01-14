@@ -16,12 +16,13 @@ const AddCoachModal = (props) => {
   const [displayImages, setDisplayImages] = useState("");
 
   const { onClose, isOpen, className, size, handleRefetchHistory } = props;
+
   const { loading } = useSelector((state) => state.userListing);
   const dispatch = useDispatch();
 
   const { t, i18n } = useTranslation("");
 
-  const handleAddProgressSubmit = async (values) => {
+  const handleAddProgressSubmit = async (values, resetForm) => {
     const requestData = new FormData();
     requestData.append("profile_pic", values.profile_pic);
     requestData.append("email", values.email);
@@ -40,6 +41,9 @@ const AddCoachModal = (props) => {
     await dispatch(AddCoach(data)).then((res) => {
       if (res.type === "AddCoach/fulfilled") {
         handleRefetchHistory();
+        onClose();
+        resetForm({ values: { ...ADD_COACH_INITIAL_VALUES } });
+        setDisplayImages("");
       }
     });
   };
@@ -63,10 +67,7 @@ const AddCoachModal = (props) => {
           validationSchema={ADD_COACH_SCHEMA}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            await handleAddProgressSubmit(values);
-            resetForm({ values: { ...ADD_COACH_INITIAL_VALUES } });
-            setDisplayImages("");
-            onClose();
+            await handleAddProgressSubmit(values, resetForm);
           }}
         >
           {({

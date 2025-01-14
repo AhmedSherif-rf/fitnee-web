@@ -35,6 +35,14 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
+    path: "/trainee/serviceProviderProfile/fitneeCoach",
+    component: lazy(() => import("../Pages/TraineePages/FitneeCoachProfile")),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
+    role: traineeRole,
+  },
+  {
     path: "/trainee/allServiceProvider/:roleType",
     component: lazy(() => import("../Pages/TraineePages/AllServiceProvider")),
     exact: true,

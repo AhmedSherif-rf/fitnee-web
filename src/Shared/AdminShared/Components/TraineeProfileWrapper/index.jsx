@@ -168,13 +168,15 @@ const TraineeProfileWrapper = (props) => {
           action: (
             <p
               className="mb-0 text-decoration-underline cursorPointer"
-              onClick={() =>
+              onClick={() => {
+                console.log("membership", membership);
+
                 fetchChat(
                   id,
                   membership?.serviceprovider?.id,
                   membership?.serviceprovider
-                )
-              }
+                );
+              }}
             >
               <BsChatText size={25} />
             </p>

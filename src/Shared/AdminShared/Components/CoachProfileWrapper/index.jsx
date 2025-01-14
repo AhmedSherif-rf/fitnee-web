@@ -1,45 +1,46 @@
-// import moment from "moment";
+import moment from "moment";
 import GoBack from "../GoBack";
-// import { db } from "../../../../firebase";
-// import ListingTable from "../ListingTable";
-// import { BsChatText } from "react-icons/bs";
-import { useParams } from "react-router-dom";
-// import BarChart from "../../../Chart/Barchart";
+import { db } from "../../../../firebase";
+import ListingTable from "../ListingTable";
+import { BsChatText } from "react-icons/bs";
+import { useNavigate, useParams } from "react-router-dom";
+import BarChart from "../../../Chart/Barchart";
 import { useTranslation } from "react-i18next";
-// import DocumentCard from "../../../DocumentCard";
+import DocumentCard from "../../../DocumentCard";
 import { useSelector, useDispatch } from "react-redux";
-// import { onValue, ref, orderByChild } from "firebase/database";
-// import AvailableHourListing from "../../../AvailableHourListing";
+import { onValue, ref, orderByChild } from "firebase/database";
+import AvailableHourListing from "../../../AvailableHourListing";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
-// import IndividualChatModal from "../../../Modal/IndividualChatModal";
 import ProfileInformationCard from "../../../ProfileInformationCard";
-// import Images from "../../../../HelperMethods/Constants/ImgConstants";
-import React, { memo, useState, useEffect } from "react";
+import Images from "../../../../HelperMethods/Constants/ImgConstants";
+import React, { memo, useState, useEffect, useCallback } from "react";
 import { Row, Container, Col, Card, CardBody } from "reactstrap";
 import EditCoachModal from "../../../../Shared/Modal/EditCoach";
 import {
   ADMIN_COACH_ALL_TRAINEES_URL,
   // ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
   ADMIN_COACH_PROFILE_URL,
-  // CURRENCY,
+  CURRENCY,
 } from "../../../../utils/constants";
-// import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
-// import { userBlockUnblock } from "../../../../Redux/features/Admin/UserListing/userListingApi";
+import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
+import { userBlockUnblock } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import { getCoachDetail } from "../../../../Redux/features/Admin/ReviewRequest/ReviewRequestApi";
 import FillBtn from "../../../Buttons/FillBtn";
-import ListingTable from "../ListingTable";
 import { getCoachAllTraineesListing } from "../../../../Redux/features/Admin/UserListing/userListingApi";
+import IndividualChatModal from "../../../Modal/IndividualChatModal";
 
 const columns = [
-  { label: "Trainee", dataKey: "sp" },
+  { label: "Trainee", dataKey: "logo" },
+  { label: "Full name", dataKey: "name", align: "center" },
   {
-    label: "Price",
-    dataKey: "price",
+    label: "Email",
+    dataKey: "email",
     align: "center",
   },
-  { label: "Duration", dataKey: "duration", align: "center" },
-  { label: "Status", dataKey: "Status", align: "center" },
-  { label: "Action", dataKey: "action", align: "center" },
+  { label: "Mobile Number", dataKey: "phone_number", align: "center" },
+  { label: "Training Goal", dataKey: "training_goal", align: "center" },
+  { label: "Training Level", dataKey: "training_level", align: "center" },
+  { label: "Actions", dataKey: "action", align: "center" },
 ];
 
 const CoachProfileWrapper = (props) => {
@@ -50,15 +51,16 @@ const CoachProfileWrapper = (props) => {
   );
   const [isOpen, setIsOpen] = useState(false);
 
-  // const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([]);
   const [tableData, setTableData] = useState([]);
-  // const [recipient, setRecipient] = useState(null);
-  // const [showChatModal, setShowChatModal] = useState(false);
+  const [recipient, setRecipient] = useState(null);
+  const [showChatModal, setShowChatModal] = useState(false);
   const [coachProfile, setCoachProfile] = useState(null);
-  // const [coachPerformanceData, setCoachPerformanceData] = useState({
-  //   labels: [],
-  //   datasets: [],
-  // });
+  const [coachPerformanceData, setCoachPerformanceData] = useState({
+    labels: [],
+    datasets: [],
+  });
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setIsOpen(false);
@@ -68,27 +70,26 @@ const CoachProfileWrapper = (props) => {
     setIsOpen(true);
   };
 
-  // const coachPerformanceGraphOptions = {
-  //   responsive: true,
-  //   plugins: {
-  //     title: {
-  //       display: true,
-  //       text: "Performance",
-  //     },
-  //     legend: {
-  //       position: "bottom",
-  //     },
-  //   },
-  //   scales: {
-  //     y: {
-  //       beginAtZero: true,
-  //     },
-  //   },
-  //   maintainAspectRatio: false,
-  // };
+  const coachPerformanceGraphOptions = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "Performance",
+      },
+      legend: {
+        position: "bottom",
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    maintainAspectRatio: false,
+  };
 
   const dispatch = useDispatch();
-  const { t, i18n } = useTranslation("");
 
   useEffect(() => {
     fetchCoachProfile();
@@ -109,132 +110,49 @@ const CoachProfileWrapper = (props) => {
   };
 
   // const populateCoachPerformanceGraphData = (data) => {
-  // const labels = data?.monthly_data?.map((item) => item.month);
-  // const traineeData = data?.monthly_data?.map((item) => item.trainee);
-  // const resubscriberData = data?.monthly_data?.map(
-  //   (item) => item.resubscribe
-  // );
-  // setCoachPerformanceData({
-  //   labels,
-  //   datasets: [
-  //     {
-  //       label: "Trainees",
-  //       data: traineeData,
-  //       backgroundColor: "#E3BD99",
-  //       borderWidth: 2,
-  //     },
-  //     {
-  //       label: "Resubscriber",
-  //       data: resubscriberData,
-  //       backgroundColor: "#97694F",
-  //       borderWidth: 2,
-  //     },
-  //   ],
-  // });
-  // };
-
-  // const handleChatModalClose = useCallback(() => {
-  //   setShowChatModal(false);
-  // }, []);
-
-  // const fetchChat = (traineeId, trainerId, recipient) => {
-  //   const query = ref(
-  //     db,
-  //     `Messages/${trainerId}/${traineeId}`,
-  //     orderByChild("messageTime")
+  //   const labels = data?.monthly_data?.map((item) => item.month);
+  //   const traineeData = data?.monthly_data?.map((item) => item.trainee);
+  //   const resubscriberData = data?.monthly_data?.map(
+  //     (item) => item.resubscribe
   //   );
-
-  //   onValue(query, (snapshot) => {
-  //     const data = snapshot.val();
-  //     setMessages(data ? Object.values(data) : []);
+  //   setCoachPerformanceData({
+  //     labels,
+  //     datasets: [
+  //       {
+  //         label: "Trainees",
+  //         data: traineeData,
+  //         backgroundColor: "#E3BD99",
+  //         borderWidth: 2,
+  //       },
+  //       {
+  //         label: "Resubscriber",
+  //         data: resubscriberData,
+  //         backgroundColor: "#97694F",
+  //         borderWidth: 2,
+  //       },
+  //     ],
   //   });
-
-  //   setRecipient(recipient);
-  //   setShowChatModal(true);
   // };
 
-  // useEffect(() => {
-  //   if (coachProfile && coachProfile?.active_subscriptions?.length > 0) {
-  //     let subscriptionArray = [];
+  const handleChatModalClose = useCallback(() => {
+    setShowChatModal(false);
+  }, []);
 
-  //     coachProfile.active_subscriptions.forEach((membership) => {
-  //       subscriptionArray.push({
-  //         sp: (
-  //           <div className="d-flex align-items-center">
-  //             <div
-  //               className="bgProperties rounded-circle me-2"
-  //               style={{
-  //                 width: "40px",
-  //                 height: "40px",
-  //                 backgroundImage:
-  //                   membership?.trainee?.profile_pic === null
-  //                     ? `url(${Images.USER_DUMMY_IMG})`
-  //                     : `url(${membership?.trainee?.profile_pic})`,
-  //               }}
-  //             ></div>
-  //             <h6 className="text-secondary fw-bold mb-0">
-  //               {membership?.trainee?.first_name}{" "}
-  //               {membership?.trainee?.last_name}
-  //             </h6>
-  //           </div>
-  //         ),
-  //         price: (
-  //           <p className="fw-bold mb-0">
-  //             {CURRENCY} {membership?.transition?.current_price}
-  //           </p>
-  //         ),
-  //         duration: (
-  //           <p className="mb-0">{`${membership?.subscription?.duration} Months`}</p>
-  //         ),
-  //         Status: (
-  //           <>
-  //             {!membership?.is_expired && !membership?.is_refund && (
-  //               <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
-  //                 <span>{`Start Date : ${moment(membership?.created_at).format(
-  //                   "DD/MM/YYYY"
-  //                 )}`}</span>
-  //                 <br />
-  //                 <span>{`End Date : ${moment(membership?.expire_date).format(
-  //                   "DD/MM/YYYY"
-  //                 )}`}</span>
-  //               </div>
-  //             )}
-  //             {membership?.is_expired && !membership?.is_refund && (
-  //               <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
-  //                 {`Expired On : ${moment(membership?.expire_date).format(
-  //                   "DD/MM/YYYY"
-  //                 )}`}
-  //               </div>
-  //             )}
-  //             {membership?.is_refund && (
-  //               <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
-  //                 Refunded
-  //               </div>
-  //             )}
-  //           </>
-  //         ),
-  //         action: (
-  //           <p
-  //             className="mb-0 text-decoration-underline cursorPointer"
-  //             onClick={() =>
-  //               fetchChat(
-  //                 membership?.trainee?.id,
-  //                 coachProfile?.id,
-  //                 membership?.trainee
-  //               )
-  //             }
-  //           >
-  //             <BsChatText size={25} />
-  //           </p>
-  //         ),
-  //       });
-  //     });
+  const fetchChat = (traineeId, trainerId, recipient) => {
+    const query = ref(
+      db,
+      `Messages/${trainerId}/${traineeId}`,
+      orderByChild("messageTime")
+    );
 
-  //     setTableData(subscriptionArray);
-  //   } else {
-  //     setTableData([]);
-  //   }
-  // }, [coachProfile]);
+    onValue(query, (snapshot) => {
+      const data = snapshot.val();
+      setMessages(data ? Object.values(data) : []);
+    });
+
+    setRecipient(recipient);
+    setShowChatModal(true);
+  };
 
   useEffect(() => {
     const data = {
@@ -242,7 +160,65 @@ const CoachProfileWrapper = (props) => {
     };
     dispatch(getCoachAllTraineesListing(data)).then((res) => {
       if (res.type === "getCoachAllTraineesListing/fulfilled") {
-        setTableData(res?.payload?.data);
+        setTableData(
+          res?.payload?.data?.results?.map((item) => {
+            return {
+              logo: (
+                <div
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  onClick={() =>
+                    navigate(`/admin/coach/${uuid}/trainee/${item?.id}`)
+                  }
+                  className="d-flex align-items-center cursor-pointer"
+                >
+                  <div
+                    className="bgProperties rounded-circle me-2"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundImage:
+                        item?.profile_pic === null
+                          ? `url(${Images.USER_DUMMY_IMG})`
+                          : `url(${item?.profile_pic})`,
+                    }}
+                  ></div>
+                </div>
+              ),
+              name: (
+                <h6
+                  onClick={() =>
+                    navigate(`/admin/coach/${uuid}/trainee/${item?.id}`)
+                  }
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  className="text-secondary fw-bold mb-0 cursor-pointer"
+                >
+                  {item?.first_name} {item?.last_name}
+                </h6>
+              ),
+              last_name: item?.last_name,
+              email: item?.email,
+              phone_number: item?.phone_number,
+              training_goal: item?.training_goal,
+              training_level: item?.training_level,
+              action: (
+                <p
+                  className="mb-0 text-decoration-underline cursorPointer"
+                  onClick={() => {
+                    console.log("item", item);
+
+                    fetchChat(item?.id, item?.trainer_id, item);
+                  }}
+                >
+                  <BsChatText size={25} />
+                </p>
+              ),
+            };
+          })
+        );
       }
     });
   }, []);
@@ -313,6 +289,16 @@ const CoachProfileWrapper = (props) => {
         onClose={handleClose}
         coachData={coachProfile}
         handleRefetchHistory={fetchCoachProfile}
+      />
+
+      <IndividualChatModal
+        size={"lg"}
+        TOneClassName={"mb-4 fs-5 text-center"}
+        className={"p-4"}
+        isOpen={showChatModal}
+        onClose={handleChatModalClose}
+        messages={messages}
+        recipient={recipient}
       />
     </Container>
   );

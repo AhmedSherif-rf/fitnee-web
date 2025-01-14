@@ -71,10 +71,10 @@ export const mealClassificationStatus = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
-      Toaster.success(response?.data?.data?.message);
+      Toaster.success(response?.data?.message);
       return response.data;
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.Message);
+      Toaster.error(Object.values(error.response?.data?.error)[0]);
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

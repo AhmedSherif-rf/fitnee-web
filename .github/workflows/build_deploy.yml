@@ -27,7 +27,7 @@ jobs:
           echo "REACT_APP_FIREBASE_MEASUREMENT_ID='VY7M0GFXTL'" >> .env
           echo "REACT_APP_BACKEND_BASE_URL='https://staging.fitnee.fit'" >> .env
       - name: echo
-        run: ls -al
+        run: cat .env
 
 
       # Set up Node.js environment

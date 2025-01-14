@@ -26,6 +26,7 @@ jobs:
           echo "REACT_APP_FIREBASE_APP_ID='1:656320859335:web:90ecc985a07ec6ae5302e2'" >> .env
           echo "REACT_APP_FIREBASE_MEASUREMENT_ID='VY7M0GFXTL'" >> .env
           echo "REACT_APP_BACKEND_BASE_URL='https://staging.fitnee.fit'" >> .env
+          echo "REACT_APP_HYPERPAY_REDIRECT_URL='/trainee/dashboard'" >> .env
       - name: echo
         run: cat .env
 
@@ -34,7 +35,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Use the Node.js version required by your project
+          node-version: '21' # Use the Node.js version required by your project
 
       # Install dependencies
       - name: Install dependencies

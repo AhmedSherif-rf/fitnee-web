@@ -42,7 +42,7 @@ jobs:
 
       # Build the application
       - name: Build the application
-        run: npm run build
+        run: NODE_OPTIONS=--no-warnings npm run build
 
       - name: compress
         run: tar -czf build.tar.gz build/

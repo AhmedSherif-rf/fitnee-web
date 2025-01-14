@@ -31,7 +31,7 @@ jobs:
         run: cat .env
 
       - name: add the private
-        run: echo "$PRIVATE_KEY" > cert.pem
+        run: echo "${{ secrets.PRIVATE_KEY }}" > cert.pem
       
       - name: change perm
         run:  chmod 600 cert.pem

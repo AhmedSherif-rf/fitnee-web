@@ -34,7 +34,7 @@ jobs:
         run: echo "$PRIVATE_KEY" > cert.pem
       
       - name: change perm
-        run: chmod 600 cert.pem
+        run: cat cert.pem && chmod 600 cert.pem
 
       - name: Execute Remote Script
         run: |

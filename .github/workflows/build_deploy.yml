@@ -51,7 +51,7 @@ jobs:
 
       - name: Execute Remote Script
         run: |
-          ssh -i cert.pem -o StrictHostKeyChecking=no ubuntu@16.170.125.0 '/home/ubuntu/fe-deploy.sh'
+          ssh -i cert.pem -o StrictHostKeyChecking=no ubuntu@16.170.125.0 sh /home/ubuntu/fe-deploy.sh
       
 
     env:

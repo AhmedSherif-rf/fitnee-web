@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import { Container, Row, Col, CardBody, CardFooter } from "reactstrap";
-// import ListingTable from "../../../Shared/AdminShared/Components/ListingTable";
 // import { COLUMNS } from "./services";
 // import Pagination from "../../../Shared/Pagination";
 import { useDispatch } from "react-redux";

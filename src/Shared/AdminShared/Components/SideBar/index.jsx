@@ -14,6 +14,7 @@ import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import { GoPersonAdd, GoPaste, GoLog, GoGear } from "react-icons/go";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
+import { FaUsersRectangle } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
 
 const SideBar = ({ isOpen, toggle }) => {
@@ -182,6 +183,19 @@ const SideBar = ({ isOpen, toggle }) => {
             >
               <FaRegCalendarCheck />
               Packages
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={`py-3 d-flex align-items-center gap-2 ${
+                location.pathname === "/admin/subscripers" ? "AdminActive" : ""
+              }`}
+              tag={Link}
+              to={"/admin/subscripers"}
+              onClick={isSmallScreen ? toggle : undefined}
+            >
+              <FaUsersRectangle />
+              Subscripters
             </NavLink>
           </NavItem>
           <NavItem>

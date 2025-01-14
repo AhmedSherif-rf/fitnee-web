@@ -208,8 +208,6 @@ const CoachProfileWrapper = (props) => {
                 <p
                   className="mb-0 text-decoration-underline cursorPointer"
                   onClick={() => {
-                    console.log("item", item);
-
                     fetchChat(item?.id, item?.trainer_id, item);
                   }}
                 >

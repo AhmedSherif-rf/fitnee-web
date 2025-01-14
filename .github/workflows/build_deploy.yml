@@ -30,8 +30,17 @@ jobs:
       - name: echo
         run: cat .env
 
-      - name: add the private
-        run: echo "${{ secrets.PRIVATE_KEY }}" > cert.pem
+      - name: Write private key to cert.pem
+        run: |
+          cat <<EOF > cert.pem
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+          QyNTUxOQAAACCCQv3jZcvYeoIZ+NgPQiVTaIJ8dx6o/Ofn9SYVZreL+QAAAJgWqZAxFqmQ
+          MQAAAAtzc2gtZWQyNTUxOQAAACCCQv3jZcvYeoIZ+NgPQiVTaIJ8dx6o/Ofn9SYVZreL+Q
+          AAAEDOLIQ3o3kW4Bp1FAWFheiNrj2NS4mJbGiD6Qya0t7Ai4JC/eNly9h6ghn42A9CJVNo
+          gnx3Hqj85+f1JhVmt4v5AAAAD2FobWVkc2hAYWhtZWRzaAECAwQFBg==
+          -----END OPENSSH PRIVATE KEY-----
+          EOF
       
       - name: change perm
         run:  chmod 600 cert.pem

@@ -1,0 +1,72 @@
+name: Build React App
+
+on:
+  push:
+    branches:
+      - staging # Replace with your branch name
+  pull_request:
+
+jobs:
+  build:
+    name: Build React.js Application
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set environment variables
+        run: |
+          echo "REACT_APP_FIREBASE_API_KEY='AIzaSyAhkd3kt91KiPEkWKFXfiNlTLMbtMQ6QDY'" >> .env
+          echo "REACT_APP_FIREBASE_AUTH_DOMAIN='fitnee-599e6.firebaseapp.com'" >> .env
+          echo "REACT_APP_FIREBASE_PROJECT_ID='fitnee-599e6'" >> .env
+          echo "REACT_APP_FIREBASE_STORAGE_BUCKET='fitnee-599e6.appspot.com'" >> .env
+          echo "REACT_APP_FIREBASE_SENDER_ID='656320859335'" >> .env
+          echo "REACT_APP_FIREBASE_APP_ID='1:656320859335:web:90ecc985a07ec6ae5302e2'" >> .env
+          echo "REACT_APP_FIREBASE_MEASUREMENT_ID='VY7M0GFXTL'" >> .env
+          echo "REACT_APP_BACKEND_BASE_URL='https://staging.fitnee.fit'" >> .env
+      - name: echo
+        run: cat .env
+
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Use the Node.js version required by your project
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build the application
+      - name: Build the application
+        run: npm run build
+
+      - name: compress
+        run: tar -czf build.tar.gz build/
+
+      - name: add the private
+        run: echo "$PRIVATE_KEY" > cert.pem
+      
+      - name: change perm
+        run: chmod 600 cert.pem
+      - name: push build 
+        run: scp -i /cert.pem build.tar.gz StrictHostKeyChecking=no ubuntu@16.170.125.0:/home/ubuntu
+      # Optionally upload build artifacts (if you want to use them elsewhere)
+      - name: Execute Remote Script
+        run: |
+          ssh -i cert.pem -o StrictHostKeyChecking=no ubuntu@16.170.125.0 '/path/to/remote/script.sh'
+      
+
+    env:
+      REACT_APP_FIREBASE_API_KEY: 'AIzaSyAhkd3kt91KiPEkWKFXfiNlTLMbtMQ6QDY'
+      REACT_APP_FIREBASE_AUTH_DOMAIN: 'fitnee-599e6.firebaseapp.com'
+      REACT_APP_FIREBASE_PROJECT_ID: 'fitnee-599e6'
+      REACT_APP_FIREBASE_STORAGE_BUCKET: 'fitnee-599e6.appspot.com'
+      REACT_APP_FIREBASE_SENDER_ID: '656320859335'
+      REACT_APP_FIREBASE_APP_ID: '1:656320859335:web:90ecc985a07ec6ae5302e2'
+      REACT_APP_FIREBASE_MEASUREMENT_ID: 'VY7M0GFXTL'
+      REACT_APP_BACKEND_BASE_URL: 'https://staging.fitnee.fit'
+      

@@ -26,38 +26,32 @@ jobs:
           echo "REACT_APP_FIREBASE_APP_ID='1:656320859335:web:90ecc985a07ec6ae5302e2'" >> .env
           echo "REACT_APP_FIREBASE_MEASUREMENT_ID='VY7M0GFXTL'" >> .env
           echo "REACT_APP_BACKEND_BASE_URL='https://staging.fitnee.fit'" >> .env
+          echo "REACT_APP_HYPERPAY_REDIRECT_URL='/trainee/dashboard'" >> .env
       - name: echo
         run: cat .env
 
-
-      # Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20' # Use the Node.js version required by your project
-
-      # Install dependencies
-      - name: Install dependencies
-        run: npm install
-
-      # Build the application
-      - name: Build the application
-        run: npm run build
-
-      - name: compress
-        run: tar -czf build.tar.gz build/
-
-      - name: add the private
-        run: echo "$PRIVATE_KEY" > cert.pem
+      - name: Write private key to cert.pem
+        run: |
+          cat <<EOF > cert.pem
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+          QyNTUxOQAAACDnP09ot1b4jhZ0NBVPkljY+vqmDxfeGo9c/3GZxpxeigAAAJjr8ap+6/Gq
+          fgAAAAtzc2gtZWQyNTUxOQAAACDnP09ot1b4jhZ0NBVPkljY+vqmDxfeGo9c/3GZxpxeig
+          AAAEDXkWWcopLATfBiITpR5pxuhTDAaw9YLb5gFQWd6jMiruc/T2i3VviOFnQ0FU+SWNj6
+          +qYPF94aj1z/cZnGnF6KAAAAD2FobWVkc2hAYWhtZWRzaAECAwQFBg==
+          -----END OPENSSH PRIVATE KEY-----
+          EOF
       
       - name: change perm
-        run: chmod 600 cert.pem
-      - name: push build 
-        run: scp -i /cert.pem build.tar.gz StrictHostKeyChecking=no ubuntu@16.170.125.0:/home/ubuntu
-      # Optionally upload build artifacts (if you want to use them elsewhere)
+        run:  chmod 600 cert.pem
+
+      - name: read the key
+        run: cat cert.pem 
+
+
       - name: Execute Remote Script
         run: |
-          ssh -i cert.pem -o StrictHostKeyChecking=no ubuntu@16.170.125.0 '/path/to/remote/script.sh'
+          ssh -i cert.pem -o StrictHostKeyChecking=no ubuntu@13.50.216.234 sh /home/ubuntu/fe-deploy.sh
       
 
     env:
@@ -69,4 +63,4 @@ jobs:
       REACT_APP_FIREBASE_APP_ID: '1:656320859335:web:90ecc985a07ec6ae5302e2'
       REACT_APP_FIREBASE_MEASUREMENT_ID: 'VY7M0GFXTL'
       REACT_APP_BACKEND_BASE_URL: 'https://staging.fitnee.fit'
-      
+      REACT_APP_HYPERPAY_REDIRECT_URL:  '/trainee/dashboard'

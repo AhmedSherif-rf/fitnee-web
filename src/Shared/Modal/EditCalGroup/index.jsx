@@ -48,7 +48,7 @@ const EditCalGroup = (props) => {
       className={`${className} ${i18n.dir()}`}
     >
       <ModalHeader className="border-0">
-        <b>{t("meals.editMealClassification")}</b>
+        <b>{t("meals.editcalGroup")}</b>
       </ModalHeader>
       <ModalBody className="px-4">
         <Formik

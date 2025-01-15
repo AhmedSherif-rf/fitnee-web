@@ -212,7 +212,7 @@ const Category = (props) => {
               >
                 <FillBtn
                   className="w-50"
-                  text="Add Meals"
+                  text="Add Meals Category"
                   handleOnClick={handleOpen}
                 />
               </Col>

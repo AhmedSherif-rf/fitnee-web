@@ -1003,6 +1003,10 @@
     "editReceipe": "Add Receipe",
     "saveText": "Save",
     "filter": "Filter",
-    "statusLabel": "Status"
+    "statusLabel": "Status",
+    "addSubcategory": "Add Subcategory",
+    "editSubcategory": "Edit Subcategory",
+    "addcalGroup": "Add Calorie Group",
+    "editcalGroup": "Edit Calorie Group"
   }
 }

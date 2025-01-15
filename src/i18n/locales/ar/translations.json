@@ -936,6 +936,10 @@
     "editReceipe": "تعديل وصفة",
     "saveText": "حفظ",
     "filter": "تصفية",
-    "statusLabel": "الحالة"
+    "statusLabel": "الحالة",
+    "addSubcategory": "إضافة تصنيف فرعي",
+    "editSubcategory": "تعديل تصنيف فرعي",
+    "addcalGroup": "إضافة تصنيف سعرات",
+    "editcalGroup": "تعديل تصنيف سعرات"
   }
 }

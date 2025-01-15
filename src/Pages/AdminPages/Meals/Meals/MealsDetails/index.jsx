@@ -126,7 +126,7 @@ const Packages = () => {
               <div className="d-flex flex-row justify-content-start">
                 <FillBtn
                   className="w-100"
-                  text="Edit Meals"
+                  text="Edit Meals Category"
                   handleOnClick={handleOpen}
                 />
               </div>

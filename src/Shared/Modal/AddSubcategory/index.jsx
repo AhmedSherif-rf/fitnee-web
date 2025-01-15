@@ -62,7 +62,7 @@ const AddSubcategory = (props) => {
       className={`${className} ${i18n.dir()}`}
     >
       <ModalHeader className="border-0">
-        <b>{t("meals.addMealClassification")}</b>
+        <b>{t("meals.addSubcategory")}</b>
       </ModalHeader>
       <ModalBody className="px-4">
         <Formik

@@ -175,7 +175,7 @@ const CalGroup = (props) => {
           <CardHeader className="bg-transparent border-0 p-0">
             <Row className="align-items-center px-2">
               <Col md={6}>
-                <PageHeading headingText="Category List" categoryText="" />
+                <PageHeading headingText="Calorie Group List" categoryText="" />
               </Col>
               <Col
                 md={6}

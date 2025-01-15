@@ -17,6 +17,7 @@ const SelectField = (props) => {
     isLoading = false,
     isSearchable = false,
     handleChange,
+    isMulti = false,
   } = props;
 
   const { i18n } = useTranslation("");
@@ -82,14 +83,20 @@ const SelectField = (props) => {
         className={`form-control-lg w-100 ${styles.inputDesign} basic-single ${className}`}
         disabled={disabled}
         rows={rows}
+        isMulti={isMulti}
         classNamePrefix="select"
         defaultValue={options[0]}
         isDisabled={isDisabled}
         isLoading={isLoading}
         isSearchable={isSearchable}
         options={options}
-        onChange={(e) => handleChange(e.value)}
-        // isRtl={isRtl}
+        onChange={(e) => {
+          if (isMulti) {
+            handleChange(e);
+          } else {
+            handleChange(e.value);
+          }
+        }}
       />
     </div>
   );

@@ -47,7 +47,7 @@ const SubscriptionForm = () => {
   const handleSubscriptionForm = async (values) => {
     const requestData = {
       ...values,
-      diseases: [values.diseases],
+      diseases: values?.diseases?.map(({ value }) => value),
       how_did_you_know_us: [values.how_did_you_know_us],
       likes_meal: [values.likes_meal],
     };
@@ -73,7 +73,7 @@ const SubscriptionForm = () => {
 
     dispatch(getSubscriped(data)).then((res) => {
       if (res.type === "getSubscriped/fulfilled") {
-        if (!res.payload.data?.detail === "You are not qualified for this.") {
+        if (res.payload.data?.detail === "You are not qualified for this.") {
           toast.error(res.payload.data?.detail);
         } else {
           dispatch(
@@ -134,7 +134,7 @@ const SubscriptionForm = () => {
               </h3>
               <Formik
                 initialValues={{ ...SUBSCRIPTION_FORM_INITIAL_VALUES }}
-                validationSchema={SUBSCRIPTION_FORM_SCHEMA}
+                // validationSchema={SUBSCRIPTION_FORM_SCHEMA}
                 onSubmit={async (values, { setSubmitting, resetForm }) => {
                   setSubmitting(true);
 
@@ -254,21 +254,21 @@ const SubscriptionForm = () => {
                               t(errors.training_level)}
                           </p>
                         </div>
-
                         <div className="mb-2">
-                          <div className="mb-2 d-flex flex-row align-items-start gap-2">
-                            <input
-                              type="checkbox"
-                              name="is_injured"
-                              id="is_injured"
-                              className="mt-1"
-                              onChange={handleChange}
-                              value={values.conditions}
-                            />
-                            <Label className="fw-normal small mb-0">
-                              {`${t("subscription.injuriesLabel")}`}
-                            </Label>
-                          </div>
+                          <Label className="fw-normal small mb-0">
+                            {`${t("subscription.injuriesLabel")}`}
+                          </Label>
+                          <SelectField
+                            name="is_injured"
+                            className={"form-control-lg BorderRadiusInput"}
+                            options={[
+                              { label: "Yes", value: "True" },
+                              { label: "No", value: "False" },
+                            ]}
+                            handleChange={(value) =>
+                              setFieldValue("is_injured", value)
+                            }
+                          />
                           <p className="errorField">
                             {t(errors.is_injured) &&
                               touched.is_injured &&
@@ -384,6 +384,7 @@ const SubscriptionForm = () => {
 
                           <SelectField
                             name="diseases"
+                            isMulti={true}
                             className={"form-control-lg BorderRadiusInput"}
                             options={illness?.map((item) => ({
                               value: item?.id,

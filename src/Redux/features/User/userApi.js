@@ -12,6 +12,7 @@ export const login = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
+
       return response.data;
     } catch (error) {
       if (
@@ -33,6 +34,9 @@ export const logout = createAsyncThunk(
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
       const response = await axiosInstance.post(apiEndpoint, requestData);
+
+      window.localStorage.clear();
+
       Toaster.success(TranslationHelper("messages.loggedOutText"));
       return response.data;
     } catch (error) {

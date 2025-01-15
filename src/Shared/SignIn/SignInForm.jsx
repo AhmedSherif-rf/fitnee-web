@@ -41,10 +41,8 @@ const SignInForm = () => {
   const { loading, fcmToken } = useSelector((state) => state.user);
 
   const [showAccountRequestModal, setShowAccountRequestModal] = useState(false);
-  const [
-    accountRequestModalErrorText,
-    setAccountRequestModalErrorText,
-  ] = useState("");
+  const [accountRequestModalErrorText, setAccountRequestModalErrorText] =
+    useState("");
 
   const handleAccountRequestModalClose = useCallback(() => {
     setShowAccountRequestModal(false);
@@ -63,9 +61,23 @@ const SignInForm = () => {
           import("../../../src/utils/constants").then((item) => {
             switch (res?.payload?.data?.role) {
               case item.TRAINEE_ROLE:
+                window.localStorage.setItem(
+                  "user",
+                  JSON.stringify({
+                    isActivePackage:
+                      res?.payload?.data?.active_package?.[0]?.active,
+                    trainerId:
+                      res?.payload?.data?.active_package?.[0]?.trainer?.id,
+                    packageId: res?.payload?.data?.active_package?.[0]?.package,
+                  })
+                );
+
                 navigate(item.TRAINEE_INITIAL_URL);
                 break;
               case item.TRAINER_ROLE:
+                navigate(item.SERVICE_PROVIDER_INITIAL_URL);
+                break;
+              case item.FITNEE_COACH_ROLE:
                 navigate(item.SERVICE_PROVIDER_INITIAL_URL);
                 break;
               case item.NUTRITIONIST_ROLE:

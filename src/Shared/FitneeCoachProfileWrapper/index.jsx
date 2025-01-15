@@ -35,6 +35,7 @@ const ServiceProviderProfileWrapper = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation("");
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   useEffect(() => {
     const data = {
@@ -119,14 +120,25 @@ const ServiceProviderProfileWrapper = (props) => {
                     />
                   </div>
                   <div className="mb-3">
-                    <FillBtn
-                      className="w-100 py-2"
-                      text={t("guest.subscribeText")}
-                      // handleOnClick={handleSubscribeClick}
-                      handleOnClick={() =>
-                        navigate(`/trainee/subscription/form/1`)
-                      }
-                    />
+                    {user?.packageId == 1 ? (
+                      <FillBtn
+                        className="w-100 py-2"
+                        text={t("guest.messagePackageText")}
+                        // handleOnClick={handleSubscribeClick}
+                        handleOnClick={() =>
+                          navigate(`/trainee/subscription/form/1`)
+                        }
+                      />
+                    ) : (
+                      <FillBtn
+                        className="w-100 py-2"
+                        text={t("guest.subscribeText")}
+                        // handleOnClick={handleSubscribeClick}
+                        handleOnClick={() =>
+                          navigate(`/trainee/subscription/form/1`)
+                        }
+                      />
+                    )}
                   </div>
                   {/* <div>
                     <h6 className="fw-bold text-white">

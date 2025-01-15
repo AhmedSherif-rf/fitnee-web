@@ -70,6 +70,7 @@ export const genderOptionsArabic = [
 export const ADMIN_ROLE = "Admin";
 export const TRAINEE_ROLE = "Trainee";
 export const TRAINER_ROLE = "Trainer";
+export const FITNEE_COACH_ROLE = "coach_fitnee";
 export const NUTRITIONIST_ROLE = "Nutritionist";
 export const TRAINER_NUTRITIONIST_ROLE = "Trainer And Nutritionist";
 //====================Routes====================

@@ -45,7 +45,8 @@ export const getSubscriped = createAsyncThunk(
       const response = await axiosInstance.post(apiEndpoint, requestData);
       return response.data;
     } catch (error) {
-      Toaster.error(error?.response?.data?.error?.Message);
+      const [err, message] = Object.entries(error?.response?.data?.error)?.[0];
+      Toaster.error(`${err}: ${message[0]}`);
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

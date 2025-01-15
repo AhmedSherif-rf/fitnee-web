@@ -1001,6 +1001,8 @@
     "ingredientsPlaceholder": "Enter Ingredients",
     "addReceipe": "Add Receipe",
     "editReceipe": "Add Receipe",
-    "saveText": "Save"
+    "saveText": "Save",
+    "filter": "Filter",
+    "statusLabel": "Status"
   }
 }

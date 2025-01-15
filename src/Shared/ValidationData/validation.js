@@ -488,6 +488,8 @@ export const MEALS_SCHEMA = Yup.object().shape({
   ingredients: requiredValidation,
 });
 
+export const MEALS_Filter_SCHEMA = Yup.object().shape({});
+
 export const CALORIES_GROUP_SCHEMA = Yup.object().shape({
   name: requiredValidation,
   min_calories: requiredValidation,

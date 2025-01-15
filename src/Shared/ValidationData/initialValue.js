@@ -312,3 +312,7 @@ export const MEALS_INITIAL_VALUES = {
   protein: "",
   ingredients: "",
 };
+
+export const MEALS_Filters_INITIAL_VALUES = {
+  meal_type: "",
+};

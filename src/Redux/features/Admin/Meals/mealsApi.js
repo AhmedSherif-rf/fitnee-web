@@ -4,9 +4,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getMealsClassifications = createAsyncThunk(
   "getMealsClassifications",
-  async ({ apiEndpoint }, thunkAPI) => {
+  async ({ apiEndpoint, params }, thunkAPI) => {
     try {
-      const response = await axiosInstance.get(apiEndpoint);
+      const response = await axiosInstance.get(apiEndpoint, { params });
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.Message);

@@ -21,16 +21,19 @@ import {
   getMealsClassifications,
   mealClassificationStatus,
 } from "../../../../Redux/features/Admin/Meals/mealsApi";
+import MealsFilter from "../../../../Shared/Modal/MealsFilter";
 
 const Category = (props) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.userListing);
   const [lang, setLang] = useState("en");
-  const [isOpen, setIsOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [totalSize, setSizePages] = useState(0);
   const [tableData, setTableData] = useState([]);
   const [mealsClassifications, setMealsClassificationsData] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
+  const [isFiltered, setIsFiltered] = useState(false);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -38,6 +41,16 @@ const Category = (props) => {
 
   const handleOpen = () => {
     setIsOpen(true);
+  };
+
+  const handleCloseFilter = () => {
+    setIsOpenFilter(false);
+  };
+
+  const handleOpenFilter = () => {
+    if (isFiltered) {
+      setIsFiltered(false);
+    } else setIsOpenFilter(true);
   };
 
   const handlePageChange = useCallback((page) => {
@@ -48,10 +61,17 @@ const Category = (props) => {
     fetchMealsClassificationListing();
   }, [dispatch, page]);
 
-  const fetchMealsClassificationListing = () => {
+  const fetchMealsClassificationListing = (filter = null) => {
+    const isFiltered = filter !== null && Object.keys(filter).length > 0;
+
     const data = {
-      apiEndpoint: `${ADMIN_MEAL_URL}?page=${page}`,
+      apiEndpoint: `${ADMIN_MEAL_URL}${isFiltered ? "filter/" : ""}`,
+      params: filter,
     };
+
+    if (filter !== null) {
+      setIsFiltered(true);
+    }
 
     dispatch(getMealsClassifications(data)).then((res) => {
       if (res.type === "getMealsClassifications/fulfilled") {
@@ -165,6 +185,10 @@ const Category = (props) => {
     setLang(window.localStorage.getItem("Website_Language__fitnee"));
   }, []);
 
+  useEffect(() => {
+    if (!isFiltered) fetchMealsClassificationListing();
+  }, [isFiltered]);
+
   const columns = [
     { label: "Name", dataKey: "name" },
     { label: "Description", dataKey: "description" },
@@ -195,6 +219,13 @@ const Category = (props) => {
             </Row>
           </CardHeader>
           <CardBody className="tableBodyWrapperPagination p-md-2 p-0">
+            <div className="d-flex justify-content-end">
+              <FillBtn
+                className="px-5 my-2"
+                text={isFiltered ? "Clear Filter" : "Filter"}
+                handleOnClick={handleOpenFilter}
+              />
+            </div>
             <ListingTable data={tableData} columns={columns} />
           </CardBody>
           <CardFooter className="bg-transparent text-end pb-0 pt-2">
@@ -212,6 +243,14 @@ const Category = (props) => {
         isOpen={isOpen}
         onClose={handleClose}
         handleRefetchHistory={fetchMealsClassificationListing}
+      />
+      <MealsFilter
+        isOpen={isOpenFilter}
+        onClose={handleCloseFilter}
+        handleRefetchHistory={(filter) =>
+          fetchMealsClassificationListing(filter)
+        }
+        setIsFiltered={setIsFiltered}
       />
     </Row>
   );

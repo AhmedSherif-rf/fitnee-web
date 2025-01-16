@@ -48,11 +48,13 @@ const SubscriptionForm = () => {
       ...values,
       diseases: values?.diseases?.map(({ value }) => value),
       how_did_you_know_us: [values.how_did_you_know_us],
-      likes_meal: [values.likes_meal],
+      likes_meal: values?.likes_meal?.map(({ value }) => value),
     };
 
     if (requestData.diseases.length > 0) {
       requestData.have_diseases = true;
+    } else {
+      requestData.have_diseases = false;
     }
 
     const data = {

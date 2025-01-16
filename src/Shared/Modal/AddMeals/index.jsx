@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import React, { memo, useEffect, useState } from "react";
 import InputField from "../../InputField";
+import MultiInputField from "../../MultiInput";
 import FillBtn from "../../Buttons/FillBtn";
 import OutlineBtn from "../../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
@@ -8,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ADMIN_MEAL_URL,
   ADMIN_MEAL_TYPE_URL,
+  ADMIN_MEAL_CLASSIFICATION_URL,
   ADMIN_CALORIES_URL,
 } from "../../../utils/constants";
 import { MEALS_SCHEMA } from "../../ValidationData/validation";
@@ -22,6 +24,7 @@ import UploadPic from "../../UploadPic";
 
 const AddMeals = (props) => {
   const [displayImages, setDisplayImages] = useState("");
+  const [mainCategory, setMainCategory] = useState([]);
   const [mealTypes, setMealTypes] = useState([]);
   const [calories, setCalories] = useState([]);
   const { onClose, isOpen, className, size, handleRefetchHistory } = props;
@@ -32,10 +35,11 @@ const AddMeals = (props) => {
 
   const handleAddProgressSubmit = async (values) => {
     const requestData = new FormData();
-    requestData.append("meal_pic", values.meal_pic);
+    if (values.meal_pic) requestData.append("meal_pic", values.meal_pic);
     requestData.append("en_name", values.en_name);
     requestData.append("ar_name", values.ar_name);
     requestData.append("description", values.description);
+    requestData.append("classification", values.classification);
     requestData.append("meal_type", values.meal_type);
     requestData.append("calorie_range", values.calorie_range);
     requestData.append("calorie_recipe", values.calorie_recipe);
@@ -53,6 +57,18 @@ const AddMeals = (props) => {
     await dispatch(AddMealClassifications(data)).then((res) => {
       if (res.type === "AddMealClassifications/fulfilled") {
         handleRefetchHistory();
+      }
+    });
+  };
+
+  const getMealClassification = async () => {
+    const data = {
+      apiEndpoint: ADMIN_MEAL_CLASSIFICATION_URL,
+    };
+
+    await dispatch(getMealsClassifications(data)).then((res) => {
+      if (res.type === "getMealsClassifications/fulfilled") {
+        setMainCategory(res.payload.data);
       }
     });
   };
@@ -83,6 +99,7 @@ const AddMeals = (props) => {
 
   // ----------------- side effects -----------------
   useEffect(() => {
+    getMealClassification();
     getMealTypes();
     getCalories();
   }, [isOpen]);
@@ -130,9 +147,7 @@ const AddMeals = (props) => {
                   keyName="meal_pic"
                 />
                 <p className="errorField">
-                  {t(errors.profile_pic) &&
-                    touched.profile_pic &&
-                    t(errors.profile_pic)}
+                  {t(errors.meal_pic) && touched.meal_pic && t(errors.meal_pic)}
                 </p>
               </div>
               <div className="mb-2">
@@ -188,6 +203,28 @@ const AddMeals = (props) => {
                   {t(errors.description) &&
                     touched.description &&
                     t(errors.description)}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("meals.meal_classificationLabel")}`}
+                </Label>
+                <SelectField
+                  name="classification"
+                  className={"form-control-lg BorderRadiusInput"}
+                  options={mainCategory?.map((item) => ({
+                    value: item.id,
+                    label: i18n.language === "en" ? item.en_name : item.ar_name,
+                  }))}
+                  handleChange={(value) =>
+                    setFieldValue("classification", value)
+                  }
+                />
+                <p className="errorField">
+                  {t(errors.classification) &&
+                    touched.classification &&
+                    t(errors.classification)}
                 </p>
               </div>
 
@@ -313,11 +350,13 @@ const AddMeals = (props) => {
                 <Label className="fw-normal small mb-0">
                   {`${t("meals.ingredientsLabel")}`}
                 </Label>
-                <InputField
+
+                <MultiInputField
                   type="text"
                   name="ingredients"
+                  dataKey="ingredients"
                   placeholder={t("meals.ingredientsPlaceholder")}
-                  onChangeHandle={handleChange}
+                  onChangeHandle={setFieldValue}
                   onBlurHandle={handleBlur}
                   value={values.ingredients}
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}

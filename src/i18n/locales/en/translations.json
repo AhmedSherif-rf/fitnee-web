@@ -43,7 +43,6 @@
     "termAndConditionHeadingText": "Terms and Conditions",
     "termAndConditionServiceProvidersHeadingText": "Terms and Conditions of Service Providers",
     "termAndConditionTrainerHeadingText": "Terms and Conditions of Clients",
-
     "doneButtonText": "Done",
     "backButtonText": "Back",
     "general": {
@@ -965,7 +964,7 @@
     "acceptPlaceholder": "Enter reference",
     "training_typeLabel": "Training Type",
     "training_typePlaceholder": "Enter reference",
-    "illnessLabel": "Do you have any illness?",
+    "illnessLabel": "Do You Have Any Medical Conditions?",
     "illnessPlaceholder": "Enter illness",
     "preference_mealsLabel": "Meals you want to add in your deit",
     "preference_mealsPlaceholder": "Enter meals",
@@ -988,7 +987,7 @@
     "maxCalLabel": "Maximum Calories",
     "maxCalPlaceholder": "Enter Maximum Calories",
     "classificationLabel": "Main Category",
-    "meal_typeLabel": "Meal Type",
+    "meal_typeLabel": "Subcategory",
     "calorie_rangeLabel": "Calorie Range",
     "calorie_recipeLabel": "Calorie Recipe",
     "calorie_recipePlaceholder": "Enter Calorie Recipe",
@@ -1007,7 +1006,11 @@
     "statusLabel": "Status",
     "addSubcategory": "Add Subcategory",
     "editSubcategory": "Edit Subcategory",
+    "meal_classificationLabel": "Meal Classification",
     "addcalGroup": "Add Calorie Group",
     "editcalGroup": "Edit Calorie Group"
+  },
+  "exercises": {
+    "exercises": "Exercises"
   }
 }

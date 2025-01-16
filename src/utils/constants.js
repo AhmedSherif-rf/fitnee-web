@@ -179,6 +179,7 @@ export const ADMIN_CALORIES_STATUS_URL = "/calories/id/active/";
 export const LIKED_MEALS_URL = "/user_meal_likes/";
 export const ILLNESS_URL = "/diseases/";
 export const SUBSCRIPTION_FORM_URL = "/register-for-Package/";
+export const ADMIN_EXERCISES_URL = "/exercise-day/all/";
 //=================StatusCodes===================
 export const FORBIDDEN_CODE = 403;
 export const SUCCESS_CODES = [200, 201];

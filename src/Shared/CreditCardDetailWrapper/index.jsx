@@ -59,7 +59,9 @@ const CreditCardDetailWrapper = () => {
 
     script.innerHTML = `
       var wpwlOptions = {
-        locale: "${localStorage.getItem("Website_Language__fitnee").toString()}"
+        locale: "${localStorage
+          .getItem("Website_Language__fitnee")
+          ?.toString()}"
       };
     `;
     document.body.appendChild(script);
@@ -481,12 +483,13 @@ const CreditCardDetailWrapper = () => {
                                     !values.use_wallet
                                   );
                                   if (!values.use_wallet === true) {
-                                    const updatedGrandPrice = functions.getSummary(
-                                      summaryData.discount,
-                                      walletBalance,
-                                      subscriptionPlan.price,
-                                      summaryData.vat
-                                    );
+                                    const updatedGrandPrice =
+                                      functions.getSummary(
+                                        summaryData.discount,
+                                        walletBalance,
+                                        subscriptionPlan.price,
+                                        summaryData.vat
+                                      );
 
                                     setSummaryData({
                                       ...summaryData,
@@ -494,12 +497,13 @@ const CreditCardDetailWrapper = () => {
                                       walletAmount: walletBalance,
                                     });
                                   } else {
-                                    const updatedGrandPrice = functions.getSummary(
-                                      summaryData.discount,
-                                      0,
-                                      subscriptionPlan.price,
-                                      summaryData.vat
-                                    );
+                                    const updatedGrandPrice =
+                                      functions.getSummary(
+                                        summaryData.discount,
+                                        0,
+                                        subscriptionPlan.price,
+                                        summaryData.vat
+                                      );
 
                                     setSummaryData({
                                       ...summaryData,

@@ -480,12 +480,13 @@ export const MEALS_SCHEMA = Yup.object().shape({
   en_name: requiredValidation,
   ar_name: requiredValidation,
   description: requiredValidation,
+  classification: requiredValidation,
   meal_type: requiredValidation,
   calorie_range: requiredValidation,
+  calorie_recipe: requiredValidation,
   fats: requiredValidation,
   carbohydrate: requiredValidation,
   protein: requiredValidation,
-  ingredients: requiredValidation,
 });
 
 export const MEALS_Filter_SCHEMA = Yup.object().shape({});

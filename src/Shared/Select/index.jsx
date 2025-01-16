@@ -1,5 +1,5 @@
 import styles from "./style.module.scss";
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { use } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -18,6 +18,7 @@ const SelectField = (props) => {
     isSearchable = false,
     handleChange,
     isMulti = false,
+    defaultValue = null,
   } = props;
 
   const { i18n } = useTranslation("");
@@ -85,7 +86,7 @@ const SelectField = (props) => {
         rows={rows}
         isMulti={isMulti}
         classNamePrefix="select"
-        defaultValue={options[0]}
+        defaultValue={defaultValue}
         isDisabled={isDisabled}
         isLoading={isLoading}
         isSearchable={isSearchable}

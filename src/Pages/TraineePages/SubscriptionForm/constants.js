@@ -11,6 +11,7 @@ export const trainingPlaces = [
 export const trainingLevel = [
   { value: "beginner", label: "Beginner" },
   { value: "intermediate", label: "Intermediate" },
+  { value: "advanced", label: "Advanced" },
   { value: "expert", label: "Expert" },
 ];
 
@@ -25,4 +26,5 @@ export const findUs = [
 export const trainingGoal = [
   { value: "lose", label: "Weight Loss" },
   { value: "gain", label: "Weight Gaining" },
+  { value: "maintenance", label: "Weight Maintenance" },
 ];

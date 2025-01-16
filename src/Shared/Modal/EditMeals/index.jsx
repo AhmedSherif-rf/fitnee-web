@@ -2,33 +2,37 @@ import { Formik } from "formik";
 import React, { memo, useEffect, useState } from "react";
 import InputField from "../../InputField";
 import FillBtn from "../../Buttons/FillBtn";
+import MultiInputField from "../../MultiInput";
 import OutlineBtn from "../../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  ADMIN_MEAL_URL,
-  ADMIN_MEAL_TYPE_URL,
-  ADMIN_CALORIES_URL,
-} from "../../../utils/constants";
+import { ADMIN_MEAL_URL } from "../../../utils/constants";
 import { MEALS_SCHEMA } from "../../ValidationData/validation";
 import { Modal, ModalBody, ModalHeader, Label, Form } from "reactstrap";
 import UploadPic from "../../UploadPic";
-import {
-  EditMealClassifications,
-  getMealsClassifications,
-} from "../../../Redux/features/Admin/Meals/mealsApi";
+import { EditMealClassifications } from "../../../Redux/features/Admin/Meals/mealsApi";
 import SelectField from "../../../Shared/Select";
 
 const EditMeals = (props) => {
-  const { onClose, isOpen, className, size, mealData, handleRefetchHistory } =
-    props;
-  const [mealTypes, setMealTypes] = useState([]);
-  const [calories, setCalories] = useState([]);
+  const { t, i18n } = useTranslation("");
+  const {
+    onClose,
+    isOpen,
+    className,
+    size,
+    mealData,
+    handleRefetchHistory,
+    mealTypes,
+    calories,
+    mealTypeDefaultData,
+    mainCategory,
+    mainCategoryDefaultData,
+    calorieDefaultData,
+  } = props;
+
   const [displayImages, setDisplayImages] = useState("");
   const { loading } = useSelector((state) => state.userListing);
   const dispatch = useDispatch();
-
-  const { t, i18n } = useTranslation("");
 
   const handleEditCoachSubmit = async (values) => {
     const requestData = new FormData();
@@ -38,6 +42,7 @@ const EditMeals = (props) => {
     requestData.append("en_name", values.en_name);
     requestData.append("ar_name", values.ar_name);
     requestData.append("description", values.description);
+    requestData.append("classification", values.classification);
     requestData.append("meal_type", values.meal_type);
     requestData.append("calorie_range", values.calorie_range);
     requestData.append("calorie_recipe", values.calorie_recipe);
@@ -59,35 +64,8 @@ const EditMeals = (props) => {
     });
   };
 
-  const getMealTypes = async () => {
-    const data = {
-      apiEndpoint: ADMIN_MEAL_TYPE_URL,
-    };
-
-    await dispatch(getMealsClassifications(data)).then((res) => {
-      if (res.type === "getMealsClassifications/fulfilled") {
-        setMealTypes(res.payload.data);
-      }
-    });
-  };
-
-  const getCalories = async () => {
-    const data = {
-      apiEndpoint: ADMIN_CALORIES_URL,
-    };
-
-    await dispatch(getMealsClassifications(data)).then((res) => {
-      if (res.type === "getMealsClassifications/fulfilled") {
-        setCalories(res.payload.data);
-      }
-    });
-  };
-
   // ----------------- side effects -----------------
   useEffect(() => {
-    getMealTypes();
-    getCalories();
-
     if (isOpen) {
       setDisplayImages(mealData?.meal_pic);
     } else {
@@ -200,10 +178,34 @@ const EditMeals = (props) => {
 
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
+                  {`${t("meals.meal_classificationLabel")}`}
+                </Label>
+                <SelectField
+                  name="classification"
+                  defaultValue={mainCategoryDefaultData}
+                  className={"form-control-lg BorderRadiusInput"}
+                  options={mainCategory?.map((item) => ({
+                    value: item.id,
+                    label: i18n.language === "en" ? item.en_name : item.ar_name,
+                  }))}
+                  handleChange={(value) =>
+                    setFieldValue("classification", value)
+                  }
+                />
+                <p className="errorField">
+                  {t(errors.classification) &&
+                    touched.classification &&
+                    t(errors.classification)}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
                   {`${t("meals.meal_typeLabel")}`}
                 </Label>
                 <SelectField
                   name="meal_type"
+                  defaultValue={mealTypeDefaultData}
                   className={"form-control-lg BorderRadiusInput"}
                   options={mealTypes?.map((item) => ({
                     value: item.id,
@@ -225,6 +227,7 @@ const EditMeals = (props) => {
                 <SelectField
                   name="calorie_range"
                   className={"form-control-lg BorderRadiusInput"}
+                  defaultValue={calorieDefaultData}
                   options={calories?.map((item) => ({
                     value: item.id,
                     label: item.name,
@@ -320,11 +323,12 @@ const EditMeals = (props) => {
                 <Label className="fw-normal small mb-0">
                   {`${t("meals.ingredientsLabel")}`}
                 </Label>
-                <InputField
+                <MultiInputField
                   type="text"
                   name="ingredients"
+                  dataKey="ingredients"
                   placeholder={t("meals.ingredientsPlaceholder")}
-                  onChangeHandle={handleChange}
+                  onChangeHandle={setFieldValue}
                   onBlurHandle={handleBlur}
                   value={values.ingredients}
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}

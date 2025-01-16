@@ -16,7 +16,6 @@ import {
   getSubscriped,
 } from "../../../Redux/features/Subscription/subscriptionApi";
 import { SUBSCRIPTION_FORM_INITIAL_VALUES } from "../../../Shared/ValidationData/initialValue";
-import { SUBSCRIPTION_FORM_SCHEMA } from "../../../Shared/ValidationData/validation";
 import InputField from "../../../Shared/InputField";
 import SelectField from "../../../Shared/Select";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
@@ -200,6 +199,7 @@ const SubscriptionForm = () => {
 
                           <SelectField
                             name="likes_meal"
+                            isMulti={true}
                             className={"form-control-lg BorderRadiusInput"}
                             handleChange={(value) =>
                               setFieldValue("likes_meal", value)

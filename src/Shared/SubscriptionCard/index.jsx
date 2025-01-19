@@ -26,6 +26,7 @@ const SubscriptionCard = (props) => {
   const handleSubscribeClick = useCallback(() => {
     if (user) {
       dispatch(
+        // "test"
         setSubscriptionPlan({ id, duration, price, type, package_id: id })
       );
       navigate("/trainee/subscription/creditCardDetail");

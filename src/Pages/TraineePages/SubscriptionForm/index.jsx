@@ -83,6 +83,7 @@ const SubscriptionForm = () => {
               duration: packageDetails?.duration,
               price: packageDetails?.price,
               type: packageDetails?.type,
+              package_id: packageDetails?.id,
             })
           );
           navigate("/trainee/subscription/creditCardDetail");

@@ -579,7 +579,18 @@
     "editText": "Edit",
     "addText": "Add",
     "fullyBookedText": "Fully Booked",
-    "alreadySubscribedText": "Already Subscribed"
+    "alreadySubscribedText": "Already Subscribed",
+    "active": "Activate",
+    "inactive": "Inactivate",
+    "chat": "Chat",
+    "name": "Name",
+    "fivMeals": "Fivourate Meals",
+    "trainingPlace": "Training Place",
+    "goal": "Goal",
+    "medCondition": "Medical Condition",
+    "weight": "Weight",
+    "height": "Height",
+    "allWeek": "All Week"
   },
   "paymentHistory": {
     "paymentHistoryTitleText": "Payment History",
@@ -1012,5 +1023,8 @@
   },
   "exercises": {
     "exercises": "Exercises"
+  },
+  "general": {
+    "trainingLevel": "Training Level"
   }
 }

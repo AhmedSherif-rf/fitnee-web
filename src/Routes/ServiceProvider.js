@@ -29,6 +29,16 @@ export const serviceProviderRoutes = [
     role: serviceProviderRole,
   },
   {
+    path: "/serviceProvider/subscriber/:id",
+    component: lazy(() =>
+      import("../Pages/ServiceProviderPages/TraineeDetails")
+    ),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
+    role: serviceProviderRole,
+  },
+  {
     path: "/serviceProvider/subscription",
     component: lazy(() => import("../Pages/ServiceProviderPages/Subscription")),
     exact: true,
@@ -53,10 +63,12 @@ export const serviceProviderRoutes = [
     isPrivate: true,
     theme: "dark",
     role: serviceProviderRole,
-  }, 
+  },
   {
     path: "serviceProvider/notifications",
-    component: lazy(() => import("../Pages/ServiceProviderPages/Notifications")),
+    component: lazy(() =>
+      import("../Pages/ServiceProviderPages/Notifications")
+    ),
     exact: true,
     isPrivate: true,
     theme: "dark",

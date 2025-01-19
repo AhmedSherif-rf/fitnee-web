@@ -84,6 +84,8 @@ export const LOGOUT_URL = "/logout/";
 export const GET_STATS = "/guest/stats/";
 export const USER_PROFILE_URL = "/User/";
 export const MEMBERSHIP_URL = "/membership/";
+export const FITNEE_COACH_MEMBERSHIP_URL =
+  "/coachfitnee/156/get_related_trainee/";
 export const REGISTER_URL = "/registeruser/";
 export const EDIT_PROFILE_URL = "/User/userId/";
 export const SET_USER_LANGUAGE = "/lang-update/";
@@ -122,6 +124,8 @@ export const FORGOT_PASSWORD_OTP_URL = "/forget_password_otp/";
 export const CANCEL_SUBSCRIPTION_URL = "wallet/refund_amount/";
 export const SEND_UPDATE_PROFILE_URL = "/profile-update-request/";
 export const ADMIN_TRAINEE_PROFILE_URL = "/admin/trainees/userId/";
+export const COACH_TRAINEE_PROFILE_URL =
+  "/coachfitnee/userId/get_specific_trainee";
 export const ADMIN_RELEASE_PAYMENT_URL = "/admin/release_payment/";
 export const USER_STATUS_LISTING_URL = "/admin/trainee-statistics/";
 export const CHECK_PAYMENT_STATUS_URL = "/payment/hyperpay_status/";
@@ -180,6 +184,11 @@ export const LIKED_MEALS_URL = "/user_meal_likes/";
 export const ILLNESS_URL = "/diseases/";
 export const SUBSCRIPTION_FORM_URL = "/register-for-Package/";
 export const ADMIN_EXERCISES_URL = "/exercise-day/all/";
+export const GET_SPECIFICE_PACKAGE_URL = "/get_specific_package/";
+export const TRAINEE_EXERCISES_URL =
+  "/exercise-day/filter/?date=userDate&user_id=userId";
+export const TRAINEE_MEALS_URL =
+  "/meals-liked-and-consumed/?day=userDate&user_id=userId";
 //=================StatusCodes===================
 export const FORBIDDEN_CODE = 403;
 export const SUCCESS_CODES = [200, 201];

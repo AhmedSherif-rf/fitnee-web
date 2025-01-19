@@ -53,10 +53,11 @@ const ServiceProviderProfileWrapper = (props) => {
   const fetchServiceProviderComments = useCallback(() => {
     if (hasNextComment) {
       const data = {
-        apiEndpoint: `${GET_SERVICE_PROVIDER_COMMENTS_URL}?page_size=4&page=${page}`.replace(
-          "serviceProviderId",
-          id
-        ),
+        apiEndpoint:
+          `${GET_SERVICE_PROVIDER_COMMENTS_URL}?page_size=4&page=${page}`.replace(
+            "serviceProviderId",
+            id
+          ),
       };
 
       dispatch(getServiceProviderFeedbacks(data)).then((res) => {

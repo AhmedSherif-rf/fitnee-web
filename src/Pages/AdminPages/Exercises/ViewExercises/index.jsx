@@ -73,15 +73,15 @@ const ViewExercises = (props) => {
       exercises.forEach((singleExercise, index) => {
         exercisesArray.push({
           title: (
-            // <Link to={`/admin/meals/${singleExercise?.exercise?.id}`}>
-            <div className="d-md-flex align-items-center">
-              <h6 className="text-secondary fw-bold mb-0">
-                {lang === "en"
-                  ? singleExercise?.exercise?.title
-                  : singleExercise?.exercise?.title_ar}
-              </h6>
-            </div>
-            // </Link>
+            <Link to={`/admin/exercises/${singleExercise?.exercise?.id}`}>
+              <div className="d-md-flex align-items-center">
+                <h6 className="text-secondary fw-bold mb-0">
+                  {lang === "en"
+                    ? singleExercise?.exercise?.title
+                    : singleExercise?.exercise?.title_ar}
+                </h6>
+              </div>
+            </Link>
           ),
           repetition: singleExercise?.exercise?.repetition,
           subcategories: (

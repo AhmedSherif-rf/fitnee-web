@@ -555,7 +555,18 @@
     "editText": "ﺗﻌﺪﻳﻞ",
     "addText": "ﺃﺿﺎﻓﻪ",
     "fullyBookedText": "ليس متاح",
-    "alreadySubscribedText": "مشترك بالفعل"
+    "alreadySubscribedText": "مشترك بالفعل",
+    "active": "تفعيل",
+    "inactive": "تعطيل",
+    "chat": "محادثة",
+    "name": "الاسم",
+    "fivMeals": "الاكلات المفضلة",
+    "trainingPlace": "مكان التدريب",
+    "goal": "الهدف",
+    "medCondition": "الامراض",
+    "weight": "الوزن",
+    "height": "الطول",
+    "allWeek": "كل الاسبوع"
   },
   "paymentHistory": {
     "paymentHistoryTitleText": "تاريخ عمليات الدفع",
@@ -976,5 +987,8 @@
     "addcalGroup": "إضافة تصنيف سعرات",
     "meal_classificationLabel": "التصنيف الرئيسي",
     "editcalGroup": "تعديل تصنيف سعرات"
+  },
+  "general": {
+    "trainingLevel": "مستوى التدريب"
   }
 }

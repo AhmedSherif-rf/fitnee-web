@@ -2,11 +2,15 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import Pagination from "../../../Shared/Pagination";
-import { NUTRITIONIST_ROLE } from "../../../utils/constants";
+import {
+  FITNEE_COACH_MEMBERSHIP_URL,
+  NUTRITIONIST_ROLE,
+} from "../../../utils/constants";
 import PageHeading from "../../../Shared/Headings/PageHeading";
 import React, { useState, useCallback, useEffect } from "react";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
-import TraineeListRow from "../../../Shared/ServiceProviderListRow";
+import TraineeListRow from "../../../Shared/TraineeListRow";
+import TraineeList2Row from "../../../Shared/TraineeList2Row";
 import { getMyTrainees } from "../../../Redux/features/User/userApi";
 import { MEMBERSHIP_URL, PER_PAGE_COUNT } from "../../../utils/constants";
 import { Card, CardBody, Col, Container, Row, CardFooter } from "reactstrap";
@@ -19,6 +23,7 @@ const Index = () => {
   const [page, setPage] = useState(1);
   const [totalSize, setSizePages] = useState(0);
   const [traineesData, setTraineesData] = useState([]);
+  const [fitneeCoachData, setFitneeCoachData] = useState([]);
 
   const handlePageChange = useCallback((page) => {
     setPage(page.selected + 1);
@@ -38,6 +43,16 @@ const Index = () => {
       if (res.type === "getMyTrainees/fulfilled") {
         setSizePages(res.payload.data.count);
         setTraineesData(res.payload.data.results);
+      }
+    });
+
+    const fitneeCoach = {
+      apiEndpoint: `${FITNEE_COACH_MEMBERSHIP_URL}?page=${page}`,
+    };
+
+    dispatch(getMyTrainees(fitneeCoach)).then((res) => {
+      if (res.type === "getMyTrainees/fulfilled") {
+        setFitneeCoachData(res.payload.data.results);
       }
     });
   };
@@ -70,29 +85,24 @@ const Index = () => {
                 <Col md={2}>
                   <div className="fw-bold text-center p-2 rounded-3">
                     <h6 className="mb-0 fw-bold ">
-                      {t("trainer.durationText")}
+                      {t("signup.phoneNumberText")}
                     </h6>
                   </div>
                 </Col>
-
                 <Col md={2}>
                   <div className="fw-bold text-center p-2 rounded-3">
-                    <h6 className="mb-0 fw-bold ">{t("trainer.priceText")}</h6>
+                    <h6 className="mb-0 fw-bold ">
+                      {t("subscription.ageLabel")}
+                    </h6>
                   </div>
                 </Col>
                 <Col md={4}>
                   <Row className="align-items-center h-100 ">
                     <Col md={12} xs={12} className="text-center">
-                      <div className="p-2 rounded-3 d-md-flex d-block align-items-center justify-content-center">
-                        <div className="d-flex align-items-center justify-content-center">
-                          <h6 className="mb-0 fw-bold">
-                            {t("trainer.startDateText")}
-                          </h6>
-                          <span className="mb-0 mx-1"> / </span>
-                          <h6 className="mb-0 fw-bold">
-                            {t("trainer.endDateText")}
-                          </h6>
-                        </div>
+                      <div className="fw-bold text-center p-2 rounded-3">
+                        <h6 className="mb-0 fw-bold ">
+                          {t("general.trainingLevel")}
+                        </h6>
                       </div>
                     </Col>
                   </Row>
@@ -104,11 +114,17 @@ const Index = () => {
                 }
                 return null;
               })}
-              {traineesData.length <= 0 && (
+              {fitneeCoachData?.map((data, index) => {
+                if (!data?.is_expired && !data?.is_refund) {
+                  return <TraineeList2Row data={data} key={index} />;
+                }
+                return null;
+              })}
+              {traineesData.length && fitneeCoachData.length <= 0 ? (
                 <div className="d-flex justify-content-center py-4 text-black-custom">
                   {t("messages.noDataFoundText")}
                 </div>
-              )}
+              ) : null}
             </CardBody>
             <CardFooter>
               {totalSize > PER_PAGE_COUNT && (

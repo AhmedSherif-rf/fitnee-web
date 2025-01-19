@@ -1,25 +1,17 @@
-// import CommentCard from "../CommentCard";
-// import DocumentCard from "../DocumentCard";
-// import OutlineBtn from "../Buttons/OutlineBtn";
 import { useTranslation } from "react-i18next";
 import FillBtn from "../../Shared/Buttons/FillBtn";
 import { useSelector, useDispatch } from "react-redux";
-// import AvailableHourList from "../AvailableHourListing";
+import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../ProfileInformationCard";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { useCallback, memo, useState, useEffect } from "react";
 import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
-// import { getServiceProviderFeedbacks } from "../../Redux/features/User/userApi";
-// import { setServiceProvider } from "../../Redux/features/Subscription/subscriptionSlice";
-import {
-  // GET_SERVICE_PROVIDER_COMMENTS_URL,
-  // NUTRITIONIST_ROLE,
-  // TRAINER_ROLE,
-  PACKAGES_URL,
-} from "../../utils/constants";
+import { PACKAGES_URL } from "../../utils/constants";
 import { getPackageDetails } from "../../Redux/features/Admin/Packages/packagesApi";
+import { getSubscriped } from "../../Redux/features/Subscription/subscriptionApi";
+import { setSubscriptionPlan } from "../../Redux/features/Subscription/subscriptionSlice";
 
 const ServiceProviderProfileWrapper = (props) => {
   // const { uuid, id, role, userRole } = useParams();
@@ -50,6 +42,32 @@ const ServiceProviderProfileWrapper = (props) => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
+
+  const subscripeInMessagingPackage = async () => {
+    let packageDetails;
+
+    const data = {
+      apiEndpoint: `${PACKAGES_URL}2/`,
+    };
+
+    await dispatch(getPackageDetails(data)).then((res) => {
+      if (res.type === "getPackageDetails/fulfilled") {
+        packageDetails = res.payload.data?.package;
+
+        dispatch(
+          setSubscriptionPlan({
+            id: packageDetails?.id,
+            duration: packageDetails?.duration,
+            price: packageDetails?.price,
+            type: packageDetails?.type,
+            package_id: packageDetails?.id,
+          })
+        );
+      }
+    });
+
+    navigate("/trainee/subscription/creditCardDetail");
+  };
 
   // const fetchServiceProviderComments = useCallback(() => {
   //   if (hasNextComment) {
@@ -124,16 +142,12 @@ const ServiceProviderProfileWrapper = (props) => {
                       <FillBtn
                         className="w-100 py-2"
                         text={t("guest.messagePackageText")}
-                        // handleOnClick={handleSubscribeClick}
-                        handleOnClick={() =>
-                          navigate(`/trainee/subscription/form/1`)
-                        }
+                        handleOnClick={subscripeInMessagingPackage}
                       />
                     ) : (
                       <FillBtn
                         className="w-100 py-2"
                         text={t("guest.subscribeText")}
-                        // handleOnClick={handleSubscribeClick}
                         handleOnClick={() =>
                           navigate(`/trainee/subscription/form/1`)
                         }

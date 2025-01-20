@@ -32,6 +32,7 @@ import {
   DELETE_ACCOUNT_URL,
   SET_USER_LANGUAGE,
   TRAINER_NUTRITIONIST_ROLE,
+  FITNEE_COACH_TYPE,
 } from "../../utils/constants";
 import { setLanguage } from "../../Redux/features/Language/languageSlice";
 import {
@@ -240,6 +241,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
               to={
                 roleType === TRAINEE_TYPE
                   ? "/trainee/dashboard"
+                  : roleType === FITNEE_COACH_TYPE
+                  ? "/fitneeCoach/dashboard"
                   : roleType === TRAINER_TYPE || roleType === NUTRITIONIST_TYPE
                   ? "/serviceProvider/dashboard"
                   : "/"
@@ -471,6 +474,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             to={
                               roleType === TRAINEE_TYPE
                                 ? "/trainee/dashboard"
+                                : roleType === FITNEE_COACH_TYPE
+                                ? "/fitneeCoach/dashboard"
                                 : "/serviceProvider/dashboard"
                             }
                           >
@@ -512,34 +517,37 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                             </div>
                           </Link>
                         </DropdownItem>
-                        <DropdownItem className="p-0">
-                          <Link
-                            className="w-100 p-1"
-                            to={
-                              roleType === TRAINEE_TYPE
-                                ? "/trainee/settings"
-                                : roleType === TRAINER_TYPE ||
-                                  user?.role === TRAINER_NUTRITIONIST_ROLE
-                                ? "/serviceProvider/editProfile/trainer"
-                                : "/serviceProvider/editProfile/nutritionist"
-                            }
-                          >
-                            <div className="d-flex gap-1 align-items-center w-100 text-black-custom">
-                              <span className="me-2">
-                                {roleType === TRAINEE_TYPE ? (
-                                  <IoMdSettings size={16} className="mb-1" />
-                                ) : (
-                                  <FaUserEdit size={16} className="mb-1" />
-                                )}
-                              </span>
-                              <p className="mb-0">
-                                {roleType === TRAINEE_TYPE
-                                  ? t("topBar.settingsText")
-                                  : t("topBar.editProfileText")}
-                              </p>
-                            </div>
-                          </Link>
-                        </DropdownItem>
+                        {roleType !== FITNEE_COACH_TYPE ? (
+                          <DropdownItem className="p-0">
+                            <Link
+                              className="w-100 p-1"
+                              to={
+                                roleType === TRAINEE_TYPE
+                                  ? "/trainee/settings"
+                                  : roleType === TRAINER_TYPE ||
+                                    user?.role === TRAINER_NUTRITIONIST_ROLE ||
+                                    roleType === FITNEE_COACH_TYPE
+                                  ? "/serviceProvider/editProfile/trainer"
+                                  : "/serviceProvider/editProfile/nutritionist"
+                              }
+                            >
+                              <div className="d-flex gap-1 align-items-center w-100 text-black-custom">
+                                <span className="me-2">
+                                  {roleType === TRAINEE_TYPE ? (
+                                    <IoMdSettings size={16} className="mb-1" />
+                                  ) : (
+                                    <FaUserEdit size={16} className="mb-1" />
+                                  )}
+                                </span>
+                                <p className="mb-0">
+                                  {roleType === TRAINEE_TYPE
+                                    ? t("topBar.settingsText")
+                                    : t("topBar.editProfileText")}
+                                </p>
+                              </div>
+                            </Link>
+                          </DropdownItem>
+                        ) : null}
                         <DropdownItem className="p-0">
                           <Link
                             className="w-100 p-1"
@@ -773,6 +781,8 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         to={
                           roleType === TRAINEE_TYPE
                             ? "/trainee/dashboard"
+                            : roleType === FITNEE_COACH_TYPE
+                            ? "/fitneeCoach/dashboard"
                             : "/serviceProvider/dashboard"
                         }
                       >
@@ -798,23 +808,26 @@ const TopBar = ({ isPublic, isGuest, isPrivate, isAuth }) => {
                         )}
                       </Link>
                     </NavItem>
-                    <NavItem className={`${styles.NavItem} p-2`}>
-                      <Link
-                        className={`nav-link ${styles.NavLink}`}
-                        to={
-                          roleType === TRAINEE_TYPE
-                            ? "/trainee/settings"
-                            : roleType === TRAINER_TYPE ||
-                              user?.role === TRAINER_NUTRITIONIST_ROLE
-                            ? "/serviceProvider/editProfile/trainer"
-                            : "/serviceProvider/editProfile/nutritionist"
-                        }
-                      >
-                        {roleType === TRAINEE_TYPE
-                          ? t("topBar.settingsText")
-                          : t("topBar.editProfileText")}
-                      </Link>
-                    </NavItem>
+                    {roleType !== FITNEE_COACH_TYPE ? (
+                      <NavItem className={`${styles.NavItem} p-2`}>
+                        <Link
+                          className={`nav-link ${styles.NavLink}`}
+                          to={
+                            roleType === TRAINEE_TYPE
+                              ? "/trainee/settings"
+                              : roleType === TRAINER_TYPE ||
+                                user?.role === TRAINER_NUTRITIONIST_ROLE ||
+                                roleType === FITNEE_COACH_TYPE
+                              ? "/serviceProvider/editProfile/trainer"
+                              : "/serviceProvider/editProfile/nutritionist"
+                          }
+                        >
+                          {roleType === TRAINEE_TYPE
+                            ? t("topBar.settingsText")
+                            : t("topBar.editProfileText")}
+                        </Link>
+                      </NavItem>
+                    ) : null}
 
                     <NavItem className={`${styles.NavItem} p-2`}>
                       <Link

@@ -275,7 +275,7 @@ export const SUBSCRIPTION_FORM_INITIAL_VALUES = {
   age: "",
   height: "",
   your_goal: "",
-  diseases: "",
+  diseases: [],
   conditions: "",
 };
 

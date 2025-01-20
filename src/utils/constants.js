@@ -12,6 +12,7 @@ export const DEFAULT_LANGUAGE = "en";
 //======================serviceProviders===========
 export const TRAINEE_TYPE = "trainee";
 export const TRAINER_TYPE = "trainer";
+export const FITNEE_COACH_TYPE = "coach_fitnee";
 export const NUTRITIONIST_TYPE = "nutritionist";
 export const TRAINER_NUTRITIONIST_TYPE = "both";
 //===================membershipTypes=================
@@ -78,6 +79,7 @@ export const ADMIN_INITIAL_URL = "/admin/dashboard";
 export const TRAINEE_PROFILE_URL = "/trainee/profile";
 export const TRAINEE_INITIAL_URL = "/trainee/dashboard";
 export const SERVICE_PROVIDER_INITIAL_URL = "/serviceProvider/dashboard";
+export const FITNEE_COACH_INITIAL_URL = "/fitneeCoach/dashboard";
 //===================ApiEndPoints===============
 export const LOGIN_URL = "/login/";
 export const LOGOUT_URL = "/logout/";
@@ -186,7 +188,7 @@ export const SUBSCRIPTION_FORM_URL = "/register-for-Package/";
 export const ADMIN_EXERCISES_URL = "/exercise-day/all/";
 export const GET_SPECIFICE_PACKAGE_URL = "/get_specific_package/";
 export const TRAINEE_EXERCISES_URL =
-  "/exercise-day/filter/?date=userDate&user_id=userId";
+  "/exercisedays/filter/?date=userDate&user_id=userId";
 export const TRAINEE_MEALS_URL =
   "/meals-liked-and-consumed/?day=userDate&user_id=userId";
 //=================StatusCodes===================

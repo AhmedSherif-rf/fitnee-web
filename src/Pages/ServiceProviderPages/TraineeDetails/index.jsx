@@ -311,21 +311,51 @@ const Index = () => {
                 </div>
                 <div className="w-100">
                   <h1>{t("landing.exerciseText")}</h1>
-                  <Carousel
-                    items={meals.map((meal) => {
-                      return (
-                        <CarouselCard
-                          name={
-                            i18n.language === "en"
-                              ? meal.meal?.en_name
-                              : meal.meal?.ar_name
-                          }
-                          img={meal.meal.meal_pic}
-                          isDone={meal.ate}
-                        />
-                      );
-                    })}
-                  />
+                  {exercises?.length > 0 ? (
+                    <Carousel
+                      items={exercises.map((exercise) => {
+                        return (
+                          <CarouselCard
+                            name={
+                              i18n.language === "en"
+                                ? exercise?.title
+                                : exercise?.title_ar
+                            }
+                            img={exercise?.exercise_media?.[0].file}
+                            isDone={exercise.is_done_this_week}
+                          />
+                        );
+                      })}
+                    />
+                  ) : (
+                    <p style={{ padding: "100px 0" }} className="text-center">
+                      {t("messages.noDataFoundText")}
+                    </p>
+                  )}
+                </div>
+                <div className="w-100">
+                  <h1>{t("landing.meals")}</h1>
+                  {meals?.length > 0 ? (
+                    <Carousel
+                      items={meals.map((meal) => {
+                        return (
+                          <CarouselCard
+                            name={
+                              i18n.language === "en"
+                                ? meal.meal?.en_name
+                                : meal.meal?.ar_name
+                            }
+                            img={meal.meal.meal_pic}
+                            isDone={meal.ate}
+                          />
+                        );
+                      })}
+                    />
+                  ) : (
+                    <p style={{ padding: "100px 0" }} className="text-center">
+                      {t("messages.noDataFoundText")}
+                    </p>
+                  )}
                 </div>
               </Row>
             </CardBody>
@@ -338,7 +368,7 @@ const Index = () => {
 
 export default Index;
 
-const CarouselCard = ({ img, name, isDone }) => {
+const CarouselCard = ({ img = null, video = null, name, isDone }) => {
   return (
     <div style={{ position: "relative" }}>
       <p
@@ -353,18 +383,28 @@ const CarouselCard = ({ img, name, isDone }) => {
       >
         {isDone ? "تم" : "لم يتم"}
       </p>
-      <img
-        alt="meal"
-        title={name}
-        src={img}
-        // {
-        //   "https://www.google.com/search?sca_esv=e2ae8c4310a8b420&sxsrf=ADLYWIKUxirUrYFroe-37Ch5fLJZMwcUBQ:1737302141739&q=video&udm=7&fbs=AEQNm0Aa4sjWe7Rqy32pFwRj0UkWwAFG7ranuZ26H8lR7pf_8AzBs6lnFFuPH6eU3OV27QKh6ftn9lc4yAcaBgSvqjbSCyeaApdzCHMvL4n82P-FwUG6xXTIl3AXBdTeyTsLpCulLlT-wwbW1VfYYLjNrqyC3Vy00mrhhTW85z0vcKkl-z7UtMxfYgFfPDrK7JW_z0ln1Etn&sa=X&ved=2ahUKEwiClprokoKLAxUkUKQEHYSsBTkQtKgLegQIFhAB&biw=1360&bih=607&dpr=1#fpstate=ive&ip=1&vld=cid:383e444d,vid:Qh8QwVYOSVU,st:0"
-        // }
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        style={{ width: 100 + "%", height: "300px" }}
-      ></img>
+      {img && (
+        <img
+          alt="meal"
+          title={name}
+          src={img}
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style={{ width: 100 + "%", height: "300px" }}
+        ></img>
+      )}
+      {video && (
+        <iframe
+          alt="meal"
+          title={name}
+          src={video}
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style={{ width: 100 + "%", height: "300px" }}
+        ></iframe>
+      )}
       <p>{name}</p>
     </div>
   );

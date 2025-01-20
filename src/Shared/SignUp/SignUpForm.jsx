@@ -60,6 +60,7 @@ import {
   TRAINER_NUTRITIONIST_TYPE,
   GET_LEVEL_PREFERENCES_URL,
   GET_TRAINING_GOAL_PREFERENCES_URL,
+  FITNEE_COACH_TYPE,
 } from "../../utils/constants";
 import {
   Container,
@@ -84,13 +85,15 @@ const SignUpForm = () => {
   const [specialityOptions, setSpecialityOptions] = useState([]);
   const [trainingGoalOptions, setTrainingGoalOptions] = useState([]);
   const [showEditProfileModal, setShowEditProfileModal] = useState(false);
-  const [
-    showEditProfileRequestSentModal,
-    setShowEditProfileRequestSentModal,
-  ] = useState(false);
+  const [showEditProfileRequestSentModal, setShowEditProfileRequestSentModal] =
+    useState(false);
 
   useEffect(() => {
-    if (roleType === TRAINER_TYPE || roleType === TRAINER_NUTRITIONIST_TYPE) {
+    if (
+      roleType === TRAINER_TYPE ||
+      roleType === TRAINER_NUTRITIONIST_TYPE ||
+      roleType === FITNEE_COACH_TYPE
+    ) {
       setSpecialityOptions([]);
       const data = {
         apiEndpoint: GET_SPECIALITIES_URL,
@@ -103,7 +106,7 @@ const SignUpForm = () => {
           } else {
             specialities = res.payload.data.ar;
           }
-          specialities = specialities.map(({ id, name }) => ({
+          specialities = specialities?.map(({ id, name }) => ({
             label: name,
             value: id,
           }));
@@ -122,7 +125,7 @@ const SignUpForm = () => {
           } else {
             trainingGoals = res.payload.data.ar;
           }
-          trainingGoals = trainingGoals.map(({ id, name }) => ({
+          trainingGoals = trainingGoals?.map(({ id, name }) => ({
             label: name,
             value: id,
           }));
@@ -141,7 +144,7 @@ const SignUpForm = () => {
           } else {
             levels = res.payload.data.ar;
           }
-          levels = levels.map(({ id, name }) => ({
+          levels = levels?.map(({ id, name }) => ({
             label: name,
             value: id,
           }));
@@ -245,7 +248,7 @@ const SignUpForm = () => {
     } else {
       console.log(values);
       if (values?.profile_availability) {
-        values.profile_availability = values.profile_availability.map(
+        values.profile_availability = values.profile_availability?.map(
           ({ id, day, starttime, endtime }) => ({
             id,
             day,
@@ -879,14 +882,15 @@ const SignUpForm = () => {
                             i18n.dir() === "ltr" ? "text-end" : "text-start"
                           }`}
                         >
-                          {user && user?.change_request_status !== "Pending" && (
-                            <div
-                              className="cursorPointer"
-                              onClick={() => setShowEditProfileModal(true)}
-                            >
-                              {t("trainer.editText")} <FaEdit />
-                            </div>
-                          )}
+                          {user &&
+                            user?.change_request_status !== "Pending" && (
+                              <div
+                                className="cursorPointer"
+                                onClick={() => setShowEditProfileModal(true)}
+                              >
+                                {t("trainer.editText")} <FaEdit />
+                              </div>
+                            )}
                         </Col>
                         {user?.ServiceProvider_Certification?.map(
                           (certificate, index) => (
@@ -912,7 +916,7 @@ const SignUpForm = () => {
                       </Col>
                       <Col className="mb-2">
                         <div className="form-group multi-preview d-flex flex-wrap align-items-center">
-                          {values.certification.map((image, index) => (
+                          {values.certification?.map((image, index) => (
                             <div
                               key={index}
                               className="col-sm-12 col-md-3 col-lg-2 col-xl-2 mx-3 position-relative BorderRadius mb-2 "
@@ -1018,14 +1022,15 @@ const SignUpForm = () => {
                               i18n.dir() === "ltr" ? "text-end" : "text-start"
                             }`}
                           >
-                            {user && user?.change_request_status !== "Pending" && (
-                              <div
-                                className="cursorPointer"
-                                onClick={() => setShowEditProfileModal(true)}
-                              >
-                                {t("trainer.editText")} <FaEdit />
-                              </div>
-                            )}
+                            {user &&
+                              user?.change_request_status !== "Pending" && (
+                                <div
+                                  className="cursorPointer"
+                                  onClick={() => setShowEditProfileModal(true)}
+                                >
+                                  {t("trainer.editText")} <FaEdit />
+                                </div>
+                              )}
                           </Col>
                         </Row>
                         <InputField
@@ -1062,14 +1067,15 @@ const SignUpForm = () => {
                               i18n.dir() === "ltr" ? "text-end" : "text-start"
                             }`}
                           >
-                            {user && user?.change_request_status !== "Pending" && (
-                              <div
-                                className="cursorPointer"
-                                onClick={() => setShowEditProfileModal(true)}
-                              >
-                                {t("trainer.editText")} <FaEdit />
-                              </div>
-                            )}
+                            {user &&
+                              user?.change_request_status !== "Pending" && (
+                                <div
+                                  className="cursorPointer"
+                                  onClick={() => setShowEditProfileModal(true)}
+                                >
+                                  {t("trainer.editText")} <FaEdit />
+                                </div>
+                              )}
                           </Col>
                         </Row>
                         <InputField
@@ -1107,14 +1113,15 @@ const SignUpForm = () => {
                               i18n.dir() === "ltr" ? "text-end" : "text-start"
                             }`}
                           >
-                            {user && user?.change_request_status !== "Pending" && (
-                              <div
-                                className="cursorPointer"
-                                onClick={() => setShowEditProfileModal(true)}
-                              >
-                                {t("trainer.editText")} <FaEdit />
-                              </div>
-                            )}
+                            {user &&
+                              user?.change_request_status !== "Pending" && (
+                                <div
+                                  className="cursorPointer"
+                                  onClick={() => setShowEditProfileModal(true)}
+                                >
+                                  {t("trainer.editText")} <FaEdit />
+                                </div>
+                              )}
                           </Col>
                         </Row>
                         <PhoneInputField
@@ -1415,7 +1422,7 @@ const SignUpForm = () => {
                     className="d-flex"
                     render={(arrayHelpers) => (
                       <>
-                        {values.profile_availability.map(
+                        {values.profile_availability?.map(
                           (daySchedule, index) => (
                             <Row key={index} className="mb-1">
                               <Col lg={5} md={5} className="mb-2">

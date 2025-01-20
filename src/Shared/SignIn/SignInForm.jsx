@@ -78,7 +78,7 @@ const SignInForm = () => {
                 navigate(item.SERVICE_PROVIDER_INITIAL_URL);
                 break;
               case item.FITNEE_COACH_ROLE:
-                navigate(item.SERVICE_PROVIDER_INITIAL_URL);
+                navigate(item.FITNEE_COACH_INITIAL_URL);
                 break;
               case item.NUTRITIONIST_ROLE:
                 navigate(item.SERVICE_PROVIDER_INITIAL_URL);

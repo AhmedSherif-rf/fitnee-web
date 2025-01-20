@@ -11,6 +11,16 @@ export const serviceProviderRoutes = [
     role: serviceProviderRole,
   },
   {
+    path: "/fitneeCoach/dashboard",
+    component: lazy(() =>
+      import("../Pages/ServiceProviderPages/FitneeCoachDashboard")
+    ),
+    exact: true,
+    isPrivate: true,
+    theme: "dark",
+    role: serviceProviderRole,
+  },
+  {
     path: "/serviceProvider/resetPassword",
     component: lazy(() =>
       import("../Pages/ServiceProviderPages/ResetPassword")

@@ -193,14 +193,14 @@ const Packages = () => {
                   Methods:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {categoryClassificationDetails?.methods?.join(", ")}
+                    {categoryClassificationDetails?.methods}
                   </span>
                 </h3>
                 <h3>
                   Ingredients:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {categoryClassificationDetails?.ingredients?.join(", ")}
+                    {categoryClassificationDetails?.ingredients}
                   </span>
                 </h3>
                 <h3>

@@ -27,9 +27,13 @@ const AddSubcategory = (props) => {
   const { t, i18n } = useTranslation("");
 
   const handleAddProgressSubmit = async (values) => {
+    const requestData = { ...values };
+
+    requestData.classification = values.classification?.map((i) => i.value);
+
     const data = {
       apiEndpoint: ADMIN_MEAL_TYPE_URL,
-      requestData: values,
+      requestData,
     };
 
     await dispatch(AddMealClassifications(data)).then((res) => {
@@ -128,6 +132,7 @@ const AddSubcategory = (props) => {
 
                 <SelectField
                   name="classification"
+                  isMulti={true}
                   className={"form-control-lg BorderRadiusInput"}
                   options={mainCategoryData?.map((item) => {
                     return {

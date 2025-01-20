@@ -289,7 +289,7 @@ export const MEAL_CLASSIFICATIONS_INITIAL_VALUES = {
 export const MEAL_SUBCATEGORY_INITIAL_VALUES = {
   en_name: "",
   ar_name: "",
-  classification: "",
+  classification: [],
   active: "True",
 };
 

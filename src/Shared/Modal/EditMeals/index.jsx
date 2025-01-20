@@ -330,7 +330,7 @@ const EditMeals = (props) => {
                   placeholder={t("meals.ingredientsPlaceholder")}
                   onChangeHandle={setFieldValue}
                   onBlurHandle={handleBlur}
-                  value={values.ingredients}
+                  value={values.ingredients?.split(",")}
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">

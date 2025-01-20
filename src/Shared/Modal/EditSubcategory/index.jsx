@@ -124,13 +124,14 @@ const EditSubcategory = (props) => {
                 </p>
               </div>
 
-              <div className="mb-2">
+              {/* <div className="mb-2">
                 <Label className="fw-normal small mb-0">
                   {`${t("meals.classificationLabel")}`}
                 </Label>
 
                 <SelectField
                   name="classification"
+                  isMulti={true}
                   className={"form-control-lg BorderRadiusInput"}
                   options={mainCategoryData?.map((item) => {
                     return {
@@ -148,7 +149,7 @@ const EditSubcategory = (props) => {
                     touched.classification &&
                     t(errors.classification)}
                 </p>
-              </div>
+              </div> */}
 
               <div className="w-100 d-flex align-items-center justify-content-center gap-3">
                 <FillBtn

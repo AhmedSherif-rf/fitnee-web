@@ -43,7 +43,7 @@ const ServiceProviderProfileWrapper = (props) => {
     });
 
     const fitneeCoachData = {
-      apiEndpoint: `/package-users/1/get_specific_user_package?user_id=${user.traineeId}`,
+      apiEndpoint: `/package-users/1/get_specific_user_package?user_id=${user?.traineeId}`,
     };
 
     dispatch(getPackageDetails(fitneeCoachData)).then((res) => {

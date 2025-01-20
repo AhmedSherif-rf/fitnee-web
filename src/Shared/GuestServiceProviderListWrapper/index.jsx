@@ -93,6 +93,20 @@ const GuestServiceProviderListWrapper = (props) => {
     }
   };
 
+  const fitneeCoach = {
+    id: 144,
+    uuid: "aa3df71d-6e8b-47e4-bec1-6b8ab9bba2dd",
+    full_name: "Fitnee coach",
+    profile_pic:
+      "https://fitme-dev-bucket.s3.amazonaws.com/media/2024/12/images.png",
+    Avg_rating: null,
+    experience: 5,
+    email: "marwa.trainer@gmail.com",
+    is_fully_booked: false,
+    serviceprovider_available: true,
+    role: "Fitnee Coach",
+  };
+
   return (
     <Card
       className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
@@ -149,6 +163,15 @@ const GuestServiceProviderListWrapper = (props) => {
               </Col>
             </Row>
             <Row>
+              <Col lg={3} md={4} col={6} className="mb-3">
+                <ServiceProviderListCard
+                  className={`${styles.activeTrainerCard}`}
+                  serviceProvider={fitneeCoach}
+                  handleOnClick={() => {
+                    navigate(`/guest/serviceProviderProfile/fitneeCoach`);
+                  }}
+                />
+              </Col>
               {serviceProviderData.length > 0 &&
                 serviceProviderData.map((serviceProvider, index) => {
                   return (

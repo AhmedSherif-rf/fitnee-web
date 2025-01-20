@@ -3,6 +3,14 @@ import { guestRole } from "./routeConfig";
 
 export const guestRoutes = [
   {
+    path: "/guest/serviceProviderProfile/fitneeCoach",
+    component: lazy(() => import("../Pages/TraineePages/FitneeCoachProfile")),
+    exact: true,
+    isPublic: true,
+    theme: "dark",
+    isGuest: true,
+  },
+  {
     path: "/guest/serviceProviderList/:roleType",
     component: lazy(() => import("../Pages/GuestPages/ServiceProviderList")),
     exact: true,

@@ -18,6 +18,7 @@ const ServiceProviderProfileWrapper = (props) => {
   // const { subscriptionLink } = props;
   const { loading } = useSelector((state) => state.guest);
   const { loading: userLoading } = useSelector((state) => state.user);
+  const [isFitneeCoachActive, setIsFitneeCoachActive] = useState(false);
 
   // const [page, setPage] = useState(1);
   // const [commentData, setCommentData] = useState([]);
@@ -38,6 +39,16 @@ const ServiceProviderProfileWrapper = (props) => {
       if (res.type === "getPackageDetails/fulfilled") {
         setServiceProviderProfile(res.payload.data);
         // fetchServiceProviderComments();
+      }
+    });
+
+    const fitneeCoachData = {
+      apiEndpoint: `/package-users/1/get_specific_user_package?user_id=${user.traineeId}`,
+    };
+
+    dispatch(getPackageDetails(fitneeCoachData)).then((res) => {
+      if (res.type === "getPackageDetails/fulfilled") {
+        setIsFitneeCoachActive(res?.payload?.data?.[0]?.active);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -138,7 +149,7 @@ const ServiceProviderProfileWrapper = (props) => {
                     />
                   </div>
                   <div className="mb-3">
-                    {user?.packageId == 1 ? (
+                    {isFitneeCoachActive ? (
                       <FillBtn
                         className="w-100 py-2"
                         text={t("guest.messagePackageText")}

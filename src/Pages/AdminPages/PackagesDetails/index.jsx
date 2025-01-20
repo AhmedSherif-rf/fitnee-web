@@ -3,6 +3,7 @@ import PageHeading from "../../../Shared/Headings/PageHeading";
 import { Container, Row, Col, CardBody, CardFooter } from "reactstrap";
 // import { COLUMNS } from "./services";
 // import Pagination from "../../../Shared/Pagination";
+import Images from "../../../HelperMethods/Constants/ImgConstants";
 import { useDispatch } from "react-redux";
 import { PACKAGES_URL, PER_PAGE_COUNT } from "../../../utils/constants";
 import { getPackageDetails } from "../../../Redux/features/Admin/Packages/packagesApi";
@@ -67,6 +68,17 @@ const Packages = () => {
               className="text-start"
             />
             <Col md={12} className="text-start">
+              <div
+                className="bgProperties rounded-circle me-2 mx-5 my-3"
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  backgroundImage:
+                    packageDetails?.meal_pic === null
+                      ? `url(${Images.USER_DUMMY_IMG})`
+                      : `url(${packageDetails?.package?.pic})`,
+                }}
+              ></div>
               <h3>Name: {packageDetails?.package?.name}</h3>
               <p>Description: {packageDetails?.package?.description}</p>
               <p>Price: {packageDetails?.package?.price}</p>

@@ -66,6 +66,7 @@ const SignInForm = () => {
                   JSON.stringify({
                     isActivePackage:
                       res?.payload?.data?.active_package?.[0]?.active,
+                    traineeId: res?.payload?.data?.id,
                     trainerId:
                       res?.payload?.data?.active_package?.[0]?.trainer?.id,
                     packageId: res?.payload?.data?.active_package?.[0]?.package,

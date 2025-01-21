@@ -19,7 +19,7 @@ import { SUBSCRIPTION_FORM_INITIAL_VALUES } from "../../../Shared/ValidationData
 import InputField from "../../../Shared/InputField";
 import SelectField from "../../../Shared/Select";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setSubscriptionPlan } from "../../../Redux/features/Subscription/subscriptionSlice";
 import {
   findUs,
@@ -290,6 +290,11 @@ const SubscriptionForm = () => {
                             />
                             <Label className="fw-normal small mb-0">
                               {`${t("subscription.acceptLabel")}`}
+                              <Link
+                                className="fw-bold"
+                                target="_blank"
+                                to="/trainee/termAndCondition/general/signUp"
+                              >{`${t("subscription.termsLabel")}`}</Link>
                             </Label>
                           </div>
                           <p className="errorField">

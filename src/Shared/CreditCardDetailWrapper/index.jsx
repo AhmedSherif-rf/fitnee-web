@@ -177,6 +177,7 @@ const CreditCardDetailWrapper = () => {
           subscription_amount: subscriptionPlan.price,
           vat: summaryData.vat,
           email: user?.email,
+          subscription_id: subscriptionPlan.id,
           discounted_amount: summaryData?.discount,
           wallet_amount: calculateWalletAmountUsed(),
           package_id: subscriptionPlan?.package_id,

@@ -47,6 +47,7 @@ const routes = [
     isPublic: true,
     theme: "light",
     exact: true,
+    isAuth: true,
   },
   {
     path: "/privacyPolicy",

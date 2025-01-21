@@ -51,6 +51,14 @@ export const traineeRoutes = [
     role: traineeRole,
   },
   {
+    path: "/trainee/termAndCondition/:type/:backLink",
+    component: lazy(() => import("../Pages/Auth/TermAndCondition")),
+    isPrivate: true,
+    role: traineeRole,
+    theme: "light",
+    exact: true,
+  },
+  {
     path: "/trainee/serviceProviderProfile/:uuid/:id/:role/:userRole",
     component: lazy(() =>
       import("../Pages/TraineePages/ServiceProviderProfile")

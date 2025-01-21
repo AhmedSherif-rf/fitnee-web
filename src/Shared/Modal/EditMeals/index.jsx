@@ -50,6 +50,7 @@ const EditMeals = (props) => {
     requestData.append("carbohydrate", values.carbohydrate);
     requestData.append("protein", values.protein);
     requestData.append("ingredients", values.ingredients);
+    requestData.append("methods", values.methods);
     requestData.append("active", "True");
 
     const data = {
@@ -339,6 +340,27 @@ const EditMeals = (props) => {
                     t(errors.ingredients)}
                 </p>
               </div>
+
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("meals.methodsLabel")}`}
+                </Label>
+
+                <MultiInputField
+                  type="text"
+                  name="methods"
+                  dataKey="methods"
+                  placeholder={t("meals.methodsPlaceholder")}
+                  onChangeHandle={setFieldValue}
+                  onBlurHandle={handleBlur}
+                  value={values.methods}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.methods) && touched.methods && t(errors.methods)}
+                </p>
+              </div>
+
               <div className="w-100 d-flex align-items-center justify-content-center gap-3">
                 <FillBtn
                   className="w-100 py-2"

@@ -310,6 +310,7 @@ export const MEALS_INITIAL_VALUES = {
   fats: "",
   carbohydrate: "",
   protein: "",
+  methods: [],
   ingredients: [],
 };
 

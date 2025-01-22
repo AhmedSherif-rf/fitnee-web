@@ -71,7 +71,25 @@ const Packages = () => {
                 <h3>Arabic Name: {categoryClassificationDetails?.ar_name}</h3>
                 <h3>
                   Main Category:{" "}
-                  {categoryClassificationDetails?.classification?.en_name}
+                  {categoryClassificationDetails?.classification?.length > 0 ? (
+                    categoryClassificationDetails?.classification?.map(
+                      (item, ind) => (
+                        <span className="text-secondary text-sm" key={item.id}>
+                          {item.en_name}{" "}
+                          {categoryClassificationDetails?.classification
+                            .length -
+                            1 !==
+                          ind
+                            ? ","
+                            : ""}
+                        </span>
+                      )
+                    )
+                  ) : (
+                    <span className="text-secondary text-sm">
+                      No Main Category
+                    </span>
+                  )}
                 </h3>
                 <h3>
                   Status:{" "}

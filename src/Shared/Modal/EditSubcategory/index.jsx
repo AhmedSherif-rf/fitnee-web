@@ -28,14 +28,16 @@ const EditSubcategory = (props) => {
   } = props;
   const { loading } = useSelector((state) => state.userListing);
   const dispatch = useDispatch();
-  const [mainCategoryData, setMainCategoryData] = useState([]);
 
   const { t, i18n } = useTranslation("");
 
   const handleEditCategorySubmit = async (values) => {
     const data = {
       apiEndpoint: ADMIN_MEAL_TYPE_URL + `${categoryData.id}/`,
-      requestData: values,
+      requestData: {
+        ...values,
+        classification: categoryData.classification.map((item) => item.id),
+      },
     };
 
     await dispatch(EditMealClassifications(data)).then((res) => {
@@ -44,17 +46,7 @@ const EditSubcategory = (props) => {
       }
     });
   };
-  useEffect(() => {
-    const data = {
-      apiEndpoint: `${ADMIN_MEAL_CLASSIFICATION_URL}`,
-    };
 
-    dispatch(getMealsClassifications(data)).then((res) => {
-      if (res.type === "getMealsClassifications/fulfilled") {
-        setMainCategoryData(res.payload.data);
-      }
-    });
-  }, []);
   return (
     <Modal
       aria-labelledby="contained-modal-title-vcenter"

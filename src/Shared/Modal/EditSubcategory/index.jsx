@@ -28,6 +28,7 @@ const EditSubcategory = (props) => {
   } = props;
   const { loading } = useSelector((state) => state.userListing);
   const dispatch = useDispatch();
+  const [mainCategoryData, setMainCategoryData] = useState([]);
 
   const { t, i18n } = useTranslation("");
 
@@ -36,7 +37,10 @@ const EditSubcategory = (props) => {
       apiEndpoint: ADMIN_MEAL_TYPE_URL + `${categoryData.id}/`,
       requestData: {
         ...values,
-        classification: categoryData.classification.map((item) => item.id),
+        classification:
+          values?.classification?.length > 0
+            ? values.classification?.map((i) => i.value)
+            : categoryData.classification.map((item) => item.id),
       },
     };
 
@@ -46,6 +50,18 @@ const EditSubcategory = (props) => {
       }
     });
   };
+
+  useEffect(() => {
+    const data = {
+      apiEndpoint: `${ADMIN_MEAL_CLASSIFICATION_URL}`,
+    };
+
+    dispatch(getMealsClassifications(data)).then((res) => {
+      if (res.type === "getMealsClassifications/fulfilled") {
+        setMainCategoryData(res.payload.data);
+      }
+    });
+  }, []);
 
   return (
     <Modal
@@ -116,7 +132,7 @@ const EditSubcategory = (props) => {
                 </p>
               </div>
 
-              {/* <div className="mb-2">
+              <div className="mb-2">
                 <Label className="fw-normal small mb-0">
                   {`${t("meals.classificationLabel")}`}
                 </Label>
@@ -141,7 +157,7 @@ const EditSubcategory = (props) => {
                     touched.classification &&
                     t(errors.classification)}
                 </p>
-              </div> */}
+              </div>
 
               <div className="w-100 d-flex align-items-center justify-content-center gap-3">
                 <FillBtn

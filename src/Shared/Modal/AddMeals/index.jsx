@@ -41,7 +41,7 @@ const AddMeals = (props) => {
     requestData.append("en_name", values.en_name);
     requestData.append("ar_name", values.ar_name);
     requestData.append("description", values.description);
-    requestData.append("classification", values.classification);
+    requestData.append("meal_classification", values.classification);
     requestData.append("meal_type", values.meal_type);
     requestData.append("calorie_range", values.calorie_range);
     requestData.append("calorie_recipe", values.calorie_recipe);

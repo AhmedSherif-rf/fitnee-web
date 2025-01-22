@@ -183,6 +183,17 @@ const Packages = () => {
                   </span>
                 </h3>
                 <h3>
+                  Main Classification:
+                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
+                    {" "}
+                    {i18n?.language === "en"
+                      ? categoryClassificationDetails?.meal_classification
+                          ?.en_name
+                      : categoryClassificationDetails?.meal_classification
+                          ?.ar_name}
+                  </span>
+                </h3>
+                <h3>
                   Meal Type:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}

@@ -982,7 +982,8 @@
     "preference_mealsLabel": "Meals you want to add in your deit",
     "preference_mealsPlaceholder": "Enter meals",
     "conditionsLabel": "By clicking on the subscribe button, you agree that you don't have any medical conditions that prevent you from exercising",
-    "saveText": "Save"
+    "saveText": "Save",
+    "medicalCondition": "Since your health is important to us, you need intensive monitoring by a personal trainer specific to your condition. You can sign up with a personal trainer or nutritionist that you choose from the trainers or nutritionists page, depending on your goal."
   },
   "meals": {
     "addMealClassification": "Add Meal Classification",

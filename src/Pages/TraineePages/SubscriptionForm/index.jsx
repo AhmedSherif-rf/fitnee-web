@@ -30,6 +30,7 @@ import {
 } from "./constants";
 import toast from "react-hot-toast";
 import { getPackageDetails } from "../../../Redux/features/Admin/Packages/packagesApi";
+import MedicalCondition from "../../../Shared/Modal/MedicalCondition";
 
 const SubscriptionForm = () => {
   // ------------- hooks -------------
@@ -40,8 +41,16 @@ const SubscriptionForm = () => {
   const [likedMeals, setLikedMeals] = React.useState([]);
   const [illness, setIllness] = React.useState([]);
   const lang = window.localStorage.getItem("Website_Language__fitnee");
+  const [isOpen, setIsOpen] = React.useState(false);
 
   // ------------- functions -------------
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
 
   const handleSubscriptionForm = async (values) => {
     const requestData = {
@@ -75,7 +84,7 @@ const SubscriptionForm = () => {
     dispatch(getSubscriped(data)).then((res) => {
       if (res.type === "getSubscriped/fulfilled") {
         if (res.payload.data?.detail === "You are not qualified for this.") {
-          toast.error(res.payload.data?.detail);
+          handleOpen();
         } else {
           dispatch(
             setSubscriptionPlan({
@@ -153,132 +162,243 @@ const SubscriptionForm = () => {
                   setFieldValue,
                 }) => (
                   <Form onSubmit={handleSubmit}>
-                    <div className="d-flex flex-row">
-                      <Col md={5} className={`p-2 mx-auto`}>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.genderLabel")}`}
-                          </Label>
-                          <SelectField
-                            name="gender"
-                            className={"form-control-lg BorderRadiusInput"}
-                            options={gender}
-                            handleChange={(value) =>
-                              setFieldValue("gender", value)
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.gender) &&
-                              touched.gender &&
-                              t(errors.gender)}
-                          </p>
-                        </div>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.weightLabel")}`}
-                          </Label>
-                          <InputField
-                            type="number"
-                            name="weight"
-                            placeholder={t("subscription.weightPlaceholder")}
-                            style={{ borderRadius: "4px" }}
-                            onChangeHandle={handleChange}
-                            onBlurHandle={handleBlur}
-                            value={values.weight}
-                            className={
-                              "form-control-lg BorderRadiusInput py-3 px-2"
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.weight) &&
-                              touched.weight &&
-                              t(errors.weight)}
-                          </p>
-                        </div>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.favMealsLabel")}`}
-                          </Label>
+                    <div>
+                      <div className={`${styles.subscriptionForm}`}>
+                        <Col sm={12} md={5} className={`p-2 mx-auto`}>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.genderLabel")}`}
+                            </Label>
+                            <SelectField
+                              name="gender"
+                              className={"form-control-lg BorderRadiusInput"}
+                              options={gender}
+                              handleChange={(value) =>
+                                setFieldValue("gender", value)
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.gender) &&
+                                touched.gender &&
+                                t(errors.gender)}
+                            </p>
+                          </div>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.weightLabel")}`}
+                            </Label>
+                            <InputField
+                              type="number"
+                              name="weight"
+                              placeholder={t("subscription.weightPlaceholder")}
+                              style={{ borderRadius: "4px" }}
+                              onChangeHandle={handleChange}
+                              onBlurHandle={handleBlur}
+                              value={values.weight}
+                              className={
+                                "form-control-lg BorderRadiusInput py-3 px-2"
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.weight) &&
+                                touched.weight &&
+                                t(errors.weight)}
+                            </p>
+                          </div>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.favMealsLabel")}`}
+                            </Label>
 
-                          <SelectField
-                            name="likes_meal"
-                            isMulti={true}
-                            className={"form-control-lg BorderRadiusInput"}
-                            handleChange={(value) =>
-                              setFieldValue("likes_meal", value)
-                            }
-                            options={likedMeals?.map((item) => {
-                              return {
+                            <SelectField
+                              name="likes_meal"
+                              isMulti={true}
+                              className={"form-control-lg BorderRadiusInput"}
+                              handleChange={(value) =>
+                                setFieldValue("likes_meal", value)
+                              }
+                              options={likedMeals?.map((item) => {
+                                return {
+                                  value: item?.id,
+                                  label:
+                                    lang === "en"
+                                      ? item?.en_name
+                                      : item?.ar_name,
+                                };
+                              })}
+                            />
+                            <p className="errorField">
+                              {t(errors.likes_meal) &&
+                                touched.likes_meal &&
+                                t(errors.likes_meal)}
+                            </p>
+                          </div>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.training_placeLabel")}`}
+                            </Label>
+                            <SelectField
+                              name="training_place"
+                              className={"form-control-lg BorderRadiusInput"}
+                              options={trainingPlaces}
+                              handleChange={(value) =>
+                                setFieldValue("training_place", value)
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.training_place) &&
+                                touched.training_place &&
+                                t(errors.training_place)}
+                            </p>
+                          </div>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.training_levelLabel")}`}
+                            </Label>
+                            <SelectField
+                              name="training_level"
+                              className={"form-control-lg BorderRadiusInput"}
+                              options={trainingLevel}
+                              handleChange={(value) =>
+                                setFieldValue("training_level", value)
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.training_level) &&
+                                touched.training_level &&
+                                t(errors.training_level)}
+                            </p>
+                          </div>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.injuriesLabel")}`}
+                            </Label>
+                            <SelectField
+                              name="is_injured"
+                              className={"form-control-lg BorderRadiusInput"}
+                              options={[
+                                { label: "Yes", value: "True" },
+                                { label: "No", value: "False" },
+                              ]}
+                              handleChange={(value) =>
+                                setFieldValue("is_injured", value)
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.is_injured) &&
+                                touched.is_injured &&
+                                t(errors.is_injured)}
+                            </p>
+                          </div>
+                        </Col>
+                        <Col md={5} className={`p-2 mx-auto`}>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.ageLabel")}`}
+                            </Label>
+                            <InputField
+                              type="number"
+                              name="age"
+                              placeholder={t("subscription.agePlaceholder")}
+                              style={{ borderRadius: "4px" }}
+                              onChangeHandle={handleChange}
+                              onBlurHandle={handleBlur}
+                              value={values.age}
+                              className={
+                                "form-control-lg BorderRadiusInput py-3 px-2"
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.age) && touched.age && t(errors.age)}
+                            </p>
+                          </div>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.heightLabel")}`}
+                            </Label>
+                            <InputField
+                              type="number"
+                              name="height"
+                              placeholder={t("subscription.heightPlaceholder")}
+                              style={{ borderRadius: "4px" }}
+                              onChangeHandle={handleChange}
+                              onBlurHandle={handleBlur}
+                              value={values.height}
+                              className={
+                                "form-control-lg BorderRadiusInput py-3 px-2"
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.height) &&
+                                touched.height &&
+                                t(errors.height)}
+                            </p>
+                          </div>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.your_goalLabel")}`}
+                            </Label>
+
+                            <SelectField
+                              name="training_goal"
+                              className={"form-control-lg BorderRadiusInput"}
+                              options={trainingGoal}
+                              handleChange={(value) =>
+                                setFieldValue("training_goal", value)
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.training_goal) &&
+                                touched.training_goal &&
+                                t(errors.training_goal)}
+                            </p>
+                          </div>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.illnessLabel")}`}
+                            </Label>
+
+                            <SelectField
+                              name="diseases"
+                              isMulti={true}
+                              className={"form-control-lg BorderRadiusInput"}
+                              options={illness?.map((item) => ({
                                 value: item?.id,
                                 label:
-                                  lang === "en" ? item?.en_name : item?.ar_name,
-                              };
-                            })}
-                          />
-                          <p className="errorField">
-                            {t(errors.likes_meal) &&
-                              touched.likes_meal &&
-                              t(errors.likes_meal)}
-                          </p>
-                        </div>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.training_placeLabel")}`}
-                          </Label>
-                          <SelectField
-                            name="training_place"
-                            className={"form-control-lg BorderRadiusInput"}
-                            options={trainingPlaces}
-                            handleChange={(value) =>
-                              setFieldValue("training_place", value)
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.training_place) &&
-                              touched.training_place &&
-                              t(errors.training_place)}
-                          </p>
-                        </div>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.training_levelLabel")}`}
-                          </Label>
-                          <SelectField
-                            name="training_level"
-                            className={"form-control-lg BorderRadiusInput"}
-                            options={trainingLevel}
-                            handleChange={(value) =>
-                              setFieldValue("training_level", value)
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.training_level) &&
-                              touched.training_level &&
-                              t(errors.training_level)}
-                          </p>
-                        </div>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.injuriesLabel")}`}
-                          </Label>
-                          <SelectField
-                            name="is_injured"
-                            className={"form-control-lg BorderRadiusInput"}
-                            options={[
-                              { label: "Yes", value: "True" },
-                              { label: "No", value: "False" },
-                            ]}
-                            handleChange={(value) =>
-                              setFieldValue("is_injured", value)
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.is_injured) &&
-                              touched.is_injured &&
-                              t(errors.is_injured)}
-                          </p>
-                        </div>
+                                  lang === "ar" ? item?.ar_name : item?.en_name,
+                              }))}
+                              handleChange={(value) =>
+                                setFieldValue("diseases", value)
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.illness) &&
+                                touched.illness &&
+                                t(errors.illness)}
+                            </p>
+                          </div>
+                          <div className="mb-2">
+                            <Label className="fw-normal small mb-0">
+                              {`${t("subscription.referenceLabel")}`}
+                            </Label>
+                            <SelectField
+                              name="how_did_you_know_us"
+                              className={"form-control-lg BorderRadiusInput"}
+                              options={findUs}
+                              handleChange={(value) =>
+                                setFieldValue("how_did_you_know_us", value)
+                              }
+                            />
+                            <p className="errorField">
+                              {t(errors.how_did_you_know_us) &&
+                                touched.how_did_you_know_us &&
+                                t(errors.how_did_you_know_us)}
+                            </p>
+                          </div>
+                        </Col>
+                      </div>
 
+                      <div className={`${styles.checkbox}`}>
                         <div className="mb-2">
                           <div className="mb-2 d-flex flex-row align-items-start gap-2">
                             <input
@@ -322,113 +442,9 @@ const SubscriptionForm = () => {
                               t(errors.have_diseases)}
                           </p>
                         </div>
-                      </Col>
-                      <Col md={5} className={`p-2 mx-auto`}>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.ageLabel")}`}
-                          </Label>
-                          <InputField
-                            type="number"
-                            name="age"
-                            placeholder={t("subscription.agePlaceholder")}
-                            style={{ borderRadius: "4px" }}
-                            onChangeHandle={handleChange}
-                            onBlurHandle={handleBlur}
-                            value={values.age}
-                            className={
-                              "form-control-lg BorderRadiusInput py-3 px-2"
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.age) && touched.age && t(errors.age)}
-                          </p>
-                        </div>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.heightLabel")}`}
-                          </Label>
-                          <InputField
-                            type="number"
-                            name="height"
-                            placeholder={t("subscription.heightPlaceholder")}
-                            style={{ borderRadius: "4px" }}
-                            onChangeHandle={handleChange}
-                            onBlurHandle={handleBlur}
-                            value={values.height}
-                            className={
-                              "form-control-lg BorderRadiusInput py-3 px-2"
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.height) &&
-                              touched.height &&
-                              t(errors.height)}
-                          </p>
-                        </div>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.your_goalLabel")}`}
-                          </Label>
-
-                          <SelectField
-                            name="training_goal"
-                            className={"form-control-lg BorderRadiusInput"}
-                            options={trainingGoal}
-                            handleChange={(value) =>
-                              setFieldValue("training_goal", value)
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.training_goal) &&
-                              touched.training_goal &&
-                              t(errors.training_goal)}
-                          </p>
-                        </div>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.illnessLabel")}`}
-                          </Label>
-
-                          <SelectField
-                            name="diseases"
-                            isMulti={true}
-                            className={"form-control-lg BorderRadiusInput"}
-                            options={illness?.map((item) => ({
-                              value: item?.id,
-                              label:
-                                lang === "ar" ? item?.ar_name : item?.en_name,
-                            }))}
-                            handleChange={(value) =>
-                              setFieldValue("diseases", value)
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.illness) &&
-                              touched.illness &&
-                              t(errors.illness)}
-                          </p>
-                        </div>
-                        <div className="mb-2">
-                          <Label className="fw-normal small mb-0">
-                            {`${t("subscription.referenceLabel")}`}
-                          </Label>
-                          <SelectField
-                            name="how_did_you_know_us"
-                            className={"form-control-lg BorderRadiusInput"}
-                            options={findUs}
-                            handleChange={(value) =>
-                              setFieldValue("how_did_you_know_us", value)
-                            }
-                          />
-                          <p className="errorField">
-                            {t(errors.how_did_you_know_us) &&
-                              touched.how_did_you_know_us &&
-                              t(errors.how_did_you_know_us)}
-                          </p>
-                        </div>
-                      </Col>
+                      </div>
                     </div>
+
                     <Col md={12} className="text-center">
                       <FillBtn
                         className="w-25 py-2 mx-5 my-3"
@@ -444,6 +460,7 @@ const SubscriptionForm = () => {
           </Card>
         </Col>
       </Row>
+      <MedicalCondition isOpen={isOpen} onClose={handleClose} />
     </Container>
   );
 };

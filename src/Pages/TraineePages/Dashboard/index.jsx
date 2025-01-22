@@ -178,9 +178,9 @@ const Dashboard = () => {
     setShowHistory(!showHistory);
   }, [showHistory]);
 
-  const handleExerciseSubscriptionClick = useCallback(() => {
-    navigate("/trainee/exerciseSubscription");
-  }, [navigate]);
+  // const handleExerciseSubscriptionClick = useCallback(() => {
+  //   navigate("/trainee/exerciseSubscription");
+  // }, [navigate]);
 
   const handleCurrentTrainerClick = useCallback(() => {
     navigate("/trainee/trainerList");
@@ -216,7 +216,7 @@ const Dashboard = () => {
                     text={t("traineeDashboard.myCurrentNutritionistText")}
                     handleOnClick={handleCurrentNutritionistClick}
                   />
-                  <FillBtn
+                  {/* <FillBtn
                     className="w-100 mb-2 py-2"
                     text={t("traineeDashboard.subscribeForExerciseText")}
                     handleOnClick={handleExerciseSubscriptionClick}
@@ -226,7 +226,7 @@ const Dashboard = () => {
                         ? true
                         : false
                     }
-                  />
+                  /> */}
                 </Col>
               </Row>
             </Col>

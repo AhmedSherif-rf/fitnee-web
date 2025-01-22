@@ -197,9 +197,9 @@ const Index = () => {
                     </Col>
                     <Col md={2} className="d-md-block d-none">
                       <div className="mb-md-0 mb-2 BorderYellow text-center p-2 rounded-3">
-                        {coach?.subscription?.duration === 1
+                        {coach?.duration === 1 * 30
                           ? t("trainerPackages.monthText")
-                          : coach?.subscription?.duration === 2
+                          : coach?.duration === 2 * 30
                           ? t("trainerPackages.twoMonthText")
                           : t("trainerPackages.threeMonthText")}
                       </div>
@@ -207,9 +207,7 @@ const Index = () => {
                     <Col md={2} className="d-md-block d-none">
                       <div className="mb-md-0 text-center py-2 rounded-3">
                         <h6 className="mb-0 w-100 fs-5 fw-bold ">
-                          {coach?.transition?.total_amount === null
-                            ? coach?.transition?.current_price
-                            : coach?.transition?.total_amount}
+                          SAR {coach?.price}
                         </h6>
                       </div>
                     </Col>

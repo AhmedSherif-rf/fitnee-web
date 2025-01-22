@@ -94,19 +94,19 @@ export const checkPaymentStatus = createAsyncThunk(
       const response = await axiosInstance.post(apiEndpoint, requestData);
       return response.data;
     } catch (error) {
-      // if (error?.response?.data?.error?.Error) {
-      //   Toaster.error(error?.response?.data?.error?.Error);
-      // } else if (error?.response?.data?.error?.Messages) {
-      //   Toaster.error(error?.response?.data?.error?.Messages);
-      // } else if (error?.response?.data?.error?.Message) {
-      //   if (typeof error?.response?.data?.error?.Message === "string") {
-      //     Toaster.error(error?.response?.data?.error?.Message);
-      //   } else {
-      //     Toaster.error(
-      //       error?.response?.data?.error?.Message?.result?.description
-      //     );
-      //   }
-      // }
+      if (error?.response?.data?.error?.Error) {
+        Toaster.error(error?.response?.data?.error?.Error);
+      } else if (error?.response?.data?.error?.Messages) {
+        Toaster.error(error?.response?.data?.error?.Messages);
+      } else if (error?.response?.data?.error?.Message) {
+        if (typeof error?.response?.data?.error?.Message === "string") {
+          Toaster.error(error?.response?.data?.error?.Message);
+        } else {
+          Toaster.error(
+            error?.response?.data?.error?.Message?.result?.description
+          );
+        }
+      }
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }

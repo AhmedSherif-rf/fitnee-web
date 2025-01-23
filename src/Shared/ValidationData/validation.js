@@ -479,14 +479,14 @@ export const SUBSCRIPTION_FORM_SCHEMA = Yup.object().shape({
   likes_meal: requiredArrayValidation,
   training_place: requiredValidation,
   training_level: requiredValidation,
-  is_injured: Yup.bool().required("validation.requiredText"),
+  // is_injured: Yup.bool().required("validation.requiredText"),
   how_did_you_know_us: requiredValidation,
   accept: requiredValidation,
   age: requiredValidation,
   height: requiredValidation,
-  your_goal: requiredValidation,
+  training_goal: requiredValidation,
   // diseases: requiredArrayValidation,
-  conditions: requiredValidation,
+  // conditions: requiredValidation,
 });
 
 export const MEAL_CLASSIFICATIONS_SCHEMA = Yup.object().shape({

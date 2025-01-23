@@ -9,6 +9,7 @@ import { PACKAGES_URL } from "../../../utils/constants";
 import { EDIT_PACKAGE_SCHEMA } from "../../ValidationData/validation";
 import { Modal, ModalBody, ModalHeader, Label, Form } from "reactstrap";
 import { EditPackage } from "../../../Redux/features/Admin/Packages/packagesApi";
+import UploadPic from "../../UploadPic";
 
 const EditPackageModal = (props) => {
   const {
@@ -23,12 +24,20 @@ const EditPackageModal = (props) => {
   const { loading } = useSelector((state) => state.packages);
   const dispatch = useDispatch();
 
+  const [displayImages, setDisplayImages] = useState("");
+
   const { t, i18n } = useTranslation("");
 
   const handleEditPackageSubmit = async (values) => {
-    const requestData = { ...values };
+    const requestData = new FormData();
 
-    delete requestData.pic;
+    if (values.pic && typeof values.pic === "object") {
+      requestData.append("pic", values.pic);
+    }
+
+    requestData.append("name", values.name);
+    requestData.append("description", values.description);
+    requestData.append("price", values.price);
 
     const data = {
       apiEndpoint: PACKAGES_URL + packageData.id + "/",
@@ -41,6 +50,14 @@ const EditPackageModal = (props) => {
       }
     });
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setDisplayImages(packageData?.pic);
+    } else {
+      setDisplayImages("");
+    }
+  }, [isOpen]);
 
   return (
     <Modal
@@ -62,6 +79,7 @@ const EditPackageModal = (props) => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             await handleEditPackageSubmit(values);
+            setDisplayImages("");
             onClose();
           }}
         >
@@ -72,8 +90,23 @@ const EditPackageModal = (props) => {
             handleBlur,
             handleChange,
             handleSubmit,
+            setFieldValue,
           }) => (
             <Form onSubmit={handleSubmit}>
+              <div className="mb-2">
+                <UploadPic
+                  setFieldValue={setFieldValue}
+                  displayImages={displayImages}
+                  setDisplayImages={setDisplayImages}
+                  keyName="pic"
+                />
+                <p className="errorField">
+                  {t(errors.profile_pic) &&
+                    touched.profile_pic &&
+                    t(errors.profile_pic)}
+                </p>
+              </div>
+
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
                   {`${t("packages.nameLabel")}`}

@@ -958,6 +958,7 @@
     "saveText": "Save"
   },
   "subscription": {
+    "fromHere": "From here",
     "formTitle": "Please fill the form below to subscribe",
     "genderLabel": "Gender",
     "genderPlaceholder": "Select Gender",
@@ -1007,6 +1008,7 @@
     "minCalLabel": "Minimum Calories",
     "minCalPlaceholder": "Enter Minimum Calories",
     "maxCalLabel": "Maximum Calories",
+    "methodsLabel": "Methods",
     "maxCalPlaceholder": "Enter Maximum Calories",
     "classificationLabel": "Main Category",
     "meal_typeLabel": "Subcategory",

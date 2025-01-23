@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import { Link } from "react-router-dom";
 import medicalCondition from "../../../Assets/Images/medicalCondition.png";
 
 const MedicalConditionModal = (props) => {
@@ -28,7 +29,10 @@ const MedicalConditionModal = (props) => {
       <ModalBody className="px-5 pb-5 text-center fw-bold">
         {haveDiseases
           ? t("subscription.medicalCondition")
-          : t("subscription.haveInjuries")}
+          : t("subscription.haveInjuries")}{" "}
+        <Link to="/trainee/allServiceProvider/trainer">
+          {t("subscription.fromHere")}
+        </Link>
       </ModalBody>
     </Modal>
   );

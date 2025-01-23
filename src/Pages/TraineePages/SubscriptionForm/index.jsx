@@ -86,7 +86,9 @@ const SubscriptionForm = () => {
     dispatch(getSubscriped(data)).then((res) => {
       if (res.type === "getSubscriped/fulfilled") {
         if (res.payload.data?.detail === "You are not qualified for this.") {
-          res.payload.data?.have_diseases && setHaveDiseases(true);
+          res.payload.data?.have_diseases
+            ? setHaveDiseases(true)
+            : setHaveDiseases(false);
           handleOpen();
         } else {
           dispatch(
@@ -100,6 +102,9 @@ const SubscriptionForm = () => {
           );
           navigate("/trainee/subscription/creditCardDetail");
         }
+      } else {
+        setHaveDiseases(true);
+        handleOpen();
       }
     });
   };

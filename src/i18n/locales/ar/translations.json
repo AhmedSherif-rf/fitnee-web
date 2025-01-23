@@ -502,7 +502,7 @@
     "exerciseSubscriptionModalText": "اشترك مع مدرب و أخصائى تغذية لعرض جميع التمارين بتعليمات واضحة تمكنك من اداء التمارين/وصفات بطريقة صحيحه",
     "exercisePackageText": "الاشتراك بهذه الباقة سيقدم لك مقاطع فديو لتمارين الجسم كاملة وايضاً مقاطع فديو لوصفات غذائية محسوبة السعرات. لتكن على علم بذلك، في حال اشتراكك مع مدرب أو اخصائي تغذية ستكون هذا الباقة مقدمة لك مجانا.",
     "fitneeCoach": "مدرب FitNee",
-    "messagePackageText": "باقة الباقة"
+    "messagePackageText": "اشترك في باقة الرسائل"
   },
   "calculation": {
     "caloriesShouldText": "كم عدد السعرات الحرارية اللتي تحتاجها في يومك لخساره الوزن؟",
@@ -923,6 +923,7 @@
     "changePassword": "تغيير كلمة المرور"
   },
   "subscription": {
+    "fromHere": "من هنا",
     "formTitle": "يرجى تعبئة النموذج أدناه للاشتراك",
     "genderLabel": "الجنس",
     "genderPlaceholder": "اختر الجنس",
@@ -960,6 +961,7 @@
   },
   "meals": {
     "addMealClassification": "إضافة تصنيف وجبة",
+    "methodsLabel": "الطرق",
     "editMealClassification": "تعديل تصنيف وجبة",
     "en_nameLabel": "الاسم باللغة الإنجليزية",
     "en_namePlaceholder": "أدخل اسم تصنيف الوجبة باللغة الإنجليزية",

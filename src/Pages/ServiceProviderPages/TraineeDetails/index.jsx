@@ -130,7 +130,9 @@ const Index = () => {
   const [meals, setMeals] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [mealClassification, setMealClassification] = useState([]);
-  const [dayFilter, setDayFilter] = useState("all");
+  const [dayFilter, setDayFilter] = useState(
+    new Date().toISOString().split("T")[0]
+  );
   const [mealFilter, setMealFilter] = useState("all");
 
   const fetchMainClassificationListing = () => {
@@ -313,19 +315,6 @@ const Index = () => {
               </Row>
               <Row>
                 <div className="d-flex flex-row gap-3 justify-content-center">
-                  <div
-                    onClick={() => setDayFilter("all")}
-                    style={{
-                      width: "120px",
-                      height: "120px",
-                      cursor: "pointer",
-                    }}
-                    className={`${
-                      dayFilter === "all" ? "active" : "bg-soft-gray"
-                    } d-flex justify-content-center align-items-center fw-bold rounded`}
-                  >
-                    {t("trainer.allWeek")}
-                  </div>
                   {dateObj.map((day) => (
                     <div
                       onClick={() => setDayFilter(day.date)}

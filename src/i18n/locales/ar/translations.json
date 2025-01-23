@@ -536,6 +536,7 @@
   "trainer": {
     "walletText": "المحفظة",
     "bioText": "السيرة الذاتية",
+    "all": "الكل",
     "startFrom": "تبدأ من",
     "to": "الي",
     "expired": "غير مفعل",

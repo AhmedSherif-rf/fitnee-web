@@ -174,6 +174,8 @@ const experienceValidation = Yup.number()
 
 const requiredValidation = Yup.string().required("validation.requiredText");
 
+const requiredArrayValidation = Yup.array().required("validation.requiredText");
+
 const profileAvailabilityValidation = Yup.array().of(
   Yup.object().shape({
     day: Yup.string().required("validation.requiredDayText"),
@@ -471,7 +473,21 @@ export const REVIEW_REQUEST_REJECTION_SCHEMA = Yup.object().shape({
   reject_message: requiredValidation,
 });
 
-export const SUBSCRIPTION_FORM_SCHEMA = Yup.object().shape({});
+export const SUBSCRIPTION_FORM_SCHEMA = Yup.object().shape({
+  gender: requiredValidation,
+  weight: requiredValidation,
+  likes_meal: requiredArrayValidation,
+  training_place: requiredValidation,
+  training_level: requiredValidation,
+  is_injured: Yup.bool().required("validation.requiredText"),
+  how_did_you_know_us: requiredValidation,
+  accept: requiredValidation,
+  age: requiredValidation,
+  height: requiredValidation,
+  your_goal: requiredValidation,
+  // diseases: requiredArrayValidation,
+  conditions: requiredValidation,
+});
 
 export const MEAL_CLASSIFICATIONS_SCHEMA = Yup.object().shape({
   en_name: requiredValidation,

@@ -31,6 +31,7 @@ import {
 import toast from "react-hot-toast";
 import { getPackageDetails } from "../../../Redux/features/Admin/Packages/packagesApi";
 import MedicalCondition from "../../../Shared/Modal/MedicalCondition";
+import { SUBSCRIPTION_FORM_SCHEMA } from "../../../Shared/ValidationData/validation";
 
 const SubscriptionForm = () => {
   // ------------- hooks -------------
@@ -147,7 +148,7 @@ const SubscriptionForm = () => {
               </h3>
               <Formik
                 initialValues={{ ...SUBSCRIPTION_FORM_INITIAL_VALUES }}
-                // validationSchema={SUBSCRIPTION_FORM_SCHEMA}
+                validationSchema={SUBSCRIPTION_FORM_SCHEMA}
                 onSubmit={async (values, { setSubmitting, resetForm }) => {
                   setSubmitting(true);
 

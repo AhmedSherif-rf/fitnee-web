@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import LoadingScreen from "../../../HelperMethods/LoadingScreen";
 import { getMyTrainees } from "../../../Redux/features/User/userApi";
 import {
+  ADMIN_MEAL_CLASSIFICATION_URL,
   ADMIN_TRAINEE_PROFILE_URL,
   COACH_TRAINEE_PROFILE_URL,
   MEMBERSHIP_URL,
@@ -17,6 +18,7 @@ import FillBtn from "../../../Shared/Buttons/FillBtn";
 import "./styles.css";
 import { useParams } from "react-router-dom";
 import Carousel from "../../../Shared/Carousel";
+import { getLikedMeals } from "../../../Redux/features/Subscription/subscriptionApi";
 
 const days = [
   "Sunday",
@@ -127,13 +129,27 @@ const Index = () => {
   const [traineesData, setTraineesData] = useState([]);
   const [meals, setMeals] = useState([]);
   const [exercises, setExercises] = useState([]);
-
+  const [mealClassification, setMealClassification] = useState([]);
   const [dayFilter, setDayFilter] = useState("all");
+  const [mealFilter, setMealFilter] = useState("all");
+
+  const fetchMainClassificationListing = () => {
+    const data = {
+      apiEndpoint: `${ADMIN_MEAL_CLASSIFICATION_URL}`,
+    };
+
+    dispatch(getLikedMeals(data)).then((res) => {
+      if (res.type === "getLikedMeals/fulfilled") {
+        setMealClassification(res.payload.data);
+      }
+    });
+  };
 
   useEffect(() => {
     fetchMealsData();
     fetchTraineesData();
     fetchExercisesData();
+    fetchMainClassificationListing();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -353,23 +369,67 @@ const Index = () => {
                     </p>
                   )}
                 </div>
-                <div className="w-100">
+                <div className="w-100" style={{ minHeight: "300px" }}>
                   <h1>{t("landing.meals")}</h1>
-                  {meals?.length > 0 ? (
+                  <div className="d-flex flex-row gap-2 justify-content-start my-3">
+                    <div
+                      className={`p-2 rounded ${
+                        mealFilter === "all" ? "active" : "bg-soft-gray"
+                      }`}
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setMealFilter("all")}
+                    >
+                      {t("trainer.all")}
+                    </div>
+                    {mealClassification?.map((classification) => {
+                      return (
+                        <div
+                          style={{ cursor: "pointer" }}
+                          className={`p-2 rounded ${
+                            mealFilter === classification?.id
+                              ? "active"
+                              : "bg-soft-gray"
+                          }`}
+                          onClick={() => setMealFilter(classification.id)}
+                        >
+                          {i18n.language === "en"
+                            ? classification.en_name
+                            : classification?.ar_name}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {meals?.filter((meal) => {
+                    if (mealFilter === "all") {
+                      return meal;
+                    } else {
+                      return meal.meal.meal_classification?.id == mealFilter;
+                    }
+                  })?.length > 0 ? (
                     <Carousel
-                      items={meals.map((meal) => {
-                        return (
-                          <CarouselCard
-                            name={
-                              i18n.language === "en"
-                                ? meal.meal?.en_name
-                                : meal.meal?.ar_name
-                            }
-                            img={meal.meal.meal_pic}
-                            isDone={meal.ate}
-                          />
-                        );
-                      })}
+                      items={meals
+                        ?.filter((meal) => {
+                          if (mealFilter === "all") {
+                            return meal;
+                          } else {
+                            return (
+                              meal.meal.meal_classification?.id == mealFilter
+                            );
+                          }
+                        })
+                        .map((meal) => {
+                          return (
+                            <CarouselCard
+                              name={
+                                i18n.language === "en"
+                                  ? meal.meal?.en_name
+                                  : meal.meal?.ar_name
+                              }
+                              img={meal.meal.meal_pic}
+                              isDone={meal.ate}
+                            />
+                          );
+                        })}
                     />
                   ) : (
                     <p style={{ padding: "100px 0" }} className="text-center">

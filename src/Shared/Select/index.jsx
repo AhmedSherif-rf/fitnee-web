@@ -86,7 +86,7 @@ const SelectField = (props) => {
         rows={rows}
         isMulti={isMulti}
         classNamePrefix="select"
-        defaultValue={defaultValue}
+        defaultValue={defaultValue || options[0]}
         isDisabled={isDisabled}
         isLoading={isLoading}
         isSearchable={isSearchable}

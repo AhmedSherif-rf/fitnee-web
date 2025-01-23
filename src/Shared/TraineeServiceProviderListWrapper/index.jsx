@@ -121,7 +121,9 @@ const TraineeServiceProviderListWrapper = (props) => {
 
   return (
     <Card
-      className={`BorderRadius contentCard ${styles.serviceProviderListWrapper}`}
+      className={`BorderRadius contentCard ${
+        styles.serviceProviderListWrapper
+      } ${i18n.dir()}`}
       id={"listingContainer"}
     >
       <CardBody>
@@ -173,7 +175,7 @@ const TraineeServiceProviderListWrapper = (props) => {
           </Row>
         )}
 
-        <Row>
+        <Row className={`${i18n.dir()}`}>
           <Col lg={3} md={4} col={6} className="mb-3">
             <ServiceProviderListCard
               className={`${styles.activeTrainerCard}`}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody, Col, Container, Row, Form, Label } from "reactstrap";
 import styles from "./style.module.scss";
@@ -42,6 +42,7 @@ const SubscriptionForm = () => {
   const [illness, setIllness] = React.useState([]);
   const lang = window.localStorage.getItem("Website_Language__fitnee");
   const [isOpen, setIsOpen] = React.useState(false);
+  const [haveDiseases, setHaveDiseases] = useState(false);
 
   // ------------- functions -------------
   const handleClose = () => {
@@ -84,6 +85,7 @@ const SubscriptionForm = () => {
     dispatch(getSubscriped(data)).then((res) => {
       if (res.type === "getSubscriped/fulfilled") {
         if (res.payload.data?.detail === "You are not qualified for this.") {
+          res.payload.data?.have_diseases && setHaveDiseases(true);
           handleOpen();
         } else {
           dispatch(
@@ -460,7 +462,11 @@ const SubscriptionForm = () => {
           </Card>
         </Col>
       </Row>
-      <MedicalCondition isOpen={isOpen} onClose={handleClose} />
+      <MedicalCondition
+        haveDiseases={haveDiseases}
+        isOpen={isOpen}
+        onClose={handleClose}
+      />
     </Container>
   );
 };

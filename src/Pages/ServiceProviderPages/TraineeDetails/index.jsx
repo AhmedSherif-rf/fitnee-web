@@ -256,8 +256,10 @@ const Index = () => {
                 <div className="bg-light container p-3">
                   <div className="row">
                     <p className="col">
-                      <span className="fw-bold">{t("trainer.name")} : </span>
-                      {traineesData?.first_name} {traineesData?.last_name}
+                      <span className="fw-bold">
+                        {t("trainer.trainingLevel")} :{" "}
+                      </span>
+                      {traineesData?.training_level}
                     </p>
                     <p className="col">
                       <span className="fw-bold">

@@ -4,7 +4,7 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import medicalCondition from "../../../Assets/Images/medicalCondition.png";
 
 const MedicalConditionModal = (props) => {
-  const { onClose, isOpen, className, size } = props;
+  const { onClose, isOpen, className, size, haveDiseases } = props;
 
   const { t, i18n } = useTranslation("");
 
@@ -26,7 +26,9 @@ const MedicalConditionModal = (props) => {
         />
       </ModalHeader>
       <ModalBody className="px-5 pb-5 text-center fw-bold">
-        {t("subscription.medicalCondition")}
+        {haveDiseases
+          ? t("subscription.medicalCondition")
+          : t("subscription.haveInjuries")}
       </ModalBody>
     </Modal>
   );

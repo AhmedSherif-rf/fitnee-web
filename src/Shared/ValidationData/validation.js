@@ -426,6 +426,7 @@ export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
 
 export const ADD_COACH_SCHEMA = Yup.object().shape({
   profile_pic: requiredValidation,
+  name: requiredValidation,
   email: emailValidation,
   password: coachPasswordValidation,
   re_password: confirmCoachPasswordValidation,
@@ -434,6 +435,7 @@ export const ADD_COACH_SCHEMA = Yup.object().shape({
 
 export const EDIT_COACH_SCHEMA = Yup.object().shape({
   email: emailValidation,
+  name: requiredValidation,
   description: requiredValidation,
 });
 

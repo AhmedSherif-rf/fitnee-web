@@ -26,9 +26,13 @@ const EditPackageModal = (props) => {
   const { t, i18n } = useTranslation("");
 
   const handleEditPackageSubmit = async (values) => {
+    const requestData = { ...values };
+
+    delete requestData.pic;
+
     const data = {
       apiEndpoint: PACKAGES_URL + packageData.id + "/",
-      requestData: values,
+      requestData,
     };
 
     await dispatch(EditPackage(data)).then((res) => {

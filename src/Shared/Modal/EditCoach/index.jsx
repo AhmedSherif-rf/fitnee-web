@@ -32,6 +32,7 @@ const EditCoachModal = (props) => {
       requestData.append("profile_pic", values.profile_pic);
     }
     requestData.append("email", values.email);
+    requestData.append("full_name", values.name);
     if (isChangePassword) {
       requestData.append("password", values.password);
       requestData.append("re_password", values.re_password);
@@ -106,6 +107,23 @@ const EditCoachModal = (props) => {
                   {t(errors.profile_pic) &&
                     touched.profile_pic &&
                     t(errors.profile_pic)}
+                </p>
+              </div>
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("coachListing.nameLabel")}`}
+                </Label>
+                <InputField
+                  type="name"
+                  name="name"
+                  placeholder={t("coachListing.namePlaceholder")}
+                  onChangeHandle={handleChange}
+                  onBlurHandle={handleBlur}
+                  value={values.name}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.name) && touched.name && t(errors.name)}
                 </p>
               </div>
               <div className="mb-2">

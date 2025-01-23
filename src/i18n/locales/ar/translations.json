@@ -536,6 +536,9 @@
   "trainer": {
     "walletText": "المحفظة",
     "bioText": "السيرة الذاتية",
+    "startFrom": "تبدأ من",
+    "to": "الي",
+    "expired": "غير مفعل",
     "trainerHeadingText": "المؤﻫﻼﺕ والخبرات",
     "commentText": "التعليقات",
     "trainerSubscriberText": " المشتركين",

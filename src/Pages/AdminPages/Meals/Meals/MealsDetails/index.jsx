@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageHeading from "../../../../../Shared/Headings/PageHeading";
-import { Container, Row, Col, CardBody, CardFooter } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
@@ -108,15 +108,9 @@ const Packages = () => {
         setMainCategoryDefaultData({
           label:
             i18n?.language === "en"
-              ? res.payload.data?.find(
-                  (item) =>
-                    item.id === categoryClassificationDetails.classification
-                )?.en_name
-              : res.payload.data?.find(
-                  (item) =>
-                    item.id === categoryClassificationDetails.classification
-                )?.ar_name,
-          value: categoryClassificationDetails.classification,
+              ? categoryClassificationDetails.meal_classification?.en_name
+              : categoryClassificationDetails.meal_classification?.ar_name,
+          value: categoryClassificationDetails.meal_classification?.id,
         });
 
         setMainCategory(res.payload.data);

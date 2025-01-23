@@ -41,7 +41,9 @@ const Index = () => {
 
     dispatch(getMyTrainees(data)).then((res) => {
       if (res.type === "getMyTrainees/fulfilled") {
-        setSizePages(res.payload.data.count);
+        setSizePages((prev) =>
+          res.payload.data.count > prev ? res.payload.data.count : prev
+        );
         setTraineesData(res.payload.data.results);
       }
     });
@@ -52,6 +54,9 @@ const Index = () => {
 
     dispatch(getMyTrainees(fitneeCoach)).then((res) => {
       if (res.type === "getMyTrainees/fulfilled") {
+        setSizePages((prev) =>
+          res.payload.data.count > prev ? res.payload.data.count : prev
+        );
         setFitneeCoachData(res.payload.data.results);
       }
     });

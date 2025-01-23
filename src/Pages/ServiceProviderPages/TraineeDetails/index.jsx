@@ -221,14 +221,32 @@ const Index = () => {
                         <p className="fw-bold mb-2">
                           {t("trainer.height")}: {traineesData?.height}cm
                         </p>
+                        {traineesData?.active_package?.[0]?.start_date ? (
+                          <p className="fw-bold mb-2">
+                            {t("trainer.startFrom")}{" "}
+                            {traineesData?.active_package?.[0]?.start_date}{" "}
+                            {t("trainer.to")}{" "}
+                            {traineesData?.active_package?.[0]?.end_date}
+                          </p>
+                        ) : (
+                          <p className="fw-bold mb-2">{t("trainer.expired")}</p>
+                        )}
                       </div>
                     </div>
 
                     <div className="d-flex flex-column gap-2 w-25 align-items-end">
                       {/* <FillBtn className="w-75" text={t("trainer.chat")} /> */}
                       <FillBtn
-                        className="w-75 bg-success text-white"
-                        text={t("trainer.active")}
+                        className={`w-75 ${
+                          traineesData?.active_package?.[0]?.start_date
+                            ? "bg-success"
+                            : "bg-danger"
+                        } text-white`}
+                        text={
+                          traineesData?.active_package?.[0]?.start_date
+                            ? t("trainer.active")
+                            : t("trainer.expired")
+                        }
                       />
                     </div>
                   </div>
@@ -321,7 +339,7 @@ const Index = () => {
                                 ? exercise?.title
                                 : exercise?.title_ar
                             }
-                            img={exercise?.exercise_media?.[0].file}
+                            video={exercise?.exercise_media?.[0].file}
                             isDone={exercise.is_done_this_week}
                           />
                         );
@@ -395,15 +413,15 @@ const CarouselCard = ({ img = null, video = null, name, isDone }) => {
         ></img>
       )}
       {video && (
-        <iframe
-          alt="meal"
-          title={name}
-          src={video}
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          style={{ width: 100 + "%", height: "300px" }}
-        ></iframe>
+        <video
+          controls
+          width="600"
+          preload="metadata"
+          style={{ width: 100 + "%", height: "300px", borderRadius: "10px" }}
+        >
+          <source src={video} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       )}
       <p>{name}</p>
     </div>

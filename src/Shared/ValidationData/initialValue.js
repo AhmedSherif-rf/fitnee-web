@@ -230,6 +230,7 @@ export const ADD_PROMO_CODE_INITIAL_VALUES = {
 export const ADD_COACH_INITIAL_VALUES = {
   profile_pic: null,
   email: "",
+  name: "",
   password: "",
   re_password: "",
   description: "",

@@ -28,6 +28,12 @@ const ProfileInformationCard = (props) => {
       </CardBody>
       <CardFooter className="border-0 text-black-custom">
         <div className="h-100">
+          {providerProfile?.full_name && (
+            <span className="fs-5 text-secondary my-2">
+              {providerProfile?.full_name}
+            </span>
+          )}
+          <br />
           <span className="fs-5 text-secondary my-2">
             {providerProfile?.email}
           </span>

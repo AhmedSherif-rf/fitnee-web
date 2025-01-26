@@ -22,6 +22,8 @@ const AppDownloadLink = () => {
     useSelector((state) => state.subscription);
   const [isPaymentSucceed, setIsPaymentSucceed] = useState("");
 
+  console.log("serviceProvider", subscriptionPlan);
+
   useEffect(() => {
     // if (hyperPayStatus === "false") {
     const data = {
@@ -57,20 +59,33 @@ const AppDownloadLink = () => {
                     <h3 className="py-3 fw-bold">
                       {t("appLink.congratulationsText")}
                     </h3>
-                    {subscriptionPlan?.type !== "Exercise" && (
+
+                    {subscriptionPlan?.type == "1" ? (
                       <>
-                        <p className="px-md-5">
-                          {t("appLink.youHaveSubscribedWithText")}{" "}
-                          <span className="fw-bold">
-                            {serviceProvider?.full_name}
-                          </span>
-                          {serviceProvider?.role === TRAINER_ROLE &&
-                            t("appLink.downloadAppTrainerText")}
-                          {serviceProvider?.role === NUTRITIONIST_ROLE &&
-                            t("appLink.downloadAppNutritionistText")}
-                        </p>
-                        <p>{t("appLink.downloadAppSecondText")}</p>
+                        <p className="px-md-5">{t("appLink.fitneeCoach")} </p>
                       </>
+                    ) : subscriptionPlan?.type == "2" ? (
+                      <>
+                        <p className="px-md-5">{t("appLink.fitneeCoach")} </p>
+                      </>
+                    ) : (
+                      subscriptionPlan?.type !== "Exercise" && (
+                        <>
+                          <p className="px-md-5">
+                            {t("appLink.youHaveSubscribedWithText")}{" "}
+                            <span className="fw-bold">
+                              {serviceProvider?.full_name
+                                ? serviceProvider?.full_name
+                                : subscriptionPlan?.full_name}
+                            </span>
+                            {serviceProvider?.role === TRAINER_ROLE &&
+                              t("appLink.downloadAppTrainerText")}
+                            {serviceProvider?.role === NUTRITIONIST_ROLE &&
+                              t("appLink.downloadAppNutritionistText")}
+                          </p>
+                          <p>{t("appLink.downloadAppSecondText")}</p>
+                        </>
+                      )
                     )}
                     {subscriptionPlan?.type === "Exercise" && (
                       <p className="px-md-5">

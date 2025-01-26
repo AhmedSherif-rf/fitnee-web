@@ -96,6 +96,7 @@ const SubscriptionForm = () => {
               id: packageDetails?.id,
               duration: packageDetails?.duration,
               price: packageDetails?.price,
+              full_name: packageDetails?.name,
               type: packageDetails?.type,
               package_id: packageDetails?.id,
             })

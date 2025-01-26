@@ -23,10 +23,18 @@ const AddSubcategory = (props) => {
   const { loading } = useSelector((state) => state.userListing);
   const dispatch = useDispatch();
   const [mainCategoryData, setMainCategoryData] = useState([]);
+  const [hasMainCategoryData, setHasMainCategoryData] = useState(false);
 
   const { t, i18n } = useTranslation("");
 
-  const handleAddProgressSubmit = async (values) => {
+  const handleAddProgressSubmit = async (values, resetForm) => {
+    if (!values.classification?.length) {
+      setHasMainCategoryData(true);
+      return;
+    }
+
+    setHasMainCategoryData(false);
+
     const requestData = { ...values };
 
     requestData.classification = values.classification?.map((i) => i.value);
@@ -41,6 +49,9 @@ const AddSubcategory = (props) => {
         handleRefetchHistory();
       }
     });
+
+    resetForm({ values: { ...MEAL_SUBCATEGORY_INITIAL_VALUES } });
+    onClose();
   };
 
   useEffect(() => {
@@ -74,9 +85,7 @@ const AddSubcategory = (props) => {
           validationSchema={MEAL_CLASSIFICATIONS_SCHEMA}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            await handleAddProgressSubmit(values);
-            resetForm({ values: { ...MEAL_SUBCATEGORY_INITIAL_VALUES } });
-            onClose();
+            await handleAddProgressSubmit(values, resetForm);
           }}
         >
           {({
@@ -149,6 +158,9 @@ const AddSubcategory = (props) => {
                   {t(errors.classification) &&
                     touched.classification &&
                     t(errors.classification)}
+                </p>
+                <p className="errorField">
+                  {hasMainCategoryData && "Please select a main category"}
                 </p>
               </div>
 

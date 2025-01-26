@@ -17,7 +17,7 @@ const Carousel = ({ items }) => {
           position: "relative",
           overflowX: "clip",
           width: "100%",
-          margin: "0 40px",
+          margin: "0 auto",
         }}
         // className="relative overflow-x-clip md:mx-4 w-full"
       >

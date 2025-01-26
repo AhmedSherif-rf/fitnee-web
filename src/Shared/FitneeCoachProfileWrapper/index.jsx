@@ -69,6 +69,7 @@ const ServiceProviderProfileWrapper = (props) => {
           setSubscriptionPlan({
             id: packageDetails?.id,
             duration: packageDetails?.duration,
+            full_name: packageDetails?.name,
             price: packageDetails?.price,
             type: packageDetails?.type,
             package_id: packageDetails?.id,

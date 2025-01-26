@@ -21,6 +21,7 @@ import {
   getMealsClassifications,
   mealClassificationStatus,
 } from "../../../../Redux/features/Admin/Meals/mealsApi";
+import i18next from "i18next";
 
 const SubCategory = (props) => {
   const dispatch = useDispatch();
@@ -98,8 +99,14 @@ const SubCategory = (props) => {
               </div>
             </Link>
           ),
-          ar_name: singleMealsClassification?.ar_name,
-          main_category: singleMealsClassification?.classification?.en_name,
+          ar_name:
+            i18next.language === "ar"
+              ? singleMealsClassification?.ar_name
+              : singleMealsClassification?.en_name,
+          main_category:
+            i18next.language === "ar"
+              ? singleMealsClassification?.classification?.[0]?.ar_name
+              : singleMealsClassification?.classification?.[0]?.en_name,
           status: (
             <div className="d-flex align-items-center justify-content-md-center">
               {singleMealsClassification?.active && (

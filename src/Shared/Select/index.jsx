@@ -70,10 +70,10 @@ const SelectField = (props) => {
   };
 
   useEffect(() => {
-    if (options.length > 0) {
-      handleChange(options[0].value);
+    if (defaultValue) {
+      handleChange(defaultValue.value);
     }
-  }, []);
+  }, [defaultValue]);
 
   return (
     <div className={`${styles.inputWrapper} ${i18n.dir()}`}>
@@ -86,7 +86,7 @@ const SelectField = (props) => {
         rows={rows}
         isMulti={isMulti}
         classNamePrefix="select"
-        defaultValue={defaultValue || options[0]}
+        defaultValue={defaultValue}
         isDisabled={isDisabled}
         isLoading={isLoading}
         isSearchable={isSearchable}

@@ -260,7 +260,7 @@ const Dashboard = () => {
                   ) : (
                     <FillBtn
                       className="w-100 mb-2 py-2"
-                      text={t("guest.subscribeText")}
+                      text={t("general.subscribeText")}
                       handleOnClick={() =>
                         navigate(`/trainee/subscription/form/1`)
                       }

@@ -19,6 +19,7 @@ import AddMeals from "../../../../Shared/Modal/AddMeals";
 import {
   deleteCategoryClassification,
   getMealsClassifications,
+  getMealsClassificationsFiltered,
   mealClassificationStatus,
 } from "../../../../Redux/features/Admin/Meals/mealsApi";
 import MealsFilter from "../../../../Shared/Modal/MealsFilter";
@@ -73,8 +74,8 @@ const Category = (props) => {
       setIsFiltered(true);
     }
 
-    dispatch(getMealsClassifications(data)).then((res) => {
-      if (res.type === "getMealsClassifications/fulfilled") {
+    dispatch(getMealsClassificationsFiltered(data)).then((res) => {
+      if (res.type === "getMealsClassificationsFiltered/fulfilled") {
         setSizePages(res.payload.data.count);
         setMealsClassificationsData(res.payload.data);
       }

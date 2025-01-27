@@ -5,6 +5,7 @@ import {
   deleteCategoryClassification,
   getCategoryClassificationDetails,
   EditMealClassifications,
+  getMealsClassificationsFiltered,
 } from "./mealsApi";
 
 export const mealsSlice = createSlice({
@@ -68,6 +69,17 @@ export const mealsSlice = createSlice({
         state.loading = "succeeded";
       })
       .addCase(EditMealClassifications.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.payload.error;
+      })
+      .addCase(getMealsClassificationsFiltered.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(getMealsClassificationsFiltered.fulfilled, (state) => {
+        state.success = true;
+        state.loading = "succeeded";
+      })
+      .addCase(getMealsClassificationsFiltered.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.payload.error;
       });

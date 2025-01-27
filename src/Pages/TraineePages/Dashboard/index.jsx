@@ -227,6 +227,8 @@ const Dashboard = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
+    if (!user) return;
+
     const fitneeCoachData = {
       apiEndpoint: `/package-users/1/get_specific_user_package?user_id=${user?.traineeId}`,
     };
@@ -237,7 +239,7 @@ const Dashboard = () => {
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, [JSON.parse(localStorage.getItem("user"))?.traineeId]);
 
   return (
     <Container fluid>

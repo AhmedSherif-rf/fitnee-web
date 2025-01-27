@@ -6,7 +6,20 @@ export const getMealsClassifications = createAsyncThunk(
   "getMealsClassifications",
   async ({ apiEndpoint, params }, thunkAPI) => {
     try {
-      const response = await axiosInstance.get(apiEndpoint, { params });
+      const response = await axiosInstance.get(apiEndpoint, params);
+      return response.data;
+    } catch (error) {
+      Toaster.error(error?.response?.data?.error?.Message);
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
+export const getMealsClassificationsFiltered = createAsyncThunk(
+  "getMealsClassificationsFiltered",
+  async ({ apiEndpoint, params }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, params);
       return response.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.Message);

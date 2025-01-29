@@ -21,14 +21,11 @@ import {
   TRAINEE_PROGRESS_URL,
   USER_NOTIFICATIONS_URL,
 } from "../../../utils/constants";
-import { getPackageDetails } from "../../../Redux/features/Admin/Packages/packagesApi";
-import { setSubscriptionPlan } from "../../../Redux/features/Subscription/subscriptionSlice";
 import {
   getUserProfile,
   getUserNotifications,
   getTraineeProgressHistory,
 } from "../../../Redux/features/User/userApi";
-import { PACKAGES_URL } from "../../../utils/constants";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -45,7 +42,6 @@ const Dashboard = () => {
     labels: [],
     datasets: [],
   });
-  const [isFitneeCoachActive, setIsFitneeCoachActive] = useState(false);
 
   const myProgressGrapghOptions = {
     responsive: true,
@@ -68,32 +64,6 @@ const Dashboard = () => {
     interaction: {
       intersect: false,
     },
-  };
-
-  const subscripeInMessagingPackage = async () => {
-    let packageDetails;
-
-    const data = {
-      apiEndpoint: `${PACKAGES_URL}2/`,
-    };
-
-    await dispatch(getPackageDetails(data)).then((res) => {
-      if (res.type === "getPackageDetails/fulfilled") {
-        packageDetails = res.payload.data?.package;
-
-        dispatch(
-          setSubscriptionPlan({
-            id: packageDetails?.id,
-            duration: packageDetails?.duration,
-            price: packageDetails?.price,
-            type: packageDetails?.type,
-            package_id: packageDetails?.id,
-          })
-        );
-      }
-    });
-
-    navigate("/trainee/subscription/creditCardDetail");
   };
 
   useEffect(() => {
@@ -224,23 +194,6 @@ const Dashboard = () => {
     setShowAddProgressModal(true);
   }, []);
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (!user) return;
-
-    const fitneeCoachData = {
-      apiEndpoint: `/package-users/1/get_specific_user_package?user_id=${user?.traineeId}`,
-    };
-
-    dispatch(getPackageDetails(fitneeCoachData)).then((res) => {
-      if (res.type === "getPackageDetails/fulfilled") {
-        setIsFitneeCoachActive(res?.payload?.data?.[0]?.active);
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.parse(localStorage.getItem("user"))?.traineeId]);
-
   return (
     <Container fluid>
       {loading === "pending" && <LoadingScreen />}
@@ -253,22 +206,6 @@ const Dashboard = () => {
               </div>
               <Row className="my-3">
                 <Col md={12}>
-                  {isFitneeCoachActive ? (
-                    <FillBtn
-                      className="w-100 mb-2 py-2"
-                      text={t("guest.messagePackageText")}
-                      handleOnClick={subscripeInMessagingPackage}
-                    />
-                  ) : (
-                    <FillBtn
-                      className="w-100 mb-2 py-2"
-                      text={t("general.subscribeText")}
-                      handleOnClick={() =>
-                        navigate(`/trainee/subscription/form/1`)
-                      }
-                    />
-                  )}
-
                   <FillBtn
                     className="w-100 mb-2 py-2"
                     text={t("traineeDashboard.myCurrentTrainerText")}

@@ -37,6 +37,8 @@ const EditCoachModal = (props) => {
       requestData.append("password", values.password);
       requestData.append("re_password", values.re_password);
     }
+    requestData.append("ar_full_name", values.ar_full_name);
+    requestData.append("ar_description", values.ar_description);
     requestData.append("description", values.description);
     requestData.append("role", "coach_fitnee");
     // requestData.append("is_active", "True");
@@ -78,7 +80,7 @@ const EditCoachModal = (props) => {
       </ModalHeader>
       <ModalBody className="px-4">
         <Formik
-          initialValues={{ ...coachData }}
+          initialValues={{ ...coachData, name: coachData.full_name }}
           validationSchema={EDIT_COACH_SCHEMA}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
@@ -124,6 +126,25 @@ const EditCoachModal = (props) => {
                 />
                 <p className="errorField">
                   {t(errors.name) && touched.name && t(errors.name)}
+                </p>
+              </div>
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("coachListing.arnameLabel")}`}
+                </Label>
+                <InputField
+                  type="name"
+                  name="ar_full_name"
+                  placeholder={t("coachListing.arnamePlaceholder")}
+                  onChangeHandle={handleChange}
+                  onBlurHandle={handleBlur}
+                  value={values.ar_full_name}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.ar_full_name) &&
+                    touched.ar_full_name &&
+                    t(errors.ar_full_name)}
                 </p>
               </div>
               <div className="mb-2">
@@ -205,6 +226,25 @@ const EditCoachModal = (props) => {
                   {t(errors.description) &&
                     touched.description &&
                     t(errors.description)}
+                </p>
+              </div>
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("coachListing.ardescriptionLabel")}`}
+                </Label>
+                <InputField
+                  type="text"
+                  name="ar_description"
+                  placeholder={t("coachListing.ardescriptionPlaceholder")}
+                  onChangeHandle={handleChange}
+                  onBlurHandle={handleBlur}
+                  value={values.ar_description}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.ar_description) &&
+                    touched.ar_description &&
+                    t(errors.ar_description)}
                 </p>
               </div>
               <div className="w-100 d-flex align-items-center justify-content-center gap-3">

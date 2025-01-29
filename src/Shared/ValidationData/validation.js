@@ -429,16 +429,20 @@ export const ADD_PROGRESS_SCHEMA = Yup.object().shape({
 export const ADD_COACH_SCHEMA = Yup.object().shape({
   profile_pic: requiredValidation,
   name: requiredValidation,
+  ar_full_name: requiredValidation,
   email: emailValidation,
   password: coachPasswordValidation,
   re_password: confirmCoachPasswordValidation,
   description: requiredValidation,
+  ar_description: requiredValidation,
 });
 
 export const EDIT_COACH_SCHEMA = Yup.object().shape({
   email: emailValidation,
   name: requiredValidation,
   description: requiredValidation,
+  ar_full_name: requiredValidation,
+  ar_description: requiredValidation,
 });
 
 export const EDIT_PACKAGE_SCHEMA = Yup.object().shape({

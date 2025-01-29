@@ -7,7 +7,15 @@ import LoadingScreen from "../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../ProfileInformationCard";
 import Images from "../../HelperMethods/Constants/ImgConstants";
 import React, { useCallback, memo, useState, useEffect } from "react";
-import { Row, Col, Container, Card, CardBody, Badge } from "reactstrap";
+import {
+  Row,
+  Col,
+  Container,
+  Card,
+  CardBody,
+  Badge,
+  CardFooter,
+} from "reactstrap";
 import { PACKAGES_URL } from "../../utils/constants";
 import { getPackageDetails } from "../../Redux/features/Admin/Packages/packagesApi";
 import { getSubscriped } from "../../Redux/features/Subscription/subscriptionApi";
@@ -138,18 +146,47 @@ const ServiceProviderProfileWrapper = (props) => {
           <Col md={12}>
             <Card className="contentCard bg-transparent overflow-x-hidden">
               <Row>
-                <Col lg={3} md={4}>
+                <Card className="BorderRadius contentCard p-4">
                   <div className="mb-2">
-                    <ProfileInformationCard
-                      providerProfile={{
-                        ...serviceProviderProfile?.package,
-                        email: t("guest.fitneeCoach"),
-                        profile_pic:
-                          "https://fitme-dev-bucket.s3.amazonaws.com/media/2024/12/images.png",
-                      }}
-                    />
+                    {/* <ProfileInformationCard
+                        providerProfile={{
+                          ...serviceProviderProfile?.package,
+                          email: t("guest.fitneeCoach"),
+                          profile_pic:
+                            "https://fitme-dev-bucket.s3.amazonaws.com/media/2024/12/images.png",
+                        }}
+                      /> */}
+
+                    <CardBody className="p-0">
+                      <div
+                        className="p-0 bgProperties ImgBorder rounded-circle"
+                        style={{
+                          backgroundImage: `url(https://fitme-dev-bucket.s3.amazonaws.com/media/2024/12/images.png)`,
+                          height: "150px",
+                          width: "150px",
+                          margin: "auto",
+                        }}
+                      ></div>
+                    </CardBody>
+                    <CardFooter className="border-0 text-black-custom">
+                      <div className="h-100 text-center">
+                        {serviceProviderProfile?.package?.full_name && (
+                          <span className="fs-5 text-secondary my-2">
+                            {serviceProviderProfile?.package?.full_name}
+                          </span>
+                        )}
+                        <br />
+                        <span className="fs-5 text-secondary my-2">
+                          {t("guest.fitneeCoach")}
+                        </span>
+                        <br />
+                        <span className="fw-700 fs-6 text-secondary mb-0">
+                          {serviceProviderProfile?.package?.description}
+                        </span>
+                      </div>
+                    </CardFooter>
                   </div>
-                  <div className="mb-3">
+                  <div className="mb-3 mt-3 w-25 mx-auto">
                     {isFitneeCoachActive ? (
                       <FillBtn
                         className="w-100 py-2"
@@ -160,127 +197,15 @@ const ServiceProviderProfileWrapper = (props) => {
                       <FillBtn
                         className="w-100 py-2"
                         text={t("guest.subscribeText")}
-                        handleOnClick={() =>
-                          navigate(`/trainee/subscription/form/1`)
-                        }
+                        handleOnClick={() => {
+                          if (user) {
+                            navigate(`/trainee/subscription/form/1`);
+                          } else navigate(`/signIn`);
+                        }}
                       />
                     )}
                   </div>
-                  {/* <div>
-                    <h6 className="fw-bold text-white">
-                      {t("guest.availableHoursText")}
-                    </h6>
-                    <AvailableHourList
-                      data={serviceProviderProfile?.profile_availability}
-                    />
-                  </div> */}
-                </Col>
-                {/* <Col lg={9} md={8}>
-                  <Card className="BorderRadius border-0 text-black-custom">
-                    <CardBody>
-                      <Row>
-                        <Col md={12}>
-                          <h5 className="fw-bold my-2">
-                            {t("guest.providedServicesText")}
-                          </h5>
-                          <Badge
-                            color="custom"
-                            className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
-                          >
-                            {userRole === TRAINER_ROLE.toLowerCase()
-                              ? t("guest.trainerTagText")
-                              : userRole === NUTRITIONIST_ROLE.toLowerCase()
-                              ? t("registerAs.nutritionistText")
-                              : t("guest.bothTagText")}
-                          </Badge>
-                        </Col>
-                      </Row>
-                      <div
-                        className="overflow-scroll onlyBorderRadius p-3 border border-light"
-                        style={{ maxHeight: "100px" }}
-                      >
-                        <p className="small">{serviceProviderProfile?.bio}</p>
-                      </div>
-
-                      <Row>
-                        <Col md={12}>
-                          <h5 className="fw-bold my-2">
-                            {t("guest.qualificationExperienceText")}
-                          </h5>
-                        </Col>
-                        {serviceProviderProfile?.ServiceProvider_Certification &&
-                          serviceProviderProfile?.ServiceProvider_Certification?.map(
-                            (certificate, index) => (
-                              <DocumentCard
-                                index={index}
-                                key={index}
-                                className="BorderYellow"
-                                documentTitle={certificate?.title}
-                                documentImg={certificate?.certificate_image}
-                              />
-                            )
-                          )}
-                      </Row>
-                      {serviceProviderProfile?.specialities &&
-                        serviceProviderProfile?.specialities.length > 0 && (
-                          <Row>
-                            <Col md={12}>
-                              <h5 className="fw-bold my-2">
-                                {t("guest.areaSpecialtyText")}
-                              </h5>
-                              {serviceProviderProfile?.specialities &&
-                                serviceProviderProfile?.specialities?.map(
-                                  (specialty, index) => (
-                                    <Badge
-                                      key={index}
-                                      color="custom"
-                                      className="me-2 mb-2 text-black-custom fw-normal custom-badge px-3 small text-center"
-                                    >
-                                      {i18n.dir() === "ltr"
-                                        ? specialty.name
-                                        : specialty.arabic_name}
-                                    </Badge>
-                                  )
-                                )}
-                            </Col>
-                          </Row>
-                        )}
-
-                      <Row>
-                        {commentData.length > 0 && (
-                          <>
-                            <Col md={12}>
-                              <h5 className="fw-bold mt-3 text-black-custom">
-                                {t("guest.commentsText")}
-                              </h5>
-                              {commentData.map((item, index) => {
-                                return (
-                                  <CommentCard
-                                    key={index}
-                                    index={index}
-                                    data={item}
-                                  />
-                                );
-                              })}
-                            </Col>
-                            {hasNextComment && (
-                              <Col md={12}>
-                                <div className="text-center">
-                                  <FillBtn
-                                    className="py-2"
-                                    text={t("guest.seeMoreText")}
-                                    disabled={hasNextComment ? false : true}
-                                    handleOnClick={fetchServiceProviderComments}
-                                  />
-                                </div>
-                              </Col>
-                            )}
-                          </>
-                        )}
-                      </Row>
-                    </CardBody>
-                  </Card>
-                </Col> */}
+                </Card>
               </Row>
             </Card>
           </Col>

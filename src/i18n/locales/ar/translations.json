@@ -624,6 +624,20 @@
     "amountRefundedText": "مبلغ مسترد",
     "walletAmountUsedText": "تم استخدام المبلغ المسترد"
   },
+  "packages": {
+    "editPackage": "تعديل الباقة",
+    "enNameLabel": "الاسم بالانجليزي",
+    "enNamePlaceholder": "ادخل الاسم بالانجليزي",
+    "arNameLabel": "الاسم بالعربي",
+    "arNamePlaceholder": "ادخل الاسم بالعربي",
+    "descriptionLabel": "الوصف بالانجليزي",
+    "descriptionPlaceholder": "ادخل الوصف بالانجليزي",
+    "ardescriptionLabel": "الوصف بالعربي",
+    "ardescriptionPlaceholder": "ادخل الوصف بالعربي",
+    "priceLabel": "سعر الباقة",
+    "pricePlaceholder": "ادخل سعر الباقة",
+    "saveText": "حفظ"
+  },
   "cardDetails": {
     "PaymentMethodText": "ﻁﺮﻳﻘﺔ ﺍﻟﺪﻓﻊ",
     "cardNumberText": "رقم البطاقة",
@@ -912,15 +926,21 @@
     "addCoach": "إضافة مدرب",
     "editCoach": "تعديل المدرب",
     "emailLabel": "البريد الإلكتروني",
+    "nameLabel": "الاسم بالانجليزية",
+    "arnameLabel": "الاسم بالعربي",
     "passwordLabel": "كلمة المرور",
     "confirmPasswordLabel": "تأكيد كلمة المرور",
     "roleLabel": "الدور",
-    "descriptionLabel": "الوصف",
+    "descriptionLabel": "الوصف بالانجليزية",
+    "ardescriptionLabel": "الوصف بالعربية",
     "emailPlaceholder": "أدخل البريد الإلكتروني",
     "passwordPlaceholder": "أدخل كلمة المرور",
+    "namePlaceholder": "أدخل الاسم بالانجليزية",
+    "arnamePlaceholder": "ادخل الاسم بالعربية",
     "confirmPasswordPlaceholder": "أكد كلمة مرور المدرب",
     "rolePlaceholder": "أدخل الدور",
-    "descriptionPlaceholder": "أدخل الوصف",
+    "descriptionPlaceholder": "أدخل الوصف بالانجليزية",
+    "ardescriptionPlaceholder": "أدخل الوصف بالعربي",
     "saveText": "حفظ",
     "changePassword": "تغيير كلمة المرور"
   },
@@ -999,7 +1019,9 @@
     "editSubcategory": "تعديل تصنيف فرعي",
     "addcalGroup": "إضافة تصنيف سعرات",
     "meal_classificationLabel": "التصنيف الرئيسي",
-    "editcalGroup": "تعديل تصنيف سعرات"
+    "editcalGroup": "تعديل تصنيف سعرات",
+    "orderLabel": "الترتيب",
+    "orderPlaceholder": "أدخل الترتيب"
   },
   "general": {
     "trainingLevel": "مستوى التدريب",

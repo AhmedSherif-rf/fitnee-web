@@ -37,6 +37,8 @@ const EditPackageModal = (props) => {
 
     requestData.append("name", values.name);
     requestData.append("description", values.description);
+    requestData.append("ar_name", values.ar_name);
+    requestData.append("ar_description", values.ar_description);
     requestData.append("price", values.price);
 
     const data = {
@@ -109,12 +111,12 @@ const EditPackageModal = (props) => {
 
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
-                  {`${t("packages.nameLabel")}`}
+                  {`${t("packages.enNameLabel")}`}
                 </Label>
                 <InputField
-                  type="name"
+                  type="text"
                   name="name"
-                  placeholder={t("packages.namePlaceholder")}
+                  placeholder={t("packages.enNamePlaceholder")}
                   onChangeHandle={handleChange}
                   onBlurHandle={handleBlur}
                   value={values.name}
@@ -122,6 +124,24 @@ const EditPackageModal = (props) => {
                 />
                 <p className="errorField">
                   {t(errors.name) && touched.name && t(errors.name)}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("packages.arNameLabel")}`}
+                </Label>
+                <InputField
+                  type="text"
+                  name="ar_name"
+                  placeholder={t("packages.arNamePlaceholder")}
+                  onChangeHandle={handleChange}
+                  onBlurHandle={handleBlur}
+                  value={values.ar_name}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.ar_name) && touched.ar_name && t(errors.ar_name)}
                 </p>
               </div>
 
@@ -142,6 +162,26 @@ const EditPackageModal = (props) => {
                   {t(errors.description) &&
                     touched.description &&
                     t(errors.description)}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("packages.ardescriptionLabel")}`}
+                </Label>
+                <InputField
+                  type="text"
+                  name="ar_description"
+                  placeholder={t("packages.ardescriptionPlaceholder")}
+                  onChangeHandle={handleChange}
+                  onBlurHandle={handleBlur}
+                  value={values.ar_description}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.ar_description) &&
+                    touched.ar_description &&
+                    t(errors.ar_description)}
                 </p>
               </div>
               <div className="mb-2">

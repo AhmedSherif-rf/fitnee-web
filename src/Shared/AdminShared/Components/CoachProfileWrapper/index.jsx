@@ -40,6 +40,7 @@ const columns = [
   { label: "Mobile Number", dataKey: "phone_number", align: "center" },
   { label: "Training Goal", dataKey: "training_goal", align: "center" },
   { label: "Training Level", dataKey: "training_level", align: "center" },
+  { label: "Status", dataKey: "status", align: "center" },
   { label: "Actions", dataKey: "action", align: "center" },
 ];
 
@@ -204,6 +205,7 @@ const CoachProfileWrapper = (props) => {
               phone_number: item?.phone_number,
               training_goal: item?.training_goal,
               training_level: item?.training_level,
+              status: item?.active_package?.[0]?.active ? "Active" : "Inactive",
               action: (
                 <p
                   className="mb-0 text-decoration-underline cursorPointer"

@@ -19,13 +19,6 @@ const MedicalConditionModal = (props) => {
       toggle={onClose}
       className={`${className} ${i18n.dir()}`}
     >
-      <ModalHeader className="border-0 p-0 d-flex justify-content-center w-75 mx-auto">
-        <img
-          className="w-100 p-0"
-          src={medicalCondition}
-          alt="Medical Condition"
-        />
-      </ModalHeader>
       <ModalBody className="px-5 pb-5 text-center fw-bold">
         {haveDiseases
           ? t("subscription.medicalCondition")

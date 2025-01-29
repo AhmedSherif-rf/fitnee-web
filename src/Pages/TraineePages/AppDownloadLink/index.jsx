@@ -66,7 +66,7 @@ const AppDownloadLink = () => {
                       </>
                     ) : subscriptionPlan?.type == "2" ? (
                       <>
-                        <p className="px-md-5">{t("appLink.fitneeCoach")} </p>
+                        <p className="px-md-5">{t("appLink.messaging")} </p>
                       </>
                     ) : (
                       subscriptionPlan?.type !== "Exercise" && (

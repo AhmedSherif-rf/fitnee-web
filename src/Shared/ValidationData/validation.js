@@ -496,7 +496,8 @@ export const SUBSCRIPTION_FORM_SCHEMA = Yup.object().shape({
 export const MEAL_CLASSIFICATIONS_SCHEMA = Yup.object().shape({
   en_name: requiredValidation,
   ar_name: requiredValidation,
-  classification: requiredArrayValidation,
+  order: requiredValidation,
+  // classification: requiredArrayValidation,
 });
 
 export const MEALS_SCHEMA = Yup.object().shape({

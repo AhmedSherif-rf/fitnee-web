@@ -846,8 +846,8 @@
     "ticketIdText": "Ticket ID",
     "adminReviewFirstText": "The admin will review your profile and get back to you shortly by email, please keep checking your emails.",
     "adminReviewSecondText": "Meanwhile, you can download the App by scanning the QR code or from the Google Play Store/Apple Store.",
-    "fitneeCoach": "You have subscribed to the Fitnee Coach package, your diet and exercise schedule have been uploaded to your app, and free 3 messages to the coach, please download the 'FitNee' app and activate the notification.",
-    "messaging": "You have subscribed to the Fitnee Coach Message package, now you have 3 messages  to chat with your coach , please download the 'FitNee' app and activate the notification."
+    "fitneeCoach": "You have subscribed with Fitnee Coach Package. You can now access workouts and meal plans through the app. Please note that you can communicate directly with your qualified personal coach to ask 3 questions in 3 separate messages, and he will respond within a maximum of 72 hours. Thank you for choosing Fitnee.",
+    "messaging": "You have subscribed to the message package. You can now directly communicate with your personal coach by asking three questions in three separate messages."
   },
   "messages": {
     "paymentFailedText": "Oops! Payment unsuccessful. It seems like there was an issue processing your payment. Please try again or check your payment details.",
@@ -1051,6 +1051,7 @@
   },
   "general": {
     "trainingLevel": "Training Level",
-    "subscribeText": "Subscribe with fitnee coach"
+    "subscribeText": "Subscribe with fitnee coach",
+    "messagingPackage": "Messaging Package Details"
   }
 }

@@ -32,6 +32,7 @@ const ServiceProviderProfileWrapper = (props) => {
   // const [commentData, setCommentData] = useState([]);
   // const [hasNextComment, setHasNextComment] = useState(true);
   const [serviceProviderProfile, setServiceProviderProfile] = useState(null);
+  const [messagingProfile, setMessagingProfile] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -46,6 +47,13 @@ const ServiceProviderProfileWrapper = (props) => {
     dispatch(getPackageDetails(data)).then((res) => {
       if (res.type === "getPackageDetails/fulfilled") {
         setServiceProviderProfile(res.payload.data);
+        // fetchServiceProviderComments();
+      }
+    });
+
+    dispatch(getPackageDetails({ apiEndpoint: "/packages/2/" })).then((res) => {
+      if (res.type === "getPackageDetails/fulfilled") {
+        setMessagingProfile(res.payload.data);
         // fetchServiceProviderComments();
       }
     });
@@ -148,15 +156,6 @@ const ServiceProviderProfileWrapper = (props) => {
               <Row>
                 <Card className="BorderRadius contentCard p-4">
                   <div className="mb-2">
-                    {/* <ProfileInformationCard
-                        providerProfile={{
-                          ...serviceProviderProfile?.package,
-                          email: t("guest.fitneeCoach"),
-                          profile_pic:
-                            "https://fitme-dev-bucket.s3.amazonaws.com/media/2024/12/images.png",
-                        }}
-                      /> */}
-
                     <CardBody className="p-0">
                       <div
                         className="p-0 bgProperties ImgBorder rounded-circle"
@@ -181,7 +180,10 @@ const ServiceProviderProfileWrapper = (props) => {
                         </span>
                         <br />
                         <span className="fw-700 fs-6 text-secondary mb-0">
-                          {serviceProviderProfile?.package?.description}
+                          {!isFitneeCoachActive
+                            ? serviceProviderProfile?.package?.description
+                            : `${t("general.messagingPackage")}: ` +
+                              messagingProfile?.package?.description}
                         </span>
                       </div>
                     </CardFooter>

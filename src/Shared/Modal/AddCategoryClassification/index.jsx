@@ -120,6 +120,24 @@ const AddCategoryClassification = (props) => {
                 </p>
               </div>
 
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("meals.orderLabel")}`}
+                </Label>
+                <InputField
+                  type="number"
+                  name="order"
+                  placeholder={t("meals.orderPlaceholder")}
+                  onChangeHandle={handleChange}
+                  onBlurHandle={handleBlur}
+                  value={values.order}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.order) && touched.order && t(errors.order)}
+                </p>
+              </div>
+
               <div className="w-100 d-flex align-items-center justify-content-center gap-3">
                 <FillBtn
                   className="w-100 py-2"

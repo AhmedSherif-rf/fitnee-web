@@ -188,9 +188,9 @@ const ServiceProviderProfileWrapper = (props) => {
                               : serviceProviderProfile?.package?.description
                             : `${t("general.messagingPackage")}: ` +
                                 i18n.language ===
-                              "en"
-                            ? messagingProfile?.package?.description
-                            : messagingProfile?.package?.ar_description}
+                              "ar"
+                            ? messagingProfile?.package?.ar_description
+                            : messagingProfile?.package?.description}
                         </span>
                       </div>
                     </CardFooter>

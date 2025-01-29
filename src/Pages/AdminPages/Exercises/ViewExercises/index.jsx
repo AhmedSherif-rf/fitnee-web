@@ -70,35 +70,31 @@ const ViewExercises = (props) => {
     if (exercises && exercises.length > 0) {
       let exercisesArray = [];
 
-      exercises.forEach((singleExercise, index) => {
-        exercisesArray.push({
-          title: (
-            <Link to={`/admin/exercises/${singleExercise?.exercise?.id}`}>
-              <div className="d-md-flex align-items-center">
-                <h6 className="text-secondary fw-bold mb-0">
-                  {lang === "en"
-                    ? singleExercise?.exercise?.title
-                    : singleExercise?.exercise?.title_ar}
-                </h6>
-              </div>
-            </Link>
-          ),
-          repetition: singleExercise?.exercise?.repetition,
-          subcategories: (
-            <div className="d-flex align-items-center justify-content-md-center">
-              {singleExercise?.exercise?.sub_categories?.map(
-                (subCategory, index) => (
-                  <p key={index}>
-                    {lang === "en" ? subCategory?.title : subCategory?.title_ar}
-                    {singleExercise?.exercise?.sub_categories?.length - 1 ===
-                    index
-                      ? ""
-                      : " -"}{" "}
-                  </p>
-                )
-              )}
-            </div>
-          ),
+      exercises.forEach(({ exercise: category }, index) => {
+        category?.sub_categories?.forEach((subcategory) => {
+          subcategory?.exercise?.forEach((singleExercise) => {
+            exercisesArray.push({
+              title: (
+                <Link to={`/admin/exercises/${singleExercise?.id}`}>
+                  <div className="d-md-flex align-items-center">
+                    <h6 className="text-secondary fw-bold mb-0">
+                      {lang === "en"
+                        ? singleExercise?.title
+                        : singleExercise?.title_ar}
+                    </h6>
+                  </div>
+                </Link>
+              ),
+              category: lang === "en" ? category?.title : category?.title_ar,
+              subcategory:
+                lang === "en" ? subcategory?.title : subcategory?.title_ar,
+              type: singleExercise?.stretching
+                ? "Stretching"
+                : singleExercise?.warm_up === "Yes"
+                ? "Warm up"
+                : "Exercise",
+            });
+          });
         });
       });
 
@@ -115,8 +111,9 @@ const ViewExercises = (props) => {
 
   const columns = [
     { label: "Title", dataKey: "title" },
-    { label: "Repetition", dataKey: "repetition", align: "center" },
-    { label: "Subcategories", dataKey: "subcategories", align: "center" },
+    { label: "Category", dataKey: "category", align: "center" },
+    { label: "Subcategories", dataKey: "subcategory", align: "center" },
+    { label: "Type", dataKey: "type", align: "center" },
   ];
 
   return (

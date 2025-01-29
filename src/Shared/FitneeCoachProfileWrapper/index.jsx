@@ -160,7 +160,7 @@ const ServiceProviderProfileWrapper = (props) => {
                       <div
                         className="p-0 bgProperties ImgBorder rounded-circle"
                         style={{
-                          backgroundImage: `url(https://fitme-dev-bucket.s3.amazonaws.com/media/2024/12/images.png)`,
+                          backgroundImage: `url(${serviceProviderProfile?.package?.pic})`,
                           height: "150px",
                           width: "150px",
                           margin: "auto",
@@ -176,7 +176,9 @@ const ServiceProviderProfileWrapper = (props) => {
                         )}
                         <br />
                         <span className="fs-5 text-secondary my-2">
-                          {t("guest.fitneeCoach")}
+                          {i18n.language === "en"
+                            ? serviceProviderProfile?.package?.name
+                            : serviceProviderProfile?.package?.ar_name}
                         </span>
                         <br />
                         <span className="fw-700 fs-6 text-secondary mb-0">

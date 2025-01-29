@@ -100,13 +100,28 @@ const TraineeServiceProviderListWrapper = (props) => {
 
   const fetchFitneeCoachData = () => {
     const data = {
-      apiEndpoint: ADMIN_COACH_PROFILE_URL.replace("userId", "156"),
+      apiEndpoint: "/packages/1/",
     };
 
     dispatch(getMyServiceProviders(data)).then((res) => {
       if (res.type === "getMyServiceProviders/fulfilled") {
         // setSizePages(res.payload.data.count);
-        setFitneeCoachData(res.payload.data);
+        setFitneeCoachData({
+          ...res.payload.data?.package,
+          id: 144,
+          uuid: "aa3df71d-6e8b-47e4-bec1-6b8ab9bba2dd",
+          full_name:
+            i18n.language === "ar"
+              ? res.payload.data?.package?.ar_name
+              : res.payload.data?.package?.name,
+          profile_pic: res.payload.data?.package?.pic,
+          Avg_rating: null,
+          experience: 5,
+          email: "marwa.trainer@gmail.com",
+          is_fully_booked: false,
+          serviceprovider_available: true,
+          role: "Fitnee Coach",
+        });
       }
     });
   };

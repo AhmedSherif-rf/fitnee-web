@@ -183,14 +183,17 @@ const ServiceProviderProfileWrapper = (props) => {
                         <br />
                         <span className="fw-700 fs-6 text-secondary mb-0">
                           {!isFitneeCoachActive
-                            ? i18n.language === "ar"
-                              ? serviceProviderProfile?.package?.ar_description
-                              : serviceProviderProfile?.package?.description
-                            : `${t("general.messagingPackage")}: ` +
-                                i18n.language ===
-                              "ar"
-                            ? messagingProfile?.package?.ar_description
-                            : messagingProfile?.package?.description}
+                            ? `${
+                                i18n.language === "ar"
+                                  ? serviceProviderProfile?.package
+                                      ?.ar_description
+                                  : serviceProviderProfile?.package?.description
+                              }`
+                            : `${t("general.messagingPackage")}: ${
+                                i18n.language === "ar"
+                                  ? messagingProfile?.package?.ar_description
+                                  : messagingProfile?.package?.description
+                              }`}
                         </span>
                       </div>
                     </CardFooter>

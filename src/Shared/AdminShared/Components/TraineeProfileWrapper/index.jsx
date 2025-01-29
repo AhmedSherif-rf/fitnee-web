@@ -23,6 +23,7 @@ import {
   CURRENCY,
 } from "../../../../utils/constants";
 import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
+import { findUs } from "../../../../Pages/TraineePages/SubscriptionForm/constants";
 
 const TraineeProfileWrapper = (props) => {
   const { id } = useParams();
@@ -37,6 +38,8 @@ const TraineeProfileWrapper = (props) => {
     labels: [],
     datasets: [],
   });
+
+  console.log();
 
   const dispatch = useDispatch();
 
@@ -328,6 +331,7 @@ const TraineeProfileWrapper = (props) => {
                       <h6 className="fw-bold">Gender</h6>
                       <p className="small">{traineeProfile?.gender}</p>
                     </div>
+
                     <div className="lh-1 mt-2">
                       <h6 className="fw-bold">Phone Number</h6>
                       <p className="small">{traineeProfile?.phone_number}</p>
@@ -340,6 +344,54 @@ const TraineeProfileWrapper = (props) => {
                         )}
                       </p>
                     </div>
+                    {window.location.href?.includes("coach") && (
+                      <>
+                        <div className="lh-1 mt-2">
+                          <h6 className="fw-bold">Height</h6>
+                          <p className="small">{traineeProfile?.height}</p>
+                        </div>
+                        <div className="lh-1 mt-2">
+                          <h6 className="fw-bold">Weight</h6>
+                          <p className="small">{traineeProfile?.weight}</p>
+                        </div>
+                        <div className="lh-1 mt-2">
+                          <h6 className="fw-bold">Training goal</h6>
+                          <p className="small">
+                            {traineeProfile?.training_goal}
+                          </p>
+                        </div>
+                        <div className="lh-1 mt-2">
+                          <h6 className="fw-bold">Trainee level</h6>
+                          <p className="small">
+                            {traineeProfile?.trainee_level}
+                          </p>
+                        </div>
+                        <div className="lh-1 mt-2">
+                          <h6 className="fw-bold">Reference</h6>
+                          <p className="small">
+                            {
+                              findUs?.find(
+                                (x) =>
+                                  x?.value ==
+                                  traineeProfile?.how_did_you_know_us
+                                    ?.replace("[", "")
+                                    ?.replace("]", "")
+                              )?.label
+                            }
+                          </p>
+                        </div>
+                        <div className="lh-1 mt-2">
+                          <h6 className="fw-bold">Training place</h6>
+                          <p className="small">
+                            {traineeProfile?.training_place}
+                          </p>
+                        </div>
+                        <div className="lh-1 mt-2">
+                          <h6 className="fw-bold">BMR</h6>
+                          <p className="small">{traineeProfile?.bmr}</p>
+                        </div>
+                      </>
+                    )}
 
                     {traineeProfile?.body_images !== null &&
                       traineeProfile?.body_images !== "" && (

@@ -183,14 +183,19 @@ const ServiceProviderProfileWrapper = (props) => {
                         <br />
                         <span className="fw-700 fs-6 text-secondary mb-0">
                           {!isFitneeCoachActive
-                            ? serviceProviderProfile?.package?.description
+                            ? i18n.language === "ar"
+                              ? serviceProviderProfile?.package?.ar_description
+                              : serviceProviderProfile?.package?.description
                             : `${t("general.messagingPackage")}: ` +
-                              messagingProfile?.package?.description}
+                                i18n.language ===
+                              "en"
+                            ? messagingProfile?.package?.description
+                            : messagingProfile?.package?.ar_description}
                         </span>
                       </div>
                     </CardFooter>
                   </div>
-                  <div className="mb-3 mt-3 w-25 mx-auto">
+                  <div className="mb-3 mt-3 mx-auto">
                     {isFitneeCoachActive ? (
                       <FillBtn
                         className="w-100 py-2"

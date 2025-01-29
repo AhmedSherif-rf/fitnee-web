@@ -66,7 +66,7 @@ const Category = (props) => {
     const isFiltered = filter !== null && Object.keys(filter).length > 0;
 
     const data = {
-      apiEndpoint: `${ADMIN_MEAL_URL}${isFiltered ? "filter/" : ""}`,
+      apiEndpoint: `${isFiltered ? "/meals-filter/" : ""}`,
       params: filter,
     };
 
@@ -74,12 +74,23 @@ const Category = (props) => {
       setIsFiltered(true);
     }
 
-    dispatch(getMealsClassificationsFiltered(data)).then((res) => {
-      if (res.type === "getMealsClassificationsFiltered/fulfilled") {
-        setSizePages(res.payload.data.count);
-        setMealsClassificationsData(res.payload.data);
-      }
-    });
+    if (!isFiltered) {
+      dispatch(getMealsClassifications({ apiEndpoint: ADMIN_MEAL_URL })).then(
+        (res) => {
+          if (res.type === "getMealsClassifications/fulfilled") {
+            setSizePages(res.payload.data.count);
+            setMealsClassificationsData(res.payload.data);
+          }
+        }
+      );
+    } else {
+      dispatch(getMealsClassificationsFiltered(data)).then((res) => {
+        if (res.type === "getMealsClassificationsFiltered/fulfilled") {
+          setSizePages(res.payload.data.count);
+          setMealsClassificationsData(res.payload.data);
+        }
+      });
+    }
   };
 
   const handleActionClick = (id) => {

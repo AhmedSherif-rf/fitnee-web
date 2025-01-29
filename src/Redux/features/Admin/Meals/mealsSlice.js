@@ -26,7 +26,7 @@ export const mealsSlice = createSlice({
       })
       .addCase(mealClassificationStatus.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action?.payload?.error;
       })
       .addCase(getMealsClassifications.pending, (state) => {
         state.loading = "pending";
@@ -37,7 +37,7 @@ export const mealsSlice = createSlice({
       })
       .addCase(getMealsClassifications.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action?.payload?.error;
       })
       .addCase(deleteCategoryClassification.pending, (state) => {
         state.loading = "pending";
@@ -48,7 +48,7 @@ export const mealsSlice = createSlice({
       })
       .addCase(deleteCategoryClassification.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action?.payload?.error;
       })
       .addCase(getCategoryClassificationDetails.pending, (state) => {
         state.loading = "pending";
@@ -59,7 +59,7 @@ export const mealsSlice = createSlice({
       })
       .addCase(getCategoryClassificationDetails.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action?.payload?.error;
       })
       .addCase(EditMealClassifications.pending, (state) => {
         state.loading = "pending";
@@ -70,7 +70,7 @@ export const mealsSlice = createSlice({
       })
       .addCase(EditMealClassifications.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action?.payload?.error;
       })
       .addCase(getMealsClassificationsFiltered.pending, (state) => {
         state.loading = "pending";
@@ -81,7 +81,7 @@ export const mealsSlice = createSlice({
       })
       .addCase(getMealsClassificationsFiltered.rejected, (state, action) => {
         state.loading = "failed";
-        state.error = action.payload.error;
+        state.error = action?.payload?.error;
       });
   },
 });

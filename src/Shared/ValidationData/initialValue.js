@@ -320,3 +320,9 @@ export const MEALS_INITIAL_VALUES = {
 export const MEALS_Filters_INITIAL_VALUES = {
   meal_type: "",
 };
+
+export const TRAINEE_Filters_INITIAL_VALUES = {
+  from: "",
+  to: "",
+  active: "",
+};

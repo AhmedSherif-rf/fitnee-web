@@ -4,12 +4,8 @@ import { db } from "../../../../firebase";
 import ListingTable from "../ListingTable";
 import { BsChatText } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
-import BarChart from "../../../Chart/Barchart";
-import { useTranslation } from "react-i18next";
-import DocumentCard from "../../../DocumentCard";
 import { useSelector, useDispatch } from "react-redux";
 import { onValue, ref, orderByChild } from "firebase/database";
-import AvailableHourListing from "../../../AvailableHourListing";
 import LoadingScreen from "../../../../HelperMethods/LoadingScreen";
 import ProfileInformationCard from "../../../ProfileInformationCard";
 import Images from "../../../../HelperMethods/Constants/ImgConstants";
@@ -20,14 +16,12 @@ import {
   ADMIN_COACH_ALL_TRAINEES_URL,
   // ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
   ADMIN_COACH_PROFILE_URL,
-  CURRENCY,
 } from "../../../../utils/constants";
-import { MdOutlinePersonOff, MdOutlinePersonOutline } from "react-icons/md";
-import { userBlockUnblock } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import { getCoachDetail } from "../../../../Redux/features/Admin/ReviewRequest/ReviewRequestApi";
 import FillBtn from "../../../Buttons/FillBtn";
 import { getCoachAllTraineesListing } from "../../../../Redux/features/Admin/UserListing/userListingApi";
 import IndividualChatModal from "../../../Modal/IndividualChatModal";
+import TraineeFilter from "../../../Modal/TraineeFilter";
 
 const columns = [
   { label: "Trainee", dataKey: "logo" },
@@ -51,6 +45,7 @@ const CoachProfileWrapper = (props) => {
     (state) => state.userListing
   );
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenFilter, setIsOpenFilter] = useState(false);
 
   const [messages, setMessages] = useState([]);
   const [tableData, setTableData] = useState([]);
@@ -61,6 +56,7 @@ const CoachProfileWrapper = (props) => {
     labels: [],
     datasets: [],
   });
+  const [isFiltered, setIsFiltered] = useState(false);
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -97,10 +93,18 @@ const CoachProfileWrapper = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, uuid]);
 
-  const fetchCoachProfile = () => {
+  const clearFilter = () => {
+    fetchCoachProfile();
+    setIsFiltered(false);
+  };
+
+  const fetchCoachProfile = (queries = null) => {
     const data = {
       apiEndpoint: ADMIN_COACH_PROFILE_URL.replace("userId", uuid),
+      queries,
     };
+
+    if (queries) setIsFiltered(true);
 
     dispatch(getCoachDetail(data)).then((res) => {
       if (res.type === "getCoachDetail/fulfilled") {
@@ -257,7 +261,18 @@ const CoachProfileWrapper = (props) => {
               <Col lg={9} md={8}>
                 <Card className="BorderRadius border-0 text-black-custom">
                   <CardBody>
-                    <div className="d-flex flex-row justify-content-end">
+                    <div className="d-flex flex-row justify-content-end gap-2">
+                      <FillBtn
+                        className=""
+                        text={isFiltered ? "Clear Filter" : "Filter"}
+                        handleOnClick={() => {
+                          if (isFiltered) {
+                            clearFilter();
+                          } else {
+                            setIsOpenFilter(true);
+                          }
+                        }}
+                      />
                       <FillBtn
                         className="w-25"
                         text="Edit Coach"
@@ -288,6 +303,12 @@ const CoachProfileWrapper = (props) => {
         isOpen={isOpen}
         onClose={handleClose}
         coachData={coachProfile}
+        handleRefetchHistory={fetchCoachProfile}
+      />
+
+      <TraineeFilter
+        isOpen={isOpenFilter}
+        onClose={() => setIsOpenFilter(false)}
         handleRefetchHistory={fetchCoachProfile}
       />
 

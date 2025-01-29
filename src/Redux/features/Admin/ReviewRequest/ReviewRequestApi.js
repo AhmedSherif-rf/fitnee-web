@@ -30,9 +30,11 @@ export const getServiceProviderDetail = createAsyncThunk(
 
 export const getCoachDetail = createAsyncThunk(
   "getCoachDetail",
-  async ({ apiEndpoint }, thunkAPI) => {
+  async ({ apiEndpoint, queries }, thunkAPI) => {
     try {
-      const response = await axiosInstance.get(apiEndpoint);
+      const response = await axiosInstance.get(apiEndpoint, {
+        params: queries,
+      });
       return response?.data;
     } catch (error) {
       Toaster.error(error?.response?.data?.error?.Message);

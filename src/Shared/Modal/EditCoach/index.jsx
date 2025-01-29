@@ -80,7 +80,7 @@ const EditCoachModal = (props) => {
       </ModalHeader>
       <ModalBody className="px-4">
         <Formik
-          initialValues={{ ...coachData, name: coachData.full_name }}
+          initialValues={{ ...coachData, name: coachData?.full_name }}
           validationSchema={EDIT_COACH_SCHEMA}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);

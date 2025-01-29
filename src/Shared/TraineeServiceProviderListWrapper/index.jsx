@@ -30,7 +30,9 @@ import {
   TRAINEE_SERVICE_PROVIDER_LISTING_URL,
   NUTRITIONIST_ROLE,
   TRAINER_ROLE,
+  ADMIN_COACH_PROFILE_URL,
 } from "../../utils/constants";
+import { getMyServiceProviders } from "../../Redux/features/User/userApi";
 
 const TraineeServiceProviderListWrapper = (props) => {
   const { roleType } = props;
@@ -45,6 +47,7 @@ const TraineeServiceProviderListWrapper = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [listingRole, setListingRole] = useState(roleType);
   const [serviceProviderData, setServiceProviderData] = useState([]);
+  const [fitneeCoachData, setFitneeCoachData] = useState([]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -95,6 +98,19 @@ const TraineeServiceProviderListWrapper = (props) => {
     setShowSubscriptionInformationModal(false);
   }, []);
 
+  const fetchFitneeCoachData = () => {
+    const data = {
+      apiEndpoint: ADMIN_COACH_PROFILE_URL.replace("userId", "156"),
+    };
+
+    dispatch(getMyServiceProviders(data)).then((res) => {
+      if (res.type === "getMyServiceProviders/fulfilled") {
+        // setSizePages(res.payload.data.count);
+        setFitneeCoachData(res.payload.data);
+      }
+    });
+  };
+
   const conditionalHeader = () => {
     if (listingRole === TRAINER_TYPE) {
       return t("guest.trainersText");
@@ -104,6 +120,10 @@ const TraineeServiceProviderListWrapper = (props) => {
       return t("guest.trainerNutritionistText");
     }
   };
+
+  useEffect(() => {
+    fetchFitneeCoachData();
+  }, []);
 
   const fitneeCoach = {
     id: 144,
@@ -179,7 +199,7 @@ const TraineeServiceProviderListWrapper = (props) => {
           <Col lg={3} md={4} col={6} className="mb-3">
             <ServiceProviderListCard
               className={`${styles.activeTrainerCard}`}
-              serviceProvider={fitneeCoach}
+              serviceProvider={{ ...fitneeCoachData, experience: 3 }}
               handleOnClick={() => {
                 navigate(`/trainee/serviceProviderProfile/fitneeCoach`);
               }}

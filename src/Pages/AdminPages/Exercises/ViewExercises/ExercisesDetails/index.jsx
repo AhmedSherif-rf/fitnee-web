@@ -3,9 +3,13 @@ import PageHeading from "../../../../../Shared/Headings/PageHeading";
 import { Container, Row, Col } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { ADMIN_MEAL_URL } from "../../../../../utils/constants";
+import {
+  ADMIN_EXERCISES_DETAILS_URL,
+  ADMIN_MEAL_URL,
+} from "../../../../../utils/constants";
 import { getCategoryClassificationDetails } from "../../../../../Redux/features/Admin/Meals/mealsApi";
 import Images from "../../../../../HelperMethods/Constants/ImgConstants";
+import i18next from "i18next";
 
 const ExerciseDetails = () => {
   const dispatch = useDispatch();
@@ -16,7 +20,7 @@ const ExerciseDetails = () => {
 
   function fetchExerciseDetails() {
     const data = {
-      apiEndpoint: ADMIN_MEAL_URL + `${id}/`,
+      apiEndpoint: ADMIN_EXERCISES_DETAILS_URL + `${id}/`,
     };
 
     dispatch(getCategoryClassificationDetails(data)).then((res) => {
@@ -46,94 +50,61 @@ const ExerciseDetails = () => {
               className="d-flex flex-row justify-content-between align-items-start text-start p-3"
             >
               <div>
-                <div
-                  className="bgProperties rounded-circle me-2 mx-5 my-3"
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                    backgroundImage:
-                      exerciseDetails?.meal_pic === null
-                        ? `url(${Images.USER_DUMMY_IMG})`
-                        : `url(${exerciseDetails?.meal_pic})`,
-                  }}
-                ></div>
                 <h3>
                   English Name:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {exerciseDetails?.en_name}
+                    {exerciseDetails?.title}
                   </span>
                 </h3>
                 <h3>
                   Arabic Name:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {exerciseDetails?.ar_name}
+                    {exerciseDetails?.title_ar}
                   </span>
                 </h3>
                 <h3>
-                  Description:
+                  Exercise type:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {exerciseDetails?.description}
-                  </span>
-                </h3>
-
-                <h3>
-                  Methods:
-                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
-                    {" "}
-                    {exerciseDetails?.methods?.join(", ")}
+                    {exerciseDetails?.stretching
+                      ? "Stretching"
+                      : exerciseDetails?.warm_up === "Yes"
+                      ? "Warm up"
+                      : "Exercise"}
                   </span>
                 </h3>
                 <h3>
-                  Ingredients:
+                  Instructions:
+                  <br />
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
-                    {" "}
-                    {exerciseDetails?.ingredients?.join(", ")}
+                    {!exerciseDetails?.exercise_part?.length
+                      ? "No Instructions"
+                      : exerciseDetails?.exercise_part?.map((item) => {
+                          return (
+                            <>
+                              <h5>
+                                -{" "}
+                                {i18next.language === "ar"
+                                  ? item?.text_ar
+                                  : item?.text}
+                              </h5>
+                            </>
+                          );
+                        })}
                   </span>
                 </h3>
                 <h3>
-                  Calorie Range:
-                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
-                    {" "}
-                    {exerciseDetails?.calorie_range}
-                  </span>
-                </h3>
-                <h3>
-                  Fats:
-                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
-                    {" "}
-                    {exerciseDetails?.fats}
-                  </span>
-                </h3>
-                <h3>
-                  Calorie Recipe:
-                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
-                    {" "}
-                    {exerciseDetails?.calorie_recipe}
-                  </span>
-                </h3>
-                <h3>
-                  Carbohydrate:
-                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
-                    {" "}
-                    {exerciseDetails?.carbohydrate}
-                  </span>
-                </h3>
-                <h3>
-                  Protein:
-                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
-                    {" "}
-                    {exerciseDetails?.protein}
-                  </span>
-                </h3>
-                <h3>
-                  Status:
-                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
-                    {" "}
-                    {exerciseDetails?.active ? "Active" : "Inactive"}
-                  </span>
+                  Video:
+                  <div>
+                    <video
+                      width="320"
+                      height="240"
+                      controls
+                      src={exerciseDetails?.exercise_type?.[0]?.file}
+                    />
+                  </div>
                 </h3>
               </div>
             </Col>

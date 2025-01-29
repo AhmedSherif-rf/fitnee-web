@@ -322,7 +322,7 @@ export const MEALS_Filters_INITIAL_VALUES = {
 };
 
 export const TRAINEE_Filters_INITIAL_VALUES = {
-  from: "",
-  to: "",
+  from: new Date(),
+  to: new Date(),
   active: "",
 };

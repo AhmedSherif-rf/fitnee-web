@@ -146,6 +146,8 @@ export const ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL =
   "/admin/toggle-user-status/userId/";
 export const ADMIN_COACH_ALL_TRAINEES_URL =
   "/coachfitnee/userId/get_related_trainee";
+export const ADMIN_COACH_FILTERED_TRAINEES_URL =
+  "/coachfitnee/userId/filter_related_trainee";
 export const ADMIN_SERVICE_PROVIDER_FULLY_BOOKED_URL =
   "/admin/fully-booked-service-providers/";
 export const EXERCUSE_SUBSCRIPITION_PLAN_URL =

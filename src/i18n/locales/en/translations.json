@@ -1044,7 +1044,9 @@
     "addcalGroup": "Add Calorie Group",
     "editcalGroup": "Edit Calorie Group",
     "orderLabel": "Order",
-    "orderPlaceholder": "Enter Order"
+    "orderPlaceholder": "Enter Order",
+    "fromLabel": "From",
+    "toLabel": "To"
   },
   "exercises": {
     "exercises": "Exercises"

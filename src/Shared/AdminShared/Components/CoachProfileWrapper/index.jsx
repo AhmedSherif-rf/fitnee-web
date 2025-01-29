@@ -14,6 +14,7 @@ import { Row, Container, Col, Card, CardBody } from "reactstrap";
 import EditCoachModal from "../../../../Shared/Modal/EditCoach";
 import {
   ADMIN_COACH_ALL_TRAINEES_URL,
+  ADMIN_COACH_FILTERED_TRAINEES_URL,
   // ADMIN_SERVICE_PROVIDER_BLOCK_UNBLOCK_URL,
   ADMIN_COACH_PROFILE_URL,
 } from "../../../../utils/constants";
@@ -94,17 +95,14 @@ const CoachProfileWrapper = (props) => {
   }, [dispatch, uuid]);
 
   const clearFilter = () => {
-    fetchCoachProfile();
+    fetchTraineeProfile();
     setIsFiltered(false);
   };
 
-  const fetchCoachProfile = (queries = null) => {
+  const fetchCoachProfile = () => {
     const data = {
       apiEndpoint: ADMIN_COACH_PROFILE_URL.replace("userId", uuid),
-      queries,
     };
-
-    if (queries) setIsFiltered(true);
 
     dispatch(getCoachDetail(data)).then((res) => {
       if (res.type === "getCoachDetail/fulfilled") {
@@ -114,57 +112,20 @@ const CoachProfileWrapper = (props) => {
     });
   };
 
-  // const populateCoachPerformanceGraphData = (data) => {
-  //   const labels = data?.monthly_data?.map((item) => item.month);
-  //   const traineeData = data?.monthly_data?.map((item) => item.trainee);
-  //   const resubscriberData = data?.monthly_data?.map(
-  //     (item) => item.resubscribe
-  //   );
-  //   setCoachPerformanceData({
-  //     labels,
-  //     datasets: [
-  //       {
-  //         label: "Trainees",
-  //         data: traineeData,
-  //         backgroundColor: "#E3BD99",
-  //         borderWidth: 2,
-  //       },
-  //       {
-  //         label: "Resubscriber",
-  //         data: resubscriberData,
-  //         backgroundColor: "#97694F",
-  //         borderWidth: 2,
-  //       },
-  //     ],
-  //   });
-  // };
-
-  const handleChatModalClose = useCallback(() => {
-    setShowChatModal(false);
-  }, []);
-
-  const fetchChat = (traineeId, trainerId, recipient) => {
-    const query = ref(
-      db,
-      `Messages/${trainerId}/${traineeId}`,
-      orderByChild("messageTime")
-    );
-
-    onValue(query, (snapshot) => {
-      const data = snapshot.val();
-      setMessages(data ? Object.values(data) : []);
-    });
-
-    setRecipient(recipient);
-    setShowChatModal(true);
-  };
-
-  useEffect(() => {
+  const fetchTraineeProfile = (queries = null) => {
     const data = {
       apiEndpoint: ADMIN_COACH_ALL_TRAINEES_URL.replace("userId", uuid),
     };
-    dispatch(getCoachAllTraineesListing(data)).then((res) => {
-      if (res.type === "getCoachAllTraineesListing/fulfilled") {
+
+    const filteredData = {
+      apiEndpoint: ADMIN_COACH_FILTERED_TRAINEES_URL.replace("userId", uuid),
+      queries,
+    };
+
+    setIsFiltered(queries ? true : false);
+
+    dispatch(getCoachDetail(queries ? filteredData : data)).then((res) => {
+      if (res.type === "getCoachDetail/fulfilled") {
         setTableData(
           res?.payload?.data?.results?.map((item) => {
             return {
@@ -225,6 +186,55 @@ const CoachProfileWrapper = (props) => {
         );
       }
     });
+  };
+
+  // const populateCoachPerformanceGraphData = (data) => {
+  //   const labels = data?.monthly_data?.map((item) => item.month);
+  //   const traineeData = data?.monthly_data?.map((item) => item.trainee);
+  //   const resubscriberData = data?.monthly_data?.map(
+  //     (item) => item.resubscribe
+  //   );
+  //   setCoachPerformanceData({
+  //     labels,
+  //     datasets: [
+  //       {
+  //         label: "Trainees",
+  //         data: traineeData,
+  //         backgroundColor: "#E3BD99",
+  //         borderWidth: 2,
+  //       },
+  //       {
+  //         label: "Resubscriber",
+  //         data: resubscriberData,
+  //         backgroundColor: "#97694F",
+  //         borderWidth: 2,
+  //       },
+  //     ],
+  //   });
+  // };
+
+  const handleChatModalClose = useCallback(() => {
+    setShowChatModal(false);
+  }, []);
+
+  const fetchChat = (traineeId, trainerId, recipient) => {
+    const query = ref(
+      db,
+      `Messages/${trainerId}/${traineeId}`,
+      orderByChild("messageTime")
+    );
+
+    onValue(query, (snapshot) => {
+      const data = snapshot.val();
+      setMessages(data ? Object.values(data) : []);
+    });
+
+    setRecipient(recipient);
+    setShowChatModal(true);
+  };
+
+  useEffect(() => {
+    fetchTraineeProfile();
   }, []);
 
   // const handleActionClick = (id) => {
@@ -309,7 +319,7 @@ const CoachProfileWrapper = (props) => {
       <TraineeFilter
         isOpen={isOpenFilter}
         onClose={() => setIsOpenFilter(false)}
-        handleRefetchHistory={fetchCoachProfile}
+        handleRefetchHistory={fetchTraineeProfile}
       />
 
       <IndividualChatModal

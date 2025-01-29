@@ -73,7 +73,7 @@ const TraineeFilter = (props) => {
                 </Label>
                 <DatePicker
                   name="from"
-                  className={"form-control-lg BorderRadiusInput"}
+                  className={"w-100 form-control-lg BorderRadiusInput"}
                   selected={values.from}
                   onChange={(date) => setFieldValue("from", date)}
                 />
@@ -89,7 +89,7 @@ const TraineeFilter = (props) => {
                 </Label>
                 <DatePicker
                   name="to"
-                  className={"form-control-lg BorderRadiusInput"}
+                  className={"w-100 form-control-lg BorderRadiusInput"}
                   selected={values.to}
                   onChange={(date) => setFieldValue("to", date)}
                 />

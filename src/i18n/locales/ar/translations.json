@@ -1021,7 +1021,9 @@
     "meal_classificationLabel": "التصنيف الرئيسي",
     "editcalGroup": "تعديل تصنيف سعرات",
     "orderLabel": "الترتيب",
-    "orderPlaceholder": "أدخل الترتيب"
+    "orderPlaceholder": "أدخل الترتيب",
+    "fromLabel": "من",
+    "toLabel": "الي"
   },
   "general": {
     "trainingLevel": "مستوى التدريب",

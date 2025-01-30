@@ -27,6 +27,7 @@ import {
   NUTRITIONIST_TYPE,
   GUEST_SERVICE_PROVIDER_LISTING_URL,
 } from "../../utils/constants";
+import { getMyServiceProviders } from "../../Redux/features/User/userApi";
 
 const GuestServiceProviderListWrapper = (props) => {
   const { roleType } = props;
@@ -38,6 +39,7 @@ const GuestServiceProviderListWrapper = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [listingRole, setListingRole] = useState(roleType);
   const [serviceProviderData, setServiceProviderData] = useState([]);
+  const [fitneeCoachData, setFitneeCoachData] = useState([]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -92,6 +94,38 @@ const GuestServiceProviderListWrapper = (props) => {
       return t("guest.trainerNutritionistText");
     }
   };
+
+  const fetchFitneeCoachData = () => {
+    const data = {
+      apiEndpoint: "/packages/1/",
+    };
+
+    dispatch(getMyServiceProviders(data)).then((res) => {
+      if (res.type === "getMyServiceProviders/fulfilled") {
+        // setSizePages(res.payload.data.count);
+        setFitneeCoachData({
+          ...res.payload.data?.package,
+          id: 144,
+          uuid: "aa3df71d-6e8b-47e4-bec1-6b8ab9bba2dd",
+          full_name:
+            i18n.language === "ar"
+              ? res.payload.data?.package?.ar_name
+              : res.payload.data?.package?.name,
+          profile_pic: res.payload.data?.package?.pic,
+          Avg_rating: null,
+          experience: 5,
+          email: "marwa.trainer@gmail.com",
+          is_fully_booked: false,
+          serviceprovider_available: true,
+          role: "Fitnee Coach",
+        });
+      }
+    });
+  };
+
+  useEffect(() => {
+    fetchFitneeCoachData();
+  }, []);
 
   const fitneeCoach = {
     id: 144,
@@ -166,7 +200,7 @@ const GuestServiceProviderListWrapper = (props) => {
               <Col lg={3} md={4} col={6} className="mb-3">
                 <ServiceProviderListCard
                   className={`${styles.activeTrainerCard}`}
-                  serviceProvider={fitneeCoach}
+                  serviceProvider={{ ...fitneeCoachData, experience: 3 }}
                   handleOnClick={() => {
                     navigate(`/guest/serviceProviderProfile/fitneeCoach`);
                   }}

@@ -1030,6 +1030,19 @@
     "subscribeText": "اشترك مع فتننى كوتش",
     "messagingPackage": "تفاصيل باقة الرسائل",
     "basicInfo": "المعلومات الأساسية",
-    "description": "الوصف"
+    "description": "الوصف",
+    "yes": "نعم",
+    "no": "لا",
+    "male": "ذكر",
+    "female": "أنثى",
+    "home": "المنزل",
+    "gym": "الصالة الرياضية",
+    "beginner": "مبتدئ",
+    "intermediate": "متوسط",
+    "advanced": "متقدم",
+    "expert": "خبير",
+    "lose": "فقدان الوزن",
+    "gain": "زيادة الوزن",
+    "maintenance": "الحفاظ على الوزن"
   }
 }

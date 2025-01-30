@@ -148,7 +148,7 @@ const SubscriptionForm = () => {
             className={`BorderRadius contentCard ${styles.traineeListWrapper}`}
             id={"listingContainer"}
           >
-            <CardBody>
+            <CardBody className="p-0">
               <h3 className="text-center py-5">
                 {t("subscription.formTitle")}
               </h3>
@@ -181,7 +181,10 @@ const SubscriptionForm = () => {
                             <SelectField
                               name="gender"
                               className={"form-control-lg BorderRadiusInput"}
-                              options={gender}
+                              options={gender?.map((item) => ({
+                                value: item.value,
+                                label: t(item.label),
+                              }))}
                               handleChange={(value) =>
                                 setFieldValue("gender", value)
                               }
@@ -249,7 +252,10 @@ const SubscriptionForm = () => {
                             <SelectField
                               name="training_place"
                               className={"form-control-lg BorderRadiusInput"}
-                              options={trainingPlaces}
+                              options={trainingPlaces?.map((item) => ({
+                                value: item.value,
+                                label: t(item.label),
+                              }))}
                               handleChange={(value) =>
                                 setFieldValue("training_place", value)
                               }
@@ -267,7 +273,10 @@ const SubscriptionForm = () => {
                             <SelectField
                               name="training_level"
                               className={"form-control-lg BorderRadiusInput"}
-                              options={trainingLevel}
+                              options={trainingLevel?.map((item) => ({
+                                value: item.value,
+                                label: t(item.label),
+                              }))}
                               handleChange={(value) =>
                                 setFieldValue("training_level", value)
                               }
@@ -286,8 +295,8 @@ const SubscriptionForm = () => {
                               name="is_injured"
                               className={"form-control-lg BorderRadiusInput"}
                               options={[
-                                { label: "Yes", value: "True" },
-                                { label: "No", value: "False" },
+                                { label: t("general.yes"), value: "True" },
+                                { label: t("general.no"), value: "False" },
                               ]}
                               handleChange={(value) =>
                                 setFieldValue("is_injured", value)
@@ -351,7 +360,10 @@ const SubscriptionForm = () => {
                             <SelectField
                               name="training_goal"
                               className={"form-control-lg BorderRadiusInput"}
-                              options={trainingGoal}
+                              options={trainingGoal?.map((item) => ({
+                                value: item.value,
+                                label: t(item.label),
+                              }))}
                               handleChange={(value) =>
                                 setFieldValue("training_goal", value)
                               }
@@ -393,7 +405,10 @@ const SubscriptionForm = () => {
                             <SelectField
                               name="how_did_you_know_us"
                               className={"form-control-lg BorderRadiusInput"}
-                              options={findUs}
+                              options={findUs?.map((item) => ({
+                                value: item.value,
+                                label: t(item.label),
+                              }))}
                               handleChange={(value) =>
                                 setFieldValue("how_did_you_know_us", value)
                               }

@@ -1,18 +1,18 @@
 export const gender = [
-  { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
+  { value: "male", label: "general.male" },
+  { value: "female", label: "general.female" },
 ];
 
 export const trainingPlaces = [
-  { value: "home", label: "Home" },
-  { value: "gym", label: "Gym" },
+  { value: "home", label: "general.home" },
+  { value: "gym", label: "general.gym" },
 ];
 
 export const trainingLevel = [
-  { value: "beginner", label: "Beginner" },
-  { value: "intermediate", label: "Intermediate" },
-  { value: "advanced", label: "Advanced" },
-  { value: "expert", label: "Expert" },
+  { value: "beginner", label: "general.beginner" },
+  { value: "intermediate", label: "general.intermediate" },
+  { value: "advanced", label: "general.advanced" },
+  { value: "expert", label: "general.expert" },
 ];
 
 export const findUs = [
@@ -24,7 +24,7 @@ export const findUs = [
 ];
 
 export const trainingGoal = [
-  { value: "lose", label: "Weight Loss" },
-  { value: "gain", label: "Weight Gaining" },
-  { value: "maintenance", label: "Weight Maintenance" },
+  { value: "lose", label: "general.lose" },
+  { value: "gain", label: "general.gain" },
+  { value: "maintenance", label: "general.maintenance" },
 ];

@@ -1054,6 +1054,8 @@
   "general": {
     "trainingLevel": "Training Level",
     "subscribeText": "Subscribe with fitnee coach",
-    "messagingPackage": "Messaging Package Details"
+    "messagingPackage": "Messaging Package Details",
+    "basicInfo": "Basic Information",
+    "description": "Description"
   }
 }

@@ -1028,6 +1028,8 @@
   "general": {
     "trainingLevel": "مستوى التدريب",
     "subscribeText": "اشترك مع فتننى كوتش",
-    "messagingPackage": "تفاصيل باقة الرسائل"
+    "messagingPackage": "تفاصيل باقة الرسائل",
+    "basicInfo": "المعلومات الأساسية",
+    "description": "الوصف"
   }
 }

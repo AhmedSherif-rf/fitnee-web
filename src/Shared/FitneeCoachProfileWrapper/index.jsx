@@ -152,35 +152,51 @@ const ServiceProviderProfileWrapper = (props) => {
       {serviceProviderProfile ? (
         <Row>
           <Col md={12}>
-            <Card className="contentCard bg-transparent overflow-x-hidden">
+            <Card
+              style={{ borderRadius: "50px 50px 0px 0px" }}
+              className="contentCard overflow-x-hidden"
+            >
               <Row>
-                <Card className="BorderRadius contentCard p-4">
+                <Card className="contentCard p-4">
                   <div className="mb-2">
                     <CardBody className="p-0">
                       <div
-                        className="p-0 bgProperties ImgBorder rounded-circle"
+                        className="p-0 bgProperties rounded-circle"
                         style={{
                           backgroundImage: `url(${serviceProviderProfile?.package?.pic})`,
                           height: "150px",
                           width: "150px",
                           margin: "auto",
+                          border: "1px solid #efefef",
                         }}
                       ></div>
                     </CardBody>
-                    <CardFooter className="border-0 text-black-custom">
-                      <div className="h-100 text-center">
-                        {serviceProviderProfile?.package?.full_name && (
-                          <span className="fs-5 text-secondary my-2">
-                            {serviceProviderProfile?.package?.full_name}
-                          </span>
-                        )}
-                        <br />
-                        <span className="fs-5 text-secondary my-2">
-                          {i18n.language === "en"
-                            ? serviceProviderProfile?.package?.name
-                            : serviceProviderProfile?.package?.ar_name}
+                    <div className="text-center fw-bold fs-5">
+                      {serviceProviderProfile?.package?.full_name && (
+                        <span className="fs-5 m-3">
+                          {serviceProviderProfile?.package?.full_name}
                         </span>
-                        <br />
+                      )}
+                      <br />
+                      <span className="fs-5 my-2">
+                        {i18n.language === "en"
+                          ? serviceProviderProfile?.package?.name
+                          : serviceProviderProfile?.package?.ar_name}
+                      </span>
+                    </div>
+                    <p className="mt-3 fw-bold fs-5">
+                      {t("general.basicInfo")}
+                    </p>
+                    <CardFooter
+                      className="py-2"
+                      style={{
+                        backgroundColor: "#F8F8F8",
+                        borderRadius: "10px",
+                        border: "1px solid #C8C8C8",
+                      }}
+                    >
+                      <h5 className="fw-bold">{t("general.description")} :</h5>
+                      <div>
                         <span className="fw-700 fs-6 text-secondary mb-0">
                           {!isFitneeCoachActive
                             ? `${
@@ -198,16 +214,16 @@ const ServiceProviderProfileWrapper = (props) => {
                       </div>
                     </CardFooter>
                   </div>
-                  <div className="mb-3 mt-3 mx-auto">
+                  <div className="mb-3 mt-3">
                     {isFitneeCoachActive ? (
                       <FillBtn
-                        className="w-100 py-2"
+                        className="py-2"
                         text={t("guest.messagePackageText")}
                         handleOnClick={subscripeInMessagingPackage}
                       />
                     ) : (
                       <FillBtn
-                        className="w-100 py-2"
+                        className="py-2"
                         text={t("guest.subscribeText")}
                         handleOnClick={() => {
                           if (user) {

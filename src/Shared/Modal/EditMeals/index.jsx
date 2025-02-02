@@ -48,10 +48,10 @@ const EditMeals = (props) => {
     requestData.append("calorie_recipe", values.calorie_recipe);
     requestData.append("fats", values.fats);
     requestData.append("carbohydrate", values.carbohydrate);
-    requestData.append("ar_ingredients", values.ar_ingredients);
+    requestData.append("en_ingredients", values.en_ingredients);
     requestData.append("protein", values.protein);
     requestData.append("ingredients", values.ingredients);
-    requestData.append("ar_methods", values.ar_methods);
+    requestData.append("en_methods", values.en_methods);
     requestData.append("methods", values.methods);
     requestData.append("active", "True");
 
@@ -365,44 +365,44 @@ const EditMeals = (props) => {
               </div>
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
-                  {`${t("meals.ar_ingredientsLabel")}`}
+                  {`${t("meals.en_ingredientsLabel")}`}
                 </Label>
                 <MultiInputField
                   type="text"
-                  name="ar_ingredients"
-                  dataKey="ar_ingredients"
-                  placeholder={t("meals.ar_ingredientsPlaceholder")}
+                  name="en_ingredients"
+                  dataKey="en_ingredients"
+                  placeholder={t("meals.en_ingredientsPlaceholder")}
                   onChangeHandle={setFieldValue}
                   onBlurHandle={handleBlur}
-                  value={values.ar_ingredients}
+                  value={values.en_ingredients}
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">
-                  {t(errors.ar_ingredients) &&
-                    touched.ar_ingredients &&
-                    t(errors.ar_ingredients)}
+                  {t(errors.en_ingredients) &&
+                    touched.en_ingredients &&
+                    t(errors.en_ingredients)}
                 </p>
               </div>
 
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
-                  {`${t("meals.ar_methodsLabel")}`}
+                  {`${t("meals.en_methodsLabel")}`}
                 </Label>
 
                 <MultiInputField
                   type="text"
-                  name="ar_methods"
-                  dataKey="ar_methods"
-                  placeholder={t("meals.ar_methodsPlaceholder")}
+                  name="en_methods"
+                  dataKey="en_methods"
+                  placeholder={t("meals.en_methodsPlaceholder")}
                   onChangeHandle={setFieldValue}
                   onBlurHandle={handleBlur}
-                  value={values.ar_methods}
+                  value={values.en_methods}
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">
-                  {t(errors.ar_methods) &&
-                    touched.ar_methods &&
-                    t(errors.ar_methods)}
+                  {t(errors.en_methods) &&
+                    touched.en_methods &&
+                    t(errors.en_methods)}
                 </p>
               </div>
 

@@ -1047,10 +1047,10 @@
     "orderPlaceholder": "Enter Order",
     "fromLabel": "From",
     "toLabel": "To",
-    "ar_methodsLabel": "Arabic Methods",
-    "ar_methodsPlaceholder": "Enter Arabic Methods",
-    "ar_ingredientsLabel": "Arabic Ingredients",
-    "ar_ingredientsPlaceholder": "Enter Arabic Ingredients"
+    "en_methodsLabel": "English Methods",
+    "en_methodsPlaceholder": "Enter English Methods",
+    "en_ingredientsLabel": "English Ingredients",
+    "en_ingredientsPlaceholder": "Enter English Ingredients"
   },
   "exercises": {
     "exercises": "Exercises"

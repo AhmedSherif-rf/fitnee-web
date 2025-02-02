@@ -198,35 +198,35 @@ const Packages = () => {
                   Methods:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {categoryClassificationDetails?.methods}
+                    {categoryClassificationDetails?.methods?.join(", ")}
                   </span>
                 </h3>
                 <h3>
                   Ingredients:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {categoryClassificationDetails?.ingredients}
+                    {categoryClassificationDetails?.ingredients?.join(", ")}
                   </span>
                 </h3>
                 <h3>
                   Methods (English):
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {categoryClassificationDetails?.en_methods}
+                    {categoryClassificationDetails?.en_methods?.join(", ")}
                   </span>
                 </h3>
                 <h3>
                   Ingredients (English):
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {categoryClassificationDetails?.en_ingredients}
+                    {categoryClassificationDetails?.en_ingredients?.join(", ")}
                   </span>
                 </h3>
                 <h3>
                   Calorie Range:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}
-                    {categoryClassificationDetails?.calorie_range}
+                    {categoryClassificationDetails?.calorie_range_name}
                   </span>
                 </h3>
                 <h3>

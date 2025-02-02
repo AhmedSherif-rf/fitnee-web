@@ -1024,10 +1024,10 @@
     "orderPlaceholder": "أدخل الترتيب",
     "fromLabel": "من",
     "toLabel": "الي",
-    "ar_methodsLabel": "الطرق باللغة العربية",
-    "ar_methodsPlaceholder": "أدخل الطرق باللغة العربية",
-    "ar_ingredientsLabel": "المكونات باللغة العربية",
-    "ar_ingredientsPlaceholder": "أدخل المكونات باللغة العربية"
+    "en_methodsLabel": "الطرق باللغة الانجليزية",
+    "en_methodsPlaceholder": "أدخل الطرق باللغة الانجليزية",
+    "en_ingredientsLabel": "المكونات باللغة الانجليزية",
+    "en_ingredientsPlaceholder": "أدخل المكونات باللغة الانجليزية"
   },
   "general": {
     "trainingLevel": "مستوى التدريب",

@@ -18,29 +18,35 @@ const AppDownloadLink = () => {
   const dispatch = useDispatch();
   const { hyperPayStatus } = useParams();
   const { t, i18n } = useTranslation("");
-  const { entity, checkoutId, loading, serviceProvider, subscriptionPlan } =
-    useSelector((state) => state.subscription);
+  const {
+    entity,
+    checkoutId,
+    loading,
+    serviceProvider,
+    subscriptionPlan,
+    use_wallet,
+  } = useSelector((state) => state.subscription);
   const [isPaymentSucceed, setIsPaymentSucceed] = useState("");
 
   console.log("serviceProvider", subscriptionPlan);
 
   useEffect(() => {
-    // if (hyperPayStatus === "false") {
-    const data = {
-      apiEndpoint: CHECK_PAYMENT_STATUS_URL,
-      requestData: JSON.stringify({
-        id: checkoutId,
-        entity: entity,
-      }),
-    };
-    dispatch(checkPaymentStatus(data)).then((res) => {
-      if (res.type === "checkPaymentStatus/fulfilled") {
-        setIsPaymentSucceed(true);
-      } else if (res.type === "checkPaymentStatus/rejected") {
-        setIsPaymentSucceed(false);
-      }
-    });
-    // }
+    if (use_wallet === false) {
+      const data = {
+        apiEndpoint: CHECK_PAYMENT_STATUS_URL,
+        requestData: JSON.stringify({
+          id: checkoutId,
+          entity: entity,
+        }),
+      };
+      dispatch(checkPaymentStatus(data)).then((res) => {
+        if (res.type === "checkPaymentStatus/fulfilled") {
+          setIsPaymentSucceed(true);
+        } else if (res.type === "checkPaymentStatus/rejected") {
+          setIsPaymentSucceed(false);
+        }
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

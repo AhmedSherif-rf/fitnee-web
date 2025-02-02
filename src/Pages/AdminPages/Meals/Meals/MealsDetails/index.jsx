@@ -209,6 +209,20 @@ const Packages = () => {
                   </span>
                 </h3>
                 <h3>
+                  Methods (English):
+                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
+                    {" "}
+                    {categoryClassificationDetails?.en_methods}
+                  </span>
+                </h3>
+                <h3>
+                  Ingredients (English):
+                  <span style={{ fontSize: "18px", opacity: 0.7 }}>
+                    {" "}
+                    {categoryClassificationDetails?.en_ingredients}
+                  </span>
+                </h3>
+                <h3>
                   Calorie Range:
                   <span style={{ fontSize: "18px", opacity: 0.7 }}>
                     {" "}

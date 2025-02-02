@@ -49,6 +49,8 @@ const EditSubcategory = (props) => {
         handleRefetchHistory();
       }
     });
+
+    onClose();
   };
 
   useEffect(() => {
@@ -83,7 +85,6 @@ const EditSubcategory = (props) => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             await handleEditCategorySubmit(values);
-            onClose();
           }}
         >
           {({

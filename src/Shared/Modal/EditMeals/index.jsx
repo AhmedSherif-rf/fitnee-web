@@ -63,6 +63,9 @@ const EditMeals = (props) => {
         handleRefetchHistory();
       }
     });
+
+    setDisplayImages("");
+    onClose();
   };
 
   // ----------------- side effects -----------------
@@ -94,8 +97,6 @@ const EditMeals = (props) => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             await handleEditCoachSubmit(values);
-            setDisplayImages("");
-            onClose();
           }}
         >
           {({

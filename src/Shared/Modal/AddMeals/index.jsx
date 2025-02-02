@@ -33,7 +33,7 @@ const AddMeals = (props) => {
 
   const { t, i18n } = useTranslation("");
 
-  const handleAddProgressSubmit = async (values) => {
+  const handleAddProgressSubmit = async (values, resetForm) => {
     const requestData = new FormData();
     if (values.meal_pic) {
       requestData.append("meal_pic", values.meal_pic);
@@ -62,6 +62,10 @@ const AddMeals = (props) => {
         handleRefetchHistory();
       }
     });
+
+    resetForm({ values: { ...MEALS_INITIAL_VALUES } });
+    setDisplayImages("");
+    onClose();
   };
 
   const getMealClassification = async () => {
@@ -127,9 +131,6 @@ const AddMeals = (props) => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             await handleAddProgressSubmit(values);
-            resetForm({ values: { ...MEALS_INITIAL_VALUES } });
-            setDisplayImages("");
-            onClose();
           }}
         >
           {({

@@ -334,7 +334,9 @@ const EditMeals = (props) => {
                   placeholder={t("meals.ingredientsPlaceholder")}
                   onChangeHandle={setFieldValue}
                   onBlurHandle={handleBlur}
-                  value={values.ingredients}
+                  value={
+                    Array.isArray(values.ingredients) ? values.ingredients : []
+                  }
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">
@@ -356,7 +358,7 @@ const EditMeals = (props) => {
                   placeholder={t("meals.methodsPlaceholder")}
                   onChangeHandle={setFieldValue}
                   onBlurHandle={handleBlur}
-                  value={values.methods}
+                  value={Array.isArray(values.methods) ? values.methods : []}
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">
@@ -374,7 +376,11 @@ const EditMeals = (props) => {
                   placeholder={t("meals.en_ingredientsPlaceholder")}
                   onChangeHandle={setFieldValue}
                   onBlurHandle={handleBlur}
-                  value={values.en_ingredients}
+                  value={
+                    Array.isArray(values.en_ingredients)
+                      ? values.en_ingredients
+                      : []
+                  }
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">
@@ -396,7 +402,9 @@ const EditMeals = (props) => {
                   placeholder={t("meals.en_methodsPlaceholder")}
                   onChangeHandle={setFieldValue}
                   onBlurHandle={handleBlur}
-                  value={values.en_methods}
+                  value={
+                    Array.isArray(values.en_methods) ? values.en_methods : []
+                  }
                   className={"form-control-lg BorderRadiusInput py-3 px-2"}
                 />
                 <p className="errorField">

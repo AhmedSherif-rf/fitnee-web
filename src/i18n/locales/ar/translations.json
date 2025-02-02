@@ -1023,7 +1023,11 @@
     "orderLabel": "الترتيب",
     "orderPlaceholder": "أدخل الترتيب",
     "fromLabel": "من",
-    "toLabel": "الي"
+    "toLabel": "الي",
+    "ar_methodsLabel": "الطرق باللغة العربية",
+    "ar_methodsPlaceholder": "أدخل الطرق باللغة العربية",
+    "ar_ingredientsLabel": "المكونات باللغة العربية",
+    "ar_ingredientsPlaceholder": "أدخل المكونات باللغة العربية"
   },
   "general": {
     "trainingLevel": "مستوى التدريب",

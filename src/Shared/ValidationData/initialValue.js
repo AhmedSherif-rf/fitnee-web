@@ -314,7 +314,9 @@ export const MEALS_INITIAL_VALUES = {
   carbohydrate: "",
   protein: "",
   methods: [],
+  ar_methods: [],
   ingredients: [],
+  ar_ingredients: [],
 };
 
 export const MEALS_Filters_INITIAL_VALUES = {

@@ -22,10 +22,10 @@ jobs:
           cat <<EOF > cert.pem
           -----BEGIN OPENSSH PRIVATE KEY-----
           b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-          QyNTUxOQAAACDnP09ot1b4jhZ0NBVPkljY+vqmDxfeGo9c/3GZxpxeigAAAJjr8ap+6/Gq
-          fgAAAAtzc2gtZWQyNTUxOQAAACDnP09ot1b4jhZ0NBVPkljY+vqmDxfeGo9c/3GZxpxeig
-          AAAEDXkWWcopLATfBiITpR5pxuhTDAaw9YLb5gFQWd6jMiruc/T2i3VviOFnQ0FU+SWNj6
-          +qYPF94aj1z/cZnGnF6KAAAAD2FobWVkc2hAYWhtZWRzaAECAwQFBg==
+          QyNTUxOQAAACCCQv3jZcvYeoIZ+NgPQiVTaIJ8dx6o/Ofn9SYVZreL+QAAAJgWqZAxFqmQ
+          MQAAAAtzc2gtZWQyNTUxOQAAACCCQv3jZcvYeoIZ+NgPQiVTaIJ8dx6o/Ofn9SYVZreL+Q
+          AAAEDOLIQ3o3kW4Bp1FAWFheiNrj2NS4mJbGiD6Qya0t7Ai4JC/eNly9h6ghn42A9CJVNo
+          gnx3Hqj85+f1JhVmt4v5AAAAD2FobWVkc2hAYWhtZWRzaAECAwQFBg==
           -----END OPENSSH PRIVATE KEY-----
           EOF
       

@@ -18,7 +18,7 @@ const AddCalGroup = (props) => {
 
   const { t, i18n } = useTranslation("");
 
-  const handleAddProgressSubmit = async (values) => {
+  const handleAddProgressSubmit = async (values, resetForm) => {
     const data = {
       apiEndpoint: ADMIN_CALORIES_URL,
       requestData: values,
@@ -29,6 +29,9 @@ const AddCalGroup = (props) => {
         handleRefetchHistory();
       }
     });
+
+    resetForm({ values: { ...CALORIES_GROUP_INITIAL_VALUES } });
+    onClose();
   };
 
   return (
@@ -50,9 +53,7 @@ const AddCalGroup = (props) => {
           validationSchema={CALORIES_GROUP_SCHEMA}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            await handleAddProgressSubmit(values);
-            resetForm({ values: { ...CALORIES_GROUP_INITIAL_VALUES } });
-            onClose();
+            await handleAddProgressSubmit(values, resetForm);
           }}
         >
           {({

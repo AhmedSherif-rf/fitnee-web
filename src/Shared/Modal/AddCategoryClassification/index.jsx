@@ -18,7 +18,7 @@ const AddCategoryClassification = (props) => {
 
   const { t, i18n } = useTranslation("");
 
-  const handleAddProgressSubmit = async (values) => {
+  const handleAddProgressSubmit = async (values, resetForm) => {
     const data = {
       apiEndpoint: ADMIN_MEAL_CLASSIFICATION_URL,
       requestData: values,
@@ -29,6 +29,9 @@ const AddCategoryClassification = (props) => {
         handleRefetchHistory();
       }
     });
+
+    resetForm({ values: { ...MEAL_CLASSIFICATIONS_INITIAL_VALUES } });
+    onClose();
   };
 
   return (
@@ -50,9 +53,7 @@ const AddCategoryClassification = (props) => {
           validationSchema={MEAL_CLASSIFICATIONS_SCHEMA}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            await handleAddProgressSubmit(values);
-            resetForm({ values: { ...MEAL_CLASSIFICATIONS_INITIAL_VALUES } });
-            onClose();
+            await handleAddProgressSubmit(values, resetForm);
           }}
         >
           {({

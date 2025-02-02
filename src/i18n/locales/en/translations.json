@@ -1046,7 +1046,11 @@
     "orderLabel": "Order",
     "orderPlaceholder": "Enter Order",
     "fromLabel": "From",
-    "toLabel": "To"
+    "toLabel": "To",
+    "ar_methodsLabel": "Arabic Methods",
+    "ar_methodsPlaceholder": "Enter Arabic Methods",
+    "ar_ingredientsLabel": "Arabic Ingredients",
+    "ar_ingredientsPlaceholder": "Enter Arabic Ingredients"
   },
   "exercises": {
     "exercises": "Exercises"

@@ -48,8 +48,10 @@ const EditMeals = (props) => {
     requestData.append("calorie_recipe", values.calorie_recipe);
     requestData.append("fats", values.fats);
     requestData.append("carbohydrate", values.carbohydrate);
+    requestData.append("ar_ingredients", values.ar_ingredients);
     requestData.append("protein", values.protein);
     requestData.append("ingredients", values.ingredients);
+    requestData.append("ar_methods", values.ar_methods);
     requestData.append("methods", values.methods);
     requestData.append("active", "True");
 
@@ -359,6 +361,48 @@ const EditMeals = (props) => {
                 />
                 <p className="errorField">
                   {t(errors.methods) && touched.methods && t(errors.methods)}
+                </p>
+              </div>
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("meals.ar_ingredientsLabel")}`}
+                </Label>
+                <MultiInputField
+                  type="text"
+                  name="ar_ingredients"
+                  dataKey="ar_ingredients"
+                  placeholder={t("meals.ar_ingredientsPlaceholder")}
+                  onChangeHandle={setFieldValue}
+                  onBlurHandle={handleBlur}
+                  value={values.ar_ingredients}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.ar_ingredients) &&
+                    touched.ar_ingredients &&
+                    t(errors.ar_ingredients)}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("meals.ar_methodsLabel")}`}
+                </Label>
+
+                <MultiInputField
+                  type="text"
+                  name="ar_methods"
+                  dataKey="ar_methods"
+                  placeholder={t("meals.ar_methodsPlaceholder")}
+                  onChangeHandle={setFieldValue}
+                  onBlurHandle={handleBlur}
+                  value={values.ar_methods}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.ar_methods) &&
+                    touched.ar_methods &&
+                    t(errors.ar_methods)}
                 </p>
               </div>
 

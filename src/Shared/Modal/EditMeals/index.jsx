@@ -348,25 +348,6 @@ const EditMeals = (props) => {
 
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
-                  {`${t("meals.methodsLabel")}`}
-                </Label>
-
-                <MultiInputField
-                  type="text"
-                  name="methods"
-                  dataKey="methods"
-                  placeholder={t("meals.methodsPlaceholder")}
-                  onChangeHandle={setFieldValue}
-                  onBlurHandle={handleBlur}
-                  value={Array.isArray(values.methods) ? values.methods : []}
-                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
-                />
-                <p className="errorField">
-                  {t(errors.methods) && touched.methods && t(errors.methods)}
-                </p>
-              </div>
-              <div className="mb-2">
-                <Label className="fw-normal small mb-0">
                   {`${t("meals.en_ingredientsLabel")}`}
                 </Label>
                 <MultiInputField
@@ -387,6 +368,26 @@ const EditMeals = (props) => {
                   {t(errors.en_ingredients) &&
                     touched.en_ingredients &&
                     t(errors.en_ingredients)}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("meals.methodsLabel")}`}
+                </Label>
+
+                <MultiInputField
+                  type="text"
+                  name="methods"
+                  dataKey="methods"
+                  placeholder={t("meals.methodsPlaceholder")}
+                  onChangeHandle={setFieldValue}
+                  onBlurHandle={handleBlur}
+                  value={Array.isArray(values.methods) ? values.methods : []}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.methods) && touched.methods && t(errors.methods)}
                 </p>
               </div>
 

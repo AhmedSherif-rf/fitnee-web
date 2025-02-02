@@ -392,27 +392,7 @@ const AddMeals = (props) => {
                   {t(errors.methods) && touched.methods && t(errors.methods)}
                 </p>
               </div>
-              <div className="mb-2">
-                <Label className="fw-normal small mb-0">
-                  {`${t("meals.en_ingredientsLabel")}`}
-                </Label>
 
-                <MultiInputField
-                  type="text"
-                  name="en_ingredients"
-                  dataKey="en_ingredients"
-                  placeholder={t("meals.en_ingredientsPlaceholder")}
-                  onChangeHandle={setFieldValue}
-                  onBlurHandle={handleBlur}
-                  value={values.en_ingredients}
-                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
-                />
-                <p className="errorField">
-                  {t(errors.en_ingredients) &&
-                    touched.en_ingredients &&
-                    t(errors.en_ingredients)}
-                </p>
-              </div>
               <div className="mb-2">
                 <Label className="fw-normal small mb-0">
                   {`${t("meals.en_methodsLabel")}`}
@@ -432,6 +412,28 @@ const AddMeals = (props) => {
                   {t(errors.en_methods) &&
                     touched.en_methods &&
                     t(errors.en_methods)}
+                </p>
+              </div>
+
+              <div className="mb-2">
+                <Label className="fw-normal small mb-0">
+                  {`${t("meals.en_ingredientsLabel")}`}
+                </Label>
+
+                <MultiInputField
+                  type="text"
+                  name="en_ingredients"
+                  dataKey="en_ingredients"
+                  placeholder={t("meals.en_ingredientsPlaceholder")}
+                  onChangeHandle={setFieldValue}
+                  onBlurHandle={handleBlur}
+                  value={values.en_ingredients}
+                  className={"form-control-lg BorderRadiusInput py-3 px-2"}
+                />
+                <p className="errorField">
+                  {t(errors.en_ingredients) &&
+                    touched.en_ingredients &&
+                    t(errors.en_ingredients)}
                 </p>
               </div>
 

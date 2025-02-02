@@ -57,7 +57,13 @@ const Index = () => {
         setSizePages((prev) =>
           res.payload.data.count > prev ? res.payload.data.count : prev
         );
-        setFitneeCoachData(res.payload.data.results);
+        setFitneeCoachData(
+          res.payload.data?.length
+            ? res.payload.data
+            : res.payload.data.results?.length
+            ? res.payload.data.results
+            : []
+        );
       }
     });
   };
@@ -125,7 +131,7 @@ const Index = () => {
                 }
                 return null;
               })}
-              {traineesData.length && fitneeCoachData.length <= 0 ? (
+              {traineesData?.length && fitneeCoachData?.length <= 0 ? (
                 <div className="d-flex justify-content-center py-4 text-black-custom">
                   {t("messages.noDataFoundText")}
                 </div>

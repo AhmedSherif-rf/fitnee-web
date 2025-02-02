@@ -30,13 +30,13 @@ const AppDownloadLink = () => {
         entity: entity,
       }),
     };
-    dispatch(checkPaymentStatus(data)).then((res) => {
-      if (res.type === "checkPaymentStatus/fulfilled") {
-        setIsPaymentSucceed(true);
-      } else if (res.type === "checkPaymentStatus/rejected") {
-        setIsPaymentSucceed(false);
-      }
-    });
+    // dispatch(checkPaymentStatus(data)).then((res) => {
+    //   if (res.type === "checkPaymentStatus/fulfilled") {
+    //     setIsPaymentSucceed(true);
+    //   } else if (res.type === "checkPaymentStatus/rejected") {
+    //     setIsPaymentSucceed(false);
+    //   }
+    // });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

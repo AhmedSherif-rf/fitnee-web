@@ -10,6 +10,7 @@ import { MEAL_CLASSIFICATIONS_SCHEMA } from "../../ValidationData/validation";
 import { Modal, ModalBody, ModalHeader, Label, Form } from "reactstrap";
 import { MEAL_CLASSIFICATIONS_INITIAL_VALUES } from "../../ValidationData/initialValue";
 import { AddMealClassifications } from "../../../Redux/features/Admin/Meals/mealsApi";
+import Toaster from "../../../Shared/Toaster";
 
 const AddCategoryClassification = (props) => {
   const { onClose, isOpen, className, size, handleRefetchHistory } = props;
@@ -32,6 +33,7 @@ const AddCategoryClassification = (props) => {
 
     resetForm({ values: { ...MEAL_CLASSIFICATIONS_INITIAL_VALUES } });
     onClose();
+    Toaster.success(t("meals.addedSuccess"));
   };
 
   return (

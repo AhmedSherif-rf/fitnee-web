@@ -1027,7 +1027,8 @@
     "en_methodsLabel": "الطرق باللغة الانجليزية",
     "en_methodsPlaceholder": "أدخل الطرق باللغة الانجليزية",
     "en_ingredientsLabel": "المكونات باللغة الانجليزية",
-    "en_ingredientsPlaceholder": "أدخل المكونات باللغة الانجليزية"
+    "en_ingredientsPlaceholder": "أدخل المكونات باللغة الانجليزية",
+    "addedSuccess": "تمت الاضافة بنجاح"
   },
   "general": {
     "trainingLevel": "مستوى التدريب",

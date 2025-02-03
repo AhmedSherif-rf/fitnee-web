@@ -21,6 +21,7 @@ import {
 } from "../../../Redux/features/Admin/Meals/mealsApi";
 import SelectField from "../../../Shared/Select";
 import UploadPic from "../../UploadPic";
+import Toaster from "../../../Shared/Toaster";
 
 const AddMeals = (props) => {
   const [displayImages, setDisplayImages] = useState("");
@@ -68,6 +69,7 @@ const AddMeals = (props) => {
     resetForm({ values: { ...MEALS_INITIAL_VALUES } });
     setDisplayImages("");
     onClose();
+    Toaster.success(t("meals.addedSuccess"));
   };
 
   const getMealClassification = async () => {

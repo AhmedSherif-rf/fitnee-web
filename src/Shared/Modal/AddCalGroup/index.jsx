@@ -10,6 +10,7 @@ import { CALORIES_GROUP_SCHEMA } from "../../ValidationData/validation";
 import { Modal, ModalBody, ModalHeader, Label, Form } from "reactstrap";
 import { CALORIES_GROUP_INITIAL_VALUES } from "../../ValidationData/initialValue";
 import { AddMealClassifications } from "../../../Redux/features/Admin/Meals/mealsApi";
+import Toaster from "../../../Shared/Toaster";
 
 const AddCalGroup = (props) => {
   const { onClose, isOpen, className, size, handleRefetchHistory } = props;
@@ -32,6 +33,7 @@ const AddCalGroup = (props) => {
 
     resetForm({ values: { ...CALORIES_GROUP_INITIAL_VALUES } });
     onClose();
+    Toaster.success(t("meals.addedSuccess"));
   };
 
   return (

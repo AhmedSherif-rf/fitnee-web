@@ -1050,7 +1050,8 @@
     "en_methodsLabel": "English Methods",
     "en_methodsPlaceholder": "Enter English Methods",
     "en_ingredientsLabel": "English Ingredients",
-    "en_ingredientsPlaceholder": "Enter English Ingredients"
+    "en_ingredientsPlaceholder": "Enter English Ingredients",
+    "addedSuccess": "Added Successfully"
   },
   "exercises": {
     "exercises": "Exercises"

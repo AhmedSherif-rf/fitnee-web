@@ -17,6 +17,7 @@ import {
   getMealsClassifications,
 } from "../../../Redux/features/Admin/Meals/mealsApi";
 import SelectField from "../../Select";
+import Toaster from "../../../Shared/Toaster";
 
 const AddSubcategory = (props) => {
   const { onClose, isOpen, className, size, handleRefetchHistory } = props;
@@ -52,6 +53,7 @@ const AddSubcategory = (props) => {
 
     resetForm({ values: { ...MEAL_SUBCATEGORY_INITIAL_VALUES } });
     onClose();
+    Toaster.success(t("meals.addedSuccess"));
   };
 
   useEffect(() => {

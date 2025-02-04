@@ -66,6 +66,8 @@ const AddMeals = (props) => {
       }
     });
 
+    console.log("sss");
+
     resetForm({ values: { ...MEALS_INITIAL_VALUES } });
     setDisplayImages("");
     onClose();
@@ -134,7 +136,7 @@ const AddMeals = (props) => {
           validationSchema={MEALS_SCHEMA}
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            await handleAddProgressSubmit(values);
+            await handleAddProgressSubmit(values, resetForm);
           }}
         >
           {({

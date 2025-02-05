@@ -33,6 +33,7 @@ const EditCategoryClassification = (props) => {
     await dispatch(EditMealClassifications(data)).then((res) => {
       if (res.type === "EditMealClassifications/fulfilled") {
         handleRefetchHistory();
+        onClose();
       }
     });
   };
@@ -57,7 +58,6 @@ const EditCategoryClassification = (props) => {
           onSubmit={async (values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             await handleEditCategorySubmit(values);
-            onClose();
           }}
         >
           {({

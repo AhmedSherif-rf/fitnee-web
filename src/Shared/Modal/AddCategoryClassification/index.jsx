@@ -28,12 +28,11 @@ const AddCategoryClassification = (props) => {
     await dispatch(AddMealClassifications(data)).then((res) => {
       if (res.type === "AddMealClassifications/fulfilled") {
         handleRefetchHistory();
+        resetForm({ values: { ...MEAL_CLASSIFICATIONS_INITIAL_VALUES } });
+        onClose();
+        Toaster.success(t("meals.addedSuccess"));
       }
     });
-
-    resetForm({ values: { ...MEAL_CLASSIFICATIONS_INITIAL_VALUES } });
-    onClose();
-    Toaster.success(t("meals.addedSuccess"));
   };
 
   return (

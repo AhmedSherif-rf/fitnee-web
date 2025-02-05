@@ -63,11 +63,10 @@ const EditMeals = (props) => {
     await dispatch(EditMealClassifications(data)).then((res) => {
       if (res.type === "EditMealClassifications/fulfilled") {
         handleRefetchHistory();
+        setDisplayImages("");
+        onClose();
       }
     });
-
-    setDisplayImages("");
-    onClose();
   };
 
   // ----------------- side effects -----------------

@@ -47,10 +47,9 @@ const EditSubcategory = (props) => {
     await dispatch(EditMealClassifications(data)).then((res) => {
       if (res.type === "EditMealClassifications/fulfilled") {
         handleRefetchHistory();
+        onClose();
       }
     });
-
-    onClose();
   };
 
   useEffect(() => {

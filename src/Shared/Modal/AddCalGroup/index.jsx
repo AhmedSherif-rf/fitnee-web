@@ -28,12 +28,11 @@ const AddCalGroup = (props) => {
     await dispatch(AddMealClassifications(data)).then((res) => {
       if (res.type === "AddMealClassifications/fulfilled") {
         handleRefetchHistory();
+        resetForm({ values: { ...CALORIES_GROUP_INITIAL_VALUES } });
+        onClose();
+        Toaster.success(t("meals.addedSuccess"));
       }
     });
-
-    resetForm({ values: { ...CALORIES_GROUP_INITIAL_VALUES } });
-    onClose();
-    Toaster.success(t("meals.addedSuccess"));
   };
 
   return (

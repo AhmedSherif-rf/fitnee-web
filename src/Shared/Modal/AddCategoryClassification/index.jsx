@@ -29,7 +29,7 @@ const AddCategoryClassification = (props) => {
       if (res.type === "AddMealClassifications/fulfilled") {
         handleRefetchHistory();
         resetForm({ values: { ...MEAL_CLASSIFICATIONS_INITIAL_VALUES } });
-        onClose();
+        // onClose();
         Toaster.success(t("meals.addedSuccess"));
       }
     });

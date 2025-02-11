@@ -29,7 +29,7 @@ const AddCalGroup = (props) => {
       if (res.type === "AddMealClassifications/fulfilled") {
         handleRefetchHistory();
         resetForm({ values: { ...CALORIES_GROUP_INITIAL_VALUES } });
-        onClose();
+        // onClose();
         Toaster.success(t("meals.addedSuccess"));
       }
     });

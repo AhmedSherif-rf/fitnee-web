@@ -65,7 +65,7 @@ const AddMeals = (props) => {
         handleRefetchHistory();
         resetForm({ values: { ...MEALS_INITIAL_VALUES } });
         setDisplayImages("");
-        onClose();
+        // onClose();
         Toaster.success(t("meals.addedSuccess"));
       }
     });

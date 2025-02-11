@@ -63,8 +63,8 @@ const AddMeals = (props) => {
     await dispatch(AddMealClassifications(data)).then((res) => {
       if (res.type === "AddMealClassifications/fulfilled") {
         handleRefetchHistory();
-        resetForm({ values: { ...MEALS_INITIAL_VALUES } });
-        setDisplayImages("");
+        // resetForm({ values: { ...MEALS_INITIAL_VALUES } });
+        // setDisplayImages("");
         // onClose();
         Toaster.success(t("meals.addedSuccess"));
       }

@@ -90,6 +90,7 @@ const SelectField = (props) => {
         isDisabled={isDisabled}
         isLoading={isLoading}
         isSearchable={isSearchable}
+        closeMenuOnSelect={!isMulti}
         options={options}
         onChange={(e) => {
           if (isMulti) {

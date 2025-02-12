@@ -223,9 +223,9 @@ const Index = () => {
                           </p>
                         </div>
                         <span className="d-md-none d-block textDark text-center">
-                          {coach?.subscription?.duration === 1
+                          {coach?.duration === 1 * 30
                             ? t("trainerPackages.monthText")
-                            : coach?.subscription?.duration === 2
+                            : coach?.duration === 2 * 30
                             ? t("trainerPackages.twoMonthText")
                             : t("trainerPackages.threeMonthText")}
                         </span>

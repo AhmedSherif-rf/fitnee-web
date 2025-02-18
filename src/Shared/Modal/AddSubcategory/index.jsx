@@ -49,7 +49,7 @@ const AddSubcategory = (props) => {
       if (res.type === "AddMealClassifications/fulfilled") {
         handleRefetchHistory();
         resetForm({ values: { ...MEAL_SUBCATEGORY_INITIAL_VALUES } });
-        onClose();
+        // onClose();
         Toaster.success(t("meals.addedSuccess"));
       }
     });

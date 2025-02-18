@@ -73,8 +73,8 @@ const CreditCardDetailWrapper = () => {
 
   useEffect(() => {
     if (checkoutId) {
-      // const scriptUrl = `https://eu-prod.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
-      const scriptUrl = `https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
+      const scriptUrl = `https://eu-prod.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
+      // const scriptUrl = `https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=${checkoutId}`;
 
       const script = document.createElement("script");
       script.src = scriptUrl;
@@ -234,7 +234,7 @@ const CreditCardDetailWrapper = () => {
                   className="paymentWidgets"
                   data-brands={
                     entity === "VISA" || entity === "STC_PAY"
-                      ? "MASTER VISA STC_PAY"
+                      ? "MASTER VISA"
                       : entity === "MADA"
                       ? "MADA"
                       : entity === "APPLE_PAY"
@@ -243,6 +243,7 @@ const CreditCardDetailWrapper = () => {
                   }
                 ></form>
               )}
+              <div>ss</div>
             </div>
           )}
           {!checkoutId && (
@@ -309,7 +310,7 @@ const CreditCardDetailWrapper = () => {
                           <img src={Images.APPLE_PAY_ICON} alt="mada-icon" />
                         </div>
                       </Col>
-                      <Col md={4} className="mb-1">
+                      {/* <Col md={4} className="mb-1">
                         <div
                           className={`d-flex align-items-center justify-content-between form-control-lg py-2 customDropdownRadius border w-100 bg-white cursorPointer ${
                             values.entity === "STC_PAY" ? "selected" : ""
@@ -321,7 +322,7 @@ const CreditCardDetailWrapper = () => {
                           </h6>
                           <img src={Images.STC_PAY_ICON} alt="mada-icon" />
                         </div>
-                      </Col>
+                      </Col> */}
                       <p className="errorField">
                         {t(errors.entity) && touched.entity && t(errors.entity)}
                       </p>

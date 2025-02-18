@@ -243,7 +243,6 @@ const CreditCardDetailWrapper = () => {
                   }
                 ></form>
               )}
-              <div>ss</div>
             </div>
           )}
           {!checkoutId && (

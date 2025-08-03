@@ -5,10 +5,21 @@ import { useSelector } from "react-redux";
 import TopBar from "../../../Shared/TopBar";
 import { FaWhatsapp } from "react-icons/fa6";
 import { useLocation, Link } from "react-router-dom";
+import {
+  useTrackSignupNavigation,
+  useCheckFromSignup,
+} from "../../../hooks/useSignupNavigation";
+import AppsFlyerScript from "../../../components/AppsFlyerScript";
 
 const GeneralLayout = (props) => {
   const { pathname } = useLocation();
   const { user } = useSelector((state) => state.user);
+
+  // Track signup navigation
+  useTrackSignupNavigation();
+
+  // Check if AppsFlyer script should be shown
+  const { shouldShowAppsFlyerScript } = useCheckFromSignup();
 
   useEffect(() => {
     window.scrollTo({
@@ -19,6 +30,9 @@ const GeneralLayout = (props) => {
 
   return (
     <React.Fragment>
+      {/* Conditionally render AppsFlyer script if navigated from signup */}
+      {shouldShowAppsFlyerScript() && <AppsFlyerScript />}
+
       <Container fluid className={`bg-dark p-0 ${styles.overlayBackgound}`}>
         <TopBar
           isPublic={props.isPublic}

@@ -1,0 +1,43 @@
+@import "../../Assets/Scss/variables.scss";
+
+.inputWrapper {
+  position: relative;
+  .leftIconWrapper {
+    position: absolute;
+    top: 48%;
+    left: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .rightIconWrapper {
+    position: absolute;
+    top: 48%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  .inputDesign {
+    padding: 0.8rem 0.8rem;
+    font-size: $font-15;
+    border-radius: $border-radius-14;
+    &::placeholder {
+      color: $placeholder-color;
+    }
+  }
+}
+
+.close {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: tomato;
+  color: white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

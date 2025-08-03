@@ -1,11 +1,18 @@
 import React, { memo } from "react";
-import { FormGroup, Label, Input } from "reactstrap";
+import { Label, Input } from "reactstrap";
 
-const Checkbox = ({ label, checked, onChange, id, name }) => {
+const Checkbox = ({ label, onChangeHandle, onBlurHandle, name, checked }) => {
   return (
     <>
-      <Input id={id} type="checkbox" className="p-2 checkBox me-2" />
-      <Label check>{label}</Label>
+      <Input
+        type="checkbox"
+        name={name}
+        onChange={onChangeHandle}
+        onBlur={onBlurHandle}
+        checked={checked}
+        className="p-2 checkBox me-2 mb-1"
+      />
+      <Label className="mb-0" check>{label}</Label>
     </>
   );
 };

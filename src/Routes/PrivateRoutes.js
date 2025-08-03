@@ -1,23 +1,20 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import getIntialURL from "../Shared/HelperMethods/getInitialURL";
+
 export function PrivateRoute({ Component, role, props }) {
-  const token = 'fcgfcgfcfgcf';
+  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) {
-      navigate("/signIn");
+    if (user === null) {
+      navigate("/");
     }
-  }, [navigate]);
+  }, [navigate, user]);
 
-  if (token) {
-    // const roleId = userDetail.user.roleId;
-    // if (role?.indexOf(roleId) > -1) {
+  if (user) {
     return <Component {...props} />;
-    // } else {
-    //   <Redirect to={getIntialURL(roleId)} />;
-    // return <Redirect to={getIntialURL(roleId)} />;
-    // }
+  } else {
+    return null;
   }
 }

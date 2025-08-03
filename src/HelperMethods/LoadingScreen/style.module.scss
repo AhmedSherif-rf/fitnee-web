@@ -1,11 +1,31 @@
-.wrapper {
-    height: 100vh;
-    width: 100vw;
-    justify-content: center;
+@import "../../Assets/Scss/variables.scss";
+
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1051;
+}
+
+.loadingContent {
+  text-align: center;
 }
 
 .spinner {
-    top: 50vh;
-    left: 50vw;
-    position: absolute;
+  color: $yellow;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

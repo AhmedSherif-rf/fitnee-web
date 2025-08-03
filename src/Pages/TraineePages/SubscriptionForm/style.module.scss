@@ -1,0 +1,37 @@
+.traineeListWrapper {
+  .filterIcon {
+    width: 30px !important;
+  }
+  .blurCard {
+    opacity: 0.3;
+  }
+  .activeTrainerCard {
+    cursor: pointer;
+  }
+}
+
+.subscriptionForm {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkbox {
+  margin: 10px 50px;
+}
+
+@media (max-width: 500px) {
+  .traineeListWrapper {
+    .filterIcon {
+      width: 20px !important;
+    }
+  }
+
+  .subscriptionForm {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .checkbox {
+    margin: 10px 10px;
+  }
+}

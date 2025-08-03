@@ -4,15 +4,16 @@ import React from "react";
 import "../src/i18n/config";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
-import store from "./Redux/configureStore";
+import "react-phone-input-2/lib/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { store } from "./Redux/configureStore";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     {/* <React.StrictMode> */}
-      <App />
+    <App />
     {/* </React.StrictMode> */}
   </Provider>
 );

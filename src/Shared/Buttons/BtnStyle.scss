@@ -1,22 +1,19 @@
 @import "../../Assets/Scss/globalStyleSheet.scss";
 
-.fillBtn {
-  background-color: $yellow !important;
-  border: 2px solid $yellow !important;
+.fillBtn,
+.OutlineBtn {
   font-weight: bold !important;
-  color: black !important;
-  border-radius: $border-radius-15 !important;
+  border-radius: $border-radius-10 !important;
+  border: 2px solid transparent !important;
+  position: relative;
 }
 
+.fillBtn {
+  background-color: $yellow !important;
+  color: $black !important;
+}
 .OutlineBtn {
-  background-color: transparent !important;
+  background-color: $white !important;
   border: 2px solid $yellow !important;
-  font-weight: bold !important;
   color: $light-gray !important;
-  border-radius: $border-radius-15 !important;
-  &:hover {
-    background-color: $yellow !important;
-    border: 2px solid $hoverYellow !important;
-    color: $black !important;
-  }
 }

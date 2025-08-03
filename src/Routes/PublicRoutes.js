@@ -1,33 +1,29 @@
-import React, { useEffect } from "react";
 import { guestRole } from "./routeConfig";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import functions from "../utils/functions";
+import { useNavigate } from "react-router-dom";
+import React, { useLayoutEffect } from "react";
 import { setGuest } from "../Redux/features/User/userSlice";
-// import getIntialURL from "../Shared/HelperMethods/getInitialURL";
 
 export function PublicRoute({ Component, props }) {
-  //   const userDetail = useSelector((state) => state.Auth);
-  const { isGuest } = useSelector((state) => state.user);
+  const { isGuest, user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isGuest && props.role === guestRole) {
       dispatch(setGuest(true));
-    console.log('here', isGuest, props)
-
     }
-  }, [props]);
+    if (user) {
+      navigate(
+        functions.getInitialUrl(
+          user?.email === "admin@admin.com" ? "Admin" : user?.role
+        )
+      );
+    }
+  }, [dispatch, isGuest, navigate, props.role, user]);
 
-  const token = null;
-  if (token) {
-    //   const roleId = userDetail.user.RoleId;
-    //   return (
-    //     <Redirect
-    //       to={getIntialURL(roleId)}
-    //     />
-    //   );
-  } else {
-    return <Component {...props} />;
-  }
+  return <Component {...props} />;
 }

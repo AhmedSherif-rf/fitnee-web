@@ -1,14 +1,16 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
-import ServiceProviderListWrapper from "../../../Shared/ServiceProviderListWrapper";
+import GuestServiceProviderListWrapper from "../../../Shared/GuestServiceProviderListWrapper";
 
 const ServiceProviderList = (props) => {
+  const { roleType } = useParams();
 
   return (
     <Container fluid>
       <Row>
         <Col md={12}>
-          <ServiceProviderListWrapper />
+          <GuestServiceProviderListWrapper roleType={roleType} />
         </Col>
       </Row>
     </Container>

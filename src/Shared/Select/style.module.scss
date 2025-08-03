@@ -1,0 +1,13 @@
+@import "../../Assets/Scss/variables.scss";
+
+.inputWrapper {
+  position: relative;
+  .inputDesign {
+    padding: 0;
+    font-size: $font-15;
+    border-radius: 20px;
+    &::placeholder {
+      color: $placeholder-color;
+    }
+  }
+}

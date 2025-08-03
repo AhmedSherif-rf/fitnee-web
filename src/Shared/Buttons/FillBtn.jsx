@@ -3,10 +3,21 @@ import React, { memo } from "react";
 import { Button } from "reactstrap";
 
 const FillBtn = (props) => {
-  const { className, text, handleOnClick } = props;
+  const {
+    className,
+    text,
+    handleOnClick,
+    disabled = false,
+    type = "button",
+  } = props;
 
   return (
-    <Button className={`fillBtn fw-bold ${className}`} onClick={handleOnClick}>
+    <Button
+      className={`fillBtn fw-bold buttonBoxShadow ${className}`}
+      onClick={handleOnClick}
+      disabled={disabled}
+      type={type}
+    >
       {text}
     </Button>
   );

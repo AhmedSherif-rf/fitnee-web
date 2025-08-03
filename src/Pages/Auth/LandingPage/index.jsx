@@ -1,50 +1,52 @@
-import React from "react";
-import { useCallback } from "react";
 import { Container } from "reactstrap";
 import Hero from "../../../Shared/Hero";
+import styles from "./style.module.scss";
 import Footer from "../../../Shared/Footer";
 import Feature from "../../../Shared/Feature";
 import { useTranslation } from "react-i18next";
 import HomeBanner from "../../../Shared/Banner";
 import CardSwiper from "../../../Shared/CardSwiper";
+import { GET_STATS } from "../../../utils/constants";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import AboutSection from "../../../Shared/AboutSection";
+import { getStats } from "../../../Redux/features/Guest/guestApi";
 import Images from "../../../HelperMethods/Constants/ImgConstants";
 
 const LandingPage = (props) => {
-  const { t } = useTranslation("");
+  const dispatch = useDispatch();
+  const { t, i18n } = useTranslation("");
+  const { feedbacks } = useSelector((state) => state.guest);
 
-  const WhatIsFtineeData = [
-    {
-      heading: (
-        <h2 className={`fw-bold text-white fs-1`}>
-          {t("landing.whatIsText")}{" "}
-          <span className="textYellow"> {t("landing.fitneeText")} </span>
-        </h2>
-      ),
-      text: (
-        <p className={"fs-5 text-white lh-1"}>
-          {t("landing.firstHeroSectionText")}
-        </p>
-      ),
-      type: "textLeft",
-      textBackgroundImage: true,
-      image: (
-        <img className="img-fluid w-100" src={Images.ABOUT_IMG} alt="hero1" />
-      ),
-    },
-  ];
+  useEffect(() => {
+    fetchStats();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchStats = () => {
+    const data = {
+      apiEndpoint: GET_STATS,
+    };
+
+    dispatch(getStats(data));
+  };
 
   const FeaturesTextData = useCallback(() => {
     return [
       {
+        heading: t("landing.firstFeaturesHeadingText"),
         text: t("landing.firstFeaturesText"),
       },
       {
+        heading: t("landing.secondFeaturesHeadingText"),
         text: t("landing.secondFeaturesText"),
       },
       {
+        heading: t("landing.thirdFeaturesHeadingText"),
         text: t("landing.thirdFeaturesText"),
       },
       {
+        heading: t("landing.fourthFeaturesHeadingText"),
         text: t("landing.fourthFeaturesText"),
       },
     ];
@@ -61,199 +63,109 @@ const LandingPage = (props) => {
       {
         image: Images.FEATURE_THREE,
       },
+      {
+        image: Images.FEATURE_FOUR,
+      },
     ];
-  }, [t]);
+  }, []);
 
   const HeroData = [
     {
       heading: (
-        <h2 className="fw-bold text-white fs-1">
-          {t("landing.ourText")}{" "}
+        <span className="fw-bold text-white display-5 arabicBorderHover">
+          {t("landing.ourText")}
           <span className="textYellow"> {t("landing.goalText")}</span>
-        </h2>
+        </span>
       ),
       text: (
-        <>
-          <p className={"fs-5 lh-1 text-white"}>
+        <div className="customSpacing text-center pb-4">
+          <p className={"fs-4 lh-2 text-white"}>
             {t("landing.secondHeroSectionTextOne")}
           </p>
 
-          <p className={"fs-5 lh-1 text-white"}>
+          <p className={"fs-4 lh-2 text-white"}>
             {t("landing.secondHeroSectionTextTwo")}
           </p>
-        </>
+        </div>
       ),
       type: "textLeft",
       textBackgroundImage: true,
       image: (
-        <img className="img-fluid w-100" src={Images.GOAL_IMG} alt="hero3" />
+        <img
+          className={`img-fluid w-100 ${styles.heroImg}`}
+          src={Images.GOAL_IMG}
+          alt="hero3"
+        />
       ),
     },
     {
       heading: (
-        <h2 className="fw-bold text-white fs-1">
-          {" "}
-          {t("landing.ourText")}{" "}
-          <span className="textYellow">{t("landing.visionText")} </span>
-        </h2>
+        <span className="fw-bold text-white display-5 arabicBorderHover">
+          {t("landing.ourText")}
+          <span className="textYellow"> {t("landing.visionText")} </span>
+        </span>
       ),
       text: (
-        <p className="text-white fs-5 lh-1">
+        <p className="text-white fs-4 lh-2 text-center customSpacing pb-4">
           {t("landing.thirdHeroSectionTextOne")}
         </p>
       ),
       type: "textRight",
       textBackgroundImage: true,
       image: (
-        <img className="img-fluid w-100" src={Images.VISION_IMG} alt="hero4" />
+        <img
+          className={`img-fluid w-100 ${styles.heroImg}`}
+          src={Images.VISION_IMG}
+          alt="hero4"
+        />
       ),
     },
   ];
 
-  const SwiperCardsData = useCallback(() => {
-    return [
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-      {
-        sliderImg: Images.SLIDER1_IMG,
-        description: `“Your training has been transformative! Your guidance, support, and
-              expertise have propelled my fitness journey. Each session was
-              empowering, and I've achieved more than I thought possible.”`,
-
-        title: "Zorawar",
-      },
-    ];
-  }, []);
-
   return (
-    <React.Fragment>
-      <HomeBanner />
-      <Container fluid>
-        {WhatIsFtineeData?.map((item, index) => (
-          <Hero
-            key={item.heading + "_" + index}
-            heading={item.heading}
-            text={item.text}
-            image={item.image}
-            type={item.type}
-            textBackgroundImage={item.textBackgroundImage}
-          />
-        ))}
-      </Container>
+    <div className="bg-black">
+      <section id="bannerSection" style={{ direction: i18n.dir() }}>
+        <HomeBanner />
+      </section>
 
-      <Container fluid>
+      <section>
+        <AboutSection />
+      </section>
+
+      <section id="featureSection" className="100-vh">
         <Feature
           textData={FeaturesTextData()}
           imageData={FeaturesImageData()}
           type={"textRight"}
         />
-      </Container>
+      </section>
 
-      <Container fluid>
-        {HeroData?.map((item, index) => (
-          <Hero
-            key={item.heading + "_" + index}
-            heading={item.heading}
-            text={item.text}
-            image={item.image}
-            type={item.type}
-            textBackgroundImage={item.textBackgroundImage}
-          />
-        ))}
-      </Container>
-      <h2 className="text-center fw-bold fs-1 pb-3">
-        {" "}
-        {t("landing.feedbackText")}
-      </h2>
-      <CardSwiper data={SwiperCardsData()} />
+      <section id="heroSection" style={{ direction: i18n.dir() }}>
+        <Container fluid>
+          {HeroData?.map((item, index) => (
+            <Hero
+              key={item.heading + "_" + index}
+              heading={item.heading}
+              text={item.text}
+              image={item.image}
+              type={item.type}
+              textBackgroundImage={item.textBackgroundImage}
+            />
+          ))}
+        </Container>
+      </section>
+
+      {feedbacks && feedbacks.length > 0 && (
+        <>
+          <br />
+          <section id="swiperSection">
+            <CardSwiper data={feedbacks} heading={t("landing.feedbackText")} />
+          </section>
+        </>
+      )}
+
       <Footer />
-    </React.Fragment>
+    </div>
   );
 };
 

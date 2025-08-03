@@ -2,16 +2,26 @@
 
 .inputWrapper {
   position: relative;
-  .iconWrapper {
+  .leftIconWrapper {
     position: absolute;
     top: 48%;
     left: 15px;
     transform: translateY(-50%);
     cursor: pointer;
   }
+  .rightIconWrapper {
+    position: absolute;
+    top: 48%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
   .inputDesign {
-    padding:.8rem .8rem ;
-    font-size: $font-14;
-    border-radius: $border-radius-15;
+    padding: 0.8rem 0.8rem;
+    font-size: $font-15;
+    border-radius: $border-radius-14;
+    &::placeholder {
+      color: $placeholder-color;
+    }
   }
 }

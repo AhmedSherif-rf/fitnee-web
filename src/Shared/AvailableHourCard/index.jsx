@@ -6,10 +6,10 @@ const AvailableHourCard = (props) => {
   return (
     <div
       key={index}
-      className={`d-flex justify-content-between shadow mb-2 p-2 ${className}`}
+      className={`d-flex justify-content-between mb-2 p-3 ${className}`}
     >
-      <div>{day}</div>
-      <div>{time}</div>
+      <div className="ltr">{day}</div>
+      <div className="ltr">{time}</div>
     </div>
   );
 };

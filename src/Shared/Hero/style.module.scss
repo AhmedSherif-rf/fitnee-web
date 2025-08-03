@@ -5,14 +5,9 @@
   .heroSectionLeftContent {
     .heroTextBackground {
       background-image: url("../../Assets/Images/homeScreen/HeroTextBgImage.png");
-      
       @include bgProperties;
-    }
-    
-    span h2 {
-      display: block;
-      width: fit-content;
-      border-bottom: 3px solid $yellow;
+      height: 100% !important;
+      overflow: hidden;
     }
   }
 }
@@ -22,14 +17,8 @@
     .heroSectionLeftContent {
       .heroTextBackground {
         background-image: url("../../Assets/Images/homeScreen/HeroTextBgImage.png");
-        
         @include bgProperties;
-      }
-      
-      span h2 {
-        display: block;
-        width: fit-content;
-        border-bottom: 3px solid $yellow;
+        height: 100% !important;
       }
     }
   }

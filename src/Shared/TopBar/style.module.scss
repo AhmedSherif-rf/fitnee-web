@@ -1,80 +1,49 @@
 @import "../../Assets/Scss/globalStyleSheet.scss";
 
 .navbar {
-  font-weight: 400 !important;
-
-  .nav {
-    gap: 8px !important;
-  }
-
+  text-align: start;
+  display: flex !important;
+  align-items: center !important;
   .navLink {
-    opacity: 1;
-    color: $text-muted;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-
+    font-size: 21px;
     &:hover {
-      color: $yellow;
-      opacity: 1;
+      color: $yellow !important;
+    }
+  }
+}
+.togglerNav {
+  .navItem,
+  a,
+  div {
+    padding: 6px;
+    text-align: center;
+    width: 100% !important;
+    color: $white !important;
+    font-size: 18px;
+    &:hover {
+      color: $yellow !important;
       font-weight: 400;
     }
   }
-
-  @media (max-width: 991px) {
-    &.navbarCollapse {
-      background-color: black;
-    }
+}
+.togglerNav {
+  padding: 0 0 0 0 !important;
+  margin-top: -1px;
+  .navItem,
+  a {
+    display: block;
+    justify-content: center;
   }
 }
-
-.PGreen {
-  color: $parrot-green !important;
-}
-.bgInverse,
-.mobileView {
-  content: "";
-  position: fixed;
-  transform: translateX(0);
-  transition: transform 0.8s ease-in-out;
-  width: 60%;
-  overflow: hidden;
+.collapseScss {
   z-index: 999;
-  background-color: $black;
-  padding: 8px;
-
-  .nav {
-    .NavItem {
-      .NavLink {
-        padding-left: 8px;
-        padding-right: 8px;
-        border-radius: 15px;
-        border: 1px solid $light-gray !important;
-        color: $yellow !important;
-        &:hover {
-          background-color: $yellow-blur !important;
-          border: 1px solid $yellow !important;
-          color: white !important;
-        }
-      }
-    }
-  }
-
-  &.slide-right {
-    transform: translateX(0px);
-  }
-  &.slide-left {
-    transform: translateX(-100%);
-  }
+  margin-top: 57px;
+  position: fixed;
 }
-.bgInverse {
-  width: 40%;
-  background-color: #91f53396 !important;
-  &.slide-left-blank {
-    transform: translateX(150%);
-  }
-  &.slide-right-blank {
-    transform: translateX(-100%);
-  }
+.notificationCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-size: 10px;
 }

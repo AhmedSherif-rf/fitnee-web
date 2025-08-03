@@ -1,0 +1,42 @@
+name: Build React App
+
+on:
+  push:
+    branches:
+      - production # Replace with your branch name
+  pull_request:
+
+jobs:
+  build:
+    name: Build React.js Application
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+
+      - name: Write private key to cert.pem
+        run: |
+          cat <<EOF > cert.pem
+          -----BEGIN OPENSSH PRIVATE KEY-----
+          b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+          QyNTUxOQAAACCCQv3jZcvYeoIZ+NgPQiVTaIJ8dx6o/Ofn9SYVZreL+QAAAJgWqZAxFqmQ
+          MQAAAAtzc2gtZWQyNTUxOQAAACCCQv3jZcvYeoIZ+NgPQiVTaIJ8dx6o/Ofn9SYVZreL+Q
+          AAAEDOLIQ3o3kW4Bp1FAWFheiNrj2NS4mJbGiD6Qya0t7Ai4JC/eNly9h6ghn42A9CJVNo
+          gnx3Hqj85+f1JhVmt4v5AAAAD2FobWVkc2hAYWhtZWRzaAECAwQFBg==
+          -----END OPENSSH PRIVATE KEY-----
+          EOF
+      
+      - name: change perm
+        run:  chmod 600 cert.pem
+
+      - name: read the key
+        run: cat cert.pem 
+
+
+      - name: Execute Remote Script
+        run: |
+          ssh -i cert.pem -o StrictHostKeyChecking=no ubuntu@16.170.125.0 sh /home/ubuntu/fe-deploy.sh
+      

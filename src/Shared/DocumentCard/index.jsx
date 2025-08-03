@@ -1,25 +1,40 @@
-import React, { memo } from "react";
+import styles from "./style.module.scss";
+import React, { memo, useState } from "react";
 import { Col, Card, CardBody, CardFooter } from "reactstrap";
 
 const DocumentCard = (props) => {
-  const { documentImg, documentTitle, className } = props;
+  const { documentImg, documentTitle, className, index } = props;
+  const [showFullImage, setShowFullImage] = useState(false);
+
+  const handleToggleClick = () => {
+    setShowFullImage(!showFullImage);
+  };
 
   return (
-    <Col lg={3} md={6} sm={6}>
+    <Col lg={3} md={6} sm={6} key={index}>
       <Card
-        className={`bgProperties ${className}`}
+        className={`bgProperties ${className} ${styles.ProfileDocumentCard}`}
         style={{
           backgroundImage: `url(${documentImg})`,
-          color: "white",
-          height: "20vh",
-          margin: "4px",
         }}
+        onClick={handleToggleClick}
       >
         <CardBody className="p-0"></CardBody>
 
-        <CardFooter className="text-center bgBlur border-0">
+        <CardFooter
+          className={`text-center border-0 bgBlur ${styles.documentCardFooter}`}
+        >
           {documentTitle}
         </CardFooter>
+
+        {showFullImage && (
+          <div
+            className={` ${styles.fullImageOverlay}`}
+            onClick={handleToggleClick}
+          >
+            <img src={documentImg} alt={documentTitle} />
+          </div>
+        )}
       </Card>
     </Col>
   );

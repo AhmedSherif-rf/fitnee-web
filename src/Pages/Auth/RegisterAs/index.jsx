@@ -61,6 +61,34 @@ const RegisterAs = (props) => {
             </div>
           </div>
         </Col>
+        <Row className="justify-content-center">
+          <Col md={5} className="mb-3 text-md-block text-center">
+            <div className="w-100">
+              <a
+                href="https://apps.apple.com/us/app/fitnee/id6473802571"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={Images.APP_STORE_IMG} className="img-fluid " alt="" />
+              </a>
+            </div>
+          </Col>
+          <Col md={5} className="mb-3 text-md-block text-center">
+            <div className="w-100">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.fitneeapplication"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={Images.GOOGLE_PLAY_IMG}
+                  className="img-fluid"
+                  alt=""
+                />
+              </a>
+            </div>
+          </Col>
+        </Row>
       </Row>
     </Container>
   );

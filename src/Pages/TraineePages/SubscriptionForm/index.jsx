@@ -44,6 +44,7 @@ const SubscriptionForm = () => {
   const lang = window.localStorage.getItem("Website_Language__fitnee");
   const [isOpen, setIsOpen] = React.useState(false);
   const [haveDiseases, setHaveDiseases] = useState(false);
+  const [hasNoDesease, setHasNoDisease] = useState(false);
 
   // ------------- functions -------------
   const handleClose = () => {
@@ -57,10 +58,22 @@ const SubscriptionForm = () => {
   const handleSubscriptionForm = async (values) => {
     const requestData = {
       ...values,
-      diseases: values?.diseases?.map(({ value }) => value),
       how_did_you_know_us: [values.how_did_you_know_us],
       likes_meal: values?.likes_meal?.map(({ value }) => value),
     };
+
+    if (values?.diseases == null) {
+      requestData.diseases = [];
+    } else if (
+      Array.isArray(values?.diseases) &&
+      values?.diseases?.map(({ value }) => value)?.includes(null)
+    ) {
+      requestData.diseases = [];
+    } else if (Array.isArray(values?.diseases)) {
+      requestData.diseases = values?.diseases?.map(({ value }) => value);
+    } else {
+      requestData.diseases = [values?.diseases];
+    }
 
     if (requestData.diseases.length > 0) {
       requestData.have_diseases = true;
@@ -381,16 +394,45 @@ const SubscriptionForm = () => {
 
                             <SelectField
                               name="diseases"
-                              isMulti={true}
+                              isMulti={!hasNoDesease}
                               className={"form-control-lg BorderRadiusInput"}
-                              options={illness?.map((item) => ({
-                                value: item?.id,
-                                label:
-                                  lang === "ar" ? item?.ar_name : item?.en_name,
-                              }))}
-                              handleChange={(value) =>
-                                setFieldValue("diseases", value)
-                              }
+                              options={[
+                                {
+                                  value: null,
+                                  label:
+                                    lang === "ar"
+                                      ? "لا توجد امراض"
+                                      : "No diseases",
+                                },
+                                ...illness?.map((item) => ({
+                                  value: item?.id,
+                                  label:
+                                    lang === "ar"
+                                      ? item?.ar_name
+                                      : item?.en_name,
+                                })),
+                              ]}
+                              handleChange={(value) => {
+                                const hasNoDeseaseSelected =
+                                  value?.[value?.length - 1]?.value == null
+                                    ? true
+                                    : false;
+
+                                if (hasNoDesease && value == null) {
+                                  setHasNoDisease(true);
+                                  setFieldValue("diseases", value);
+                                } else if (
+                                  !hasNoDesease &&
+                                  hasNoDeseaseSelected
+                                ) {
+                                  setHasNoDisease(true);
+                                  const temp = value?.reverse();
+                                  setFieldValue("diseases", temp);
+                                } else {
+                                  setHasNoDisease(false);
+                                  setFieldValue("diseases", value);
+                                }
+                              }}
                             />
                             <p className="errorField">
                               {t(errors.illness) &&

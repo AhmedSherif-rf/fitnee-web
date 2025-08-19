@@ -39,33 +39,35 @@ const Index = () => {
       apiEndpoint: `${MEMBERSHIP_URL}?page=${page}`,
     };
 
-    dispatch(getMyTrainees(data)).then((res) => {
-      if (res.type === "getMyTrainees/fulfilled") {
-        setSizePages((prev) =>
-          res.payload.data.count > prev ? res.payload.data.count : prev
-        );
-        setTraineesData(res.payload.data.results);
-      }
-    });
-
     const fitneeCoach = {
       apiEndpoint: `${FITNEE_COACH_MEMBERSHIP_URL}?page=${page}`,
     };
 
-    dispatch(getMyTrainees(fitneeCoach)).then((res) => {
-      if (res.type === "getMyTrainees/fulfilled") {
-        setSizePages((prev) =>
-          res.payload.data.count > prev ? res.payload.data.count : prev
-        );
-        setFitneeCoachData(
-          res.payload.data?.length
-            ? res.payload.data
-            : res.payload.data.results?.length
-            ? res.payload.data.results
-            : []
-        );
-      }
-    });
+    if (user?.id == 156) {
+      dispatch(getMyTrainees(fitneeCoach)).then((res) => {
+        if (res.type === "getMyTrainees/fulfilled") {
+          setSizePages((prev) =>
+            res.payload.data.count > prev ? res.payload.data.count : prev
+          );
+          setFitneeCoachData(
+            res.payload.data?.length
+              ? res.payload.data
+              : res.payload.data.results?.length
+              ? res.payload.data.results
+              : []
+          );
+        }
+      });
+    } else {
+      dispatch(getMyTrainees(data)).then((res) => {
+        if (res.type === "getMyTrainees/fulfilled") {
+          setSizePages((prev) =>
+            res.payload.data.count > prev ? res.payload.data.count : prev
+          );
+          setTraineesData(res.payload.data.results);
+        }
+      });
+    }
   };
 
   return (

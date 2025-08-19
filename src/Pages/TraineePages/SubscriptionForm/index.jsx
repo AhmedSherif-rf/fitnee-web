@@ -62,8 +62,6 @@ const SubscriptionForm = () => {
       likes_meal: values?.likes_meal?.map(({ value }) => value),
     };
 
-    console.log(values?.diseases);
-
     if (values?.diseases == null) {
       requestData.diseases = [];
     } else if (

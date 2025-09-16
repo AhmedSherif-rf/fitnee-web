@@ -19,7 +19,7 @@ import { SUBSCRIPTION_FORM_INITIAL_VALUES } from "../../../Shared/ValidationData
 import InputField from "../../../Shared/InputField";
 import SelectField from "../../../Shared/Select";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { setSubscriptionPlan } from "../../../Redux/features/Subscription/subscriptionSlice";
 import {
   findUs,
@@ -45,6 +45,7 @@ const SubscriptionForm = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [haveDiseases, setHaveDiseases] = useState(false);
   const [hasNoDesease, setHasNoDisease] = useState(false);
+  const router = useLocation();
 
   // ------------- functions -------------
   const handleClose = () => {
@@ -79,6 +80,10 @@ const SubscriptionForm = () => {
       requestData.have_diseases = true;
     } else {
       requestData.have_diseases = false;
+    }
+
+    if (router.search.includes("is_free")) {
+      requestData.is_free = true;
     }
 
     const data = {

@@ -119,7 +119,9 @@ const SubscriptionForm = () => {
               package_id: packageDetails?.id,
             })
           );
-          navigate("/trainee/subscription/creditCardDetail");
+          if (!requestData.is_free) {
+            navigate("/trainee/subscription/creditCardDetail");
+          }
         }
       } else {
         setHaveDiseases(true);

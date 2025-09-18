@@ -473,6 +473,7 @@
     "alreadyAccountText": " ﻟﺪﻳﻚ ﺣﺴﺎﺏ؟"
   },
   "guest": {
+    "tryForFree": "جرب لمدة ثلاث ايام مجاناً",
     "resultSendText": "تم ارسال النتائج الى بريدك الإلكتروني",
     "providedServicesText": "الخدمات المقدمة",
     "trainerTagText": "تدريب",

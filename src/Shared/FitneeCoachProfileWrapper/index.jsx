@@ -222,15 +222,28 @@ const ServiceProviderProfileWrapper = (props) => {
                         handleOnClick={subscripeInMessagingPackage}
                       />
                     ) : (
-                      <FillBtn
-                        className="py-2"
-                        text={t("guest.subscribeText")}
-                        handleOnClick={() => {
-                          if (user) {
-                            navigate(`/trainee/subscription/form/1`);
-                          } else navigate(`/signIn`);
-                        }}
-                      />
+                      <div class="d-flex flex-row gap-2">
+                        <FillBtn
+                          className="py-2"
+                          text={t("guest.subscribeText")}
+                          handleOnClick={() => {
+                            if (user) {
+                              navigate(`/trainee/subscription/form/1`);
+                            } else navigate(`/signIn`);
+                          }}
+                        />
+                        <FillBtn
+                          className="py-2 mx-2"
+                          text={t("guest.tryForFree")}
+                          handleOnClick={() => {
+                            if (user) {
+                              navigate(
+                                `/trainee/subscription/form/1?is_free=true`
+                              );
+                            } else navigate(`/signIn`);
+                          }}
+                        />
+                      </div>
                     )}
                   </div>
                 </Card>

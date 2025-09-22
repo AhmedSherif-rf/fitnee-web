@@ -200,7 +200,7 @@ const ServiceProviderProfileWrapper = (props) => {
                       <h5 className="fw-bold">{t("general.description")} :</h5>
                       <div>
                         <span className="fw-700 fs-6 text-secondary mb-0">
-                          {!isFitneeCoachActive
+                          {!isFitneeCoachActive || isFreeTrial
                             ? `${
                                 i18n.language === "ar"
                                   ? serviceProviderProfile?.package

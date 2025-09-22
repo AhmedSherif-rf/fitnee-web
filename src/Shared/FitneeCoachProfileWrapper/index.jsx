@@ -252,6 +252,7 @@ const ServiceProviderProfileWrapper = (props) => {
                         />
                       ) : null}
                     </div>
+
                   </div>
                 </Card>
               </Row>

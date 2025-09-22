@@ -19,7 +19,7 @@ import { SUBSCRIPTION_FORM_INITIAL_VALUES } from "../../../Shared/ValidationData
 import InputField from "../../../Shared/InputField";
 import SelectField from "../../../Shared/Select";
 import FillBtn from "../../../Shared/Buttons/FillBtn";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setSubscriptionPlan } from "../../../Redux/features/Subscription/subscriptionSlice";
 import {
   findUs,
@@ -83,10 +83,6 @@ const SubscriptionForm = () => {
       requestData.have_diseases = false;
     }
 
-    if (router.search.includes("is_free")) {
-      requestData.is_free = true;
-    }
-
     const data = {
       apiEndpoint: `${SUBSCRIPTION_FORM_URL}`,
       requestData,
@@ -130,6 +126,7 @@ const SubscriptionForm = () => {
             );
             navigate("/trainee/serviceProviderProfile/fitneeCoach");
           }
+
         }
       } else {
         setHaveDiseases(true);

@@ -608,6 +608,7 @@
     "SARText": "SAR"
   },
   "trainerPackages": {
+    "freeTrialText": "3 days",
     "monthText": "1 Month",
     "twoMonthText": "2 Months",
     "threeMonthText": "3 Months",
@@ -969,6 +970,7 @@
     "saveText": "Save"
   },
   "subscription": {
+    "freeTrialSuccess": "Subscription successful",
     "fromHere": "From here",
     "formTitle": "Please fill the form below to subscribe",
     "genderLabel": "Gender",

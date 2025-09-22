@@ -64,6 +64,7 @@ const SignInForm = () => {
                 window.localStorage.setItem(
                   "user",
                   JSON.stringify({
+                    is_free_trail: res?.payload?.data?.is_free_trail,
                     isActivePackage:
                       res?.payload?.data?.active_package?.[0]?.active,
                     traineeId: res?.payload?.data?.id,

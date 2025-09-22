@@ -18,7 +18,6 @@ import {
 } from "reactstrap";
 import { PACKAGES_URL } from "../../utils/constants";
 import { getPackageDetails } from "../../Redux/features/Admin/Packages/packagesApi";
-import { getSubscriped } from "../../Redux/features/Subscription/subscriptionApi";
 import { setSubscriptionPlan } from "../../Redux/features/Subscription/subscriptionSlice";
 
 const ServiceProviderProfileWrapper = (props) => {
@@ -27,6 +26,7 @@ const ServiceProviderProfileWrapper = (props) => {
   const { loading } = useSelector((state) => state.guest);
   const { loading: userLoading } = useSelector((state) => state.user);
   const [isFitneeCoachActive, setIsFitneeCoachActive] = useState(false);
+  const [isFreeTrial, setIsFreeTrial] = useState(false);
 
   // const [page, setPage] = useState(1);
   // const [commentData, setCommentData] = useState([]);
@@ -67,6 +67,8 @@ const ServiceProviderProfileWrapper = (props) => {
         setIsFitneeCoachActive(res?.payload?.data?.[0]?.active);
       }
     });
+
+    setIsFreeTrial(user?.is_free_trail);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -215,14 +217,16 @@ const ServiceProviderProfileWrapper = (props) => {
                     </CardFooter>
                   </div>
                   <div className="mb-3 mt-3">
-                    {isFitneeCoachActive ? (
+                    {isFitneeCoachActive && !isFreeTrial ? (
                       <FillBtn
                         className="py-2"
                         text={t("guest.messagePackageText")}
                         handleOnClick={subscripeInMessagingPackage}
                       />
-                    ) : (
-                      <div class="d-flex flex-row gap-2">
+                    ) : null}
+
+                    <div class="d-flex flex-row gap-2">
+                      {!isFitneeCoachActive || isFreeTrial ? (
                         <FillBtn
                           className="py-2"
                           text={t("guest.subscribeText")}
@@ -232,6 +236,9 @@ const ServiceProviderProfileWrapper = (props) => {
                             } else navigate(`/signIn`);
                           }}
                         />
+                      ) : null}
+
+                      {!isFitneeCoachActive && !isFreeTrial ? (
                         <FillBtn
                           className="py-2 mx-2"
                           text={t("guest.tryForFree")}
@@ -243,8 +250,8 @@ const ServiceProviderProfileWrapper = (props) => {
                             } else navigate(`/signIn`);
                           }}
                         />
-                      </div>
-                    )}
+                      ) : null}
+                    </div>
                   </div>
                 </Card>
               </Row>

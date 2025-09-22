@@ -46,6 +46,7 @@ const SubscriptionForm = () => {
   const [haveDiseases, setHaveDiseases] = useState(false);
   const [hasNoDesease, setHasNoDisease] = useState(false);
   const router = useLocation();
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   // ------------- functions -------------
   const handleClose = () => {
@@ -121,6 +122,13 @@ const SubscriptionForm = () => {
           );
           if (!requestData.is_free) {
             navigate("/trainee/subscription/creditCardDetail");
+          } else {
+            toast.success(t("subscription.freeTrialSuccess"));
+            window.localStorage.setItem(
+              "user",
+              JSON.stringify({ ...user, is_free_trail: true })
+            );
+            navigate("/trainee/serviceProviderProfile/fitneeCoach");
           }
         }
       } else {

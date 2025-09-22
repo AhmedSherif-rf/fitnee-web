@@ -584,6 +584,7 @@
     "SARText": "ريال"
   },
   "trainerPackages": {
+    "freeTrialText": "3 أيام",
     "monthText": "شهر",
     "twoMonthText": "ﺷﻬﺮﻳﻦ",
     "threeMonthText": "ﺛﻼﺛﺔ ﺃﺷﻬﺮ",
@@ -946,6 +947,7 @@
     "changePassword": "تغيير كلمة المرور"
   },
   "subscription": {
+    "freeTrialSuccess": "تم الاشتراك بنجاح",
     "fromHere": "من هنا",
     "formTitle": "يرجى تعبئة النموذج أدناه للاشتراك",
     "genderLabel": "الجنس",

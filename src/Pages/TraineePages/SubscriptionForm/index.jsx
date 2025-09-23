@@ -45,7 +45,8 @@ const SubscriptionForm = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [haveDiseases, setHaveDiseases] = useState(false);
   const [hasNoDesease, setHasNoDisease] = useState(false);
-  const router = useLocation();
+  const user = JSON.parse(window.localStorage.getItem("user"));
+
 
   // ------------- functions -------------
   const handleClose = () => {

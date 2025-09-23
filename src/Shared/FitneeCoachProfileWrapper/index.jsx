@@ -26,6 +26,7 @@ const ServiceProviderProfileWrapper = (props) => {
   const { loading } = useSelector((state) => state.guest);
   const { loading: userLoading } = useSelector((state) => state.user);
   const [isFitneeCoachActive, setIsFitneeCoachActive] = useState(false);
+  const [isFreeTrialUsed, setIsFreeTrialUsed] = useState(false);
   const [isFreeTrial, setIsFreeTrial] = useState(false);
 
   // const [page, setPage] = useState(1);
@@ -65,10 +66,11 @@ const ServiceProviderProfileWrapper = (props) => {
     dispatch(getPackageDetails(fitneeCoachData)).then((res) => {
       if (res.type === "getPackageDetails/fulfilled") {
         setIsFitneeCoachActive(res?.payload?.data?.[0]?.active);
+        setIsFreeTrial(res?.payload?.data?.[0]?.is_free);
       }
     });
 
-    setIsFreeTrial(user?.is_free_trail);
+    setIsFreeTrialUsed(user?.is_free_trail);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -237,7 +239,7 @@ const ServiceProviderProfileWrapper = (props) => {
                           }}
                         />
                       ) : null}
-                      {!isFitneeCoachActive && !isFreeTrial ? (
+                      {!isFitneeCoachActive && !isFreeTrialUsed ? (
                         <FillBtn
                           className="py-2 mx-2"
                           text={t("guest.tryForFree")}

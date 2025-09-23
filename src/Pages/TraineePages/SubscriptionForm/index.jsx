@@ -45,6 +45,7 @@ const SubscriptionForm = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [haveDiseases, setHaveDiseases] = useState(false);
   const [hasNoDesease, setHasNoDisease] = useState(false);
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   // ------------- functions -------------
   const handleClose = () => {
@@ -114,7 +115,16 @@ const SubscriptionForm = () => {
               package_id: packageDetails?.id,
             })
           );
-          navigate("/trainee/subscription/creditCardDetail");
+          if (!requestData.is_free) {
+            navigate("/trainee/subscription/creditCardDetail");
+          } else {
+            toast.success(t("subscription.freeTrialSuccess"));
+            window.localStorage.setItem(
+              "user",
+              JSON.stringify({ ...user, is_free_trail: true })
+            );
+            navigate("/trainee/serviceProviderProfile/fitneeCoach");
+          }
         }
       } else {
         setHaveDiseases(true);

@@ -202,7 +202,7 @@ const ServiceProviderProfileWrapper = (props) => {
                       <h5 className="fw-bold">{t("general.description")} :</h5>
                       <div>
                         <span className="fw-700 fs-6 text-secondary mb-0">
-                          {!isFitneeCoachActive || isFreeTrialUsed
+                          {!isFitneeCoachActive || isFreeTrial
                             ? `${
                                 i18n.language === "ar"
                                   ? serviceProviderProfile?.package
@@ -228,7 +228,7 @@ const ServiceProviderProfileWrapper = (props) => {
                     ) : null}
                     <div class="d-flex flex-row gap-2">
                       {!isFitneeCoachActive ||
-                      (isFitneeCoachActive && isFreeTrialUsed) ? (
+                      (isFitneeCoachActive && isFreeTrial) ? (
                         <FillBtn
                           className="py-2"
                           text={t("guest.subscribeText")}
@@ -239,7 +239,7 @@ const ServiceProviderProfileWrapper = (props) => {
                           }}
                         />
                       ) : null}
-                      {!isFitneeCoachActive && !isFreeTrial ? (
+                      {!isFitneeCoachActive && !isFreeTrialUsed ? (
                         <FillBtn
                           className="py-2 mx-2"
                           text={t("guest.tryForFree")}

@@ -223,8 +223,10 @@ const ServiceProviderProfileWrapper = (props) => {
                         text={t("guest.messagePackageText")}
                         handleOnClick={subscripeInMessagingPackage}
                       />
-                    ) : (
-                      <div class="d-flex flex-row gap-2">
+                    ) : null}
+                    <div class="d-flex flex-row gap-2">
+                      {!isFitneeCoachActive ||
+                      (isFitneeCoachActive && isFreeTrial) ? (
                         <FillBtn
                           className="py-2"
                           text={t("guest.subscribeText")}
@@ -234,6 +236,8 @@ const ServiceProviderProfileWrapper = (props) => {
                             } else navigate(`/signIn`);
                           }}
                         />
+                      ) : null}
+                      {!isFitneeCoachActive && !isFreeTrial ? (
                         <FillBtn
                           className="py-2 mx-2"
                           text={t("guest.tryForFree")}
@@ -245,8 +249,8 @@ const ServiceProviderProfileWrapper = (props) => {
                             } else navigate(`/signIn`);
                           }}
                         />
-                      </div>
-                    )}
+                      ) : null}
+                    </div>
                   </div>
                 </Card>
               </Row>

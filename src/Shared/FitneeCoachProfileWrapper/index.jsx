@@ -26,6 +26,7 @@ const ServiceProviderProfileWrapper = (props) => {
   const { loading } = useSelector((state) => state.guest);
   const { loading: userLoading } = useSelector((state) => state.user);
   const [isFitneeCoachActive, setIsFitneeCoachActive] = useState(false);
+  const [isFreeTrialUsed, setIsFreeTrialUsed] = useState(false);
   const [isFreeTrial, setIsFreeTrial] = useState(false);
 
   // const [page, setPage] = useState(1);
@@ -65,10 +66,11 @@ const ServiceProviderProfileWrapper = (props) => {
     dispatch(getPackageDetails(fitneeCoachData)).then((res) => {
       if (res.type === "getPackageDetails/fulfilled") {
         setIsFitneeCoachActive(res?.payload?.data?.[0]?.active);
+        setIsFreeTrial(res?.payload?.data?.[0]?.is_free);
       }
     });
 
-    setIsFreeTrial(user?.is_free_trail);
+    setIsFreeTrialUsed(user?.is_free_trail);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -200,7 +202,7 @@ const ServiceProviderProfileWrapper = (props) => {
                       <h5 className="fw-bold">{t("general.description")} :</h5>
                       <div>
                         <span className="fw-700 fs-6 text-secondary mb-0">
-                          {!isFitneeCoachActive || isFreeTrial
+                          {!isFitneeCoachActive || isFreeTrialUsed
                             ? `${
                                 i18n.language === "ar"
                                   ? serviceProviderProfile?.package
@@ -226,7 +228,7 @@ const ServiceProviderProfileWrapper = (props) => {
                     ) : null}
                     <div class="d-flex flex-row gap-2">
                       {!isFitneeCoachActive ||
-                      (isFitneeCoachActive && isFreeTrial) ? (
+                      (isFitneeCoachActive && isFreeTrialUsed) ? (
                         <FillBtn
                           className="py-2"
                           text={t("guest.subscribeText")}
